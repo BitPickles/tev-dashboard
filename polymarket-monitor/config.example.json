@@ -1,0 +1,17 @@
+{
+  "notifications": {
+    "telegram_bot_token": "",
+    "telegram_chat_id": ""
+  },
+  "strategy": {
+    "total_capital": 1000,
+    "p0_allocation": 300,
+    "p1_allocation": 500,
+    "p2_allocation": 200
+  },
+  "risk_control": {
+    "max_per_trade": 100,
+    "daily_loss_limit": 100,
+    "cumulative_loss_pause": 200
+  }
+}

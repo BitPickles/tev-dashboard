@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+
+# Logs
+*.log
+*.html
+
+# Data files (generated)
+pm_opportunities.json
+pm_portfolio.json
+pm_strategy_result.json
+*_report.json
+*.html
+
+# Config with secrets
+config.json
+trading_config.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude
+.claude/
