@@ -2,18 +2,19 @@
   "protocol": "aave",
   "period": "2026-02",
   "source": "defillama+binance",
-  "fetched_at": "2026-02-01T16:42:45.856Z",
+  "fetched_at": "2026-02-01T16:44:49.895Z",
   "record_count": 1,
   "records": [
     {
       "date": "2026-02-01",
       "price_usd": 124.35,
-      "market_cap_usd": 1933099860.8791206,
+      "market_cap_usd": 1902555000,
       "daily_fees_usd": 8560588,
       "daily_tev_usd": 974540,
       "tev_ratio_used": 0.318,
       "daily_revenue_usd": 974540,
-      "tev_source": "defillama_revenue"
+      "tev_source": "defillama_revenue",
+      "circulating_supply": 15300000
     }
   ]
 }
