@@ -1,21 +1,20 @@
 {
   "protocol": "aave",
-  "updated_at": "2026-02-01T09:51:44.328Z",
+  "updated_at": "2026-02-01T16:36:19.925Z",
   "latest_record": {
     "date": "2026-02-01",
-    "price_usd": 127.271933094778,
-    "market_cap_usd": 1933099860.8791206,
-    "daily_fees_usd": 9704775,
-    "daily_tev_usd": 3086118,
-    "tev_ratio_used": 0.318
+    "price_usd": null,
+    "market_cap_usd": null,
+    "daily_fees_usd": 8560588,
+    "daily_revenue_usd": 974540,
+    "daily_tev_usd": 974540,
+    "tev_source": "defillama_revenue"
   },
   "metrics": {
-    "trailing_30d_tev_usd": 24172731,
-    "annualized_tev_usd": 290072772,
-    "current_market_cap_usd": 1933099861,
-    "tev_yield": "15.01%",
-    "tev_yield_decimal": 0.15005576166566112,
-    "calculated_at": "2026-02-01T09:51:44.317Z"
+    "trailing_30d_revenue_usd": 9182634,
+    "trailing_30d_fees_usd": 74870697,
+    "current_market_cap_usd": null,
+    "calculated_at": "2026-02-01T16:36:19.925Z"
   },
   "data_range": {
     "start": "2020-12-04",

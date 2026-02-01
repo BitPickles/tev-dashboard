@@ -1,17 +1,19 @@
 {
   "protocol": "uniswap",
   "period": "2026-02",
-  "source": "auto",
-  "fetched_at": "2026-02-01T09:54:02.442Z",
+  "source": "defillama+coingecko",
+  "fetched_at": "2026-02-01T16:36:16.686Z",
   "record_count": 1,
   "records": [
     {
       "date": "2026-02-01",
       "price_usd": 3.9629718315971,
       "market_cap_usd": 2514228224.162625,
-      "daily_fees_usd": 2946123,
+      "daily_fees_usd": 2783321,
       "daily_tev_usd": 0,
-      "tev_ratio_used": 0
+      "tev_ratio_used": 0,
+      "daily_revenue_usd": 0,
+      "tev_source": "defillama_revenue"
     }
   ]
 }

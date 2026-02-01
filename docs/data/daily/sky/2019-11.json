@@ -1,8 +1,8 @@
 {
   "protocol": "sky",
   "period": "2019-11",
-  "source": "auto",
-  "fetched_at": "2026-02-01T09:53:35.093Z",
+  "source": "defillama+coingecko",
+  "fetched_at": "2026-02-01T16:36:28.779Z",
   "record_count": 17,
   "records": [
     {
@@ -11,7 +11,9 @@
       "market_cap_usd": null,
       "daily_fees_usd": 0,
       "daily_tev_usd": 0,
-      "tev_ratio_used": 0.7
+      "tev_ratio_used": 0.7,
+      "daily_revenue_usd": 0,
+      "tev_source": "defillama_revenue"
     },
     {
       "date": "2019-11-15",
@@ -19,7 +21,9 @@
       "market_cap_usd": null,
       "daily_fees_usd": 0,
       "daily_tev_usd": 0,
-      "tev_ratio_used": 0.7
+      "tev_ratio_used": 0.7,
+      "daily_revenue_usd": 0,
+      "tev_source": "defillama_revenue"
     },
     {
       "date": "2019-11-16",
@@ -27,7 +31,9 @@
       "market_cap_usd": null,
       "daily_fees_usd": 0,
       "daily_tev_usd": 0,
-      "tev_ratio_used": 0.7
+      "tev_ratio_used": 0.7,
+      "daily_revenue_usd": 0,
+      "tev_source": "defillama_revenue"
     },
     {
       "date": "2019-11-17",
@@ -35,111 +41,139 @@
       "market_cap_usd": null,
       "daily_fees_usd": 0,
       "daily_tev_usd": 0,
-      "tev_ratio_used": 0.7
+      "tev_ratio_used": 0.7,
+      "daily_revenue_usd": 0,
+      "tev_source": "defillama_revenue"
     },
     {
       "date": "2019-11-18",
       "price_usd": null,
       "market_cap_usd": null,
       "daily_fees_usd": 171,
-      "daily_tev_usd": 120,
-      "tev_ratio_used": 0.7
+      "daily_tev_usd": 152,
+      "tev_ratio_used": 0.7,
+      "daily_revenue_usd": 152,
+      "tev_source": "defillama_revenue"
     },
     {
       "date": "2019-11-19",
       "price_usd": null,
       "market_cap_usd": null,
       "daily_fees_usd": 787,
-      "daily_tev_usd": 551,
-      "tev_ratio_used": 0.7
+      "daily_tev_usd": 759,
+      "tev_ratio_used": 0.7,
+      "daily_revenue_usd": 759,
+      "tev_source": "defillama_revenue"
     },
     {
       "date": "2019-11-20",
       "price_usd": null,
       "market_cap_usd": null,
       "daily_fees_usd": 1043,
-      "daily_tev_usd": 730,
-      "tev_ratio_used": 0.7
+      "daily_tev_usd": 1003,
+      "tev_ratio_used": 0.7,
+      "daily_revenue_usd": 1003,
+      "tev_source": "defillama_revenue"
     },
     {
       "date": "2019-11-21",
       "price_usd": null,
       "market_cap_usd": null,
       "daily_fees_usd": 1459,
-      "daily_tev_usd": 1021,
-      "tev_ratio_used": 0.7
+      "daily_tev_usd": 1410,
+      "tev_ratio_used": 0.7,
+      "daily_revenue_usd": 1410,
+      "tev_source": "defillama_revenue"
     },
     {
       "date": "2019-11-22",
       "price_usd": null,
       "market_cap_usd": null,
       "daily_fees_usd": 1676,
-      "daily_tev_usd": 1173,
-      "tev_ratio_used": 0.7
+      "daily_tev_usd": 1620,
+      "tev_ratio_used": 0.7,
+      "daily_revenue_usd": 1620,
+      "tev_source": "defillama_revenue"
     },
     {
       "date": "2019-11-23",
       "price_usd": null,
       "market_cap_usd": null,
       "daily_fees_usd": 1935,
-      "daily_tev_usd": 1355,
-      "tev_ratio_used": 0.7
+      "daily_tev_usd": 1759,
+      "tev_ratio_used": 0.7,
+      "daily_revenue_usd": 1759,
+      "tev_source": "defillama_revenue"
     },
     {
       "date": "2019-11-24",
       "price_usd": null,
       "market_cap_usd": null,
       "daily_fees_usd": 1937,
-      "daily_tev_usd": 1356,
-      "tev_ratio_used": 0.7
+      "daily_tev_usd": 1753,
+      "tev_ratio_used": 0.7,
+      "daily_revenue_usd": 1753,
+      "tev_source": "defillama_revenue"
     },
     {
       "date": "2019-11-25",
       "price_usd": null,
       "market_cap_usd": null,
       "daily_fees_usd": 2138,
-      "daily_tev_usd": 1497,
-      "tev_ratio_used": 0.7
+      "daily_tev_usd": 1948,
+      "tev_ratio_used": 0.7,
+      "daily_revenue_usd": 1948,
+      "tev_source": "defillama_revenue"
     },
     {
       "date": "2019-11-26",
       "price_usd": null,
       "market_cap_usd": null,
       "daily_fees_usd": 2160,
-      "daily_tev_usd": 1512,
-      "tev_ratio_used": 0.7
+      "daily_tev_usd": 1963,
+      "tev_ratio_used": 0.7,
+      "daily_revenue_usd": 1963,
+      "tev_source": "defillama_revenue"
     },
     {
       "date": "2019-11-27",
       "price_usd": null,
       "market_cap_usd": null,
       "daily_fees_usd": 2164,
-      "daily_tev_usd": 1515,
-      "tev_ratio_used": 0.7
+      "daily_tev_usd": 1935,
+      "tev_ratio_used": 0.7,
+      "daily_revenue_usd": 1935,
+      "tev_source": "defillama_revenue"
     },
     {
       "date": "2019-11-28",
       "price_usd": null,
       "market_cap_usd": null,
       "daily_fees_usd": 2316,
-      "daily_tev_usd": 1621,
-      "tev_ratio_used": 0.7
+      "daily_tev_usd": 2118,
+      "tev_ratio_used": 0.7,
+      "daily_revenue_usd": 2118,
+      "tev_source": "defillama_revenue"
     },
     {
       "date": "2019-11-29",
       "price_usd": null,
       "market_cap_usd": null,
       "daily_fees_usd": 2435,
-      "daily_tev_usd": 1705,
-      "tev_ratio_used": 0.7
+      "daily_tev_usd": 2241,
+      "tev_ratio_used": 0.7,
+      "daily_revenue_usd": 2241,
+      "tev_source": "defillama_revenue"
     },
     {
       "date": "2019-11-30",
       "price_usd": null,
       "market_cap_usd": null,
       "daily_fees_usd": 2506,
-      "daily_tev_usd": 1754,
-      "tev_ratio_used": 0.7
+      "daily_tev_usd": 2315,
+      "tev_ratio_used": 0.7,
+      "daily_revenue_usd": 2315,
+      "tev_source": "defillama_revenue"
     }
   ]
 }
