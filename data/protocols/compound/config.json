@@ -1,0 +1,42 @@
+{
+  "id": "compound",
+  "name": "Compound",
+  "ticker": "COMP",
+  "icon": "🏛️",
+  "category": "lending",
+  "description": "以太坊上最早的 DeFi 借贷协议之一，开创了流动性挖矿模式",
+  "website": "https://compound.finance",
+  "docs": "https://docs.compound.finance",
+  "token": {
+    "address": "0xc00e94Cb662C3520282E6f5717214004A7f26888",
+    "chain": "ethereum",
+    "coingecko_id": "compound-governance-token",
+    "defillama_id": "compound"
+  },
+  "tev_mechanisms": [],
+  "tev_summary": {
+    "fee_switch": "OFF",
+    "fee_switch_details": "Compound 协议费用开关未开启，收入保留在协议储备",
+    "buybacks": "NONE",
+    "dividends": "NONE",
+    "burns": "NONE",
+    "primary_value_accrual": "纯治理代币 - COMP 仅用于治理投票，无收入分配"
+  },
+  "confidence": "high",
+  "data_sources": [
+    {
+      "name": "Compound Governance",
+      "type": "governance",
+      "url": "https://compound.finance/governance",
+      "reliability": "high"
+    },
+    {
+      "name": "DefiLlama",
+      "type": "api",
+      "url": "https://api.llama.fi/protocol/compound-v3",
+      "reliability": "high"
+    }
+  ],
+  "notes": "Compound 作为 DeFi 借贷的先驱，COMP 代币开创了治理代币模式。尽管协议收入可观，但 COMP 始终是纯治理代币，费用开关从未开启。社区多次讨论过开启费用分配但未通过。",
+  "last_updated": "2026-02-02"
+}

@@ -1,0 +1,55 @@
+{
+  "id": "etherfi",
+  "name": "ether.fi",
+  "ticker": "ETHFI",
+  "icon": "🌊",
+  "category": "liquid_staking",
+  "description": "去中心化非托管流动性质押协议，用户可保留对验证者密钥的控制",
+  "website": "https://ether.fi",
+  "docs": "https://etherfi.gitbook.io/etherfi",
+  "token": {
+    "address": "0xFe0c30065B384F05761f15d0CC899D4F9F9Cc0eB",
+    "chain": "ethereum",
+    "coingecko_id": "ether-fi",
+    "defillama_id": "ether.fi"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "staking_reward",
+      "name": "ETHFI Staking",
+      "description": "质押 ETHFI 获得协议收入分成和 loyalty points",
+      "status": "active",
+      "start_date": "2024-03-01",
+      "source": {
+        "type": "governance",
+        "title": "ETHFI Staking Launch",
+        "url": "https://ether.fi/blog"
+      }
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "PARTIAL",
+    "fee_switch_details": "部分协议收入分配给 ETHFI stakers",
+    "buybacks": "NONE",
+    "dividends": "PARTIAL",
+    "burns": "NONE",
+    "primary_value_accrual": "Staking 奖励 - 质押 ETHFI 获得协议收入分成"
+  },
+  "confidence": "medium",
+  "data_sources": [
+    {
+      "name": "ether.fi Blog",
+      "type": "report",
+      "url": "https://ether.fi/blog",
+      "reliability": "high"
+    },
+    {
+      "name": "DefiLlama",
+      "type": "api",
+      "url": "https://api.llama.fi/protocol/ether.fi-stake",
+      "reliability": "high"
+    }
+  ],
+  "notes": "ether.fi 是流动性质押赛道的后起之秀，通过非托管架构和 EigenLayer 再质押集成快速增长。ETHFI 代币有质押机制但具体收入分配比例待确认。",
+  "last_updated": "2026-02-02"
+}

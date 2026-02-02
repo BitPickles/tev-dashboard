@@ -1,0 +1,55 @@
+{
+  "id": "ethena",
+  "name": "Ethena",
+  "ticker": "ENA",
+  "icon": "🔷",
+  "category": "basis_trading",
+  "description": "合成美元协议，通过期货套利生成收益",
+  "website": "https://ethena.fi",
+  "docs": "https://docs.ethena.fi",
+  "token": {
+    "address": "0x57e114b691db790c35207b2e685d4a43181e6061",
+    "chain": "ethereum",
+    "coingecko_id": "ethena",
+    "defillama_id": "ethena-usde"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "staking_reward",
+      "name": "sENA Staking",
+      "description": "质押 ENA 获得协议收入分成",
+      "status": "active",
+      "staking_contract": "0x0000000000000000000000000000000000000000",
+      "source": {
+        "type": "docs",
+        "title": "Ethena Staking",
+        "url": "https://docs.ethena.fi/tokenomics/staking"
+      }
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "PARTIAL",
+    "fee_switch_details": "sENA 质押者获得部分协议收入",
+    "buybacks": "NONE",
+    "dividends": "ACTIVE",
+    "burns": "NONE",
+    "primary_value_accrual": "分红 - sENA 质押者获得协议收入分成"
+  },
+  "confidence": "medium",
+  "data_sources": [
+    {
+      "name": "Ethena Docs",
+      "type": "docs",
+      "url": "https://docs.ethena.fi",
+      "reliability": "high"
+    },
+    {
+      "name": "DefiLlama",
+      "type": "api",
+      "url": "https://api.llama.fi/protocol/ethena",
+      "reliability": "high"
+    }
+  ],
+  "notes": "Ethena 是 2024 年增长最快的协议之一，通过期货基差套利生成收益。sENA 质押机制提供了代币赋能。",
+  "last_updated": "2026-02-02"
+}

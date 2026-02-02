@@ -1,0 +1,74 @@
+{
+  "id": "pancakeswap",
+  "name": "PancakeSwap",
+  "ticker": "CAKE",
+  "icon": "🥞",
+  "category": "dex",
+  "description": "BNB Chain 最大的 DEX，提供交易、流动性挖矿、NFT 等多种功能",
+  "website": "https://pancakeswap.finance",
+  "docs": "https://docs.pancakeswap.finance",
+  "token": {
+    "address": "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+    "chain": "bsc",
+    "coingecko_id": "pancakeswap-token",
+    "defillama_id": "pancakeswap"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "buyback_burn",
+      "name": "CAKE Burns",
+      "description": "协议收入的一部分用于回购并销毁 CAKE",
+      "status": "active",
+      "start_date": "2021-01-01",
+      "burn_frequency": "weekly",
+      "source": {
+        "type": "documentation",
+        "title": "CAKE Tokenomics",
+        "url": "https://docs.pancakeswap.finance/tokenomics/cake"
+      }
+    },
+    {
+      "type": "staking_reward",
+      "name": "veCAKE Revenue Share",
+      "description": "锁仓 CAKE 获得 veCAKE，参与协议收入分成和治理",
+      "status": "active",
+      "start_date": "2023-07-01",
+      "source": {
+        "type": "documentation",
+        "title": "veCAKE System",
+        "url": "https://docs.pancakeswap.finance/products-and-features/vecake"
+      }
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "ON",
+    "fee_switch_details": "交易费用分配给 LP、回购销毁和 veCAKE 持有者",
+    "buybacks": "ACTIVE",
+    "dividends": "ACTIVE",
+    "burns": "ACTIVE",
+    "primary_value_accrual": "回购销毁 + veCAKE 分红 - 多重价值捕获机制"
+  },
+  "confidence": "high",
+  "data_sources": [
+    {
+      "name": "PancakeSwap Docs",
+      "type": "documentation",
+      "url": "https://docs.pancakeswap.finance",
+      "reliability": "high"
+    },
+    {
+      "name": "CAKE Burn Dashboard",
+      "type": "onchain",
+      "url": "https://pancakeswap.finance/cake-staking",
+      "reliability": "high"
+    },
+    {
+      "name": "DefiLlama",
+      "type": "api",
+      "url": "https://api.llama.fi/protocol/pancakeswap-amm",
+      "reliability": "high"
+    }
+  ],
+  "notes": "PancakeSwap 是 BNB Chain 生态最成熟的 DEX，CAKE 代币有完善的 TEV 机制：定期销毁、veCAKE 收入分成、IFO 参与等。是少数同时具备 buyback、burn 和 revenue share 的协议。",
+  "last_updated": "2026-02-02"
+}

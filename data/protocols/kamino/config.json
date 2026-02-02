@@ -1,0 +1,50 @@
+{
+  "id": "kamino",
+  "name": "Kamino Finance",
+  "ticker": "KMNO",
+  "icon": "🌀",
+  "category": "lending",
+  "description": "Solana 上的一站式 DeFi 协议，提供借贷、流动性管理和杠杆策略",
+  "website": "https://kamino.finance",
+  "docs": "https://docs.kamino.finance",
+  "token": {
+    "address": "KMNo3nJsBXfcpJTVhZcXLW7RmTwTt4GVFE7suUBo9sS",
+    "chain": "solana",
+    "coingecko_id": "kamino",
+    "defillama_id": "kamino"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "staking_reward",
+      "name": "KMNO Staking",
+      "description": "质押 KMNO 获得协议收入分成和 Points 加成",
+      "status": "active",
+      "start_date": "2024-04-01"
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "PARTIAL",
+    "fee_switch_details": "部分协议费用分配给 KMNO stakers",
+    "buybacks": "NONE",
+    "dividends": "PARTIAL",
+    "burns": "NONE",
+    "primary_value_accrual": "Staking 奖励 - 质押 KMNO 参与协议收入分配"
+  },
+  "confidence": "medium",
+  "data_sources": [
+    {
+      "name": "Kamino Docs",
+      "type": "documentation",
+      "url": "https://docs.kamino.finance",
+      "reliability": "high"
+    },
+    {
+      "name": "DefiLlama",
+      "type": "api",
+      "url": "https://api.llama.fi/protocol/kamino-lend",
+      "reliability": "high"
+    }
+  ],
+  "notes": "Kamino 是 Solana DeFi 生态的重要协议，提供借贷和自动化流动性管理。KMNO 代币有质押机制，具体收入分配比例待确认。",
+  "last_updated": "2026-02-02"
+}

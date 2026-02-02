@@ -1,0 +1,63 @@
+{
+  "id": "radiant",
+  "name": "Radiant Capital",
+  "ticker": "RDNT",
+  "icon": "☀️",
+  "category": "lending",
+  "description": "全链借贷协议，使用 LayerZero 实现跨链流动性统一",
+  "website": "https://radiant.capital",
+  "docs": "https://docs.radiant.capital",
+  "token": {
+    "address": "0x3082CC23568eA640225c2467653dB90e9250AaA0",
+    "chain": "arbitrum",
+    "coingecko_id": "radiant-capital",
+    "defillama_id": "radiant"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "fee_sharing",
+      "name": "dLP Revenue Share",
+      "description": "锁定 RDNT-ETH LP (dLP) 获得平台费用分成，以 BTC、ETH、稳定币支付",
+      "status": "active",
+      "start_date": "2023-03-19",
+      "fee_share_percentage": 60,
+      "source": {
+        "type": "documentation",
+        "title": "Radiant V2 Tokenomics",
+        "url": "https://docs.radiant.capital/radiant/project-info/dlp"
+      }
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "ON",
+    "fee_switch_details": "60% 平台费用分配给 dLP lockers，以蓝筹资产支付",
+    "buybacks": "NONE",
+    "dividends": "ACTIVE",
+    "burns": "NONE",
+    "primary_value_accrual": "Fee Sharing - 锁定 dLP 获得 60% 平台收入，以 BTC/ETH/USDC 等支付"
+  },
+  "confidence": "high",
+  "data_sources": [
+    {
+      "name": "Radiant Documentation",
+      "type": "documentation",
+      "url": "https://docs.radiant.capital",
+      "reliability": "high"
+    },
+    {
+      "name": "Radiant Official Website",
+      "type": "report",
+      "url": "https://radiant.capital",
+      "reliability": "high",
+      "notes": "官网确认 'Platform fees paid to RDNT lockers'"
+    },
+    {
+      "name": "DefiLlama",
+      "type": "api",
+      "url": "https://api.llama.fi/protocol/radiant-v2",
+      "reliability": "high"
+    }
+  ],
+  "notes": "Radiant 是 TEV 机制设计较好的协议：锁定 RDNT-ETH LP 获得平台收入分成，且以蓝筹资产 (BTC, ETH, USDC) 而非协议代币支付，避免了代币抛压。但 2023 年遭遇两次安全事件后 TVL 大幅下降。",
+  "last_updated": "2026-02-02"
+}

@@ -1,0 +1,62 @@
+{
+  "id": "curve",
+  "name": "Curve",
+  "ticker": "CRV",
+  "icon": "🌀",
+  "category": "dex",
+  "description": "专注稳定币的去中心化交易所",
+  "website": "https://curve.fi",
+  "docs": "https://curve.readthedocs.io",
+  "token": {
+    "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+    "chain": "ethereum",
+    "coingecko_id": "curve-dao-token",
+    "defillama_id": "curve-dex"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "fee_sharing",
+      "name": "veCRV Fee Distribution",
+      "description": "50% 交易手续费分配给 veCRV 持有者",
+      "status": "active",
+      "ratio": 0.50,
+      "distribution_contract": "0xA464e6DCda8AC41e03616F95f4BC98a13b8922Dc",
+      "source": {
+        "type": "docs",
+        "title": "Curve Fee Distribution",
+        "url": "https://curve.readthedocs.io/dao-fees.html"
+      }
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "ON",
+    "fee_switch_details": "50% 交易手续费分配给 veCRV 持有者（以 3CRV 形式）",
+    "buybacks": "NONE",
+    "dividends": "ACTIVE",
+    "burns": "NONE",
+    "primary_value_accrual": "分红 - veCRV 持有者每周获得 3CRV 分红"
+  },
+  "ve_token": {
+    "name": "veCRV",
+    "lock_contract": "0x5f3b5DfEb7B28CDbD7FAba78963EE202a494e2A2",
+    "max_lock_period": "4 years",
+    "benefits": ["手续费分成", "投票权", "Gauge 激励加速"]
+  },
+  "confidence": "high",
+  "data_sources": [
+    {
+      "name": "Curve Fee Burner",
+      "type": "onchain",
+      "url": "https://etherscan.io/address/0xA464e6DCda8AC41e03616F95f4BC98a13b8922Dc",
+      "reliability": "verified"
+    },
+    {
+      "name": "DefiLlama",
+      "type": "api",
+      "url": "https://api.llama.fi/protocol/curve-dex",
+      "reliability": "high"
+    }
+  ],
+  "notes": "Curve 是 ve 代币经济模型的开创者。veCRV 持有者每周可领取 3CRV 分红（通常是稳定币）。",
+  "last_updated": "2026-02-02"
+}

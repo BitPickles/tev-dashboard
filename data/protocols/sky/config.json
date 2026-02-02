@@ -1,0 +1,62 @@
+{
+  "id": "sky",
+  "name": "Sky (MakerDAO)",
+  "ticker": "MKR",
+  "icon": "☁️",
+  "category": "cdp",
+  "description": "去中心化稳定币协议，发行 DAI/USDS 稳定币",
+  "website": "https://sky.money",
+  "docs": "https://docs.sky.money",
+  "token": {
+    "address": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+    "chain": "ethereum",
+    "coingecko_id": "maker",
+    "defillama_id": "sky"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "buyback_burn",
+      "name": "Smart Burn Engine (SBE)",
+      "description": "协议盈余的 70% 用于回购销毁 MKR",
+      "status": "active",
+      "ratio": 0.70,
+      "contract": "0x0000000000000000000000000000000000000000",
+      "source": {
+        "type": "governance",
+        "title": "Smart Burn Engine",
+        "url": "https://forum.makerdao.com/t/mip103-the-smart-burn-engine-and-tokenomics/19025"
+      }
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "ON",
+    "fee_switch_details": "70% 协议盈余用于 MKR 回购销毁",
+    "buybacks": "ACTIVE",
+    "dividends": "NONE",
+    "burns": "ACTIVE",
+    "primary_value_accrual": "回购销毁 - Smart Burn Engine 自动使用协议盈余回购并销毁 MKR"
+  },
+  "confidence": "high",
+  "data_sources": [
+    {
+      "name": "MakerDAO Forum",
+      "type": "governance",
+      "url": "https://forum.makerdao.com",
+      "reliability": "high"
+    },
+    {
+      "name": "Dune - MakerDAO Burns",
+      "type": "dune",
+      "url": "https://dune.com/steakhouse/makerdao",
+      "reliability": "high"
+    },
+    {
+      "name": "DefiLlama",
+      "type": "api",
+      "url": "https://api.llama.fi/protocol/sky",
+      "reliability": "high"
+    }
+  ],
+  "notes": "MakerDAO (现 Sky) 是最早实现代币回购销毁的 DeFi 协议之一。Smart Burn Engine 机制确保协议盈余持续回馈给 MKR 持有者。",
+  "last_updated": "2026-02-02"
+}

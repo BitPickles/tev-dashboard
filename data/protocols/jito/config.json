@@ -1,0 +1,54 @@
+{
+  "id": "jito",
+  "name": "Jito",
+  "ticker": "JTO",
+  "icon": "⚡",
+  "category": "liquid_staking",
+  "description": "Solana 上的 MEV 驱动流动性质押协议，提供 JitoSOL",
+  "website": "https://jito.network",
+  "docs": "https://docs.jito.network",
+  "token": {
+    "address": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
+    "chain": "solana",
+    "coingecko_id": "jito-governance-token",
+    "defillama_id": "jito"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "staking_reward",
+      "name": "JTO Staking",
+      "description": "质押 JTO 参与协议治理和可能的收入分成",
+      "status": "planned",
+      "source": {
+        "type": "documentation",
+        "title": "JTO Token",
+        "url": "https://docs.jito.network/jto-governance/jto"
+      }
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "OFF",
+    "fee_switch_details": "JTO 目前主要用于治理，MEV 收益流向 JitoSOL 持有者",
+    "buybacks": "NONE",
+    "dividends": "NONE",
+    "burns": "NONE",
+    "primary_value_accrual": "治理代币 - MEV 收益流向 JitoSOL，JTO 用于治理"
+  },
+  "confidence": "medium",
+  "data_sources": [
+    {
+      "name": "Jito Docs",
+      "type": "documentation",
+      "url": "https://docs.jito.network",
+      "reliability": "high"
+    },
+    {
+      "name": "DefiLlama",
+      "type": "api",
+      "url": "https://api.llama.fi/protocol/jito-liquid-staking",
+      "reliability": "high"
+    }
+  ],
+  "notes": "Jito 是 Solana MEV 基础设施的领导者。JTO 代币目前主要用于治理，协议的 MEV 收益直接流向 JitoSOL 持有者（更高的 APY），而非 JTO 持有者。未来可能引入 JTO staking 收入分成。",
+  "last_updated": "2026-02-02"
+}

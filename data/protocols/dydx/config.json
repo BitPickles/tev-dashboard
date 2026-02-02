@@ -1,0 +1,61 @@
+{
+  "id": "dydx",
+  "name": "dYdX",
+  "ticker": "DYDX",
+  "icon": "📊",
+  "category": "perpetuals",
+  "description": "去中心化永续合约交易平台，V4 版本迁移到独立的 dYdX Chain",
+  "website": "https://dydx.exchange",
+  "docs": "https://docs.dydx.exchange",
+  "token": {
+    "address": "0x92d6c1e31e14520e676a687f0a93788b716beff5",
+    "chain": "ethereum",
+    "coingecko_id": "dydx",
+    "defillama_id": "dydx"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "staking_reward",
+      "name": "dYdX Chain Staking",
+      "description": "在 dYdX Chain 质押 DYDX 获得交易费用分成",
+      "status": "active",
+      "start_date": "2023-10-26",
+      "source": {
+        "type": "documentation",
+        "title": "dYdX Chain Staking",
+        "url": "https://docs.dydx.exchange/users/staking"
+      }
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "ON",
+    "fee_switch_details": "100% 交易费用分配给 DYDX stakers 和验证者",
+    "buybacks": "NONE",
+    "dividends": "ACTIVE",
+    "burns": "NONE",
+    "primary_value_accrual": "Staking 奖励 - dYdX V4 所有交易费用 100% 分配给链上 stakers"
+  },
+  "confidence": "high",
+  "data_sources": [
+    {
+      "name": "dYdX Documentation",
+      "type": "documentation",
+      "url": "https://docs.dydx.exchange",
+      "reliability": "high"
+    },
+    {
+      "name": "Mintscan dYdX",
+      "type": "onchain",
+      "url": "https://www.mintscan.io/dydx",
+      "reliability": "high"
+    },
+    {
+      "name": "DefiLlama",
+      "type": "api",
+      "url": "https://api.llama.fi/protocol/dydx-v4",
+      "reliability": "high"
+    }
+  ],
+  "notes": "dYdX V4 是 TEV 最强的协议之一：100% 交易费用分配给 stakers。作为独立的 Cosmos 应用链，DYDX 同时作为 gas 代币和质押代币，价值捕获非常直接。V3 (以太坊) 仍在运行但逐步迁移。",
+  "last_updated": "2026-02-02"
+}

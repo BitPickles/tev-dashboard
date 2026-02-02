@@ -1,0 +1,37 @@
+{
+  "id": "eigenlayer",
+  "name": "EigenLayer",
+  "ticker": "EIGEN",
+  "icon": "🔄",
+  "category": "restaking",
+  "description": "以太坊再质押协议，允许 ETH 质押者为其他协议提供经济安全",
+  "website": "https://eigenlayer.xyz",
+  "docs": "https://docs.eigenlayer.xyz",
+  "token": {
+    "address": "0xec53bF9167f50cDEB3Ae105f56099aaaB9061F83",
+    "chain": "ethereum",
+    "coingecko_id": "eigenlayer",
+    "defillama_id": "eigenlayer"
+  },
+  "tev_mechanisms": [],
+  "tev_summary": {
+    "fee_switch": "OFF",
+    "fee_switch_details": "协议费用开关未开启",
+    "buybacks": "NONE",
+    "dividends": "NONE",
+    "burns": "NONE",
+    "primary_value_accrual": "纯治理代币 - EIGEN 目前仅用于治理，无收入分配机制"
+  },
+  "confidence": "high",
+  "data_sources": [
+    {
+      "name": "DefiLlama TokenRights",
+      "type": "api",
+      "url": "https://api.llama.fi/protocols",
+      "reliability": "high",
+      "notes": "确认 fee switch OFF，无 buybacks/dividends/burns"
+    }
+  ],
+  "notes": "EigenLayer 作为再质押基础设施，当前 EIGEN 代币仅有治理功能。协议收入（AVS 费用）目前未分配给代币持有者。未来可能通过治理开启费用开关。",
+  "last_updated": "2026-02-02"
+}

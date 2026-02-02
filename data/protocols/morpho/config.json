@@ -1,0 +1,42 @@
+{
+  "id": "morpho",
+  "name": "Morpho",
+  "ticker": "MORPHO",
+  "icon": "🦋",
+  "category": "lending",
+  "description": "去中心化借贷优化器，提供更高效的利率匹配",
+  "website": "https://morpho.org",
+  "docs": "https://docs.morpho.org",
+  "token": {
+    "address": "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
+    "chain": "ethereum",
+    "coingecko_id": "morpho",
+    "defillama_id": "morpho"
+  },
+  "tev_mechanisms": [],
+  "tev_summary": {
+    "fee_switch": "OFF",
+    "fee_switch_details": "Morpho 当前无协议费用，由 vault curators 自行设定",
+    "buybacks": "NONE",
+    "dividends": "NONE",
+    "burns": "NONE",
+    "primary_value_accrual": "纯治理代币 - MORPHO 目前仅用于治理投票"
+  },
+  "confidence": "high",
+  "data_sources": [
+    {
+      "name": "Morpho Docs",
+      "type": "documentation",
+      "url": "https://docs.morpho.org",
+      "reliability": "high"
+    },
+    {
+      "name": "DefiLlama",
+      "type": "api",
+      "url": "https://api.llama.fi/protocol/morpho-v1",
+      "reliability": "high"
+    }
+  ],
+  "notes": "Morpho 采用无协议费用模式，vault curators 可自行设定费用。MORPHO 代币目前仅有治理功能，未来可能通过治理启用协议层费用开关。",
+  "last_updated": "2026-02-02"
+}

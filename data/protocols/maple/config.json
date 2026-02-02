@@ -1,0 +1,55 @@
+{
+  "id": "maple",
+  "name": "Maple Finance",
+  "ticker": "SYRUP",
+  "icon": "🍁",
+  "category": "lending",
+  "description": "机构级 DeFi 借贷协议，为加密原生机构提供无抵押贷款",
+  "website": "https://maple.finance",
+  "docs": "https://docs.maple.finance",
+  "token": {
+    "address": "0x643C4E15d7d62Ad0aBeC4a9BD4b001aA3Ef52d66",
+    "chain": "ethereum",
+    "coingecko_id": "syrup",
+    "defillama_id": "maple"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "staking_reward",
+      "name": "SYRUP Staking",
+      "description": "质押 SYRUP 获得协议费用分成",
+      "status": "active",
+      "start_date": "2024-05-01",
+      "source": {
+        "type": "governance",
+        "title": "Maple Tokenomics V2 - MPL to SYRUP Migration",
+        "url": "https://maple.finance/news/introducing-syrup"
+      }
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "ON",
+    "fee_switch_details": "协议费用分配给 SYRUP stakers",
+    "buybacks": "NONE",
+    "dividends": "ACTIVE",
+    "burns": "NONE",
+    "primary_value_accrual": "Staking 奖励 - 质押 SYRUP 获得协议借贷费用分成"
+  },
+  "confidence": "medium",
+  "data_sources": [
+    {
+      "name": "Maple Finance Blog",
+      "type": "report",
+      "url": "https://maple.finance/news",
+      "reliability": "high"
+    },
+    {
+      "name": "DefiLlama",
+      "type": "api",
+      "url": "https://api.llama.fi/protocol/maple",
+      "reliability": "high"
+    }
+  ],
+  "notes": "Maple 于 2024 年将代币从 MPL 迁移到 SYRUP，新代币经济模型强化了收入分配机制。作为机构借贷协议，收入主要来自贷款利差。",
+  "last_updated": "2026-02-02"
+}

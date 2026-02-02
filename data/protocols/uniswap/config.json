@@ -1,0 +1,36 @@
+{
+  "id": "uniswap",
+  "name": "Uniswap",
+  "ticker": "UNI",
+  "icon": "🦄",
+  "category": "dex",
+  "description": "最大的去中心化交易所",
+  "website": "https://uniswap.org",
+  "docs": "https://docs.uniswap.org",
+  "token": {
+    "address": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+    "chain": "ethereum",
+    "coingecko_id": "uniswap",
+    "defillama_id": "uniswap-v3"
+  },
+  "tev_mechanisms": [],
+  "tev_summary": {
+    "fee_switch": "OFF",
+    "fee_switch_details": "费用开关关闭 - 所有手续费归 LP，UNI 持有者分红 = 0%",
+    "buybacks": "NONE",
+    "dividends": "NONE",
+    "burns": "NONE",
+    "primary_value_accrual": "无 - 费用开关关闭，UNI 仅为治理代币"
+  },
+  "confidence": "high",
+  "data_sources": [
+    {
+      "name": "DefiLlama",
+      "type": "api",
+      "url": "https://api.llama.fi/protocol/uniswap",
+      "reliability": "high"
+    }
+  ],
+  "notes": "Uniswap 拥有最高的协议收入（$1B+/年），但费用开关从未开启。所有交易手续费归 LP 所有，UNI 持有者无法分享任何收入。这是一个典型的「高收入零赋能」案例。",
+  "last_updated": "2026-02-02"
+}

@@ -1,0 +1,36 @@
+{
+  "id": "lido",
+  "name": "Lido",
+  "ticker": "LDO",
+  "icon": "🌊",
+  "category": "liquid_staking",
+  "description": "以太坊流动性质押协议",
+  "website": "https://lido.fi",
+  "docs": "https://docs.lido.fi",
+  "token": {
+    "address": "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+    "chain": "ethereum",
+    "coingecko_id": "lido-dao",
+    "defillama_id": "lido"
+  },
+  "tev_mechanisms": [],
+  "tev_summary": {
+    "fee_switch": "OFF",
+    "fee_switch_details": "所有收入归 DAO 国库，无分配给 LDO 持有者",
+    "buybacks": "NONE",
+    "dividends": "NONE",
+    "burns": "NONE",
+    "primary_value_accrual": "无 - LDO 仅为治理代币，不分享协议收入"
+  },
+  "confidence": "high",
+  "data_sources": [
+    {
+      "name": "DefiLlama tokenRights",
+      "type": "api",
+      "url": "https://api.llama.fi/protocol/lido",
+      "reliability": "high"
+    }
+  ],
+  "notes": "尽管 Lido 是最大的 DeFi 协议之一（TVL $22B+），但 LDO 代币不分享任何协议收入。协议收入完全归 DAO 控制，LDO 仅作为治理代币。这是典型的「空气代币」案例。",
+  "last_updated": "2026-02-02"
+}

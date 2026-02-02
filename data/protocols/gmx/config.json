@@ -1,0 +1,56 @@
+{
+  "id": "gmx",
+  "name": "GMX",
+  "ticker": "GMX",
+  "icon": "🎰",
+  "category": "perp_dex",
+  "description": "去中心化永续合约交易所",
+  "website": "https://gmx.io",
+  "docs": "https://docs.gmx.io",
+  "token": {
+    "address": "0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a",
+    "chain": "arbitrum",
+    "coingecko_id": "gmx",
+    "defillama_id": "gmx"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "fee_sharing",
+      "name": "GMX Staking Rewards",
+      "description": "30% 平台费用分配给质押的 GMX",
+      "status": "active",
+      "ratio": 0.30,
+      "staking_contract": "0x908C4D94D34924765f1eDc22A1DD098397c59dD4",
+      "source": {
+        "type": "docs",
+        "title": "GMX Tokenomics",
+        "url": "https://docs.gmx.io/docs/tokenomics/gmx"
+      }
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "ON",
+    "fee_switch_details": "30% 平台费用分配给质押 GMX 持有者",
+    "buybacks": "NONE",
+    "dividends": "ACTIVE",
+    "burns": "NONE",
+    "primary_value_accrual": "分红 - 质押 GMX 获得 ETH/AVAX 分红"
+  },
+  "confidence": "high",
+  "data_sources": [
+    {
+      "name": "GMX Stats",
+      "type": "api",
+      "url": "https://stats.gmx.io",
+      "reliability": "high"
+    },
+    {
+      "name": "DefiLlama",
+      "type": "api", 
+      "url": "https://api.llama.fi/protocol/gmx",
+      "reliability": "high"
+    }
+  ],
+  "notes": "GMX 是永续合约赛道中代币赋能最好的协议之一。质押 GMX 可直接获得 ETH/AVAX 分红，不需要额外操作。",
+  "last_updated": "2026-02-02"
+}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +22,11 @@
       --red: #ef4444;
       --red-dim: rgba(239, 68, 68, 0.15);
       --blue: #3b82f6;
+      --blue-dim: rgba(59, 130, 246, 0.15);
       --warning: #f59e0b;
+      --warning-dim: rgba(245, 158, 11, 0.15);
+      --purple: #a855f7;
+      --purple-dim: rgba(168, 85, 247, 0.15);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,11 +38,11 @@
       line-height: 1.6;
     }
 
-    .container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
     header {
       border-bottom: 1px solid var(--border);
-      padding: 20px 0;
+      padding: 16px 0;
     }
 
     .header-content {
@@ -78,8 +82,32 @@
       font-weight: 400;
     }
 
+    .lang-switch {
+      display: flex;
+      gap: 4px;
+      background: var(--bg-tertiary);
+      padding: 4px;
+      border-radius: 8px;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 13px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--bg-hover);
+      color: var(--text-primary);
+    }
+
     .breadcrumb {
-      padding: 24px 0;
+      padding: 20px 0;
       font-size: 14px;
       color: var(--text-tertiary);
     }
@@ -98,6 +126,8 @@
       justify-content: space-between;
       align-items: flex-start;
       padding-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 24px;
     }
 
     .protocol-title {
@@ -107,206 +137,291 @@
     }
 
     .protocol-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 12px;
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
       background: var(--bg-tertiary);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
+      font-size: 32px;
     }
 
-    .protocol-name {
-      font-size: 32px;
+    .protocol-info h1 {
+      font-size: 28px;
       font-weight: 700;
       letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     .protocol-ticker {
       font-size: 14px;
       color: var(--text-tertiary);
-      margin-top: 2px;
+      margin-top: 4px;
     }
 
     .protocol-badge {
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      padding: 6px 10px;
+      padding: 4px 10px;
       border-radius: 6px;
       font-size: 12px;
       font-weight: 500;
-      margin-left: 12px;
     }
 
-    .badge-high {
-      background: var(--accent-dim);
-      color: var(--accent);
+    .badge-active { background: var(--accent-dim); color: var(--accent); }
+    .badge-partial { background: var(--warning-dim); color: var(--warning); }
+    .badge-none { background: var(--red-dim); color: var(--red); }
+    .badge-planned { background: var(--blue-dim); color: var(--blue); }
+
+    .protocol-links {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
     }
 
-    .badge-medium {
-      background: rgba(245, 158, 11, 0.1);
-      color: var(--warning);
+    .protocol-link {
+      padding: 6px 12px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+
+    .protocol-link:hover {
+      border-color: var(--text-tertiary);
+      color: var(--text-primary);
     }
 
     .tev-highlight {
       text-align: right;
+      min-width: 200px;
     }
 
-    .tev-value {
-      font-size: 48px;
-      font-weight: 700;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--accent);
-    }
-
-    .tev-label {
-      font-size: 14px;
-      color: var(--text-tertiary);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-
-    .stat-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-    }
-
-    .stat-label {
+    .tev-status {
       font-size: 12px;
-      color: var(--text-tertiary);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-    }
-
-    .stat-value {
-      font-size: 24px;
-      font-weight: 600;
-      font-family: 'JetBrains Mono', monospace;
-      margin-top: 4px;
-    }
-
-    .stat-change {
-      font-size: 12px;
-      margin-top: 4px;
-    }
-
-    .stat-change.positive { color: var(--accent); }
-    .stat-change.negative { color: var(--red); }
-
-    .charts-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-bottom: 32px;
-    }
-
-    .chart-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-    }
-
-    .chart-title {
-      font-size: 16px;
-      font-weight: 600;
       margin-bottom: 4px;
     }
 
-    .chart-subtitle {
+    .tev-status.active { color: var(--accent); }
+    .tev-status.none { color: var(--red); }
+    .tev-status.partial { color: var(--warning); }
+
+    .tev-value {
+      font-size: 32px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .tev-label {
       font-size: 13px;
       color: var(--text-tertiary);
-      margin-bottom: 20px;
+      margin-top: 4px;
     }
 
-    .chart-container {
-      height: 280px;
-      position: relative;
-    }
-
-    .range-selector {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .range-btn {
-      padding: 6px 12px;
-      background: transparent;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--text-secondary);
-      font-size: 12px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .range-btn:hover {
-      border-color: var(--text-tertiary);
-    }
-
-    .range-btn.active {
-      background: var(--accent-dim);
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .info-section {
+    .section {
       background: var(--bg-secondary);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 24px;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
 
-    .info-title {
+    .section-title {
       font-size: 16px;
       font-weight: 600;
       margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .info-grid {
+    .section-title .icon {
+      font-size: 18px;
+    }
+
+    /* TEV Summary */
+    .tev-summary-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .tev-summary-item {
+      background: var(--bg-tertiary);
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .tev-summary-label {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .tev-summary-value {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .value-on { color: var(--accent); }
+    .value-off { color: var(--red); }
+    .value-partial { color: var(--warning); }
+    .value-none { color: var(--text-tertiary); }
+    .value-active { color: var(--accent); }
+
+    /* TEV Mechanisms */
+    .mechanism-list {
+      display: flex;
+      flex-direction: column;
       gap: 16px;
     }
 
-    .info-item {
+    .mechanism-card {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .mechanism-header {
       display: flex;
       justify-content: space-between;
-      padding: 8px 0;
-      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+      margin-bottom: 12px;
     }
 
-    .info-label {
+    .mechanism-name {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .mechanism-type {
+      font-size: 11px;
       color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+    }
+
+    .mechanism-status {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .status-active { background: var(--accent-dim); color: var(--accent); }
+    .status-planned { background: var(--blue-dim); color: var(--blue); }
+    .status-inactive { background: var(--red-dim); color: var(--red); }
+
+    .mechanism-desc {
       font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 12px;
     }
 
-    .info-value {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 14px;
-    }
-
-    footer {
-      padding: 24px 0;
-      border-top: 1px solid var(--border);
-      margin-top: 32px;
-    }
-
-    .footer-text {
+    .mechanism-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
       font-size: 13px;
       color: var(--text-tertiary);
+    }
+
+    .mechanism-meta a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .mechanism-meta a:hover {
+      text-decoration: underline;
+    }
+
+    /* No TEV */
+    .no-tev-notice {
+      background: var(--red-dim);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 10px;
+      padding: 24px;
       text-align: center;
+    }
+
+    .no-tev-notice .icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .no-tev-notice h3 {
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+
+    .no-tev-notice p {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    /* Data Sources */
+    .sources-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .source-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: var(--bg-tertiary);
+      border-radius: 8px;
+    }
+
+    .source-name {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .source-type {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      margin-left: 8px;
+    }
+
+    .source-link {
+      color: var(--blue);
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .source-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Notes */
+    .protocol-notes {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      padding: 16px;
+      background: var(--bg-tertiary);
+      border-radius: 8px;
+      border-left: 3px solid var(--accent);
     }
 
     .loading {
@@ -329,16 +444,31 @@
       to { transform: rotate(360deg); }
     }
 
-    @media (max-width: 1024px) {
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .charts-grid { grid-template-columns: 1fr; }
-      .info-grid { grid-template-columns: 1fr; }
+    footer {
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      margin-top: 32px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-left: 16px;
     }
 
     @media (max-width: 768px) {
-      .protocol-header { flex-direction: column; gap: 24px; }
+      .protocol-header { flex-direction: column; }
       .tev-highlight { text-align: left; }
-      .stats-grid { grid-template-columns: 1fr; }
+      .tev-summary-grid { grid-template-columns: repeat(2, 1fr); }
+      .mechanism-header { flex-direction: column; gap: 8px; }
     }
   </style>
 </head>
@@ -350,423 +480,412 @@
           <div class="logo-icon">T</div>
           <div class="logo-text">TEV <span>Dashboard</span></div>
         </a>
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="zh">中文</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
       </div>
     </div>
   </header>
 
   <main class="container">
     <div class="breadcrumb">
-      <a href="index.html">Dashboard</a> / <span id="breadcrumb-name">Loading...</span>
+      <a href="index.html" data-i18n="nav.dashboard">Dashboard</a> / <span id="breadcrumb-name">Loading...</span>
     </div>
 
     <div id="loading" class="loading">
       <div class="loading-spinner"></div>
-      <div>Loading protocol data...</div>
+      <div data-i18n="loading">加载中...</div>
     </div>
 
     <div id="content" style="display: none;">
+      <!-- Protocol Header -->
       <div class="protocol-header">
         <div class="protocol-title">
           <div class="protocol-icon" id="protocol-icon">🔮</div>
-          <div>
-            <div class="protocol-name" id="protocol-name">Pendle</div>
-            <div class="protocol-ticker" id="protocol-ticker">PENDLE</div>
+          <div class="protocol-info">
+            <h1>
+              <span id="protocol-name">Protocol</span>
+              <span class="protocol-badge badge-active" id="tev-badge">TEV Active</span>
+            </h1>
+            <div class="protocol-ticker" id="protocol-ticker">TICKER · Category</div>
+            <div class="protocol-links">
+              <a href="#" class="protocol-link" id="link-website" target="_blank">🌐 Website</a>
+              <a href="#" class="protocol-link" id="link-docs" target="_blank">📄 Docs</a>
+              <a href="#" class="protocol-link" id="link-coingecko" target="_blank">🦎 CoinGecko</a>
+            </div>
           </div>
-          <span class="protocol-badge badge-high" id="protocol-badge">
-            <span>✓</span> High Confidence
-          </span>
         </div>
         <div class="tev-highlight">
-          <div class="tev-value" id="tev-yield">—%</div>
-          <div class="tev-label">TEV Yield (30d Rolling)</div>
+          <div class="tev-status active" id="tev-status-text">TEV ACTIVE</div>
+          <div class="tev-value" id="primary-value">—</div>
+          <div class="tev-label" id="primary-label">Primary Value Accrual</div>
         </div>
       </div>
 
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-label">Market Cap</div>
-          <div class="stat-value" id="stat-mcap">—</div>
+      <!-- TEV Summary -->
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">📊</span>
+          <span data-i18n="section.tevSummary">TEV 概览</span>
         </div>
-        <div class="stat-card">
-          <div class="stat-label">Price</div>
-          <div class="stat-value" id="stat-price">—</div>
-          <div class="stat-change" id="stat-price-change"></div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">30d Fees</div>
-          <div class="stat-value" id="stat-fees">—</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">30d TEV</div>
-          <div class="stat-value" id="stat-tev">—</div>
-        </div>
-      </div>
-
-      <div class="charts-grid">
-        <div class="chart-card">
-          <div class="chart-title">TEV Yield History</div>
-          <div class="chart-subtitle">Rolling 30-day annualized TEV ÷ Market Cap</div>
-          <div class="range-selector">
-            <button class="range-btn" data-range="30">30D</button>
-            <button class="range-btn active" data-range="90">90D</button>
-            <button class="range-btn" data-range="180">180D</button>
-            <button class="range-btn" data-range="365">1Y</button>
+        <div class="tev-summary-grid">
+          <div class="tev-summary-item">
+            <div class="tev-summary-label" data-i18n="tev.feeSwitch">Fee Switch</div>
+            <div class="tev-summary-value" id="summary-fee-switch">—</div>
           </div>
-          <div class="chart-container">
-            <canvas id="tevYieldChart"></canvas>
+          <div class="tev-summary-item">
+            <div class="tev-summary-label" data-i18n="tev.buybacks">Buybacks</div>
+            <div class="tev-summary-value" id="summary-buybacks">—</div>
           </div>
-        </div>
-        <div class="chart-card">
-          <div class="chart-title">Price vs TEV Yield</div>
-          <div class="chart-subtitle">Correlation between token price and yield</div>
-          <div class="range-selector">
-            <button class="range-btn" data-range="30">30D</button>
-            <button class="range-btn active" data-range="90">90D</button>
-            <button class="range-btn" data-range="180">180D</button>
-            <button class="range-btn" data-range="365">1Y</button>
+          <div class="tev-summary-item">
+            <div class="tev-summary-label" data-i18n="tev.dividends">Dividends</div>
+            <div class="tev-summary-value" id="summary-dividends">—</div>
           </div>
-          <div class="chart-container">
-            <canvas id="priceYieldChart"></canvas>
+          <div class="tev-summary-item">
+            <div class="tev-summary-label" data-i18n="tev.burns">Burns</div>
+            <div class="tev-summary-value" id="summary-burns">—</div>
+          </div>
+          <div class="tev-summary-item">
+            <div class="tev-summary-label" data-i18n="tev.confidence">Confidence</div>
+            <div class="tev-summary-value" id="summary-confidence">—</div>
           </div>
         </div>
       </div>
 
-      <div class="info-section">
-        <div class="info-title">Protocol Information</div>
-        <div class="info-grid">
-          <div class="info-item">
-            <span class="info-label">Category</span>
-            <span class="info-value" id="info-category">—</span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">TEV Distribution Ratio</span>
-            <span class="info-value" id="info-tev-ratio">—</span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">Data Start Date</span>
-            <span class="info-value" id="info-start-date">—</span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">Total Data Days</span>
-            <span class="info-value" id="info-total-days">—</span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">Last Updated</span>
-            <span class="info-value" id="info-updated">—</span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">Data Source</span>
-            <span class="info-value">DefiLlama + CoinGecko</span>
-          </div>
+      <!-- TEV Mechanisms -->
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">⚙️</span>
+          <span data-i18n="section.tevMechanisms">TEV 机制详情</span>
         </div>
+        <div id="mechanisms-container">
+          <!-- Mechanisms will be rendered here -->
+        </div>
+      </div>
+
+      <!-- Data Sources -->
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">🔗</span>
+          <span data-i18n="section.dataSources">数据来源</span>
+        </div>
+        <div class="sources-list" id="sources-container">
+          <!-- Sources will be rendered here -->
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="section" id="notes-section" style="display: none;">
+        <div class="section-title">
+          <span class="icon">📝</span>
+          <span data-i18n="section.notes">分析师备注</span>
+        </div>
+        <div class="protocol-notes" id="protocol-notes"></div>
       </div>
     </div>
   </main>
 
   <footer>
     <div class="container">
-      <div class="footer-text">
-        TEV Dashboard · Data from DefiLlama & CoinGecko
+      <div class="footer-content">
+        <div>TEV Dashboard · <span data-i18n="footer.lastUpdated">最后更新</span>: <span id="last-updated">—</span></div>
+        <div class="footer-links">
+          <a href="https://www.youtube.com/@Crypto36D" target="_blank">YouTube</a>
+          <a href="https://x.com/22333D" target="_blank">Twitter</a>
+        </div>
       </div>
     </div>
   </footer>
 
   <script>
-    // Protocol configurations
-    const PROTOCOLS = {
-      aave: { name: 'Aave', ticker: 'AAVE', icon: '👻', category: 'Lending', confidence: 'high', tevRatio: 0.318 },
-      pendle: { name: 'Pendle', ticker: 'PENDLE', icon: '🔮', category: 'Yield Tokenization', confidence: 'high', tevRatio: 0.80 },
-      sky: { name: 'Sky', ticker: 'MKR', icon: '☁️', category: 'Lending/Stablecoin', confidence: 'high', tevRatio: 0.70 },
-      uniswap: { name: 'Uniswap', ticker: 'UNI', icon: '🦄', category: 'DEX', confidence: 'medium', tevRatio: 0.0 },
+    // i18n translations
+    const i18n = {
+      zh: {
+        'nav.dashboard': '仪表盘',
+        'loading': '加载中...',
+        'section.tevSummary': 'TEV 概览',
+        'section.tevMechanisms': 'TEV 机制详情',
+        'section.dataSources': '数据来源',
+        'section.notes': '分析师备注',
+        'tev.feeSwitch': '费用开关',
+        'tev.buybacks': '回购',
+        'tev.dividends': '分红',
+        'tev.burns': '销毁',
+        'tev.confidence': '可信度',
+        'footer.lastUpdated': '最后更新',
+        'status.active': '活跃',
+        'status.planned': '计划中',
+        'status.inactive': '未激活',
+        'status.ON': '已开启',
+        'status.OFF': '未开启',
+        'status.PARTIAL': '部分',
+        'status.NONE': '无',
+        'status.ACTIVE': '活跃',
+        'noTev.title': '该协议目前没有 TEV 机制',
+        'noTev.desc': '代币仅用于治理，协议收入未分配给代币持有者',
+        'mechanism.type.buyback': '回购',
+        'mechanism.type.buyback_burn': '回购销毁',
+        'mechanism.type.staking_reward': '质押奖励',
+        'mechanism.type.fee_sharing': '费用分成',
+        'mechanism.type.ve_distribution': 've 分配',
+        'mechanism.type.airdrop': '空投',
+        'source.governance': '治理',
+        'source.documentation': '文档',
+        'source.report': '报告',
+        'source.api': 'API',
+        'source.onchain': '链上',
+        'confidence.high': '高',
+        'confidence.medium': '中',
+        'confidence.low': '低',
+      },
+      en: {
+        'nav.dashboard': 'Dashboard',
+        'loading': 'Loading...',
+        'section.tevSummary': 'TEV Summary',
+        'section.tevMechanisms': 'TEV Mechanisms',
+        'section.dataSources': 'Data Sources',
+        'section.notes': 'Analyst Notes',
+        'tev.feeSwitch': 'Fee Switch',
+        'tev.buybacks': 'Buybacks',
+        'tev.dividends': 'Dividends',
+        'tev.burns': 'Burns',
+        'tev.confidence': 'Confidence',
+        'footer.lastUpdated': 'Last Updated',
+        'status.active': 'Active',
+        'status.planned': 'Planned',
+        'status.inactive': 'Inactive',
+        'status.ON': 'ON',
+        'status.OFF': 'OFF',
+        'status.PARTIAL': 'Partial',
+        'status.NONE': 'None',
+        'status.ACTIVE': 'Active',
+        'noTev.title': 'No TEV Mechanisms',
+        'noTev.desc': 'Token is governance-only, protocol revenue not distributed to holders',
+        'mechanism.type.buyback': 'Buyback',
+        'mechanism.type.buyback_burn': 'Buyback & Burn',
+        'mechanism.type.staking_reward': 'Staking Reward',
+        'mechanism.type.fee_sharing': 'Fee Sharing',
+        'mechanism.type.ve_distribution': 've Distribution',
+        'mechanism.type.airdrop': 'Airdrop',
+        'source.governance': 'Governance',
+        'source.documentation': 'Docs',
+        'source.report': 'Report',
+        'source.api': 'API',
+        'source.onchain': 'On-chain',
+        'confidence.high': 'High',
+        'confidence.medium': 'Medium',
+        'confidence.low': 'Low',
+      }
     };
 
-    let allRecords = [];
-    let tevYieldChart = null;
-    let priceYieldChart = null;
+    let currentLang = 'zh';
 
-    // Get protocol ID from URL
+    function t(key) {
+      return i18n[currentLang][key] || key;
+    }
+
+    function updateI18n() {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.textContent = t(key);
+      });
+    }
+
     function getProtocolId() {
       const params = new URLSearchParams(window.location.search);
-      return params.get('id') || 'pendle';
+      return params.get('id') || 'aave';
     }
 
-    // Utility functions
-    function formatCurrency(value) {
-      if (value === null || value === undefined) return '—';
-      if (value >= 1e9) return '$' + (value / 1e9).toFixed(2) + 'B';
-      if (value >= 1e6) return '$' + (value / 1e6).toFixed(2) + 'M';
-      if (value >= 1e3) return '$' + (value / 1e3).toFixed(1) + 'K';
-      return '$' + value.toFixed(0);
-    }
-
-    function formatPrice(value) {
-      if (value === null || value === undefined) return '—';
-      if (value >= 100) return '$' + value.toFixed(0);
-      if (value >= 1) return '$' + value.toFixed(2);
-      return '$' + value.toFixed(4);
-    }
-
-    function formatPercent(value) {
-      if (value === null || value === undefined) return '—';
-      return (value * 100).toFixed(2) + '%';
-    }
-
-    // Load historical records
-    async function loadHistoricalRecords(protocolId) {
-      const records = [];
-      const now = new Date();
-      
-      // Load last 24 months of data
-      for (let i = 0; i < 24; i++) {
-        const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
-        const month = date.toISOString().slice(0, 7);
-        
-        try {
-          const response = await fetch(`../data/daily/${protocolId}/${month}.json`);
-          if (response.ok) {
-            const data = await response.json();
-            records.push(...(data.records || []));
-          }
-        } catch (e) {
-          // Skip missing months
-        }
+    function getTevStatusClass(summary) {
+      if (summary.fee_switch === 'ON' || summary.buybacks === 'ACTIVE' || summary.dividends === 'ACTIVE') {
+        return 'active';
+      } else if (summary.fee_switch === 'PARTIAL' || summary.dividends === 'PARTIAL') {
+        return 'partial';
       }
-      
-      // Sort by date and dedupe
-      records.sort((a, b) => a.date.localeCompare(b.date));
-      return records;
+      return 'none';
     }
 
-    // Calculate TEV yield for each day (30-day rolling)
-    function calculateTevYields(records) {
-      const yields = [];
-      
-      for (let i = 29; i < records.length; i++) {
-        const window = records.slice(i - 29, i + 1);
-        const totalTev = window.reduce((sum, r) => sum + (r.daily_tev_usd || 0), 0);
-        const annualizedTev = totalTev * 12;
-        const mcap = records[i].market_cap_usd;
-        
-        if (mcap && mcap > 0) {
-          yields.push({
-            date: records[i].date,
-            price: records[i].price_usd,
-            market_cap: mcap,
-            tev_yield: annualizedTev / mcap,
-            daily_fees: records[i].daily_fees_usd,
-            daily_tev: records[i].daily_tev_usd,
-          });
-        }
-      }
-      
-      return yields;
+    function getBadgeClass(status) {
+      const statusLower = status?.toLowerCase() || 'none';
+      if (statusLower === 'on' || statusLower === 'active') return 'badge-active';
+      if (statusLower === 'partial') return 'badge-partial';
+      if (statusLower === 'planned') return 'badge-planned';
+      return 'badge-none';
     }
 
-    // Render charts
-    function renderCharts(yields, range = 90) {
-      const filtered = yields.slice(-range);
-      const dates = filtered.map(y => y.date.slice(5)); // MM-DD
-      const tevYields = filtered.map(y => (y.tev_yield * 100).toFixed(2));
-      const prices = filtered.map(y => y.price?.toFixed(2));
-      
-      const avgYield = (tevYields.reduce((a, b) => a + parseFloat(b), 0) / tevYields.length).toFixed(2);
-
-      // Destroy existing charts
-      if (tevYieldChart) tevYieldChart.destroy();
-      if (priceYieldChart) priceYieldChart.destroy();
-
-      // TEV Yield Chart
-      const ctx1 = document.getElementById('tevYieldChart').getContext('2d');
-      tevYieldChart = new Chart(ctx1, {
-        type: 'line',
-        data: {
-          labels: dates,
-          datasets: [
-            {
-              label: 'TEV Yield',
-              data: tevYields,
-              borderColor: '#22c55e',
-              backgroundColor: 'rgba(34, 197, 94, 0.1)',
-              fill: true,
-              tension: 0.4,
-              pointRadius: 0,
-              pointHoverRadius: 4,
-            },
-            {
-              label: 'Average',
-              data: Array(dates.length).fill(avgYield),
-              borderColor: '#71717a',
-              borderDash: [5, 5],
-              pointRadius: 0,
-              fill: false,
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          interaction: { intersect: false, mode: 'index' },
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              backgroundColor: '#18181b',
-              borderColor: '#27272a',
-              borderWidth: 1,
-              titleColor: '#fafafa',
-              bodyColor: '#a1a1aa',
-              padding: 12,
-              displayColors: false,
-              callbacks: { label: (ctx) => `TEV Yield: ${ctx.raw}%` }
-            }
-          },
-          scales: {
-            x: { grid: { display: false }, ticks: { color: '#71717a', maxTicksLimit: 8 } },
-            y: { grid: { color: '#27272a' }, ticks: { color: '#71717a', callback: (v) => v + '%' } }
-          }
-        }
-      });
-
-      // Price vs Yield Chart
-      const ctx2 = document.getElementById('priceYieldChart').getContext('2d');
-      priceYieldChart = new Chart(ctx2, {
-        type: 'line',
-        data: {
-          labels: dates,
-          datasets: [
-            {
-              label: 'Price',
-              data: prices,
-              borderColor: '#3b82f6',
-              backgroundColor: 'transparent',
-              tension: 0.4,
-              pointRadius: 0,
-              yAxisID: 'y',
-            },
-            {
-              label: 'TEV Yield',
-              data: tevYields,
-              borderColor: '#22c55e',
-              backgroundColor: 'transparent',
-              tension: 0.4,
-              pointRadius: 0,
-              yAxisID: 'y1',
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          interaction: { intersect: false, mode: 'index' },
-          plugins: {
-            legend: {
-              position: 'top',
-              align: 'end',
-              labels: { color: '#a1a1aa', usePointStyle: true, pointStyle: 'line' }
-            },
-            tooltip: {
-              backgroundColor: '#18181b',
-              borderColor: '#27272a',
-              borderWidth: 1,
-              titleColor: '#fafafa',
-              bodyColor: '#a1a1aa',
-              padding: 12,
-            }
-          },
-          scales: {
-            x: { grid: { display: false }, ticks: { color: '#71717a', maxTicksLimit: 8 } },
-            y: {
-              position: 'left',
-              grid: { color: '#27272a' },
-              ticks: { color: '#3b82f6', callback: (v) => '$' + v }
-            },
-            y1: {
-              position: 'right',
-              grid: { display: false },
-              ticks: { color: '#22c55e', callback: (v) => v + '%' }
-            }
-          }
-        }
-      });
+    function getValueClass(value) {
+      const v = value?.toUpperCase() || 'NONE';
+      if (v === 'ON' || v === 'ACTIVE') return 'value-on';
+      if (v === 'PARTIAL') return 'value-partial';
+      if (v === 'OFF' || v === 'NONE') return 'value-off';
+      return 'value-none';
     }
 
-    // Initialize
-    async function init() {
-      const protocolId = getProtocolId();
-      const config = PROTOCOLS[protocolId];
+    function renderMechanisms(mechanisms) {
+      const container = document.getElementById('mechanisms-container');
       
-      if (!config) {
-        document.getElementById('loading').innerHTML = '<div style="color: #ef4444;">Protocol not found</div>';
+      if (!mechanisms || mechanisms.length === 0) {
+        container.innerHTML = `
+          <div class="no-tev-notice">
+            <div class="icon">❌</div>
+            <h3>${t('noTev.title')}</h3>
+            <p>${t('noTev.desc')}</p>
+          </div>
+        `;
         return;
       }
 
-      // Update page title
-      document.title = `${config.name} — TEV Dashboard`;
-      document.getElementById('breadcrumb-name').textContent = config.name;
+      container.innerHTML = '<div class="mechanism-list">' + mechanisms.map(m => `
+        <div class="mechanism-card">
+          <div class="mechanism-header">
+            <div>
+              <div class="mechanism-name">${m.name}</div>
+              <div class="mechanism-type">${t('mechanism.type.' + m.type) || m.type}</div>
+            </div>
+            <span class="mechanism-status status-${m.status}">${t('status.' + m.status) || m.status}</span>
+          </div>
+          <div class="mechanism-desc">${m.description}</div>
+          <div class="mechanism-meta">
+            ${m.start_date ? `<span>📅 ${m.start_date}</span>` : ''}
+            ${m.fee_share_percentage ? `<span>💰 ${m.fee_share_percentage}%</span>` : ''}
+            ${m.annual_budget_usd ? `<span>💵 $${(m.annual_budget_usd / 1e6).toFixed(0)}M/year</span>` : ''}
+            ${m.source?.url ? `<a href="${m.source.url}" target="_blank">🔗 ${m.source.title || 'Source'}</a>` : ''}
+          </div>
+        </div>
+      `).join('') + '</div>';
+    }
+
+    function renderSources(sources) {
+      const container = document.getElementById('sources-container');
+      
+      if (!sources || sources.length === 0) {
+        container.innerHTML = '<div style="color: var(--text-tertiary); text-align: center; padding: 20px;">No data sources available</div>';
+        return;
+      }
+
+      container.innerHTML = sources.map(s => `
+        <div class="source-item">
+          <div>
+            <span class="source-name">${s.name}</span>
+            <span class="source-type">${t('source.' + s.type) || s.type}</span>
+          </div>
+          ${s.url ? `<a href="${s.url}" class="source-link" target="_blank">Open →</a>` : ''}
+        </div>
+      `).join('');
+    }
+
+    async function init() {
+      const protocolId = getProtocolId();
 
       try {
-        // Load latest summary
-        const summaryResponse = await fetch(`../data/daily/${protocolId}/latest.json`);
-        const summary = await summaryResponse.json();
+        // Load config.json
+        const response = await fetch(`../data/protocols/${protocolId}/config.json`);
+        if (!response.ok) throw new Error('Protocol not found');
+        const config = await response.json();
 
-        // Load historical records
-        allRecords = await loadHistoricalRecords(protocolId);
-        const yields = calculateTevYields(allRecords);
-
-        // Calculate 30d totals
-        const last30 = allRecords.slice(-30);
-        const totalFees = last30.reduce((sum, r) => sum + (r.daily_fees_usd || 0), 0);
-        const totalTev = last30.reduce((sum, r) => sum + (r.daily_tev_usd || 0), 0);
-
-        // Update UI
-        document.getElementById('protocol-icon').textContent = config.icon;
+        // Update page
+        document.title = `${config.name} — TEV Dashboard`;
+        document.getElementById('breadcrumb-name').textContent = config.name;
+        document.getElementById('protocol-icon').textContent = config.icon || '🔮';
         document.getElementById('protocol-name').textContent = config.name;
-        document.getElementById('protocol-ticker').textContent = config.ticker;
         
-        const badge = document.getElementById('protocol-badge');
-        badge.className = `protocol-badge badge-${config.confidence}`;
-        badge.innerHTML = `<span>${config.confidence === 'high' ? '✓' : '!'}</span> ${config.confidence.charAt(0).toUpperCase() + config.confidence.slice(1)} Confidence`;
+        const categoryMap = {
+          lending: '借贷',
+          dex: 'DEX',
+          liquid_staking: '流动性质押',
+          restaking: '再质押',
+          perpetuals: '永续合约',
+          yield: '收益'
+        };
+        document.getElementById('protocol-ticker').textContent = 
+          `${config.ticker} · ${currentLang === 'zh' ? (categoryMap[config.category] || config.category) : config.category}`;
 
-        const latestYield = yields.length > 0 ? yields[yields.length - 1].tev_yield : null;
-        document.getElementById('tev-yield').textContent = latestYield ? (latestYield * 100).toFixed(2) + '%' : '—';
+        // TEV Badge
+        const badge = document.getElementById('tev-badge');
+        const tevStatus = getTevStatusClass(config.tev_summary);
+        badge.className = `protocol-badge ${getBadgeClass(tevStatus === 'active' ? 'active' : tevStatus === 'partial' ? 'partial' : 'none')}`;
+        badge.textContent = tevStatus === 'active' ? 'TEV Active' : tevStatus === 'partial' ? 'TEV Partial' : 'No TEV';
 
-        document.getElementById('stat-mcap').textContent = formatCurrency(summary.latest_record?.market_cap_usd);
-        document.getElementById('stat-price').textContent = formatPrice(summary.latest_record?.price_usd);
-        document.getElementById('stat-fees').textContent = formatCurrency(totalFees);
-        document.getElementById('stat-tev').textContent = formatCurrency(totalTev);
+        // Links
+        document.getElementById('link-website').href = config.website || '#';
+        document.getElementById('link-docs').href = config.docs || '#';
+        document.getElementById('link-coingecko').href = config.token?.coingecko_id 
+          ? `https://www.coingecko.com/en/coins/${config.token.coingecko_id}` 
+          : '#';
 
-        document.getElementById('info-category').textContent = config.category;
-        document.getElementById('info-tev-ratio').textContent = (config.tevRatio * 100).toFixed(0) + '%';
-        document.getElementById('info-start-date').textContent = summary.data_range?.start || '—';
-        document.getElementById('info-total-days').textContent = summary.data_range?.total_days || '—';
-        document.getElementById('info-updated').textContent = summary.updated_at ? new Date(summary.updated_at).toLocaleDateString() : '—';
+        // TEV Status
+        const statusText = document.getElementById('tev-status-text');
+        statusText.textContent = tevStatus === 'active' ? 'TEV ACTIVE' : tevStatus === 'partial' ? 'TEV PARTIAL' : 'NO TEV';
+        statusText.className = `tev-status ${tevStatus}`;
 
-        // Hide loading, show content
+        // Primary value
+        document.getElementById('primary-value').textContent = 
+          config.tev_summary?.fee_switch === 'ON' ? '✓ ON' : 
+          config.tev_summary?.fee_switch === 'PARTIAL' ? '~ PARTIAL' : '✗ OFF';
+        document.getElementById('primary-label').textContent = config.tev_summary?.primary_value_accrual || '—';
+
+        // Summary grid
+        const summary = config.tev_summary || {};
+        const summaryFeeSwitch = document.getElementById('summary-fee-switch');
+        summaryFeeSwitch.textContent = t('status.' + (summary.fee_switch || 'OFF'));
+        summaryFeeSwitch.className = `tev-summary-value ${getValueClass(summary.fee_switch)}`;
+
+        const summaryBuybacks = document.getElementById('summary-buybacks');
+        summaryBuybacks.textContent = t('status.' + (summary.buybacks || 'NONE'));
+        summaryBuybacks.className = `tev-summary-value ${getValueClass(summary.buybacks)}`;
+
+        const summaryDividends = document.getElementById('summary-dividends');
+        summaryDividends.textContent = t('status.' + (summary.dividends || 'NONE'));
+        summaryDividends.className = `tev-summary-value ${getValueClass(summary.dividends)}`;
+
+        const summaryBurns = document.getElementById('summary-burns');
+        summaryBurns.textContent = t('status.' + (summary.burns || 'NONE'));
+        summaryBurns.className = `tev-summary-value ${getValueClass(summary.burns)}`;
+
+        const summaryConfidence = document.getElementById('summary-confidence');
+        summaryConfidence.textContent = t('confidence.' + (config.confidence || 'medium'));
+        summaryConfidence.className = `tev-summary-value ${config.confidence === 'high' ? 'value-on' : config.confidence === 'low' ? 'value-off' : 'value-partial'}`;
+
+        // Mechanisms
+        renderMechanisms(config.tev_mechanisms);
+
+        // Sources
+        renderSources(config.data_sources);
+
+        // Notes
+        if (config.notes) {
+          document.getElementById('notes-section').style.display = 'block';
+          document.getElementById('protocol-notes').textContent = config.notes;
+        }
+
+        // Last updated
+        document.getElementById('last-updated').textContent = config.last_updated || '—';
+
+        // Show content
         document.getElementById('loading').style.display = 'none';
         document.getElementById('content').style.display = 'block';
 
-        // Render charts
-        if (yields.length > 0) {
-          renderCharts(yields, 90);
-        }
-
-        // Setup range selector
-        document.querySelectorAll('.range-btn').forEach(btn => {
-          btn.addEventListener('click', () => {
-            const parent = btn.parentElement;
-            parent.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            renderCharts(yields, parseInt(btn.dataset.range));
-          });
-        });
-
       } catch (error) {
-        console.error('Failed to load protocol data:', error);
+        console.error('Failed to load protocol:', error);
         document.getElementById('loading').innerHTML = `
-          <div style="color: #ef4444;">Failed to load data</div>
+          <div style="color: var(--red);">Failed to load protocol</div>
           <div style="margin-top: 8px; font-size: 12px;">${error.message}</div>
+          <div style="margin-top: 16px;"><a href="index.html" style="color: var(--blue);">← Back to Dashboard</a></div>
         `;
       }
     }
+
+    // Language switch
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentLang = btn.dataset.lang;
+        updateI18n();
+        init(); // Reload with new language
+      });
+    });
 
     document.addEventListener('DOMContentLoaded', init);
   </script>

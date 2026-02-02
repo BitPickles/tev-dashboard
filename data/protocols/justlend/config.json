@@ -1,0 +1,50 @@
+{
+  "id": "justlend",
+  "name": "JustLend",
+  "ticker": "JST",
+  "icon": "☀️",
+  "category": "lending",
+  "description": "TRON 网络上最大的借贷协议，由 Justin Sun 团队开发",
+  "website": "https://justlend.org",
+  "docs": "https://docs.justlend.org",
+  "token": {
+    "address": "TCFLL5dx5ZJdKnWuesXxi1VPwjLVmWZZy9",
+    "chain": "tron",
+    "coingecko_id": "just",
+    "defillama_id": "justlend"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "staking_reward",
+      "name": "JST Staking",
+      "description": "质押 JST 获得平台收入分成",
+      "status": "active",
+      "start_date": "2020-08-01"
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "PARTIAL",
+    "fee_switch_details": "部分协议收入分配给 JST stakers",
+    "buybacks": "NONE",
+    "dividends": "PARTIAL",
+    "burns": "NONE",
+    "primary_value_accrual": "Staking 奖励 - 质押 JST 参与协议收入分配"
+  },
+  "confidence": "low",
+  "data_sources": [
+    {
+      "name": "JustLend Official",
+      "type": "documentation",
+      "url": "https://justlend.org",
+      "reliability": "medium"
+    },
+    {
+      "name": "DefiLlama",
+      "type": "api",
+      "url": "https://api.llama.fi/protocol/justlend",
+      "reliability": "high"
+    }
+  ],
+  "notes": "JustLend 是 TRON 生态核心协议，JST 代币同时服务于 JUST 生态多个产品。具体 TEV 分配机制透明度较低，需进一步验证。",
+  "last_updated": "2026-02-02"
+}

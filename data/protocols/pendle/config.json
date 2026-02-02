@@ -1,0 +1,62 @@
+{
+  "id": "pendle",
+  "name": "Pendle",
+  "ticker": "PENDLE",
+  "icon": "🔮",
+  "category": "yield",
+  "description": "收益代币化协议，允许用户交易未来收益",
+  "website": "https://pendle.finance",
+  "docs": "https://docs.pendle.finance",
+  "token": {
+    "address": "0x808507121b80c02388fad14726482e061b8da827",
+    "chain": "ethereum",
+    "coingecko_id": "pendle",
+    "defillama_id": "pendle"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "buyback_distribution",
+      "name": "vePENDLE Revenue Share",
+      "description": "80% 协议收入用于回购 PENDLE 并分配给 vePENDLE 持有者",
+      "status": "active",
+      "ratio": 0.80,
+      "distribution_contract": "0x07282F2CEEbD7a65451Fcd268b364300D9e6D7f5",
+      "source": {
+        "type": "docs",
+        "title": "Pendle Tokenomics",
+        "url": "https://docs.pendle.finance/ProtocolMechanics/Mechanisms/vePENDLE"
+      }
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "ON",
+    "fee_switch_details": "80% 协议收入回购并分配给 vePENDLE 持有者",
+    "buybacks": "ACTIVE",
+    "dividends": "ACTIVE",
+    "burns": "NONE",
+    "primary_value_accrual": "回购+分红 - 80% 协议收入转化为 PENDLE 回购，分配给 vePENDLE 持有者"
+  },
+  "ve_token": {
+    "name": "vePENDLE",
+    "lock_contract": "0x4f30A9D41B80ecC5B94306AB4364951AE3170210",
+    "max_lock_period": "2 years",
+    "benefits": ["协议收入分成", "投票权", "LP 加速"]
+  },
+  "confidence": "high",
+  "data_sources": [
+    {
+      "name": "Pendle Docs",
+      "type": "docs",
+      "url": "https://docs.pendle.finance",
+      "reliability": "high"
+    },
+    {
+      "name": "DefiLlama",
+      "type": "api",
+      "url": "https://api.llama.fi/protocol/pendle",
+      "reliability": "high"
+    }
+  ],
+  "notes": "Pendle 是 TEV 表现最好的协议之一，80% 的收入直接回馈给持币者，且通过 vePENDLE 锁定机制增强长期持有激励。",
+  "last_updated": "2026-02-02"
+}
