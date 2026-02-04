@@ -1,0 +1,954 @@
+{
+  "protocol": "gmx",
+  "updated_at": "2026-02-04T20:30:23.530Z",
+  "data_source": "DefiLlama API (dailyHoldersRevenue)",
+  "data_source_url": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+  "records": [
+    {
+      "id": "gmx-staking-reward-2021-09",
+      "date": "2021-09-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 306079,
+      "period": "2021-09",
+      "days_with_data": 28,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 28 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2021-10",
+      "date": "2021-10-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 689864,
+      "period": "2021-10",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2021-11",
+      "date": "2021-11-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1223049,
+      "period": "2021-11",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2021-12",
+      "date": "2021-12-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1062019,
+      "period": "2021-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2022-01",
+      "date": "2022-01-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 3214746,
+      "period": "2022-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2022-02",
+      "date": "2022-02-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 2388949,
+      "period": "2022-02",
+      "days_with_data": 28,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 28 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2022-03",
+      "date": "2022-03-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 2713793,
+      "period": "2022-03",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2022-04",
+      "date": "2022-04-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 2440677,
+      "period": "2022-04",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2022-05",
+      "date": "2022-05-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 2758042,
+      "period": "2022-05",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2022-06",
+      "date": "2022-06-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1947269,
+      "period": "2022-06",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2022-07",
+      "date": "2022-07-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 2056371,
+      "period": "2022-07",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2022-08",
+      "date": "2022-08-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 2871403,
+      "period": "2022-08",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2022-09",
+      "date": "2022-09-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 4134896,
+      "period": "2022-09",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2022-10",
+      "date": "2022-10-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 2532843,
+      "period": "2022-10",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2022-11",
+      "date": "2022-11-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 5253595,
+      "period": "2022-11",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2022-12",
+      "date": "2022-12-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 2562953,
+      "period": "2022-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2023-01",
+      "date": "2023-01-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 4089101,
+      "period": "2023-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2023-02",
+      "date": "2023-02-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 5704271,
+      "period": "2023-02",
+      "days_with_data": 28,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 28 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2023-03",
+      "date": "2023-03-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 5695181,
+      "period": "2023-03",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2023-04",
+      "date": "2023-04-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 5261691,
+      "period": "2023-04",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2023-05",
+      "date": "2023-05-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 2311936,
+      "period": "2023-05",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2023-06",
+      "date": "2023-06-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 4100675,
+      "period": "2023-06",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2023-07",
+      "date": "2023-07-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1718954,
+      "period": "2023-07",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2023-08",
+      "date": "2023-08-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1569420,
+      "period": "2023-08",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2023-09",
+      "date": "2023-09-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 697147,
+      "period": "2023-09",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2023-10",
+      "date": "2023-10-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1763810,
+      "period": "2023-10",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2023-11",
+      "date": "2023-11-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 3596133,
+      "period": "2023-11",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2023-12",
+      "date": "2023-12-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 3079790,
+      "period": "2023-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2024-01",
+      "date": "2024-01-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 4202838,
+      "period": "2024-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2024-02",
+      "date": "2024-02-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 3146618,
+      "period": "2024-02",
+      "days_with_data": 29,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 29 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2024-03",
+      "date": "2024-03-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 4331109,
+      "period": "2024-03",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2024-04",
+      "date": "2024-04-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 3202130,
+      "period": "2024-04",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2024-05",
+      "date": "2024-05-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 2813169,
+      "period": "2024-05",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2024-06",
+      "date": "2024-06-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1995214,
+      "period": "2024-06",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2024-07",
+      "date": "2024-07-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 2371660,
+      "period": "2024-07",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2024-08",
+      "date": "2024-08-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1790982,
+      "period": "2024-08",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2024-09",
+      "date": "2024-09-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1053371,
+      "period": "2024-09",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2024-10",
+      "date": "2024-10-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1402703,
+      "period": "2024-10",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2024-11",
+      "date": "2024-11-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 3027087,
+      "period": "2024-11",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2024-12",
+      "date": "2024-12-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 3401201,
+      "period": "2024-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2025-01",
+      "date": "2025-01-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 2847901,
+      "period": "2025-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2025-02",
+      "date": "2025-02-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 2474946,
+      "period": "2025-02",
+      "days_with_data": 28,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 28 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2025-03",
+      "date": "2025-03-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1172847,
+      "period": "2025-03",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2025-04",
+      "date": "2025-04-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 5595808,
+      "period": "2025-04",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2025-05",
+      "date": "2025-05-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1387100,
+      "period": "2025-05",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2025-06",
+      "date": "2025-06-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1440327,
+      "period": "2025-06",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2025-07",
+      "date": "2025-07-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1714289,
+      "period": "2025-07",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2025-08",
+      "date": "2025-08-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1517036,
+      "period": "2025-08",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2025-09",
+      "date": "2025-09-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1266841,
+      "period": "2025-09",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2025-10",
+      "date": "2025-10-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1079397,
+      "period": "2025-10",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2025-11",
+      "date": "2025-11-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1158053,
+      "period": "2025-11",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2025-12",
+      "date": "2025-12-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 840083,
+      "period": "2025-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2026-01",
+      "date": "2026-01-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 1144873,
+      "period": "2026-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "gmx-staking-reward-2026-02",
+      "date": "2026-02-01",
+      "type": "aggregate",
+      "mechanism": "GMX Staking Rewards",
+      "amount_usd": 136606,
+      "period": "2026-02",
+      "days_with_data": 3,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "30% of all collected fees goes to GMX stakers"
+      },
+      "notes": "Monthly aggregate from 3 days of data"
+    }
+  ],
+  "summary": {
+    "total_tev_usd": 134258846,
+    "total_30d_usd": 1208117,
+    "by_mechanism": {
+      "staking_reward": 134258846
+    },
+    "by_period": {
+      "2021-Q3": 306079,
+      "2021-Q4": 2974932,
+      "2022-Q1": 8317488,
+      "2022-Q2": 7145988,
+      "2022-Q3": 9062670,
+      "2022-Q4": 10349391,
+      "2023-Q1": 15488553,
+      "2023-Q2": 11674302,
+      "2023-Q3": 3985521,
+      "2023-Q4": 8439733,
+      "2024-Q1": 11680565,
+      "2024-Q2": 8010513,
+      "2024-Q3": 5216013,
+      "2024-Q4": 7830991,
+      "2025-Q1": 6495694,
+      "2025-Q2": 8423235,
+      "2025-Q3": 4498166,
+      "2025-Q4": 3077533,
+      "2026-Q1": 1281479
+    }
+  }
+}

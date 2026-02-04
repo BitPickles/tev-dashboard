@@ -281,6 +281,65 @@
     .value-none { color: var(--text-tertiary); }
     .value-active { color: var(--accent); }
 
+    /* TEV History Chart */
+    .chart-section {
+      display: none;
+    }
+
+    .chart-section.has-data {
+      display: block;
+    }
+
+    .chart-container {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      position: relative;
+    }
+
+    .chart-canvas-wrap {
+      position: relative;
+      height: 360px;
+    }
+
+    .chart-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .chart-stat {
+      text-align: center;
+    }
+
+    .chart-stat-value {
+      font-size: 18px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', 'Inter', monospace;
+      color: var(--accent);
+    }
+
+    .chart-stat-label {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      margin-top: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 768px) {
+      .chart-canvas-wrap {
+        height: 260px;
+      }
+      .chart-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     /* TEV Mechanisms */
     .mechanism-list {
       display: flex;
@@ -553,6 +612,20 @@
         </div>
       </div>
 
+      <!-- TEV History Chart -->
+      <div class="section chart-section" id="tev-chart-section">
+        <div class="section-title">
+          <span class="icon">📈</span>
+          <span data-i18n="section.tevHistory">TEV 历史记录</span>
+        </div>
+        <div class="chart-container">
+          <div class="chart-canvas-wrap">
+            <canvas id="tev-history-chart"></canvas>
+          </div>
+          <div class="chart-stats" id="chart-stats"></div>
+        </div>
+      </div>
+
       <!-- TEV Mechanisms -->
       <div class="section">
         <div class="section-title">
@@ -605,9 +678,15 @@
         'nav.dashboard': '仪表盘',
         'loading': '加载中...',
         'section.tevSummary': 'TEV 概览',
+        'section.tevHistory': 'TEV 历史记录',
         'section.tevMechanisms': 'TEV 机制详情',
         'section.dataSources': '数据来源',
         'section.notes': '分析师备注',
+        'chart.totalTev': '累计 TEV',
+        'chart.records': '记录数',
+        'chart.avgMonthly': '月均 TEV',
+        'chart.period': '数据周期',
+        'chart.cumulative': '累计 TEV',
         'tev.feeSwitch': '费用开关',
         'tev.buybacks': '回购',
         'tev.dividends': '分红',
@@ -643,9 +722,15 @@
         'nav.dashboard': 'Dashboard',
         'loading': 'Loading...',
         'section.tevSummary': 'TEV Summary',
+        'section.tevHistory': 'TEV History',
         'section.tevMechanisms': 'TEV Mechanisms',
         'section.dataSources': 'Data Sources',
         'section.notes': 'Analyst Notes',
+        'chart.totalTev': 'Total TEV',
+        'chart.records': 'Records',
+        'chart.avgMonthly': 'Avg Monthly',
+        'chart.period': 'Period',
+        'chart.cumulative': 'Cumulative TEV',
         'tev.feeSwitch': 'Fee Switch',
         'tev.buybacks': 'Buybacks',
         'tev.dividends': 'Dividends',
@@ -775,6 +860,224 @@
       `).join('');
     }
 
+    // ── TEV History Chart ──────────────────────────────
+
+    const TEV_TYPE_COLORS = {
+      buyback_burn:        { bg: 'rgba(34, 197, 94, 0.7)',  border: '#22c55e' },
+      buyback_accumulate:  { bg: 'rgba(34, 197, 94, 0.5)',  border: '#4ade80' },
+      buyback:             { bg: 'rgba(34, 197, 94, 0.6)',  border: '#22c55e' },
+      staking_reward:      { bg: 'rgba(59, 130, 246, 0.7)', border: '#3b82f6' },
+      direct_distribution: { bg: 'rgba(168, 85, 247, 0.7)', border: '#a855f7' },
+      ve_reward:           { bg: 'rgba(245, 158, 11, 0.7)', border: '#f59e0b' },
+      fee_sharing:         { bg: 'rgba(236, 72, 153, 0.7)', border: '#ec4899' },
+      aggregate:           { bg: 'rgba(99, 102, 241, 0.7)', border: '#6366f1' },
+    };
+    const DEFAULT_COLOR = { bg: 'rgba(161, 161, 170, 0.5)', border: '#a1a1aa' };
+
+    function getTypeColor(type) {
+      return TEV_TYPE_COLORS[type] || DEFAULT_COLOR;
+    }
+
+    function getTypeLabel(type) {
+      return t('mechanism.type.' + type) || type.replace(/_/g, ' ');
+    }
+
+    function formatChartCurrency(value) {
+      if (value >= 1e9) return '$' + (value / 1e9).toFixed(2) + 'B';
+      if (value >= 1e6) return '$' + (value / 1e6).toFixed(2) + 'M';
+      if (value >= 1e3) return '$' + (value / 1e3).toFixed(1) + 'K';
+      return '$' + value.toFixed(0);
+    }
+
+    let tevChart = null;
+
+    async function loadTevChart(protocolId) {
+      const section = document.getElementById('tev-chart-section');
+      try {
+        const resp = await fetch(`../data/protocols/${protocolId}/tev-records.json`);
+        if (!resp.ok) return;
+        const data = await resp.json();
+        const records = data.records;
+        if (!records || records.length === 0) return;
+
+        // Sort by date
+        records.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        // Group by type
+        const types = [...new Set(records.map(r => r.type))];
+
+        // Build datasets — one bar dataset per type + cumulative line
+        const labels = records.map(r => {
+          if (r.period) return r.period;
+          const d = new Date(r.date);
+          return d.toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' });
+        });
+
+        const barDatasets = types.map(type => {
+          const color = getTypeColor(type);
+          return {
+            label: getTypeLabel(type),
+            data: records.map(r => r.type === type ? r.amount_usd : 0),
+            backgroundColor: color.bg,
+            borderColor: color.border,
+            borderWidth: 1,
+            borderRadius: 4,
+            type: 'bar',
+            yAxisID: 'y',
+            order: 2,
+          };
+        });
+
+        // Cumulative line
+        let cumulative = 0;
+        const cumulativeData = records.map(r => {
+          cumulative += r.amount_usd;
+          return cumulative;
+        });
+
+        const lineDataset = {
+          label: t('chart.cumulative'),
+          data: cumulativeData,
+          borderColor: '#f59e0b',
+          backgroundColor: 'rgba(245, 158, 11, 0.1)',
+          borderWidth: 2,
+          pointRadius: 3,
+          pointHoverRadius: 6,
+          pointBackgroundColor: '#f59e0b',
+          fill: true,
+          type: 'line',
+          yAxisID: 'y2',
+          tension: 0.3,
+          order: 1,
+        };
+
+        // Render chart
+        const ctx = document.getElementById('tev-history-chart').getContext('2d');
+        if (tevChart) tevChart.destroy();
+
+        tevChart = new Chart(ctx, {
+          data: {
+            labels,
+            datasets: [...barDatasets, lineDataset],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+              mode: 'index',
+              intersect: false,
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: 'top',
+                labels: {
+                  color: '#a1a1aa',
+                  font: { size: 11 },
+                  boxWidth: 12,
+                  boxHeight: 12,
+                  borderRadius: 3,
+                  useBorderRadius: true,
+                  padding: 16,
+                },
+              },
+              tooltip: {
+                backgroundColor: '#18181b',
+                titleColor: '#fafafa',
+                bodyColor: '#a1a1aa',
+                borderColor: '#27272a',
+                borderWidth: 1,
+                padding: 12,
+                displayColors: true,
+                callbacks: {
+                  label: function(ctx) {
+                    if (ctx.raw === 0) return null;
+                    return ` ${ctx.dataset.label}: ${formatChartCurrency(ctx.raw)}`;
+                  },
+                  title: function(items) {
+                    const idx = items[0].dataIndex;
+                    const record = records[idx];
+                    let title = items[0].label;
+                    if (record.mechanism) title += ' · ' + record.mechanism;
+                    return title;
+                  },
+                },
+                filter: function(item) {
+                  return item.raw !== 0;
+                },
+              },
+            },
+            scales: {
+              x: {
+                grid: { color: 'rgba(39, 39, 42, 0.5)', drawBorder: false },
+                ticks: { color: '#71717a', font: { size: 11 } },
+              },
+              y: {
+                position: 'left',
+                grid: { color: 'rgba(39, 39, 42, 0.5)', drawBorder: false },
+                ticks: {
+                  color: '#71717a',
+                  font: { size: 11 },
+                  callback: v => formatChartCurrency(v),
+                },
+                title: {
+                  display: true,
+                  text: currentLang === 'zh' ? '单期 TEV (USD)' : 'Period TEV (USD)',
+                  color: '#71717a',
+                  font: { size: 11 },
+                },
+              },
+              y2: {
+                position: 'right',
+                grid: { display: false },
+                ticks: {
+                  color: '#f59e0b',
+                  font: { size: 11 },
+                  callback: v => formatChartCurrency(v),
+                },
+                title: {
+                  display: true,
+                  text: t('chart.cumulative') + ' (USD)',
+                  color: '#f59e0b',
+                  font: { size: 11 },
+                },
+              },
+            },
+          },
+        });
+
+        // Stats below chart
+        const total = records.reduce((s, r) => s + r.amount_usd, 0);
+        const avgMonthly = total / records.length;
+        const firstDate = records[0].period || records[0].date;
+        const lastDate = records[records.length - 1].period || records[records.length - 1].date;
+
+        document.getElementById('chart-stats').innerHTML = `
+          <div class="chart-stat">
+            <div class="chart-stat-value">${formatChartCurrency(total)}</div>
+            <div class="chart-stat-label">${t('chart.totalTev')}</div>
+          </div>
+          <div class="chart-stat">
+            <div class="chart-stat-value">${records.length}</div>
+            <div class="chart-stat-label">${t('chart.records')}</div>
+          </div>
+          <div class="chart-stat">
+            <div class="chart-stat-value">${formatChartCurrency(avgMonthly)}</div>
+            <div class="chart-stat-label">${t('chart.avgMonthly')}</div>
+          </div>
+          <div class="chart-stat">
+            <div class="chart-stat-value">${firstDate} → ${lastDate}</div>
+            <div class="chart-stat-label">${t('chart.period')}</div>
+          </div>
+        `;
+
+        // Show section
+        section.classList.add('has-data');
+      } catch (e) {
+        console.log('No TEV records for chart:', e.message);
+      }
+    }
+
     async function init() {
       const protocolId = getProtocolId();
 
@@ -865,6 +1168,9 @@
         // Show content
         document.getElementById('loading').style.display = 'none';
         document.getElementById('content').style.display = 'block';
+
+        // Load TEV history chart (async, non-blocking)
+        loadTevChart(protocolId);
 
       } catch (error) {
         console.error('Failed to load protocol:', error);

@@ -1,0 +1,503 @@
+{
+  "protocol": "dydx",
+  "updated_at": "2026-02-04T20:30:25.609Z",
+  "data_source": "DefiLlama API (dailyHoldersRevenue)",
+  "data_source_url": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+  "records": [
+    {
+      "id": "dydx-staking-reward-2023-11",
+      "date": "2023-11-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 28813,
+      "period": "2023-11",
+      "days_with_data": 17,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 17 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2023-12",
+      "date": "2023-12-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 1365294,
+      "period": "2023-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2024-01",
+      "date": "2024-01-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 2801623,
+      "period": "2024-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2024-02",
+      "date": "2024-02-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 4570756,
+      "period": "2024-02",
+      "days_with_data": 29,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 29 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2024-03",
+      "date": "2024-03-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 6753878,
+      "period": "2024-03",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2024-04",
+      "date": "2024-04-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 5070850,
+      "period": "2024-04",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2024-05",
+      "date": "2024-05-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 5039525,
+      "period": "2024-05",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2024-06",
+      "date": "2024-06-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 3102340,
+      "period": "2024-06",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2024-07",
+      "date": "2024-07-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 3774997,
+      "period": "2024-07",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2024-08",
+      "date": "2024-08-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 3913292,
+      "period": "2024-08",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2024-09",
+      "date": "2024-09-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 1013654,
+      "period": "2024-09",
+      "days_with_data": 27,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 27 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2024-10",
+      "date": "2024-10-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 1544824,
+      "period": "2024-10",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2024-11",
+      "date": "2024-11-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 3146365,
+      "period": "2024-11",
+      "days_with_data": 26,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 26 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2024-12",
+      "date": "2024-12-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 3472779,
+      "period": "2024-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2025-01",
+      "date": "2025-01-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 2177209,
+      "period": "2025-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2025-02",
+      "date": "2025-02-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 1288153,
+      "period": "2025-02",
+      "days_with_data": 28,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 28 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2025-03",
+      "date": "2025-03-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 1293912,
+      "period": "2025-03",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2025-04",
+      "date": "2025-04-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 983351,
+      "period": "2025-04",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2025-05",
+      "date": "2025-05-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 1212412,
+      "period": "2025-05",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2025-06",
+      "date": "2025-06-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 1054502,
+      "period": "2025-06",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2025-07",
+      "date": "2025-07-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 1777898,
+      "period": "2025-07",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2025-08",
+      "date": "2025-08-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 1822831,
+      "period": "2025-08",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2025-09",
+      "date": "2025-09-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 1269768,
+      "period": "2025-09",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2025-10",
+      "date": "2025-10-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 1742294,
+      "period": "2025-10",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2025-11",
+      "date": "2025-11-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 1136429,
+      "period": "2025-11",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2025-12",
+      "date": "2025-12-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 427896,
+      "period": "2025-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2026-01",
+      "date": "2026-01-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 309724,
+      "period": "2026-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2026-02",
+      "date": "2026-02-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 96836,
+      "period": "2026-02",
+      "days_with_data": 3,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 3 days of data"
+    }
+  ],
+  "summary": {
+    "total_tev_usd": 62192205,
+    "total_30d_usd": 381311,
+    "by_mechanism": {
+      "staking_reward": 62192205
+    },
+    "by_period": {
+      "2023-Q4": 1394107,
+      "2024-Q1": 14126257,
+      "2024-Q2": 13212715,
+      "2024-Q3": 8701943,
+      "2024-Q4": 8163968,
+      "2025-Q1": 4759274,
+      "2025-Q2": 3250265,
+      "2025-Q3": 4870497,
+      "2025-Q4": 3306619,
+      "2026-Q1": 406560
+    }
+  }
+}

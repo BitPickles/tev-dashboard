@@ -1,0 +1,606 @@
+{
+  "protocol": "radiant",
+  "updated_at": "2026-02-04T20:31:14.420Z",
+  "data_source": "DefiLlama API (dailyHoldersRevenue)",
+  "data_source_url": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+  "records": [
+    {
+      "id": "radiant-direct-distribution-2023-03",
+      "date": "2023-03-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 372741,
+      "period": "2023-03",
+      "days_with_data": 13,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2023-04",
+      "date": "2023-04-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 1391582,
+      "period": "2023-04",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2023-05",
+      "date": "2023-05-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 1281159,
+      "period": "2023-05",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2023-06",
+      "date": "2023-06-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 1178724,
+      "period": "2023-06",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2023-07",
+      "date": "2023-07-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 1390736,
+      "period": "2023-07",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2023-08",
+      "date": "2023-08-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 1314977,
+      "period": "2023-08",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2023-09",
+      "date": "2023-09-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 999267,
+      "period": "2023-09",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2023-10",
+      "date": "2023-10-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 1075641,
+      "period": "2023-10",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2023-11",
+      "date": "2023-11-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 1335493,
+      "period": "2023-11",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2023-12",
+      "date": "2023-12-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 1364016,
+      "period": "2023-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2024-01",
+      "date": "2024-01-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 1208100,
+      "period": "2024-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2024-02",
+      "date": "2024-02-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 942069,
+      "period": "2024-02",
+      "days_with_data": 29,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2024-03",
+      "date": "2024-03-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 1150483,
+      "period": "2024-03",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2024-04",
+      "date": "2024-04-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 796423,
+      "period": "2024-04",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2024-05",
+      "date": "2024-05-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 477520,
+      "period": "2024-05",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2024-06",
+      "date": "2024-06-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 461393,
+      "period": "2024-06",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2024-07",
+      "date": "2024-07-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 280145,
+      "period": "2024-07",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2024-08",
+      "date": "2024-08-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 223825,
+      "period": "2024-08",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2024-09",
+      "date": "2024-09-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 209177,
+      "period": "2024-09",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2024-10",
+      "date": "2024-10-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 105240,
+      "period": "2024-10",
+      "days_with_data": 17,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2024-11",
+      "date": "2024-11-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 37316,
+      "period": "2024-11",
+      "days_with_data": 29,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2024-12",
+      "date": "2024-12-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 11703,
+      "period": "2024-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2025-01",
+      "date": "2025-01-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 18133,
+      "period": "2025-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2025-02",
+      "date": "2025-02-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 9227,
+      "period": "2025-02",
+      "days_with_data": 28,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2025-03",
+      "date": "2025-03-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 7265,
+      "period": "2025-03",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2025-04",
+      "date": "2025-04-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 5022,
+      "period": "2025-04",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2025-05",
+      "date": "2025-05-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 9727,
+      "period": "2025-05",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2025-06",
+      "date": "2025-06-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 2107,
+      "period": "2025-06",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2025-07",
+      "date": "2025-07-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 1671,
+      "period": "2025-07",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2025-08",
+      "date": "2025-08-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 2674,
+      "period": "2025-08",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2025-09",
+      "date": "2025-09-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 2270,
+      "period": "2025-09",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2025-10",
+      "date": "2025-10-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 1840,
+      "period": "2025-10",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2025-11",
+      "date": "2025-11-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 5419,
+      "period": "2025-11",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2025-12",
+      "date": "2025-12-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 8488,
+      "period": "2025-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2026-01",
+      "date": "2026-01-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 7651,
+      "period": "2026-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    },
+    {
+      "id": "radiant-direct-distribution-2026-02",
+      "date": "2026-02-01",
+      "type": "aggregate",
+      "mechanism": "dLP Fee Distribution",
+      "amount_usd": 827,
+      "period": "2026-02",
+      "days_with_data": 4,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/radiant?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "60% fees earned by token holders"
+      }
+    }
+  ],
+  "summary": {
+    "total_tev_usd": 17690051,
+    "total_30d_usd": 7167,
+    "by_mechanism": {
+      "direct_distribution": 17690051
+    },
+    "by_period": {
+      "2023-Q1": 372741,
+      "2023-Q2": 3851465,
+      "2023-Q3": 3704980,
+      "2023-Q4": 3775150,
+      "2024-Q1": 3300652,
+      "2024-Q2": 1735336,
+      "2024-Q3": 713147,
+      "2024-Q4": 154259,
+      "2025-Q1": 34625,
+      "2025-Q2": 16856,
+      "2025-Q3": 6615,
+      "2025-Q4": 15747,
+      "2026-Q1": 8478
+    }
+  }
+}

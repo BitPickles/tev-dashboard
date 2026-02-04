@@ -1,0 +1,520 @@
+{
+  "protocol": "pendle",
+  "updated_at": "2026-02-04T20:30:18.737Z",
+  "data_source": "DefiLlama API (dailyHoldersRevenue)",
+  "data_source_url": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+  "records": [
+    {
+      "id": "pendle-ve-reward-2023-10",
+      "date": "2023-10-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 7052,
+      "period": "2023-10",
+      "days_with_data": 23,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 23 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2023-11",
+      "date": "2023-11-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 10664,
+      "period": "2023-11",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2023-12",
+      "date": "2023-12-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 23937,
+      "period": "2023-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2024-01",
+      "date": "2024-01-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 108360,
+      "period": "2024-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2024-02",
+      "date": "2024-02-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 305405,
+      "period": "2024-02",
+      "days_with_data": 29,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 29 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2024-03",
+      "date": "2024-03-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 625319,
+      "period": "2024-03",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2024-04",
+      "date": "2024-04-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 2597641,
+      "period": "2024-04",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2024-05",
+      "date": "2024-05-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 2195234,
+      "period": "2024-05",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2024-06",
+      "date": "2024-06-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 1454595,
+      "period": "2024-06",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2024-07",
+      "date": "2024-07-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 1354263,
+      "period": "2024-07",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2024-08",
+      "date": "2024-08-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 570066,
+      "period": "2024-08",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2024-09",
+      "date": "2024-09-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 482275,
+      "period": "2024-09",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2024-10",
+      "date": "2024-10-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 925373,
+      "period": "2024-10",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2024-11",
+      "date": "2024-11-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 1297746,
+      "period": "2024-11",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2024-12",
+      "date": "2024-12-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 2254555,
+      "period": "2024-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2025-01",
+      "date": "2025-01-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 6894797,
+      "period": "2025-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2025-02",
+      "date": "2025-02-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 2042562,
+      "period": "2025-02",
+      "days_with_data": 28,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 28 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2025-03",
+      "date": "2025-03-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 1083298,
+      "period": "2025-03",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2025-04",
+      "date": "2025-04-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 1190768,
+      "period": "2025-04",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2025-05",
+      "date": "2025-05-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 2809781,
+      "period": "2025-05",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2025-06",
+      "date": "2025-06-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 1927133,
+      "period": "2025-06",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2025-07",
+      "date": "2025-07-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 2956978,
+      "period": "2025-07",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2025-08",
+      "date": "2025-08-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 4989230,
+      "period": "2025-08",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2025-09",
+      "date": "2025-09-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 4733391,
+      "period": "2025-09",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2025-10",
+      "date": "2025-10-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 2937884,
+      "period": "2025-10",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2025-11",
+      "date": "2025-11-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 2315287,
+      "period": "2025-11",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2025-12",
+      "date": "2025-12-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 1059867,
+      "period": "2025-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2026-01",
+      "date": "2026-01-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 894766,
+      "period": "2026-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "pendle-ve-reward-2026-02",
+      "date": "2026-02-01",
+      "type": "aggregate",
+      "mechanism": "vePENDLE Revenue Share",
+      "amount_usd": 17453,
+      "period": "2026-02",
+      "days_with_data": 2,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "80% revenue distributed to vePENDLE"
+      },
+      "notes": "Monthly aggregate from 2 days of data"
+    }
+  ],
+  "summary": {
+    "total_tev_usd": 50065680,
+    "total_30d_usd": 857820,
+    "by_mechanism": {
+      "ve_reward": 50065680
+    },
+    "by_period": {
+      "2023-Q4": 41653,
+      "2024-Q1": 1039084,
+      "2024-Q2": 6247470,
+      "2024-Q3": 2406604,
+      "2024-Q4": 4477674,
+      "2025-Q1": 10020657,
+      "2025-Q2": 5927682,
+      "2025-Q3": 12679599,
+      "2025-Q4": 6313038,
+      "2026-Q1": 912219
+    }
+  }
+}

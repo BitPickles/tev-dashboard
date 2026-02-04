@@ -1,0 +1,87 @@
+{
+  "protocol": "maple",
+  "updated_at": "2026-02-04T20:30:27.575Z",
+  "data_source": "DefiLlama API (dailyHoldersRevenue)",
+  "data_source_url": "https://api.llama.fi/summary/fees/maple?dataType=dailyHoldersRevenue",
+  "records": [
+    {
+      "id": "maple-staking-reward-2025-11",
+      "date": "2025-11-01",
+      "type": "aggregate",
+      "mechanism": "SYRUP Staking Fee Share",
+      "amount_usd": 269325,
+      "period": "2025-11",
+      "days_with_data": 24,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/maple?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Maple use 25% from protocol revenue to buy back SYRUP tokens from MIP-019."
+      },
+      "notes": "Monthly aggregate from 24 days of data"
+    },
+    {
+      "id": "maple-staking-reward-2025-12",
+      "date": "2025-12-01",
+      "type": "aggregate",
+      "mechanism": "SYRUP Staking Fee Share",
+      "amount_usd": 261315,
+      "period": "2025-12",
+      "days_with_data": 23,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/maple?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Maple use 25% from protocol revenue to buy back SYRUP tokens from MIP-019."
+      },
+      "notes": "Monthly aggregate from 23 days of data"
+    },
+    {
+      "id": "maple-staking-reward-2026-01",
+      "date": "2026-01-01",
+      "type": "aggregate",
+      "mechanism": "SYRUP Staking Fee Share",
+      "amount_usd": 248457,
+      "period": "2026-01",
+      "days_with_data": 21,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/maple?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Maple use 25% from protocol revenue to buy back SYRUP tokens from MIP-019."
+      },
+      "notes": "Monthly aggregate from 21 days of data"
+    },
+    {
+      "id": "maple-staking-reward-2026-02",
+      "date": "2026-02-01",
+      "type": "aggregate",
+      "mechanism": "SYRUP Staking Fee Share",
+      "amount_usd": 219722,
+      "period": "2026-02",
+      "days_with_data": 4,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/maple?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Maple use 25% from protocol revenue to buy back SYRUP tokens from MIP-019."
+      },
+      "notes": "Monthly aggregate from 4 days of data"
+    }
+  ],
+  "summary": {
+    "total_tev_usd": 998819,
+    "total_30d_usd": 318406,
+    "by_mechanism": {
+      "staking_reward": 998819
+    },
+    "by_period": {
+      "2025-Q4": 530640,
+      "2026-Q1": 468179
+    }
+  }
+}

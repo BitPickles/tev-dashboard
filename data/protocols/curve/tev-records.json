@@ -1,0 +1,954 @@
+{
+  "protocol": "curve",
+  "updated_at": "2026-02-04T20:30:21.256Z",
+  "data_source": "DefiLlama API (dailyHoldersRevenue)",
+  "data_source_url": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+  "records": [
+    {
+      "id": "curve-ve-reward-2020-11",
+      "date": "2020-11-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 152645,
+      "period": "2020-11",
+      "days_with_data": 2,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 2 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2020-12",
+      "date": "2020-12-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 49860,
+      "period": "2020-12",
+      "days_with_data": 1,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 1 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2021-11",
+      "date": "2021-11-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 4713030,
+      "period": "2021-11",
+      "days_with_data": 20,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 20 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2021-12",
+      "date": "2021-12-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 9274336,
+      "period": "2021-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2022-01",
+      "date": "2022-01-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 38499328,
+      "period": "2022-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2022-02",
+      "date": "2022-02-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 5906535,
+      "period": "2022-02",
+      "days_with_data": 28,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 28 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2022-03",
+      "date": "2022-03-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 6518181,
+      "period": "2022-03",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2022-04",
+      "date": "2022-04-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 6070566,
+      "period": "2022-04",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2022-05",
+      "date": "2022-05-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 10424578,
+      "period": "2022-05",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2022-06",
+      "date": "2022-06-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 4035924,
+      "period": "2022-06",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2022-07",
+      "date": "2022-07-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 2286428,
+      "period": "2022-07",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2022-08",
+      "date": "2022-08-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1827618,
+      "period": "2022-08",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2022-09",
+      "date": "2022-09-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1597305,
+      "period": "2022-09",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2022-10",
+      "date": "2022-10-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1129468,
+      "period": "2022-10",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2022-11",
+      "date": "2022-11-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 2956895,
+      "period": "2022-11",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2022-12",
+      "date": "2022-12-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1046109,
+      "period": "2022-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2023-01",
+      "date": "2023-01-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1610192,
+      "period": "2023-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2023-02",
+      "date": "2023-02-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1338090,
+      "period": "2023-02",
+      "days_with_data": 27,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 27 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2023-03",
+      "date": "2023-03-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 2067350,
+      "period": "2023-03",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2023-04",
+      "date": "2023-04-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1030671,
+      "period": "2023-04",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2023-05",
+      "date": "2023-05-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1084496,
+      "period": "2023-05",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2023-06",
+      "date": "2023-06-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1242345,
+      "period": "2023-06",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2023-07",
+      "date": "2023-07-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1230047,
+      "period": "2023-07",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2023-08",
+      "date": "2023-08-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1115645,
+      "period": "2023-08",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2023-09",
+      "date": "2023-09-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 944708,
+      "period": "2023-09",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2023-10",
+      "date": "2023-10-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1828287,
+      "period": "2023-10",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2023-11",
+      "date": "2023-11-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 2022132,
+      "period": "2023-11",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2023-12",
+      "date": "2023-12-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 3752972,
+      "period": "2023-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2024-01",
+      "date": "2024-01-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 2720530,
+      "period": "2024-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2024-02",
+      "date": "2024-02-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 2182170,
+      "period": "2024-02",
+      "days_with_data": 29,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 29 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2024-03",
+      "date": "2024-03-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 4039730,
+      "period": "2024-03",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2024-04",
+      "date": "2024-04-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 3008146,
+      "period": "2024-04",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2024-05",
+      "date": "2024-05-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 2359952,
+      "period": "2024-05",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2024-06",
+      "date": "2024-06-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 2932846,
+      "period": "2024-06",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2024-07",
+      "date": "2024-07-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 2920559,
+      "period": "2024-07",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2024-08",
+      "date": "2024-08-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1285023,
+      "period": "2024-08",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2024-09",
+      "date": "2024-09-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1125315,
+      "period": "2024-09",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2024-10",
+      "date": "2024-10-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1094923,
+      "period": "2024-10",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2024-11",
+      "date": "2024-11-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1710707,
+      "period": "2024-11",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2024-12",
+      "date": "2024-12-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1636239,
+      "period": "2024-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2025-01",
+      "date": "2025-01-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1104398,
+      "period": "2025-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2025-02",
+      "date": "2025-02-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 758592,
+      "period": "2025-02",
+      "days_with_data": 28,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 28 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2025-03",
+      "date": "2025-03-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 2342061,
+      "period": "2025-03",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2025-04",
+      "date": "2025-04-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 496464,
+      "period": "2025-04",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2025-05",
+      "date": "2025-05-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 585727,
+      "period": "2025-05",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2025-06",
+      "date": "2025-06-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1875291,
+      "period": "2025-06",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2025-07",
+      "date": "2025-07-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1428163,
+      "period": "2025-07",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2025-08",
+      "date": "2025-08-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1304606,
+      "period": "2025-08",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2025-09",
+      "date": "2025-09-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1235529,
+      "period": "2025-09",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2025-10",
+      "date": "2025-10-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 999199,
+      "period": "2025-10",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2025-11",
+      "date": "2025-11-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 1006953,
+      "period": "2025-11",
+      "days_with_data": 30,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 30 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2025-12",
+      "date": "2025-12-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 512932,
+      "period": "2025-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2026-01",
+      "date": "2026-01-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 860036,
+      "period": "2026-01",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "curve-ve-reward-2026-02",
+      "date": "2026-02-01",
+      "type": "aggregate",
+      "mechanism": "veCRV Fee Distribution",
+      "amount_usd": 228840,
+      "period": "2026-02",
+      "days_with_data": 4,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees distributed to veCRV governance token holders"
+      },
+      "notes": "Monthly aggregate from 4 days of data"
+    }
+  ],
+  "summary": {
+    "total_tev_usd": 157510672,
+    "total_30d_usd": 970876,
+    "by_mechanism": {
+      "ve_reward": 157510672
+    },
+    "by_period": {
+      "2020-Q4": 202505,
+      "2021-Q4": 13987366,
+      "2022-Q1": 50924044,
+      "2022-Q2": 20531068,
+      "2022-Q3": 5711351,
+      "2022-Q4": 5132472,
+      "2023-Q1": 5015632,
+      "2023-Q2": 3357512,
+      "2023-Q3": 3290400,
+      "2023-Q4": 7603391,
+      "2024-Q1": 8942430,
+      "2024-Q2": 8300944,
+      "2024-Q3": 5330897,
+      "2024-Q4": 4441869,
+      "2025-Q1": 4205051,
+      "2025-Q2": 2957482,
+      "2025-Q3": 3968298,
+      "2025-Q4": 2519084,
+      "2026-Q1": 1088876
+    }
+  }
+}
