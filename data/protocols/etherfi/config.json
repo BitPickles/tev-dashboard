@@ -17,41 +17,79 @@
   },
   "tev_mechanisms": [
     {
-      "type": "staking_reward",
-      "name": "ETHFI Staking",
-      "description": "质押 ETHFI 获得协议收入分成和 loyalty points",
+      "type": "buyback_accumulate",
+      "name": "Withdrawal Revenue Buyback",
+      "description": "100% eETH 提现收入（慢速提现期间质押收益 + 快速提现 0.3% 费用）用于每月链上回购 ETHFI，分配给 sETHFI 质押者",
       "status": "active",
-      "start_date": "2024-03-01",
+      "start_date": "2025-04-25",
+      "contract": "0x7A6A41F353B3002751d94118aA7f4935dA39bB53",
       "source": {
         "type": "governance",
-        "title": "ETHFI Staking Launch",
-        "url": "https://ether.fi/blog"
+        "title": "#11 Ether.fi DAO Proposal - Withdrawal Revenue Buyback Program",
+        "url": "https://governance.ether.fi/t/11-ether-fi-dao-proposal-withdrawal-revenue-buyback-program/2920",
+        "proposal_id": "0x6a9bdf1bb43b3e38f7313247464360ab3c637dd54f45c99dfaa085539c0dc693"
+      }
+    },
+    {
+      "type": "buyback_accumulate",
+      "name": "$50M Treasury Buyback Program",
+      "description": "Foundation 授权使用国库最高 $50M 在 ETHFI < $3 时执行回购，逐步扩大协议收入中回购占比",
+      "status": "active",
+      "start_date": "2025-10-30",
+      "source": {
+        "type": "governance",
+        "title": "Ether.Fi DAO Proposal: Treasury Deployment for ETHFI Buy-Back Program",
+        "url": "https://governance.ether.fi/t/ether-fi-dao-proposal-treasury-deployment-for-ethfi-buy-back-program/3178",
+        "proposal_id": "0xe5b64c773d23c92e62092a713b14cc72a98a46c923e36cf885455118854337b0"
       }
     }
   ],
   "tev_summary": {
-    "fee_switch": "PARTIAL",
-    "fee_switch_details": "部分协议收入分配给 ETHFI stakers",
-    "buybacks": "NONE",
-    "dividends": "PARTIAL",
+    "fee_switch": "ACTIVE",
+    "fee_switch_details": "100% 提现收入用于 ETHFI 回购，分配给 sETHFI 质押者；另有 $50M 国库回购额度（ETHFI < $3 时）",
+    "buybacks": "ACTIVE",
+    "dividends": "NONE",
     "burns": "NONE",
-    "primary_value_accrual": "Staking 奖励 - 质押 ETHFI 获得协议收入分成"
+    "primary_value_accrual": "回购分配 — 协议收入回购 ETHFI 并分配给 sETHFI 质押者"
   },
-  "confidence": "medium",
+  "confidence": "high",
   "data_sources": [
     {
-      "name": "ether.fi Blog",
-      "type": "report",
-      "url": "https://ether.fi/blog",
+      "name": "ether.fi Governance Forum",
+      "type": "governance",
+      "url": "https://governance.ether.fi",
+      "description": "DAO 治理论坛，含回购提案原文",
+      "reliability": "verified"
+    },
+    {
+      "name": "Dune - ETHFI Buybacks & Revenue",
+      "type": "dune",
+      "url": "https://dune.com/ether_fi/ethfi-buybacks-and-protocol-revenue-sources",
+      "description": "回购交易和协议收入来源链上数据",
+      "reliability": "verified"
+    },
+    {
+      "name": "Dune - ETHFI DAO",
+      "type": "dune",
+      "url": "https://dune.com/ether_fi/ethfi-dao",
+      "description": "DAO 国库和代币数据",
       "reliability": "high"
+    },
+    {
+      "name": "Snapshot Voting",
+      "type": "governance",
+      "url": "https://snapshot.box/#/s:etherfi-dao.eth",
+      "description": "链上投票记录",
+      "reliability": "verified"
     },
     {
       "name": "DefiLlama",
       "type": "api",
-      "url": "https://api.llama.fi/protocol/ether.fi-stake",
+      "url": "https://api.llama.fi/protocol/ether.fi",
+      "description": "TVL、tokenRights 数据",
       "reliability": "high"
     }
   ],
-  "notes": "ether.fi 是流动性质押赛道的后起之秀，通过非托管架构和 EigenLayer 再质押集成快速增长。ETHFI 代币有质押机制但具体收入分配比例待确认。",
-  "last_updated": "2026-02-04"
+  "notes": "ether.fi 拥有完善的 TEV 体系：(1) 100% 提现收入回购 ETHFI 分配给质押者；(2) $50M 国库回购额度。多个 DAO 提案通过，链上完全透明。之前标记为 PARTIAL 因信息不足，现已确认为 ACTIVE。Foundation Multisig: 0x7A6A41F353B3002751d94118aA7f4935dA39bB53。",
+  "last_updated": "2026-02-05"
 }

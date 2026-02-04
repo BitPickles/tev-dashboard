@@ -18,40 +18,68 @@
   "tev_mechanisms": [
     {
       "type": "staking_reward",
-      "name": "sENA Staking",
-      "description": "质押 ENA 获得协议收入分成",
+      "name": "sENA Protocol Revenue Share",
+      "description": "Fee switch 已开启，100% 协议费用分配给 sENA 质押者。Ethena 通过期货基差套利生成收益，sUSDe APY 约 7.83%",
       "status": "active",
-      "staking_contract": "0x0000000000000000000000000000000000000000",
       "source": {
-        "type": "docs",
-        "title": "Ethena Staking",
-        "url": "https://docs.ethena.fi/tokenomics/staking"
+        "type": "api",
+        "title": "DefiLlama tokenRights",
+        "url": "https://api.llama.fi/protocol/ethena",
+        "provider": "DefiLlama"
+      }
+    },
+    {
+      "type": "buyback_accumulate",
+      "name": "$310M ENA Buyback Program",
+      "description": "StablecoinX Inc. 子公司执行 $310M ENA 回购（6-8周），总 PIPE 融资约 $895M。StablecoinX 持有 3B+ ENA（~20% 供应量），Foundation 对转售有否决权",
+      "status": "active",
+      "start_date": "2025-09-01",
+      "source": {
+        "type": "governance",
+        "title": "Ethena's September 2025 Governance Update",
+        "url": "https://gov.ethenafoundation.com/t/ethena-s-september-2025-governance-update/704"
       }
     }
   ],
   "tev_summary": {
-    "fee_switch": "PARTIAL",
-    "fee_switch_details": "sENA 质押者获得部分协议收入",
-    "buybacks": "NONE",
+    "fee_switch": "ACTIVE",
+    "fee_switch_details": "Fee switch ON，100% 协议收入分配给 sENA 质押者",
+    "buybacks": "ACTIVE",
     "dividends": "ACTIVE",
     "burns": "NONE",
-    "primary_value_accrual": "分红 - sENA 质押者获得协议收入分成"
+    "primary_value_accrual": "分红 + 回购 — 100% 协议收入→sENA 质押者，加 $310M 大规模 ENA 回购"
   },
-  "confidence": "medium",
+  "confidence": "high",
   "data_sources": [
     {
-      "name": "Ethena Docs",
-      "type": "docs",
-      "url": "https://docs.ethena.fi",
+      "name": "DefiLlama tokenRights",
+      "type": "api",
+      "url": "https://api.llama.fi/protocol/ethena",
+      "description": "tokenRights 数据确认 fee switch ON, dividends ACTIVE",
       "reliability": "high"
     },
     {
-      "name": "DefiLlama",
-      "type": "api",
-      "url": "https://api.llama.fi/protocol/ethena",
+      "name": "Ethena Governance Forum",
+      "type": "governance",
+      "url": "https://gov.ethenafoundation.com",
+      "description": "月度治理更新，含财务数据和重大决策",
+      "reliability": "high"
+    },
+    {
+      "name": "Dune - Ethena USDe",
+      "type": "dune",
+      "url": "https://dune.com/entropy_advisors/ethena-usde",
+      "description": "USDe 供应量、DEX 流动性等链上数据",
+      "reliability": "high"
+    },
+    {
+      "name": "StablecoinX 公告",
+      "type": "report",
+      "url": "https://x.com/ethena_labs/status/1964063567772340432",
+      "description": "$530M 追加融资和 $310M 回购计划",
       "reliability": "high"
     }
   ],
-  "notes": "Ethena 是 2024 年增长最快的协议之一，通过期货基差套利生成收益。sENA 质押机制提供了代币赋能。",
-  "last_updated": "2026-02-04"
+  "notes": "Ethena 是 2024-2025 年增长最快的协议之一。TEV 极为强劲：(1) Fee switch ON，100% 协议收入→sENA 质押者；(2) $310M 大规模回购计划。sUSDe APY ~7.83%，USDe 总供应 $14.55B。协议担保率 100.57%，储备金 $62M。Foundation Multisig: 0x3B0AAf6e6fCd4a7cEEf8c92C32DFeA9E64dC1862。",
+  "last_updated": "2026-02-05"
 }

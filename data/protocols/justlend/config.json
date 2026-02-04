@@ -18,19 +18,24 @@
   "tev_mechanisms": [
     {
       "type": "staking_reward",
-      "name": "JST Staking",
-      "description": "质押 JST 获得平台收入分成",
-      "status": "active",
-      "start_date": "2020-08-01"
+      "name": "JST Staking (未确认)",
+      "description": "JST 声称有质押分红机制，但具体分配比例、合约地址、执行记录均不透明。JST 同时服务于 JUST 生态多个产品（JustLend、JustStable 等），实际 TEV 归属不明确",
+      "status": "unverified",
+      "start_date": "2020-08-01",
+      "source": {
+        "type": "documentation",
+        "title": "JustLend 官方文档",
+        "url": "https://docs.justlend.org"
+      }
     }
   ],
   "tev_summary": {
     "fee_switch": "PARTIAL",
-    "fee_switch_details": "部分协议收入分配给 JST stakers",
+    "fee_switch_details": "声称有协议收入分配给 JST stakers，但缺乏可验证数据",
     "buybacks": "NONE",
     "dividends": "PARTIAL",
     "burns": "NONE",
-    "primary_value_accrual": "Staking 奖励 - 质押 JST 参与协议收入分配"
+    "primary_value_accrual": "未确认 — 声称有 staking 分红但透明度极低"
   },
   "confidence": "low",
   "data_sources": [
@@ -38,15 +43,24 @@
       "name": "JustLend Official",
       "type": "documentation",
       "url": "https://justlend.org",
+      "description": "官方网站，JS 渲染的 SPA 难以爬取详细内容",
       "reliability": "medium"
     },
     {
       "name": "DefiLlama",
       "type": "api",
       "url": "https://api.llama.fi/protocol/justlend",
+      "description": "TVL 和费用数据（无 tokenRights 数据）",
       "reliability": "high"
+    },
+    {
+      "name": "JUST Network",
+      "type": "documentation",
+      "url": "https://just.network",
+      "description": "JUST 生态门户",
+      "reliability": "medium"
     }
   ],
-  "notes": "JustLend 是 TRON 生态核心协议，JST 代币同时服务于 JUST 生态多个产品。具体 TEV 分配机制透明度较低，需进一步验证。",
-  "last_updated": "2026-02-02"
+  "notes": "⚠️ 维持 PARTIAL，原因：(1) JST staking 机制缺乏透明文档，无法确认具体分配比例；(2) TRON 生态整体透明度较低，缺少 Dune 等独立数据分析工具；(3) DefiLlama 无 tokenRights 数据；(4) JST 代币跨多个 JUST 产品使用，实际 TEV 归属不清；(5) 与 Justin Sun 团队关联，中心化程度较高。如需进一步确认，建议通过浏览器直接操作 JustLend DApp 验证 staking 功能。",
+  "last_updated": "2026-02-05"
 }
