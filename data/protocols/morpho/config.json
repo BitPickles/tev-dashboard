@@ -11,7 +11,9 @@
     "address": "0x58D97B57BB95320F9a05dC918Aef65434969c2B2",
     "chain": "ethereum",
     "coingecko_id": "morpho",
-    "defillama_id": "morpho"
+    "defillama_id": "morpho",
+    "circulating_supply": 545775191.4464494,
+    "total_supply": 1000000000.0
   },
   "tev_mechanisms": [],
   "tev_summary": {
@@ -38,5 +40,5 @@
     }
   ],
   "notes": "Morpho 采用无协议费用模式，vault curators 可自行设定费用。MORPHO 代币目前仅有治理功能，未来可能通过治理启用协议层费用开关。",
-  "last_updated": "2026-02-02"
+  "last_updated": "2026-02-04"
 }

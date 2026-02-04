@@ -1,24 +1,36 @@
 {
   "protocol": "radiant",
-  "name": "Radiant",
-  "ticker": "RDNT",
-  "updated_at": "2026-02-02T18:11:54Z",
-  "data_range": {
-    "start": "2026-02-01",
-    "end": "2026-02-02",
-    "total_days": 1
+  "updated_at": "2026-02-04T18:41:12.338204+00:00",
+  "data_sources": {
+    "tvl": "DefiLlama",
+    "fees": "DefiLlama",
+    "market": "CoinGecko"
   },
   "latest_record": {
-    "date": "2026-02-02",
-    "price_usd": null,
-    "market_cap_usd": null,
-    "daily_fees_usd": null,
-    "daily_tev_usd": null
+    "date": "2026-02-04",
+    "price_usd": 0.00676482,
+    "market_cap_usd": 8700529,
+    "fdv_usd": 10100655,
+    "circulating_supply": 1292073967.0,
+    "total_supply": 1500000000.0,
+    "tvl_usd": 3749741,
+    "daily_fees_usd": 81,
+    "daily_tev_usd": 48.6,
+    "tev_ratio_used": 0.6
   },
   "metrics": {
-    "tev_ratio": 0,
-    "tev_yield_decimal": 0,
-    "tev_yield_pct": "0%"
+    "trailing_30d_fees_usd": 11938,
+    "trailing_30d_tev_usd": 7162.8,
+    "annualized_fees_usd": 143256,
+    "annualized_tev_usd": 85953.6,
+    "current_market_cap_usd": 8700529,
+    "tev_yield": "0.99%",
+    "tev_yield_decimal": 0.009879,
+    "tvl_usd": 3749741,
+    "mcap_tvl_ratio": 2.3203,
+    "calculated_at": "2026-02-04T18:41:12.338204+00:00"
   },
-  "notes": "Data collection in progress"
+  "fees_breakdown": {
+    "radiant-v2": 11938
+  }
 }

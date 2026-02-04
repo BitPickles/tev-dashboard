@@ -1,24 +1,36 @@
 {
   "protocol": "justlend",
-  "name": "JustLend",
-  "ticker": "JST",
-  "updated_at": "2026-02-02T18:11:54Z",
-  "data_range": {
-    "start": "2026-02-01",
-    "end": "2026-02-02",
-    "total_days": 1
+  "updated_at": "2026-02-04T18:40:02.514692+00:00",
+  "data_sources": {
+    "tvl": "DefiLlama",
+    "fees": "DefiLlama",
+    "market": "CoinGecko"
   },
   "latest_record": {
-    "date": "2026-02-02",
-    "price_usd": null,
-    "market_cap_usd": null,
-    "daily_fees_usd": null,
-    "daily_tev_usd": null
+    "date": "2026-02-04",
+    "price_usd": 0.04060279,
+    "market_cap_usd": 357931515,
+    "fdv_usd": 357931515,
+    "circulating_supply": 8815108920.581306,
+    "total_supply": 8815108920.581306,
+    "tvl_usd": 3147428010.736854,
+    "daily_fees_usd": 19836,
+    "daily_tev_usd": 0,
+    "tev_ratio_used": 0
   },
   "metrics": {
-    "tev_ratio": 0,
+    "trailing_30d_fees_usd": 716442,
+    "trailing_30d_tev_usd": 0,
+    "annualized_fees_usd": 8597304,
+    "annualized_tev_usd": 0,
+    "current_market_cap_usd": 357931515,
+    "tev_yield": "N/A",
     "tev_yield_decimal": 0,
-    "tev_yield_pct": "0%"
+    "tvl_usd": 3147428010.736854,
+    "mcap_tvl_ratio": 0.1137,
+    "calculated_at": "2026-02-04T18:40:02.514692+00:00"
   },
-  "notes": "Data collection in progress"
+  "fees_breakdown": {
+    "justlend": 716442
+  }
 }

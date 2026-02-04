@@ -11,7 +11,9 @@
     "address": "0x3082CC23568eA640225c2467653dB90e9250AaA0",
     "chain": "arbitrum",
     "coingecko_id": "radiant-capital",
-    "defillama_id": "radiant"
+    "defillama_id": "radiant",
+    "circulating_supply": 1292073967.0,
+    "total_supply": 1500000000.0
   },
   "tev_mechanisms": [
     {
@@ -59,5 +61,5 @@
     }
   ],
   "notes": "Radiant 是 TEV 机制设计较好的协议：锁定 RDNT-ETH LP 获得平台收入分成，且以蓝筹资产 (BTC, ETH, USDC) 而非协议代币支付，避免了代币抛压。但 2023 年遭遇两次安全事件后 TVL 大幅下降。",
-  "last_updated": "2026-02-02"
+  "last_updated": "2026-02-04"
 }

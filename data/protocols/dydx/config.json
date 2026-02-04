@@ -11,7 +11,9 @@
     "address": "0x92d6c1e31e14520e676a687f0a93788b716beff5",
     "chain": "ethereum",
     "coingecko_id": "dydx",
-    "defillama_id": "dydx"
+    "defillama_id": "dydx",
+    "circulating_supply": 29630256.481182758,
+    "total_supply": 824145891.8983325
   },
   "tev_mechanisms": [
     {
@@ -57,5 +59,5 @@
     }
   ],
   "notes": "dYdX V4 是 TEV 最强的协议之一：100% 交易费用分配给 stakers。作为独立的 Cosmos 应用链，DYDX 同时作为 gas 代币和质押代币，价值捕获非常直接。V3 (以太坊) 仍在运行但逐步迁移。",
-  "last_updated": "2026-02-02"
+  "last_updated": "2026-02-04"
 }

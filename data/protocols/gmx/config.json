@@ -11,7 +11,9 @@
     "address": "0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a",
     "chain": "arbitrum",
     "coingecko_id": "gmx",
-    "defillama_id": "gmx"
+    "defillama_id": "gmx",
+    "circulating_supply": 10386077.7236061,
+    "total_supply": 10386077.72591219
   },
   "tev_mechanisms": [
     {
@@ -19,7 +21,7 @@
       "name": "GMX Staking Rewards",
       "description": "30% 平台费用分配给质押的 GMX",
       "status": "active",
-      "ratio": 0.30,
+      "ratio": 0.3,
       "staking_contract": "0x908C4D94D34924765f1eDc22A1DD098397c59dD4",
       "source": {
         "type": "docs",
@@ -46,7 +48,7 @@
     },
     {
       "name": "DefiLlama",
-      "type": "api", 
+      "type": "api",
       "url": "https://api.llama.fi/protocol/gmx",
       "reliability": "high"
     }
