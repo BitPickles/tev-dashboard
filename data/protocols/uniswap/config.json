@@ -13,14 +13,27 @@
     "coingecko_id": "uniswap",
     "defillama_id": "uniswap-v3"
   },
-  "tev_mechanisms": [],
+  "tev_mechanisms": [
+    {
+      "type": "buyback_burn",
+      "name": "UNI Buyback & Burn",
+      "description": "100% 协议收入用于回购销毁 UNI",
+      "status": "active",
+      "start_date": "2025-12-28",
+      "source": {
+        "type": "governance",
+        "title": "Fee Switch Activation",
+        "url": "https://gov.uniswap.org"
+      }
+    }
+  ],
   "tev_summary": {
-    "fee_switch": "OFF",
-    "fee_switch_details": "费用开关关闭 - 所有手续费归 LP，UNI 持有者分红 = 0%",
-    "buybacks": "NONE",
+    "fee_switch": "ON",
+    "fee_switch_details": "2025-12-28 开启，100% 协议收入用于回购销毁",
+    "buybacks": "ACTIVE",
     "dividends": "NONE",
-    "burns": "NONE",
-    "primary_value_accrual": "无 - 费用开关关闭，UNI 仅为治理代币"
+    "burns": "ACTIVE",
+    "primary_value_accrual": "回购销毁 - 100% 协议收入用于 UNI 回购销毁"
   },
   "confidence": "high",
   "data_sources": [
@@ -31,6 +44,6 @@
       "reliability": "high"
     }
   ],
-  "notes": "Uniswap 拥有最高的协议收入（$1B+/年），但费用开关从未开启。所有交易手续费归 LP 所有，UNI 持有者无法分享任何收入。这是一个典型的「高收入零赋能」案例。",
-  "last_updated": "2026-02-02"
+  "notes": "【重要更新】Fee switch 于 2025-12-28 正式开启，100% 协议收入用于 UNI 回购销毁。Uniswap 是收入最高的 DeFi 协议之一（年化费用 $1B+）。协议抽成比例和实际 TEV 数据待补充。",
+  "last_updated": "2026-02-05"
 }
