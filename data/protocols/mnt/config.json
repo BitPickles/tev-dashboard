@@ -1,0 +1,111 @@
+{
+  "id": "mnt",
+  "name": "Mantle",
+  "ticker": "MNT",
+  "icon": "🟢",
+  "category": "l2_token",
+  "description": "Mantle Network (L2) 原生代币，前身为 BitDAO，与 Bybit 有关联",
+  "website": "https://www.mantle.xyz",
+  "docs": "https://docs.mantle.xyz",
+  "token": {
+    "address_ethereum": "0x3c3a81e81dc49a522a592e7622a7e711c06bf354",
+    "chain": "Ethereum / Mantle",
+    "coingecko_id": "mantle",
+    "note": "MNT 是 Mantle L2 原生 gas token，同时在 Ethereum 上存在"
+  },
+  "background": {
+    "origin": "BitDAO",
+    "transformation_date": "2023-07",
+    "bybit_relation": "BitDAO 由 Bybit 支持创立，转型为 Mantle 后关系延续",
+    "treasury": "Mantle 拥有 DeFi 领域最大的 DAO 国库之一"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "gas_token",
+      "name": "Mantle Network Gas",
+      "description": "MNT 作为 Mantle L2 原生 gas token",
+      "status": "active",
+      "note": "Gas 消耗创造代币需求，但不直接分配给持有者"
+    },
+    {
+      "type": "staking",
+      "name": "MNT Staking",
+      "description": "质押 MNT 参与网络安全和治理",
+      "status": "planned",
+      "note": "需要确认质押奖励机制"
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "N/A",
+    "fee_switch_details": "L2 gas 费用机制，非传统 fee switch",
+    "buybacks": "UNKNOWN",
+    "dividends": "UNKNOWN",
+    "burns": "UNKNOWN",
+    "primary_value_accrual": "待确认 - Gas 消耗 + 潜在的质押奖励"
+  },
+  "market_data": {
+    "price_usd": 0.61,
+    "circulating_supply": 3252944056,
+    "circulating_market_cap": 1981231322,
+    "total_supply": 6219316794,
+    "snapshot_date": "2026-02-05",
+    "data_source": "CoinGecko / Etherscan"
+  },
+  "calculated_tev": {
+    "tev_yield_percent": null,
+    "calculation_status": "UNABLE_TO_CALCULATE",
+    "reason": "MNT 的 TEV 机制不明确，与传统 CEX 平台币不同",
+    "note": "需要进一步调研 Mantle 的收入分配机制"
+  },
+  "data_gaps": [
+    {
+      "item": "TEV 机制",
+      "status": "需要调研",
+      "note": "MNT 是否有回购/销毁/分红机制？"
+    },
+    {
+      "item": "Bybit 关联",
+      "status": "需要澄清",
+      "note": "Bybit 收入是否有部分流向 MNT 持有者？"
+    },
+    {
+      "item": "质押奖励",
+      "status": "需要确认",
+      "note": "MNT staking 的收益来源和比例"
+    },
+    {
+      "item": "DAO 国库使用",
+      "status": "需要调研",
+      "note": "Mantle Treasury 的使用策略"
+    }
+  ],
+  "confidence": "low",
+  "data_sources": [
+    {
+      "name": "CoinGecko",
+      "type": "api",
+      "url": "https://api.coingecko.com/api/v3/coins/mantle",
+      "reliability": "high",
+      "data": ["price", "market_cap", "supply"]
+    },
+    {
+      "name": "Etherscan",
+      "type": "explorer",
+      "url": "https://etherscan.io/token/0x3c3a81e81dc49a522a592e7622a7e711c06bf354",
+      "reliability": "high"
+    },
+    {
+      "name": "Mantle Explorer",
+      "type": "explorer",
+      "url": "https://explorer.mantle.xyz",
+      "reliability": "high"
+    }
+  ],
+  "analyst_notes": "【2026-02-05 初步调研】\n\n## MNT 特殊情况说明\n\nMNT 与 BNB/OKB 不同，它不是传统意义上的 CEX 平台币：\n\n### 背景\n1. **前身 BitDAO**：由 Bybit 支持创立\n2. **2023 年转型**：BitDAO → Mantle\n3. **定位变化**：从 DAO 治理代币 → L2 原生代币\n\n### TEV 评估挑战\n1. ⚠️ 不是直接的 Bybit 平台币\n2. ⚠️ TEV 机制不如 BNB/OKB 明确\n3. ⚠️ 主要价值来自 L2 生态而非交易所收入\n\n### 需要向 Boss 确认\n1. MNT 是否应该按「L2 代币」而非「平台币」评估？\n2. Bybit 收入与 MNT 的具体关联是什么？\n3. 是否有官方的 TEV 机制文档？",
+  "questions_for_boss": [
+    "MNT 是否应按 L2 代币而非平台币评估？",
+    "Bybit 收入与 MNT 的具体关联？",
+    "MNT 是否有明确的回购/销毁/分红机制？"
+  ],
+  "last_updated": "2026-02-05"
+}

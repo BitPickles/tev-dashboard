@@ -1,0 +1,94 @@
+{
+  "id": "bgb",
+  "name": "Bitget Token",
+  "ticker": "BGB",
+  "icon": "🔵",
+  "category": "cex_token",
+  "description": "Bitget 交易所平台币",
+  "website": "https://www.bitget.com",
+  "docs": "https://www.bitget.com/bgb",
+  "token": {
+    "address_ethereum": "0x19de6b897ed14a376dda0fe53a5420d2ac828a28",
+    "chain": "Ethereum",
+    "coingecko_id": "bitget-token",
+    "total_supply": 2000000000,
+    "note": "合约支持 burn 功能"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "buyback_burn",
+      "name": "Quarterly Buy-Back & Burn",
+      "description": "Bitget 用平台收入回购并销毁 BGB",
+      "status": "active",
+      "frequency": "quarterly",
+      "source": {
+        "type": "official",
+        "title": "BGB Buy-Back & Burn",
+        "url": "https://www.bitget.com/bgb",
+        "note": "官网被 Cloudflare 拦截，需要确认具体比例"
+      }
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "N/A",
+    "fee_switch_details": "CEX 收入不直接链上分配",
+    "buybacks": "ACTIVE",
+    "dividends": "UNKNOWN",
+    "burns": "ACTIVE",
+    "burn_details": "季度回购销毁（具体比例待确认）",
+    "primary_value_accrual": "回购销毁 - 季度用平台收入回购销毁 BGB"
+  },
+  "market_data": {
+    "price_usd": 2.70,
+    "circulating_market_cap": 1888393751,
+    "total_supply": 2000000000,
+    "snapshot_date": "2026-02-05",
+    "data_source": "CoinGecko"
+  },
+  "calculated_tev": {
+    "tev_yield_percent": null,
+    "calculation_status": "UNABLE_TO_CALCULATE",
+    "reason": "Bitget 不公开财务数据，无法获取准确的销毁金额",
+    "note": "需要整理历史季度销毁公告来估算"
+  },
+  "data_gaps": [
+    {
+      "item": "季度销毁金额",
+      "status": "需要补充",
+      "note": "需要从 Bitget 公告整理历史数据"
+    },
+    {
+      "item": "销毁比例",
+      "status": "需要确认",
+      "note": "平台收入的多少比例用于回购销毁"
+    },
+    {
+      "item": "Bitget 收入",
+      "status": "不公开",
+      "note": "私营公司不披露财务数据"
+    }
+  ],
+  "confidence": "low",
+  "data_sources": [
+    {
+      "name": "CoinGecko",
+      "type": "api",
+      "url": "https://api.coingecko.com/api/v3/coins/bitget-token",
+      "reliability": "high",
+      "data": ["price", "market_cap"]
+    },
+    {
+      "name": "Etherscan",
+      "type": "explorer",
+      "url": "https://etherscan.io/token/0x19de6b897ed14a376dda0fe53a5420d2ac828a28",
+      "reliability": "high",
+      "data": ["supply", "burn_events"]
+    }
+  ],
+  "analyst_notes": "【2026-02-05 初步调研】\n\n## BGB TEV 评估\n\n### 已知信息\n1. **Bitget 平台币**：类似 BNB/OKB 的 CEX token\n2. **季度回购销毁**：有此机制，但具体比例待确认\n3. **合约支持销毁**：Etherscan 验证合约有 burn 功能\n\n### 数据限制\n1. ❌ Bitget 网站被 Cloudflare 拦截\n2. ❌ 无法获取官方文档\n3. ⚠️ 需要通过公告整理销毁数据\n\n### 与同类对比\n| 平台币 | 销毁机制 | 数据透明度 |\n|--------|----------|------------|\n| BNB | Auto-Burn | 中 |\n| OKB | 30% 收入 | 低 |\n| BGB | 待确认 | 低 |\n\n### 需要补充\n1. BGB 销毁比例\n2. 历史季度销毁数据\n3. 其他代币权益（Launchpad 等）",
+  "questions_for_boss": [
+    "BGB 销毁比例是多少？",
+    "是否有其他 TEV 机制（如 Launchpad 参与权）？"
+  ],
+  "last_updated": "2026-02-05"
+}

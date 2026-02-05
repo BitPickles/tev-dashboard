@@ -1,0 +1,94 @@
+{
+  "id": "hype",
+  "name": "Hyperliquid",
+  "ticker": "HYPE",
+  "icon": "💎",
+  "category": "perp_dex",
+  "description": "去中心化永续合约交易所，以高性能和强 TEV 机制著称",
+  "website": "https://hyperliquid.xyz",
+  "docs": "https://hyperfoundation.org",
+  "token": {
+    "chain": "Hyperliquid L1",
+    "coingecko_id": "hyperliquid"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "buyback",
+      "name": "Assistance Fund Buyback",
+      "description": "99% 永续合约交易费用流入 Assistance Fund，用于回购 HYPE",
+      "status": "active",
+      "ratio": 0.99,
+      "fee_source": "perp_trading_fees",
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "url": "https://api.llama.fi/protocol/hyperliquid"
+      }
+    }
+  ],
+  "fee_distribution": {
+    "perp_fees": {
+      "assistance_fund_buyback": "99%",
+      "hlp_vault": "1%",
+      "note": "2025年8月30日前 HLP 分成为 3%"
+    },
+    "spot_fees": {
+      "note": "现货交易费用分配机制待确认"
+    }
+  },
+  "tev_summary": {
+    "fee_switch": "ON",
+    "fee_switch_details": "99% 永续交易费用用于回购 HYPE",
+    "buybacks": "ACTIVE",
+    "dividends": "NONE",
+    "burns": "UNKNOWN",
+    "primary_value_accrual": "回购 - 99% 永续交易费用流入 Assistance Fund 回购 HYPE"
+  },
+  "market_data": {
+    "price_usd": 32.56,
+    "circulating_market_cap": 7762595982,
+    "snapshot_date": "2026-02-05",
+    "data_source": "CoinGecko"
+  },
+  "calculated_tev": {
+    "tev_yield_percent": null,
+    "calculation_status": "NEED_REVENUE_DATA",
+    "reason": "需要获取 Hyperliquid 交易费用数据来计算",
+    "note": "DefiLlama 有 dailyHoldersRevenue 数据，可用于计算"
+  },
+  "data_gaps": [
+    {
+      "item": "年化 holders revenue",
+      "status": "可从 DefiLlama 获取",
+      "note": "需要调用 fees API 获取历史数据"
+    },
+    {
+      "item": "回购是否伴随销毁",
+      "status": "需要确认",
+      "note": "DefiLlama 显示 burns: NONE，但描述说 buy back & burns"
+    }
+  ],
+  "confidence": "high",
+  "data_sources": [
+    {
+      "name": "CoinGecko",
+      "type": "api",
+      "url": "https://api.coingecko.com/api/v3/coins/hyperliquid",
+      "reliability": "high"
+    },
+    {
+      "name": "DefiLlama",
+      "type": "api",
+      "url": "https://api.llama.fi/protocol/hyperliquid",
+      "reliability": "high"
+    },
+    {
+      "name": "DefiLlama Fees",
+      "type": "api",
+      "url": "https://api.llama.fi/summary/fees/hyperliquid?dataType=dailyHoldersRevenue",
+      "reliability": "high"
+    }
+  ],
+  "analyst_notes": "【2026-02-05 调研】\n\n## HYPE TEV 机制 - 非常强\n\n### 核心机制\n**99% 永续交易费用 → Assistance Fund → 回购 HYPE**\n\n这是 DeFi 中最强的 TEV 机制之一！\n\n### 费用分配\n| 来源 | 分配 |\n|------|------|\n| 永续交易费 99% | Assistance Fund（回购 HYPE） |\n| 永续交易费 1% | HLP Vault 供应者 |\n| Builder 费用 | 全部给 Builder |\n\n### 与 GMX 对比\n| 协议 | 持有者分成 | 机制 |\n|------|------------|------|\n| Hyperliquid | 99% | 回购 |\n| GMX | 30% | 质押分红 |\n| dYdX | 75% | 回购 |\n\n### TEV Yield 计算\n需要从 DefiLlama 获取 dailyHoldersRevenue 数据\n- 市值: ~$7.76B\n- 假设年化 holders revenue $X\n- TEV Yield = X / $7.76B\n\n### 特点\n1. ✅ Fee switch 已开启\n2. ✅ 99% 超高分成比例\n3. ✅ 数据透明（DefiLlama 有完整数据）\n4. ⚠️ 代币较新（2024年底发布）\n\n### 数据置信度：HIGH",
+  "last_updated": "2026-02-05"
+}

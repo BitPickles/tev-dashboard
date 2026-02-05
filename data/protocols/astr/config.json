@@ -1,0 +1,123 @@
+{
+  "id": "astr",
+  "name": "Astar Network",
+  "ticker": "ASTR",
+  "icon": "⭐",
+  "category": "l1_blockchain",
+  "description": "Polkadot 生态多链智能合约平台，具有 Burndrop 销毁机制和产品收入回购",
+  "website": "https://astar.network",
+  "docs": "https://docs.astar.network",
+  "token": {
+    "chain": "Astar (Polkadot Parachain)",
+    "coingecko_id": "astar",
+    "max_supply": 10500000000,
+    "note": "2026年初更新的 tokenomics 设定最大供应量约 10.5B ASTR"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "burn",
+      "name": "Burndrop",
+      "description": "用户自愿锁定并销毁 ASTR，获得 Burndrop Passport (SBT)，减少流通供应",
+      "status": "active",
+      "source": {
+        "type": "blog",
+        "title": "Burndrop Proof of Conviction",
+        "url": "https://astar.network/blog/burndrop-poc-221"
+      }
+    },
+    {
+      "type": "burn",
+      "name": "Genesis Allocation Burn",
+      "description": "销毁 350M ASTR（创世分配的 5%）",
+      "status": "completed",
+      "amount": "350,000,000 ASTR",
+      "date": "2024-07",
+      "source": {
+        "type": "blog",
+        "title": "350 Million Token Burn Complete",
+        "url": "https://astar.network/blog/astar-network-s-350-million-token-burn-is-complete-44"
+      }
+    },
+    {
+      "type": "buyback",
+      "name": "Governance-Directed Buybacks",
+      "description": "产品和运营收入可用于治理引导的回购",
+      "status": "active",
+      "source": {
+        "type": "blog",
+        "title": "ASTR Value Capture 2026",
+        "url": "https://astar.network/blog/astr-value-capture-230"
+      }
+    }
+  ],
+  "revenue_sources": [
+    {
+      "name": "Astar Stack Products",
+      "description": "Astar Fi（DeFi 产品）+ Astar Guard（安全监控）",
+      "status": "active"
+    },
+    {
+      "name": "DeFi & Asset Management",
+      "description": "国库和基金会的 DeFi 运营、流动性部署、策展收入",
+      "status": "active"
+    },
+    {
+      "name": "Infrastructure Fees",
+      "description": "区块链基础设施相关收入",
+      "status": "active"
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "N/A",
+    "fee_switch_details": "L1 区块链，收入来自产品和 DeFi 运营",
+    "buybacks": "ACTIVE",
+    "buyback_details": "治理引导的回购，来自产品和运营收入",
+    "dividends": "NONE",
+    "burns": "ACTIVE",
+    "burn_details": "Burndrop 持续销毁 + 已完成 350M 创世销毁",
+    "primary_value_accrual": "销毁 + 回购 - Burndrop 机制 + 产品收入用于回购"
+  },
+  "market_data": {
+    "price_usd": 0.00708597,
+    "circulating_market_cap": 60299376,
+    "snapshot_date": "2026-02-05",
+    "data_source": "CoinGecko"
+  },
+  "calculated_tev": {
+    "tev_yield_percent": null,
+    "calculation_status": "NEED_REVENUE_DATA",
+    "reason": "需要获取 Astar Stack 产品收入和 Burndrop 销毁量数据",
+    "note": "产品处于早期，收入数据待补充"
+  },
+  "historical_burns": [
+    {
+      "date": "2024-07",
+      "amount_astr": 350000000,
+      "type": "genesis_burn",
+      "description": "创世分配 5% 销毁"
+    }
+  ],
+  "confidence": "medium",
+  "data_sources": [
+    {
+      "name": "CoinGecko",
+      "type": "api",
+      "url": "https://api.coingecko.com/api/v3/coins/astar",
+      "reliability": "high"
+    },
+    {
+      "name": "Astar Blog",
+      "type": "blog",
+      "url": "https://astar.network/blog",
+      "reliability": "high"
+    },
+    {
+      "name": "Astar Documentation",
+      "type": "documentation",
+      "url": "https://docs.astar.network",
+      "reliability": "high"
+    }
+  ],
+  "analyst_notes": "【2026-02-05 调研更新 - 补充回购/销毁机制】\n\n## ASTR TEV 机制（已确认）\n\n### 1. Burndrop 销毁机制 ✅\n- 用户自愿锁定 ASTR 并销毁\n- 获得 Burndrop Passport (SBT)\n- 2025年12月完成首次 PoC 测试\n- 设计用于持续减少供应量\n\n### 2. 创世分配销毁 ✅\n- 2024年7月销毁 350M ASTR（5%）\n- 社区治理投票通过\n\n### 3. 治理引导的回购 ✅\n- 产品收入（Astar Fi, Astar Guard）\n- DeFi 运营收入\n- 基础设施费用\n- 策展收入\n\n### 2026 价值捕获策略\n来自官方博客（2026-02-05）：\n- Astar Stack 产品产生收入\n- 收入分配由治理决定\n- 可用于回购或 Burndrop 销毁\n\n### TEV Yield 计算挑战\n- 产品处于早期阶段\n- 收入数据暂未公开\n- 需持续跟踪 Burndrop 销毁量\n\n### 与之前调研的差异\n❌ 之前：只看到 dApp Staking（通胀）\n✅ 现在：确认有 Burndrop + 回购机制",
+  "last_updated": "2026-02-05"
+}

@@ -1,0 +1,116 @@
+{
+  "id": "bnb",
+  "name": "BNB",
+  "ticker": "BNB",
+  "icon": "🟡",
+  "category": "cex_token",
+  "description": "Binance 交易所平台币，同时是 BNB Chain 原生代币",
+  "website": "https://www.binance.com",
+  "docs": "https://www.bnbchain.org/en",
+  "token": {
+    "address_bsc": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+    "chain": "BNB Chain",
+    "coingecko_id": "binancecoin",
+    "note": "BNB 是 BNB Chain 原生代币，WBNB 是包装版本"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "burn",
+      "name": "Quarterly Auto-Burn",
+      "description": "每季度根据 BNB 价格和区块数量自动销毁，目标将总供应量降至 100M BNB",
+      "status": "active",
+      "frequency": "quarterly",
+      "formula": "B = N × 1000 / P (B=销毁量, N=季度区块数, P=平均价格)",
+      "source": {
+        "type": "official",
+        "title": "BNB Auto-Burn",
+        "url": "https://www.binance.com/en/blog/ecosystem/introducing-bnb-autoburn-a-new-protocol-for-the-quarterly-bnb-burn-421499824684903205"
+      }
+    },
+    {
+      "type": "burn",
+      "name": "Real-Time Burn (BEP-95)",
+      "description": "每个区块按固定比例销毁部分 gas fee",
+      "status": "active",
+      "frequency": "per_block",
+      "source": {
+        "type": "bep",
+        "title": "BEP-95",
+        "url": "https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP95.md"
+      }
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "N/A",
+    "fee_switch_details": "CEX 收入不直接链上分配",
+    "buybacks": "NONE",
+    "dividends": "NONE",
+    "burns": "ACTIVE",
+    "burn_details": "季度 Auto-Burn + 实时 BEP-95 销毁",
+    "primary_value_accrual": "销毁 - 通过持续销毁减少总供应量，目标 100M BNB"
+  },
+  "market_data": {
+    "price_usd": 610.09,
+    "circulating_supply": 136359744,
+    "circulating_market_cap": 85309283181,
+    "target_supply": 100000000,
+    "snapshot_date": "2026-02-05",
+    "data_source": "CoinGecko"
+  },
+  "calculated_tev": {
+    "tev_yield_percent": null,
+    "calculation_status": "UNABLE_TO_CALCULATE",
+    "reason": "CEX 收入不公开透明，无法计算年化 holders revenue",
+    "alternative_metric": "年化销毁价值 / 市值",
+    "note": "需要获取季度销毁数据来估算"
+  },
+  "data_gaps": [
+    {
+      "item": "季度销毁金额",
+      "status": "需要补充",
+      "note": "Binance 官方公告有数据，但需要逐季整理"
+    },
+    {
+      "item": "实时销毁总量",
+      "status": "需要补充",
+      "note": "链上数据可查，但 bnbburn.info 页面 JS 渲染问题"
+    },
+    {
+      "item": "Binance 收入",
+      "status": "不公开",
+      "note": "作为私营公司，Binance 不公开财务数据"
+    }
+  ],
+  "confidence": "low",
+  "data_sources": [
+    {
+      "name": "CoinGecko",
+      "type": "api",
+      "url": "https://api.coingecko.com/api/v3/coins/binancecoin",
+      "reliability": "high",
+      "data": ["price", "market_cap", "supply"]
+    },
+    {
+      "name": "BNB Burn Info",
+      "type": "website",
+      "url": "https://www.bnbburn.info/",
+      "reliability": "medium",
+      "data": ["burn_history"],
+      "note": "需要浏览器渲染"
+    },
+    {
+      "name": "BscScan",
+      "type": "explorer",
+      "url": "https://bscscan.com",
+      "reliability": "high",
+      "data": ["supply", "transactions"]
+    }
+  ],
+  "analyst_notes": "【2026-02-05 初步调研】\n\n## BNB TEV 评估挑战\n\nBNB 作为 CEX 平台币，与 DeFi 协议有本质区别：\n\n### 已知机制\n1. **季度 Auto-Burn**：公式透明 (B = N × 1000 / P)\n2. **实时 BEP-95 销毁**：链上可验证\n\n### 数据限制\n1. ❌ Binance 作为私营公司，不公开财务数据\n2. ❌ 无法计算 holders revenue（销毁的 BNB 来源于 Binance 利润，但利润不公开）\n3. ⚠️ 只能基于销毁价值来估算 TEV\n\n### TEV Yield 估算方法（待确认）\n如果按销毁价值计算：\n- 假设年化销毁 ~2M BNB（需验证）\n- 2M × $610 = $1.22B\n- TEV Yield = $1.22B / $85B ≈ 1.4%\n\n### 需要 Boss 确认\n1. 是否接受用「销毁价值」替代「holders revenue」计算 TEV yield？\n2. 是否需要收集历史季度销毁数据？\n3. CEX 平台币是否需要单独的评估标准？",
+  "questions_for_boss": [
+    "CEX 平台币的 TEV 是否可以用「年化销毁价值 / 市值」来计算？",
+    "是否需要整理历史季度销毁数据？",
+    "数据不透明的情况下，置信度如何标注？"
+  ],
+  "last_updated": "2026-02-05"
+}

@@ -1,0 +1,101 @@
+{
+  "id": "okb",
+  "name": "OKB",
+  "ticker": "OKB",
+  "icon": "⚫",
+  "category": "cex_token",
+  "description": "OKX 交易所平台币，同时是 X Layer (L2) 原生 gas token",
+  "website": "https://www.okx.com",
+  "docs": "https://www.okx.com/web3",
+  "token": {
+    "address_ethereum": "0x75231f58b43240c9718dd58b4967c5114342a86c",
+    "chain": "X Layer / Ethereum",
+    "coingecko_id": "okb",
+    "note": "OKB 同时存在于 Ethereum 和 X Layer"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "buyback_burn",
+      "name": "Quarterly Buy-Back & Burn",
+      "description": "OKX 用平台收入的 30% 回购并销毁 OKB",
+      "status": "active",
+      "ratio": 0.30,
+      "frequency": "quarterly",
+      "source": {
+        "type": "official",
+        "title": "OKB Buy-Back & Burn",
+        "url": "https://www.okx.com/support/hc/articles/360102503411",
+        "note": "需要验证最新政策"
+      }
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "N/A",
+    "fee_switch_details": "CEX 收入不直接链上分配",
+    "buybacks": "ACTIVE",
+    "dividends": "NONE",
+    "burns": "ACTIVE",
+    "burn_details": "30% 平台收入用于季度回购销毁",
+    "primary_value_accrual": "回购销毁 - 季度用 30% 收入回购销毁 OKB"
+  },
+  "market_data": {
+    "price_usd": 71.07,
+    "circulating_supply": 21000000,
+    "circulating_market_cap": 1503276222,
+    "snapshot_date": "2026-02-05",
+    "data_source": "CoinGecko / Etherscan"
+  },
+  "calculated_tev": {
+    "tev_yield_percent": null,
+    "calculation_status": "UNABLE_TO_CALCULATE",
+    "reason": "OKX 作为私营公司不公开财务数据，无法获取准确的销毁金额",
+    "note": "需要整理历史季度销毁公告来估算"
+  },
+  "data_gaps": [
+    {
+      "item": "季度销毁金额",
+      "status": "需要补充",
+      "note": "OKX 会发布季度销毁公告，需要整理历史数据"
+    },
+    {
+      "item": "OKX 平台收入",
+      "status": "不公开",
+      "note": "私营公司不披露财务数据"
+    },
+    {
+      "item": "X Layer gas 消耗",
+      "status": "可链上查询",
+      "note": "作为 L2 gas token 的额外价值捕获"
+    }
+  ],
+  "confidence": "low",
+  "data_sources": [
+    {
+      "name": "CoinGecko",
+      "type": "api",
+      "url": "https://api.coingecko.com/api/v3/coins/okb",
+      "reliability": "high",
+      "data": ["price", "market_cap", "supply"]
+    },
+    {
+      "name": "Etherscan",
+      "type": "explorer",
+      "url": "https://etherscan.io/token/0x75231f58b43240c9718dd58b4967c5114342a86c",
+      "reliability": "high",
+      "data": ["supply", "holders"]
+    },
+    {
+      "name": "X Layer Explorer",
+      "type": "explorer",
+      "url": "https://www.okx.com/web3/explorer/xlayer",
+      "reliability": "high",
+      "data": ["gas_usage"]
+    }
+  ],
+  "analyst_notes": "【2026-02-05 初步调研】\n\n## OKB TEV 评估\n\n### 已知机制\n1. **季度回购销毁**：OKX 用 30% 平台收入回购销毁 OKB\n2. **X Layer Gas**：作为 L2 原生 token，gas 费用创造额外需求\n\n### 数据限制\n1. ❌ OKX 不公开财务数据\n2. ❌ 季度销毁金额需要从公告整理\n3. ⚠️ 无法精确计算 TEV yield\n\n### 供应量特点\n- 流通供应量固定在 ~21M OKB\n- 总供应量 ~300M，大部分锁定/未流通\n\n### 与 BNB 的区别\n- BNB 目标减少到 100M（持续销毁）\n- OKB 流通量相对固定，销毁主要影响总供应\n\n### 需要补充\n1. 历史季度销毁数据\n2. X Layer 的 gas 消耗数据",
+  "questions_for_boss": [
+    "OKB 30% 回购销毁比例是否为最新政策？",
+    "是否需要整理历史季度销毁数据？"
+  ],
+  "last_updated": "2026-02-05"
+}
