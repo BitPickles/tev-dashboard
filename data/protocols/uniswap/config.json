@@ -13,37 +13,110 @@
     "coingecko_id": "uniswap",
     "defillama_id": "uniswap-v3"
   },
+  "contracts": {
+    "ethereum": {
+      "tokenJar": "0xf38521f130fcCF29dB1961597bc5d2B60F995f85",
+      "firepit": "0x0D5Cd355e2aBEB8fb1552F56c965B867346d6721",
+      "v3FeeAdapter": "0x5E74C9f42EEd283bFf3744fBD1889d398d40867d",
+      "uniVesting": "0xCa046A83EDB78F74aE338bb5A291bF6FdAc9e1D2",
+      "burnAddress": "0x000000000000000000000000000000000000dEaD"
+    },
+    "unichain": {
+      "tokenJar": "0xD576BDF6b560079a4c204f7644e556DbB19140b5",
+      "firepit": "0xe0A780E9105aC10Ee304448224Eb4A2b11A77eeB"
+    }
+  },
   "tev_mechanisms": [
     {
       "type": "buyback_burn",
-      "name": "UNI Buyback & Burn",
-      "description": "100% 协议收入用于回购销毁 UNI",
+      "name": "UNI Burn via Firepit",
+      "description": "协议费用流入 TokenJar，通过 Firepit 合约销毁 UNI（发送至 0xdead）",
       "status": "active",
       "start_date": "2025-12-28",
+      "burn_threshold": "2000 UNI",
       "source": {
         "type": "governance",
-        "title": "Fee Switch Activation",
-        "url": "https://gov.uniswap.org"
+        "title": "UNIfication Proposal",
+        "url": "https://blog.uniswap.org/unification"
       }
+    },
+    {
+      "type": "treasury_burn",
+      "name": "Retroactive Treasury Burn",
+      "description": "一次性销毁 1 亿 UNI，模拟若 fee switch 从代币发行起就开启的效果",
+      "status": "executed",
+      "amount": "100,000,000 UNI"
+    },
+    {
+      "type": "sequencer_revenue",
+      "name": "Unichain Sequencer Fees",
+      "description": "Unichain 85% sequencer 收入（扣除 L1 数据成本和 15% 给 Optimism 后）用于 UNI 销毁",
+      "status": "active"
+    },
+    {
+      "type": "mev_internalization",
+      "name": "Protocol Fee Discount Auctions (PFDA)",
+      "description": "拍卖免协议费交易权，MEV 内化后用于 UNI 销毁",
+      "status": "planned"
+    },
+    {
+      "type": "aggregator_hooks",
+      "name": "Aggregator Hooks (v4)",
+      "description": "v4 hooks 聚合外部流动性并收取费用，用于 UNI 销毁",
+      "status": "planned"
     }
   ],
+  "fee_structure": {
+    "v2": {
+      "lp_fee": "0.25%",
+      "protocol_fee": "0.05%",
+      "note": "硬编码，全池统一"
+    },
+    "v3": {
+      "0.01%_pool": "protocol fee = 1/4 of LP fee",
+      "0.05%_pool": "protocol fee = 1/4 of LP fee",
+      "0.30%_pool": "protocol fee = 1/6 of LP fee",
+      "1.00%_pool": "protocol fee = 1/6 of LP fee"
+    }
+  },
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "2025-12-28 开启，100% 协议收入用于回购销毁",
+    "fee_switch_details": "2025-12-28 通过 UNIfication 提案开启",
     "buybacks": "ACTIVE",
     "dividends": "NONE",
     "burns": "ACTIVE",
-    "primary_value_accrual": "回购销毁 - 100% 协议收入用于 UNI 回购销毁"
+    "burn_mechanism": "Firepit 合约 → 0xdead 地址",
+    "primary_value_accrual": "多源 UNI 销毁 - 协议费 + Sequencer 收入 + PFDA + Aggregator hooks"
+  },
+  "market_data": {
+    "price_usd": 3.61,
+    "circulating_supply": 634247278,
+    "circulating_market_cap": 2292835462,
+    "total_supply": 1000000000,
+    "holders": 387973,
+    "snapshot_date": "2026-02-05"
   },
   "confidence": "high",
   "data_sources": [
     {
-      "name": "DefiLlama",
+      "name": "DefiLlama API",
       "type": "api",
       "url": "https://api.llama.fi/protocol/uniswap",
       "reliability": "high"
+    },
+    {
+      "name": "Uniswap Protocol Fees GitHub",
+      "type": "github",
+      "url": "https://github.com/Uniswap/protocol-fees",
+      "reliability": "high"
+    },
+    {
+      "name": "Etherscan",
+      "type": "explorer",
+      "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "reliability": "high"
     }
   ],
-  "notes": "【重要更新】Fee switch 于 2025-12-28 正式开启，100% 协议收入用于 UNI 回购销毁。Uniswap 是收入最高的 DeFi 协议之一（年化费用 $1B+）。协议抽成比例和实际 TEV 数据待补充。",
+  "analyst_notes": "【2026-02-05 调研更新】\n\n1. UNIfication 提案已通过执行，fee switch 于 2025-12-28 开启\n\n2. 销毁机制：\n   - TokenJar 收集所有链上的协议费用\n   - Firepit 合约执行销毁（发送至 0xdead）\n   - Mainnet Firepit: 0x0D5Cd355e2aBEB8fb1552F56c965B867346d6721\n   - 阈值：每次 release 需 2000 UNI\n\n3. 收入来源（已启用）:\n   - v2 协议费: 0.05%（已启用）\n   - v3 协议费: 1/4~1/6 of LP fee（部分池已启用）\n   - Unichain sequencer 收入 85%\n\n4. 收入来源（规划中）:\n   - v4 协议费\n   - PFDA (MEV 内化)\n   - Aggregator hooks\n\n5. 年化协议收入规模：\n   - Uniswap 年化费用 $1B+，假设 10-15% 归协议 → 约 $100M-$150M/年\n   - Unichain 年化 sequencer 收入约 $7.5M，85% 约 $6.4M\n\n6. 市值数据：流通市值约 $2.3B，假设年化 TEV $100M，yield 约 4.3%",
   "last_updated": "2026-02-05"
 }
