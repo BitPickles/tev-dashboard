@@ -20,15 +20,17 @@
   },
   "metrics": {
     "trailing_30d_fees_usd": 19317266,
-    "trailing_30d_tev_usd": 19317266.0,
+    "trailing_30d_tev_usd": 1250000,
     "annualized_fees_usd": 231807192,
-    "annualized_tev_usd": 231807192.0,
+    "annualized_tev_usd": 15000000,
     "current_market_cap_usd": 343511106,
-    "tev_yield": "67.48%",
-    "tev_yield_decimal": 0.674817,
+    "tev_yield": "4.37%",
+    "tev_yield_decimal": 0.0437,
     "tvl_usd": 6394743902.42865,
     "mcap_tvl_ratio": 0.0537,
-    "calculated_at": "2026-02-04T18:39:08.765661+00:00"
+    "calculated_at": "2026-02-05T09:26:00.000Z",
+    "manual_override": true,
+    "override_note": "年化回购约 $15M，原67.48%数据错误（误将全部费用计为TEV）"
   },
   "fees_breakdown": {
     "ether.fi-liquid": 16952514,
