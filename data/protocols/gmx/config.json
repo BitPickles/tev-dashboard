@@ -11,15 +11,13 @@
     "address": "0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a",
     "chain": "arbitrum",
     "coingecko_id": "gmx",
-    "defillama_id": "gmx",
-    "circulating_supply": 10386077.7236061,
-    "total_supply": 10386077.72591219
+    "defillama_id": "gmx"
   },
   "tev_mechanisms": [
     {
       "type": "fee_sharing",
       "name": "GMX Staking Rewards",
-      "description": "30% 平台费用分配给质押的 GMX",
+      "description": "30% 平台费用分配给质押的 GMX（以 ETH/AVAX 形式）",
       "status": "active",
       "ratio": 0.3,
       "staking_contract": "0x908C4D94D34924765f1eDc22A1DD098397c59dD4",
@@ -38,6 +36,22 @@
     "burns": "NONE",
     "primary_value_accrual": "分红 - 质押 GMX 获得 ETH/AVAX 分红"
   },
+  "market_data": {
+    "price_usd": 5.93,
+    "circulating_supply": 10386388,
+    "circulating_market_cap": 61633069,
+    "total_supply": 10685596,
+    "holders": 300830,
+    "snapshot_date": "2026-02-05"
+  },
+  "calculated_tev": {
+    "holders_revenue_30d_usd": 1208117,
+    "holders_revenue_annual_usd": 14497404,
+    "market_cap_usd": 61633069,
+    "tev_yield_percent": 23.5,
+    "calculation_date": "2026-02-05",
+    "note": "TEV yield = 年化 holders revenue / 流通市值"
+  },
   "confidence": "high",
   "data_sources": [
     {
@@ -49,10 +63,16 @@
     {
       "name": "DefiLlama",
       "type": "api",
-      "url": "https://api.llama.fi/protocol/gmx",
+      "url": "https://api.llama.fi/summary/fees/gmx?dataType=dailyHoldersRevenue",
+      "reliability": "high"
+    },
+    {
+      "name": "Arbiscan",
+      "type": "explorer",
+      "url": "https://arbiscan.io/token/0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a",
       "reliability": "high"
     }
   ],
-  "notes": "GMX 是永续合约赛道中代币赋能最好的协议之一。质押 GMX 可直接获得 ETH/AVAX 分红，不需要额外操作。",
-  "last_updated": "2026-02-02"
+  "analyst_notes": "【2026-02-05 调研核对】\n\n## TEV Yield 核对结果\n\n**TEV Yield ≈ 23.5% 是正确的**\n\n### 计算过程\n- 30天 holders revenue: $1,208,117\n- 年化: ~$14.5M\n- 流通市值: ~$61.6M\n- TEV Yield = $14.5M / $61.6M = 23.5%\n\n### 为什么 GMX TEV Yield 如此高？\n\n1. **市值较小**: GMX 流通市值仅 $61.6M，远低于其他 DeFi 协议\n2. **收入较高**: 永续合约交易所收入模式成熟，年化平台收入约 $48M（GMX stakers 获得 30% = $14.5M）\n3. **分配比例高**: 30% 平台费用直接分给 GMX 质押者\n\n### 与同类对比\n| 协议 | TEV Yield | 市值 |\n|------|-----------|------|\n| GMX | ~23.5% | $61M |\n| dYdX | 待核实 | 待核实 |\n| Hyperliquid | N/A | N/A |\n\n### 结论\n**数据正确**，GMX 确实是 DeFi 中 TEV yield 最高的协议之一。高 yield 主要因为市值小但收入高。\n\n如果前端显示的数值明显高于 23%（如 50%+），则需排查：\n- 是否错用了 staking market cap 而非 token market cap\n- 是否有数据重复计算",
+  "last_updated": "2026-02-05"
 }

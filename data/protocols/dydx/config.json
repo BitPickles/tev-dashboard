@@ -4,40 +4,54 @@
   "ticker": "DYDX",
   "icon": "📊",
   "category": "perpetuals",
-  "description": "去中心化永续合约交易平台，V4 版本迁移到独立的 dYdX Chain",
+  "description": "去中心化永续合约交易平台，V4 版本迁移到独立的 dYdX Chain (Cosmos appchain)",
   "website": "https://dydx.exchange",
   "docs": "https://docs.dydx.exchange",
   "token": {
-    "address": "0x92d6c1e31e14520e676a687f0a93788b716beff5",
-    "chain": "ethereum",
-    "coingecko_id": "dydx",
+    "address_ethereum": "0x92d6c1e31e14520e676a687f0a93788b716beff5",
+    "chain": "dydx-chain",
+    "coingecko_id": "dydx-chain",
     "defillama_id": "dydx",
-    "circulating_supply": 29630256.481182758,
-    "total_supply": 824145891.8983325
+    "note": "大部分代币已从以太坊迁移到 dYdX Chain"
   },
   "tev_mechanisms": [
     {
-      "type": "staking_reward",
-      "name": "dYdX Chain Staking",
-      "description": "在 dYdX Chain 质押 DYDX 获得交易费用分成",
+      "type": "buyback",
+      "name": "Protocol Revenue Buyback",
+      "description": "75% 协议净收入用于 DYDX 回购",
       "status": "active",
-      "start_date": "2023-10-26",
+      "ratio": 0.75,
       "source": {
         "type": "documentation",
-        "title": "dYdX Chain Staking",
-        "url": "https://docs.dydx.exchange/users/staking"
+        "title": "dYdX Buyback Program",
+        "url": "https://dydx.foundation/blog"
       }
     }
   ],
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "100% 交易费用分配给 DYDX stakers 和验证者",
-    "buybacks": "NONE",
-    "dividends": "ACTIVE",
+    "fee_switch_details": "75% 协议净收入用于 DYDX 回购（已从 staking rewards 模式转变）",
+    "buybacks": "ACTIVE",
+    "dividends": "NONE",
     "burns": "NONE",
-    "primary_value_accrual": "Staking 奖励 - dYdX V4 所有交易费用 100% 分配给链上 stakers"
+    "primary_value_accrual": "回购 - 75% 协议净收入用于 DYDX 回购"
   },
-  "confidence": "high",
+  "market_data": {
+    "price_usd": 0.11,
+    "circulating_market_cap": 90016535,
+    "total_supply": 1000000000,
+    "snapshot_date": "2026-02-05",
+    "data_source": "CoinGecko (dydx-chain)"
+  },
+  "calculated_tev": {
+    "holders_revenue_30d_usd": 381311,
+    "holders_revenue_annual_usd": 4575732,
+    "market_cap_usd": 90016535,
+    "tev_yield_percent": 5.1,
+    "calculation_date": "2026-02-05",
+    "note": "TEV yield = 年化 holders revenue / 流通市值"
+  },
+  "confidence": "medium",
   "data_sources": [
     {
       "name": "dYdX Documentation",
@@ -46,18 +60,18 @@
       "reliability": "high"
     },
     {
-      "name": "Mintscan dYdX",
-      "type": "onchain",
-      "url": "https://www.mintscan.io/dydx",
+      "name": "CoinGecko (dydx-chain)",
+      "type": "api",
+      "url": "https://api.coingecko.com/api/v3/coins/dydx-chain",
       "reliability": "high"
     },
     {
       "name": "DefiLlama",
       "type": "api",
-      "url": "https://api.llama.fi/protocol/dydx-v4",
+      "url": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
       "reliability": "high"
     }
   ],
-  "notes": "dYdX V4 是 TEV 最强的协议之一：100% 交易费用分配给 stakers。作为独立的 Cosmos 应用链，DYDX 同时作为 gas 代币和质押代币，价值捕获非常直接。V3 (以太坊) 仍在运行但逐步迁移。",
-  "last_updated": "2026-02-04"
+  "analyst_notes": "【2026-02-05 调研修正 - 重要】\n\n## 数据错误修正\n\n### 问题 1：流通供应量错误\n- ❌ 旧数据：29.6M DYDX (以太坊上的旧代币)\n- ✅ 正确：大部分代币已迁移到 dYdX Chain\n- ✅ 正确市值：~$90M（从 CoinGecko dydx-chain 获取）\n\n### 问题 2：TEV 机制已变更\n- ❌ 旧机制：100% 交易费用分配给 stakers\n- ✅ 新机制：**75% 协议净收入用于 DYDX 回购**\n- 来源：DefiLlama tokenRights 数据\n\n### 正确 TEV Yield 计算\n- 30天 holders revenue: $381,311\n- 年化: ~$4.58M\n- 市值: ~$90M\n- **TEV Yield ≈ 5.1%**\n\n### 为什么前端可能显示夸张数值？\n如果前端使用了以太坊上的 circulating supply ($3.3M 市值)，则：\n- 错误计算: $4.58M / $3.3M = **139%** ❌\n- 正确计算: $4.58M / $90M = **5.1%** ✅\n\n### 建议\n1. 前端需要使用 CoinGecko 的 dydx-chain ID 获取正确市值\n2. 更新 TEV 机制描述为 buyback\n3. 置信度降为 medium，因为需要进一步验证回购执行情况",
+  "last_updated": "2026-02-05"
 }

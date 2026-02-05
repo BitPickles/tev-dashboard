@@ -4,7 +4,7 @@
   "ticker": "CRV",
   "icon": "🌀",
   "category": "dex",
-  "description": "专注稳定币的去中心化交易所",
+  "description": "专注稳定币的去中心化交易所，ve 代币经济模型开创者",
   "website": "https://curve.fi",
   "docs": "https://curve.readthedocs.io",
   "token": {
@@ -17,10 +17,11 @@
     {
       "type": "fee_sharing",
       "name": "veCRV Fee Distribution",
-      "description": "50% 交易手续费分配给 veCRV 持有者",
+      "description": "50% 交易手续费分配给 veCRV 持有者（以 3CRV 形式）",
       "status": "active",
       "ratio": 0.50,
       "distribution_contract": "0xA464e6DCda8AC41e03616F95f4BC98a13b8922Dc",
+      "distribution_frequency": "weekly",
       "source": {
         "type": "docs",
         "title": "Curve Fee Distribution",
@@ -28,9 +29,17 @@
       }
     }
   ],
+  "lp_incentives": {
+    "type": "token_emission",
+    "name": "CRV Gauge Rewards",
+    "description": "LP 提供者通过 Gauge 系统获得 CRV 代币奖励",
+    "status": "active",
+    "note": "这是代币通胀激励，不计入 TEV（非协议收入分配）",
+    "governance": "veCRV 持有者投票决定各 Gauge 的 CRV 分配权重"
+  },
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "50% 交易手续费分配给 veCRV 持有者（以 3CRV 形式）",
+    "fee_switch_details": "50% 交易手续费分配给 veCRV 持有者（以 3CRV 形式），每周分发",
     "buybacks": "NONE",
     "dividends": "ACTIVE",
     "burns": "NONE",
@@ -40,7 +49,28 @@
     "name": "veCRV",
     "lock_contract": "0x5f3b5DfEb7B28CDbD7FAba78963EE202a494e2A2",
     "max_lock_period": "4 years",
-    "benefits": ["手续费分成", "投票权", "Gauge 激励加速"]
+    "benefits": [
+      "50% 协议手续费分成（3CRV）",
+      "治理投票权",
+      "Gauge 权重投票（决定 CRV 激励分配）",
+      "LP 挖矿加速（最高 2.5x boost）"
+    ]
+  },
+  "market_data": {
+    "price_usd": 0.24,
+    "circulating_supply": 1461799676,
+    "circulating_market_cap": 355558659,
+    "total_supply": 2349219713,
+    "holders": 97359,
+    "snapshot_date": "2026-02-05"
+  },
+  "calculated_tev": {
+    "holders_revenue_30d_usd": 970876,
+    "holders_revenue_annual_usd": 11650512,
+    "market_cap_usd": 355558659,
+    "tev_yield_percent": 3.28,
+    "calculation_date": "2026-02-05",
+    "note": "TEV yield = 年化 holders revenue / 流通市值"
   },
   "confidence": "high",
   "data_sources": [
@@ -53,10 +83,16 @@
     {
       "name": "DefiLlama",
       "type": "api",
-      "url": "https://api.llama.fi/protocol/curve-dex",
+      "url": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+      "reliability": "high"
+    },
+    {
+      "name": "Etherscan",
+      "type": "explorer",
+      "url": "https://etherscan.io/token/0xD533a949740bb3306d119CC777fa900bA034cd52",
       "reliability": "high"
     }
   ],
-  "notes": "Curve 是 ve 代币经济模型的开创者。veCRV 持有者每周可领取 3CRV 分红（通常是稳定币）。",
-  "last_updated": "2026-02-02"
+  "analyst_notes": "【2026-02-05 调研更新】\n\n## Curve 双重激励模式说明\n\nCurve 采用特殊的双重激励模式，需区分 TEV 和 LP 激励：\n\n### 1. TEV 部分（计入 TEV yield）\n- **50% 交易手续费** 分配给 **veCRV 持有者**\n- 以 3CRV（稳定币 LP token）形式每周分发\n- 分发合约: 0xA464e6DCda8AC41e03616F95f4BC98a13b8922Dc\n- 过去30天分红: ~$97万，年化约 $1165万\n\n### 2. LP 激励部分（不计入 TEV）\n- **CRV 代币奖励** 分配给 **LP 提供者**\n- 通过 Gauge 系统分发\n- 这是代币通胀/增发激励，不是协议收入分配\n- veCRV 持有者投票决定各池子的 CRV 奖励权重\n\n### TEV Yield 计算\n- 年化 holders revenue: ~$11.65M\n- CRV 流通市值: ~$355M\n- **TEV Yield ≈ 3.28%**\n\n### 为什么显示 0% 需排查\n前端显示 TEV yield 为 0% 是错误的，实际数据显示约 3.28%。\n可能原因：\n1. 前端未正确读取 calculated_tev 字段\n2. 数据管道问题\n3. 计算逻辑缺失\n\n建议检查前端 TEV yield 计算逻辑。",
+  "last_updated": "2026-02-05"
 }

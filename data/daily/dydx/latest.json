@@ -23,12 +23,14 @@
     "trailing_30d_tev_usd": 381311.0,
     "annualized_fees_usd": 4575732,
     "annualized_tev_usd": 4575732.0,
-    "current_market_cap_usd": 3741819,
-    "tev_yield": "122.29%",
-    "tev_yield_decimal": 1.222863,
+    "current_market_cap_usd": 90016535,
+    "tev_yield": "5.1%",
+    "tev_yield_decimal": 0.051,
     "tvl_usd": 189151204,
-    "mcap_tvl_ratio": 0.0198,
-    "calculated_at": "2026-02-04T18:38:45.224305+00:00"
+    "mcap_tvl_ratio": 0.0021,
+    "calculated_at": "2026-02-06T05:16:00Z",
+    "manual_override": true,
+    "override_note": "市值修正为 dYdX Chain 数据 $90M（原以太坊数据 $3.7M 错误），75% 协议收入用于回购"
   },
   "fees_breakdown": {
     "dydx-v4": 381311
