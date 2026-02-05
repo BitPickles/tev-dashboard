@@ -31,24 +31,26 @@
     },
     {
       "type": "staking_reward",
-      "name": "veCAKE Revenue Share",
+      "name": "veCAKE Revenue Share [已结束]",
       "description": "锁仓 CAKE 获得 veCAKE，参与协议收入分成和治理",
-      "status": "active",
+      "status": "inactive",
       "start_date": "2023-07-01",
+      "end_date": "2025-04-23",
+      "sunset_note": "Tokenomics 3.0 升级，veCAKE 于 2025-04-23 结束，收入转为全额回购销毁",
       "source": {
         "type": "documentation",
-        "title": "veCAKE System",
-        "url": "https://docs.pancakeswap.finance/products-and-features/vecake"
+        "title": "veCAKE Sunset",
+        "url": "https://docs.pancakeswap.finance/welcome-to-pancakeswap/vecake-sunset"
       }
     }
   ],
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "交易费用分配给 LP、回购销毁和 veCAKE 持有者",
+    "fee_switch_details": "veCAKE 已于 2025-04-23 结束，现全部回购销毁",
     "buybacks": "ACTIVE",
-    "dividends": "ACTIVE",
+    "dividends": "NONE",
     "burns": "ACTIVE",
-    "primary_value_accrual": "回购销毁 + veCAKE 分红 - 多重价值捕获机制"
+    "primary_value_accrual": "回购销毁 - 协议收入 15% 用于 CAKE 回购销毁（veCAKE 分红已结束）"
   },
   "confidence": "high",
   "data_sources": [
@@ -71,6 +73,6 @@
       "reliability": "high"
     }
   ],
-  "notes": "PancakeSwap 是 BNB Chain 生态最成熟的 DEX，CAKE 代币有完善的 TEV 机制：定期销毁、veCAKE 收入分成、IFO 参与等。是少数同时具备 buyback、burn 和 revenue share 的协议。",
+  "notes": "【重要更新】veCAKE 于 2025年4月23日 (UTC) 正式结束（Tokenomics 3.0）。Revenue Sharing (5%) 于 2025年5月7日结束，原分成收入现全部转为回购销毁，burn rate 从 10% 提升至 15%。当前 TEV 机制：全额回购销毁，无 ve 分红。",
   "last_updated": "2026-02-04"
 }

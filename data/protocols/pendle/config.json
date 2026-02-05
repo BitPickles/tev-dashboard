@@ -30,11 +30,11 @@
   ],
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "80% 协议收入回购并分配给 vePENDLE 持有者",
+    "fee_switch_details": "80% 协议收入回购并分配给 sPENDLE 持有者（原 vePENDLE 升级）",
     "buybacks": "ACTIVE",
     "dividends": "ACTIVE",
     "burns": "NONE",
-    "primary_value_accrual": "回购+分红 - 80% 协议收入转化为 PENDLE 回购，分配给 vePENDLE 持有者"
+    "primary_value_accrual": "回购+分红 - 80% 协议收入转化为 PENDLE 回购，分配给 sPENDLE 持有者"
   },
   "ve_token": {
     "name": "vePENDLE",
@@ -57,6 +57,6 @@
       "reliability": "high"
     }
   ],
-  "notes": "Pendle 是 TEV 表现最好的协议之一，80% 的收入直接回馈给持币者，且通过 vePENDLE 锁定机制增强长期持有激励。",
+  "notes": "【机制说明】Pendle 采用 sPENDLE 模式（原 vePENDLE 升级），80% 协议收入回购 PENDLE 并分配给 sPENDLE 持有者。sPENDLE 有 14天解锁冷却期，或支付 5% 费用即时赎回。是 TEV 表现最好的协议之一。（vePENDLE→sPENDLE 转换具体日期待补充）",
   "last_updated": "2026-02-02"
 }
