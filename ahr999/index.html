@@ -481,8 +481,10 @@
     let currentLang = 'zh';
     let chart = null;
     let series = {};
+    let zones = {};  // Store zone series for toggling
     let seriesVisible = { ahr999: true, price: false, cost: false, fitted: false };
     let isLogScale = true;  // Default to logarithmic scale
+    let historyLength = 0;  // Store for reset function
 
     function toggleLang() {
       currentLang = currentLang === 'zh' ? 'en' : 'zh';
@@ -526,8 +528,22 @@
       seriesVisible[name] = !seriesVisible[name];
       series[name].applyOptions({ visible: seriesVisible[name] });
       
+      // When toggling ahr999, also toggle the green/red zone backgrounds
+      if (name === 'ahr999') {
+        if (zones.green) zones.green.applyOptions({ visible: seriesVisible[name] });
+        if (zones.red) zones.red.applyOptions({ visible: seriesVisible[name] });
+      }
+      
       const legendItem = document.querySelector(`.legend-item[data-series="${name}"]`);
       legendItem.classList.toggle('disabled', !seriesVisible[name]);
+    }
+    
+    function resetChart() {
+      if (!chart || !historyLength) return;
+      chart.timeScale().setVisibleLogicalRange({
+        from: 0,
+        to: historyLength - 1,
+      });
     }
 
     function toggleScale() {
@@ -624,7 +640,7 @@
 
       // Zone backgrounds using baseline series
       // Green zone: 0 to 0.45 (gradient from bottom up)
-      const greenZone = chart.addBaselineSeries({
+      zones.green = chart.addBaselineSeries({
         baseValue: { type: 'price', price: 0.45 },
         topLineColor: 'transparent',
         topFillColor1: 'transparent',
@@ -636,10 +652,10 @@
         lastValueVisible: false,
         priceLineVisible: false,
       });
-      greenZone.setData(ahr999Data);
+      zones.green.setData(ahr999Data);
 
       // Red zone: above 1.2 (gradient from 1.2 upward)
-      const redZone = chart.addBaselineSeries({
+      zones.red = chart.addBaselineSeries({
         baseValue: { type: 'price', price: 1.2 },
         topLineColor: 'transparent',
         topFillColor1: 'rgba(239, 68, 68, 0.08)',
@@ -651,7 +667,7 @@
         lastValueVisible: false,
         priceLineVisible: false,
       });
-      redZone.setData(ahr999Data);
+      zones.red.setData(ahr999Data);
 
       // Generate future whitespace points (6 months = 180 days)
       const lastDateObj = new Date(lastDate);
@@ -749,15 +765,22 @@
         mode: LightweightCharts.PriceScaleMode.Logarithmic 
       });
 
+      // Store history length for reset function
+      historyLength = history.length;
+      
+      // Double-click to reset chart view
+      container.addEventListener('dblclick', () => {
+        resetChart();
+      });
+      
       // Default view: show ALL historical data (first date to last data point, NOT future)
-      // history.length is the original data length before adding future whitespace
-      // Use requestAnimationFrame to ensure chart is rendered first
-      requestAnimationFrame(() => {
+      // Use setTimeout to ensure chart is fully rendered first
+      setTimeout(() => {
         chart.timeScale().setVisibleLogicalRange({
           from: 0,
-          to: history.length - 1,
+          to: historyLength - 1,
         });
-      });
+      }, 50);
     }
 
     // Init
