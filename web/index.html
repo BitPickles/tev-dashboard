@@ -1171,10 +1171,10 @@
         icon: '🦄',
         category: 'dex',
         confidence: 'high',
-        tevStatus: 'none',
-        tevRatio: 0,
+        tevStatus: 'active',
+        tevRatio: 1.0,
         tvl: 4500000000,
-        note: 'Fee switch OFF - governance only'
+        note: '100% fee burn via Firepit + Unichain sequencer'
       },
       justlend: {
         name: 'JustLend',
@@ -1287,7 +1287,7 @@
         category: 'perpetuals',
         confidence: 'high',
         tevStatus: 'active',
-        tevRatio: 1.0,
+        tevRatio: 0.75,
         tvl: 189151204,
       },
       radiant: {
@@ -1391,30 +1391,21 @@
     }
 
     async function loadProtocolData() {
-      const protocolData = [];
-      
-      for (const [key, config] of Object.entries(PROTOCOLS)) {
+      // 并行加载所有协议数据以加速
+      const entries = Object.entries(PROTOCOLS);
+      const promises = entries.map(async ([key, config]) => {
         try {
           const response = await fetch(`../data/daily/${key}/latest.json`);
           if (!response.ok) throw new Error(`HTTP ${response.status}`);
           const data = await response.json();
-          
-          protocolData.push({
-            key,
-            ...config,
-            ...data,
-          });
+          return { key, ...config, ...data };
         } catch (error) {
           console.error(`Failed to load ${key}:`, error);
-          protocolData.push({
-            key,
-            ...config,
-            error: true,
-          });
+          return { key, ...config, error: true };
         }
-      }
+      });
       
-      return protocolData;
+      return Promise.all(promises);
     }
 
     async function calculate30dTotals(protocolKey) {
@@ -1632,11 +1623,13 @@
       try {
         const protocols = await loadProtocolData();
         
-        for (const protocol of protocols) {
-          const totals = await calculate30dTotals(protocol.key);
-          protocol.trailing30dFees = totals.totalFees;
-          protocol.trailing30dTev = totals.totalTev;
-        }
+        // 跳过 30 天计算以加速加载（数据已在 latest.json 中）
+        // 如需启用，取消注释以下代码：
+        // for (const protocol of protocols) {
+        //   const totals = await calculate30dTotals(protocol.key);
+        //   protocol.trailing30dFees = totals.totalFees;
+        //   protocol.trailing30dTev = totals.totalTev;
+        // }
         
         window.protocolData = protocols;
         

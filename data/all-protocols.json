@@ -1,0 +1,266 @@
+{
+  "generated_at": "2026-02-07T06:20:00Z",
+  "protocols": {
+    "aave": {
+      "name": "Aave",
+      "ticker": "AAVE",
+      "icon": "👻",
+      "category": "lending",
+      "confidence": "high",
+      "tevStatus": "active",
+      "tevRatio": 0.318,
+      "tvl": 29600000000
+    },
+    "lido": {
+      "name": "Lido",
+      "ticker": "LDO",
+      "icon": "🌊",
+      "category": "liquid_staking",
+      "confidence": "high",
+      "tevStatus": "none",
+      "tevRatio": 0,
+      "tvl": 20453052897
+    },
+    "eigenlayer": {
+      "name": "EigenLayer",
+      "ticker": "EIGEN",
+      "icon": "🔄",
+      "category": "restaking",
+      "confidence": "high",
+      "tevStatus": "none",
+      "tevRatio": 0,
+      "tvl": 9710144847
+    },
+    "etherfi": {
+      "name": "ether.fi",
+      "ticker": "ETHFI",
+      "icon": "🌊",
+      "category": "liquid_staking",
+      "confidence": "high",
+      "tevStatus": "active",
+      "tevRatio": 1.0,
+      "tvl": 6394743902
+    },
+    "ethena": {
+      "name": "Ethena",
+      "ticker": "ENA",
+      "icon": "💎",
+      "category": "yield",
+      "confidence": "high",
+      "tevStatus": "active",
+      "tevRatio": 1.0,
+      "tvl": 6535353327
+    },
+    "morpho": {
+      "name": "Morpho",
+      "ticker": "MORPHO",
+      "icon": "🦋",
+      "category": "lending",
+      "confidence": "high",
+      "tevStatus": "none",
+      "tevRatio": 0,
+      "tvl": 5964542718
+    },
+    "sky": {
+      "name": "Sky",
+      "ticker": "MKR",
+      "icon": "☁️",
+      "category": "lending",
+      "confidence": "high",
+      "tevStatus": "active",
+      "tevRatio": 0.70,
+      "tvl": 5200000000
+    },
+    "uniswap": {
+      "name": "Uniswap",
+      "ticker": "UNI",
+      "icon": "🦄",
+      "category": "dex",
+      "confidence": "high",
+      "tevStatus": "active",
+      "tevRatio": 1.0,
+      "tvl": 4500000000,
+      "note": "100% fee burn via Firepit + Unichain"
+    },
+    "justlend": {
+      "name": "JustLend",
+      "ticker": "JST",
+      "icon": "☀️",
+      "category": "lending",
+      "confidence": "low",
+      "tevStatus": "partial",
+      "tevRatio": 0.1,
+      "tvl": 3147428011
+    },
+    "spark": {
+      "name": "Spark",
+      "ticker": "SPK",
+      "icon": "✨",
+      "category": "lending",
+      "confidence": "medium",
+      "tevStatus": "none",
+      "tevRatio": 0,
+      "tvl": 4899085111
+    },
+    "maple": {
+      "name": "Maple",
+      "ticker": "SYRUP",
+      "icon": "🍁",
+      "category": "lending",
+      "confidence": "medium",
+      "tevStatus": "active",
+      "tevRatio": 0.3,
+      "tvl": 2477341241
+    },
+    "pancakeswap": {
+      "name": "PancakeSwap",
+      "ticker": "CAKE",
+      "icon": "🥞",
+      "category": "dex",
+      "confidence": "high",
+      "tevStatus": "active",
+      "tevRatio": 0.5,
+      "tvl": 2185582442
+    },
+    "kamino": {
+      "name": "Kamino",
+      "ticker": "KMNO",
+      "icon": "🌀",
+      "category": "lending",
+      "confidence": "high",
+      "tevStatus": "none",
+      "tevRatio": 0,
+      "tvl": 1988205710
+    },
+    "curve": {
+      "name": "Curve",
+      "ticker": "CRV",
+      "icon": "🌀",
+      "category": "dex",
+      "confidence": "high",
+      "tevStatus": "active",
+      "tevRatio": 0.50,
+      "tvl": 1900000000
+    },
+    "compound": {
+      "name": "Compound",
+      "ticker": "COMP",
+      "icon": "🏛️",
+      "category": "lending",
+      "confidence": "high",
+      "tevStatus": "none",
+      "tevRatio": 0,
+      "tvl": 1442440027
+    },
+    "jito": {
+      "name": "Jito",
+      "ticker": "JTO",
+      "icon": "⚡",
+      "category": "liquid_staking",
+      "confidence": "medium",
+      "tevStatus": "none",
+      "tevRatio": 0,
+      "tvl": 1296426251
+    },
+    "gmx": {
+      "name": "GMX",
+      "ticker": "GMX",
+      "icon": "📈",
+      "category": "perpetuals",
+      "confidence": "high",
+      "tevStatus": "active",
+      "tevRatio": 0.30,
+      "tvl": 312983643
+    },
+    "pendle": {
+      "name": "Pendle",
+      "ticker": "PENDLE",
+      "icon": "🔮",
+      "category": "yield",
+      "confidence": "high",
+      "tevStatus": "active",
+      "tevRatio": 0.80,
+      "tvl": 300000000
+    },
+    "dydx": {
+      "name": "dYdX",
+      "ticker": "DYDX",
+      "icon": "📊",
+      "category": "perpetuals",
+      "confidence": "high",
+      "tevStatus": "active",
+      "tevRatio": 1.0,
+      "tvl": 189151204
+    },
+    "radiant": {
+      "name": "Radiant",
+      "ticker": "RDNT",
+      "icon": "☀️",
+      "category": "lending",
+      "confidence": "high",
+      "tevStatus": "active",
+      "tevRatio": 0.60,
+      "tvl": 3749741
+    },
+    "bnb": {
+      "name": "BNB",
+      "ticker": "BNB",
+      "icon": "🟡",
+      "category": "cex",
+      "confidence": "low",
+      "tevStatus": "active",
+      "tevRatio": 1.0,
+      "tvl": 0
+    },
+    "okb": {
+      "name": "OKB",
+      "ticker": "OKB",
+      "icon": "🔵",
+      "category": "cex",
+      "confidence": "low",
+      "tevStatus": "active",
+      "tevRatio": 0.30,
+      "tvl": 0
+    },
+    "bgb": {
+      "name": "Bitget Token",
+      "ticker": "BGB",
+      "icon": "🔷",
+      "category": "cex",
+      "confidence": "low",
+      "tevStatus": "active",
+      "tevRatio": 1.0,
+      "tvl": 0
+    },
+    "hype": {
+      "name": "Hyperliquid",
+      "ticker": "HYPE",
+      "icon": "💧",
+      "category": "cex",
+      "confidence": "high",
+      "tevStatus": "active",
+      "tevRatio": 0.99,
+      "tvl": 0
+    },
+    "mnt": {
+      "name": "Mantle",
+      "ticker": "MNT",
+      "icon": "🟢",
+      "category": "cex",
+      "confidence": "low",
+      "tevStatus": "partial",
+      "tevRatio": 0,
+      "tvl": 0
+    },
+    "aster": {
+      "name": "Aster",
+      "ticker": "ASTER",
+      "icon": "⭐",
+      "category": "perpetuals",
+      "confidence": "high",
+      "tevStatus": "active",
+      "tevRatio": 1.0,
+      "tvl": 1091092274
+    }
+  }
+}
