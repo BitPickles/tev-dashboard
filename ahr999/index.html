@@ -738,7 +738,7 @@
         rightOffset: daysDiff,  // Extend x-axis 6 months into future
         minBarSpacing: 0.5,
         fixLeftEdge: true,
-        fixRightEdge: true,  // Limit scrolling - can't go beyond 6 months future
+        fixRightEdge: false,  // Allow dragging into future
       });
 
       // Default to logarithmic scale
