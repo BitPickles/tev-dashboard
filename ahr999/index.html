@@ -725,12 +725,20 @@
       });
       series.fitted.setData(fittedData);
 
+      // Calculate 6 months into the future
+      const lastDateObj = new Date(lastDate);
+      const futureDate = new Date(lastDateObj);
+      futureDate.setMonth(futureDate.getMonth() + 6);
+      
+      // Calculate rightOffset: number of daily bars for 6 months
+      const daysDiff = Math.round((futureDate - lastDateObj) / (24 * 60 * 60 * 1000));
+      
       // Time scale options
       chart.timeScale().applyOptions({
-        rightOffset: 40,  // Allow scrolling into future (visual space)
+        rightOffset: daysDiff,  // Extend x-axis 6 months into future
         minBarSpacing: 0.5,
         fixLeftEdge: true,
-        fixRightEdge: false,  // Allow scrolling beyond latest data
+        fixRightEdge: true,  // Limit scrolling - can't go beyond 6 months future
       });
 
       // Default to logarithmic scale
@@ -741,11 +749,8 @@
         mode: LightweightCharts.PriceScaleMode.Logarithmic 
       });
 
-      // Show full data range (all history)
-      chart.timeScale().setVisibleLogicalRange({
-        from: 0,
-        to: history.length - 1,
-      });
+      // Default view: show ALL data from beginning to 6 months into future
+      chart.timeScale().fitContent();
     }
 
     // Init
