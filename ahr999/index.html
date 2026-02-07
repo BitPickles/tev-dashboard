@@ -749,7 +749,7 @@
       // Time scale options
       chart.timeScale().applyOptions({
         rightOffset: 0,
-        minBarSpacing: 0.5,
+        minBarSpacing: 0.1,  // Allow zooming out to see all ~10 years of data
         fixLeftEdge: true,   // Lock left edge - can't scroll before first data
         fixRightEdge: false, // Allow scrolling to future 6 months
       });
