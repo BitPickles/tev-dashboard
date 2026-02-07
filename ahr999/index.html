@@ -653,6 +653,14 @@
       });
       redZone.setData(ahr999Data);
 
+      // Generate future whitespace points (6 months = 180 days)
+      const lastDateObj = new Date(lastDate);
+      for (let i = 1; i <= 180; i++) {
+        const d = new Date(lastDateObj);
+        d.setDate(d.getDate() + i);
+        ahr999Data.push({ time: d.toISOString().split('T')[0] }); // No value = whitespace
+      }
+      
       // AHR999 Series (right axis)
       series.ahr999 = chart.addLineSeries({
         color: '#3b82f6',
@@ -725,23 +733,6 @@
       });
       series.fitted.setData(fittedData);
 
-      // Generate future whitespace points to extend time axis by 6 months
-      const lastDateObj = new Date(lastDate);
-      const futureWhitespace = [];
-      for (let i = 1; i <= 180; i++) {
-        const d = new Date(lastDateObj);
-        d.setDate(d.getDate() + i);
-        futureWhitespace.push({ time: d.toISOString().split('T')[0] }); // No value = whitespace
-      }
-      
-      // Create a separate whitespace series to extend time axis
-      const whitespaceSeries = chart.addLineSeries({
-        priceScaleId: 'right',
-        lastValueVisible: false,
-        priceLineVisible: false,
-      });
-      whitespaceSeries.setData(futureWhitespace);
-      
       // Time scale options
       chart.timeScale().applyOptions({
         rightOffset: 5,  // Small padding after the future dates
@@ -759,10 +750,10 @@
       });
 
       // Default view: show ALL historical data (first date to last data point, NOT future)
-      const historyLength = history.length;
+      // history.length is the original data length before adding future whitespace
       chart.timeScale().setVisibleLogicalRange({
         from: 0,
-        to: historyLength - 1,
+        to: history.length - 1,
       });
     }
 
