@@ -725,12 +725,12 @@
       });
       series.fitted.setData(fittedData);
 
-      // Prevent scrolling beyond data range
+      // Time scale options
       chart.timeScale().applyOptions({
-        rightOffset: 5,
+        rightOffset: 180,  // Allow scrolling ~6 months into future
         minBarSpacing: 0.5,
         fixLeftEdge: true,
-        fixRightEdge: true,
+        fixRightEdge: false,  // Allow scrolling beyond latest data
       });
 
       // Show full data range (all history)
