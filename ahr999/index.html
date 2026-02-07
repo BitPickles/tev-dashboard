@@ -751,9 +751,12 @@
 
       // Default view: show ALL historical data (first date to last data point, NOT future)
       // history.length is the original data length before adding future whitespace
-      chart.timeScale().setVisibleLogicalRange({
-        from: 0,
-        to: history.length - 1,
+      // Use requestAnimationFrame to ensure chart is rendered first
+      requestAnimationFrame(() => {
+        chart.timeScale().setVisibleLogicalRange({
+          from: 0,
+          to: history.length - 1,
+        });
       });
     }
 
