@@ -19,7 +19,7 @@
     {
       "type": "buyback_accumulate",
       "name": "Withdrawal Revenue Buyback",
-      "description": "100% eETH 提现收入（慢速提现期间质押收益 + 快速提现 0.3% 费用）用于每月链上回购 ETHFI，分配给 sETHFI 质押者",
+      "description": "部分协议收入用于每周回购 ETHFI，分配给 sETHFI 质押者",
       "status": "active",
       "start_date": "2025-04-25",
       "contract": "0x7A6A41F353B3002751d94118aA7f4935dA39bB53",
@@ -46,7 +46,7 @@
   ],
   "tev_summary": {
     "fee_switch": "ACTIVE",
-    "fee_switch_details": "100% 提现收入用于 ETHFI 回购，分配给 sETHFI 质押者；另有 $50M 国库回购额度（ETHFI < $3 时）",
+    "fee_switch_details": "部分协议收入用于每周 ETHFI 回购，分配给 sETHFI 质押者",
     "buybacks": "ACTIVE",
     "dividends": "NONE",
     "burns": "NONE",

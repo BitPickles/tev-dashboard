@@ -17,25 +17,26 @@
   },
   "tev_mechanisms": [
     {
-      "type": "staking_reward",
-      "name": "SYRUP Staking",
-      "description": "质押 SYRUP 获得协议费用分成",
+      "type": "buyback",
+      "name": "SYRUP Buyback Program",
+      "description": "20% 协议收入用于回购 SYRUP 并分配给质押者",
       "status": "active",
+      "ratio": 0.20,
       "start_date": "2024-05-01",
       "source": {
         "type": "governance",
-        "title": "Maple Tokenomics V2 - MPL to SYRUP Migration",
+        "title": "MIP-019 SYRUP Buyback",
         "url": "https://maple.finance/news/introducing-syrup"
       }
     }
   ],
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "协议费用分配给 SYRUP stakers",
-    "buybacks": "NONE",
-    "dividends": "ACTIVE",
+    "fee_switch_details": "20% 协议收入用于回购 SYRUP 并分配给质押者",
+    "buybacks": "ACTIVE",
+    "dividends": "NONE",
     "burns": "NONE",
-    "primary_value_accrual": "Staking 奖励 - 质押 SYRUP 获得协议借贷费用分成"
+    "primary_value_accrual": "回购分配 - 20% 协议收入回购 SYRUP 并分配给质押者"
   },
   "confidence": "medium",
   "data_sources": [

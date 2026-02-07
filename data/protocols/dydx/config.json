@@ -18,7 +18,7 @@
     {
       "type": "buyback",
       "name": "Protocol Revenue Buyback",
-      "description": "75% 协议净收入用于 DYDX 回购",
+      "description": "75% 净协议费用用于 DYDX 回购",
       "status": "active",
       "ratio": 0.75,
       "source": {
@@ -30,11 +30,11 @@
   ],
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "75% 协议净收入用于 DYDX 回购（已从 staking rewards 模式转变）",
+    "fee_switch_details": "75% 净协议费用用于 DYDX 回购",
     "buybacks": "ACTIVE",
     "dividends": "NONE",
     "burns": "NONE",
-    "primary_value_accrual": "回购 - 75% 协议净收入用于 DYDX 回购"
+    "primary_value_accrual": "回购 - 75% 净协议费用用于 DYDX 回购"
   },
   "market_data": {
     "price_usd": 0.11,

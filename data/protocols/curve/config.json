@@ -17,7 +17,7 @@
     {
       "type": "fee_sharing",
       "name": "veCRV Fee Distribution",
-      "description": "50% 交易手续费分配给 veCRV 持有者（以 3CRV 形式）",
+      "description": "50% 交易手续费分配给 veCRV 持有者（以 crvUSD 形式）",
       "status": "active",
       "ratio": 0.50,
       "distribution_contract": "0xA464e6DCda8AC41e03616F95f4BC98a13b8922Dc",
@@ -39,11 +39,11 @@
   },
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "50% 交易手续费分配给 veCRV 持有者（以 3CRV 形式），每周分发",
+    "fee_switch_details": "50% 交易手续费分配给 veCRV 持有者（以 crvUSD 形式），每周分发",
     "buybacks": "NONE",
     "dividends": "ACTIVE",
     "burns": "NONE",
-    "primary_value_accrual": "分红 - veCRV 持有者每周获得 3CRV 分红"
+    "primary_value_accrual": "分红 - veCRV 持有者每周获得 crvUSD 分红"
   },
   "ve_token": {
     "name": "veCRV",
