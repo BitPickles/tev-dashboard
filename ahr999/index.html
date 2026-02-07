@@ -696,22 +696,18 @@
       });
       series.fitted.setData(fittedData);
 
-      // Fit content and set time range limits
-      chart.timeScale().fitContent();
-      
-      // Limit scrolling to data range
-      chart.timeScale().setVisibleRange({
-        from: firstDate,
-        to: lastDate,
-      });
-      
       // Prevent scrolling beyond data range
       chart.timeScale().applyOptions({
         rightOffset: 5,
-        barSpacing: 3,
-        minBarSpacing: 1,
+        minBarSpacing: 0.5,
         fixLeftEdge: true,
         fixRightEdge: true,
+      });
+
+      // Show full data range (all history)
+      chart.timeScale().setVisibleLogicalRange({
+        from: 0,
+        to: history.length - 1,
       });
     }
 
