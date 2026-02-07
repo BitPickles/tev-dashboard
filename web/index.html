@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TEV Dashboard — DeFi 协议估值</title>
+  <title>TEV Dashboard — 加密协议估值</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -269,6 +269,28 @@
       border-bottom: 1px solid var(--border);
     }
 
+    th.sortable {
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.15s;
+    }
+    th.sortable:hover {
+      color: var(--accent);
+    }
+    th.sortable::after {
+      content: '';
+      margin-left: 4px;
+      opacity: 0.3;
+    }
+    th.sortable.sorted::after {
+      opacity: 1;
+    }
+    th.sortable.sorted.asc::after {
+      content: ' ↑';
+    }
+    th.sortable.sorted.desc::after {
+      content: ' ↓';
+    }
     th.sorted {
       color: var(--accent);
     }
@@ -747,8 +769,8 @@
   <main>
     <section class="hero">
       <div class="container">
-        <h1 data-i18n="hero.title">DeFi 协议估值仪表盘</h1>
-        <p data-i18n="hero.subtitle">追踪协议收入真正流向代币持有者的比例。TEV Yield 是 DeFi 版的「股息率」。</p>
+        <h1 data-i18n="hero.title">加密协议估值仪表盘</h1>
+        <p data-i18n="hero.subtitle">追踪协议收入真正流向代币持有者的比例。TEV Yield 是加密版的「股息率」。</p>
       </div>
     </section>
 
@@ -780,6 +802,8 @@
               <button class="filter-btn active" data-filter="all" data-i18n="filter.all">全部</button>
               <button class="filter-btn" data-filter="lending" data-i18n="filter.lending">借贷</button>
               <button class="filter-btn" data-filter="dex" data-i18n="filter.dex">DEX</button>
+              <button class="filter-btn" data-filter="cex" data-i18n="filter.cex">CEX</button>
+              <button class="filter-btn" data-filter="perpetuals" data-i18n="filter.perps">Perps</button>
               <button class="filter-btn" data-filter="yield" data-i18n="filter.yield">收益</button>
             </div>
           </div>
@@ -792,11 +816,12 @@
               <tr>
                 <th style="width: 50px;">#</th>
                 <th data-i18n="th.protocol">协议</th>
-                <th class="text-right" data-i18n="th.tvl">TVL</th>
-                <th class="text-right" data-i18n="th.tevStatus">TEV 状态</th>
-                <th class="text-right" data-i18n="th.tevRatio">分配比例</th>
-                <th class="text-right" data-i18n="th.mcap">市值</th>
-                <th class="text-right sorted" data-i18n="th.yield">TEV Yield ↓</th>
+                <th class="text-right sortable" data-sort="tvl" data-i18n="th.tvl">TVL</th>
+                <th class="text-right sortable sorted desc" data-sort="tevStatus" data-i18n="th.tevStatus">TEV 状态</th>
+                <th class="text-right sortable" data-sort="tevRatio" data-i18n="th.tevRatio">分配比例</th>
+                <th class="text-right sortable" data-sort="mcap" data-i18n="th.mcap">市值</th>
+                <th class="text-right sortable" data-sort="earningYield" data-i18n="th.earningYield">收益率</th>
+                <th class="text-right sortable" data-sort="tevYield" data-i18n="th.yield">TEV Yield</th>
                 <th class="text-right" data-i18n="th.confidence">可信度</th>
               </tr>
             </thead>
@@ -813,7 +838,7 @@
           <div class="intro-card">
             <h2><span class="icon">📊</span> <span data-i18n="intro.what.title">什么是 TEV?</span></h2>
             <p data-i18n="intro.what.p1">
-              <strong>TEV (Token Empowerment Value)</strong>，即「代币赋能价值」，是衡量 DeFi 协议向代币持有者分配价值能力的核心指标。
+              <strong>TEV (Token Empowerment Value)</strong>，即「代币赋能价值」，是衡量加密协议向代币持有者分配价值能力的核心指标。
             </p>
             <p data-i18n="intro.what.p2">
               不同于传统的「协议收入」，TEV 只计算真正赋能给代币持有者的那部分——包括回购销毁、质押分红、治理激励等。
@@ -831,7 +856,7 @@
               加密行业发展了这么多年，大部分 Token 依然是「空气」——持有它们除了投机，几乎没有任何实际价值。这也是为什么越来越多的投资者对「持币」失去信心。
             </p>
             <p data-i18n="intro.why.p2">
-              但并非所有项目都是如此。一些真正优秀的 DeFi 协议，正在通过回购、分红、销毁等方式，将协议收入回馈给代币持有者——这才是「持币者权益」应有的样子。
+              但并非所有项目都是如此。一些真正优秀的加密协议，正在通过回购、分红、销毁等方式，将协议收入回馈给代币持有者——这才是「持币者权益」应有的样子。
             </p>
             <p data-i18n="intro.why.p3">
               TEV 指标的核心目标，就是帮你筛选出那些真正在为持币者创造价值的协议，而不是只会画饼的「空气项目」。用数据说话，让赋能可量化。
@@ -849,11 +874,11 @@
               <div class="author-avatar">🔮</div>
               <div class="author-meta">
                 <h3>3D</h3>
-                <div class="tagline" data-i18n="author.tagline">8年加密老兵 | DeFi 实战派</div>
+                <div class="tagline" data-i18n="author.tagline">DeFi 实战派 | TEV 框架创建者</div>
               </div>
             </div>
             <p class="author-bio" data-i18n="author.bio">
-              专注 DeFi、链上套利及低风险机会的探索与实战。经历过行业的多轮牛熊，相信「活得久」比「赚得多」更重要。TEV 指标体系是我在实践中提炼的估值框架，希望能帮助更多人识别真正为持币者创造价值的项目，少踩坑、多赚钱。我在 YouTube「3D 加密频道」持续分享 DeFi 研究和实战心得，欢迎订阅交流。
+              专注 DeFi、链上套利及低风险机会的探索与实战。TEV（代币赋能价值）指标体系是我在实践中提炼的估值框架——用「股东回报」视角审视加密项目，区分真正回馈持币者的优质协议和只会画饼的空气项目。相信「活得久」比「赚得多」更重要，希望这个工具能帮助更多人做出理性投资决策。我在 YouTube「3D 加密频道」持续分享 DeFi 研究和实战心得，欢迎订阅交流。
             </p>
             <div class="author-links">
               <a href="https://x.com/22333D" target="_blank" class="author-link">
@@ -923,19 +948,19 @@
         'nav.protocols': '协议数据',
         'nav.methodology': '方法论',
         'nav.about': '关于',
-        'hero.title': 'DeFi 协议估值仪表盘',
-        'hero.subtitle': '追踪协议收入真正流向代币持有者的比例。TEV Yield 是 DeFi 版的「股息率」。',
+        'hero.title': '加密协议估值仪表盘',
+        'hero.subtitle': '追踪协议收入真正流向代币持有者的比例。TEV Yield 是加密版的「股息率」。',
         'intro.what.title': '什么是 TEV?',
-        'intro.what.p1': '<strong>TEV (Token Empowerment Value)</strong>，即「代币赋能价值」，是衡量 DeFi 协议向代币持有者分配价值能力的核心指标。',
+        'intro.what.p1': '<strong>TEV (Token Empowerment Value)</strong>，即「代币赋能价值」，是衡量加密协议向代币持有者分配价值能力的核心指标。',
         'intro.what.p2': '不同于传统的「协议收入」，TEV 只计算真正赋能给代币持有者的那部分——包括回购销毁、质押分红、治理激励等。',
         'intro.what.p3': '这个比率类似传统股票的「股息率」，帮助投资者用股东回报视角评估协议价值。',
         'intro.why.title': '为什么需要这个指标?',
         'intro.why.p1': '加密行业发展了这么多年，大部分 Token 依然是「空气」——持有它们除了投机，几乎没有任何实际价值。这也是为什么越来越多的投资者对「持币」失去信心。',
-        'intro.why.p2': '但并非所有项目都是如此。一些真正优秀的 DeFi 协议，正在通过回购、分红、销毁等方式，将协议收入回馈给代币持有者——这才是「持币者权益」应有的样子。',
+        'intro.why.p2': '但并非所有项目都是如此。一些真正优秀的加密协议，正在通过回购、分红、销毁等方式，将协议收入回馈给代币持有者——这才是「持币者权益」应有的样子。',
         'intro.why.p3': 'TEV 指标的核心目标，就是帮你筛选出那些真正在为持币者创造价值的协议，而不是只会画饼的「空气项目」。用数据说话，让赋能可量化。',
         'video.title': '📺 TEV 框架详解',
-        'author.tagline': '8年加密老兵 | DeFi 实战派',
-        'author.bio': '专注 DeFi、链上套利及低风险机会的探索与实战。经历过行业的多轮牛熊，相信「活得久」比「赚得多」更重要。TEV 指标体系是我在实践中提炼的估值框架，希望能帮助更多人识别真正为持币者创造价值的项目，少踩坑、多赚钱。我在 YouTube「3D 加密频道」持续分享 DeFi 研究和实战心得，欢迎订阅交流。',
+        'author.tagline': 'DeFi 实战派 | TEV 框架创建者',
+        'author.bio': '专注 DeFi、链上套利及低风险机会的探索与实战。TEV（代币赋能价值）指标体系是我在实践中提炼的估值框架——用「股东回报」视角审视加密项目，区分真正回馈持币者的优质协议和只会画饼的空气项目。相信「活得久」比「赚得多」更重要，希望这个工具能帮助更多人做出理性投资决策。我在 YouTube「3D 加密频道」持续分享 DeFi 研究和实战心得，欢迎订阅交流。',
         'author.youtube': '3D 加密频道',
         'stats.protocols': '追踪协议数',
         'stats.mcap': '总市值',
@@ -946,8 +971,11 @@
         'filter.all': '全部',
         'filter.lending': '借贷',
         'filter.dex': 'DEX',
+        'filter.cex': 'CEX',
+        'filter.perps': 'Perps',
         'filter.yield': '收益',
         'th.protocol': '协议',
+        'th.earningYield': '收益率',
         'th.tvl': 'TVL',
         'th.tevStatus': 'TEV 状态',
         'th.tevRatio': '分配比例',
@@ -955,7 +983,7 @@
         'th.price': '价格',
         'th.fees': '30日费用',
         'th.tev': '30日 TEV',
-        'th.yield': 'TEV Yield ↓',
+        'th.yield': 'TEV Yield',
         'th.days': '数据天数',
         'th.confidence': '可信度',
         'tevStatus.active': '活跃',
@@ -976,10 +1004,10 @@
         'nav.protocols': 'Protocols',
         'nav.methodology': 'Methodology',
         'nav.about': 'About',
-        'hero.title': 'DeFi Protocol Valuation Dashboard',
-        'hero.subtitle': 'Track how much protocol revenue actually flows to token holders. TEV Yield is the dividend yield for DeFi.',
+        'hero.title': 'Crypto Protocol Valuation Dashboard',
+        'hero.subtitle': 'Track how much protocol revenue actually flows to token holders. TEV Yield is the dividend yield for crypto.',
         'intro.what.title': 'What is TEV?',
-        'intro.what.p1': '<strong>TEV (Token Empowerment Value)</strong> measures how much value a DeFi protocol distributes to its token holders.',
+        'intro.what.p1': '<strong>TEV (Token Empowerment Value)</strong> measures how much value a crypto protocol distributes to its token holders.',
         'intro.what.p2': 'Unlike "protocol revenue", TEV only counts value that actually empowers token holders — including buybacks, staking rewards, and governance incentives.',
         'intro.what.p3': 'This ratio is similar to traditional dividend yield, helping investors evaluate protocols from a shareholder return perspective.',
         'intro.why.title': 'Why This Metric?',
@@ -987,8 +1015,8 @@
         'intro.why.p2': 'But not all projects are the same. Some truly excellent DeFi protocols are giving back to token holders through buybacks, dividends, and burns — this is what "token holder equity" should look like.',
         'intro.why.p3': 'The core goal of TEV is to help you identify protocols that genuinely create value for holders, not just projects that make empty promises. Let data speak, make empowerment measurable.',
         'video.title': '📺 TEV Framework Explained',
-        'author.tagline': '8-Year Crypto Veteran | DeFi Practitioner',
-        'author.bio': 'Focused on DeFi, on-chain arbitrage, and low-risk opportunity exploration. Having survived multiple bull and bear cycles, I believe "staying alive" matters more than "getting rich quick." The TEV framework is a valuation system I\'ve refined through practice, hoping to help more people identify projects that truly create value for holders — fewer pitfalls, more profits. I share DeFi research and insights on my YouTube channel "3D Crypto" — subscribe and join the conversation.',
+        'author.tagline': 'DeFi Practitioner | TEV Framework Creator',
+        'author.bio': 'Focused on DeFi, on-chain arbitrage, and low-risk opportunities. The TEV (Token Empowerment Value) framework is a valuation system I developed to evaluate crypto projects from a shareholder return perspective — distinguishing protocols that genuinely reward token holders from those that only make empty promises. I believe "staying alive" matters more than "getting rich quick," and hope this tool helps more people make rational investment decisions. Subscribe to my YouTube channel "3D Crypto" for DeFi research and insights.',
         'author.youtube': '3D Crypto Channel',
         'stats.protocols': 'Protocols Tracked',
         'stats.mcap': 'Total Market Cap',
@@ -999,8 +1027,11 @@
         'filter.all': 'All',
         'filter.lending': 'Lending',
         'filter.dex': 'DEX',
+        'filter.cex': 'CEX',
+        'filter.perps': 'Perps',
         'filter.yield': 'Yield',
         'th.protocol': 'Protocol',
+        'th.earningYield': 'Earning Yield',
         'th.tvl': 'TVL',
         'th.tevStatus': 'TEV Status',
         'th.tevRatio': 'Distribution',
@@ -1008,7 +1039,7 @@
         'th.price': 'Price',
         'th.fees': '30d Fees',
         'th.tev': '30d TEV',
-        'th.yield': 'TEV Yield ↓',
+        'th.yield': 'TEV Yield',
         'th.days': 'Data Days',
         'th.confidence': 'Confidence',
         'tevStatus.active': 'Active',
@@ -1351,23 +1382,88 @@
       }
     }
 
-    function renderTable(protocols, filter = 'all') {
+    // ── 排序状态 ──────────────────────────────
+    let currentSort = { field: 'tevStatus', dir: 'desc' }; // 默认: TEV状态降序 (active > partial > none)
+    let currentFilter = 'all';
+
+    // TEV 状态排序权重
+    const TEV_STATUS_ORDER = { active: 3, partial: 2, none: 1 };
+
+    function getSortValue(protocol, field) {
+      switch (field) {
+        case 'tvl': return protocol.tvl || 0;
+        case 'tevStatus': return TEV_STATUS_ORDER[protocol.tevStatus] || 0;
+        case 'tevRatio': return protocol.tevRatio || 0;
+        case 'mcap': return protocol.latest_record?.market_cap_usd || 0;
+        case 'earningYield': {
+          const mcap = protocol.latest_record?.market_cap_usd || 0;
+          const annualFees = (protocol.metrics?.trailing_30d_fees_usd || 0) * 12;
+          return mcap > 0 ? annualFees / mcap : 0;
+        }
+        case 'tevYield': return protocol.metrics?.tev_yield_decimal || 0;
+        default: return 0;
+      }
+    }
+
+    function sortProtocols(protocols, field, dir) {
+      const sorted = [...protocols];
+      sorted.sort((a, b) => {
+        let valA = getSortValue(a, field);
+        let valB = getSortValue(b, field);
+        let cmp = valB - valA; // 默认降序
+        if (dir === 'asc') cmp = -cmp;
+        // 相同时按 TVL 二级排序
+        if (cmp === 0 && field !== 'tvl') {
+          cmp = (b.tvl || 0) - (a.tvl || 0);
+        }
+        return cmp;
+      });
+      return sorted;
+    }
+
+    function updateSortIndicators() {
+      document.querySelectorAll('th.sortable').forEach(th => {
+        th.classList.remove('sorted', 'asc', 'desc');
+        const text = th.getAttribute('data-i18n');
+        // 更新 i18n 文本（去掉箭头）
+        th.textContent = t(text);
+      });
+      const active = document.querySelector(`th[data-sort="${currentSort.field}"]`);
+      if (active) {
+        active.classList.add('sorted', currentSort.dir);
+      }
+    }
+
+    function renderTable(protocols, filter = 'all', sortField = null, sortDir = null) {
       const tbody = document.getElementById('protocol-tbody');
       tbody.innerHTML = '';
       
+      // 更新过滤器状态
+      currentFilter = filter;
+      
+      // 应用过滤
       let filtered = protocols;
       if (filter !== 'all') {
         if (filter === 'active') {
           filtered = protocols.filter(p => p.tevStatus === 'active');
         } else if (filter === 'none') {
           filtered = protocols.filter(p => p.tevStatus === 'none');
+        } else if (filter === 'cex') {
+          filtered = protocols.filter(p => p.category === 'cex');
+        } else if (filter === 'perpetuals') {
+          filtered = protocols.filter(p => p.category === 'perpetuals');
         } else {
           filtered = protocols.filter(p => p.category === filter);
         }
       }
       
-      // Sort by TVL (descending)
-      filtered.sort((a, b) => (b.tvl || 0) - (a.tvl || 0));
+      // 应用排序
+      if (sortField) {
+        currentSort.field = sortField;
+        currentSort.dir = sortDir || 'desc';
+      }
+      filtered = sortProtocols(filtered, currentSort.field, currentSort.dir);
+      updateSortIndicators();
       
       filtered.forEach((protocol, index) => {
         const row = document.createElement('tr');
@@ -1391,6 +1487,13 @@
         const tevRatioText = tevRatio > 0 ? `${(tevRatio * 100).toFixed(0)}%` : '—';
         const tevRatioClass = tevRatio >= 0.5 ? 'value-highlight' : tevRatio > 0 ? '' : 'value-zero';
         
+        // Earning Yield (1/PE = Annual Fees / Market Cap)
+        const mcap = protocol.latest_record?.market_cap_usd || 0;
+        const annualFees = (protocol.metrics?.trailing_30d_fees_usd || 0) * 12;
+        const earningYield = mcap > 0 ? annualFees / mcap : 0;
+        const earningYieldText = earningYield > 0 ? formatPercent(earningYield) : '—';
+        const earningYieldClass = earningYield > 0.1 ? 'value-highlight' : earningYield === 0 ? 'value-zero' : '';
+        
         row.innerHTML = `
           <td>${index + 1}</td>
           <td>
@@ -1410,7 +1513,8 @@
             </span>
           </td>
           <td class="text-right"><span class="value ${tevRatioClass}">${tevRatioText}</span></td>
-          <td class="text-right"><span class="value">${formatCurrency(protocol.latest_record?.market_cap_usd)}</span></td>
+          <td class="text-right"><span class="value">${formatCurrency(mcap)}</span></td>
+          <td class="text-right"><span class="value ${earningYieldClass}">${earningYieldText}</span></td>
           <td class="text-right"><span class="value ${tevYieldClass}">${formatPercent(tevYield)}</span></td>
           <td class="text-right">
             <span class="badge ${confidenceClass}">
@@ -1480,6 +1584,18 @@
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             renderTable(protocols, btn.dataset.filter);
+          });
+        });
+        
+        // 表头排序点击
+        document.querySelectorAll('th.sortable').forEach(th => {
+          th.addEventListener('click', () => {
+            const field = th.dataset.sort;
+            let dir = 'desc';
+            if (currentSort.field === field && currentSort.dir === 'desc') {
+              dir = 'asc';
+            }
+            renderTable(protocols, currentFilter, field, dir);
           });
         });
         
