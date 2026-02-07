@@ -416,11 +416,11 @@
               <div class="legend-line" style="background: #f59e0b;"></div>
               <span data-zh="BTC价格" data-en="BTC Price">BTC价格</span>
             </div>
-            <div class="legend-item" data-series="cost" onclick="toggleSeries('cost')">
+            <div class="legend-item disabled" data-series="cost" onclick="toggleSeries('cost')">
               <div class="legend-line" style="background: #a855f7;"></div>
               <span data-zh="200日成本" data-en="200d Cost">200日成本</span>
             </div>
-            <div class="legend-item" data-series="fitted" onclick="toggleSeries('fitted')">
+            <div class="legend-item disabled" data-series="fitted" onclick="toggleSeries('fitted')">
               <div class="legend-line" style="background: #06b6d4;"></div>
               <span data-zh="拟合价格" data-en="Fitted">拟合价格</span>
             </div>
@@ -467,7 +467,7 @@
     let currentLang = 'zh';
     let chart = null;
     let series = {};
-    let seriesVisible = { ahr999: true, price: true, cost: true, fitted: true };
+    let seriesVisible = { ahr999: true, price: true, cost: false, fitted: false };
 
     function toggleLang() {
       currentLang = currentLang === 'zh' ? 'en' : 'zh';
@@ -629,7 +629,8 @@
         lineWidth: 2,
         priceScaleId: 'right',
         priceFormat: { type: 'price', precision: 4, minMove: 0.0001 },
-        lastValueVisible: true,
+        lastValueVisible: false,
+        priceLineVisible: false,
         title: 'AHR999',
       });
       series.ahr999.setData(ahr999Data);
@@ -659,31 +660,36 @@
         lineWidth: 1.5,
         priceScaleId: 'left',
         priceFormat: { type: 'price', precision: 0, minMove: 1 },
-        lastValueVisible: true,
+        lastValueVisible: false,
+        priceLineVisible: false,
         title: 'BTC',
       });
       series.price.setData(priceData);
 
-      // 200d Cost Series (left axis)
+      // 200d Cost Series (left axis) - hidden by default
       series.cost = chart.addLineSeries({
         color: '#a855f7',
         lineWidth: 1,
         lineStyle: LightweightCharts.LineStyle.Dotted,
         priceScaleId: 'left',
         priceFormat: { type: 'price', precision: 0, minMove: 1 },
-        lastValueVisible: true,
+        lastValueVisible: false,
+        priceLineVisible: false,
+        visible: false,
         title: '200d',
       });
       series.cost.setData(costData);
 
-      // Fitted Price Series (left axis)
+      // Fitted Price Series (left axis) - hidden by default
       series.fitted = chart.addLineSeries({
         color: '#06b6d4',
         lineWidth: 1,
         lineStyle: LightweightCharts.LineStyle.Dotted,
         priceScaleId: 'left',
         priceFormat: { type: 'price', precision: 0, minMove: 1 },
-        lastValueVisible: true,
+        lastValueVisible: false,
+        priceLineVisible: false,
+        visible: false,
         title: 'Fit',
       });
       series.fitted.setData(fittedData);
