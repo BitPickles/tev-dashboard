@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MVRV 指标 — Crypto3D</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+  <style>
+    :root {
+      --bg-primary: #0a0a0b;
+      --bg-secondary: #111113;
+      --bg-tertiary: #18181b;
+      --bg-hover: #1f1f23;
+      --border: #27272a;
+      --border-hover: #3f3f46;
+      --text-primary: #fafafa;
+      --text-secondary: #a1a1aa;
+      --text-tertiary: #71717a;
+      --accent: #22c55e;
+      --accent-dim: rgba(34, 197, 94, 0.1);
+      --warning: #f59e0b;
+      --warning-dim: rgba(245, 158, 11, 0.1);
+      --danger: #ef4444;
+      --danger-dim: rgba(239, 68, 68, 0.1);
+      --blue: #3b82f6;
+      --purple: #a855f7;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans SC', 'Inter', -apple-system, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      background: rgba(10, 10, 11, 0.9);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--accent) 0%, #16a34a 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--bg-primary);
+    }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .lang-switch span { color: var(--text-secondary); }
+    .lang-switch .active { color: var(--text-primary); font-weight: 500; }
+
+    /* Main Content */
+    main {
+      padding: 40px 0;
+    }
+
+    .page-header {
+      margin-bottom: 32px;
+    }
+
+    .page-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .page-subtitle {
+      color: var(--text-secondary);
+      font-size: 16px;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stat-value.undervalued { color: var(--accent); }
+    .stat-value.fair { color: var(--warning); }
+    .stat-value.overvalued { color: var(--danger); }
+
+    .stat-hint {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 8px;
+    }
+
+    /* Zone Legend */
+    .zone-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .zone-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .zone-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .zone-dot.undervalued { background: var(--accent); }
+    .zone-dot.fair { background: var(--warning); }
+    .zone-dot.overvalued { background: var(--danger); }
+
+    /* Chart */
+    .chart-container {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+
+    .chart-wrapper {
+      position: relative;
+      height: 400px;
+    }
+
+    /* Info Section */
+    .info-section {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .info-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .info-text {
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .info-text p {
+      margin-bottom: 12px;
+    }
+
+    .formula {
+      background: var(--bg-tertiary);
+      border-radius: 8px;
+      padding: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text-primary);
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+
+    /* Data Notice */
+    .data-notice {
+      background: var(--warning-dim);
+      border: 1px solid var(--warning);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 24px;
+      font-size: 14px;
+      color: var(--warning);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .footer-text {
+      font-size: 14px;
+      color: var(--text-tertiary);
+    }
+
+    @media (max-width: 768px) {
+      .page-title { font-size: 24px; }
+      .stat-value { font-size: 24px; }
+      .chart-wrapper { height: 300px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="/" class="logo">
+          <div class="logo-icon">3D</div>
+          <span class="logo-text">Crypto3D</span>
+        </a>
+        <div class="nav-links">
+          <a href="/" data-zh="首页" data-en="Home">首页</a>
+          <a href="/tev" data-zh="TEV" data-en="TEV">TEV</a>
+          <div class="lang-switch" onclick="toggleLang()">
+            <span id="lang-zh" class="active">中文</span>
+            <span>/</span>
+            <span id="lang-en">EN</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="page-header">
+        <h1 class="page-title">MVRV <span data-zh="指标" data-en="Ratio">指标</span></h1>
+        <p class="page-subtitle" data-zh="市值与实现价值比率 — 比特币周期顶底判断" data-en="Market Value to Realized Value — Bitcoin cycle top/bottom indicator">市值与实现价值比率 — 比特币周期顶底判断</p>
+      </div>
+
+      <div class="data-notice" id="data-notice" style="display: none;">
+        ⚠️ <span data-zh="当前使用模拟数据，真实数据接入中..." data-en="Currently using simulated data, real data integration pending...">当前使用模拟数据，真实数据接入中...</span>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label" data-zh="当前 MVRV" data-en="Current MVRV">当前 MVRV</div>
+          <div class="stat-value" id="current-value">—</div>
+          <div class="stat-hint" id="current-zone">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" data-zh="市场状态" data-en="Market State">市场状态</div>
+          <div class="stat-value" id="market-state" style="font-size: 24px;">—</div>
+          <div class="stat-hint" id="update-date">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" data-zh="历史分位" data-en="Historical Percentile">历史分位</div>
+          <div class="stat-value" id="percentile" style="color: var(--blue)">—</div>
+          <div class="stat-hint" data-zh="相对历史位置" data-en="Relative to history">相对历史位置</div>
+        </div>
+      </div>
+
+      <div class="zone-legend">
+        <div class="zone-item">
+          <div class="zone-dot undervalued"></div>
+          <span data-zh="< 1.0 低估" data-en="< 1.0 Undervalued">< 1.0 低估</span>
+        </div>
+        <div class="zone-item">
+          <div class="zone-dot fair"></div>
+          <span data-zh="1.0 ~ 3.0 合理" data-en="1.0 ~ 3.0 Fair Value">1.0 ~ 3.0 合理</span>
+        </div>
+        <div class="zone-item">
+          <div class="zone-dot overvalued"></div>
+          <span data-zh="> 3.0 高估" data-en="> 3.0 Overvalued">> 3.0 高估</span>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-wrapper">
+          <canvas id="mvrv-chart"></canvas>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <h2 class="info-title" data-zh="指标说明" data-en="About MVRV">指标说明</h2>
+        <div class="info-text">
+          <p data-zh="MVRV（Market Value to Realized Value）是衡量比特币市值与实现市值之间关系的指标，用于判断市场周期的顶部和底部。" 
+             data-en="MVRV (Market Value to Realized Value) measures the relationship between Bitcoin's market cap and realized cap, used to identify market cycle tops and bottoms.">
+            MVRV（Market Value to Realized Value）是衡量比特币市值与实现市值之间关系的指标，用于判断市场周期的顶部和底部。
+          </p>
+          <div class="formula">
+            MVRV = 流通市值 (Market Cap) / 实现市值 (Realized Cap)
+          </div>
+          <p data-zh="• 实现市值：按每个 UTXO 最后移动时的价格计算的市值总和" 
+             data-en="• Realized Cap: Sum of all UTXOs valued at the price when they last moved">
+            • 实现市值：按每个 UTXO 最后移动时的价格计算的市值总和
+          </p>
+          <p data-zh="• MVRV < 1：市场处于低估状态，大部分持有者亏损" 
+             data-en="• MVRV < 1: Market is undervalued, most holders are at a loss">
+            • MVRV < 1：市场处于低估状态，大部分持有者亏损
+          </p>
+          <p data-zh="• MVRV > 3：市场可能过热，历史上接近周期顶部" 
+             data-en="• MVRV > 3: Market may be overheated, historically near cycle tops">
+            • MVRV > 3：市场可能过热，历史上接近周期顶部
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p class="footer-text">© 2026 Crypto3D</p>
+    </div>
+  </footer>
+
+  <script>
+    let currentLang = 'zh';
+    let chart = null;
+
+    function toggleLang() {
+      currentLang = currentLang === 'zh' ? 'en' : 'zh';
+      updateLang();
+    }
+
+    function updateLang() {
+      document.getElementById('lang-zh').className = currentLang === 'zh' ? 'active' : '';
+      document.getElementById('lang-en').className = currentLang === 'en' ? 'active' : '';
+      document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
+      document.querySelectorAll('[data-zh]').forEach(el => {
+        el.textContent = el.getAttribute(`data-${currentLang}`);
+      });
+      localStorage.setItem('lang', currentLang);
+    }
+
+    function getZoneInfo(value) {
+      if (value < 1.0) {
+        return { 
+          class: 'undervalued', 
+          zone: currentLang === 'zh' ? '低估区' : 'Undervalued',
+          state: currentLang === 'zh' ? '🟢 低估' : '🟢 Undervalued'
+        };
+      } else if (value <= 3.0) {
+        return { 
+          class: 'fair', 
+          zone: currentLang === 'zh' ? '合理区' : 'Fair Value',
+          state: currentLang === 'zh' ? '🟡 合理' : '🟡 Fair'
+        };
+      } else {
+        return { 
+          class: 'overvalued', 
+          zone: currentLang === 'zh' ? '高估区' : 'Overvalued',
+          state: currentLang === 'zh' ? '🔴 高估' : '🔴 Overvalued'
+        };
+      }
+    }
+
+    function calculatePercentile(value, history) {
+      const sorted = [...history.map(d => d.mvrv)].sort((a, b) => a - b);
+      const index = sorted.findIndex(v => v >= value);
+      return Math.round((index / sorted.length) * 100);
+    }
+
+    async function loadData() {
+      try {
+        const res = await fetch('/indicators/data/mvrv.json');
+        const data = await res.json();
+        
+        // Show notice if simulated
+        if (data.note && data.note.includes('Simulated')) {
+          document.getElementById('data-notice').style.display = 'block';
+        }
+        
+        // Update stats
+        const current = data.current;
+        const zoneInfo = getZoneInfo(current.value);
+        const percentile = calculatePercentile(current.value, data.history);
+        
+        document.getElementById('current-value').textContent = current.value.toFixed(2);
+        document.getElementById('current-value').className = `stat-value ${zoneInfo.class}`;
+        document.getElementById('current-zone').textContent = zoneInfo.zone;
+        document.getElementById('market-state').textContent = zoneInfo.state;
+        document.getElementById('update-date').textContent = current.date;
+        document.getElementById('percentile').textContent = percentile + '%';
+
+        // Draw chart
+        drawChart(data.history);
+      } catch (err) {
+        console.error('Failed to load data:', err);
+      }
+    }
+
+    function drawChart(history) {
+      const ctx = document.getElementById('mvrv-chart').getContext('2d');
+      
+      const labels = history.map(d => d.date);
+      const values = history.map(d => d.mvrv);
+
+      chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'MVRV',
+            data: values,
+            borderColor: '#a855f7',
+            backgroundColor: 'rgba(168, 85, 247, 0.1)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.1,
+            pointRadius: 0,
+            pointHoverRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: {
+            intersect: false,
+            mode: 'index'
+          },
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              backgroundColor: '#18181b',
+              titleColor: '#fafafa',
+              bodyColor: '#a1a1aa',
+              borderColor: '#27272a',
+              borderWidth: 1,
+              padding: 12,
+              displayColors: false,
+              callbacks: {
+                title: (items) => items[0].label,
+                label: (item) => `MVRV: ${item.raw.toFixed(2)}`
+              }
+            }
+          },
+          scales: {
+            x: {
+              type: 'time',
+              time: {
+                unit: 'month',
+                displayFormats: {
+                  month: 'yyyy-MM'
+                }
+              },
+              grid: {
+                color: 'rgba(39, 39, 42, 0.5)'
+              },
+              ticks: {
+                color: '#71717a'
+              }
+            },
+            y: {
+              grid: {
+                color: 'rgba(39, 39, 42, 0.5)'
+              },
+              ticks: {
+                color: '#71717a'
+              }
+            }
+          }
+        }
+      });
+
+      // Draw zone lines
+      setTimeout(() => {
+        const ctx2d = chart.ctx;
+        const yScale = chart.scales.y;
+        const chartArea = chart.chartArea;
+        
+        ctx2d.save();
+        ctx2d.setLineDash([5, 5]);
+        
+        // 1.0 line
+        const y1 = yScale.getPixelForValue(1.0);
+        ctx2d.strokeStyle = 'rgba(34, 197, 94, 0.5)';
+        ctx2d.beginPath();
+        ctx2d.moveTo(chartArea.left, y1);
+        ctx2d.lineTo(chartArea.right, y1);
+        ctx2d.stroke();
+        
+        // 3.0 line
+        const y3 = yScale.getPixelForValue(3.0);
+        ctx2d.strokeStyle = 'rgba(239, 68, 68, 0.5)';
+        ctx2d.beginPath();
+        ctx2d.moveTo(chartArea.left, y3);
+        ctx2d.lineTo(chartArea.right, y3);
+        ctx2d.stroke();
+        
+        ctx2d.restore();
+      }, 100);
+    }
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('lang');
+      if (saved) {
+        currentLang = saved;
+        updateLang();
+      }
+      loadData();
+    });
+  </script>
+</body>
+</html>
