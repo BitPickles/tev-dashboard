@@ -725,20 +725,29 @@
       });
       series.fitted.setData(fittedData);
 
-      // Calculate 6 months into the future
+      // Generate future whitespace points to extend time axis by 6 months
       const lastDateObj = new Date(lastDate);
-      const futureDate = new Date(lastDateObj);
-      futureDate.setMonth(futureDate.getMonth() + 6);
+      const futureWhitespace = [];
+      for (let i = 1; i <= 180; i++) {
+        const d = new Date(lastDateObj);
+        d.setDate(d.getDate() + i);
+        futureWhitespace.push({ time: d.toISOString().split('T')[0] }); // No value = whitespace
+      }
       
-      // Calculate rightOffset: number of daily bars for 6 months
-      const daysDiff = Math.round((futureDate - lastDateObj) / (24 * 60 * 60 * 1000));
+      // Create a separate whitespace series to extend time axis
+      const whitespaceSeries = chart.addLineSeries({
+        priceScaleId: 'right',
+        lastValueVisible: false,
+        priceLineVisible: false,
+      });
+      whitespaceSeries.setData(futureWhitespace);
       
       // Time scale options
       chart.timeScale().applyOptions({
-        rightOffset: daysDiff,  // Extend x-axis 6 months into future
+        rightOffset: 5,  // Small padding after the future dates
         minBarSpacing: 0.5,
         fixLeftEdge: true,
-        fixRightEdge: false,  // Allow dragging into future
+        fixRightEdge: true,  // Can't scroll beyond 6 months future
       });
 
       // Default to logarithmic scale
@@ -749,11 +758,11 @@
         mode: LightweightCharts.PriceScaleMode.Logarithmic 
       });
 
-      // Default view: show all HISTORICAL data (not future)
-      // Use logical range: 0 = first bar, history.length - 1 = last data bar
+      // Default view: show ALL historical data (first date to last data point, NOT future)
+      const historyLength = history.length;
       chart.timeScale().setVisibleLogicalRange({
         from: 0,
-        to: history.length - 1,
+        to: historyLength - 1,
       });
     }
 
