@@ -750,11 +750,10 @@
       });
 
       // Default view: show all HISTORICAL data (not future)
-      const firstTimestamp = new Date(firstDate).getTime() / 1000;
-      const lastTimestamp = new Date(lastDate).getTime() / 1000;
-      chart.timeScale().setVisibleRange({
-        from: firstTimestamp,
-        to: lastTimestamp,
+      // Use logical range: 0 = first bar, history.length - 1 = last data bar
+      chart.timeScale().setVisibleLogicalRange({
+        from: 0,
+        to: history.length - 1,
       });
     }
 
