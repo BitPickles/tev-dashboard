@@ -1,123 +1,183 @@
 {
   "id": "aster",
-  "name": "Astar Network",
-  "ticker": "ASTR",
+  "name": "Aster (AsterDEX)",
+  "ticker": "ASTER",
   "icon": "⭐",
-  "category": "l1_blockchain",
-  "description": "Polkadot 生态多链智能合约平台，具有 Burndrop 销毁机制和产品收入回购",
-  "website": "https://astar.network",
-  "docs": "https://docs.astar.network",
+  "category": "perpetual_dex",
+  "description": "去中心化永续合约交易所，由 Astherus + APX Finance 于2024年底合并而来，支持 BNB Chain、Ethereum、Solana、Arbitrum 多链交易",
+  "website": "https://www.asterdex.com/en",
+  "docs": "https://docs.asterdex.com",
   "token": {
-    "chain": "Astar (Polkadot Parachain)",
-    "coingecko_id": "astar",
-    "max_supply": 10500000000,
-    "note": "2026年初更新的 tokenomics 设定最大供应量约 10.5B ASTR"
+    "chain": "BNB Chain (BEP-20)",
+    "contract_address": "0x000Ae314E2A2172a039B26378814C252734f556A",
+    "coingecko_id": "aster-2",
+    "max_supply": 8000000000,
+    "note": "原 APX 代币已迁移至 ASTER"
   },
   "tev_mechanisms": [
     {
-      "type": "burn",
-      "name": "Burndrop",
-      "description": "用户自愿锁定并销毁 ASTR，获得 Burndrop Passport (SBT)，减少流通供应",
+      "type": "buyback",
+      "name": "Protocol Revenue Buyback",
+      "description": "协议收入的一部分用于 ASTER 回购",
       "status": "active",
       "source": {
-        "type": "blog",
-        "title": "Burndrop Proof of Conviction",
-        "url": "https://astar.network/blog/burndrop-poc-221"
-      }
-    },
-    {
-      "type": "burn",
-      "name": "Genesis Allocation Burn",
-      "description": "销毁 350M ASTR（创世分配的 5%）",
-      "status": "completed",
-      "amount": "350,000,000 ASTR",
-      "date": "2024-07",
-      "source": {
-        "type": "blog",
-        "title": "350 Million Token Burn Complete",
-        "url": "https://astar.network/blog/astar-network-s-350-million-token-burn-is-complete-44"
+        "type": "documentation",
+        "title": "Tokenomics",
+        "url": "https://docs.asterdex.com/usdaster/tokenomics"
       }
     },
     {
       "type": "buyback",
-      "name": "Governance-Directed Buybacks",
-      "description": "产品和运营收入可用于治理引导的回购",
+      "name": "Foundation Stabilization Buyback",
+      "description": "Aster Foundation 用于长期价格稳定的回购",
       "status": "active",
       "source": {
-        "type": "blog",
-        "title": "ASTR Value Capture 2026",
-        "url": "https://astar.network/blog/astr-value-capture-230"
+        "type": "documentation",
+        "title": "Tokenomics",
+        "url": "https://docs.asterdex.com/usdaster/tokenomics"
+      }
+    },
+    {
+      "type": "governance_rewards",
+      "name": "Governance Rewards Distribution",
+      "description": "治理参与激励奖励",
+      "status": "active",
+      "source": {
+        "type": "documentation",
+        "title": "Tokenomics",
+        "url": "https://docs.asterdex.com/usdaster/tokenomics"
       }
     }
   ],
   "revenue_sources": [
     {
-      "name": "Astar Stack Products",
-      "description": "Astar Fi（DeFi 产品）+ Astar Guard（安全监控）",
+      "name": "Perpetual Trading Fees",
+      "description": "永续合约交易费 - Maker 0.005%, Taker 0.04%",
       "status": "active"
     },
     {
-      "name": "DeFi & Asset Management",
-      "description": "国库和基金会的 DeFi 运营、流动性部署、策展收入",
+      "name": "Shield Mode Fees",
+      "description": "Shield 模式交易费 (简化交易)",
       "status": "active"
     },
     {
-      "name": "Infrastructure Fees",
-      "description": "区块链基础设施相关收入",
+      "name": "1001x Mode Fees",
+      "description": "高杠杆一键交易费用",
+      "status": "active"
+    },
+    {
+      "name": "Spot Trading Fees",
+      "description": "现货交易费用",
+      "status": "active"
+    },
+    {
+      "name": "Yield Products (Aster Earn)",
+      "description": "收益产品 - asBNB, USDF 等",
       "status": "active"
     }
   ],
+  "fee_structure": {
+    "perpetuals": {
+      "maker": "0.005%",
+      "taker": "0.04%",
+      "aster_discount": "5% off when paying with ASTER"
+    }
+  },
   "tev_summary": {
-    "fee_switch": "N/A",
-    "fee_switch_details": "L1 区块链，收入来自产品和 DeFi 运营",
+    "fee_switch": "ON",
+    "fee_switch_details": "协议收入用于回购 ASTER",
     "buybacks": "ACTIVE",
-    "buyback_details": "治理引导的回购，来自产品和运营收入",
+    "buyback_details": "协议收入回购 + Foundation 稳定回购",
     "dividends": "NONE",
-    "burns": "ACTIVE",
-    "burn_details": "Burndrop 持续销毁 + 已完成 350M 创世销毁",
-    "primary_value_accrual": "销毁 + 回购 - Burndrop 机制 + 产品收入用于回购"
+    "burns": "NONE",
+    "primary_value_accrual": "协议收入 → ASTER 回购"
   },
   "market_data": {
-    "price_usd": 0.00708597,
-    "circulating_market_cap": 60299376,
-    "snapshot_date": "2026-02-05",
+    "price_usd": 0.54728,
+    "circulating_market_cap": 1346353083,
+    "total_supply": 8000000000,
+    "tvl_usd": 1091092274,
+    "volume_24h_usd": 236804925,
+    "mcap_to_tvl_ratio": 1.23,
+    "snapshot_date": "2026-02-07",
     "data_source": "CoinGecko"
   },
   "calculated_tev": {
     "tev_yield_percent": null,
     "calculation_status": "NEED_REVENUE_DATA",
-    "reason": "需要获取 Astar Stack 产品收入和 Burndrop 销毁量数据",
-    "note": "产品处于早期，收入数据待补充"
+    "estimation": {
+      "daily_volume_estimate": 200000000,
+      "avg_fee_rate": 0.0003,
+      "annual_fee_estimate": 21900000,
+      "estimated_tev_yield": "1.6%",
+      "note": "粗略估算：假设日均交易量 $200M，加权平均费率 0.03%"
+    },
+    "reason": "DefiLlama 暂无费用数据，需要官方披露协议收入"
   },
-  "historical_burns": [
+  "key_backers": [
     {
-      "date": "2024-07",
-      "amount_astr": 350000000,
-      "type": "genesis_burn",
-      "description": "创世分配 5% 销毁"
+      "name": "YZi Labs (原 Binance Labs)",
+      "note": "持有少数股份，管理超过 $10B 基金"
+    },
+    {
+      "name": "Changpeng Zhao (CZ)",
+      "role": "Advisor",
+      "investment": "$2.5M+ ASTER 个人投资"
     }
   ],
-  "confidence": "medium",
+  "chains_supported": [
+    "BNB Chain",
+    "Ethereum",
+    "Solana",
+    "Arbitrum"
+  ],
+  "trading_modes": [
+    {
+      "name": "Pro Mode",
+      "features": ["Order book", "Up to 100x leverage", "Hidden orders", "Grid trading", "Stock perpetuals"]
+    },
+    {
+      "name": "Simple Mode",
+      "features": ["One-click trading", "MEV-resistant", "Up to 1001x leverage"]
+    },
+    {
+      "name": "Shield Mode",
+      "features": ["Simplified perps", "Higher leverage", "Lower barrier"]
+    }
+  ],
+  "data_gaps": [
+    {
+      "item": "年化协议收入",
+      "status": "需要补充",
+      "note": "DefiLlama 暂无数据，需要从官方或第三方获取"
+    },
+    {
+      "item": "回购执行记录",
+      "status": "需要补充",
+      "note": "需要链上回购交易验证"
+    }
+  ],
+  "confidence": "high",
+  "confidence_notes": "代币机制和市场数据清晰，费用数据需补充",
   "data_sources": [
     {
       "name": "CoinGecko",
       "type": "api",
-      "url": "https://api.coingecko.com/api/v3/coins/astar",
-      "reliability": "high"
+      "url": "https://api.coingecko.com/api/v3/coins/aster-2",
+      "reliability": "high",
+      "data": ["price", "market_cap", "volume", "tvl"]
     },
     {
-      "name": "Astar Blog",
-      "type": "blog",
-      "url": "https://astar.network/blog",
-      "reliability": "high"
-    },
-    {
-      "name": "Astar Documentation",
+      "name": "Aster Docs",
       "type": "documentation",
-      "url": "https://docs.astar.network",
+      "url": "https://docs.asterdex.com",
       "reliability": "high"
     }
   ],
-  "analyst_notes": "【2026-02-05 调研更新 - 补充回购/销毁机制】\n\n## ASTR TEV 机制（已确认）\n\n### 1. Burndrop 销毁机制 ✅\n- 用户自愿锁定 ASTR 并销毁\n- 获得 Burndrop Passport (SBT)\n- 2025年12月完成首次 PoC 测试\n- 设计用于持续减少供应量\n\n### 2. 创世分配销毁 ✅\n- 2024年7月销毁 350M ASTR（5%）\n- 社区治理投票通过\n\n### 3. 治理引导的回购 ✅\n- 产品收入（Astar Fi, Astar Guard）\n- DeFi 运营收入\n- 基础设施费用\n- 策展收入\n\n### 2026 价值捕获策略\n来自官方博客（2026-02-05）：\n- Astar Stack 产品产生收入\n- 收入分配由治理决定\n- 可用于回购或 Burndrop 销毁\n\n### TEV Yield 计算挑战\n- 产品处于早期阶段\n- 收入数据暂未公开\n- 需持续跟踪 Burndrop 销毁量\n\n### 与之前调研的差异\n❌ 之前：只看到 dApp Staking（通胀）\n✅ 现在：确认有 Burndrop + 回购机制",
-  "last_updated": "2026-02-05"
+  "analyst_notes": "【2026-02-07 调研更新】\n\n## 项目背景\nAster 是 Astherus + APX Finance 于 2024 年底合并的产品。\n- **YZi Labs (原 Binance Labs)** 支持\n- **CZ 个人投资** $2.5M+ ASTER\n\n## TEV 机制（已确认）\n\n1. **协议收入回购** ✅ ACTIVE\n   - 文档明确：\"a portion of protocol revenue will be used for $ASTER buybacks\"\n   - Foundation 稳定回购\n   - 治理奖励分配\n\n2. **费用结构**\n   - Maker: 0.005%\n   - Taker: 0.04%\n   - 用 ASTER 支付可享 5% 折扣\n\n## 市场数据\n| 指标 | 数值 |\n|------|------|\n| 价格 | $0.547 |\n| 市值 | ~$1.35B |\n| TVL | ~$1.09B |\n| 24h 交易量 | ~$237M |\n| 市值排名 | #56 |\n\n## TEV Yield 估算\n- 日均交易量假设: $200M\n- 加权平均费率: ~0.03%\n- 年化费用估算: ~$22M\n- **估算 TEV Yield: ~1.6%**\n\n⚠️ 这是粗略估算，需要官方收入数据验证\n\n## 置信度：HIGH\n- 机制明确\n- 市场数据完整\n- 缺少精确收入数据",
+  "questions_for_boss": [
+    "需要更精确的年化收入数据吗？",
+    "是否需要深入分析链上回购记录？"
+  ],
+  "last_updated": "2026-02-07"
 }
