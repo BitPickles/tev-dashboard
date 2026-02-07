@@ -26,6 +26,8 @@
       --danger-dim: rgba(239, 68, 68, 0.1);
       --blue: #3b82f6;
       --blue-dim: rgba(59, 130, 246, 0.1);
+      --purple: #a855f7;
+      --cyan: #06b6d4;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -120,13 +122,9 @@
     .lang-switch .active { color: var(--text-primary); font-weight: 500; }
 
     /* Main Content */
-    main {
-      padding: 40px 0;
-    }
+    main { padding: 40px 0; }
 
-    .page-header {
-      margin-bottom: 32px;
-    }
+    .page-header { margin-bottom: 32px; }
 
     .page-title {
       font-size: 32px;
@@ -142,7 +140,7 @@
     /* Stats Grid */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 16px;
       margin-bottom: 32px;
     }
@@ -163,7 +161,7 @@
     }
 
     .stat-value {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 700;
       font-family: 'JetBrains Mono', monospace;
     }
@@ -218,6 +216,8 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .chart-title {
@@ -227,7 +227,7 @@
 
     .chart-legend {
       display: flex;
-      gap: 16px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
@@ -241,20 +241,23 @@
       padding: 4px 8px;
       border-radius: 4px;
       transition: background 0.2s;
+      user-select: none;
     }
 
-    .legend-item:hover {
-      background: var(--bg-tertiary);
-    }
-
-    .legend-item.disabled {
-      opacity: 0.4;
-    }
+    .legend-item:hover { background: var(--bg-tertiary); }
+    .legend-item.disabled { opacity: 0.4; }
+    .legend-item.fixed { cursor: default; opacity: 0.7; }
+    .legend-item.fixed:hover { background: transparent; }
 
     .legend-line {
       width: 16px;
       height: 3px;
       border-radius: 2px;
+    }
+
+    .legend-line.dashed {
+      background: repeating-linear-gradient(90deg, currentColor 0, currentColor 4px, transparent 4px, transparent 8px);
+      height: 2px;
     }
 
     .chart-wrapper {
@@ -289,9 +292,7 @@
       line-height: 1.8;
     }
 
-    .info-text p {
-      margin-bottom: 12px;
-    }
+    .info-text p { margin-bottom: 12px; }
 
     .formula {
       background: var(--bg-tertiary);
@@ -317,20 +318,12 @@
       color: var(--text-tertiary);
     }
 
-    /* Loading */
-    .loading {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 300px;
-      color: var(--text-secondary);
-    }
-
     @media (max-width: 768px) {
       .page-title { font-size: 24px; }
-      .stat-value { font-size: 24px; }
-      .chart-wrapper { height: 350px; }
-      .chart-header { flex-direction: column; gap: 12px; align-items: flex-start; }
+      .stat-value { font-size: 22px; }
+      .chart-wrapper { height: 400px; }
+      .chart-header { flex-direction: column; align-items: flex-start; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -364,7 +357,7 @@
 
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-label" data-zh="当前值" data-en="Current Value">当前值</div>
+          <div class="stat-label" data-zh="当前值" data-en="Current">当前值</div>
           <div class="stat-value" id="current-value">—</div>
           <div class="stat-hint" id="current-zone">—</div>
         </div>
@@ -374,9 +367,17 @@
           <div class="stat-hint" id="update-date">—</div>
         </div>
         <div class="stat-card">
+          <div class="stat-label" data-zh="200日定投成本" data-en="200d DCA Cost">200日定投成本</div>
+          <div class="stat-value" id="current-cost" style="color: var(--purple); font-size: 22px;">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" data-zh="拟合价格" data-en="Fitted Price">拟合价格</div>
+          <div class="stat-value" id="current-fitted" style="color: var(--cyan); font-size: 22px;">—</div>
+        </div>
+        <div class="stat-card">
           <div class="stat-label" data-zh="操作建议" data-en="Suggestion">操作建议</div>
-          <div class="stat-value" id="suggestion" style="font-size: 24px;">—</div>
-          <div class="stat-hint" data-zh="仅供参考，不构成投资建议" data-en="For reference only, not investment advice">仅供参考，不构成投资建议</div>
+          <div class="stat-value" id="suggestion" style="font-size: 22px;">—</div>
+          <div class="stat-hint" data-zh="仅供参考" data-en="Reference only">仅供参考</div>
         </div>
       </div>
 
@@ -399,18 +400,34 @@
         <div class="chart-header">
           <div class="chart-title" data-zh="AHR999 历史走势" data-en="AHR999 History">AHR999 历史走势</div>
           <div class="chart-legend">
+            <div class="legend-item fixed" title="阈值线始终显示">
+              <div class="legend-line dashed" style="color: #ef4444;"></div>
+              <span>1.2</span>
+            </div>
+            <div class="legend-item fixed" title="阈值线始终显示">
+              <div class="legend-line dashed" style="color: #22c55e;"></div>
+              <span>0.45</span>
+            </div>
             <div class="legend-item" data-series="ahr999" onclick="toggleSeries('ahr999')">
               <div class="legend-line" style="background: #3b82f6;"></div>
               <span>AHR999</span>
             </div>
             <div class="legend-item" data-series="price" onclick="toggleSeries('price')">
               <div class="legend-line" style="background: #f59e0b;"></div>
-              <span data-zh="BTC 价格" data-en="BTC Price">BTC 价格</span>
+              <span data-zh="BTC价格" data-en="BTC Price">BTC价格</span>
+            </div>
+            <div class="legend-item" data-series="cost" onclick="toggleSeries('cost')">
+              <div class="legend-line" style="background: #a855f7;"></div>
+              <span data-zh="200日成本" data-en="200d Cost">200日成本</span>
+            </div>
+            <div class="legend-item" data-series="fitted" onclick="toggleSeries('fitted')">
+              <div class="legend-line" style="background: #06b6d4;"></div>
+              <span data-zh="拟合价格" data-en="Fitted">拟合价格</span>
             </div>
           </div>
         </div>
         <div class="chart-wrapper" id="chart-container"></div>
-        <div class="chart-hint" data-zh="💡 提示：拖动平移 · 滚轮缩放 · 双击重置" data-en="💡 Tip: Drag to pan · Scroll to zoom · Double-click to reset">💡 提示：拖动平移 · 滚轮缩放 · 双击重置</div>
+        <div class="chart-hint" data-zh="💡 拖动平移 · 滚轮缩放 · 双击重置" data-en="💡 Drag to pan · Scroll to zoom · Double-click to reset">💡 拖动平移 · 滚轮缩放 · 双击重置</div>
       </div>
 
       <div class="info-section">
@@ -449,9 +466,8 @@
   <script>
     let currentLang = 'zh';
     let chart = null;
-    let ahr999Series = null;
-    let priceSeries = null;
-    let seriesVisible = { ahr999: true, price: true };
+    let series = {};
+    let seriesVisible = { ahr999: true, price: true, cost: true, fitted: true };
 
     function toggleLang() {
       currentLang = currentLang === 'zh' ? 'en' : 'zh';
@@ -491,15 +507,11 @@
     }
 
     function toggleSeries(name) {
+      if (!series[name]) return;
       seriesVisible[name] = !seriesVisible[name];
+      series[name].applyOptions({ visible: seriesVisible[name] });
+      
       const legendItem = document.querySelector(`.legend-item[data-series="${name}"]`);
-      
-      if (name === 'ahr999' && ahr999Series) {
-        ahr999Series.applyOptions({ visible: seriesVisible[name] });
-      } else if (name === 'price' && priceSeries) {
-        priceSeries.applyOptions({ visible: seriesVisible[name] });
-      }
-      
       legendItem.classList.toggle('disabled', !seriesVisible[name]);
     }
 
@@ -517,9 +529,10 @@
         document.getElementById('current-zone').textContent = zoneInfo.zone;
         document.getElementById('current-price').textContent = '$' + current.price.toLocaleString();
         document.getElementById('update-date').textContent = current.date;
+        document.getElementById('current-cost').textContent = '$' + current.cost_200d.toLocaleString();
+        document.getElementById('current-fitted').textContent = '$' + current.fitted_price.toLocaleString();
         document.getElementById('suggestion').textContent = zoneInfo.suggestion;
 
-        // Draw chart
         drawChart(data.history);
       } catch (err) {
         console.error('Failed to load data:', err);
@@ -529,12 +542,11 @@
     function drawChart(history) {
       const container = document.getElementById('chart-container');
       
-      // Create chart
       chart = LightweightCharts.createChart(container, {
         layout: {
           background: { type: 'solid', color: 'transparent' },
           textColor: '#a1a1aa',
-          fontFamily: "'Inter', -apple-system, sans-serif",
+          fontFamily: "'Inter', sans-serif",
         },
         grid: {
           vertLines: { color: 'rgba(39, 39, 42, 0.5)' },
@@ -542,23 +554,17 @@
         },
         crosshair: {
           mode: LightweightCharts.CrosshairMode.Normal,
-          vertLine: {
-            color: 'rgba(59, 130, 246, 0.5)',
-            labelBackgroundColor: '#3b82f6',
-          },
-          horzLine: {
-            color: 'rgba(59, 130, 246, 0.5)',
-            labelBackgroundColor: '#3b82f6',
-          },
+          vertLine: { color: 'rgba(59, 130, 246, 0.5)', labelBackgroundColor: '#3b82f6' },
+          horzLine: { color: 'rgba(59, 130, 246, 0.5)', labelBackgroundColor: '#3b82f6' },
         },
         rightPriceScale: {
           borderColor: '#27272a',
-          scaleMargins: { top: 0.1, bottom: 0.1 },
+          scaleMargins: { top: 0.05, bottom: 0.05 },
         },
         leftPriceScale: {
           visible: true,
           borderColor: '#27272a',
-          scaleMargins: { top: 0.1, bottom: 0.1 },
+          scaleMargins: { top: 0.05, bottom: 0.05 },
         },
         timeScale: {
           borderColor: '#27272a',
@@ -571,64 +577,117 @@
 
       // Resize handler
       const resizeObserver = new ResizeObserver(entries => {
-        if (entries.length === 0 || entries[0].target !== container) return;
+        if (entries.length === 0) return;
         const { width, height } = entries[0].contentRect;
         chart.applyOptions({ width, height });
       });
       resizeObserver.observe(container);
 
+      // Prepare data
+      const ahr999Data = history.map(d => ({ time: d.date, value: d.ahr999 }));
+      const priceData = history.map(d => ({ time: d.date, value: d.close }));
+      const costData = history.map(d => ({ time: d.date, value: d.cost_200d }));
+      const fittedData = history.map(d => ({ time: d.date, value: d.fitted_price }));
+
+      // Zone background areas (using baseline series for colored regions)
+      // Red zone (above 1.2)
+      const redZoneData = ahr999Data.map(d => ({
+        time: d.time,
+        value: Math.max(d.value, 1.2)
+      }));
+      
+      const redZone = chart.addAreaSeries({
+        topColor: 'rgba(239, 68, 68, 0.15)',
+        bottomColor: 'rgba(239, 68, 68, 0.02)',
+        lineColor: 'transparent',
+        lineWidth: 0,
+        priceScaleId: 'right',
+        lastValueVisible: false,
+        priceLineVisible: false,
+      });
+      redZone.setData(redZoneData.filter(d => d.value > 1.2));
+
+      // Green zone (below 0.45)
+      const greenZone = chart.addAreaSeries({
+        topColor: 'rgba(34, 197, 94, 0.02)',
+        bottomColor: 'rgba(34, 197, 94, 0.15)',
+        lineColor: 'transparent',
+        lineWidth: 0,
+        priceScaleId: 'right',
+        lastValueVisible: false,
+        priceLineVisible: false,
+      });
+      const greenZoneData = ahr999Data.map(d => ({
+        time: d.time,
+        value: Math.min(d.value, 0.45)
+      }));
+      greenZone.setData(greenZoneData.filter(d => d.value < 0.45));
+
       // AHR999 Series (right axis)
-      ahr999Series = chart.addLineSeries({
+      series.ahr999 = chart.addLineSeries({
         color: '#3b82f6',
         lineWidth: 2,
         priceScaleId: 'right',
         priceFormat: { type: 'price', precision: 4, minMove: 0.0001 },
+        lastValueVisible: true,
         title: 'AHR999',
       });
+      series.ahr999.setData(ahr999Data);
 
-      // Price Series (left axis)
-      priceSeries = chart.addLineSeries({
-        color: '#f59e0b',
-        lineWidth: 1,
-        priceScaleId: 'left',
-        priceFormat: { type: 'price', precision: 0, minMove: 1 },
-        title: 'BTC',
-      });
-
-      // Prepare data
-      const ahr999Data = history.map(d => ({
-        time: d.date,
-        value: d.ahr999
-      }));
-
-      const priceData = history.map(d => ({
-        time: d.date,
-        value: d.close
-      }));
-
-      ahr999Series.setData(ahr999Data);
-      priceSeries.setData(priceData);
-
-      // Add threshold lines (0.45 and 1.2)
-      ahr999Series.createPriceLine({
+      // Threshold lines (always visible, attached to ahr999 series)
+      series.ahr999.createPriceLine({
         price: 0.45,
         color: '#22c55e',
         lineWidth: 1,
         lineStyle: LightweightCharts.LineStyle.Dashed,
         axisLabelVisible: true,
-        title: '0.45',
+        title: '',
       });
 
-      ahr999Series.createPriceLine({
+      series.ahr999.createPriceLine({
         price: 1.2,
         color: '#ef4444',
         lineWidth: 1,
         lineStyle: LightweightCharts.LineStyle.Dashed,
         axisLabelVisible: true,
-        title: '1.2',
+        title: '',
       });
 
-      // Fit content
+      // Price Series (left axis)
+      series.price = chart.addLineSeries({
+        color: '#f59e0b',
+        lineWidth: 1.5,
+        priceScaleId: 'left',
+        priceFormat: { type: 'price', precision: 0, minMove: 1 },
+        lastValueVisible: true,
+        title: 'BTC',
+      });
+      series.price.setData(priceData);
+
+      // 200d Cost Series (left axis)
+      series.cost = chart.addLineSeries({
+        color: '#a855f7',
+        lineWidth: 1,
+        lineStyle: LightweightCharts.LineStyle.Dotted,
+        priceScaleId: 'left',
+        priceFormat: { type: 'price', precision: 0, minMove: 1 },
+        lastValueVisible: true,
+        title: '200d',
+      });
+      series.cost.setData(costData);
+
+      // Fitted Price Series (left axis)
+      series.fitted = chart.addLineSeries({
+        color: '#06b6d4',
+        lineWidth: 1,
+        lineStyle: LightweightCharts.LineStyle.Dotted,
+        priceScaleId: 'left',
+        priceFormat: { type: 'price', precision: 0, minMove: 1 },
+        lastValueVisible: true,
+        title: 'Fit',
+      });
+      series.fitted.setData(fittedData);
+
       chart.timeScale().fitContent();
     }
 
