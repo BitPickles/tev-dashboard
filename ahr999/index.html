@@ -6,8 +6,7 @@
   <title>AHR999 指标 — Crypto3D</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+  <script src="https://unpkg.com/lightweight-charts@4/dist/lightweight-charts.standalone.production.js"></script>
   <style>
     :root {
       --bg-primary: #0a0a0b;
@@ -214,9 +213,60 @@
       margin-bottom: 32px;
     }
 
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .chart-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .chart-legend {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .legend-item:hover {
+      background: var(--bg-tertiary);
+    }
+
+    .legend-item.disabled {
+      opacity: 0.4;
+    }
+
+    .legend-line {
+      width: 16px;
+      height: 3px;
+      border-radius: 2px;
+    }
+
     .chart-wrapper {
       position: relative;
-      height: 400px;
+      height: 500px;
+    }
+
+    .chart-hint {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 12px;
+      text-align: center;
     }
 
     /* Info Section */
@@ -279,7 +329,8 @@
     @media (max-width: 768px) {
       .page-title { font-size: 24px; }
       .stat-value { font-size: 24px; }
-      .chart-wrapper { height: 300px; }
+      .chart-wrapper { height: 350px; }
+      .chart-header { flex-direction: column; gap: 12px; align-items: flex-start; }
     }
   </style>
 </head>
@@ -345,9 +396,21 @@
       </div>
 
       <div class="chart-container">
-        <div class="chart-wrapper">
-          <canvas id="ahr999-chart"></canvas>
+        <div class="chart-header">
+          <div class="chart-title" data-zh="AHR999 历史走势" data-en="AHR999 History">AHR999 历史走势</div>
+          <div class="chart-legend">
+            <div class="legend-item" data-series="ahr999" onclick="toggleSeries('ahr999')">
+              <div class="legend-line" style="background: #3b82f6;"></div>
+              <span>AHR999</span>
+            </div>
+            <div class="legend-item" data-series="price" onclick="toggleSeries('price')">
+              <div class="legend-line" style="background: #f59e0b;"></div>
+              <span data-zh="BTC 价格" data-en="BTC Price">BTC 价格</span>
+            </div>
+          </div>
         </div>
+        <div class="chart-wrapper" id="chart-container"></div>
+        <div class="chart-hint" data-zh="💡 提示：拖动平移 · 滚轮缩放 · 双击重置" data-en="💡 Tip: Drag to pan · Scroll to zoom · Double-click to reset">💡 提示：拖动平移 · 滚轮缩放 · 双击重置</div>
       </div>
 
       <div class="info-section">
@@ -386,6 +449,9 @@
   <script>
     let currentLang = 'zh';
     let chart = null;
+    let ahr999Series = null;
+    let priceSeries = null;
+    let seriesVisible = { ahr999: true, price: true };
 
     function toggleLang() {
       currentLang = currentLang === 'zh' ? 'en' : 'zh';
@@ -424,6 +490,19 @@
       }
     }
 
+    function toggleSeries(name) {
+      seriesVisible[name] = !seriesVisible[name];
+      const legendItem = document.querySelector(`.legend-item[data-series="${name}"]`);
+      
+      if (name === 'ahr999' && ahr999Series) {
+        ahr999Series.applyOptions({ visible: seriesVisible[name] });
+      } else if (name === 'price' && priceSeries) {
+        priceSeries.applyOptions({ visible: seriesVisible[name] });
+      }
+      
+      legendItem.classList.toggle('disabled', !seriesVisible[name]);
+    }
+
     async function loadData() {
       try {
         const res = await fetch('/indicators/data/ahr999.json');
@@ -448,136 +527,109 @@
     }
 
     function drawChart(history) {
-      const ctx = document.getElementById('ahr999-chart').getContext('2d');
+      const container = document.getElementById('chart-container');
       
-      // Prepare data
-      const labels = history.map(d => d.date);
-      const values = history.map(d => d.ahr999);
-
-      // Zone backgrounds
-      const zoneColors = values.map(v => {
-        if (v < 0.45) return 'rgba(34, 197, 94, 0.8)';
-        if (v <= 1.2) return 'rgba(245, 158, 11, 0.8)';
-        return 'rgba(239, 68, 68, 0.8)';
-      });
-
-      chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: 'AHR999',
-            data: values,
-            borderColor: '#3b82f6',
-            backgroundColor: 'rgba(59, 130, 246, 0.1)',
-            borderWidth: 2,
-            fill: true,
-            tension: 0.1,
-            pointRadius: 0,
-            pointHoverRadius: 4
-          }]
+      // Create chart
+      chart = LightweightCharts.createChart(container, {
+        layout: {
+          background: { type: 'solid', color: 'transparent' },
+          textColor: '#a1a1aa',
+          fontFamily: "'Inter', -apple-system, sans-serif",
         },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          interaction: {
-            intersect: false,
-            mode: 'index'
+        grid: {
+          vertLines: { color: 'rgba(39, 39, 42, 0.5)' },
+          horzLines: { color: 'rgba(39, 39, 42, 0.5)' },
+        },
+        crosshair: {
+          mode: LightweightCharts.CrosshairMode.Normal,
+          vertLine: {
+            color: 'rgba(59, 130, 246, 0.5)',
+            labelBackgroundColor: '#3b82f6',
           },
-          plugins: {
-            legend: {
-              display: false
-            },
-            tooltip: {
-              backgroundColor: '#18181b',
-              titleColor: '#fafafa',
-              bodyColor: '#a1a1aa',
-              borderColor: '#27272a',
-              borderWidth: 1,
-              padding: 12,
-              displayColors: false,
-              callbacks: {
-                title: (items) => items[0].label,
-                label: (item) => `AHR999: ${item.raw.toFixed(4)}`
-              }
-            },
-            annotation: {
-              annotations: {
-                line045: {
-                  type: 'line',
-                  yMin: 0.45,
-                  yMax: 0.45,
-                  borderColor: 'rgba(34, 197, 94, 0.5)',
-                  borderWidth: 1,
-                  borderDash: [5, 5]
-                },
-                line12: {
-                  type: 'line',
-                  yMin: 1.2,
-                  yMax: 1.2,
-                  borderColor: 'rgba(239, 68, 68, 0.5)',
-                  borderWidth: 1,
-                  borderDash: [5, 5]
-                }
-              }
-            }
+          horzLine: {
+            color: 'rgba(59, 130, 246, 0.5)',
+            labelBackgroundColor: '#3b82f6',
           },
-          scales: {
-            x: {
-              type: 'time',
-              time: {
-                unit: 'month',
-                displayFormats: {
-                  month: 'yyyy-MM'
-                }
-              },
-              grid: {
-                color: 'rgba(39, 39, 42, 0.5)'
-              },
-              ticks: {
-                color: '#71717a'
-              }
-            },
-            y: {
-              grid: {
-                color: 'rgba(39, 39, 42, 0.5)'
-              },
-              ticks: {
-                color: '#71717a'
-              }
-            }
-          }
-        }
+        },
+        rightPriceScale: {
+          borderColor: '#27272a',
+          scaleMargins: { top: 0.1, bottom: 0.1 },
+        },
+        leftPriceScale: {
+          visible: true,
+          borderColor: '#27272a',
+          scaleMargins: { top: 0.1, bottom: 0.1 },
+        },
+        timeScale: {
+          borderColor: '#27272a',
+          timeVisible: true,
+          secondsVisible: false,
+        },
+        handleScroll: { mouseWheel: true, pressedMouseMove: true },
+        handleScale: { axisPressedMouseMove: true, mouseWheel: true, pinch: true },
       });
 
-      // Draw zone lines manually
-      const yScale = chart.scales.y;
-      const chartArea = chart.chartArea;
-      
-      // Add zone lines after chart renders
-      setTimeout(() => {
-        const ctx2d = chart.ctx;
-        ctx2d.save();
-        
-        // 0.45 line
-        const y045 = yScale.getPixelForValue(0.45);
-        ctx2d.strokeStyle = 'rgba(34, 197, 94, 0.5)';
-        ctx2d.setLineDash([5, 5]);
-        ctx2d.beginPath();
-        ctx2d.moveTo(chartArea.left, y045);
-        ctx2d.lineTo(chartArea.right, y045);
-        ctx2d.stroke();
-        
-        // 1.2 line
-        const y12 = yScale.getPixelForValue(1.2);
-        ctx2d.strokeStyle = 'rgba(239, 68, 68, 0.5)';
-        ctx2d.beginPath();
-        ctx2d.moveTo(chartArea.left, y12);
-        ctx2d.lineTo(chartArea.right, y12);
-        ctx2d.stroke();
-        
-        ctx2d.restore();
-      }, 100);
+      // Resize handler
+      const resizeObserver = new ResizeObserver(entries => {
+        if (entries.length === 0 || entries[0].target !== container) return;
+        const { width, height } = entries[0].contentRect;
+        chart.applyOptions({ width, height });
+      });
+      resizeObserver.observe(container);
+
+      // AHR999 Series (right axis)
+      ahr999Series = chart.addLineSeries({
+        color: '#3b82f6',
+        lineWidth: 2,
+        priceScaleId: 'right',
+        priceFormat: { type: 'price', precision: 4, minMove: 0.0001 },
+        title: 'AHR999',
+      });
+
+      // Price Series (left axis)
+      priceSeries = chart.addLineSeries({
+        color: '#f59e0b',
+        lineWidth: 1,
+        priceScaleId: 'left',
+        priceFormat: { type: 'price', precision: 0, minMove: 1 },
+        title: 'BTC',
+      });
+
+      // Prepare data
+      const ahr999Data = history.map(d => ({
+        time: d.date,
+        value: d.ahr999
+      }));
+
+      const priceData = history.map(d => ({
+        time: d.date,
+        value: d.close
+      }));
+
+      ahr999Series.setData(ahr999Data);
+      priceSeries.setData(priceData);
+
+      // Add threshold lines (0.45 and 1.2)
+      ahr999Series.createPriceLine({
+        price: 0.45,
+        color: '#22c55e',
+        lineWidth: 1,
+        lineStyle: LightweightCharts.LineStyle.Dashed,
+        axisLabelVisible: true,
+        title: '0.45',
+      });
+
+      ahr999Series.createPriceLine({
+        price: 1.2,
+        color: '#ef4444',
+        lineWidth: 1,
+        lineStyle: LightweightCharts.LineStyle.Dashed,
+        axisLabelVisible: true,
+        title: '1.2',
+      });
+
+      // Fit content
+      chart.timeScale().fitContent();
     }
 
     // Init
