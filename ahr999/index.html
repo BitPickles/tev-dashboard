@@ -735,10 +735,10 @@
 
       // Time scale options
       chart.timeScale().applyOptions({
-        rightOffset: 5,  // Small padding after the future dates
+        rightOffset: 0,
         minBarSpacing: 0.5,
-        fixLeftEdge: true,
-        fixRightEdge: true,  // Can't scroll beyond 6 months future
+        fixLeftEdge: true,   // Lock left edge - can't scroll before first data
+        fixRightEdge: false, // Allow scrolling to future 6 months
       });
 
       // Default to logarithmic scale
