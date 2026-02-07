@@ -749,8 +749,13 @@
         mode: LightweightCharts.PriceScaleMode.Logarithmic 
       });
 
-      // Default view: show ALL data from beginning to 6 months into future
-      chart.timeScale().fitContent();
+      // Default view: show all HISTORICAL data (not future)
+      const firstTimestamp = new Date(firstDate).getTime() / 1000;
+      const lastTimestamp = new Date(lastDate).getTime() / 1000;
+      chart.timeScale().setVisibleRange({
+        from: firstTimestamp,
+        to: lastTimestamp,
+      });
     }
 
     // Init
