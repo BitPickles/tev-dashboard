@@ -1300,6 +1300,74 @@
         tevRatio: 0.60,
         tvl: 3749741,
       },
+      // CEX Tokens
+      bnb: {
+        name: 'BNB',
+        ticker: 'BNB',
+        icon: '🟡',
+        category: 'cex',
+        confidence: 'low',
+        tevStatus: 'active',
+        tevRatio: 1.0,
+        tvl: 0,
+        note: 'Quarterly Auto-Burn + BEP-95 real-time burn'
+      },
+      okb: {
+        name: 'OKB',
+        ticker: 'OKB',
+        icon: '🔵',
+        category: 'cex',
+        confidence: 'low',
+        tevStatus: 'active',
+        tevRatio: 0.30,
+        tvl: 0,
+        note: '30% revenue buyback & burn'
+      },
+      bgb: {
+        name: 'Bitget Token',
+        ticker: 'BGB',
+        icon: '🔷',
+        category: 'cex',
+        confidence: 'low',
+        tevStatus: 'active',
+        tevRatio: 1.0,
+        tvl: 0,
+        note: 'Buyback & burn program'
+      },
+      hype: {
+        name: 'Hyperliquid',
+        ticker: 'HYPE',
+        icon: '💧',
+        category: 'cex',
+        confidence: 'high',
+        tevStatus: 'active',
+        tevRatio: 0.99,
+        tvl: 0,
+        note: '99% trading fees to buyback'
+      },
+      mnt: {
+        name: 'Mantle',
+        ticker: 'MNT',
+        icon: '🟢',
+        category: 'cex',
+        confidence: 'low',
+        tevStatus: 'partial',
+        tevRatio: 0,
+        tvl: 0,
+        note: 'CEX platform token - mechanism unclear'
+      },
+      // Perpetual DEX
+      aster: {
+        name: 'Aster',
+        ticker: 'ASTER',
+        icon: '⭐',
+        category: 'perpetuals',
+        confidence: 'high',
+        tevStatus: 'active',
+        tevRatio: 1.0,
+        tvl: 1091092274,
+        note: 'Protocol revenue buyback'
+      },
     };
 
     function formatCurrency(value, decimals = 0) {
