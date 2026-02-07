@@ -1,0 +1,17 @@
+# Crypto3D 路由配置
+# 格式: 源路径  目标路径  状态码
+
+# 首页
+/               /homepage/index.html    200
+
+# TEV Dashboard
+/tev            /web/index.html         200
+/tev/*          /web/:splat             200
+
+# 指标页面
+/ahr999         /indicators/ahr999.html 200
+/mvrv           /indicators/mvrv.html   200
+/bmri           /indicators/bmri.html   200
+
+# 指标数据 API（保持原路径）
+/indicators/data/*  /indicators/data/:splat  200
