@@ -412,7 +412,7 @@
           <div class="chart-title" data-zh="AHR999 历史走势" data-en="AHR999 History">AHR999 历史走势</div>
           <div class="chart-legend">
             <div class="legend-item scale-toggle" onclick="toggleScale()" title="切换线性/对数坐标">
-              <span id="scale-label">Lin</span>
+              <span id="scale-label">Log</span>
             </div>
             <div class="legend-item fixed" title="阈值线始终显示">
               <div class="legend-line dashed" style="color: #ef4444;"></div>
@@ -482,7 +482,7 @@
     let chart = null;
     let series = {};
     let seriesVisible = { ahr999: true, price: false, cost: false, fitted: false };
-    let isLogScale = false;
+    let isLogScale = true;  // Default to logarithmic scale
 
     function toggleLang() {
       currentLang = currentLang === 'zh' ? 'en' : 'zh';
@@ -727,10 +727,18 @@
 
       // Time scale options
       chart.timeScale().applyOptions({
-        rightOffset: 180,  // Allow scrolling ~6 months into future
+        rightOffset: 40,  // Allow scrolling into future (visual space)
         minBarSpacing: 0.5,
         fixLeftEdge: true,
         fixRightEdge: false,  // Allow scrolling beyond latest data
+      });
+
+      // Default to logarithmic scale
+      chart.priceScale('right').applyOptions({ 
+        mode: LightweightCharts.PriceScaleMode.Logarithmic 
+      });
+      chart.priceScale('left').applyOptions({ 
+        mode: LightweightCharts.PriceScaleMode.Logarithmic 
       });
 
       // Show full data range (all history)
