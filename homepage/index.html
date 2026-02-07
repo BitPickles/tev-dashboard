@@ -439,6 +439,50 @@
             </div>
           </a>
 
+          <!-- AHR999 Card -->
+          <a href="/ahr999" class="card card-clickable">
+            <div class="card-icon" style="background: rgba(59, 130, 246, 0.1);">📈</div>
+            <div class="card-header">
+              <h2 class="card-title">AHR999</h2>
+              <span class="card-badge">Live</span>
+            </div>
+            <p class="card-desc" data-zh="比特币长期价值偏离指标，判断抄底/定投/观望时机。" data-en="Bitcoin long-term value deviation indicator for timing buy/DCA/wait decisions.">比特币长期价值偏离指标，判断抄底/定投/观望时机。</p>
+            <div class="card-stats">
+              <div class="stat">
+                <span class="stat-value" id="ahr999-value">—</span>
+                <span class="stat-label" data-zh="当前值" data-en="Current">当前值</span>
+              </div>
+            </div>
+            <div class="card-action">
+              <span data-zh="查看详情" data-en="Explore">查看详情</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </div>
+          </a>
+
+          <!-- MVRV Card -->
+          <a href="/mvrv" class="card card-clickable">
+            <div class="card-icon" style="background: rgba(168, 85, 247, 0.1);">📊</div>
+            <div class="card-header">
+              <h2 class="card-title">MVRV</h2>
+              <span class="card-badge">Live</span>
+            </div>
+            <p class="card-desc" data-zh="市值与实现价值比率，判断比特币周期顶底。" data-en="Market Value to Realized Value ratio for Bitcoin cycle analysis.">市值与实现价值比率，判断比特币周期顶底。</p>
+            <div class="card-stats">
+              <div class="stat">
+                <span class="stat-value" id="mvrv-value">—</span>
+                <span class="stat-label" data-zh="当前值" data-en="Current">当前值</span>
+              </div>
+            </div>
+            <div class="card-action">
+              <span data-zh="查看详情" data-en="Explore">查看详情</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </div>
+          </a>
+
           <!-- Coming Soon Card -->
           <div class="card coming-soon">
             <div class="card-icon coming">🚀</div>
@@ -446,7 +490,7 @@
               <h2 class="card-title" data-zh="更多指标" data-en="More Metrics">更多指标</h2>
               <span class="card-badge coming" data-zh="敬请期待" data-en="Coming Soon">敬请期待</span>
             </div>
-            <p class="card-desc" data-zh="链上资金流向、巨鲸追踪、协议健康度评分... 更多数据工具正在开发中。" data-en="On-chain fund flows, whale tracking, protocol health scores... More tools are on the way.">链上资金流向、巨鲸追踪、协议健康度评分... 更多数据工具正在开发中。</p>
+            <p class="card-desc" data-zh="BMRI、链上资金流向、巨鲸追踪... 更多指标即将上线。" data-en="BMRI, on-chain fund flows, whale tracking... More indicators coming soon.">BMRI、链上资金流向、巨鲸追踪... 更多指标即将上线。</p>
             <div class="card-stats">
               <div class="stat">
                 <span class="stat-value">—</span>
@@ -495,6 +539,27 @@
       localStorage.setItem('lang', currentLang);
     }
 
+    // Load indicator data
+    async function loadIndicators() {
+      try {
+        // Load AHR999
+        const ahr999Res = await fetch('/indicators/data/ahr999.json');
+        const ahr999Data = await ahr999Res.json();
+        document.getElementById('ahr999-value').textContent = ahr999Data.current.value.toFixed(2);
+      } catch (e) {
+        console.log('AHR999 data not available');
+      }
+
+      try {
+        // Load MVRV
+        const mvrvRes = await fetch('/indicators/data/mvrv.json');
+        const mvrvData = await mvrvRes.json();
+        document.getElementById('mvrv-value').textContent = mvrvData.current.value.toFixed(2);
+      } catch (e) {
+        console.log('MVRV data not available');
+      }
+    }
+
     // Load saved preference
     document.addEventListener('DOMContentLoaded', () => {
       const saved = localStorage.getItem('lang');
@@ -502,6 +567,7 @@
         currentLang = saved;
         updateLang();
       }
+      loadIndicators();
     });
   </script>
 </body>
