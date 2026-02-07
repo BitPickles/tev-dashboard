@@ -249,6 +249,17 @@
     .legend-item.fixed { cursor: default; opacity: 0.7; }
     .legend-item.fixed:hover { background: transparent; }
 
+    .legend-item.scale-toggle {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      font-weight: 500;
+      color: var(--accent);
+    }
+    .legend-item.scale-toggle:hover {
+      border-color: var(--accent);
+    }
+
     .legend-line {
       width: 16px;
       height: 3px;
@@ -400,6 +411,9 @@
         <div class="chart-header">
           <div class="chart-title" data-zh="AHR999 历史走势" data-en="AHR999 History">AHR999 历史走势</div>
           <div class="chart-legend">
+            <div class="legend-item scale-toggle" onclick="toggleScale()" title="切换线性/对数坐标">
+              <span id="scale-label">Lin</span>
+            </div>
             <div class="legend-item fixed" title="阈值线始终显示">
               <div class="legend-line dashed" style="color: #ef4444;"></div>
               <span>1.2</span>
@@ -468,6 +482,7 @@
     let chart = null;
     let series = {};
     let seriesVisible = { ahr999: true, price: false, cost: false, fitted: false };
+    let isLogScale = false;
 
     function toggleLang() {
       currentLang = currentLang === 'zh' ? 'en' : 'zh';
@@ -513,6 +528,20 @@
       
       const legendItem = document.querySelector(`.legend-item[data-series="${name}"]`);
       legendItem.classList.toggle('disabled', !seriesVisible[name]);
+    }
+
+    function toggleScale() {
+      if (!chart) return;
+      isLogScale = !isLogScale;
+      
+      const mode = isLogScale 
+        ? LightweightCharts.PriceScaleMode.Logarithmic 
+        : LightweightCharts.PriceScaleMode.Normal;
+      
+      chart.priceScale('right').applyOptions({ mode });
+      chart.priceScale('left').applyOptions({ mode });
+      
+      document.getElementById('scale-label').textContent = isLogScale ? 'Log' : 'Lin';
     }
 
     async function loadData() {
