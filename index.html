@@ -565,7 +565,7 @@
         document.getElementById('bmri-value').textContent = bmriVal.toFixed(0);
         document.getElementById('bmri-zone').textContent = getBmriZone(bmriVal, currentLang);
         
-        const bmriHistory = bmriData['6m'].history.slice(-7).map(d => ({ value: d.value }));
+        const bmriHistory = bmriData['6m'].history.slice(-7).map(d => ({ value: d.bmri }));
         drawSparkline('bmri-spark', bmriHistory, '#f59e0b');
         showChange('bmri-change', bmriHistory);
       } catch (e) { console.log('BMRI data not available'); }
