@@ -283,6 +283,60 @@
       text-align: center;
     }
 
+    /* Tooltip for chart hover data */
+    .chart-tooltip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 12px 16px;
+      background: var(--bg-tertiary);
+      border-radius: 8px;
+      margin-top: 12px;
+      min-height: 44px;
+      align-items: center;
+    }
+
+    .tooltip-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--text-primary);
+      font-weight: 500;
+      min-width: 100px;
+    }
+
+    .tooltip-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+    }
+
+    .tooltip-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .tooltip-label {
+      color: var(--text-tertiary);
+    }
+
+    .tooltip-value {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .disclaimer {
+      margin-top: 16px;
+      padding: 12px 16px;
+      background: var(--warning-dim);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--warning);
+    }
+
     /* Info Section */
     .info-section {
       background: var(--bg-secondary);
@@ -441,6 +495,29 @@
           </div>
         </div>
         <div class="chart-wrapper" id="chart-container"></div>
+        <div class="chart-tooltip" id="chart-tooltip">
+          <div class="tooltip-date" id="tooltip-date">—</div>
+          <div class="tooltip-item" id="tooltip-ahr999" style="display: none;">
+            <div class="tooltip-dot" style="background: #3b82f6;"></div>
+            <span class="tooltip-label">AHR999:</span>
+            <span class="tooltip-value" id="tooltip-ahr999-value">—</span>
+          </div>
+          <div class="tooltip-item" id="tooltip-price" style="display: none;">
+            <div class="tooltip-dot" style="background: #f59e0b;"></div>
+            <span class="tooltip-label">BTC:</span>
+            <span class="tooltip-value" id="tooltip-price-value">—</span>
+          </div>
+          <div class="tooltip-item" id="tooltip-cost" style="display: none;">
+            <div class="tooltip-dot" style="background: #a855f7;"></div>
+            <span class="tooltip-label">200d:</span>
+            <span class="tooltip-value" id="tooltip-cost-value">—</span>
+          </div>
+          <div class="tooltip-item" id="tooltip-fitted" style="display: none;">
+            <div class="tooltip-dot" style="background: #06b6d4;"></div>
+            <span class="tooltip-label" data-zh="拟合:" data-en="Fit:">拟合:</span>
+            <span class="tooltip-value" id="tooltip-fitted-value">—</span>
+          </div>
+        </div>
         <div class="chart-hint" data-zh="💡 拖动平移 · 滚轮缩放 · 双击重置" data-en="💡 Drag to pan · Scroll to zoom · Double-click to reset">💡 拖动平移 · 滚轮缩放 · 双击重置</div>
       </div>
 
@@ -466,6 +543,11 @@
              data-en="• When AHR999 > 1.2, it's in the wait zone, price may be overvalued">
             • 当 AHR999 > 1.2 时，处于观望区，价格可能偏高
           </p>
+          <div class="disclaimer" 
+               data-zh="⚠️ 没有永远有效的指标。AHR999 诞生于两个周期以前，在新的市场环境下可能存在一定局限性，请酌情参考，理性决策。"
+               data-en="⚠️ No indicator is forever effective. AHR999 was created two cycles ago and may have limitations in the current market environment. Please use it as a reference and make rational decisions.">
+            ⚠️ 没有永远有效的指标。AHR999 诞生于两个周期以前，在新的市场环境下可能存在一定局限性，请酌情参考，理性决策。
+          </div>
         </div>
       </div>
     </div>
@@ -485,6 +567,26 @@
     let seriesVisible = { ahr999: true, price: false, cost: false, fitted: false };
     let isLogScale = true;  // Default to logarithmic scale
     let defaultRange = { from: 0, to: 0 };  // Store for reset function
+    let historyData = {};  // Store data for tooltip lookup
+
+    // Format date as YYYY/MM/DD
+    function formatDate(dateStr) {
+      if (!dateStr) return '—';
+      const parts = dateStr.split('-');
+      if (parts.length === 3) {
+        return `${parts[0]}/${parts[1]}/${parts[2]}`;
+      }
+      return dateStr;
+    }
+
+    // Format timestamp to YYYY/MM/DD
+    function formatTimestamp(timestamp) {
+      const date = new Date(timestamp * 1000);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}/${month}/${day}`;
+    }
 
     function toggleLang() {
       currentLang = currentLang === 'zh' ? 'en' : 'zh';
@@ -610,8 +712,15 @@
         },
         timeScale: {
           borderColor: '#27272a',
-          timeVisible: true,
+          timeVisible: false,
           secondsVisible: false,
+          tickMarkFormatter: (time) => {
+            const date = new Date(time * 1000);
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}/${month}/${day}`;
+          },
         },
         handleScroll: { mouseWheel: true, pressedMouseMove: true },
         handleScale: { axisPressedMouseMove: true, mouseWheel: true, pinch: true },
@@ -630,6 +739,12 @@
       const priceData = history.map(d => ({ time: d.date, value: d.close }));
       const costData = history.map(d => ({ time: d.date, value: d.cost_200d }));
       const fittedData = history.map(d => ({ time: d.date, value: d.fitted_price }));
+
+      // Build lookup table for tooltip (indexed by timestamp)
+      history.forEach(d => {
+        const ts = new Date(d.date + 'T00:00:00Z').getTime() / 1000;
+        historyData[ts] = d;
+      });
 
       // Get time range for limiting scroll
       const firstDate = history[0].date;
@@ -777,6 +892,59 @@
       setTimeout(() => {
         chart.timeScale().setVisibleRange(defaultRange);
       }, 100);
+
+      // Subscribe to crosshair move for tooltip
+      chart.subscribeCrosshairMove((param) => {
+        const tooltipDate = document.getElementById('tooltip-date');
+        const tooltipAhr999 = document.getElementById('tooltip-ahr999');
+        const tooltipPrice = document.getElementById('tooltip-price');
+        const tooltipCost = document.getElementById('tooltip-cost');
+        const tooltipFitted = document.getElementById('tooltip-fitted');
+
+        if (!param.time || !param.point) {
+          tooltipDate.textContent = '—';
+          tooltipAhr999.style.display = 'none';
+          tooltipPrice.style.display = 'none';
+          tooltipCost.style.display = 'none';
+          tooltipFitted.style.display = 'none';
+          return;
+        }
+
+        // Format date
+        const dateStr = formatTimestamp(param.time);
+        tooltipDate.textContent = dateStr;
+
+        // Get data for each visible series
+        const dataPoint = historyData[param.time];
+        
+        if (seriesVisible.ahr999 && dataPoint && dataPoint.ahr999 !== undefined) {
+          tooltipAhr999.style.display = 'flex';
+          document.getElementById('tooltip-ahr999-value').textContent = dataPoint.ahr999.toFixed(4);
+        } else {
+          tooltipAhr999.style.display = 'none';
+        }
+
+        if (seriesVisible.price && dataPoint && dataPoint.close !== undefined) {
+          tooltipPrice.style.display = 'flex';
+          document.getElementById('tooltip-price-value').textContent = '$' + dataPoint.close.toLocaleString();
+        } else {
+          tooltipPrice.style.display = 'none';
+        }
+
+        if (seriesVisible.cost && dataPoint && dataPoint.cost_200d !== undefined) {
+          tooltipCost.style.display = 'flex';
+          document.getElementById('tooltip-cost-value').textContent = '$' + dataPoint.cost_200d.toLocaleString();
+        } else {
+          tooltipCost.style.display = 'none';
+        }
+
+        if (seriesVisible.fitted && dataPoint && dataPoint.fitted_price !== undefined) {
+          tooltipFitted.style.display = 'flex';
+          document.getElementById('tooltip-fitted-value').textContent = '$' + dataPoint.fitted_price.toLocaleString();
+        } else {
+          tooltipFitted.style.display = 'none';
+        }
+      });
     }
 
     // Init
