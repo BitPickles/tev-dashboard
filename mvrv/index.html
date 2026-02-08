@@ -516,7 +516,12 @@
         timeScale: {
           borderColor: '#27272a',
           timeVisible: false,
-          tickMarkFormatter: (time) => formatTime(time),
+          tickMarkFormatter: (time) => {
+            if (typeof time === 'string') return time.substring(0, 4);
+            if (typeof time === 'number') return new Date(time * 1000).getFullYear().toString();
+            if (time.year !== undefined) return time.year.toString();
+            return '';
+          },
         },
         handleScroll: { mouseWheel: true, pressedMouseMove: true },
         handleScale: { axisPressedMouseMove: true, mouseWheel: true, pinch: true },
