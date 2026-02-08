@@ -6,8 +6,7 @@
   <title>MVRV 指标 — Crypto3D</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+  <script src="https://unpkg.com/lightweight-charts@4/dist/lightweight-charts.standalone.production.js"></script>
   <style>
     :root {
       --bg-primary: #0a0a0b;
@@ -27,6 +26,7 @@
       --danger-dim: rgba(239, 68, 68, 0.1);
       --blue: #3b82f6;
       --purple: #a855f7;
+      --cyan: #06b6d4;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,11 +39,7 @@
       min-height: 100vh;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
     /* Header */
     header {
@@ -56,151 +52,69 @@
       z-index: 100;
     }
 
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .header-content { display: flex; justify-content: space-between; align-items: center; }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 
     .logo-icon {
-      width: 36px;
-      height: 36px;
+      width: 36px; height: 36px;
       background: linear-gradient(135deg, var(--accent) 0%, #16a34a 100%);
       border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--bg-primary);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 16px; color: var(--bg-primary);
     }
 
-    .logo-text {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
+    .logo-text { font-size: 20px; font-weight: 700; color: var(--text-primary); }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .nav-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--text-primary);
-    }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text-primary); }
 
     .lang-switch {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 6px 12px;
-      cursor: pointer;
-      font-size: 14px;
+      display: flex; align-items: center; gap: 8px;
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: 14px;
     }
-
     .lang-switch span { color: var(--text-secondary); }
     .lang-switch .active { color: var(--text-primary); font-weight: 500; }
 
-    /* Main Content */
-    main {
-      padding: 40px 0;
-    }
+    /* Main Content - Compact */
+    main { padding: 24px 0; }
+    .page-header { margin-bottom: 16px; }
+    .page-title { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+    .page-subtitle { color: var(--text-secondary); font-size: 14px; }
 
-    .page-header {
-      margin-bottom: 32px;
-    }
-
-    .page-title {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .page-subtitle {
-      color: var(--text-secondary);
-      font-size: 16px;
-    }
-
-    /* Stats Grid */
+    /* Stats Grid - Compact */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-bottom: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
     }
 
     .stat-card {
       background: var(--bg-secondary);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
+      border-radius: 10px;
+      padding: 12px 14px;
     }
 
     .stat-label {
-      font-size: 12px;
-      color: var(--text-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
+      font-size: 11px; color: var(--text-tertiary);
+      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;
     }
 
-    .stat-value {
-      font-size: 32px;
-      font-weight: 700;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
+    .stat-value { font-size: 20px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
     .stat-value.undervalued { color: var(--accent); }
     .stat-value.fair { color: var(--warning); }
     .stat-value.overvalued { color: var(--danger); }
 
-    .stat-hint {
-      font-size: 13px;
-      color: var(--text-secondary);
-      margin-top: 8px;
-    }
+    .stat-hint { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
 
     /* Zone Legend */
-    .zone-legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .zone-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-
-    .zone-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
-
+    .zone-legend { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+    .zone-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
+    .zone-dot { width: 10px; height: 10px; border-radius: 50%; }
     .zone-dot.undervalued { background: var(--accent); }
     .zone-dot.fair { background: var(--warning); }
     .zone-dot.overvalued { background: var(--danger); }
@@ -214,10 +128,56 @@
       margin-bottom: 32px;
     }
 
-    .chart-wrapper {
-      position: relative;
-      height: 400px;
+    .chart-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 16px; flex-wrap: wrap; gap: 12px;
     }
+
+    .chart-title { font-size: 16px; font-weight: 600; }
+
+    .chart-legend { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .legend-item {
+      display: flex; align-items: center; gap: 6px; font-size: 12px;
+      color: var(--text-secondary); cursor: pointer; padding: 4px 8px;
+      border-radius: 4px; transition: background 0.2s; user-select: none;
+    }
+    .legend-item:hover { background: var(--bg-tertiary); }
+    .legend-item.disabled { opacity: 0.4; }
+    .legend-item.fixed { cursor: default; opacity: 0.7; }
+    .legend-item.fixed:hover { background: transparent; }
+
+    .legend-item.scale-toggle {
+      background: var(--bg-tertiary); border: 1px solid var(--border);
+      padding: 4px 10px; font-weight: 500; color: var(--accent);
+    }
+    .legend-item.scale-toggle:hover { border-color: var(--accent); }
+
+    .legend-line { width: 16px; height: 3px; border-radius: 2px; }
+    .legend-line.dashed {
+      background: repeating-linear-gradient(90deg, currentColor 0, currentColor 4px, transparent 4px, transparent 8px);
+      height: 2px;
+    }
+
+    .chart-wrapper { position: relative; height: 500px; }
+
+    .chart-tooltip {
+      display: flex; flex-wrap: wrap; gap: 16px;
+      padding: 12px 16px; background: var(--bg-tertiary);
+      border-radius: 8px; margin-top: 12px; min-height: 44px; align-items: center;
+    }
+
+    .tooltip-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px; color: var(--text-primary); font-weight: 500; min-width: 100px;
+    }
+
+    .tooltip-item { display: flex; align-items: center; gap: 6px; font-size: 13px; }
+    .tooltip-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .tooltip-label { color: var(--text-tertiary); }
+    .tooltip-value { font-family: 'JetBrains Mono', monospace; color: var(--text-primary); font-weight: 500; }
+
+    .chart-hint { font-size: 12px; color: var(--text-tertiary); margin-top: 12px; text-align: center; }
 
     /* Info Section */
     .info-section {
@@ -227,61 +187,42 @@
       padding: 24px;
     }
 
-    .info-title {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
-    .info-text {
-      color: var(--text-secondary);
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .info-text p {
-      margin-bottom: 12px;
-    }
+    .info-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+    .info-text { color: var(--text-secondary); font-size: 14px; line-height: 1.8; }
+    .info-text p { margin-bottom: 12px; }
 
     .formula {
-      background: var(--bg-tertiary);
-      border-radius: 8px;
-      padding: 16px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      color: var(--text-primary);
-      overflow-x: auto;
-      margin: 16px 0;
+      background: var(--bg-tertiary); border-radius: 8px; padding: 16px;
+      font-family: 'JetBrains Mono', monospace; font-size: 13px;
+      color: var(--text-primary); overflow-x: auto; margin: 16px 0;
+    }
+
+    .disclaimer {
+      margin-top: 16px; padding: 12px 16px;
+      background: var(--warning-dim); border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 8px; font-size: 13px; color: var(--warning);
     }
 
     /* Data Notice */
     .data-notice {
-      background: var(--warning-dim);
-      border: 1px solid var(--warning);
-      border-radius: 8px;
-      padding: 12px 16px;
-      margin-bottom: 24px;
-      font-size: 14px;
-      color: var(--warning);
+      background: var(--warning-dim); border: 1px solid var(--warning);
+      border-radius: 8px; padding: 10px 14px; margin-bottom: 16px;
+      font-size: 13px; color: var(--warning);
     }
 
     /* Footer */
     footer {
       border-top: 1px solid var(--border);
-      padding: 24px 0;
-      text-align: center;
-      margin-top: 40px;
+      padding: 24px 0; text-align: center; margin-top: 40px;
     }
-
-    .footer-text {
-      font-size: 14px;
-      color: var(--text-tertiary);
-    }
+    .footer-text { font-size: 14px; color: var(--text-tertiary); }
 
     @media (max-width: 768px) {
-      .page-title { font-size: 24px; }
-      .stat-value { font-size: 24px; }
-      .chart-wrapper { height: 300px; }
+      .page-title { font-size: 22px; }
+      .stat-value { font-size: 18px; }
+      .chart-wrapper { height: 400px; }
+      .chart-header { flex-direction: column; align-items: flex-start; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -325,7 +266,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-label" data-zh="市场状态" data-en="Market State">市场状态</div>
-          <div class="stat-value" id="market-state" style="font-size: 24px;">—</div>
+          <div class="stat-value" id="market-state" style="font-size: 18px;">—</div>
           <div class="stat-hint" id="update-date">—</div>
         </div>
         <div class="stat-card">
@@ -351,9 +292,36 @@
       </div>
 
       <div class="chart-container">
-        <div class="chart-wrapper">
-          <canvas id="mvrv-chart"></canvas>
+        <div class="chart-header">
+          <div class="chart-title" data-zh="MVRV 历史走势" data-en="MVRV History">MVRV 历史走势</div>
+          <div class="chart-legend">
+            <div class="legend-item scale-toggle" onclick="toggleScale()" title="切换线性/对数坐标">
+              <span id="scale-label">Log</span>
+            </div>
+            <div class="legend-item fixed" title="阈值线始终显示">
+              <div class="legend-line dashed" style="color: #ef4444;"></div>
+              <span>3.0</span>
+            </div>
+            <div class="legend-item fixed" title="阈值线始终显示">
+              <div class="legend-line dashed" style="color: #22c55e;"></div>
+              <span>1.0</span>
+            </div>
+            <div class="legend-item" data-series="mvrv" onclick="toggleSeries('mvrv')">
+              <div class="legend-line" style="background: #a855f7;"></div>
+              <span>MVRV</span>
+            </div>
+          </div>
         </div>
+        <div class="chart-wrapper" id="chart-container"></div>
+        <div class="chart-tooltip" id="chart-tooltip">
+          <div class="tooltip-date" id="tooltip-date">—</div>
+          <div class="tooltip-item" id="tooltip-mvrv" style="display: none;">
+            <div class="tooltip-dot" style="background: #a855f7;"></div>
+            <span class="tooltip-label">MVRV:</span>
+            <span class="tooltip-value" id="tooltip-mvrv-value">—</span>
+          </div>
+        </div>
+        <div class="chart-hint" data-zh="💡 拖动平移 · 滚轮缩放 · 双击重置" data-en="💡 Drag to pan · Scroll to zoom · Double-click to reset">💡 拖动平移 · 滚轮缩放 · 双击重置</div>
       </div>
 
       <div class="info-section">
@@ -378,6 +346,11 @@
              data-en="• MVRV > 3: Market may be overheated, historically near cycle tops">
             • MVRV > 3：市场可能过热，历史上接近周期顶部
           </p>
+          <div class="disclaimer" 
+               data-zh="⚠️ 没有永远有效的指标。MVRV 是基于链上数据的统计指标，在新的市场环境下可能存在一定局限性，请酌情参考，理性决策。"
+               data-en="⚠️ No indicator is forever effective. MVRV is an on-chain statistical indicator that may have limitations. Please use it as a reference.">
+            ⚠️ 没有永远有效的指标。MVRV 是基于链上数据的统计指标，在新的市场环境下可能存在一定局限性，请酌情参考，理性决策。
+          </div>
         </div>
       </div>
     </div>
@@ -392,6 +365,33 @@
   <script>
     let currentLang = 'zh';
     let chart = null;
+    let series = {};
+    let zones = {};
+    let seriesVisible = { mvrv: true };
+    let isLogScale = true;
+    let defaultRange = { from: 0, to: 0 };
+    let historyData = {};
+
+    // Format time to YYYY/MM/DD
+    function formatTime(time) {
+      if (!time) return '—';
+      if (typeof time === 'string') {
+        const parts = time.split('-');
+        if (parts.length === 3) return `${parts[0]}/${parts[1]}/${parts[2]}`;
+        return time;
+      }
+      if (typeof time === 'number') {
+        const date = new Date(time * 1000);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}/${month}/${day}`;
+      }
+      if (time.year !== undefined) {
+        return `${time.year}/${String(time.month).padStart(2, '0')}/${String(time.day).padStart(2, '0')}`;
+      }
+      return '—';
+    }
 
     function toggleLang() {
       currentLang = currentLang === 'zh' ? 'en' : 'zh';
@@ -436,17 +436,44 @@
       return Math.round((index / sorted.length) * 100);
     }
 
+    function toggleSeries(name) {
+      if (!series[name]) return;
+      seriesVisible[name] = !seriesVisible[name];
+      series[name].applyOptions({ visible: seriesVisible[name] });
+      
+      if (name === 'mvrv') {
+        if (zones.green) zones.green.applyOptions({ visible: seriesVisible[name] });
+        if (zones.red) zones.red.applyOptions({ visible: seriesVisible[name] });
+      }
+      
+      const legendItem = document.querySelector(`.legend-item[data-series="${name}"]`);
+      legendItem.classList.toggle('disabled', !seriesVisible[name]);
+    }
+
+    function resetChart() {
+      if (!chart || !defaultRange.from) return;
+      chart.timeScale().setVisibleRange(defaultRange);
+    }
+
+    function toggleScale() {
+      if (!chart) return;
+      isLogScale = !isLogScale;
+      const mode = isLogScale 
+        ? LightweightCharts.PriceScaleMode.Logarithmic 
+        : LightweightCharts.PriceScaleMode.Normal;
+      chart.priceScale('right').applyOptions({ mode });
+      document.getElementById('scale-label').textContent = isLogScale ? 'Log' : 'Lin';
+    }
+
     async function loadData() {
       try {
         const res = await fetch('/indicators/data/mvrv.json');
         const data = await res.json();
         
-        // Show notice if simulated
         if (data.note && data.note.includes('Simulated')) {
           document.getElementById('data-notice').style.display = 'block';
         }
         
-        // Update stats
         const current = data.current;
         const zoneInfo = getZoneInfo(current.value);
         const percentile = calculatePercentile(current.value, data.history);
@@ -455,10 +482,9 @@
         document.getElementById('current-value').className = `stat-value ${zoneInfo.class}`;
         document.getElementById('current-zone').textContent = zoneInfo.zone;
         document.getElementById('market-state').textContent = zoneInfo.state;
-        document.getElementById('update-date').textContent = current.date;
+        document.getElementById('update-date').textContent = formatTime(current.date);
         document.getElementById('percentile').textContent = percentile + '%';
 
-        // Draw chart
         drawChart(data.history);
       } catch (err) {
         console.error('Failed to load data:', err);
@@ -466,116 +492,164 @@
     }
 
     function drawChart(history) {
-      const ctx = document.getElementById('mvrv-chart').getContext('2d');
+      const container = document.getElementById('chart-container');
       
-      const labels = history.map(d => d.date);
-      const values = history.map(d => d.mvrv);
-
-      chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: 'MVRV',
-            data: values,
-            borderColor: '#a855f7',
-            backgroundColor: 'rgba(168, 85, 247, 0.1)',
-            borderWidth: 2,
-            fill: true,
-            tension: 0.1,
-            pointRadius: 0,
-            pointHoverRadius: 4
-          }]
+      chart = LightweightCharts.createChart(container, {
+        layout: {
+          background: { type: 'solid', color: 'transparent' },
+          textColor: '#a1a1aa',
+          fontFamily: "'Inter', sans-serif",
         },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          interaction: {
-            intersect: false,
-            mode: 'index'
-          },
-          plugins: {
-            legend: {
-              display: false
-            },
-            tooltip: {
-              backgroundColor: '#18181b',
-              titleColor: '#fafafa',
-              bodyColor: '#a1a1aa',
-              borderColor: '#27272a',
-              borderWidth: 1,
-              padding: 12,
-              displayColors: false,
-              callbacks: {
-                title: (items) => items[0].label,
-                label: (item) => `MVRV: ${item.raw.toFixed(2)}`
-              }
-            }
-          },
-          scales: {
-            x: {
-              type: 'time',
-              time: {
-                unit: 'month',
-                displayFormats: {
-                  month: 'yyyy-MM'
-                }
-              },
-              grid: {
-                color: 'rgba(39, 39, 42, 0.5)'
-              },
-              ticks: {
-                color: '#71717a'
-              }
-            },
-            y: {
-              grid: {
-                color: 'rgba(39, 39, 42, 0.5)'
-              },
-              ticks: {
-                color: '#71717a'
-              }
-            }
-          }
-        }
+        grid: {
+          vertLines: { color: 'rgba(39, 39, 42, 0.5)' },
+          horzLines: { color: 'rgba(39, 39, 42, 0.5)' },
+        },
+        crosshair: {
+          mode: LightweightCharts.CrosshairMode.Normal,
+          vertLine: { color: 'rgba(168, 85, 247, 0.5)', labelBackgroundColor: '#a855f7' },
+          horzLine: { color: 'rgba(168, 85, 247, 0.5)', labelBackgroundColor: '#a855f7' },
+        },
+        rightPriceScale: {
+          borderColor: '#27272a',
+          scaleMargins: { top: 0.05, bottom: 0.05 },
+        },
+        timeScale: {
+          borderColor: '#27272a',
+          timeVisible: false,
+          tickMarkFormatter: (time) => formatTime(time),
+        },
+        handleScroll: { mouseWheel: true, pressedMouseMove: true },
+        handleScale: { axisPressedMouseMove: true, mouseWheel: true, pinch: true },
       });
 
-      // Draw zone lines
+      const resizeObserver = new ResizeObserver(entries => {
+        if (entries.length === 0) return;
+        const { width, height } = entries[0].contentRect;
+        chart.applyOptions({ width, height });
+      });
+      resizeObserver.observe(container);
+
+      const mvrvData = history.map(d => ({ time: d.date, value: d.mvrv }));
+
+      // Build lookup table
+      history.forEach(d => { historyData[d.date] = d; });
+
+      const firstDate = history[0].date;
+      const lastDate = history[history.length - 1].date;
+
+      // Zone backgrounds
+      zones.green = chart.addBaselineSeries({
+        baseValue: { type: 'price', price: 1.0 },
+        topLineColor: 'transparent',
+        topFillColor1: 'transparent',
+        topFillColor2: 'transparent',
+        bottomLineColor: 'transparent',
+        bottomFillColor1: 'rgba(34, 197, 94, 0.08)',
+        bottomFillColor2: 'rgba(34, 197, 94, 0.25)',
+        priceScaleId: 'right',
+        lastValueVisible: false,
+        priceLineVisible: false,
+      });
+      zones.green.setData(mvrvData);
+
+      zones.red = chart.addBaselineSeries({
+        baseValue: { type: 'price', price: 3.0 },
+        topLineColor: 'transparent',
+        topFillColor1: 'rgba(239, 68, 68, 0.08)',
+        topFillColor2: 'rgba(239, 68, 68, 0.25)',
+        bottomLineColor: 'transparent',
+        bottomFillColor1: 'transparent',
+        bottomFillColor2: 'transparent',
+        priceScaleId: 'right',
+        lastValueVisible: false,
+        priceLineVisible: false,
+      });
+      zones.red.setData(mvrvData);
+
+      // Future whitespace
+      const lastDateObj = new Date(lastDate);
+      for (let i = 1; i <= 180; i++) {
+        const d = new Date(lastDateObj);
+        d.setDate(d.getDate() + i);
+        mvrvData.push({ time: d.toISOString().split('T')[0] });
+      }
+
+      // MVRV Series
+      series.mvrv = chart.addLineSeries({
+        color: '#a855f7',
+        lineWidth: 2,
+        priceScaleId: 'right',
+        priceFormat: { type: 'price', precision: 2, minMove: 0.01 },
+        lastValueVisible: false,
+        priceLineVisible: false,
+        title: 'MVRV',
+      });
+      series.mvrv.setData(mvrvData);
+
+      // Threshold lines
+      series.mvrv.createPriceLine({
+        price: 1.0,
+        color: '#22c55e',
+        lineWidth: 1,
+        lineStyle: LightweightCharts.LineStyle.Dashed,
+        axisLabelVisible: true,
+      });
+
+      series.mvrv.createPriceLine({
+        price: 3.0,
+        color: '#ef4444',
+        lineWidth: 1,
+        lineStyle: LightweightCharts.LineStyle.Dashed,
+        axisLabelVisible: true,
+      });
+
+      chart.timeScale().applyOptions({
+        rightOffset: 0,
+        minBarSpacing: 0.1,
+        fixLeftEdge: true,
+        fixRightEdge: false,
+      });
+
+      chart.priceScale('right').applyOptions({ 
+        mode: LightweightCharts.PriceScaleMode.Logarithmic 
+      });
+
+      const firstTs = new Date(firstDate + 'T00:00:00Z').getTime() / 1000;
+      const lastTs = new Date(lastDate + 'T00:00:00Z').getTime() / 1000;
+      defaultRange = { from: firstTs, to: lastTs };
+
+      container.addEventListener('dblclick', () => resetChart());
+
       setTimeout(() => {
-        const ctx2d = chart.ctx;
-        const yScale = chart.scales.y;
-        const chartArea = chart.chartArea;
-        
-        ctx2d.save();
-        ctx2d.setLineDash([5, 5]);
-        
-        // 1.0 line
-        const y1 = yScale.getPixelForValue(1.0);
-        ctx2d.strokeStyle = 'rgba(34, 197, 94, 0.5)';
-        ctx2d.beginPath();
-        ctx2d.moveTo(chartArea.left, y1);
-        ctx2d.lineTo(chartArea.right, y1);
-        ctx2d.stroke();
-        
-        // 3.0 line
-        const y3 = yScale.getPixelForValue(3.0);
-        ctx2d.strokeStyle = 'rgba(239, 68, 68, 0.5)';
-        ctx2d.beginPath();
-        ctx2d.moveTo(chartArea.left, y3);
-        ctx2d.lineTo(chartArea.right, y3);
-        ctx2d.stroke();
-        
-        ctx2d.restore();
+        chart.timeScale().setVisibleRange(defaultRange);
       }, 100);
+
+      // Crosshair tooltip
+      chart.subscribeCrosshairMove((param) => {
+        const tooltipDate = document.getElementById('tooltip-date');
+        const tooltipMvrv = document.getElementById('tooltip-mvrv');
+
+        if (!param.time || !param.point) {
+          tooltipDate.textContent = '—';
+          tooltipMvrv.style.display = 'none';
+          return;
+        }
+
+        tooltipDate.textContent = formatTime(param.time);
+        const dataPoint = historyData[param.time];
+
+        if (seriesVisible.mvrv && dataPoint && dataPoint.mvrv !== undefined) {
+          tooltipMvrv.style.display = 'flex';
+          document.getElementById('tooltip-mvrv-value').textContent = dataPoint.mvrv.toFixed(2);
+        } else {
+          tooltipMvrv.style.display = 'none';
+        }
+      });
     }
 
-    // Init
     document.addEventListener('DOMContentLoaded', () => {
       const saved = localStorage.getItem('lang');
-      if (saved) {
-        currentLang = saved;
-        updateLang();
-      }
+      if (saved) { currentLang = saved; updateLang(); }
       loadData();
     });
   </script>
