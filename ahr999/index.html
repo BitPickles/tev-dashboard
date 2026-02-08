@@ -122,46 +122,46 @@
     .lang-switch .active { color: var(--text-primary); font-weight: 500; }
 
     /* Main Content */
-    main { padding: 40px 0; }
+    main { padding: 24px 0; }
 
-    .page-header { margin-bottom: 32px; }
+    .page-header { margin-bottom: 16px; }
 
     .page-title {
-      font-size: 32px;
+      font-size: 26px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
 
     .page-subtitle {
       color: var(--text-secondary);
-      font-size: 16px;
+      font-size: 14px;
     }
 
-    /* Stats Grid */
+    /* Stats Grid - Compact */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      margin-bottom: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
     }
 
     .stat-card {
       background: var(--bg-secondary);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
+      border-radius: 10px;
+      padding: 12px 14px;
     }
 
     .stat-label {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-tertiary);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
 
     .stat-value {
-      font-size: 28px;
+      font-size: 20px;
       font-weight: 700;
       font-family: 'JetBrains Mono', monospace;
     }
@@ -171,30 +171,30 @@
     .stat-value.wait { color: var(--danger); }
 
     .stat-hint {
-      font-size: 13px;
+      font-size: 11px;
       color: var(--text-secondary);
-      margin-top: 8px;
+      margin-top: 4px;
     }
 
     /* Zone Legend */
     .zone-legend {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 24px;
+      gap: 12px;
+      margin-bottom: 16px;
     }
 
     .zone-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 14px;
+      gap: 6px;
+      font-size: 12px;
       color: var(--text-secondary);
     }
 
     .zone-dot {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
     }
 
@@ -433,15 +433,15 @@
         </div>
         <div class="stat-card">
           <div class="stat-label" data-zh="200日定投成本" data-en="200d DCA Cost">200日定投成本</div>
-          <div class="stat-value" id="current-cost" style="color: var(--purple); font-size: 22px;">—</div>
+          <div class="stat-value" id="current-cost" style="color: var(--purple); font-size: 16px;">—</div>
         </div>
         <div class="stat-card">
           <div class="stat-label" data-zh="拟合价格" data-en="Fitted Price">拟合价格</div>
-          <div class="stat-value" id="current-fitted" style="color: var(--cyan); font-size: 22px;">—</div>
+          <div class="stat-value" id="current-fitted" style="color: var(--cyan); font-size: 16px;">—</div>
         </div>
         <div class="stat-card">
           <div class="stat-label" data-zh="操作建议" data-en="Suggestion">操作建议</div>
-          <div class="stat-value" id="suggestion" style="font-size: 22px;">—</div>
+          <div class="stat-value" id="suggestion" style="font-size: 18px;">—</div>
           <div class="stat-hint" data-zh="仅供参考" data-en="Reference only">仅供参考</div>
         </div>
       </div>
