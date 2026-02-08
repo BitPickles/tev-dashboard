@@ -431,7 +431,7 @@
     }
 
     function calculatePercentile(value, history) {
-      const sorted = [...history.map(d => d.mvrv)].sort((a, b) => a - b);
+      const sorted = [...history.map(d => d.value)].sort((a, b) => a - b);
       const index = sorted.findIndex(v => v >= value);
       return Math.round((index / sorted.length) * 100);
     }
@@ -529,7 +529,7 @@
       });
       resizeObserver.observe(container);
 
-      const mvrvData = history.map(d => ({ time: d.date, value: d.mvrv }));
+      const mvrvData = history.map(d => ({ time: d.date, value: d.value }));
 
       // Build lookup table
       history.forEach(d => { historyData[d.date] = d; });
@@ -638,9 +638,9 @@
         tooltipDate.textContent = formatTime(param.time);
         const dataPoint = historyData[param.time];
 
-        if (seriesVisible.mvrv && dataPoint && dataPoint.mvrv !== undefined) {
+        if (seriesVisible.mvrv && dataPoint && dataPoint.value !== undefined) {
           tooltipMvrv.style.display = 'flex';
-          document.getElementById('tooltip-mvrv-value').textContent = dataPoint.mvrv.toFixed(2);
+          document.getElementById('tooltip-mvrv-value').textContent = dataPoint.value.toFixed(2);
         } else {
           tooltipMvrv.style.display = 'none';
         }
