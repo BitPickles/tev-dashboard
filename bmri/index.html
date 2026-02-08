@@ -510,7 +510,8 @@
         <div class="stat-card">
           <div class="stat-label" data-zh="市场状态" data-en="Market State">市场状态</div>
           <div class="stat-value" id="market-state" style="font-size: 24px;">—</div>
-          <div class="stat-hint" id="update-date">—</div>
+          <div class="stat-hint" id="regime-hint" style="margin-top: 4px;">—</div>
+          <div class="stat-hint" id="update-date" style="color: var(--text-tertiary); font-size: 12px;">—</div>
         </div>
       </div>
 
@@ -639,8 +640,8 @@
              data-en="BMRI (Bitcoin Macro Risk Index) is a macro risk indicator that helps you determine whether the current macro environment is favorable or unfavorable for Bitcoin.">
             BMRI（Bitcoin Macro Risk Index）是一个宏观风险评估指标，帮助你判断「现在的宏观环境对比特币是友好还是不友好」。
           </p>
-          <p data-zh="<strong>核心逻辑：</strong>比特币虽然常被称为「数字黄金」，但它本质上是一个风险资产。当全球流动性充裕、利率下降、市场风险偏好上升时，比特币往往表现更好；反之则承压。" 
-             data-en="<strong>Core Logic:</strong> Although Bitcoin is often called 'digital gold', it's fundamentally a risk asset. Bitcoin tends to perform better when global liquidity is abundant, interest rates decline, and market risk appetite rises.">
+          <p 
+            >
             <strong>核心逻辑：</strong>比特币虽然常被称为「数字黄金」，但它本质上是一个风险资产。当全球流动性充裕、利率下降、市场风险偏好上升时，比特币往往表现更好；反之则承压。
           </p>
           <p data-zh="BMRI 将这些宏观因素量化成一个数字，给出三种信号：" 
@@ -667,11 +668,11 @@
           <!-- Rates Bucket -->
           <div style="background: var(--bg-tertiary); padding: 20px; border-radius: 12px; margin: 16px 0; border-left: 4px solid var(--blue);">
             <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--blue);">📉 Rates 利率桶（权重 35%）</h3>
-            <p style="margin-bottom: 8px;" data-zh="<strong>监测什么：</strong>美国国债利率的变化方向" data-en="<strong>What it monitors:</strong> Direction of US Treasury rate changes">
+            <p style="margin-bottom: 8px;">
               <strong>监测什么：</strong>美国国债利率的变化方向
             </p>
-            <p style="margin-bottom: 8px;" data-zh="<strong>为什么重要：</strong>利率上升 → 资金成本增加 → 风险资产承压。尤其是「实际利率」（扣除通胀后的利率），对比特币影响更大。" 
-               data-en="<strong>Why it matters:</strong> Rising rates → Higher cost of capital → Risk assets under pressure. 'Real rates' (inflation-adjusted) have an even greater impact on Bitcoin.">
+            <p style="margin-bottom: 8px;" 
+              >
               <strong>为什么重要：</strong>利率上升 → 资金成本增加 → 风险资产承压。尤其是「实际利率」（扣除通胀后的利率），对比特币影响更大。
             </p>
             <p style="color: var(--text-tertiary); font-size: 13px;" data-zh="数据来源：10年期美债名义利率 (DGS10)、10年期 TIPS 实际利率 (DFII10)" 
@@ -683,11 +684,11 @@
           <!-- Liquidity Bucket -->
           <div style="background: var(--bg-tertiary); padding: 20px; border-radius: 12px; margin: 16px 0; border-left: 4px solid var(--accent);">
             <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--accent);">💧 Liquidity 流动性桶（权重 35%）</h3>
-            <p style="margin-bottom: 8px;" data-zh="<strong>监测什么：</strong>全球美元流动性的松紧程度" data-en="<strong>What it monitors:</strong> Global USD liquidity conditions">
+            <p style="margin-bottom: 8px;">
               <strong>监测什么：</strong>全球美元流动性的松紧程度
             </p>
-            <p style="margin-bottom: 8px;" data-zh="<strong>为什么重要：</strong>流动性是所有资产价格的「水位线」。美联储扩表、美元走弱、逆回购释放 → 市场「水多」→ 有利于比特币。" 
-               data-en="<strong>Why it matters:</strong> Liquidity is the 'water level' for all asset prices. Fed expansion, weaker USD, RRP drain → More 'water' → Bullish for Bitcoin.">
+            <p style="margin-bottom: 8px;" 
+              >
               <strong>为什么重要：</strong>流动性是所有资产价格的「水位线」。美联储扩表、美元走弱、逆回购释放 → 市场「水多」→ 有利于比特币。
             </p>
             <p style="color: var(--text-tertiary); font-size: 13px;" data-zh="数据来源：美元指数 (DXY)、美联储资产负债表 (WALCL)、隔夜逆回购 (RRP)" 
@@ -699,11 +700,11 @@
           <!-- Risk Bucket -->
           <div style="background: var(--bg-tertiary); padding: 20px; border-radius: 12px; margin: 16px 0; border-left: 4px solid var(--warning);">
             <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--warning);">⚡ Risk 风险偏好桶（权重 30%）</h3>
-            <p style="margin-bottom: 8px;" data-zh="<strong>监测什么：</strong>市场的恐慌程度和信用风险" data-en="<strong>What it monitors:</strong> Market fear levels and credit risk">
+            <p style="margin-bottom: 8px;">
               <strong>监测什么：</strong>市场的恐慌程度和信用风险
             </p>
-            <p style="margin-bottom: 8px;" data-zh="<strong>为什么重要：</strong>VIX 飙升、高收益债利差走阔 → 市场避险情绪升温 → 资金撤离风险资产（包括 BTC）。" 
-               data-en="<strong>Why it matters:</strong> VIX spikes, HY spreads widen → Risk-off sentiment → Capital exits risk assets (including BTC).">
+            <p style="margin-bottom: 8px;" 
+              >
               <strong>为什么重要：</strong>VIX 飙升、高收益债利差走阔 → 市场避险情绪升温 → 资金撤离风险资产（包括 BTC）。
             </p>
             <p style="color: var(--text-tertiary); font-size: 13px;" data-zh="数据来源：VIX 恐慌指数 (VIXCLS)、高收益债信用利差 (HY OAS)" 
@@ -761,10 +762,7 @@
           </table>
 
           <div style="background: var(--accent-dim); padding: 16px; border-radius: 8px; margin-top: 16px; border: 1px solid rgba(34, 197, 94, 0.3);">
-            <p style="margin: 0; color: var(--accent);" data-zh="💡 <strong>建议：</strong>大多数投资者使用 6M 版作为主要参考。如果你需要更及时的短期预警，可以叠加参考 1M 版。" 
-               data-en="💡 <strong>Recommendation:</strong> Most investors should use 6M version. Add 1M version for short-term alerts if needed.">
-              💡 <strong>建议：</strong>大多数投资者使用 6M 版作为主要参考。如果你需要更及时的短期预警，可以叠加参考 1M 版。
-            </p>
+            <p style="margin: 0; color: var(--accent);">💡 <strong data-zh="建议：" data-en="Tip: ">建议：</strong><span data-zh="大多数投资者使用 6M 版作为主要参考。如果你需要更及时的短期预警，可以叠加参考 1M 版。" data-en="Most investors should use 6M version. Add 1M version for short-term alerts if needed.">大多数投资者使用 6M 版作为主要参考。如果你需要更及时的短期预警，可以叠加参考 1M 版。</span></p>
           </div>
         </div>
       </div>
@@ -804,10 +802,7 @@
           </div>
 
           <div style="background: var(--warning-dim); padding: 16px; border-radius: 8px; margin-top: 16px; border: 1px solid rgba(245, 158, 11, 0.3);">
-            <p style="margin: 0; color: var(--warning);" data-zh="⚠️ <strong>重要提示：</strong>BMRI 关注的是宏观背景，不能预测短期价格波动。即使 Risk-On，BTC 也可能因其他因素下跌；即使 Risk-Off，BTC 也可能反弹。它帮你判断「大环境」，不是择时工具。" 
-               data-en="⚠️ <strong>Important:</strong> BMRI focuses on macro backdrop, not short-term price prediction. BTC can drop even in Risk-On and rally in Risk-Off. It helps assess the 'big picture', not timing.">
-              ⚠️ <strong>重要提示：</strong>BMRI 关注的是宏观背景，不能预测短期价格波动。即使 Risk-On，BTC 也可能因其他因素下跌；即使 Risk-Off，BTC 也可能反弹。它帮你判断「大环境」，不是择时工具。
-            </p>
+            <p style="margin: 0; color: var(--warning);">⚠️ <strong data-zh="重要提示：" data-en="Important: ">重要提示：</strong><span data-zh="BMRI 关注的是宏观背景，不能预测短期价格波动。即使 Risk-On，BTC 也可能因其他因素下跌；即使 Risk-Off，BTC 也可能反弹。它帮你判断「大环境」，不是择时工具。" data-en="BMRI focuses on macro backdrop, not short-term price prediction. BTC can drop even in Risk-On and rally in Risk-Off. It helps assess the 'big picture', not timing.">BMRI 关注的是宏观背景，不能预测短期价格波动。即使 Risk-On，BTC 也可能因其他因素下跌；即使 Risk-Off，BTC 也可能反弹。它帮你判断「大环境」，不是择时工具。</span></p>
           </div>
         </div>
       </div>
@@ -991,11 +986,26 @@
 
     function getRegimeInfo(regime) {
       if (regime === 'RISK_ON') {
-        return { class: 'risk-on', label: currentLang === 'zh' ? '风险开启' : 'Risk-On', state: '🟢 Risk-On' };
+        return { 
+          class: 'risk-on', 
+          label: currentLang === 'zh' ? '风险开启' : 'Risk-On', 
+          state: '🟢 Risk-On',
+          hint: currentLang === 'zh' ? '宏观环境友好，适合持有或加仓' : 'Favorable macro, hold or add'
+        };
       } else if (regime === 'RISK_OFF') {
-        return { class: 'risk-off', label: currentLang === 'zh' ? '风险关闭' : 'Risk-Off', state: '🔴 Risk-Off' };
+        return { 
+          class: 'risk-off', 
+          label: currentLang === 'zh' ? '风险关闭' : 'Risk-Off', 
+          state: '🔴 Risk-Off',
+          hint: currentLang === 'zh' ? '宏观环境恶化，考虑减仓或对冲' : 'Unfavorable macro, reduce or hedge'
+        };
       } else {
-        return { class: 'neutral', label: currentLang === 'zh' ? '中性' : 'Neutral', state: '🟡 Neutral' };
+        return { 
+          class: 'neutral', 
+          label: currentLang === 'zh' ? '中性' : 'Neutral', 
+          state: '🟡 Neutral',
+          hint: currentLang === 'zh' ? '宏观环境中性，维持现有配置' : 'Neutral macro, maintain position'
+        };
       }
     }
 
@@ -1043,6 +1053,7 @@
       document.getElementById('bmri-value').className = `stat-value ${regimeInfo.class}`;
       document.getElementById('bmri-regime').textContent = regimeInfo.label;
       document.getElementById('market-state').textContent = regimeInfo.state;
+      document.getElementById('regime-hint').textContent = regimeInfo.hint;
       document.getElementById('update-date').textContent = current.date;
 
       // Update bucket values
