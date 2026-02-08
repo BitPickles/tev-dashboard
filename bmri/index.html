@@ -6,8 +6,7 @@
   <title>BMRI 指标 — Crypto3D</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+  <script src="https://unpkg.com/lightweight-charts@4/dist/lightweight-charts.standalone.production.js"></script>
   <style>
     :root {
       --bg-primary: #0a0a0b;
@@ -280,9 +279,117 @@
       margin-bottom: 32px;
     }
 
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .chart-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .chart-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    .legend-item:hover { background: var(--bg-tertiary); }
+    .legend-item.disabled { opacity: 0.4; }
+    .legend-item.fixed { cursor: default; opacity: 0.7; }
+    .legend-item.fixed:hover { background: transparent; }
+
+    .legend-item.scale-toggle {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      font-weight: 500;
+    }
+    .legend-item.scale-toggle:hover {
+      border-color: var(--border-hover);
+    }
+
+    .legend-line {
+      width: 16px;
+      height: 3px;
+      border-radius: 1px;
+    }
+
+    .legend-line.dashed {
+      background: none;
+      border-top: 2px dashed currentColor;
+      height: 0;
+    }
+
     .chart-wrapper {
       position: relative;
       height: 400px;
+    }
+
+    .chart-tooltip {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(17, 17, 19, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 13px;
+      pointer-events: none;
+      z-index: 10;
+      min-width: 140px;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+
+    .chart-tooltip.visible { opacity: 1; }
+
+    .tooltip-date {
+      color: var(--text-primary);
+      font-weight: 500;
+      margin-bottom: 8px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .tooltip-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .tooltip-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .tooltip-label { color: var(--text-tertiary); }
+    .tooltip-value { color: var(--text-primary); font-family: 'JetBrains Mono', monospace; }
+
+    .chart-hint {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 12px;
     }
 
     /* Info Section */
@@ -450,9 +557,60 @@
 
       <!-- Chart -->
       <div class="chart-container">
-        <div class="chart-wrapper">
-          <canvas id="bmri-chart"></canvas>
+        <div class="chart-header">
+          <div class="chart-title" data-zh="BMRI 历史走势" data-en="BMRI History">BMRI 历史走势</div>
+          <div class="chart-legend">
+            <div class="legend-item fixed" title="阈值线始终显示">
+              <div class="legend-line dashed" style="color: #22c55e;"></div>
+              <span id="legend-on">+0.6</span>
+            </div>
+            <div class="legend-item fixed" title="阈值线始终显示">
+              <div class="legend-line dashed" style="color: #ef4444;"></div>
+              <span id="legend-off">-0.6</span>
+            </div>
+            <div class="legend-item" data-series="bmri" onclick="toggleSeries('bmri')">
+              <div class="legend-line" style="background: #3b82f6;"></div>
+              <span>BMRI</span>
+            </div>
+            <div class="legend-item disabled" data-series="rates" onclick="toggleSeries('rates')">
+              <div class="legend-line" style="background: #06b6d4;"></div>
+              <span>Rates</span>
+            </div>
+            <div class="legend-item disabled" data-series="liq" onclick="toggleSeries('liq')">
+              <div class="legend-line" style="background: #22c55e;"></div>
+              <span>Liquidity</span>
+            </div>
+            <div class="legend-item disabled" data-series="risk" onclick="toggleSeries('risk')">
+              <div class="legend-line" style="background: #f59e0b;"></div>
+              <span>Risk</span>
+            </div>
+          </div>
         </div>
+        <div class="chart-wrapper" id="chart-container"></div>
+        <div class="chart-tooltip" id="chart-tooltip">
+          <div class="tooltip-date" id="tooltip-date">—</div>
+          <div class="tooltip-item" id="tooltip-bmri">
+            <div class="tooltip-dot" style="background: #3b82f6;"></div>
+            <span class="tooltip-label">BMRI:</span>
+            <span class="tooltip-value" id="tooltip-bmri-value">—</span>
+          </div>
+          <div class="tooltip-item" id="tooltip-rates" style="display: none;">
+            <div class="tooltip-dot" style="background: #06b6d4;"></div>
+            <span class="tooltip-label">Rates:</span>
+            <span class="tooltip-value" id="tooltip-rates-value">—</span>
+          </div>
+          <div class="tooltip-item" id="tooltip-liq" style="display: none;">
+            <div class="tooltip-dot" style="background: #22c55e;"></div>
+            <span class="tooltip-label">Liq:</span>
+            <span class="tooltip-value" id="tooltip-liq-value">—</span>
+          </div>
+          <div class="tooltip-item" id="tooltip-risk" style="display: none;">
+            <div class="tooltip-dot" style="background: #f59e0b;"></div>
+            <span class="tooltip-label">Risk:</span>
+            <span class="tooltip-value" id="tooltip-risk-value">—</span>
+          </div>
+        </div>
+        <div class="chart-hint" data-zh="💡 拖动平移 · 滚轮缩放 · 双击重置" data-en="💡 Drag to pan · Scroll to zoom · Double-click to reset">💡 拖动平移 · 滚轮缩放 · 双击重置</div>
       </div>
 
       <!-- Info Section: What is BMRI -->
@@ -756,6 +914,30 @@
     let currentVersion = '6m';
     let bmriData = null;
     let chart = null;
+    let series = {};
+    let zones = {};
+    let seriesVisible = { bmri: true, rates: false, liq: false, risk: false };
+    let defaultRange = { from: 0, to: 0 };
+    let historyData = {};
+    let currentThresholds = { on: 0.6, off: -0.6 };
+
+    // Format time to YYYY/MM/DD
+    function formatTime(time) {
+      if (!time) return '—';
+      if (typeof time === 'string') {
+        const parts = time.split('-');
+        if (parts.length === 3) return `${parts[0]}/${parts[1]}/${parts[2]}`;
+        return time;
+      }
+      if (typeof time === 'number') {
+        const date = new Date(time * 1000);
+        return `${date.getFullYear()}/${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getDate()).padStart(2, '0')}`;
+      }
+      if (time.year !== undefined) {
+        return `${time.year}/${String(time.month).padStart(2, '0')}/${String(time.day).padStart(2, '0')}`;
+      }
+      return '—';
+    }
 
     function toggleLang() {
       currentLang = currentLang === 'zh' ? 'en' : 'zh';
@@ -781,43 +963,54 @@
       if (bmriData) updateDisplay();
     }
 
-    function getRegimeInfo(regime, thresholds) {
+    function getRegimeInfo(regime) {
       if (regime === 'RISK_ON') {
-        return { 
-          class: 'risk-on', 
-          label: currentLang === 'zh' ? '风险开启' : 'Risk-On',
-          state: '🟢 Risk-On'
-        };
+        return { class: 'risk-on', label: currentLang === 'zh' ? '风险开启' : 'Risk-On', state: '🟢 Risk-On' };
       } else if (regime === 'RISK_OFF') {
-        return { 
-          class: 'risk-off', 
-          label: currentLang === 'zh' ? '风险关闭' : 'Risk-Off',
-          state: '🔴 Risk-Off'
-        };
+        return { class: 'risk-off', label: currentLang === 'zh' ? '风险关闭' : 'Risk-Off', state: '🔴 Risk-Off' };
       } else {
-        return { 
-          class: 'neutral', 
-          label: currentLang === 'zh' ? '中性' : 'Neutral',
-          state: '🟡 Neutral'
-        };
+        return { class: 'neutral', label: currentLang === 'zh' ? '中性' : 'Neutral', state: '🟡 Neutral' };
       }
     }
 
     function updateBucketBar(id, value) {
       const bar = document.getElementById(id);
       if (!bar || value === null) return;
-      
-      // Map value from [-2, 2] to [0%, 100%], with 50% at 0
       const percent = Math.min(100, Math.max(0, (value + 2) / 4 * 100));
       bar.style.width = percent + '%';
       bar.className = 'bucket-fill ' + (value >= 0 ? 'positive' : 'negative');
+    }
+
+    function toggleSeries(name) {
+      if (!series[name]) return;
+      seriesVisible[name] = !seriesVisible[name];
+      series[name].applyOptions({ visible: seriesVisible[name] });
+      
+      // Toggle zone backgrounds with BMRI
+      if (name === 'bmri') {
+        if (zones.green) zones.green.applyOptions({ visible: seriesVisible[name] });
+        if (zones.red) zones.red.applyOptions({ visible: seriesVisible[name] });
+      }
+      
+      // Update tooltip visibility
+      const tooltipItem = document.getElementById(`tooltip-${name}`);
+      if (tooltipItem) tooltipItem.style.display = seriesVisible[name] ? 'flex' : 'none';
+      
+      const legendItem = document.querySelector(`.legend-item[data-series="${name}"]`);
+      if (legendItem) legendItem.classList.toggle('disabled', !seriesVisible[name]);
+    }
+
+    function resetChart() {
+      if (!chart || !defaultRange.from) return;
+      chart.timeScale().setVisibleRange(defaultRange);
     }
 
     function updateDisplay() {
       const versionData = bmriData[currentVersion];
       const current = versionData.current;
       const thresholds = versionData.thresholds;
-      const regimeInfo = getRegimeInfo(current.regime, thresholds);
+      currentThresholds = thresholds;
+      const regimeInfo = getRegimeInfo(current.regime);
 
       // Update main value
       document.getElementById('bmri-value').textContent = current.value.toFixed(4);
@@ -836,133 +1029,220 @@
       updateBucketBar('liq-bar', current.liq);
       updateBucketBar('risk-bar', current.risk);
 
-      // Update thresholds
+      // Update thresholds display
       document.getElementById('threshold-on').textContent = `> +${thresholds.on} Risk-On`;
       document.getElementById('threshold-off').textContent = `< ${thresholds.off} Risk-Off`;
+      document.getElementById('legend-on').textContent = `+${thresholds.on}`;
+      document.getElementById('legend-off').textContent = `${thresholds.off}`;
 
       // Draw chart
       drawChart(versionData.history, thresholds);
     }
 
     function drawChart(history, thresholds) {
-      const ctx = document.getElementById('bmri-chart').getContext('2d');
+      const container = document.getElementById('chart-container');
       
+      // Destroy existing chart
       if (chart) {
-        chart.destroy();
+        chart.remove();
+        chart = null;
+        series = {};
+        zones = {};
+      }
+      
+      chart = LightweightCharts.createChart(container, {
+        layout: {
+          background: { type: 'solid', color: 'transparent' },
+          textColor: '#a1a1aa',
+          fontFamily: "'Inter', sans-serif",
+        },
+        grid: {
+          vertLines: { color: 'rgba(39, 39, 42, 0.5)' },
+          horzLines: { color: 'rgba(39, 39, 42, 0.5)' },
+        },
+        crosshair: {
+          mode: LightweightCharts.CrosshairMode.Normal,
+          vertLine: { color: 'rgba(59, 130, 246, 0.5)', labelBackgroundColor: '#3b82f6' },
+          horzLine: { color: 'rgba(59, 130, 246, 0.5)', labelBackgroundColor: '#3b82f6' },
+        },
+        rightPriceScale: {
+          borderColor: '#27272a',
+          scaleMargins: { top: 0.1, bottom: 0.1 },
+        },
+        timeScale: {
+          borderColor: '#27272a',
+          timeVisible: false,
+          secondsVisible: false,
+          minBarSpacing: 0.1,
+          tickMarkFormatter: (time) => {
+            if (typeof time === 'string') return time.substring(0, 4);
+            if (typeof time === 'number') return new Date(time * 1000).getFullYear().toString();
+            if (time.year !== undefined) return time.year.toString();
+            return '';
+          },
+        },
+        handleScroll: { mouseWheel: true, pressedMouseMove: true },
+        handleScale: { axisPressedMouseMove: true, mouseWheel: true, pinch: true },
+      });
+
+      // Resize handler
+      const resizeObserver = new ResizeObserver(entries => {
+        if (entries.length === 0) return;
+        const { width, height } = entries[0].contentRect;
+        chart.applyOptions({ width, height });
+      });
+      resizeObserver.observe(container);
+
+      // Prepare data
+      const bmriDataArr = history.map(d => ({ time: d.date, value: d.bmri }));
+      const ratesDataArr = history.map(d => ({ time: d.date, value: d.rates })).filter(d => d.value !== null);
+      const liqDataArr = history.map(d => ({ time: d.date, value: d.liq })).filter(d => d.value !== null);
+      const riskDataArr = history.map(d => ({ time: d.date, value: d.risk })).filter(d => d.value !== null);
+
+      // Build lookup table for tooltip
+      historyData = {};
+      history.forEach(d => { historyData[d.date] = d; });
+
+      const lastDate = history[history.length - 1].date;
+
+      // Zone backgrounds
+      zones.green = chart.addBaselineSeries({
+        baseValue: { type: 'price', price: thresholds.on },
+        topLineColor: 'transparent',
+        topFillColor1: 'rgba(34, 197, 94, 0.08)',
+        topFillColor2: 'rgba(34, 197, 94, 0.25)',
+        bottomLineColor: 'transparent',
+        bottomFillColor1: 'transparent',
+        bottomFillColor2: 'transparent',
+        priceScaleId: 'right',
+        lastValueVisible: false,
+        priceLineVisible: false,
+      });
+      zones.green.setData(bmriDataArr);
+
+      zones.red = chart.addBaselineSeries({
+        baseValue: { type: 'price', price: thresholds.off },
+        topLineColor: 'transparent',
+        topFillColor1: 'transparent',
+        topFillColor2: 'transparent',
+        bottomLineColor: 'transparent',
+        bottomFillColor1: 'rgba(239, 68, 68, 0.08)',
+        bottomFillColor2: 'rgba(239, 68, 68, 0.25)',
+        priceScaleId: 'right',
+        lastValueVisible: false,
+        priceLineVisible: false,
+      });
+      zones.red.setData(bmriDataArr);
+
+      // Add future whitespace (90 days)
+      const lastDateObj = new Date(lastDate);
+      for (let i = 1; i <= 90; i++) {
+        const d = new Date(lastDateObj);
+        d.setDate(d.getDate() + i);
+        bmriDataArr.push({ time: d.toISOString().split('T')[0] });
       }
 
-      const labels = history.map(d => d.date);
-      const values = history.map(d => d.bmri);
+      // BMRI Series
+      series.bmri = chart.addLineSeries({
+        color: '#3b82f6',
+        lineWidth: 2,
+        priceScaleId: 'right',
+        priceFormat: { type: 'price', precision: 4, minMove: 0.0001 },
+        lastValueVisible: false,
+        priceLineVisible: false,
+      });
+      series.bmri.setData(bmriDataArr);
 
-      chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: 'BMRI',
-            data: values,
-            borderColor: '#3b82f6',
-            backgroundColor: 'rgba(59, 130, 246, 0.1)',
-            borderWidth: 2,
-            fill: true,
-            tension: 0.1,
-            pointRadius: 0,
-            pointHoverRadius: 4
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          interaction: {
-            intersect: false,
-            mode: 'index'
-          },
-          plugins: {
-            legend: {
-              display: false
-            },
-            tooltip: {
-              backgroundColor: '#18181b',
-              titleColor: '#fafafa',
-              bodyColor: '#a1a1aa',
-              borderColor: '#27272a',
-              borderWidth: 1,
-              padding: 12,
-              displayColors: false,
-              callbacks: {
-                title: (items) => items[0].label,
-                label: (item) => `BMRI: ${item.raw.toFixed(4)}`
-              }
-            }
-          },
-          scales: {
-            x: {
-              type: 'time',
-              time: {
-                unit: 'month',
-                displayFormats: {
-                  month: 'yyyy-MM'
-                }
-              },
-              grid: {
-                color: 'rgba(39, 39, 42, 0.5)'
-              },
-              ticks: {
-                color: '#71717a'
-              }
-            },
-            y: {
-              grid: {
-                color: 'rgba(39, 39, 42, 0.5)'
-              },
-              ticks: {
-                color: '#71717a'
-              }
-            }
-          }
+      // Threshold lines
+      series.bmri.createPriceLine({
+        price: thresholds.on,
+        color: '#22c55e',
+        lineWidth: 1,
+        lineStyle: LightweightCharts.LineStyle.Dashed,
+        axisLabelVisible: true,
+      });
+      series.bmri.createPriceLine({
+        price: thresholds.off,
+        color: '#ef4444',
+        lineWidth: 1,
+        lineStyle: LightweightCharts.LineStyle.Dashed,
+        axisLabelVisible: true,
+      });
+      series.bmri.createPriceLine({
+        price: 0,
+        color: 'rgba(161, 161, 170, 0.3)',
+        lineWidth: 1,
+        lineStyle: LightweightCharts.LineStyle.Dashed,
+        axisLabelVisible: false,
+      });
+
+      // Rates Series (hidden by default)
+      series.rates = chart.addLineSeries({
+        color: '#06b6d4',
+        lineWidth: 1.5,
+        priceScaleId: 'right',
+        priceFormat: { type: 'price', precision: 2, minMove: 0.01 },
+        lastValueVisible: false,
+        priceLineVisible: false,
+        visible: false,
+      });
+      series.rates.setData(ratesDataArr);
+
+      // Liquidity Series (hidden by default)
+      series.liq = chart.addLineSeries({
+        color: '#22c55e',
+        lineWidth: 1.5,
+        priceScaleId: 'right',
+        priceFormat: { type: 'price', precision: 2, minMove: 0.01 },
+        lastValueVisible: false,
+        priceLineVisible: false,
+        visible: false,
+      });
+      series.liq.setData(liqDataArr);
+
+      // Risk Series (hidden by default)
+      series.risk = chart.addLineSeries({
+        color: '#f59e0b',
+        lineWidth: 1.5,
+        priceScaleId: 'right',
+        priceFormat: { type: 'price', precision: 2, minMove: 0.01 },
+        lastValueVisible: false,
+        priceLineVisible: false,
+        visible: false,
+      });
+      series.risk.setData(riskDataArr);
+
+      // Double-click to reset
+      container.addEventListener('dblclick', resetChart);
+
+      // Crosshair tooltip
+      const tooltip = document.getElementById('chart-tooltip');
+      chart.subscribeCrosshairMove(param => {
+        if (!param.time || !param.point || param.point.x < 0) {
+          tooltip.classList.remove('visible');
+          return;
+        }
+        
+        const dateStr = typeof param.time === 'string' ? param.time : 
+          `${param.time.year}-${String(param.time.month).padStart(2, '0')}-${String(param.time.day).padStart(2, '0')}`;
+        const data = historyData[dateStr];
+        
+        if (data) {
+          document.getElementById('tooltip-date').textContent = formatTime(param.time);
+          document.getElementById('tooltip-bmri-value').textContent = data.bmri?.toFixed(4) ?? '—';
+          document.getElementById('tooltip-rates-value').textContent = data.rates?.toFixed(2) ?? '—';
+          document.getElementById('tooltip-liq-value').textContent = data.liq?.toFixed(2) ?? '—';
+          document.getElementById('tooltip-risk-value').textContent = data.risk?.toFixed(2) ?? '—';
+          tooltip.classList.add('visible');
+        } else {
+          tooltip.classList.remove('visible');
         }
       });
 
-      // Draw threshold lines
+      // Store default range for reset
+      chart.timeScale().fitContent();
       setTimeout(() => {
-        const ctx2d = chart.ctx;
-        const yScale = chart.scales.y;
-        const chartArea = chart.chartArea;
-        
-        ctx2d.save();
-        ctx2d.setLineDash([5, 5]);
-        
-        // Risk-On line
-        const yOn = yScale.getPixelForValue(thresholds.on);
-        if (yOn >= chartArea.top && yOn <= chartArea.bottom) {
-          ctx2d.strokeStyle = 'rgba(34, 197, 94, 0.5)';
-          ctx2d.beginPath();
-          ctx2d.moveTo(chartArea.left, yOn);
-          ctx2d.lineTo(chartArea.right, yOn);
-          ctx2d.stroke();
-        }
-        
-        // Risk-Off line
-        const yOff = yScale.getPixelForValue(thresholds.off);
-        if (yOff >= chartArea.top && yOff <= chartArea.bottom) {
-          ctx2d.strokeStyle = 'rgba(239, 68, 68, 0.5)';
-          ctx2d.beginPath();
-          ctx2d.moveTo(chartArea.left, yOff);
-          ctx2d.lineTo(chartArea.right, yOff);
-          ctx2d.stroke();
-        }
-
-        // Zero line
-        const y0 = yScale.getPixelForValue(0);
-        if (y0 >= chartArea.top && y0 <= chartArea.bottom) {
-          ctx2d.strokeStyle = 'rgba(161, 161, 170, 0.3)';
-          ctx2d.beginPath();
-          ctx2d.moveTo(chartArea.left, y0);
-          ctx2d.lineTo(chartArea.right, y0);
-          ctx2d.stroke();
-        }
-        
-        ctx2d.restore();
+        defaultRange = chart.timeScale().getVisibleRange();
       }, 100);
     }
 
