@@ -1567,7 +1567,7 @@
           <td>${index + 1}</td>
           <td>
             <div class="protocol-cell">
-              <div class="protocol-icon">${LOGO_URLS[protocol.key] ? `<img src="${LOGO_URLS[protocol.key]}" alt="${protocol.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.textContent='${protocol.icon}'">` : protocol.icon}</div>
+              <div class="protocol-icon"><img src="${LOGO_URLS[protocol.key] || protocol.icon}" alt="${protocol.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.textContent='${protocol.name.charAt(0)}'"></div>
               <div class="protocol-info">
                 <span class="protocol-name">${protocol.name}</span>
                 <span class="protocol-ticker">${protocol.ticker}</span>

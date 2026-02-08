@@ -1105,15 +1105,14 @@
         document.title = `${config.name} — TEV Dashboard`;
         document.getElementById('breadcrumb-name').textContent = config.name;
         
-        // Set protocol icon (logo URL or emoji fallback)
+        // Set protocol icon (logo URL or name initial fallback)
         const iconEl = document.getElementById('protocol-icon');
-        const logoUrl = logoUrls[protocolId];
+        const logoUrl = logoUrls[protocolId] || (config.icon && config.icon.startsWith('http') ? config.icon : null);
+        const fallbackChar = config.name ? config.name.charAt(0) : '?';
         if (logoUrl) {
-          iconEl.innerHTML = `<img src="${logoUrl}" alt="${config.ticker}" loading="lazy" onerror="this.style.display='none';this.parentElement.textContent='${config.icon || '🔮'}'">`;
-        } else if (config.icon && config.icon.startsWith('http')) {
-          iconEl.innerHTML = `<img src="${config.icon}" alt="${config.ticker}" loading="lazy">`;
+          iconEl.innerHTML = `<img src="${logoUrl}" alt="${config.ticker}" loading="lazy" onerror="this.style.display='none';this.parentElement.textContent='${fallbackChar}'">`;
         } else {
-          iconEl.textContent = config.icon || '🔮';
+          iconEl.textContent = fallbackChar;
         }
         document.getElementById('protocol-name').textContent = config.name;
         
