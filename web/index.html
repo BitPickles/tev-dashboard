@@ -1094,6 +1094,9 @@
     }
 
     // ============================================
+    // Logo URLs - loaded dynamically
+    let LOGO_URLS = {};
+
     // Protocol Data - Top 20 DeFi by TVL
     // ============================================
     const PROTOCOLS = {
@@ -1564,7 +1567,7 @@
           <td>${index + 1}</td>
           <td>
             <div class="protocol-cell">
-              <div class="protocol-icon">${protocol.icon.startsWith('http') ? `<img src="${protocol.icon}" alt="${protocol.ticker}" loading="lazy">` : protocol.icon}</div>
+              <div class="protocol-icon">${LOGO_URLS[protocol.key] ? `<img src="${LOGO_URLS[protocol.key]}" alt="${protocol.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.textContent='${protocol.icon}'">` : protocol.icon}</div>
               <div class="protocol-info">
                 <span class="protocol-name">${protocol.name}</span>
                 <span class="protocol-ticker">${protocol.ticker}</span>
@@ -1628,6 +1631,16 @@
 
     async function init() {
       try {
+        // Load logo URLs
+        try {
+          const logoRes = await fetch('../data/logo_urls.json');
+          if (logoRes.ok) {
+            LOGO_URLS = await logoRes.json();
+          }
+        } catch (e) {
+          console.warn('Failed to load logo URLs, using emoji fallback');
+        }
+
         const protocols = await loadProtocolData();
         
         // 跳过 30 天计算以加速加载（数据已在 latest.json 中）

@@ -145,6 +145,13 @@
       align-items: center;
       justify-content: center;
       font-size: 32px;
+      overflow: hidden;
+    }
+
+    .protocol-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .protocol-info h1 {
@@ -894,7 +901,7 @@
     async function loadTevChart(protocolId) {
       const section = document.getElementById('tev-chart-section');
       try {
-        const resp = await fetch(`/data/protocols/${protocolId}/tev-records.json`);
+        const resp = await fetch(`../data/protocols/${protocolId}/tev-records.json`);
         if (!resp.ok) return;
         const data = await resp.json();
         const records = data.records;
@@ -1082,15 +1089,32 @@
       const protocolId = getProtocolId();
 
       try {
+        // Load logo URLs
+        let logoUrls = {};
+        try {
+          const logoRes = await fetch('../data/logo_urls.json');
+          if (logoRes.ok) logoUrls = await logoRes.json();
+        } catch (e) {}
+
         // Load config.json
-        const response = await fetch(`/data/protocols/${protocolId}/config.json`);
+        const response = await fetch(`../data/protocols/${protocolId}/config.json`);
         if (!response.ok) throw new Error('Protocol not found');
         const config = await response.json();
 
         // Update page
         document.title = `${config.name} — TEV Dashboard`;
         document.getElementById('breadcrumb-name').textContent = config.name;
-        document.getElementById('protocol-icon').textContent = config.icon || '🔮';
+        
+        // Set protocol icon (logo URL or emoji fallback)
+        const iconEl = document.getElementById('protocol-icon');
+        const logoUrl = logoUrls[protocolId];
+        if (logoUrl) {
+          iconEl.innerHTML = `<img src="${logoUrl}" alt="${config.ticker}" loading="lazy" onerror="this.style.display='none';this.parentElement.textContent='${config.icon || '🔮'}'">`;
+        } else if (config.icon && config.icon.startsWith('http')) {
+          iconEl.innerHTML = `<img src="${config.icon}" alt="${config.ticker}" loading="lazy">`;
+        } else {
+          iconEl.textContent = config.icon || '🔮';
+        }
         document.getElementById('protocol-name').textContent = config.name;
         
         const categoryMap = {

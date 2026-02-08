@@ -1089,6 +1089,13 @@
       const protocolId = getProtocolId();
 
       try {
+        // Load logo URLs
+        let logoUrls = {};
+        try {
+          const logoRes = await fetch('../data/logo_urls.json');
+          if (logoRes.ok) logoUrls = await logoRes.json();
+        } catch (e) {}
+
         // Load config.json
         const response = await fetch(`../data/protocols/${protocolId}/config.json`);
         if (!response.ok) throw new Error('Protocol not found');
@@ -1097,8 +1104,13 @@
         // Update page
         document.title = `${config.name} — TEV Dashboard`;
         document.getElementById('breadcrumb-name').textContent = config.name;
+        
+        // Set protocol icon (logo URL or emoji fallback)
         const iconEl = document.getElementById('protocol-icon');
-        if (config.icon && config.icon.startsWith('http')) {
+        const logoUrl = logoUrls[protocolId];
+        if (logoUrl) {
+          iconEl.innerHTML = `<img src="${logoUrl}" alt="${config.ticker}" loading="lazy" onerror="this.style.display='none';this.parentElement.textContent='${config.icon || '🔮'}'">`;
+        } else if (config.icon && config.icon.startsWith('http')) {
           iconEl.innerHTML = `<img src="${config.icon}" alt="${config.ticker}" loading="lazy">`;
         } else {
           iconEl.textContent = config.icon || '🔮';

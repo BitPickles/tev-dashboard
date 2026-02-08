@@ -328,6 +328,13 @@
       align-items: center;
       justify-content: center;
       font-size: 18px;
+      overflow: hidden;
+    }
+
+    .protocol-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .protocol-info {
@@ -1087,13 +1094,16 @@
     }
 
     // ============================================
+    // Logo URLs - loaded dynamically
+    let LOGO_URLS = {};
+
     // Protocol Data - Top 20 DeFi by TVL
     // ============================================
     const PROTOCOLS = {
       aave: {
         name: 'Aave',
         ticker: 'AAVE',
-        icon: '👻',
+        icon: 'https://coin-images.coingecko.com/coins/images/12645/large/aave-token-round.png',
         category: 'lending',
         confidence: 'high',
         tevStatus: 'active',
@@ -1103,7 +1113,7 @@
       lido: {
         name: 'Lido',
         ticker: 'LDO',
-        icon: '🌊',
+        icon: 'https://coin-images.coingecko.com/coins/images/13573/large/Lido_DAO.png',
         category: 'liquid_staking',
         confidence: 'high',
         tevStatus: 'none',
@@ -1114,7 +1124,7 @@
       eigenlayer: {
         name: 'EigenLayer',
         ticker: 'EIGEN',
-        icon: '🔄',
+        icon: 'https://coin-images.coingecko.com/coins/images/37441/large/eigenlayer.png',
         category: 'restaking',
         confidence: 'high',
         tevStatus: 'none',
@@ -1125,7 +1135,7 @@
       etherfi: {
         name: 'ether.fi',
         ticker: 'ETHFI',
-        icon: '🌊',
+        icon: 'https://coin-images.coingecko.com/coins/images/35958/large/etherfi.jpeg',
         category: 'liquid_staking',
         confidence: 'high',
         tevStatus: 'active',
@@ -1136,7 +1146,7 @@
       ethena: {
         name: 'Ethena',
         ticker: 'ENA',
-        icon: '💎',
+        icon: 'https://coin-images.coingecko.com/coins/images/36530/large/ethena.png',
         category: 'yield',
         confidence: 'high',
         tevStatus: 'active',
@@ -1147,7 +1157,7 @@
       morpho: {
         name: 'Morpho',
         ticker: 'MORPHO',
-        icon: '🦋',
+        icon: 'https://coin-images.coingecko.com/coins/images/29837/large/Morpho-token-icon.png',
         category: 'lending',
         confidence: 'high',
         tevStatus: 'none',
@@ -1158,7 +1168,7 @@
       sky: {
         name: 'Sky',
         ticker: 'MKR',
-        icon: '☁️',
+        icon: 'https://coin-images.coingecko.com/coins/images/1364/large/Mark_Maker.png',
         category: 'lending',
         confidence: 'high',
         tevStatus: 'active',
@@ -1168,7 +1178,7 @@
       uniswap: {
         name: 'Uniswap',
         ticker: 'UNI',
-        icon: '🦄',
+        icon: 'https://coin-images.coingecko.com/coins/images/12504/large/uniswap-logo.png',
         category: 'dex',
         confidence: 'high',
         tevStatus: 'active',
@@ -1179,7 +1189,7 @@
       justlend: {
         name: 'JustLend',
         ticker: 'JST',
-        icon: '☀️',
+        icon: 'https://coin-images.coingecko.com/coins/images/11095/large/JUST.jpg',
         category: 'lending',
         confidence: 'low',
         tevStatus: 'partial',
@@ -1189,7 +1199,7 @@
       spark: {
         name: 'Spark',
         ticker: 'SPK',
-        icon: '✨',
+        icon: 'https://coin-images.coingecko.com/coins/images/38637/large/Spark-Logomark-RGB.png',
         category: 'lending',
         confidence: 'medium',
         tevStatus: 'none',
@@ -1200,7 +1210,7 @@
       maple: {
         name: 'Maple',
         ticker: 'SYRUP',
-        icon: '🍁',
+        icon: 'https://coin-images.coingecko.com/coins/images/51232/large/_syrup_token_logo.png',
         category: 'lending',
         confidence: 'medium',
         tevStatus: 'active',
@@ -1210,7 +1220,7 @@
       pancakeswap: {
         name: 'PancakeSwap',
         ticker: 'CAKE',
-        icon: '🥞',
+        icon: 'https://coin-images.coingecko.com/coins/images/12632/large/pancakeswap-cake-logo_%281%29.png',
         category: 'dex',
         confidence: 'high',
         tevStatus: 'active',
@@ -1220,7 +1230,7 @@
       kamino: {
         name: 'Kamino',
         ticker: 'KMNO',
-        icon: '🌀',
+        icon: 'https://coin-images.coingecko.com/coins/images/35801/large/Kamino_200x200.png',
         category: 'lending',
         confidence: 'high',
         tevStatus: 'none',
@@ -1231,7 +1241,7 @@
       curve: {
         name: 'Curve',
         ticker: 'CRV',
-        icon: '🌀',
+        icon: 'https://coin-images.coingecko.com/coins/images/12124/large/Curve.png',
         category: 'dex',
         confidence: 'high',
         tevStatus: 'active',
@@ -1241,7 +1251,7 @@
       compound: {
         name: 'Compound',
         ticker: 'COMP',
-        icon: '🏛️',
+        icon: 'https://coin-images.coingecko.com/coins/images/10775/large/COMP.png',
         category: 'lending',
         confidence: 'high',
         tevStatus: 'none',
@@ -1252,7 +1262,7 @@
       jito: {
         name: 'Jito',
         ticker: 'JTO',
-        icon: '⚡',
+        icon: 'https://coin-images.coingecko.com/coins/images/33228/large/jto.png',
         category: 'liquid_staking',
         confidence: 'medium',
         tevStatus: 'none',
@@ -1263,7 +1273,7 @@
       gmx: {
         name: 'GMX',
         ticker: 'GMX',
-        icon: '📈',
+        icon: 'https://coin-images.coingecko.com/coins/images/18323/large/arbit.png',
         category: 'perpetuals',
         confidence: 'high',
         tevStatus: 'active',
@@ -1273,7 +1283,7 @@
       pendle: {
         name: 'Pendle',
         ticker: 'PENDLE',
-        icon: '🔮',
+        icon: 'https://coin-images.coingecko.com/coins/images/15069/large/Pendle_Logo_Normal-03.png',
         category: 'yield',
         confidence: 'high',
         tevStatus: 'active',
@@ -1283,7 +1293,7 @@
       dydx: {
         name: 'dYdX',
         ticker: 'DYDX',
-        icon: '📊',
+        icon: 'https://coin-images.coingecko.com/coins/images/32594/large/dydx.png',
         category: 'perpetuals',
         confidence: 'high',
         tevStatus: 'active',
@@ -1293,7 +1303,7 @@
       radiant: {
         name: 'Radiant',
         ticker: 'RDNT',
-        icon: '☀️',
+        icon: 'https://coin-images.coingecko.com/coins/images/26536/large/Radiant-Logo-200x200.png',
         category: 'lending',
         confidence: 'high',
         tevStatus: 'active',
@@ -1304,7 +1314,7 @@
       bnb: {
         name: 'BNB',
         ticker: 'BNB',
-        icon: '🟡',
+        icon: 'https://coin-images.coingecko.com/coins/images/825/large/bnb-icon2_2x.png',
         category: 'cex',
         confidence: 'low',
         tevStatus: 'active',
@@ -1315,7 +1325,7 @@
       okb: {
         name: 'OKB',
         ticker: 'OKB',
-        icon: '🔵',
+        icon: 'https://coin-images.coingecko.com/coins/images/4463/large/WeChat_Image_20220118095654.png',
         category: 'cex',
         confidence: 'low',
         tevStatus: 'active',
@@ -1326,7 +1336,7 @@
       bgb: {
         name: 'Bitget Token',
         ticker: 'BGB',
-        icon: '🔷',
+        icon: 'https://coin-images.coingecko.com/coins/images/11610/large/Bitget_logo.png',
         category: 'cex',
         confidence: 'low',
         tevStatus: 'active',
@@ -1337,7 +1347,7 @@
       hype: {
         name: 'Hyperliquid',
         ticker: 'HYPE',
-        icon: '💧',
+        icon: 'https://coin-images.coingecko.com/coins/images/50882/large/hyperliquid.jpg',
         category: 'cex',
         confidence: 'high',
         tevStatus: 'active',
@@ -1348,7 +1358,7 @@
       mnt: {
         name: 'Mantle',
         ticker: 'MNT',
-        icon: '🟢',
+        icon: 'https://coin-images.coingecko.com/coins/images/30980/large/MNT_Token_Logo.png',
         category: 'cex',
         confidence: 'low',
         tevStatus: 'partial',
@@ -1360,7 +1370,7 @@
       aster: {
         name: 'Aster',
         ticker: 'ASTER',
-        icon: '⭐',
+        icon: 'https://coin-images.coingecko.com/coins/images/69040/large/_ASTER.png',
         category: 'perpetuals',
         confidence: 'high',
         tevStatus: 'active',
@@ -1395,7 +1405,7 @@
       const entries = Object.entries(PROTOCOLS);
       const promises = entries.map(async ([key, config]) => {
         try {
-          const response = await fetch(`/data/daily/${key}/latest.json`);
+          const response = await fetch(`../data/daily/${key}/latest.json`);
           if (!response.ok) throw new Error(`HTTP ${response.status}`);
           const data = await response.json();
           return { key, ...config, ...data };
@@ -1418,7 +1428,7 @@
         
         for (const month of [lastMonth, currentMonth]) {
           try {
-            const response = await fetch(`/data/daily/${protocolKey}/${month}.json`);
+            const response = await fetch(`../data/daily/${protocolKey}/${month}.json`);
             if (response.ok) {
               const data = await response.json();
               records = records.concat(data.records || []);
@@ -1557,7 +1567,7 @@
           <td>${index + 1}</td>
           <td>
             <div class="protocol-cell">
-              <div class="protocol-icon">${protocol.icon}</div>
+              <div class="protocol-icon">${LOGO_URLS[protocol.key] ? `<img src="${LOGO_URLS[protocol.key]}" alt="${protocol.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.textContent='${protocol.icon}'">` : protocol.icon}</div>
               <div class="protocol-info">
                 <span class="protocol-name">${protocol.name}</span>
                 <span class="protocol-ticker">${protocol.ticker}</span>
@@ -1621,6 +1631,16 @@
 
     async function init() {
       try {
+        // Load logo URLs
+        try {
+          const logoRes = await fetch('../data/logo_urls.json');
+          if (logoRes.ok) {
+            LOGO_URLS = await logoRes.json();
+          }
+        } catch (e) {
+          console.warn('Failed to load logo URLs, using emoji fallback');
+        }
+
         const protocols = await loadProtocolData();
         
         // 跳过 30 天计算以加速加载（数据已在 latest.json 中）
