@@ -141,7 +141,7 @@
     /* Card with chart layout */
     .card-body { display: flex; gap: 20px; }
     .card-main { flex: 1; min-width: 0; }
-    .card-chart { width: 120px; flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; }
+    .card-chart { width: 160px; flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; }
 
     .card-icon {
       width: 44px; height: 44px; border-radius: 12px;
@@ -181,11 +181,11 @@
 
     /* Sparkline */
     .sparkline-container { text-align: right; }
-    .sparkline { display: block; }
-    .sparkline-label { font-size: 10px; color: var(--text-tertiary); margin-top: 4px; }
-    .sparkline-change { font-size: 12px; font-family: 'JetBrains Mono', monospace; font-weight: 500; }
-    .sparkline-change.up { color: var(--accent); }
-    .sparkline-change.down { color: var(--red); }
+    .sparkline { display: block; filter: drop-shadow(0 0 6px currentColor); }
+    .sparkline-label { font-size: 10px; color: var(--text-tertiary); margin-top: 6px; }
+    .sparkline-change { font-size: 13px; font-family: 'JetBrains Mono', monospace; font-weight: 600; margin-top: 2px; }
+    .sparkline-change.up { color: var(--accent); text-shadow: 0 0 8px var(--accent); }
+    .sparkline-change.down { color: var(--red); text-shadow: 0 0 8px var(--red); }
     .sparkline-change.neutral { color: var(--text-tertiary); }
 
     /* Footer */
@@ -202,7 +202,7 @@
       .card-stats { flex-wrap: wrap; }
       .card-body { flex-direction: column; }
       .card-chart { width: 100%; align-items: flex-start; margin-top: 12px; }
-      .card-chart svg { width: 100%; max-width: 200px; }
+      .card-chart svg { width: 100%; max-width: 240px; }
     }
 
     /* Glow */
@@ -328,7 +328,7 @@
               </div>
               <div class="card-chart">
                 <div class="sparkline-container">
-                  <svg id="ahr999-spark" class="sparkline" width="120" height="50" viewBox="0 0 120 50"></svg>
+                  <svg id="ahr999-spark" class="sparkline" width="160" height="60" viewBox="0 0 160 60"></svg>
                   <div class="sparkline-change" id="ahr999-change">—</div>
                   <div class="sparkline-label" data-zh="7日趋势" data-en="7d trend">7日趋势</div>
                 </div>
@@ -364,7 +364,7 @@
               </div>
               <div class="card-chart">
                 <div class="sparkline-container">
-                  <svg id="mvrv-spark" class="sparkline" width="120" height="50" viewBox="0 0 120 50"></svg>
+                  <svg id="mvrv-spark" class="sparkline" width="160" height="60" viewBox="0 0 160 60"></svg>
                   <div class="sparkline-change" id="mvrv-change">—</div>
                   <div class="sparkline-label" data-zh="7日趋势" data-en="7d trend">7日趋势</div>
                 </div>
@@ -411,7 +411,7 @@
               </div>
               <div class="card-chart">
                 <div class="sparkline-container">
-                  <svg id="bmri-spark" class="sparkline" width="120" height="50" viewBox="0 0 120 50"></svg>
+                  <svg id="bmri-spark" class="sparkline" width="160" height="60" viewBox="0 0 160 60"></svg>
                   <div class="sparkline-change" id="bmri-change">—</div>
                   <div class="sparkline-label" data-zh="7日趋势" data-en="7d trend">7日趋势</div>
                 </div>
@@ -476,9 +476,9 @@
       const svg = document.getElementById(svgId);
       if (!svg || !data || data.length < 2) return;
 
-      const width = 120;
-      const height = 50;
-      const padding = 4;
+      const width = 160;
+      const height = 60;
+      const padding = 8;
 
       const values = data.map(d => d.value);
       const min = Math.min(...values);
@@ -491,30 +491,77 @@
         return `${x},${y}`;
       });
 
-      // Create gradient
       const gradientId = `${svgId}-gradient`;
+      const glowId = `${svgId}-glow`;
+      const maskId = `${svgId}-mask`;
+      const lineGradientId = `${svgId}-line-gradient`;
       const lastY = parseFloat(points[points.length - 1].split(',')[1]);
+      const lastX = width - padding;
+      
+      // Lighter color for glow
+      const glowColor = color;
       
       svg.innerHTML = `
         <defs>
+          <!-- Glow filter -->
+          <filter id="${glowId}" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          
+          <!-- Edge fade mask -->
+          <linearGradient id="${maskId}" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:white;stop-opacity:0" />
+            <stop offset="15%" style="stop-color:white;stop-opacity:1" />
+            <stop offset="85%" style="stop-color:white;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:white;stop-opacity:0.3" />
+          </linearGradient>
+          <mask id="${maskId}-mask">
+            <rect x="0" y="0" width="${width}" height="${height}" fill="url(#${maskId})"/>
+          </mask>
+          
+          <!-- Fill gradient -->
           <linearGradient id="${gradientId}" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" style="stop-color:${color};stop-opacity:0.3" />
+            <stop offset="0%" style="stop-color:${color};stop-opacity:0.4" />
+            <stop offset="50%" style="stop-color:${color};stop-opacity:0.15" />
             <stop offset="100%" style="stop-color:${color};stop-opacity:0" />
           </linearGradient>
+          
+          <!-- Line gradient -->
+          <linearGradient id="${lineGradientId}" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:${color};stop-opacity:0.3" />
+            <stop offset="30%" style="stop-color:${color};stop-opacity:1" />
+            <stop offset="100%" style="stop-color:${color};stop-opacity:1" />
+          </linearGradient>
         </defs>
-        <polygon 
-          points="${padding},${height - padding} ${points.join(' ')} ${width - padding},${height - padding}" 
-          fill="url(#${gradientId})" 
-        />
-        <polyline 
-          points="${points.join(' ')}" 
-          fill="none" 
-          stroke="${color}" 
-          stroke-width="2" 
-          stroke-linecap="round" 
-          stroke-linejoin="round"
-        />
-        <circle cx="${width - padding}" cy="${lastY}" r="3" fill="${color}" />
+        
+        <!-- Area fill with mask -->
+        <g mask="url(#${maskId}-mask)">
+          <polygon 
+            points="${padding},${height - padding} ${points.join(' ')} ${lastX},${height - padding}" 
+            fill="url(#${gradientId})" 
+          />
+        </g>
+        
+        <!-- Glowing line -->
+        <g mask="url(#${maskId}-mask)" filter="url(#${glowId})">
+          <polyline 
+            points="${points.join(' ')}" 
+            fill="none" 
+            stroke="url(#${lineGradientId})" 
+            stroke-width="2.5" 
+            stroke-linecap="round" 
+            stroke-linejoin="round"
+          />
+        </g>
+        
+        <!-- End point with glow -->
+        <circle cx="${lastX}" cy="${lastY}" r="4" fill="${color}" filter="url(#${glowId})"/>
+        <circle cx="${lastX}" cy="${lastY}" r="2" fill="white"/>
       `;
     }
 
