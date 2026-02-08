@@ -584,6 +584,14 @@
               <div class="legend-line" style="background: #f59e0b;"></div>
               <span>Risk</span>
             </div>
+            <div class="legend-item disabled" data-series="btcMcap" onclick="toggleSeries('btcMcap')">
+              <div class="legend-line" style="background: #f7931a;"></div>
+              <span data-zh="BTC市值" data-en="BTC MCap">BTC市值</span>
+            </div>
+            <div class="legend-item disabled" data-series="totalMcap" onclick="toggleSeries('totalMcap')">
+              <div class="legend-line" style="background: #8b5cf6;"></div>
+              <span data-zh="总市值" data-en="Total MCap">总市值</span>
+            </div>
           </div>
         </div>
         <div class="chart-wrapper" id="chart-container"></div>
@@ -608,6 +616,16 @@
             <div class="tooltip-dot" style="background: #f59e0b;"></div>
             <span class="tooltip-label">Risk:</span>
             <span class="tooltip-value" id="tooltip-risk-value">—</span>
+          </div>
+          <div class="tooltip-item" id="tooltip-btcMcap" style="display: none;">
+            <div class="tooltip-dot" style="background: #f7931a;"></div>
+            <span class="tooltip-label">BTC:</span>
+            <span class="tooltip-value" id="tooltip-btcMcap-value">—</span>
+          </div>
+          <div class="tooltip-item" id="tooltip-totalMcap" style="display: none;">
+            <div class="tooltip-dot" style="background: #8b5cf6;"></div>
+            <span class="tooltip-label">Total:</span>
+            <span class="tooltip-value" id="tooltip-totalMcap-value">—</span>
           </div>
         </div>
         <div class="chart-hint" data-zh="💡 拖动平移 · 滚轮缩放 · 双击重置" data-en="💡 Drag to pan · Scroll to zoom · Double-click to reset">💡 拖动平移 · 滚轮缩放 · 双击重置</div>
@@ -916,10 +934,18 @@
     let chart = null;
     let series = {};
     let zones = {};
-    let seriesVisible = { bmri: true, rates: false, liq: false, risk: false };
+    let seriesVisible = { bmri: true, rates: false, liq: false, risk: false, btcMcap: false, totalMcap: false };
+    let mcapData = null;
     let defaultRange = { from: 0, to: 0 };
     let historyData = {};
     let currentThresholds = { on: 0.6, off: -0.6 };
+
+    // Format market cap value
+    function formatMcap(value) {
+      if (value >= 1e12) return '$' + (value / 1e12).toFixed(2) + 'T';
+      if (value >= 1e9) return '$' + (value / 1e9).toFixed(0) + 'B';
+      return '$' + value.toLocaleString();
+    }
 
     // Format time to YYYY/MM/DD
     function formatTime(time) {
@@ -1069,6 +1095,12 @@
           borderColor: '#27272a',
           scaleMargins: { top: 0.1, bottom: 0.1 },
         },
+        leftPriceScale: {
+          visible: true,
+          borderColor: '#27272a',
+          scaleMargins: { top: 0.1, bottom: 0.1 },
+          mode: LightweightCharts.PriceScaleMode.Logarithmic,
+        },
         timeScale: {
           borderColor: '#27272a',
           timeVisible: false,
@@ -1212,6 +1244,57 @@
       });
       series.risk.setData(riskDataArr);
 
+      // BTC Market Cap Series (left axis, hidden by default)
+      series.btcMcap = chart.addLineSeries({
+        color: '#f7931a',
+        lineWidth: 1.5,
+        priceScaleId: 'left',
+        priceFormat: { 
+          type: 'custom',
+          formatter: (price) => {
+            if (price >= 1e12) return (price / 1e12).toFixed(2) + 'T';
+            if (price >= 1e9) return (price / 1e9).toFixed(0) + 'B';
+            return price.toLocaleString();
+          }
+        },
+        lastValueVisible: false,
+        priceLineVisible: false,
+        visible: false,
+      });
+
+      // Total Market Cap Series (left axis, hidden by default)
+      series.totalMcap = chart.addLineSeries({
+        color: '#8b5cf6',
+        lineWidth: 1.5,
+        priceScaleId: 'left',
+        priceFormat: { 
+          type: 'custom',
+          formatter: (price) => {
+            if (price >= 1e12) return (price / 1e12).toFixed(2) + 'T';
+            if (price >= 1e9) return (price / 1e9).toFixed(0) + 'B';
+            return price.toLocaleString();
+          }
+        },
+        lastValueVisible: false,
+        priceLineVisible: false,
+        visible: false,
+      });
+
+      // Load market cap data if available
+      if (mcapData) {
+        const btcMcapArr = mcapData.filter(d => d.btc_mcap).map(d => ({ time: d.date, value: d.btc_mcap }));
+        const totalMcapArr = mcapData.filter(d => d.total_mcap).map(d => ({ time: d.date, value: d.total_mcap }));
+        if (btcMcapArr.length > 0) series.btcMcap.setData(btcMcapArr);
+        if (totalMcapArr.length > 0) series.totalMcap.setData(totalMcapArr);
+        // Merge mcap data into historyData for tooltip
+        mcapData.forEach(d => {
+          if (historyData[d.date]) {
+            historyData[d.date].btc_mcap = d.btc_mcap;
+            historyData[d.date].total_mcap = d.total_mcap;
+          }
+        });
+      }
+
       // Double-click to reset
       container.addEventListener('dblclick', resetChart);
 
@@ -1233,6 +1316,8 @@
           document.getElementById('tooltip-rates-value').textContent = data.rates?.toFixed(2) ?? '—';
           document.getElementById('tooltip-liq-value').textContent = data.liq?.toFixed(2) ?? '—';
           document.getElementById('tooltip-risk-value').textContent = data.risk?.toFixed(2) ?? '—';
+          document.getElementById('tooltip-btcMcap-value').textContent = data.btc_mcap ? formatMcap(data.btc_mcap) : '—';
+          document.getElementById('tooltip-totalMcap-value').textContent = data.total_mcap ? formatMcap(data.total_mcap) : '—';
           tooltip.classList.add('visible');
         } else {
           tooltip.classList.remove('visible');
@@ -1248,8 +1333,19 @@
 
     async function loadData() {
       try {
-        const res = await fetch('/indicators/data/bmri.json');
-        bmriData = await res.json();
+        // Load BMRI data
+        const bmriRes = await fetch('/indicators/data/bmri.json');
+        bmriData = await bmriRes.json();
+        
+        // Try to load market cap data
+        try {
+          const mcapRes = await fetch('/indicators/data/marketcap.json');
+          mcapData = await mcapRes.json();
+        } catch (e) {
+          console.log('Market cap data not available');
+          mcapData = null;
+        }
+        
         updateDisplay();
       } catch (err) {
         console.error('Failed to load data:', err);
