@@ -145,6 +145,13 @@
       align-items: center;
       justify-content: center;
       font-size: 32px;
+      overflow: hidden;
+    }
+
+    .protocol-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .protocol-info h1 {
@@ -1090,7 +1097,12 @@
         // Update page
         document.title = `${config.name} — TEV Dashboard`;
         document.getElementById('breadcrumb-name').textContent = config.name;
-        document.getElementById('protocol-icon').textContent = config.icon || '🔮';
+        const iconEl = document.getElementById('protocol-icon');
+        if (config.icon && config.icon.startsWith('http')) {
+          iconEl.innerHTML = `<img src="${config.icon}" alt="${config.ticker}" loading="lazy">`;
+        } else {
+          iconEl.textContent = config.icon || '🔮';
+        }
         document.getElementById('protocol-name').textContent = config.name;
         
         const categoryMap = {

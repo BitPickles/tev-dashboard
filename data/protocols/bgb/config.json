@@ -4,7 +4,7 @@
   "hidden_reason": "CEX 数据不透明",
   "name": "Bitget Token",
   "ticker": "BGB",
-  "icon": "🔵",
+  "icon": "https://coin-images.coingecko.com/coins/images/11610/large/Bitget_logo.png",
   "category": "cex_token",
   "description": "Bitget 交易所平台币",
   "website": "https://www.bitget.com",
@@ -77,14 +77,20 @@
       "type": "api",
       "url": "https://api.coingecko.com/api/v3/coins/bitget-token",
       "reliability": "high",
-      "data": ["price", "market_cap"]
+      "data": [
+        "price",
+        "market_cap"
+      ]
     },
     {
       "name": "Etherscan",
       "type": "explorer",
       "url": "https://etherscan.io/token/0x19de6b897ed14a376dda0fe53a5420d2ac828a28",
       "reliability": "high",
-      "data": ["supply", "burn_events"]
+      "data": [
+        "supply",
+        "burn_events"
+      ]
     }
   ],
   "analyst_notes": "【2026-02-05 初步调研】\n\n## BGB TEV 评估\n\n### 已知信息\n1. **Bitget 平台币**：类似 BNB/OKB 的 CEX token\n2. **季度回购销毁**：有此机制，但具体比例待确认\n3. **合约支持销毁**：Etherscan 验证合约有 burn 功能\n\n### 数据限制\n1. ❌ Bitget 网站被 Cloudflare 拦截\n2. ❌ 无法获取官方文档\n3. ⚠️ 需要通过公告整理销毁数据\n\n### 与同类对比\n| 平台币 | 销毁机制 | 数据透明度 |\n|--------|----------|------------|\n| BNB | Auto-Burn | 中 |\n| OKB | 30% 收入 | 低 |\n| BGB | 待确认 | 低 |\n\n### 需要补充\n1. BGB 销毁比例\n2. 历史季度销毁数据\n3. 其他代币权益（Launchpad 等）",

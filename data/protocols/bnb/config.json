@@ -2,7 +2,7 @@
   "id": "bnb",
   "name": "BNB",
   "ticker": "BNB",
-  "icon": "🟡",
+  "icon": "https://coin-images.coingecko.com/coins/images/825/large/bnb-icon2_2x.png",
   "category": "cex_token",
   "description": "Binance 交易所平台币，同时是 BNB Chain 原生代币",
   "website": "https://www.binance.com",
@@ -88,14 +88,20 @@
       "type": "api",
       "url": "https://api.coingecko.com/api/v3/coins/binancecoin",
       "reliability": "high",
-      "data": ["price", "market_cap", "supply"]
+      "data": [
+        "price",
+        "market_cap",
+        "supply"
+      ]
     },
     {
       "name": "BNB Burn Info",
       "type": "website",
       "url": "https://www.bnbburn.info/",
       "reliability": "medium",
-      "data": ["burn_history"],
+      "data": [
+        "burn_history"
+      ],
       "note": "需要浏览器渲染"
     },
     {
@@ -103,7 +109,10 @@
       "type": "explorer",
       "url": "https://bscscan.com",
       "reliability": "high",
-      "data": ["supply", "transactions"]
+      "data": [
+        "supply",
+        "transactions"
+      ]
     }
   ],
   "analyst_notes": "【2026-02-05 初步调研】\n\n## BNB TEV 评估挑战\n\nBNB 作为 CEX 平台币，与 DeFi 协议有本质区别：\n\n### 已知机制\n1. **季度 Auto-Burn**：公式透明 (B = N × 1000 / P)\n2. **实时 BEP-95 销毁**：链上可验证\n\n### 数据限制\n1. ❌ Binance 作为私营公司，不公开财务数据\n2. ❌ 无法计算 holders revenue（销毁的 BNB 来源于 Binance 利润，但利润不公开）\n3. ⚠️ 只能基于销毁价值来估算 TEV\n\n### TEV Yield 估算方法（待确认）\n如果按销毁价值计算：\n- 假设年化销毁 ~2M BNB（需验证）\n- 2M × $610 = $1.22B\n- TEV Yield = $1.22B / $85B ≈ 1.4%\n\n### 需要 Boss 确认\n1. 是否接受用「销毁价值」替代「holders revenue」计算 TEV yield？\n2. 是否需要收集历史季度销毁数据？\n3. CEX 平台币是否需要单独的评估标准？",

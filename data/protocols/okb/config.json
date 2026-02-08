@@ -4,7 +4,7 @@
   "hidden_reason": "CEX 数据不透明",
   "name": "OKB",
   "ticker": "OKB",
-  "icon": "⚫",
+  "icon": "https://coin-images.coingecko.com/coins/images/4463/large/WeChat_Image_20220118095654.png",
   "category": "cex_token",
   "description": "OKX 交易所平台币，同时是 X Layer (L2) 原生 gas token",
   "website": "https://www.okx.com",
@@ -77,21 +77,30 @@
       "type": "api",
       "url": "https://api.coingecko.com/api/v3/coins/okb",
       "reliability": "high",
-      "data": ["price", "market_cap", "supply"]
+      "data": [
+        "price",
+        "market_cap",
+        "supply"
+      ]
     },
     {
       "name": "Etherscan",
       "type": "explorer",
       "url": "https://etherscan.io/token/0x75231f58b43240c9718dd58b4967c5114342a86c",
       "reliability": "high",
-      "data": ["supply", "holders"]
+      "data": [
+        "supply",
+        "holders"
+      ]
     },
     {
       "name": "X Layer Explorer",
       "type": "explorer",
       "url": "https://www.okx.com/web3/explorer/xlayer",
       "reliability": "high",
-      "data": ["gas_usage"]
+      "data": [
+        "gas_usage"
+      ]
     }
   ],
   "analyst_notes": "【2026-02-05 初步调研】\n\n## OKB TEV 评估\n\n### 已知机制\n1. **季度回购销毁**：OKX 用 30% 平台收入回购销毁 OKB\n2. **X Layer Gas**：作为 L2 原生 token，gas 费用创造额外需求\n\n### 数据限制\n1. ❌ OKX 不公开财务数据\n2. ❌ 季度销毁金额需要从公告整理\n3. ⚠️ 无法精确计算 TEV yield\n\n### 供应量特点\n- 流通供应量固定在 ~21M OKB\n- 总供应量 ~300M，大部分锁定/未流通\n\n### 与 BNB 的区别\n- BNB 目标减少到 100M（持续销毁）\n- OKB 流通量相对固定，销毁主要影响总供应\n\n### 需要补充\n1. 历史季度销毁数据\n2. X Layer 的 gas 消耗数据",

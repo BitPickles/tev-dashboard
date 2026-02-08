@@ -2,7 +2,7 @@
   "id": "aster",
   "name": "Aster (AsterDEX)",
   "ticker": "ASTER",
-  "icon": "⭐",
+  "icon": "https://coin-images.coingecko.com/coins/images/69040/large/_ASTER.png",
   "category": "perpetual_dex",
   "description": "去中心化永续合约交易所，由 Astherus + APX Finance 于2024年底合并而来，支持 BNB Chain、Ethereum、Solana、Arbitrum 多链交易",
   "website": "https://www.asterdex.com/en",
@@ -134,15 +134,29 @@
   "trading_modes": [
     {
       "name": "Pro Mode",
-      "features": ["Order book", "Up to 100x leverage", "Hidden orders", "Grid trading", "Stock perpetuals"]
+      "features": [
+        "Order book",
+        "Up to 100x leverage",
+        "Hidden orders",
+        "Grid trading",
+        "Stock perpetuals"
+      ]
     },
     {
       "name": "Simple Mode",
-      "features": ["One-click trading", "MEV-resistant", "Up to 1001x leverage"]
+      "features": [
+        "One-click trading",
+        "MEV-resistant",
+        "Up to 1001x leverage"
+      ]
     },
     {
       "name": "Shield Mode",
-      "features": ["Simplified perps", "Higher leverage", "Lower barrier"]
+      "features": [
+        "Simplified perps",
+        "Higher leverage",
+        "Lower barrier"
+      ]
     }
   ],
   "data_gaps": [
@@ -165,7 +179,12 @@
       "type": "api",
       "url": "https://api.coingecko.com/api/v3/coins/aster-2",
       "reliability": "high",
-      "data": ["price", "market_cap", "volume", "tvl"]
+      "data": [
+        "price",
+        "market_cap",
+        "volume",
+        "tvl"
+      ]
     },
     {
       "name": "Aster Docs",

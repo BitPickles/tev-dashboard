@@ -2,7 +2,7 @@
   "id": "pendle",
   "name": "Pendle",
   "ticker": "PENDLE",
-  "icon": "🔮",
+  "icon": "https://coin-images.coingecko.com/coins/images/15069/large/Pendle_Logo_Normal-03.png",
   "category": "yield",
   "description": "收益代币化协议，允许用户交易未来收益",
   "website": "https://pendle.finance",
@@ -40,7 +40,11 @@
     "name": "vePENDLE",
     "lock_contract": "0x4f30A9D41B80ecC5B94306AB4364951AE3170210",
     "max_lock_period": "2 years",
-    "benefits": ["协议收入分成", "投票权", "LP 加速"]
+    "benefits": [
+      "协议收入分成",
+      "投票权",
+      "LP 加速"
+    ]
   },
   "confidence": "high",
   "data_sources": [
