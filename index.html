@@ -28,6 +28,7 @@
       --orange-dim: rgba(245, 158, 11, 0.1);
       --cyan: #06b6d4;
       --cyan-dim: rgba(6, 182, 212, 0.1);
+      --cyan-dim: rgba(6, 182, 212, 0.1);
       --red: #ef4444;
     }
 
@@ -371,6 +372,42 @@
               </div>
             </div>
           </a>
+
+          <a href="/btc-dominance" class="card card-clickable blue">
+            <div class="card-body">
+              <div class="card-main">
+                <div class="card-icon" style="background: var(--cyan-dim);">🥇</div>
+                <div class="card-header">
+                  <h3 class="card-title">BTC.D</h3>
+                  <span class="card-badge">Live</span>
+                </div>
+                <p class="card-desc" data-zh="比特币市值占比，判断市场资金在 BTC 和山寨币之间的流向。" data-en="Bitcoin dominance, tracking capital flow between BTC and altcoins.">比特币市值占比，判断市场资金在 BTC 和山寨币之间的流向。</p>
+                <div class="card-stats">
+                  <div class="stat">
+                    <span class="stat-value" id="btcd-value">—</span>
+                    <span class="stat-label" data-zh="当前占比" data-en="Current">当前占比</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat-value" id="btcd-zone">—</span>
+                    <span class="stat-label" data-zh="状态" data-en="Status">状态</span>
+                  </div>
+                </div>
+                <div class="card-action blue">
+                  <span data-zh="查看详情" data-en="Explore">查看详情</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </div>
+              </div>
+              <div class="card-chart">
+                <div class="sparkline-container">
+                  <svg id="btcd-spark" class="sparkline" width="160" height="60" viewBox="0 0 160 60"></svg>
+                  <div class="sparkline-change" id="btcd-change">—</div>
+                  <div class="sparkline-label" data-zh="7日趋势" data-en="7d trend">7日趋势</div>
+                </div>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -469,6 +506,12 @@
       if (value <= 30) return lang === 'zh' ? '🟢 低风险' : '🟢 Low';
       if (value <= 70) return lang === 'zh' ? '🟡 中性' : '🟡 Neutral';
       return lang === 'zh' ? '🔴 高风险' : '🔴 High';
+    }
+
+    function getBtcdZone(value, lang) {
+      if (value >= 60) return lang === 'zh' ? '🟠 BTC主导' : '🟠 BTC';
+      if (value >= 40) return lang === 'zh' ? '🔵 均衡' : '🔵 Balanced';
+      return lang === 'zh' ? '🟣 山寨季' : '🟣 Alt';
     }
 
     // Draw sparkline SVG
@@ -604,6 +647,18 @@
         drawSparkline('bmri-spark', bmriHistory, '#f59e0b');
         showChange('bmri-change', bmriHistory);
       } catch (e) { console.log('BMRI data not available'); }
+
+      try {
+        const btcdRes = await fetch('/indicators/data/btc-dominance.json');
+        const btcdData = await btcdRes.json();
+        const btcdVal = btcdData.current.value;
+        document.getElementById('btcd-value').textContent = btcdVal.toFixed(1) + '%';
+        document.getElementById('btcd-zone').textContent = getBtcdZone(btcdVal, currentLang);
+        
+        const btcdHistory = btcdData.history.slice(-7).map(d => ({ value: d.value }));
+        drawSparkline('btcd-spark', btcdHistory, '#06b6d4');
+        showChange('btcd-change', btcdHistory);
+      } catch (e) { console.log('BTC.D data not available'); }
     }
 
     document.addEventListener('DOMContentLoaded', () => {

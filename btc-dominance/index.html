@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTC Dominance — Crypto3D</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lightweight-charts@4/dist/lightweight-charts.standalone.production.js"></script>
+  <style>
+    :root {
+      --bg-primary: #0a0a0b;
+      --bg-secondary: #111113;
+      --bg-tertiary: #18181b;
+      --border: #27272a;
+      --border-hover: #3f3f46;
+      --text-primary: #fafafa;
+      --text-secondary: #a1a1aa;
+      --text-tertiary: #71717a;
+      --accent: #22c55e;
+      --accent-dim: rgba(34, 197, 94, 0.1);
+      --warning: #f59e0b;
+      --warning-dim: rgba(245, 158, 11, 0.1);
+      --danger: #ef4444;
+      --blue: #3b82f6;
+      --blue-dim: rgba(59, 130, 246, 0.1);
+      --purple: #a855f7;
+      --cyan: #06b6d4;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans SC', 'Inter', -apple-system, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      background: rgba(10, 10, 11, 0.9);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .header-content { display: flex; justify-content: space-between; align-items: center; }
+
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--accent) 0%, #16a34a 100%);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 16px; color: var(--bg-primary);
+    }
+    .logo-text { font-size: 20px; font-weight: 700; color: var(--text-primary); }
+
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .lang-switch {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: 14px;
+    }
+    .lang-switch span { color: var(--text-secondary); }
+    .lang-switch .active { color: var(--text-primary); font-weight: 500; }
+
+    main { padding: 40px 0; }
+
+    .page-header { margin-bottom: 24px; }
+    .page-title { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+    .page-subtitle { color: var(--text-secondary); font-size: 16px; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stat-value.btc-dominant { color: var(--warning); }
+    .stat-value.balanced { color: var(--blue); }
+    .stat-value.alt-season { color: var(--purple); }
+
+    .stat-hint { font-size: 13px; color: var(--text-secondary); margin-top: 8px; }
+
+    .zone-legend { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
+    .zone-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-secondary); }
+    .zone-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .zone-dot.btc-dominant { background: var(--warning); }
+    .zone-dot.balanced { background: var(--blue); }
+    .zone-dot.alt-season { background: var(--purple); }
+
+    .chart-container {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+
+    .chart-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 16px; flex-wrap: wrap; gap: 12px;
+    }
+    .chart-title { font-size: 16px; font-weight: 600; }
+
+    .chart-legend { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .legend-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; color: var(--text-secondary);
+      cursor: pointer; padding: 4px 8px; border-radius: 4px; transition: all 0.2s;
+    }
+    .legend-item:hover { background: var(--bg-tertiary); }
+    .legend-item.fixed { cursor: default; opacity: 0.7; }
+    .legend-item.fixed:hover { background: transparent; }
+    .legend-line { width: 16px; height: 3px; border-radius: 1px; }
+    .legend-line.dashed { background: none; border-top: 2px dashed currentColor; height: 0; }
+
+    .chart-wrapper { position: relative; height: 400px; }
+
+    .chart-tooltip {
+      position: absolute; top: 12px; left: 12px;
+      background: rgba(17, 17, 19, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px;
+      font-size: 13px; pointer-events: none;
+      z-index: 10; min-width: 140px;
+      opacity: 0; transition: opacity 0.15s;
+    }
+    .chart-tooltip.visible { opacity: 1; }
+    .tooltip-date { color: var(--text-primary); font-weight: 500; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+    .tooltip-item { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+    .tooltip-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .tooltip-label { color: var(--text-tertiary); }
+    .tooltip-value { color: var(--text-primary); font-family: 'JetBrains Mono', monospace; }
+
+    .chart-hint { text-align: center; font-size: 12px; color: var(--text-tertiary); margin-top: 12px; }
+
+    .info-section {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .info-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+    .info-text { color: var(--text-secondary); font-size: 14px; line-height: 1.8; }
+    .info-text p { margin-bottom: 12px; }
+
+    footer { border-top: 1px solid var(--border); padding: 24px 0; text-align: center; margin-top: 40px; }
+    .footer-text { font-size: 14px; color: var(--text-tertiary); }
+
+    @media (max-width: 768px) {
+      .page-title { font-size: 24px; }
+      .stat-value { font-size: 24px; }
+      .chart-wrapper { height: 300px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="/" class="logo">
+          <div class="logo-icon">3D</div>
+          <span class="logo-text">Crypto3D</span>
+        </a>
+        <div class="nav-links">
+          <a href="/" data-zh="首页" data-en="Home">首页</a>
+          <a href="/tev">TEV</a>
+          <a href="/ahr999">AHR999</a>
+          <a href="/bmri">BMRI</a>
+          <div class="lang-switch" onclick="toggleLang()">
+            <span id="lang-zh" class="active">中文</span>
+            <span>/</span>
+            <span id="lang-en">EN</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="page-header">
+        <h1 class="page-title">BTC Dominance <span data-zh="比特币市值占比" data-en="Bitcoin Dominance">比特币市值占比</span></h1>
+        <p class="page-subtitle" data-zh="比特币市值占加密总市值的比例，判断市场资金流向" data-en="Bitcoin's share of total crypto market cap, indicating capital flow">比特币市值占加密总市值的比例，判断市场资金流向</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label" data-zh="当前占比" data-en="Current">当前占比</div>
+          <div class="stat-value" id="current-value">—</div>
+          <div class="stat-hint" id="current-zone">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" data-zh="市场状态" data-en="Market State">市场状态</div>
+          <div class="stat-value" id="market-state" style="font-size: 24px;">—</div>
+          <div class="stat-hint" id="zone-hint">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" data-zh="更新日期" data-en="Updated">更新日期</div>
+          <div class="stat-value" id="update-date" style="font-size: 20px; color: var(--text-secondary);">—</div>
+        </div>
+      </div>
+
+      <div class="zone-legend">
+        <div class="zone-item">
+          <div class="zone-dot btc-dominant"></div>
+          <span data-zh="> 60% BTC主导" data-en="> 60% BTC Dominant">> 60% BTC主导</span>
+        </div>
+        <div class="zone-item">
+          <div class="zone-dot balanced"></div>
+          <span data-zh="40-60% 均衡" data-en="40-60% Balanced">40-60% 均衡</span>
+        </div>
+        <div class="zone-item">
+          <div class="zone-dot alt-season"></div>
+          <span data-zh="< 40% 山寨季" data-en="< 40% Alt Season">< 40% 山寨季</span>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-header">
+          <div class="chart-title" data-zh="BTC Dominance 历史走势" data-en="BTC Dominance History">BTC Dominance 历史走势</div>
+          <div class="chart-legend">
+            <div class="legend-item fixed">
+              <div class="legend-line dashed" style="color: #f59e0b;"></div>
+              <span>60%</span>
+            </div>
+            <div class="legend-item fixed">
+              <div class="legend-line dashed" style="color: #a855f7;"></div>
+              <span>40%</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-line" style="background: #3b82f6;"></div>
+              <span>BTC.D</span>
+            </div>
+          </div>
+        </div>
+        <div class="chart-wrapper" id="chart-container"></div>
+        <div class="chart-tooltip" id="chart-tooltip">
+          <div class="tooltip-date" id="tooltip-date">—</div>
+          <div class="tooltip-item">
+            <div class="tooltip-dot" style="background: #3b82f6;"></div>
+            <span class="tooltip-label">BTC.D:</span>
+            <span class="tooltip-value" id="tooltip-value">—</span>
+          </div>
+        </div>
+        <div class="chart-hint" data-zh="💡 拖动平移 · 滚轮缩放 · 双击重置" data-en="💡 Drag to pan · Scroll to zoom · Double-click to reset">💡 拖动平移 · 滚轮缩放 · 双击重置</div>
+      </div>
+
+      <div class="info-section">
+        <h2 class="info-title" data-zh="指标说明" data-en="About BTC Dominance">指标说明</h2>
+        <div class="info-text">
+          <p data-zh="BTC Dominance（比特币市值占比）是比特币市值占整个加密货币市场总市值的百分比。" 
+             data-en="BTC Dominance is the percentage of Bitcoin's market cap relative to the total cryptocurrency market cap.">
+            BTC Dominance（比特币市值占比）是比特币市值占整个加密货币市场总市值的百分比。
+          </p>
+          <p data-zh="• 高占比 (>60%)：市场偏向避险，资金集中在 BTC，山寨币表现较弱" 
+             data-en="• High (>60%): Risk-off sentiment, capital concentrated in BTC, altcoins underperform">
+            • 高占比 (>60%)：市场偏向避险，资金集中在 BTC，山寨币表现较弱
+          </p>
+          <p data-zh="• 均衡区间 (40-60%)：市场相对均衡，BTC 和山寨币共同发展" 
+             data-en="• Balanced (40-60%): Market equilibrium, both BTC and altcoins developing">
+            • 均衡区间 (40-60%)：市场相对均衡，BTC 和山寨币共同发展
+          </p>
+          <p data-zh="• 低占比 (<40%)：山寨季，资金大量流入山寨币，通常出现在牛市后期" 
+             data-en="• Low (<40%): Alt season, capital flowing into altcoins, typically late bull market">
+            • 低占比 (<40%)：山寨季，资金大量流入山寨币，通常出现在牛市后期
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p class="footer-text">© 2026 Crypto3D</p>
+    </div>
+  </footer>
+
+  <script>
+    let currentLang = 'zh';
+    let chart = null;
+    let series = null;
+    let historyData = {};
+    let defaultRange = null;
+
+    function formatTime(time) {
+      if (!time) return '—';
+      if (typeof time === 'string') {
+        const parts = time.split('-');
+        if (parts.length === 3) return `${parts[0]}/${parts[1]}/${parts[2]}`;
+        return time;
+      }
+      if (time.year !== undefined) {
+        return `${time.year}/${String(time.month).padStart(2, '0')}/${String(time.day).padStart(2, '0')}`;
+      }
+      return '—';
+    }
+
+    function toggleLang() {
+      currentLang = currentLang === 'zh' ? 'en' : 'zh';
+      updateLang();
+    }
+
+    function updateLang() {
+      document.getElementById('lang-zh').className = currentLang === 'zh' ? 'active' : '';
+      document.getElementById('lang-en').className = currentLang === 'en' ? 'active' : '';
+      document.querySelectorAll('[data-zh]').forEach(el => {
+        el.textContent = el.getAttribute(`data-${currentLang}`);
+      });
+      localStorage.setItem('lang', currentLang);
+    }
+
+    function getZoneInfo(value) {
+      if (value >= 60) {
+        return {
+          class: 'btc-dominant',
+          zone: currentLang === 'zh' ? 'BTC 主导' : 'BTC Dominant',
+          state: '🟠 BTC 主导',
+          hint: currentLang === 'zh' ? '资金集中在 BTC，山寨币弱势' : 'Capital in BTC, altcoins weak'
+        };
+      } else if (value >= 40) {
+        return {
+          class: 'balanced',
+          zone: currentLang === 'zh' ? '均衡市场' : 'Balanced',
+          state: '🔵 均衡',
+          hint: currentLang === 'zh' ? '市场相对均衡' : 'Market balanced'
+        };
+      } else {
+        return {
+          class: 'alt-season',
+          zone: currentLang === 'zh' ? '山寨季' : 'Alt Season',
+          state: '🟣 山寨季',
+          hint: currentLang === 'zh' ? '资金流向山寨币' : 'Capital flowing to alts'
+        };
+      }
+    }
+
+    function resetChart() {
+      if (chart && defaultRange) {
+        chart.timeScale().setVisibleRange(defaultRange);
+      }
+    }
+
+    async function loadData() {
+      try {
+        const res = await fetch('/indicators/data/btc-dominance.json');
+        const data = await res.json();
+
+        const current = data.current;
+        const zoneInfo = getZoneInfo(current.value);
+
+        document.getElementById('current-value').textContent = current.value.toFixed(2) + '%';
+        document.getElementById('current-value').className = `stat-value ${zoneInfo.class}`;
+        document.getElementById('current-zone').textContent = zoneInfo.zone;
+        document.getElementById('market-state').textContent = zoneInfo.state;
+        document.getElementById('zone-hint').textContent = zoneInfo.hint;
+        document.getElementById('update-date').textContent = current.date;
+
+        drawChart(data.history);
+      } catch (err) {
+        console.error('Failed to load data:', err);
+      }
+    }
+
+    function drawChart(history) {
+      const container = document.getElementById('chart-container');
+
+      chart = LightweightCharts.createChart(container, {
+        layout: {
+          background: { type: 'solid', color: 'transparent' },
+          textColor: '#a1a1aa',
+          fontFamily: "'Inter', sans-serif",
+        },
+        grid: {
+          vertLines: { color: 'rgba(39, 39, 42, 0.5)' },
+          horzLines: { color: 'rgba(39, 39, 42, 0.5)' },
+        },
+        crosshair: {
+          mode: LightweightCharts.CrosshairMode.Normal,
+          vertLine: { color: 'rgba(59, 130, 246, 0.5)', labelBackgroundColor: '#3b82f6' },
+          horzLine: { color: 'rgba(59, 130, 246, 0.5)', labelBackgroundColor: '#3b82f6' },
+        },
+        rightPriceScale: {
+          borderColor: '#27272a',
+          scaleMargins: { top: 0.1, bottom: 0.1 },
+        },
+        timeScale: {
+          borderColor: '#27272a',
+          timeVisible: false,
+          minBarSpacing: 0.1,
+          tickMarkFormatter: (time) => {
+            if (typeof time === 'string') return time.substring(0, 4);
+            if (time.year !== undefined) return time.year.toString();
+            return '';
+          },
+        },
+        handleScroll: { mouseWheel: true, pressedMouseMove: true },
+        handleScale: { axisPressedMouseMove: true, mouseWheel: true, pinch: true },
+      });
+
+      const resizeObserver = new ResizeObserver(entries => {
+        if (entries.length === 0) return;
+        const { width, height } = entries[0].contentRect;
+        chart.applyOptions({ width, height });
+      });
+      resizeObserver.observe(container);
+
+      const chartData = history.map(d => ({ time: d.date, value: d.value }));
+      history.forEach(d => { historyData[d.date] = d; });
+
+      // Add future whitespace
+      const lastDate = new Date(history[history.length - 1].date);
+      for (let i = 1; i <= 90; i++) {
+        const d = new Date(lastDate);
+        d.setDate(d.getDate() + i);
+        chartData.push({ time: d.toISOString().split('T')[0] });
+      }
+
+      series = chart.addLineSeries({
+        color: '#3b82f6',
+        lineWidth: 2,
+        priceFormat: { type: 'price', precision: 2, minMove: 0.01 },
+        lastValueVisible: false,
+        priceLineVisible: false,
+      });
+      series.setData(chartData);
+
+      // Threshold lines
+      series.createPriceLine({ price: 60, color: '#f59e0b', lineWidth: 1, lineStyle: LightweightCharts.LineStyle.Dashed, axisLabelVisible: true });
+      series.createPriceLine({ price: 40, color: '#a855f7', lineWidth: 1, lineStyle: LightweightCharts.LineStyle.Dashed, axisLabelVisible: true });
+
+      container.addEventListener('dblclick', resetChart);
+
+      const tooltip = document.getElementById('chart-tooltip');
+      chart.subscribeCrosshairMove(param => {
+        if (!param.time || !param.point || param.point.x < 0) {
+          tooltip.classList.remove('visible');
+          return;
+        }
+        const dateStr = typeof param.time === 'string' ? param.time :
+          `${param.time.year}-${String(param.time.month).padStart(2, '0')}-${String(param.time.day).padStart(2, '0')}`;
+        const data = historyData[dateStr];
+        if (data) {
+          document.getElementById('tooltip-date').textContent = formatTime(param.time);
+          document.getElementById('tooltip-value').textContent = data.value.toFixed(2) + '%';
+          tooltip.classList.add('visible');
+        } else {
+          tooltip.classList.remove('visible');
+        }
+      });
+
+      chart.timeScale().fitContent();
+      setTimeout(() => { defaultRange = chart.timeScale().getVisibleRange(); }, 100);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('lang');
+      if (saved) { currentLang = saved; updateLang(); }
+      loadData();
+    });
+  </script>
+</body>
+</html>
