@@ -569,23 +569,33 @@
     let defaultRange = { from: 0, to: 0 };  // Store for reset function
     let historyData = {};  // Store data for tooltip lookup
 
-    // Format date as YYYY/MM/DD
-    function formatDate(dateStr) {
-      if (!dateStr) return '—';
-      const parts = dateStr.split('-');
-      if (parts.length === 3) {
-        return `${parts[0]}/${parts[1]}/${parts[2]}`;
+    // Format time to YYYY/MM/DD (handles both string dates and timestamps)
+    function formatTime(time) {
+      if (!time) return '—';
+      // If it's a string like "2024-01-15"
+      if (typeof time === 'string') {
+        const parts = time.split('-');
+        if (parts.length === 3) {
+          return `${parts[0]}/${parts[1]}/${parts[2]}`;
+        }
+        return time;
       }
-      return dateStr;
-    }
-
-    // Format timestamp to YYYY/MM/DD
-    function formatTimestamp(timestamp) {
-      const date = new Date(timestamp * 1000);
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const day = String(date.getDate()).padStart(2, '0');
-      return `${year}/${month}/${day}`;
+      // If it's a timestamp (number)
+      if (typeof time === 'number') {
+        const date = new Date(time * 1000);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}/${month}/${day}`;
+      }
+      // If it's an object with year/month/day (business day format)
+      if (time.year !== undefined) {
+        const year = time.year;
+        const month = String(time.month).padStart(2, '0');
+        const day = String(time.day).padStart(2, '0');
+        return `${year}/${month}/${day}`;
+      }
+      return '—';
     }
 
     function toggleLang() {
@@ -714,13 +724,7 @@
           borderColor: '#27272a',
           timeVisible: false,
           secondsVisible: false,
-          tickMarkFormatter: (time) => {
-            const date = new Date(time * 1000);
-            const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const day = String(date.getDate()).padStart(2, '0');
-            return `${year}/${month}/${day}`;
-          },
+          tickMarkFormatter: (time) => formatTime(time),
         },
         handleScroll: { mouseWheel: true, pressedMouseMove: true },
         handleScale: { axisPressedMouseMove: true, mouseWheel: true, pinch: true },
@@ -740,10 +744,9 @@
       const costData = history.map(d => ({ time: d.date, value: d.cost_200d }));
       const fittedData = history.map(d => ({ time: d.date, value: d.fitted_price }));
 
-      // Build lookup table for tooltip (indexed by timestamp)
+      // Build lookup table for tooltip (indexed by date string)
       history.forEach(d => {
-        const ts = new Date(d.date + 'T00:00:00Z').getTime() / 1000;
-        historyData[ts] = d;
+        historyData[d.date] = d;
       });
 
       // Get time range for limiting scroll
@@ -910,11 +913,10 @@
           return;
         }
 
-        // Format date
-        const dateStr = formatTimestamp(param.time);
-        tooltipDate.textContent = dateStr;
+        // Format date for display
+        tooltipDate.textContent = formatTime(param.time);
 
-        // Get data for each visible series
+        // Get data for each visible series (param.time is the date string like "2024-01-15")
         const dataPoint = historyData[param.time];
         
         if (seriesVisible.ahr999 && dataPoint && dataPoint.ahr999 !== undefined) {
