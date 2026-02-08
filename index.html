@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crypto3D — 链上数据，一目了然</title>
+  <title>Crypto3D — 加密数据站</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -24,16 +24,16 @@
       --purple-dim: rgba(168, 85, 247, 0.1);
       --blue: #3b82f6;
       --blue-dim: rgba(59, 130, 246, 0.1);
+      --orange: #f59e0b;
+      --orange-dim: rgba(245, 158, 11, 0.1);
+      --cyan: #06b6d4;
+      --cyan-dim: rgba(6, 182, 212, 0.1);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Noto Sans SC', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Noto Sans SC', 'Inter', -apple-system, sans-serif;
       background: var(--bg-primary);
       color: var(--text-primary);
       line-height: 1.6;
@@ -42,12 +42,7 @@
       flex-direction: column;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      width: 100%;
-    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
     /* Header */
     header {
@@ -60,320 +55,143 @@
       z-index: 100;
     }
 
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .header-content { display: flex; justify-content: space-between; align-items: center; }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 
     .logo-icon {
-      width: 36px;
-      height: 36px;
+      width: 36px; height: 36px;
       background: linear-gradient(135deg, var(--accent) 0%, #16a34a 100%);
       border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--bg-primary);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 16px; color: var(--bg-primary);
       box-shadow: 0 0 20px var(--accent-glow);
     }
 
-    .logo-text {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text-primary);
-      letter-spacing: -0.02em;
-    }
+    .logo-text { font-size: 20px; font-weight: 700; color: var(--text-primary); }
 
     .lang-switch {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 6px 12px;
-      cursor: pointer;
-      transition: all 0.2s ease;
+      display: flex; align-items: center; gap: 8px;
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 8px; padding: 6px 12px; cursor: pointer; transition: all 0.2s;
     }
-
-    .lang-switch:hover {
-      border-color: var(--border-hover);
-      background: var(--bg-tertiary);
-    }
-
-    .lang-switch span {
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-
-    .lang-switch .active {
-      color: var(--text-primary);
-      font-weight: 500;
-    }
+    .lang-switch:hover { border-color: var(--border-hover); background: var(--bg-tertiary); }
+    .lang-switch span { font-size: 14px; color: var(--text-secondary); }
+    .lang-switch .active { color: var(--text-primary); font-weight: 500; }
 
     /* Hero Section */
-    .hero {
-      padding: 80px 0 60px;
-      text-align: center;
-    }
+    .hero { padding: 60px 0 40px; text-align: center; }
 
     .hero-title {
-      font-size: 48px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
+      font-size: 42px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 12px;
       background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
-    .hero-subtitle {
-      font-size: 18px;
-      color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto;
+    .hero-subtitle { font-size: 18px; color: var(--text-secondary); margin-bottom: 24px; }
+
+    .hero-links { display: flex; justify-content: center; gap: 16px; }
+
+    .hero-link {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 20px; border-radius: 8px;
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      color: var(--text-secondary); text-decoration: none;
+      font-size: 14px; transition: all 0.2s;
     }
+    .hero-link:hover { border-color: var(--border-hover); color: var(--text-primary); background: var(--bg-tertiary); }
+    .hero-link svg { width: 20px; height: 20px; }
+
+    /* Section */
+    .section { padding: 20px 0 40px; }
+
+    .section-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px; padding-left: 16px;
+      border-left: 3px solid var(--accent);
+    }
+    .section-header.blue { border-color: var(--blue); }
+    .section-header.orange { border-color: var(--orange); }
+
+    .section-title { font-size: 18px; font-weight: 600; color: var(--text-primary); }
+    .section-title-en { font-size: 14px; color: var(--text-tertiary); margin-left: 8px; }
 
     /* Cards Grid */
-    .cards-section {
-      padding: 40px 0 80px;
-    }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-    }
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .cards-grid.single { grid-template-columns: 1fr; }
 
     .card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px; transition: all 0.3s;
+      position: relative; overflow: hidden;
     }
-
     .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), transparent);
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent); opacity: 0; transition: opacity 0.3s;
     }
+    .card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+    .card:hover::before { opacity: 1; }
 
-    .card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-    }
+    .card.blue::before { background: linear-gradient(90deg, var(--blue), transparent); }
+    .card.orange::before { background: linear-gradient(90deg, var(--orange), transparent); }
 
-    .card:hover::before {
-      opacity: 1;
-    }
-
-    .card-clickable {
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
+    .card-clickable { cursor: pointer; text-decoration: none; color: inherit; display: block; }
 
     .card-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      margin-bottom: 20px;
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 16px;
     }
 
-    .card-icon.tev {
-      background: var(--accent-dim);
-    }
-
-    .card-icon.coming {
-      background: var(--purple-dim);
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .card-title {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
+    .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .card-title { font-size: 18px; font-weight: 600; }
     .card-badge {
-      font-size: 11px;
-      font-weight: 500;
-      padding: 3px 8px;
-      border-radius: 4px;
-      background: var(--accent-dim);
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-size: 10px; font-weight: 500; padding: 2px 6px; border-radius: 4px;
+      background: var(--accent-dim); color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.05em;
     }
 
-    .card-badge.coming {
-      background: var(--purple-dim);
-      color: var(--purple);
-    }
+    .card-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.7; }
 
-    .card-desc {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin-bottom: 24px;
-      line-height: 1.7;
-    }
+    .card-stats { display: flex; gap: 24px; margin-bottom: 20px; }
+    .stat { display: flex; flex-direction: column; gap: 2px; }
+    .stat-value { font-size: 22px; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+    .stat-label { font-size: 11px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; }
 
-    .card-stats {
-      display: flex;
-      gap: 24px;
-      margin-bottom: 24px;
-    }
-
-    .stat {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .stat-value {
-      font-size: 24px;
-      font-weight: 600;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--text-primary);
-    }
-
-    .stat-label {
-      font-size: 12px;
-      color: var(--text-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
     .tag {
-      font-size: 12px;
-      padding: 4px 10px;
-      border-radius: 6px;
-      background: var(--bg-tertiary);
-      color: var(--text-secondary);
-      border: 1px solid var(--border);
+      font-size: 11px; padding: 3px 8px; border-radius: 4px;
+      background: var(--bg-tertiary); color: var(--text-secondary); border: 1px solid var(--border);
     }
 
     .card-action {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--accent);
-      transition: gap 0.2s ease;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 500; color: var(--accent); transition: gap 0.2s;
     }
-
-    .card:hover .card-action {
-      gap: 12px;
-    }
-
-    .card-action svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    /* Coming Soon Card */
-    .card.coming-soon {
-      opacity: 0.7;
-      cursor: default;
-    }
-
-    .card.coming-soon:hover {
-      transform: none;
-      box-shadow: none;
-    }
-
-    .card.coming-soon::before {
-      background: linear-gradient(90deg, var(--purple), transparent);
-    }
+    .card:hover .card-action { gap: 12px; }
+    .card-action.blue { color: var(--blue); }
+    .card-action.orange { color: var(--orange); }
+    .card-action svg { width: 16px; height: 16px; }
 
     /* Footer */
-    footer {
-      margin-top: auto;
-      border-top: 1px solid var(--border);
-      padding: 24px 0;
-      text-align: center;
-    }
-
-    .footer-text {
-      font-size: 14px;
-      color: var(--text-tertiary);
-    }
+    footer { margin-top: auto; border-top: 1px solid var(--border); padding: 24px 0; text-align: center; }
+    .footer-text { font-size: 14px; color: var(--text-tertiary); }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .hero {
-        padding: 60px 0 40px;
-      }
-
-      .hero-title {
-        font-size: 32px;
-      }
-
-      .hero-subtitle {
-        font-size: 16px;
-      }
-
-      .cards-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .card-stats {
-        flex-wrap: wrap;
-      }
+      .hero { padding: 40px 0 30px; }
+      .hero-title { font-size: 28px; }
+      .hero-subtitle { font-size: 16px; }
+      .hero-links { flex-direction: column; align-items: center; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .card-stats { flex-wrap: wrap; }
     }
 
-    /* Glow effect */
+    /* Glow */
     .glow {
-      position: fixed;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
+      position: fixed; width: 600px; height: 600px; border-radius: 50%;
       background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-      pointer-events: none;
-      top: -200px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: -1;
+      pointer-events: none; top: -200px; left: 50%; transform: translateX(-50%); z-index: -1;
     }
   </style>
 </head>
@@ -399,22 +217,36 @@
   <main>
     <section class="hero">
       <div class="container">
-        <h1 class="hero-title" data-zh="链上数据，一目了然" data-en="On-chain insights, at a glance">链上数据，一目了然</h1>
-        <p class="hero-subtitle" data-zh="追踪加密协议的真实价值流向，用数据驱动投资决策" data-en="Track where protocol value really flows, make data-driven decisions">追踪加密协议的真实价值流向，用数据驱动投资决策</p>
+        <h1 class="hero-title" data-zh="Crypto3D 加密数据站" data-en="Crypto3D Data Hub">Crypto3D 加密数据站</h1>
+        <p class="hero-subtitle" data-zh="为长期投资者提供周期判断工具" data-en="Cycle analysis tools for long-term investors">为长期投资者提供周期判断工具</p>
+        <div class="hero-links">
+          <a href="https://www.youtube.com/@Crypto36D" target="_blank" class="hero-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            <span>YouTube</span>
+          </a>
+          <a href="https://x.com/22333D" target="_blank" class="hero-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <span>X / Twitter</span>
+          </a>
+        </div>
       </div>
     </section>
 
-    <section class="cards-section">
+    <!-- 协议估值 Protocol Valuation -->
+    <section class="section">
       <div class="container">
-        <div class="cards-grid">
-          <!-- TEV Card -->
+        <div class="section-header">
+          <h2 class="section-title" data-zh="协议估值" data-en="Protocol Valuation">协议估值</h2>
+          <span class="section-title-en" data-zh="Protocol Valuation" data-en="">Protocol Valuation</span>
+        </div>
+        <div class="cards-grid single">
           <a href="/tev" class="card card-clickable">
-            <div class="card-icon tev">📊</div>
+            <div class="card-icon" style="background: var(--accent-dim);">💰</div>
             <div class="card-header">
-              <h2 class="card-title">TEV · Token Enabled Value</h2>
+              <h3 class="card-title">TEV · Token Enabled Value</h3>
               <span class="card-badge">Live</span>
             </div>
-            <p class="card-desc" data-zh="协议收益如何流向代币持有者？追踪回购、销毁、分红等价值分配机制。" data-en="How does protocol revenue flow to token holders? Track buybacks, burns, dividends and more.">协议收益如何流向代币持有者？追踪回购、销毁、分红等价值分配机制。</p>
+            <p class="card-desc" data-zh="协议收益如何流向代币持有者？追踪回购、销毁、分红等价值分配机制，发现真正创造价值的协议。" data-en="How does protocol revenue flow to token holders? Track buybacks, burns, dividends to find protocols that truly create value.">协议收益如何流向代币持有者？追踪回购、销毁、分红等价值分配机制，发现真正创造价值的协议。</p>
             <div class="card-stats">
               <div class="stat">
                 <span class="stat-value">25+</span>
@@ -438,22 +270,36 @@
               </svg>
             </div>
           </a>
+        </div>
+      </div>
+    </section>
 
-          <!-- AHR999 Card -->
-          <a href="/ahr999" class="card card-clickable">
-            <div class="card-icon" style="background: rgba(59, 130, 246, 0.1);">📈</div>
+    <!-- BTC 周期 BTC Cycle -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header blue">
+          <h2 class="section-title" data-zh="BTC 周期" data-en="BTC Cycle">BTC 周期</h2>
+          <span class="section-title-en" data-zh="BTC Cycle" data-en="">BTC Cycle</span>
+        </div>
+        <div class="cards-grid">
+          <a href="/ahr999" class="card card-clickable blue">
+            <div class="card-icon" style="background: var(--blue-dim);">📈</div>
             <div class="card-header">
-              <h2 class="card-title">AHR999</h2>
+              <h3 class="card-title">AHR999</h3>
               <span class="card-badge">Live</span>
             </div>
-            <p class="card-desc" data-zh="比特币长期价值偏离指标，判断抄底/定投/观望时机。" data-en="Bitcoin long-term value deviation indicator for timing buy/DCA/wait decisions.">比特币长期价值偏离指标，判断抄底/定投/观望时机。</p>
+            <p class="card-desc" data-zh="比特币长期价值偏离指标，综合定投成本与拟合价格，判断抄底/定投/观望时机。" data-en="Bitcoin long-term value indicator combining DCA cost and fitted price for timing decisions.">比特币长期价值偏离指标，综合定投成本与拟合价格，判断抄底/定投/观望时机。</p>
             <div class="card-stats">
               <div class="stat">
                 <span class="stat-value" id="ahr999-value">—</span>
                 <span class="stat-label" data-zh="当前值" data-en="Current">当前值</span>
               </div>
+              <div class="stat">
+                <span class="stat-value" id="ahr999-zone">—</span>
+                <span class="stat-label" data-zh="市场状态" data-en="Status">市场状态</span>
+              </div>
             </div>
-            <div class="card-action">
+            <div class="card-action blue">
               <span data-zh="查看详情" data-en="Explore">查看详情</span>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -461,65 +307,66 @@
             </div>
           </a>
 
-          <!-- MVRV Card -->
-          <a href="/mvrv" class="card card-clickable">
-            <div class="card-icon" style="background: rgba(168, 85, 247, 0.1);">📊</div>
+          <a href="/mvrv" class="card card-clickable blue">
+            <div class="card-icon" style="background: var(--purple-dim);">📊</div>
             <div class="card-header">
-              <h2 class="card-title">MVRV</h2>
+              <h3 class="card-title">MVRV</h3>
               <span class="card-badge">Live</span>
             </div>
-            <p class="card-desc" data-zh="市值与实现价值比率，判断比特币周期顶底。" data-en="Market Value to Realized Value ratio for Bitcoin cycle analysis.">市值与实现价值比率，判断比特币周期顶底。</p>
+            <p class="card-desc" data-zh="市值与实现价值比率，衡量市场盈亏状态，判断比特币周期顶底位置。" data-en="Market Value to Realized Value ratio for measuring profit/loss and cycle positions.">市值与实现价值比率，衡量市场盈亏状态，判断比特币周期顶底位置。</p>
             <div class="card-stats">
               <div class="stat">
                 <span class="stat-value" id="mvrv-value">—</span>
                 <span class="stat-label" data-zh="当前值" data-en="Current">当前值</span>
               </div>
+              <div class="stat">
+                <span class="stat-value" id="mvrv-zone">—</span>
+                <span class="stat-label" data-zh="市场状态" data-en="Status">市场状态</span>
+              </div>
             </div>
-            <div class="card-action">
+            <div class="card-action blue">
               <span data-zh="查看详情" data-en="Explore">查看详情</span>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </div>
           </a>
+        </div>
+      </div>
+    </section>
 
-          <!-- BMRI Card -->
-          <a href="/bmri" class="card card-clickable">
-            <div class="card-icon" style="background: rgba(6, 182, 212, 0.1);">🌐</div>
+    <!-- 宏观风险 Macro Risk -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header orange">
+          <h2 class="section-title" data-zh="宏观风险" data-en="Macro Risk">宏观风险</h2>
+          <span class="section-title-en" data-zh="Macro Risk" data-en="">Macro Risk</span>
+        </div>
+        <div class="cards-grid single">
+          <a href="/bmri" class="card card-clickable orange">
+            <div class="card-icon" style="background: var(--orange-dim);">🌡️</div>
             <div class="card-header">
-              <h2 class="card-title">BMRI</h2>
+              <h3 class="card-title">BMRI · Bitcoin Macro Risk Index</h3>
               <span class="card-badge">Live</span>
             </div>
-            <p class="card-desc" data-zh="宏观风险指标，综合利率、流动性、风险偏好判断市场环境。" data-en="Macro Risk Index combining rates, liquidity, and risk appetite.">宏观风险指标，综合利率、流动性、风险偏好判断市场环境。</p>
+            <p class="card-desc" data-zh="综合美债利率、流动性、风险偏好的宏观环境指标，判断市场系统性风险水平。" data-en="Macro environment indicator combining treasury rates, liquidity, and risk appetite for systemic risk assessment.">综合美债利率、流动性、风险偏好的宏观环境指标，判断市场系统性风险水平。</p>
             <div class="card-stats">
               <div class="stat">
                 <span class="stat-value" id="bmri-value">—</span>
-                <span class="stat-label" data-zh="当前值" data-en="Current">当前值</span>
+                <span class="stat-label" data-zh="当前值 (6M)" data-en="Current (6M)">当前值 (6M)</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value" id="bmri-zone">—</span>
+                <span class="stat-label" data-zh="风险等级" data-en="Risk Level">风险等级</span>
               </div>
             </div>
-            <div class="card-action">
+            <div class="card-action orange">
               <span data-zh="查看详情" data-en="Explore">查看详情</span>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </div>
           </a>
-
-          <!-- Coming Soon Card -->
-          <div class="card coming-soon">
-            <div class="card-icon coming">🚀</div>
-            <div class="card-header">
-              <h2 class="card-title" data-zh="更多指标" data-en="More Metrics">更多指标</h2>
-              <span class="card-badge coming" data-zh="敬请期待" data-en="Coming Soon">敬请期待</span>
-            </div>
-            <p class="card-desc" data-zh="链上资金流向、巨鲸追踪... 更多指标即将上线。" data-en="On-chain fund flows, whale tracking... More indicators coming soon.">链上资金流向、巨鲸追踪... 更多指标即将上线。</p>
-            <div class="card-stats">
-              <div class="stat">
-                <span class="stat-value">—</span>
-                <span class="stat-label">TBD</span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -540,64 +387,67 @@
     }
 
     function updateLang() {
-      // Update switch UI
       document.getElementById('lang-zh').className = currentLang === 'zh' ? 'active' : '';
       document.getElementById('lang-en').className = currentLang === 'en' ? 'active' : '';
-
-      // Update html lang
       document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
-
-      // Update title
-      document.title = currentLang === 'zh' 
-        ? 'Crypto3D — 链上数据，一目了然' 
-        : 'Crypto3D — On-chain insights, at a glance';
-
-      // Update all translatable elements
+      document.title = currentLang === 'zh' ? 'Crypto3D — 加密数据站' : 'Crypto3D — Data Hub';
       document.querySelectorAll('[data-zh]').forEach(el => {
         el.textContent = el.getAttribute(`data-${currentLang}`);
       });
-
-      // Save preference
+      // Hide English subtitle when in English mode
+      document.querySelectorAll('.section-title-en').forEach(el => {
+        el.style.display = currentLang === 'en' ? 'none' : 'inline';
+      });
       localStorage.setItem('lang', currentLang);
     }
 
-    // Load indicator data
-    async function loadIndicators() {
-      try {
-        // Load AHR999
-        const ahr999Res = await fetch('/indicators/data/ahr999.json');
-        const ahr999Data = await ahr999Res.json();
-        document.getElementById('ahr999-value').textContent = ahr999Data.current.value.toFixed(2);
-      } catch (e) {
-        console.log('AHR999 data not available');
-      }
-
-      try {
-        // Load MVRV
-        const mvrvRes = await fetch('/indicators/data/mvrv.json');
-        const mvrvData = await mvrvRes.json();
-        document.getElementById('mvrv-value').textContent = mvrvData.current.value.toFixed(2);
-      } catch (e) {
-        console.log('MVRV data not available');
-      }
-
-      try {
-        // Load BMRI
-        const bmriRes = await fetch('/indicators/data/bmri.json');
-        const bmriData = await bmriRes.json();
-        document.getElementById('bmri-value').textContent = bmriData['6m'].current.value.toFixed(2);
-      } catch (e) {
-        console.log('BMRI data not available');
-      }
+    function getAhr999Zone(value, lang) {
+      if (value < 0.45) return lang === 'zh' ? '🟢 抄底' : '🟢 Buy';
+      if (value < 1.2) return lang === 'zh' ? '🟡 定投' : '🟡 DCA';
+      return lang === 'zh' ? '🔴 观望' : '🔴 Wait';
     }
 
-    // Load saved preference
+    function getMvrvZone(value, lang) {
+      if (value < 1.0) return lang === 'zh' ? '🟢 低估' : '🟢 Under';
+      if (value < 3.0) return lang === 'zh' ? '🟡 合理' : '🟡 Fair';
+      return lang === 'zh' ? '🔴 高估' : '🔴 Over';
+    }
+
+    function getBmriZone(value, lang) {
+      if (value <= 30) return lang === 'zh' ? '🟢 低风险' : '🟢 Low';
+      if (value <= 70) return lang === 'zh' ? '🟡 中性' : '🟡 Neutral';
+      return lang === 'zh' ? '🔴 高风险' : '🔴 High';
+    }
+
+    async function loadIndicators() {
+      try {
+        const ahr999Res = await fetch('/indicators/data/ahr999.json');
+        const ahr999Data = await ahr999Res.json();
+        const ahr999Val = ahr999Data.current.value;
+        document.getElementById('ahr999-value').textContent = ahr999Val.toFixed(2);
+        document.getElementById('ahr999-zone').textContent = getAhr999Zone(ahr999Val, currentLang);
+      } catch (e) { console.log('AHR999 data not available'); }
+
+      try {
+        const mvrvRes = await fetch('/indicators/data/mvrv.json');
+        const mvrvData = await mvrvRes.json();
+        const mvrvVal = mvrvData.current.value;
+        document.getElementById('mvrv-value').textContent = mvrvVal.toFixed(2);
+        document.getElementById('mvrv-zone').textContent = getMvrvZone(mvrvVal, currentLang);
+      } catch (e) { console.log('MVRV data not available'); }
+
+      try {
+        const bmriRes = await fetch('/indicators/data/bmri.json');
+        const bmriData = await bmriRes.json();
+        const bmriVal = bmriData['6m'].current.value;
+        document.getElementById('bmri-value').textContent = bmriVal.toFixed(0);
+        document.getElementById('bmri-zone').textContent = getBmriZone(bmriVal, currentLang);
+      } catch (e) { console.log('BMRI data not available'); }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       const saved = localStorage.getItem('lang');
-      if (saved) {
-        currentLang = saved;
-        updateLang();
-      }
+      if (saved) { currentLang = saved; updateLang(); }
       loadIndicators();
     });
   </script>
