@@ -409,6 +409,7 @@
             </div>
           </a>
         </div>
+        <div class="section-update-time" id="btc-cycle-update" data-zh="数据更新: —" data-en="Data updated: —" style="font-size: 12px; color: var(--text-tertiary); text-align: right; margin-top: 12px; font-family: 'JetBrains Mono', monospace;">数据更新: —</div>
       </div>
     </section>
 
@@ -456,6 +457,7 @@
             </div>
           </a>
         </div>
+        <div class="section-update-time" id="macro-risk-update" data-zh="数据更新: —" data-en="Data updated: —" style="font-size: 12px; color: var(--text-tertiary); text-align: right; margin-top: 12px; font-family: 'JetBrains Mono', monospace;">数据更新: —</div>
       </div>
     </section>
   </main>
@@ -611,6 +613,9 @@
     }
 
     async function loadIndicators() {
+      let btcCycleUpdate = null;
+      let macroRiskUpdate = null;
+
       try {
         const ahr999Res = await fetch('/indicators/data/ahr999.json');
         const ahr999Data = await ahr999Res.json();
@@ -622,6 +627,7 @@
         const ahr999History = ahr999Data.history.slice(-7).map(d => ({ value: d.ahr999 }));
         drawSparkline('ahr999-spark', ahr999History, '#3b82f6');
         showChange('ahr999-change', ahr999History);
+        if (ahr999Data.updated_at) btcCycleUpdate = ahr999Data.updated_at;
       } catch (e) { console.log('AHR999 data not available'); }
 
       try {
@@ -634,6 +640,7 @@
         const mvrvHistory = mvrvData.history.slice(-7).map(d => ({ value: d.value }));
         drawSparkline('mvrv-spark', mvrvHistory, '#a855f7');
         showChange('mvrv-change', mvrvHistory);
+        if (mvrvData.updated_at && (!btcCycleUpdate || mvrvData.updated_at > btcCycleUpdate)) btcCycleUpdate = mvrvData.updated_at;
       } catch (e) { console.log('MVRV data not available'); }
 
       try {
@@ -646,6 +653,7 @@
         const bmriHistory = bmriData['6m'].history.slice(-7).map(d => ({ value: d.bmri }));
         drawSparkline('bmri-spark', bmriHistory, '#f59e0b');
         showChange('bmri-change', bmriHistory);
+        if (bmriData.updated_at) macroRiskUpdate = bmriData.updated_at;
       } catch (e) { console.log('BMRI data not available'); }
 
       try {
@@ -658,7 +666,17 @@
         const btcdHistory = btcdData.history.slice(-7).map(d => ({ value: d.value }));
         drawSparkline('btcd-spark', btcdHistory, '#06b6d4');
         showChange('btcd-change', btcdHistory);
+        if (btcdData.updated_at && (!btcCycleUpdate || btcdData.updated_at > btcCycleUpdate)) btcCycleUpdate = btcdData.updated_at;
       } catch (e) { console.log('BTC.D data not available'); }
+
+      // Set update times
+      const prefix = currentLang === 'zh' ? '数据更新: ' : 'Data updated: ';
+      if (btcCycleUpdate) {
+        document.getElementById('btc-cycle-update').textContent = prefix + btcCycleUpdate;
+      }
+      if (macroRiskUpdate) {
+        document.getElementById('macro-risk-update').textContent = prefix + macroRiskUpdate;
+      }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
