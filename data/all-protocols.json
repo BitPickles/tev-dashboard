@@ -91,7 +91,8 @@
       "category": "lending",
       "confidence": "low",
       "tevStatus": "partial",
-      "tevRatio": 0.1,
+      "tevRatio": null,
+      "tevRatioNote": "透明度低，具体比例无法验证",
       "tvl": 3147428011
     },
     "spark": {
@@ -211,7 +212,8 @@
       "category": "cex",
       "confidence": "low",
       "tevStatus": "active",
-      "tevRatio": 1,
+      "tevRatio": null,
+      "tevRatioNote": "CEX 财务不公开，季度销毁但比例未知",
       "tvl": 0
     },
     "okb": {
@@ -221,7 +223,8 @@
       "category": "cex",
       "confidence": "low",
       "tevStatus": "active",
-      "tevRatio": 0.3,
+      "tevRatio": null,
+      "tevRatioNote": "CEX 财务不公开，声称30%收入但无法验证",
       "tvl": 0
     },
     "bgb": {
@@ -231,7 +234,8 @@
       "category": "cex",
       "confidence": "low",
       "tevStatus": "active",
-      "tevRatio": 1,
+      "tevRatio": null,
+      "tevRatioNote": "CEX 财务不公开，销毁比例未知",
       "tvl": 0
     },
     "hype": {
@@ -251,7 +255,8 @@
       "category": "cex",
       "confidence": "low",
       "tevStatus": "partial",
-      "tevRatio": 0,
+      "tevRatio": null,
+      "tevRatioNote": "TEV 机制不明确，待进一步调研",
       "tvl": 0
     },
     "aster": {
@@ -259,9 +264,10 @@
       "ticker": "ASTER",
       "icon": "https://coin-images.coingecko.com/coins/images/69040/large/_ASTER.png",
       "category": "perpetuals",
-      "confidence": "high",
+      "confidence": "medium",
       "tevStatus": "active",
-      "tevRatio": 1,
+      "tevRatio": null,
+      "tevRatioNote": "新协议，收入数据缺失",
       "tvl": 1091092274
     }
   }
