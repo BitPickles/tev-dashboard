@@ -1513,9 +1513,11 @@
         let valB = getSortValue(b, field);
         let cmp = valB - valA; // 默认降序
         if (dir === 'asc') cmp = -cmp;
-        // 相同时按 TVL 二级排序
-        if (cmp === 0 && field !== 'tvl') {
-          cmp = (b.tvl || 0) - (a.tvl || 0);
+        // 相同时按市值二级排序（TEV状态排序时特别重要）
+        if (cmp === 0) {
+          const mcapA = a.latest_record?.market_cap_usd || a.metrics?.current_market_cap_usd || 0;
+          const mcapB = b.latest_record?.market_cap_usd || b.metrics?.current_market_cap_usd || 0;
+          cmp = mcapB - mcapA;
         }
         return cmp;
       });
