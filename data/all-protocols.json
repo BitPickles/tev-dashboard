@@ -39,7 +39,7 @@
       "confidence": "high",
       "tevStatus": "active",
       "tevRatio": null,
-      "tevRatioNote": "部分收入用于回购，具体比例未公开",
+      "tevRatioNote": "提现收入用于回购，TEV yield ~5.69%",
       "tvl": 6394743902
     },
     "ethena": {
@@ -47,10 +47,10 @@
       "ticker": "ENA",
       "icon": "https://coin-images.coingecko.com/coins/images/36530/large/ethena.png",
       "category": "yield",
-      "confidence": "high",
-      "tevStatus": "active",
+      "confidence": "medium",
+      "tevStatus": "partial",
       "tevRatio": null,
-      "tevRatioNote": "收益主要分配给 sUSDe 持有者，sENA 获得治理权和部分收益",
+      "tevRatioNote": "收益主要分配给 sUSDe 持有者 (APY ~7.83%)，sENA 获得部分收益但比例不公开",
       "tvl": 6535353327
     },
     "morpho": {
@@ -112,7 +112,8 @@
       "category": "lending",
       "confidence": "medium",
       "tevStatus": "active",
-      "tevRatio": 0.3,
+      "tevRatio": 0.25,
+      "tevRatioNote": "25%~33% 协议收入用于 SYRUP 回购，TEV yield ~1.18%",
       "tvl": 2477341241
     },
     "pancakeswap": {
