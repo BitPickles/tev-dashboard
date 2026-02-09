@@ -1139,9 +1139,9 @@
         category: 'liquid_staking',
         confidence: 'high',
         tevStatus: 'active',
-        tevRatio: 1.0,
+        tevRatio: null,
         tvl: 6394743902,
-        note: 'Buyback — 100% withdrawal revenue → ETHFI buyback → sETHFI stakers'
+        note: '部分收入用于回购，具体比例未公开'
       },
       ethena: {
         name: 'Ethena',
@@ -1150,9 +1150,9 @@
         category: 'yield',
         confidence: 'high',
         tevStatus: 'active',
-        tevRatio: 1.0,
+        tevRatio: null,
         tvl: 6535353327,
-        note: 'Fee switch ON — 100% revenue → sENA stakers + $310M buyback'
+        note: '收益主要分配给 sUSDe 持有者，sENA 获得治理权和部分收益'
       },
       morpho: {
         name: 'Morpho',
@@ -1193,8 +1193,9 @@
         category: 'lending',
         confidence: 'low',
         tevStatus: 'partial',
-        tevRatio: 0.1,
+        tevRatio: null,
         tvl: 3147428011,
+        note: '透明度低，具体比例无法验证'
       },
       spark: {
         name: 'Spark',
@@ -1318,9 +1319,9 @@
         category: 'cex',
         confidence: 'low',
         tevStatus: 'active',
-        tevRatio: 1.0,
+        tevRatio: null,
         tvl: 0,
-        note: 'Quarterly Auto-Burn + BEP-95 real-time burn'
+        note: 'CEX 财务不公开，季度销毁但比例未知'
       },
       okb: {
         name: 'OKB',
@@ -1329,9 +1330,9 @@
         category: 'cex',
         confidence: 'low',
         tevStatus: 'active',
-        tevRatio: 0.30,
+        tevRatio: null,
         tvl: 0,
-        note: '30% revenue buyback & burn'
+        note: 'CEX 财务不公开，声称30%收入但无法验证'
       },
       bgb: {
         name: 'Bitget Token',
@@ -1340,15 +1341,15 @@
         category: 'cex',
         confidence: 'low',
         tevStatus: 'active',
-        tevRatio: 1.0,
+        tevRatio: null,
         tvl: 0,
-        note: 'Buyback & burn program'
+        note: 'CEX 财务不公开，销毁比例未知'
       },
       hype: {
         name: 'Hyperliquid',
         ticker: 'HYPE',
         icon: 'https://coin-images.coingecko.com/coins/images/50882/large/hyperliquid.jpg',
-        category: 'cex',
+        category: 'perpetuals',
         confidence: 'high',
         tevStatus: 'active',
         tevRatio: 0.99,
@@ -1362,9 +1363,9 @@
         category: 'cex',
         confidence: 'low',
         tevStatus: 'partial',
-        tevRatio: 0,
+        tevRatio: null,
         tvl: 0,
-        note: 'CEX platform token - mechanism unclear'
+        note: 'TEV 机制不明确，待进一步调研'
       },
       // Perpetual DEX
       aster: {
@@ -1372,11 +1373,11 @@
         ticker: 'ASTER',
         icon: 'https://coin-images.coingecko.com/coins/images/69040/large/_ASTER.png',
         category: 'perpetuals',
-        confidence: 'high',
+        confidence: 'medium',
         tevStatus: 'active',
-        tevRatio: 1.0,
+        tevRatio: null,
         tvl: 1091092274,
-        note: 'Protocol revenue buyback'
+        note: '新协议，收入数据缺失'
       },
     };
 
