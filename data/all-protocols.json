@@ -123,8 +123,9 @@
       "category": "dex",
       "confidence": "high",
       "tevStatus": "active",
-      "tevRatio": 0.5,
-      "tvl": 2185582442
+      "tevRatio": 0.6,
+      "tvl": 2185582442,
+      "tevRatioNote": "veCAKE 已于 2025-04-23 结束，Tokenomics 3.0 回购销毁"
     },
     "kamino": {
       "name": "Kamino",
@@ -202,9 +203,11 @@
       "icon": "https://coin-images.coingecko.com/coins/images/26536/large/Radiant-Logo-200x200.png",
       "category": "lending",
       "confidence": "high",
-      "tevStatus": "active",
+      "tevStatus": "inactive",
       "tevRatio": 0.6,
-      "tvl": 3749741
+      "tvl": 3749741,
+      "hidden": true,
+      "tevRatioNote": "2024年10月遭受$53M黑客攻击，协议已衰落"
     },
     "bnb": {
       "name": "BNB",
@@ -265,10 +268,10 @@
       "ticker": "ASTER",
       "icon": "https://coin-images.coingecko.com/coins/images/69040/large/_ASTER.png",
       "category": "perpetuals",
-      "confidence": "medium",
+      "confidence": "high",
       "tevStatus": "active",
-      "tevRatio": null,
-      "tevRatioNote": "新协议，收入数据缺失",
+      "tevRatio": 0.9,
+      "tevRatioNote": "TEV Yield 9.55%，高分配协议",
       "tvl": 1091092274
     }
   }

@@ -38,11 +38,11 @@
   },
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "99% 永续交易费用用于回购 HYPE",
+    "fee_switch_details": "~90% 永续交易费用用于回购销毁 HYPE",
     "buybacks": "ACTIVE",
     "dividends": "NONE",
-    "burns": "NONE",
-    "primary_value_accrual": "回购 - 99% 永续交易费用流入 Assistance Fund 回购 HYPE"
+    "burns": "ACTIVE",
+    "primary_value_accrual": "回购销毁 - Assistance Fund 使用约90%费用回购并销毁 HYPE"
   },
   "market_data": {
     "price_usd": 32.56,
@@ -51,21 +51,35 @@
     "data_source": "CoinGecko"
   },
   "calculated_tev": {
-    "tev_yield_percent": null,
-    "calculation_status": "NEED_REVENUE_DATA",
-    "reason": "需要获取 Hyperliquid 交易费用数据来计算",
-    "note": "DefiLlama 有 dailyHoldersRevenue 数据，可用于计算"
+    "tev_yield_percent": 12.29,
+    "calculation_status": "CALCULATED",
+    "calculation_date": "2026-02-09",
+    "inputs": {
+      "30d_holders_revenue": 79662621,
+      "annualized_revenue": 955951452,
+      "market_cap": 7780000000
+    },
+    "note": "TEV Yield = (年化 holdersRevenue $956M) / (市值 $7.78B) = 12.29%"
   },
-  "data_gaps": [
+  "data_gaps": [],
+  "verified_data": [
     {
-      "item": "年化 holders revenue",
-      "status": "可从 DefiLlama 获取",
-      "note": "需要调用 fees API 获取历史数据"
+      "item": "回购销毁机制",
+      "status": "✅ 已确认",
+      "note": "Assistance Fund 回购后销毁 HYPE，非锁仓",
+      "verified_date": "2026-02-09"
     },
     {
-      "item": "回购是否伴随销毁",
-      "status": "需要确认",
-      "note": "DefiLlama 显示 burns: NONE，但描述说 buy back & burns"
+      "item": "分配比例",
+      "status": "✅ 已验证",
+      "note": "DefiLlama 数据显示约 90%（非声称的 99%），holdersRevenue/totalFees = 89.9%",
+      "verified_date": "2026-02-09"
+    },
+    {
+      "item": "TEV Yield",
+      "status": "✅ 已计算",
+      "note": "年化 ~12.29%，DeFi 领域最高之一",
+      "verified_date": "2026-02-09"
     }
   ],
   "confidence": "high",
