@@ -1,17 +1,100 @@
 {
   "protocol": "uniswap",
   "period": "2026-02",
-  "source": "auto",
-  "fetched_at": "2026-02-01T09:54:02.442Z",
-  "record_count": 1,
+  "source": "defillama+coingecko",
+  "fetched_at": "2026-02-09T06:27:18.882Z",
+  "record_count": 9,
   "records": [
     {
       "date": "2026-02-01",
       "price_usd": 3.9629718315971,
       "market_cap_usd": 2514228224.162625,
-      "daily_fees_usd": 2946123,
+      "daily_fees_usd": 5194299,
+      "daily_tev_usd": 108969,
+      "tev_ratio_used": 0,
+      "daily_revenue_usd": 108969,
+      "daily_holders_revenue_usd": 108969,
+      "tev_source": "defillama_holdersRevenue"
+    },
+    {
+      "date": "2026-02-02",
+      "price_usd": null,
+      "market_cap_usd": null,
+      "daily_fees_usd": 4296029,
+      "daily_revenue_usd": 101625,
+      "daily_holders_revenue_usd": 101625,
+      "daily_tev_usd": 101625,
+      "tev_source": "defillama_holdersRevenue"
+    },
+    {
+      "date": "2026-02-03",
+      "price_usd": null,
+      "market_cap_usd": null,
+      "daily_fees_usd": 3502636,
+      "daily_revenue_usd": 85839,
+      "daily_holders_revenue_usd": 85839,
+      "daily_tev_usd": 85839,
+      "tev_source": "defillama_holdersRevenue"
+    },
+    {
+      "date": "2026-02-04",
+      "price_usd": null,
+      "market_cap_usd": null,
+      "daily_fees_usd": 3598444,
+      "daily_revenue_usd": 84023,
+      "daily_holders_revenue_usd": 84023,
+      "daily_tev_usd": 84023,
+      "tev_source": "defillama_holdersRevenue"
+    },
+    {
+      "date": "2026-02-05",
+      "price_usd": null,
+      "market_cap_usd": null,
+      "daily_fees_usd": 5032904,
+      "daily_revenue_usd": 209674,
+      "daily_holders_revenue_usd": 209674,
+      "daily_tev_usd": 209674,
+      "tev_source": "defillama_holdersRevenue"
+    },
+    {
+      "date": "2026-02-06",
+      "price_usd": null,
+      "market_cap_usd": null,
+      "daily_fees_usd": 4359680,
+      "daily_revenue_usd": 172013,
+      "daily_holders_revenue_usd": 172013,
+      "daily_tev_usd": 172013,
+      "tev_source": "defillama_holdersRevenue"
+    },
+    {
+      "date": "2026-02-07",
+      "price_usd": null,
+      "market_cap_usd": null,
+      "daily_fees_usd": 2926700,
+      "daily_revenue_usd": 72370,
+      "daily_holders_revenue_usd": 72370,
+      "daily_tev_usd": 72370,
+      "tev_source": "defillama_holdersRevenue"
+    },
+    {
+      "date": "2026-02-08",
+      "price_usd": null,
+      "market_cap_usd": null,
+      "daily_fees_usd": 1894823,
+      "daily_revenue_usd": 48007,
+      "daily_holders_revenue_usd": 48007,
+      "daily_tev_usd": 48007,
+      "tev_source": "defillama_holdersRevenue"
+    },
+    {
+      "date": "2026-02-09",
+      "price_usd": null,
+      "market_cap_usd": null,
+      "daily_fees_usd": 808249,
+      "daily_revenue_usd": 0,
+      "daily_holders_revenue_usd": 0,
       "daily_tev_usd": 0,
-      "tev_ratio_used": 0
+      "tev_source": "defillama_holdersRevenue"
     }
   ]
 }

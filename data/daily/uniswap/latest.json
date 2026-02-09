@@ -1,25 +1,28 @@
 {
   "protocol": "uniswap",
-  "updated_at": "2026-02-01T09:54:02.442Z",
+  "updated_at": "2026-02-09T06:27:18.883Z",
   "latest_record": {
-    "date": "2026-02-01",
-    "price_usd": 3.9629718315971,
-    "market_cap_usd": 2514228224.162625,
-    "daily_fees_usd": 2946123,
+    "date": "2026-02-09",
+    "price_usd": null,
+    "market_cap_usd": null,
+    "daily_fees_usd": 808249,
+    "daily_revenue_usd": 0,
+    "daily_holders_revenue_usd": 0,
     "daily_tev_usd": 0,
-    "tev_ratio_used": 0
+    "tev_source": "defillama_holdersRevenue"
   },
   "metrics": {
-    "trailing_30d_tev_usd": 0,
-    "annualized_tev_usd": 0,
-    "current_market_cap_usd": 2514228224,
-    "tev_yield": "0.00%",
-    "tev_yield_decimal": 0,
-    "calculated_at": "2026-02-01T09:54:02.425Z"
+    "trailing_30d_tev_usd": 2110250,
+    "trailing_30d_fees_usd": 76534478,
+    "annualized_tev_usd": 25323000,
+    "current_market_cap_usd": 2202404810,
+    "tev_yield": "1.15%",
+    "tev_yield_decimal": 0.011497886258248774,
+    "calculated_at": "2026-02-09T06:27:18.883Z"
   },
   "data_range": {
     "start": "2018-11-03",
-    "end": "2026-02-01",
-    "total_days": 2648
+    "end": "2026-02-09",
+    "total_days": 2656
   }
 }

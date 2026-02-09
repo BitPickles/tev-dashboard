@@ -14,7 +14,7 @@ const PROTOCOLS = [
   { id: 'sky', coingecko: 'maker', ticker: 'MKR' }, // Sky was MakerDAO
 ];
 
-const DATA_DIR = path.join(__dirname, '../docs/data/daily');
+const DATA_DIR = path.join(__dirname, '../data/daily');
 
 async function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
