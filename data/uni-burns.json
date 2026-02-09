@@ -1,10 +1,15 @@
 {
-  "updated_at": "2026-02-09",
-  "source": "Uniswap Protocol (uniburn.lovable.app)",
-  "total_supply": 1000000000,
-  "circulating_supply": 600000000,
-  "total_burned": 12500000,
-  "burn_percentage": 1.25,
+  "updated_at": "2026-02-09 22:11:57",
+  "source": "CoinGecko API",
+  "initial_supply": 1000000000,
+  "total_supply": 898956420.0366304,
+  "circulating_supply": 633971278.1680214,
+  "current_supply": 898956420.0366304,
+  "total_burned": 101043579.96336961,
+  "burn_percentage": 10.1044,
+  "burned_value_usd": 335464685.48,
+  "current_price": 3.32,
+  "market_cap": 2105215378,
   "mechanism": {
     "type": "fee_burn",
     "description": "Unichain 序列器费用 + Firepit 销毁机制",
@@ -12,32 +17,21 @@
       {
         "name": "Firepit",
         "description": "协议费用销毁合约",
-        "percentage": 100
+        "contract": "0x..."
       },
       {
         "name": "Unichain Sequencer",
-        "description": "Unichain L2 序列器收入部分用于销毁",
-        "percentage": 50
+        "description": "Unichain L2 序列器收入用于销毁"
       }
     ]
   },
-  "stats": {
-    "annualized_burn": 8500000,
-    "annualized_fees": 180000000,
-    "avg_daily_burn": 23287
-  },
-  "monthly_burns": [
-    {"month": "2024-11", "amount": 2100000, "value_usd": 25200000},
-    {"month": "2024-12", "amount": 3400000, "value_usd": 42500000},
-    {"month": "2025-01", "amount": 4200000, "value_usd": 58800000},
-    {"month": "2025-02", "amount": 2800000, "value_usd": 39200000, "note": "截至2月9日"}
+  "monthly_burns": [],
+  "cumulative_burns": [
+    {
+      "date": "2026-02-09",
+      "total_burned": 101043579.96,
+      "price_avg": 3.32
+    }
   ],
-  "daily_burns": [
-    {"date": "2025-02-08", "amount": 23456, "value_usd": 328384, "tx_count": 15},
-    {"date": "2025-02-07", "amount": 25678, "value_usd": 359492, "tx_count": 18},
-    {"date": "2025-02-06", "amount": 21234, "value_usd": 297276, "tx_count": 12},
-    {"date": "2025-02-05", "amount": 24567, "value_usd": 343938, "tx_count": 16},
-    {"date": "2025-02-04", "amount": 22345, "value_usd": 312830, "tx_count": 14}
-  ],
-  "notes": "Uniswap 通过 Firepit 机制将协议费用转化为 UNI 销毁。Unichain 上线后，序列器收入也部分用于销毁。数据来源于 uniburn.lovable.app 监控面板。"
+  "notes": "数据通过 CoinGecko API 自动获取。销毁量 = 初始供应量(1B) - 当前总供应量。"
 }
