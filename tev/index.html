@@ -1097,9 +1097,12 @@
     // Logo URLs - loaded dynamically
     let LOGO_URLS = {};
 
-    // Protocol Data - Top 20 DeFi by TVL
+    // Protocol Data - 动态加载
     // ============================================
-    const PROTOCOLS = {
+    let PROTOCOLS = {}; // 从 all-protocols.json 加载
+
+    // 临时兼容：保留 aave 定义防止报错，后面会被覆盖
+    const PROTOCOLS_PLACEHOLDER = {
       aave: {
         name: 'Aave',
         ticker: 'AAVE',
@@ -1380,6 +1383,9 @@
         note: '新协议，收入数据缺失'
       },
     };
+    
+    // 兼容：初始化时用占位符
+    PROTOCOLS = PROTOCOLS_PLACEHOLDER;
 
     function formatCurrency(value, decimals = 0) {
       if (value === null || value === undefined) return '—';
@@ -1402,7 +1408,19 @@
     }
 
     async function loadProtocolData() {
-      // 并行加载所有协议数据以加速
+      // 1. 先从 all-protocols.json 加载协议列表
+      try {
+        const baseRes = await fetch('../data/all-protocols.json');
+        if (baseRes.ok) {
+          const baseData = await baseRes.json();
+          PROTOCOLS = baseData.protocols || {};
+          console.log('Loaded protocols from all-protocols.json:', Object.keys(PROTOCOLS).length);
+        }
+      } catch (e) {
+        console.warn('Failed to load all-protocols.json, using fallback');
+      }
+      
+      // 2. 并行加载每个协议的 latest.json 补充数据
       const entries = Object.entries(PROTOCOLS);
       const promises = entries.map(async ([key, config]) => {
         try {
