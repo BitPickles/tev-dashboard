@@ -19,7 +19,7 @@
     {
       "type": "staking_reward",
       "name": "sENA Protocol Revenue Share",
-      "description": "Fee switch 已开启，100% 协议费用分配给 sENA 质押者。Ethena 通过期货基差套利生成收益，sUSDe APY 约 7.83%",
+      "description": "协议收益主要分配给 sUSDe 持有者 (APY ~7.83%)，sENA 质押者获得治理权和部分收益分配",
       "status": "active",
       "source": {
         "type": "api",
@@ -43,7 +43,7 @@
   ],
   "tev_summary": {
     "fee_switch": "ACTIVE",
-    "fee_switch_details": "Fee switch ON，100% 协议收入分配给 sENA 质押者",
+    "fee_switch_details": "Fee switch ON，收益主要分配给 sUSDe 持有者；sENA 质押者获得治理权和部分收益",
     "buybacks": "ACTIVE",
     "dividends": "ACTIVE",
     "burns": "NONE",

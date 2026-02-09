@@ -530,7 +530,7 @@
     {
       "type": "fee_sharing",
       "name": "veCRV Fee Distribution",
-      "description": "50% 交易手续费分配给 veCRV 持有者（以 crvUSD 形式）",
+      "description": "50% 交易手续费分配给 veCRV 持有者（以 3CRV 形式）",
       "status": "active",
       "ratio": 0.50,
       "distribution_contract": "0xA464e6DCda8AC41e03616F95f4BC98a13b8922Dc",
@@ -552,18 +552,18 @@
   },
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "50% 交易手续费分配给 veCRV 持有者（以 crvUSD 形式），每周分发",
+    "fee_switch_details": "50% 交易手续费分配给 veCRV 持有者（以 3CRV 形式），每周分发",
     "buybacks": "NONE",
     "dividends": "ACTIVE",
     "burns": "NONE",
-    "primary_value_accrual": "分红 - veCRV 持有者每周获得 crvUSD 分红"
+    "primary_value_accrual": "分红 - veCRV 持有者每周获得 3CRV 分红"
   },
   "ve_token": {
     "name": "veCRV",
     "lock_contract": "0x5f3b5DfEb7B28CDbD7FAba78963EE202a494e2A2",
     "max_lock_period": "4 years",
     "benefits": [
-      "50% 协议手续费分成（crvUSD）",
+      "50% 协议手续费分成（3CRV）",
       "治理投票权",
       "Gauge 权重投票（决定 CRV 激励分配）",
       "LP 挖矿加速（最高 2.5x boost）"
@@ -834,7 +834,7 @@
     {
       "type": "buyback_accumulate",
       "name": "Withdrawal Revenue Buyback",
-      "description": "部分 eETH 提现收入（慢速提现期间质押收益 + 快速提现 0.3% 费用）用于每月链上回购 ETHFI，分配给 sETHFI 质押者",
+      "description": "100% eETH 提现收入（慢速提现期间质押收益 + 快速提现 0.3% 费用）用于每月链上回购 ETHFI，分配给 sETHFI 质押者",
       "status": "active",
       "start_date": "2025-04-25",
       "contract": "0x7A6A41F353B3002751d94118aA7f4935dA39bB53",
@@ -861,11 +861,11 @@
   ],
   "tev_summary": {
     "fee_switch": "ACTIVE",
-    "fee_switch_details": "部分提现收入用于 ETHFI 回购，分配给 sETHFI 质押者；另有 $50M 国库回购额度（ETHFI < $3 时）",
+    "fee_switch_details": "100% 提现收入用于 ETHFI 回购，分配给 sETHFI 质押者；另有 $50M 国库回购额度（ETHFI < $3 时）",
     "buybacks": "ACTIVE",
     "dividends": "NONE",
     "burns": "NONE",
-    "primary_value_accrual": "回购分配 — 部分协议收入回购 ETHFI 并分配给 sETHFI 质押者"
+    "primary_value_accrual": "回购分配 — 协议收入回购 ETHFI 并分配给 sETHFI 质押者"
   },
   "confidence": "high",
   "data_sources": [
@@ -1031,7 +1031,7 @@
     "fee_switch_details": "99% 永续交易费用用于回购 HYPE",
     "buybacks": "ACTIVE",
     "dividends": "NONE",
-    "burns": "NONE",
+    "burns": "UNKNOWN",
     "primary_value_accrual": "回购 - 99% 永续交易费用流入 Assistance Fund 回购 HYPE"
   },
   "market_data": {

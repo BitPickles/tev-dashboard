@@ -50,7 +50,7 @@
     "lock_contract": "0x5f3b5DfEb7B28CDbD7FAba78963EE202a494e2A2",
     "max_lock_period": "4 years",
     "benefits": [
-      "50% 协议手续费分成（3CRV）",
+      "50% 协议手续费分成（crvUSD）",
       "治理投票权",
       "Gauge 权重投票（决定 CRV 激励分配）",
       "LP 挖矿加速（最高 2.5x boost）"
@@ -93,6 +93,6 @@
       "reliability": "high"
     }
   ],
-  "analyst_notes": "【2026-02-05 调研更新】\n\n## Curve 双重激励模式说明\n\nCurve 采用特殊的双重激励模式，需区分 TEV 和 LP 激励：\n\n### 1. TEV 部分（计入 TEV yield）\n- **50% 交易手续费** 分配给 **veCRV 持有者**\n- 以 3CRV（稳定币 LP token）形式每周分发\n- 分发合约: 0xA464e6DCda8AC41e03616F95f4BC98a13b8922Dc\n- 过去30天分红: ~$97万，年化约 $1165万\n\n### 2. LP 激励部分（不计入 TEV）\n- **CRV 代币奖励** 分配给 **LP 提供者**\n- 通过 Gauge 系统分发\n- 这是代币通胀/增发激励，不是协议收入分配\n- veCRV 持有者投票决定各池子的 CRV 奖励权重\n\n### TEV Yield 计算\n- 年化 holders revenue: ~$11.65M\n- CRV 流通市值: ~$355M\n- **TEV Yield ≈ 3.28%**\n\n### 为什么显示 0% 需排查\n前端显示 TEV yield 为 0% 是错误的，实际数据显示约 3.28%。\n可能原因：\n1. 前端未正确读取 calculated_tev 字段\n2. 数据管道问题\n3. 计算逻辑缺失\n\n建议检查前端 TEV yield 计算逻辑。",
+  "analyst_notes": "【2026-02-05 调研更新】\n\n## Curve 双重激励模式说明\n\nCurve 采用特殊的双重激励模式，需区分 TEV 和 LP 激励：\n\n### 1. TEV 部分（计入 TEV yield）\n- **50% 交易手续费** 分配给 **veCRV 持有者**\n- 以 crvUSD（稳定币 LP token）形式每周分发\n- 分发合约: 0xA464e6DCda8AC41e03616F95f4BC98a13b8922Dc\n- 过去30天分红: ~$97万，年化约 $1165万\n\n### 2. LP 激励部分（不计入 TEV）\n- **CRV 代币奖励** 分配给 **LP 提供者**\n- 通过 Gauge 系统分发\n- 这是代币通胀/增发激励，不是协议收入分配\n- veCRV 持有者投票决定各池子的 CRV 奖励权重\n\n### TEV Yield 计算\n- 年化 holders revenue: ~$11.65M\n- CRV 流通市值: ~$355M\n- **TEV Yield ≈ 3.28%**\n\n### 为什么显示 0% 需排查\n前端显示 TEV yield 为 0% 是错误的，实际数据显示约 3.28%。\n可能原因：\n1. 前端未正确读取 calculated_tev 字段\n2. 数据管道问题\n3. 计算逻辑缺失\n\n建议检查前端 TEV yield 计算逻辑。",
   "last_updated": "2026-02-05"
 }
