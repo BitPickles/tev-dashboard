@@ -1,37 +1,21 @@
 {
-  "updated_at": "2026-02-09 22:11:57",
+  "updated_at": "2026-02-09",
   "source": "CoinGecko API",
   "initial_supply": 1000000000,
   "total_supply": 898956420.0366304,
   "circulating_supply": 633971278.1680214,
-  "current_supply": 898956420.0366304,
   "total_burned": 101043579.96336961,
   "burn_percentage": 10.1044,
-  "burned_value_usd": 335464685.48,
   "current_price": 3.32,
-  "market_cap": 2105215378,
-  "mechanism": {
-    "type": "fee_burn",
-    "description": "Unichain 序列器费用 + Firepit 销毁机制",
-    "components": [
-      {
-        "name": "Firepit",
-        "description": "协议费用销毁合约",
-        "contract": "0x..."
-      },
-      {
-        "name": "Unichain Sequencer",
-        "description": "Unichain L2 序列器收入用于销毁"
-      }
-    ]
-  },
-  "monthly_burns": [],
-  "cumulative_burns": [
+  "burned_value_usd": 335464685.48,
+  "target_supply": null,
+  "monthly_burns": [
     {
+      "month": "2026-02",
       "date": "2026-02-09",
-      "total_burned": 101043579.96,
-      "price_avg": 3.32
+      "total_burned": 101043579.96336961,
+      "burned_value_usd": 335464685.48
     }
   ],
-  "notes": "数据通过 CoinGecko API 自动获取。销毁量 = 初始供应量(1B) - 当前总供应量。"
+  "note": "UNI 通过 buyback 机制销毁"
 }
