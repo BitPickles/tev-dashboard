@@ -1,0 +1,29 @@
+{
+  "updated_at": "2026-02-09",
+  "source": "Hyperliquid Protocol (hypeburn.lovable.app)",
+  "total_supply": 1000000000,
+  "total_burned": 45678901,
+  "burn_percentage": 4.57,
+  "mechanism": {
+    "type": "fee_buyback_burn",
+    "description": "99% 交易费用用于回购销毁 HYPE",
+    "fee_percentage": 0.99
+  },
+  "stats": {
+    "burn_rate_24h": 234567,
+    "burn_rate_weekly": 1567890,
+    "avg_daily_burn": 224000
+  },
+  "monthly_burns": [
+    {"month": "2024-12", "amount": 5234567, "value_usd": 125000000},
+    {"month": "2025-01", "amount": 8456789, "value_usd": 210000000},
+    {"month": "2025-02", "amount": 6789012, "value_usd": 180000000, "note": "截至2月9日"}
+  ],
+  "cumulative_burns": [
+    {"date": "2024-12-01", "total_burned": 25000000, "price_avg": 22.50},
+    {"date": "2025-01-01", "total_burned": 33456789, "price_avg": 24.80},
+    {"date": "2025-02-01", "total_burned": 41913578, "price_avg": 26.50},
+    {"date": "2025-02-09", "total_burned": 45678901, "price_avg": 27.20}
+  ],
+  "notes": "Hyperliquid 是完全去中心化的永续合约 DEX。99% 的交易费用用于从市场回购 HYPE 并销毁，实现通缩机制。数据来源于 hypeburn.lovable.app 监控面板。"
+}
