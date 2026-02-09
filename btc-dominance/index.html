@@ -379,7 +379,7 @@
 
     async function loadData() {
       try {
-        const res = await fetch('/indicators/data/btc-dominance.json');
+        const res = await fetch('../indicators/data/btc-dominance.json');
         const data = await res.json();
 
         const current = data.current;

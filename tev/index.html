@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TEV Dashboard — 加密协议估值</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -63,25 +68,15 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      text-decoration: none;
     }
 
-    .logo-icon {
-      width: 32px;
-      height: 32px;
-      background: var(--accent);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 14px;
-      color: var(--bg-primary);
-    }
+    .logo-icon { width: 36px; height: 36px; border-radius: 8px; background: white; padding: 4px; box-sizing: content-box; }
 
     .logo-text {
-      font-size: 18px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
     }
 
     .logo-text span {
@@ -219,7 +214,7 @@
     }
 
     .table-title {
-      font-weight: 600;
+      font-weight: 700;
       font-size: 16px;
     }
 
@@ -327,7 +322,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      font-size: 20px;
       overflow: hidden;
     }
 
@@ -343,7 +338,7 @@
     }
 
     .protocol-name {
-      font-weight: 600;
+      font-weight: 700;
       font-size: 14px;
     }
 
@@ -359,7 +354,7 @@
 
     .value-highlight {
       color: var(--accent);
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .value-zero {
@@ -448,8 +443,8 @@
     }
 
     .intro-card h2 {
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 20px;
+      font-weight: 700;
       margin-bottom: 14px;
       display: flex;
       align-items: center;
@@ -523,7 +518,7 @@
 
     .author-meta h3 {
       font-size: 20px;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 4px;
     }
 
@@ -572,8 +567,8 @@
     }
 
     .video-card h2 {
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 20px;
+      font-weight: 700;
       margin-bottom: 16px;
     }
 
@@ -626,7 +621,7 @@
 
     .yt-banner-text h3 {
       font-size: 20px;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 6px;
     }
 
@@ -644,7 +639,7 @@
       color: white;
       text-decoration: none;
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 700;
       border-radius: 8px;
       transition: all 0.2s;
       flex-shrink: 0;
@@ -755,7 +750,7 @@
     <div class="container">
       <div class="header-content">
         <a href="../" class="logo">
-          <div class="logo-icon">3D</div>
+          <img src="../logo.svg" alt="3D" class="logo-icon">
           <span class="logo-text">Crypto3D</span>
         </a>
         <div class="header-right">
@@ -1513,9 +1508,11 @@
         let valB = getSortValue(b, field);
         let cmp = valB - valA; // 默认降序
         if (dir === 'asc') cmp = -cmp;
-        // 相同时按 TVL 二级排序
-        if (cmp === 0 && field !== 'tvl') {
-          cmp = (b.tvl || 0) - (a.tvl || 0);
+        // 相同时按市值二级排序（TEV状态排序时特别重要）
+        if (cmp === 0) {
+          const mcapA = a.latest_record?.market_cap_usd || a.metrics?.current_market_cap_usd || 0;
+          const mcapB = b.latest_record?.market_cap_usd || b.metrics?.current_market_cap_usd || 0;
+          cmp = mcapB - mcapA;
         }
         return cmp;
       });
