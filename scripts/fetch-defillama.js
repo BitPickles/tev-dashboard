@@ -28,13 +28,15 @@ async function fetchJSON(url) {
 
 async function fetchDefiLlamaFees(protocolId) {
   console.log(`  Fetching DefiLlama fees for ${protocolId}...`);
-  const [feesData, revenueData] = await Promise.all([
+  const [feesData, revenueData, holdersRevenueData] = await Promise.all([
     fetchJSON(`https://api.llama.fi/summary/fees/${protocolId}?dataType=dailyFees`),
     fetchJSON(`https://api.llama.fi/summary/fees/${protocolId}?dataType=dailyRevenue`),
+    fetchJSON(`https://api.llama.fi/summary/fees/${protocolId}?dataType=dailyHoldersRevenue`).catch(() => ({ totalDataChart: [] })),
   ]);
   
   const fees = new Map();
   const revenue = new Map();
+  const holdersRevenue = new Map();
   
   for (const [ts, val] of feesData.totalDataChart || []) {
     const date = new Date(ts * 1000).toISOString().split('T')[0];
@@ -46,8 +48,14 @@ async function fetchDefiLlamaFees(protocolId) {
     revenue.set(date, val);
   }
   
-  console.log(`    Fees: ${fees.size} days, Revenue: ${revenue.size} days`);
-  return { fees, revenue };
+  // holdersRevenue 是真正的 TEV（分给代币持有者的部分）
+  for (const [ts, val] of holdersRevenueData.totalDataChart || []) {
+    const date = new Date(ts * 1000).toISOString().split('T')[0];
+    holdersRevenue.set(date, val);
+  }
+  
+  console.log(`    Fees: ${fees.size} days, Revenue: ${revenue.size} days, HoldersRevenue: ${holdersRevenue.size} days`);
+  return { fees, revenue, holdersRevenue };
 }
 
 async function fetchCoinGeckoPrices(coingeckoId, startDate) {
@@ -96,7 +104,7 @@ async function processProtocol(protocol) {
   }
   
   // Fetch data
-  const { fees, revenue } = await fetchDefiLlamaFees(protocol.id);
+  const { fees, revenue, holdersRevenue } = await fetchDefiLlamaFees(protocol.id);
   await sleep(500); // Rate limit
   
   // Get date range from fees
@@ -124,15 +132,18 @@ async function processProtocol(protocol) {
   // Build records
   const records = [];
   for (const date of allDates) {
+    // TEV = holdersRevenue（分给代币持有者的部分），如果没有则用 revenue
+    const tevValue = holdersRevenue.get(date) ?? revenue.get(date) ?? 0;
     records.push({
       date,
       price_usd: prices.get(date) || null,
       market_cap_usd: marketCaps.get(date) || null,
       daily_fees_usd: fees.get(date) || 0,
       daily_revenue_usd: revenue.get(date) || 0,
-      // TEV = revenue for most protocols (this is what goes to token holders)
-      daily_tev_usd: revenue.get(date) || 0,
-      tev_source: 'defillama_revenue',
+      daily_holders_revenue_usd: holdersRevenue.get(date) || 0,
+      // TEV = holdersRevenue（真正分给持有者的收入）
+      daily_tev_usd: tevValue,
+      tev_source: holdersRevenue.has(date) ? 'defillama_holdersRevenue' : 'defillama_revenue',
     });
   }
   
@@ -181,14 +192,22 @@ async function processProtocol(protocol) {
   
   // Write latest.json
   const latestRecord = records[records.length - 1];
+  const trailing30dTev = records.slice(-30).reduce((sum, r) => sum + (r.daily_tev_usd || 0), 0);
+  const annualizedTev = trailing30dTev * 12;
+  const marketCap = latestRecord.market_cap_usd || 0;
+  const tevYield = marketCap > 0 ? annualizedTev / marketCap : 0;
+  
   const latest = {
     protocol: protocol.id,
     updated_at: new Date().toISOString(),
     latest_record: latestRecord,
     metrics: {
-      trailing_30d_revenue_usd: records.slice(-30).reduce((sum, r) => sum + (r.daily_revenue_usd || 0), 0),
+      trailing_30d_tev_usd: trailing30dTev,
       trailing_30d_fees_usd: records.slice(-30).reduce((sum, r) => sum + (r.daily_fees_usd || 0), 0),
-      current_market_cap_usd: latestRecord.market_cap_usd,
+      annualized_tev_usd: annualizedTev,
+      current_market_cap_usd: marketCap,
+      tev_yield: (tevYield * 100).toFixed(2) + '%',
+      tev_yield_decimal: tevYield,
       calculated_at: new Date().toISOString(),
     },
     data_range: {
