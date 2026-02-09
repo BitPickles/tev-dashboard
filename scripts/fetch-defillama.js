@@ -11,7 +11,13 @@ const PROTOCOLS = [
   { id: 'uniswap', coingecko: 'uniswap', ticker: 'UNI' },
   { id: 'aave', coingecko: 'aave', ticker: 'AAVE' },
   { id: 'pendle', coingecko: 'pendle', ticker: 'PENDLE' },
-  { id: 'sky', coingecko: 'maker', ticker: 'MKR' }, // Sky was MakerDAO
+  { id: 'sky', coingecko: 'maker', ticker: 'MKR' },
+  { id: 'maple', coingecko: 'maple', ticker: 'SYRUP' },
+  { id: 'gmx', coingecko: 'gmx', ticker: 'GMX' },
+  { id: 'dydx', coingecko: 'dydx-chain', ticker: 'DYDX' },
+  { id: 'ether.fi', coingecko: 'ether-fi', ticker: 'ETHFI' },
+  { id: 'curve-dex', coingecko: 'curve-dao-token', ticker: 'CRV' },
+  { id: 'hyperliquid', coingecko: 'hyperliquid', ticker: 'HYPE' },
 ];
 
 const DATA_DIR = path.join(__dirname, '../data/daily');
