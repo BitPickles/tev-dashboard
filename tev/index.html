@@ -1488,9 +1488,9 @@
         case 'tevRatio': return protocol.tevRatio || 0;
         case 'mcap': return protocol.latest_record?.market_cap_usd || 0;
         case 'earningYield': {
-          const mcap = protocol.latest_record?.market_cap_usd || 0;
-          const annualFees = (protocol.metrics?.trailing_30d_fees_usd || 0) * 12;
-          return mcap > 0 ? annualFees / mcap : 0;
+          const mcap = protocol.latest_record?.market_cap_usd || protocol.metrics?.current_market_cap_usd || 0;
+          const annualTev = (protocol.metrics?.trailing_30d_tev_usd || 0) * 12;
+          return mcap > 0 ? annualTev / mcap : 0;
         }
         case 'tevYield': return protocol.metrics?.tev_yield_decimal || 0;
         default: return 0;
@@ -1579,10 +1579,10 @@
         const tevRatioText = tevRatio > 0 ? `${(tevRatio * 100).toFixed(0)}%` : '—';
         const tevRatioClass = tevRatio >= 0.5 ? 'value-highlight' : tevRatio > 0 ? '' : 'value-zero';
         
-        // Earning Yield (1/PE = Annual Fees / Market Cap)
-        const mcap = protocol.latest_record?.market_cap_usd || 0;
-        const annualFees = (protocol.metrics?.trailing_30d_fees_usd || 0) * 12;
-        const earningYield = mcap > 0 ? annualFees / mcap : 0;
+        // Earning Yield - 使用 TEV 数据（分给持有者的收入，非总费用）
+        const mcap = protocol.latest_record?.market_cap_usd || protocol.metrics?.current_market_cap_usd || 0;
+        const annualTev = (protocol.metrics?.trailing_30d_tev_usd || 0) * 12;
+        const earningYield = mcap > 0 ? annualTev / mcap : 0;
         const earningYieldText = earningYield > 0 ? formatPercent(earningYield) : '—';
         const earningYieldClass = earningYield > 0.1 ? 'value-highlight' : earningYield === 0 ? 'value-zero' : '';
         
