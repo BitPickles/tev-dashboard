@@ -18,9 +18,10 @@
   "tev_mechanisms": [
     {
       "type": "staking_reward",
-      "name": "sENA Protocol Revenue Share",
-      "description": "协议收益主要分配给 sUSDe 持有者 (APY ~7.83%)，sENA 质押者获得治理权和部分收益分配",
+      "name": "sUSDe Yield (非 ENA 直接收益)",
+      "description": "⚠️ 协议主要收益分配给 sUSDe 持有者（质押 USDe），sUSDe APY 约 7.83%。sENA 质押者仅获得治理权和部分激励，不是协议主要收益接收方",
       "status": "active",
+      "tev_eligible": false,
       "source": {
         "type": "api",
         "title": "DefiLlama tokenRights",
@@ -42,14 +43,14 @@
     }
   ],
   "tev_summary": {
-    "fee_switch": "ACTIVE",
-    "fee_switch_details": "Fee switch ON，收益主要分配给 sUSDe 持有者；sENA 质押者获得治理权和部分收益",
+    "fee_switch": "PARTIAL",
+    "fee_switch_details": "⚠️ 主要收益给 sUSDe 持有者，ENA 仅受益于回购计划",
     "buybacks": "ACTIVE",
-    "dividends": "ACTIVE",
+    "dividends": "NONE",
     "burns": "NONE",
-    "primary_value_accrual": "分红 + 回购 — 100% 协议收入→sENA 质押者，加 $310M 大规模 ENA 回购"
+    "primary_value_accrual": "回购 — 仅 $310M 回购计划赋能 ENA，协议收益主要流向 sUSDe"
   },
-  "confidence": "high",
+  "confidence": "medium",
   "data_sources": [
     {
       "name": "DefiLlama tokenRights",

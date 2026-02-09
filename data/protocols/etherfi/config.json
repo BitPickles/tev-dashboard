@@ -45,14 +45,14 @@
     }
   ],
   "tev_summary": {
-    "fee_switch": "ACTIVE",
-    "fee_switch_details": "部分协议收入用于每周 ETHFI 回购，分配给 sETHFI 质押者",
+    "fee_switch": "PARTIAL",
+    "fee_switch_details": "100% 提现收入（非全部协议收入）用于 ETHFI 回购，分配给 sETHFI 质押者",
     "buybacks": "ACTIVE",
     "dividends": "NONE",
     "burns": "NONE",
-    "primary_value_accrual": "回购分配 — 协议收入回购 ETHFI 并分配给 sETHFI 质押者"
+    "primary_value_accrual": "回购分配 — 提现收入回购 ETHFI，年化约 $15M / 市值约 $600M ≈ 2.5%"
   },
-  "confidence": "high",
+  "confidence": "medium",
   "data_sources": [
     {
       "name": "ether.fi Governance Forum",
