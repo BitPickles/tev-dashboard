@@ -732,7 +732,7 @@
         <div class="burn-progress-container">
           <div class="burn-progress-header">
             <span data-i18n="burn.progress">销毁进度</span>
-            <span id="burn-progress-text">0 / 100M BNB</span>
+            <span id="burn-progress-text">—</span>
           </div>
           <div class="burn-progress-bar">
             <div class="burn-progress-fill" id="burn-progress-fill"></div>
@@ -756,13 +756,13 @@
         <!-- Charts -->
         <div class="burn-charts-grid">
           <div class="burn-chart-card">
-            <h4 data-i18n="burn.amountChart">季度销毁数量 (BNB)</h4>
+            <h4 id="burn-amount-title">销毁数量</h4>
             <div class="chart-canvas-wrap">
               <canvas id="burn-amount-chart"></canvas>
             </div>
           </div>
           <div class="burn-chart-card">
-            <h4 data-i18n="burn.valueChart">季度销毁价值 (USD)</h4>
+            <h4 id="burn-value-title">销毁价值 (USD)</h4>
             <div class="chart-canvas-wrap">
               <canvas id="burn-value-chart"></canvas>
             </div>
@@ -1278,10 +1278,19 @@
         if (!response.ok) return;
         const data = await response.json();
 
-        // Show section and set title
+        // Show section and set titles
         document.getElementById('token-burns-section').style.display = 'block';
         document.getElementById('burns-section-title').textContent = 
           currentLang === 'zh' ? config.title.zh : config.title.en;
+        
+        // Set chart titles with ticker
+        const periodLabel = config.dataType === 'quarterly' 
+          ? (currentLang === 'zh' ? '季度' : 'Quarterly') 
+          : (currentLang === 'zh' ? '月度' : 'Monthly');
+        document.getElementById('burn-amount-title').textContent = 
+          currentLang === 'zh' ? `${periodLabel}销毁数量 (${config.ticker})` : `${periodLabel} Burn Amount (${config.ticker})`;
+        document.getElementById('burn-value-title').textContent = 
+          currentLang === 'zh' ? `${periodLabel}销毁价值 (USD)` : `${periodLabel} Burn Value (USD)`;
 
         // Progress bar
         const totalBurned = data.total_burned;
