@@ -490,6 +490,94 @@
       border-left: 3px solid var(--accent);
     }
 
+    /* BNB Burns Section */
+    .burn-progress-container {
+      background: var(--bg-tertiary);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .burn-progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .burn-progress-bar {
+      height: 24px;
+      background: var(--bg-hover);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .burn-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #f0b90b 0%, #f8d12f 100%);
+      border-radius: 12px;
+      transition: width 0.5s ease;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .burn-progress-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      text-align: center;
+    }
+
+    .burn-stat-value {
+      font-size: 20px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-primary);
+    }
+
+    .burn-stat-label {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+    }
+
+    .burn-charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .burn-chart-card {
+      background: var(--bg-tertiary);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .burn-chart-card h4 {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .burn-charts-grid {
+        grid-template-columns: 1fr;
+      }
+      .burn-progress-stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+
     .loading {
       text-align: center;
       padding: 60px 20px;
@@ -633,6 +721,55 @@
         </div>
       </div>
 
+      <!-- BNB Burns Section (BNB only) -->
+      <div class="section" id="bnb-burns-section" style="display: none;">
+        <div class="section-title">
+          <span class="icon">🔥</span>
+          <span data-i18n="section.bnbBurns">BNB 季度销毁记录</span>
+        </div>
+        
+        <!-- Progress Bar -->
+        <div class="burn-progress-container">
+          <div class="burn-progress-header">
+            <span data-i18n="burn.progress">销毁进度</span>
+            <span id="burn-progress-text">0 / 100M BNB</span>
+          </div>
+          <div class="burn-progress-bar">
+            <div class="burn-progress-fill" id="burn-progress-fill"></div>
+          </div>
+          <div class="burn-progress-stats">
+            <div class="burn-stat">
+              <span class="burn-stat-value" id="burn-total">—</span>
+              <span class="burn-stat-label" data-i18n="burn.totalBurned">已销毁</span>
+            </div>
+            <div class="burn-stat">
+              <span class="burn-stat-value" id="burn-remaining">—</span>
+              <span class="burn-stat-label" data-i18n="burn.remaining">剩余供应</span>
+            </div>
+            <div class="burn-stat">
+              <span class="burn-stat-value" id="burn-target">100M</span>
+              <span class="burn-stat-label" data-i18n="burn.target">目标供应</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="burn-charts-grid">
+          <div class="burn-chart-card">
+            <h4 data-i18n="burn.amountChart">季度销毁数量 (BNB)</h4>
+            <div class="chart-canvas-wrap">
+              <canvas id="burn-amount-chart"></canvas>
+            </div>
+          </div>
+          <div class="burn-chart-card">
+            <h4 data-i18n="burn.valueChart">季度销毁价值 (USD)</h4>
+            <div class="chart-canvas-wrap">
+              <canvas id="burn-value-chart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- TEV Mechanisms -->
       <div class="section">
         <div class="section-title">
@@ -720,6 +857,13 @@
         'source.documentation': '文档',
         'source.report': '报告',
         'source.api': 'API',
+        'section.bnbBurns': 'BNB 季度销毁记录',
+        'burn.progress': '销毁进度',
+        'burn.totalBurned': '已销毁',
+        'burn.remaining': '剩余供应',
+        'burn.target': '目标供应',
+        'burn.amountChart': '季度销毁数量 (BNB)',
+        'burn.valueChart': '季度销毁价值 (USD)',
         'source.onchain': '链上',
         'confidence.high': '高',
         'confidence.medium': '中',
@@ -768,6 +912,13 @@
         'confidence.high': 'High',
         'confidence.medium': 'Medium',
         'confidence.low': 'Low',
+        'section.bnbBurns': 'BNB Quarterly Burns',
+        'burn.progress': 'Burn Progress',
+        'burn.totalBurned': 'Total Burned',
+        'burn.remaining': 'Remaining Supply',
+        'burn.target': 'Target Supply',
+        'burn.amountChart': 'Quarterly Burn Amount (BNB)',
+        'burn.valueChart': 'Quarterly Burn Value (USD)',
       }
     };
 
@@ -1085,6 +1236,147 @@
       }
     }
 
+    // BNB Burns Chart
+    let burnAmountChart = null;
+    let burnValueChart = null;
+
+    async function loadBnbBurnsChart() {
+      try {
+        const response = await fetch('../data/bnb-burns.json');
+        if (!response.ok) return;
+        const data = await response.json();
+
+        // Show section
+        document.getElementById('bnb-burns-section').style.display = 'block';
+
+        // Progress bar
+        const totalBurned = data.total_burned;
+        const targetSupply = data.target_supply;
+        const initialSupply = data.initial_supply || 200000000;
+        const burnTarget = initialSupply - targetSupply; // 100M to burn
+        const progress = (totalBurned / burnTarget) * 100;
+
+        document.getElementById('burn-progress-fill').style.width = `${Math.min(progress, 100)}%`;
+        document.getElementById('burn-progress-fill').textContent = `${progress.toFixed(1)}%`;
+        document.getElementById('burn-progress-text').textContent = 
+          `${(totalBurned / 1e6).toFixed(2)}M / ${(burnTarget / 1e6).toFixed(0)}M BNB`;
+        document.getElementById('burn-total').textContent = `${(totalBurned / 1e6).toFixed(2)}M BNB`;
+        document.getElementById('burn-remaining').textContent = `${(data.current_supply / 1e6).toFixed(2)}M BNB`;
+        document.getElementById('burn-target').textContent = `${(targetSupply / 1e6).toFixed(0)}M BNB`;
+
+        // Filter out future/estimated burns
+        const burns = data.quarterly_burns.filter(b => !b.note || !b.note.includes('估算'));
+        const labels = burns.map(b => b.quarter);
+        const amounts = burns.map(b => b.amount);
+        const values = burns.map(b => b.value_usd);
+
+        // Amount Chart (Bar)
+        const amountCtx = document.getElementById('burn-amount-chart').getContext('2d');
+        if (burnAmountChart) burnAmountChart.destroy();
+        
+        burnAmountChart = new Chart(amountCtx, {
+          type: 'bar',
+          data: {
+            labels,
+            datasets: [{
+              label: 'BNB',
+              data: amounts,
+              backgroundColor: 'rgba(240, 185, 11, 0.8)',
+              borderColor: '#f0b90b',
+              borderWidth: 1,
+              borderRadius: 4,
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                backgroundColor: '#18181b',
+                titleColor: '#fafafa',
+                bodyColor: '#a1a1aa',
+                borderColor: '#27272a',
+                borderWidth: 1,
+                callbacks: {
+                  label: ctx => ` ${ctx.raw.toLocaleString()} BNB`
+                }
+              }
+            },
+            scales: {
+              x: {
+                grid: { color: 'rgba(39, 39, 42, 0.5)', drawBorder: false },
+                ticks: { color: '#71717a', font: { size: 10 }, maxRotation: 45 }
+              },
+              y: {
+                grid: { color: 'rgba(39, 39, 42, 0.5)', drawBorder: false },
+                ticks: {
+                  color: '#71717a',
+                  font: { size: 10 },
+                  callback: v => (v / 1e6).toFixed(1) + 'M'
+                }
+              }
+            }
+          }
+        });
+
+        // Value Chart (Line)
+        const valueCtx = document.getElementById('burn-value-chart').getContext('2d');
+        if (burnValueChart) burnValueChart.destroy();
+        
+        burnValueChart = new Chart(valueCtx, {
+          type: 'line',
+          data: {
+            labels,
+            datasets: [{
+              label: 'USD',
+              data: values,
+              borderColor: '#22c55e',
+              backgroundColor: 'rgba(34, 197, 94, 0.1)',
+              fill: true,
+              tension: 0.3,
+              pointRadius: 3,
+              pointBackgroundColor: '#22c55e',
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                backgroundColor: '#18181b',
+                titleColor: '#fafafa',
+                bodyColor: '#a1a1aa',
+                borderColor: '#27272a',
+                borderWidth: 1,
+                callbacks: {
+                  label: ctx => ` $${(ctx.raw / 1e6).toFixed(1)}M`
+                }
+              }
+            },
+            scales: {
+              x: {
+                grid: { color: 'rgba(39, 39, 42, 0.5)', drawBorder: false },
+                ticks: { color: '#71717a', font: { size: 10 }, maxRotation: 45 }
+              },
+              y: {
+                grid: { color: 'rgba(39, 39, 42, 0.5)', drawBorder: false },
+                ticks: {
+                  color: '#71717a',
+                  font: { size: 10 },
+                  callback: v => '$' + (v / 1e6).toFixed(0) + 'M'
+                }
+              }
+            }
+          }
+        });
+
+      } catch (e) {
+        console.log('Failed to load BNB burns:', e.message);
+      }
+    }
+
     async function init() {
       const protocolId = getProtocolId();
 
@@ -1194,6 +1486,11 @@
 
         // Load TEV history chart (async, non-blocking)
         loadTevChart(protocolId);
+
+        // Load BNB burns chart (BNB only)
+        if (protocolId === 'bnb') {
+          loadBnbBurnsChart();
+        }
 
       } catch (error) {
         console.error('Failed to load protocol:', error);
