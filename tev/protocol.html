@@ -721,11 +721,11 @@
         </div>
       </div>
 
-      <!-- BNB Burns Section (BNB only) -->
-      <div class="section" id="bnb-burns-section" style="display: none;">
+      <!-- Token Burns Section (BNB/HYPE/UNI) -->
+      <div class="section" id="token-burns-section" style="display: none;">
         <div class="section-title">
           <span class="icon">🔥</span>
-          <span data-i18n="section.bnbBurns">BNB 季度销毁记录</span>
+          <span id="burns-section-title">销毁记录</span>
         </div>
         
         <!-- Progress Bar -->
@@ -1236,39 +1236,101 @@
       }
     }
 
-    // BNB Burns Chart
+    // Token Burns Chart (supports BNB, HYPE, UNI)
     let burnAmountChart = null;
     let burnValueChart = null;
 
-    async function loadBnbBurnsChart() {
+    const BURN_CONFIG = {
+      bnb: {
+        file: 'bnb-burns.json',
+        ticker: 'BNB',
+        color: 'rgba(240, 185, 11, 0.8)',
+        borderColor: '#f0b90b',
+        title: { zh: 'BNB 季度销毁记录', en: 'BNB Quarterly Burns' },
+        dataType: 'quarterly', // quarterly_burns
+        initialSupply: 200000000,
+        targetSupply: 100000000
+      },
+      hype: {
+        file: 'hype-burns.json',
+        ticker: 'HYPE',
+        color: 'rgba(59, 130, 246, 0.8)',
+        borderColor: '#3b82f6',
+        title: { zh: 'HYPE 月度销毁记录', en: 'HYPE Monthly Burns' },
+        dataType: 'monthly' // monthly_burns
+      },
+      uniswap: {
+        file: 'uni-burns.json',
+        ticker: 'UNI',
+        color: 'rgba(255, 0, 122, 0.8)',
+        borderColor: '#ff007a',
+        title: { zh: 'UNI 月度销毁记录', en: 'UNI Monthly Burns' },
+        dataType: 'monthly' // monthly_burns
+      }
+    };
+
+    async function loadTokenBurnsChart(protocolId) {
+      const config = BURN_CONFIG[protocolId];
+      if (!config) return;
+
       try {
-        const response = await fetch('../data/bnb-burns.json');
+        const response = await fetch(`../data/${config.file}`);
         if (!response.ok) return;
         const data = await response.json();
 
-        // Show section
-        document.getElementById('bnb-burns-section').style.display = 'block';
+        // Show section and set title
+        document.getElementById('token-burns-section').style.display = 'block';
+        document.getElementById('burns-section-title').textContent = 
+          currentLang === 'zh' ? config.title.zh : config.title.en;
 
         // Progress bar
         const totalBurned = data.total_burned;
-        const targetSupply = data.target_supply;
-        const initialSupply = data.initial_supply || 200000000;
-        const burnTarget = initialSupply - targetSupply; // 100M to burn
-        const progress = (totalBurned / burnTarget) * 100;
+        const totalSupply = data.total_supply || config.initialSupply || 1000000000;
+        const targetSupply = config.targetSupply || data.target_supply;
+        
+        let progress, burnTarget, progressText;
+        if (targetSupply) {
+          // BNB style: burn towards target supply
+          const initialSupply = config.initialSupply || totalSupply;
+          burnTarget = initialSupply - targetSupply;
+          progress = (totalBurned / burnTarget) * 100;
+          progressText = `${(totalBurned / 1e6).toFixed(2)}M / ${(burnTarget / 1e6).toFixed(0)}M ${config.ticker}`;
+        } else {
+          // HYPE/UNI style: percentage of total supply
+          progress = (totalBurned / totalSupply) * 100;
+          progressText = `${(totalBurned / 1e6).toFixed(2)}M ${config.ticker} (${progress.toFixed(2)}%)`;
+        }
 
         document.getElementById('burn-progress-fill').style.width = `${Math.min(progress, 100)}%`;
+        document.getElementById('burn-progress-fill').style.background = `linear-gradient(90deg, ${config.borderColor} 0%, ${config.color} 100%)`;
         document.getElementById('burn-progress-fill').textContent = `${progress.toFixed(1)}%`;
-        document.getElementById('burn-progress-text').textContent = 
-          `${(totalBurned / 1e6).toFixed(2)}M / ${(burnTarget / 1e6).toFixed(0)}M BNB`;
-        document.getElementById('burn-total').textContent = `${(totalBurned / 1e6).toFixed(2)}M BNB`;
-        document.getElementById('burn-remaining').textContent = `${(data.current_supply / 1e6).toFixed(2)}M BNB`;
-        document.getElementById('burn-target').textContent = `${(targetSupply / 1e6).toFixed(0)}M BNB`;
+        document.getElementById('burn-progress-text').textContent = progressText;
+        document.getElementById('burn-total').textContent = `${(totalBurned / 1e6).toFixed(2)}M ${config.ticker}`;
+        
+        const remaining = data.current_supply || data.circulating_supply || (totalSupply - totalBurned);
+        document.getElementById('burn-remaining').textContent = `${(remaining / 1e6).toFixed(2)}M ${config.ticker}`;
+        document.getElementById('burn-target').textContent = targetSupply 
+          ? `${(targetSupply / 1e6).toFixed(0)}M ${config.ticker}`
+          : `${(totalSupply / 1e6).toFixed(0)}M ${config.ticker}`;
 
-        // Filter out future/estimated burns
-        const burns = data.quarterly_burns.filter(b => !b.note || !b.note.includes('估算'));
-        const labels = burns.map(b => b.quarter);
-        const amounts = burns.map(b => b.amount);
-        const values = burns.map(b => b.value_usd);
+        // Get burn records
+        let burns, labels, amounts, values;
+        if (config.dataType === 'quarterly') {
+          burns = (data.quarterly_burns || []).filter(b => !b.note || !b.note.includes('估算'));
+          labels = burns.map(b => b.quarter);
+          amounts = burns.map(b => b.amount);
+          values = burns.map(b => b.value_usd);
+        } else {
+          burns = data.monthly_burns || [];
+          labels = burns.map(b => b.month);
+          amounts = burns.map(b => b.amount);
+          values = burns.map(b => b.value_usd);
+        }
+
+        if (burns.length === 0) {
+          console.log('No burn records found');
+          return;
+        }
 
         // Amount Chart (Bar)
         const amountCtx = document.getElementById('burn-amount-chart').getContext('2d');
@@ -1279,10 +1341,10 @@
           data: {
             labels,
             datasets: [{
-              label: 'BNB',
+              label: config.ticker,
               data: amounts,
-              backgroundColor: 'rgba(240, 185, 11, 0.8)',
-              borderColor: '#f0b90b',
+              backgroundColor: config.color,
+              borderColor: config.borderColor,
               borderWidth: 1,
               borderRadius: 4,
             }]
@@ -1299,7 +1361,7 @@
                 borderColor: '#27272a',
                 borderWidth: 1,
                 callbacks: {
-                  label: ctx => ` ${ctx.raw.toLocaleString()} BNB`
+                  label: ctx => ` ${ctx.raw.toLocaleString()} ${config.ticker}`
                 }
               }
             },
@@ -1373,7 +1435,7 @@
         });
 
       } catch (e) {
-        console.log('Failed to load BNB burns:', e.message);
+        console.log(`Failed to load ${protocolId} burns:`, e.message);
       }
     }
 
@@ -1487,9 +1549,9 @@
         // Load TEV history chart (async, non-blocking)
         loadTevChart(protocolId);
 
-        // Load BNB burns chart (BNB only)
-        if (protocolId === 'bnb') {
-          loadBnbBurnsChart();
+        // Load token burns chart (BNB, HYPE, UNI)
+        if (['bnb', 'hype', 'uniswap'].includes(protocolId)) {
+          loadTokenBurnsChart(protocolId);
         }
 
       } catch (error) {
