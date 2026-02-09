@@ -1359,7 +1359,7 @@
     async function loadData() {
       try {
         // Load BMRI data
-        const bmriRes = await fetch('/indicators/data/bmri.json');
+        const bmriRes = await fetch('../indicators/data/bmri.json');
         const rawBmriData = await bmriRes.json();
         
         // Extract updated_at and set it
@@ -1374,7 +1374,7 @@
         
         // Try to load market cap data
         try {
-          const mcapRes = await fetch('/indicators/data/marketcap.json');
+          const mcapRes = await fetch('../indicators/data/marketcap.json');
           mcapData = await mcapRes.json();
         } catch (e) {
           console.log('Market cap data not available');

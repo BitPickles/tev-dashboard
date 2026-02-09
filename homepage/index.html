@@ -565,7 +565,7 @@
     async function loadIndicators() {
       try {
         // Load AHR999
-        const ahr999Res = await fetch('/indicators/data/ahr999.json');
+        const ahr999Res = await fetch('../indicators/data/ahr999.json');
         const ahr999Data = await ahr999Res.json();
         document.getElementById('ahr999-value').textContent = ahr999Data.current.value.toFixed(2);
       } catch (e) {
@@ -574,7 +574,7 @@
 
       try {
         // Load MVRV
-        const mvrvRes = await fetch('/indicators/data/mvrv.json');
+        const mvrvRes = await fetch('../indicators/data/mvrv.json');
         const mvrvData = await mvrvRes.json();
         document.getElementById('mvrv-value').textContent = mvrvData.current.value.toFixed(2);
       } catch (e) {
@@ -583,7 +583,7 @@
 
       try {
         // Load BMRI
-        const bmriRes = await fetch('/indicators/data/bmri.json');
+        const bmriRes = await fetch('../indicators/data/bmri.json');
         const bmriData = await bmriRes.json();
         document.getElementById('bmri-value').textContent = bmriData['6m'].current.value.toFixed(2);
       } catch (e) {

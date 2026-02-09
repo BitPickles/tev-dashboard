@@ -622,7 +622,7 @@
       let macroRiskUpdate = null;
 
       try {
-        const ahr999Res = await fetch('/indicators/data/ahr999.json');
+        const ahr999Res = await fetch('./indicators/data/ahr999.json');
         const ahr999Data = await ahr999Res.json();
         const ahr999Val = ahr999Data.current.value;
         document.getElementById('ahr999-value').textContent = ahr999Val.toFixed(2);
@@ -636,7 +636,7 @@
       } catch (e) { console.log('AHR999 data not available'); }
 
       try {
-        const mvrvRes = await fetch('/indicators/data/mvrv.json');
+        const mvrvRes = await fetch('./indicators/data/mvrv.json');
         const mvrvData = await mvrvRes.json();
         const mvrvVal = mvrvData.current.value;
         document.getElementById('mvrv-value').textContent = mvrvVal.toFixed(2);
@@ -649,7 +649,7 @@
       } catch (e) { console.log('MVRV data not available'); }
 
       try {
-        const bmriRes = await fetch('/indicators/data/bmri.json');
+        const bmriRes = await fetch('./indicators/data/bmri.json');
         const bmriData = await bmriRes.json();
         const bmriVal = bmriData['6m'].current.value;
         document.getElementById('bmri-value').textContent = bmriVal.toFixed(0);
@@ -662,7 +662,7 @@
       } catch (e) { console.log('BMRI data not available'); }
 
       try {
-        const btcdRes = await fetch('/indicators/data/btc-dominance.json');
+        const btcdRes = await fetch('./indicators/data/btc-dominance.json');
         const btcdData = await btcdRes.json();
         const btcdVal = btcdData.current.value;
         document.getElementById('btcd-value').textContent = btcdVal.toFixed(1) + '%';

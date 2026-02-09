@@ -474,7 +474,7 @@
 
     async function loadData() {
       try {
-        const res = await fetch('/indicators/data/mvrv.json');
+        const res = await fetch('../indicators/data/mvrv.json');
         const data = await res.json();
         
         if (data.note && data.note.includes('Simulated')) {
