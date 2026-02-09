@@ -1328,8 +1328,18 @@
         }
 
         if (burns.length === 0) {
-          console.log('No burn records found');
-          return;
+          // 没有月度/季度数据时，尝试使用累计数据
+          const cumulative = data.cumulative_burns || [];
+          if (cumulative.length > 1) {
+            labels = cumulative.map(b => b.date);
+            amounts = cumulative.map(b => b.total_burned);
+            values = cumulative.map((b, i) => b.total_burned * b.price_avg);
+          } else {
+            // 只有进度条，隐藏图表区域
+            document.querySelector('.burn-charts-grid').style.display = 'none';
+            console.log('No burn history, showing progress bar only');
+            return;
+          }
         }
 
         // Amount Chart (Bar)
