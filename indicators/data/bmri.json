@@ -7,11 +7,11 @@
       "rates": 82.4,
       "liq": 83.3,
       "risk": 56.3,
-      "regime": "high_risk"
+      "regime": "RISK_OFF"
     },
     "thresholds": {
-      "on": 0.5,
-      "off": -0.5
+      "on": 30,
+      "off": 70
     },
     "history": [
       {
@@ -31005,11 +31005,11 @@
       "rates": 82.4,
       "liq": 83.3,
       "risk": 56.3,
-      "regime": "high_risk"
+      "regime": "RISK_OFF"
     },
     "thresholds": {
-      "on": 0.5,
-      "off": -0.5
+      "on": 30,
+      "off": 70
     },
     "history": [
       {
