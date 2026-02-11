@@ -432,7 +432,7 @@
     }
 
     function calculatePercentile(value, history) {
-      const sorted = [...history.map(d => d.value)].sort((a, b) => a - b);
+      const sorted = [...history.map(d => d.mvrv)].sort((a, b) => a - b);
       const index = sorted.findIndex(v => v >= value);
       return Math.round((index / sorted.length) * 100);
     }
@@ -542,7 +542,7 @@
       });
       resizeObserver.observe(container);
 
-      const mvrvData = history.map(d => ({ time: d.date, value: d.value }));
+      const mvrvData = history.map(d => ({ time: d.date, value: d.mvrv }));
 
       // Build lookup table
       history.forEach(d => { historyData[d.date] = d; });

@@ -237,6 +237,9 @@
 
     .bucket-fill.positive { background: var(--accent); }
     .bucket-fill.negative { background: var(--danger); }
+    .bucket-fill.safe { background: var(--accent); }
+    .bucket-fill.warning { background: var(--warning); }
+    .bucket-fill.danger { background: var(--danger); }
 
     /* Zone Legend */
     .zone-legend {
@@ -1014,10 +1017,12 @@
 
     function updateBucketBar(id, value) {
       const bar = document.getElementById(id);
-      if (!bar || value === null) return;
-      const percent = Math.min(100, Math.max(0, (value + 2) / 4 * 100));
+      if (!bar || value === undefined || value === null) return;
+      // 新数据是 0-100 范围，直接使用
+      const percent = Math.min(100, Math.max(0, value));
       bar.style.width = percent + '%';
-      bar.className = 'bucket-fill ' + (value >= 0 ? 'positive' : 'negative');
+      // 高值 = 高风险 = danger 颜色
+      bar.className = 'bucket-fill ' + (value >= 70 ? 'danger' : value >= 50 ? 'warning' : 'safe');
     }
 
     function toggleSeries(name) {
@@ -1045,38 +1050,65 @@
     }
 
     function updateDisplay() {
-      const versionData = bmriData[currentVersion];
-      const current = versionData.current;
-      const thresholds = versionData.thresholds;
+      // 适配新数据格式：直接读取 bmriData.current 和 bmriData.history
+      const current = bmriData.current;
+      const history = bmriData.history || [];
+      const thresholds = { on: 30, off: 70 }; // 新格式使用固定阈值
       currentThresholds = thresholds;
-      const regimeInfo = getRegimeInfo(current.regime);
+      
+      // 根据 value 判断风险等级
+      const value = current.value;
+      let regimeClass = 'neutral';
+      let regimeLabel = current.risk_level || '中性';
+      let regimeState = '观望';
+      let regimeHint = '市场处于中性状态';
+      if (value >= 70) {
+        regimeClass = 'danger';
+        regimeState = '⚠️ 高风险';
+        regimeHint = '宏观环境紧缩，注意风险';
+      } else if (value < 30) {
+        regimeClass = 'safe';
+        regimeState = '🟢 低风险';
+        regimeHint = '宏观环境宽松，可考虑布局';
+      } else {
+        regimeClass = 'warning';
+        regimeState = '🟡 中风险';
+      }
 
       // Update main value
-      document.getElementById('bmri-value').textContent = current.value.toFixed(4);
-      document.getElementById('bmri-value').className = `stat-value ${regimeInfo.class}`;
-      document.getElementById('bmri-regime').textContent = regimeInfo.label;
-      document.getElementById('market-state').textContent = regimeInfo.state;
-      document.getElementById('regime-hint').textContent = regimeInfo.hint;
+      document.getElementById('bmri-value').textContent = value.toFixed(1);
+      document.getElementById('bmri-value').className = `stat-value ${regimeClass}`;
+      document.getElementById('bmri-regime').textContent = regimeLabel;
+      document.getElementById('market-state').textContent = regimeState;
+      document.getElementById('regime-hint').textContent = regimeHint;
       document.getElementById('update-date').textContent = current.date;
 
-      // Update bucket values
-      document.getElementById('rates-value').textContent = current.rates !== null ? current.rates.toFixed(2) : '—';
-      document.getElementById('liq-value').textContent = current.liq !== null ? current.liq.toFixed(2) : '—';
-      document.getElementById('risk-value').textContent = current.risk !== null ? current.risk.toFixed(2) : '—';
+      // Update bucket values (从 buckets 对象读取)
+      const buckets = current.buckets || {};
+      document.getElementById('rates-value').textContent = buckets.rates !== undefined ? buckets.rates.toFixed(1) : '—';
+      document.getElementById('liq-value').textContent = buckets.liquidity !== undefined ? buckets.liquidity.toFixed(1) : '—';
+      document.getElementById('risk-value').textContent = buckets.sentiment !== undefined ? buckets.sentiment.toFixed(1) : '—';
 
-      // Update bucket bars
-      updateBucketBar('rates-bar', current.rates);
-      updateBucketBar('liq-bar', current.liq);
-      updateBucketBar('risk-bar', current.risk);
+      // Update bucket bars (0-100 scale)
+      updateBucketBar('rates-bar', buckets.rates);
+      updateBucketBar('liq-bar', buckets.liquidity);
+      updateBucketBar('risk-bar', buckets.sentiment);
 
       // Update thresholds display
-      document.getElementById('threshold-on').textContent = `> +${thresholds.on} Risk-On`;
-      document.getElementById('threshold-off').textContent = `< ${thresholds.off} Risk-Off`;
-      document.getElementById('legend-on').textContent = `+${thresholds.on}`;
-      document.getElementById('legend-off').textContent = `${thresholds.off}`;
+      document.getElementById('threshold-on').textContent = '< 30 低风险';
+      document.getElementById('threshold-off').textContent = '> 70 高风险';
+      document.getElementById('legend-on').textContent = '30';
+      document.getElementById('legend-off').textContent = '70';
 
-      // Draw chart
-      drawChart(versionData.history, thresholds);
+      // Draw chart - 转换历史数据格式
+      const convertedHistory = history.map(d => ({
+        date: d.date,
+        bmri: d.bmri,
+        rates: d.buckets ? d.buckets.rates : null,
+        liq: d.buckets ? d.buckets.liquidity : null,
+        risk: d.buckets ? d.buckets.sentiment : null
+      }));
+      drawChart(convertedHistory, thresholds);
     }
 
     function drawChart(history, thresholds) {
