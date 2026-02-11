@@ -634,9 +634,12 @@
 
       container.addEventListener('dblclick', () => resetChart());
 
+      // 立即设置图表范围，确保从 2014 年显示
+      chart.timeScale().setVisibleRange(defaultRange);
+      // 延迟再次设置，确保渲染完成后范围正确
       setTimeout(() => {
         chart.timeScale().setVisibleRange(defaultRange);
-      }, 100);
+      }, 200);
 
       // Crosshair tooltip
       chart.subscribeCrosshairMove((param) => {
