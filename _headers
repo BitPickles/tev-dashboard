@@ -1,0 +1,27 @@
+# Cloudflare Pages 缓存配置
+# HTML 文件不缓存，确保每次获取最新版本
+/*.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/indicators/*
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/tev/*
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# JSON 数据文件短缓存（5分钟）
+/data/*.json
+  Cache-Control: public, max-age=300
+
+/indicators/data/*.json
+  Cache-Control: public, max-age=300
+
+# 静态资源长缓存（1天）
+/*.css
+  Cache-Control: public, max-age=86400
+
+/*.js
+  Cache-Control: public, max-age=86400
+
+/images/*
+  Cache-Control: public, max-age=86400
