@@ -1181,6 +1181,8 @@
       historyData = {};
       history.forEach(d => { historyData[d.date] = d; });
 
+      // 锁定起始日期为 2014-01-01
+      const firstDate = '2014-01-01';
       const lastDate = history[history.length - 1].date;
 
       // Zone backgrounds
@@ -1370,11 +1372,11 @@
         }
       });
 
-      // Store default range for reset
-      chart.timeScale().fitContent();
-      setTimeout(() => {
-        defaultRange = chart.timeScale().getVisibleRange();
-      }, 100);
+      // Store default range for reset - 锁定从 2014 年开始
+      const firstTs = new Date(firstDate + 'T00:00:00Z').getTime() / 1000;
+      const lastTs = new Date(lastDate + 'T00:00:00Z').getTime() / 1000;
+      defaultRange = { from: firstTs, to: lastTs };
+      chart.timeScale().setVisibleRange(defaultRange);
     }
 
     async function loadData() {

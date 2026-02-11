@@ -547,7 +547,8 @@
       // Build lookup table
       history.forEach(d => { historyData[d.date] = d; });
 
-      const firstDate = history[0].date;
+      // 锁定起始日期为 2014-01-01
+      const firstDate = '2014-01-01';
       const lastDate = history[history.length - 1].date;
 
       // Zone backgrounds
