@@ -2,13 +2,13 @@
   "updated_at": "2026-02-12",
   "current": {
     "date": "2026-02-12",
-    "value": 81.04,
+    "value": 79.8,
     "risk_level": "高风险",
     "risk_level_en": "High Risk",
     "buckets": {
-      "rates": 94.2,
-      "liquidity": 84.8,
-      "sentiment": 64.1
+      "rates": 82.4,
+      "liquidity": 99.8,
+      "sentiment": 57.2
     }
   },
   "raw_data": {
@@ -624,6 +624,10 @@
     ],
     "RRPONTSYD": [
       {
+        "date": "2026-02-11",
+        "value": 1.048
+      },
+      {
         "date": "2026-02-10",
         "value": 1.447
       },
@@ -738,10 +742,6 @@
       {
         "date": "2025-12-30",
         "value": 12.605
-      },
-      {
-        "date": "2025-12-29",
-        "value": 10.551
       }
     ],
     "VIXCLS": [
@@ -991,7 +991,7 @@
     "BTC": [
       {
         "date": "2026-02-11",
-        "value": 67171.53
+        "value": 67487.47
       },
       {
         "date": "2026-02-10",
@@ -1113,39 +1113,1632 @@
   },
   "history": [
     {
-      "date": "2026-02-09",
-      "bmri": 79.71,
+      "date": "2025-08-16",
+      "bmri": 72.96,
       "buckets": {
-        "rates": 92.8,
-        "liquidity": 84.7,
+        "rates": 78.9,
+        "liquidity": 52.3,
+        "sentiment": 87.7
+      }
+    },
+    {
+      "date": "2025-08-17",
+      "bmri": 72.97,
+      "buckets": {
+        "rates": 78.9,
+        "liquidity": 52.3,
+        "sentiment": 87.7
+      }
+    },
+    {
+      "date": "2025-08-18",
+      "bmri": 71.6,
+      "buckets": {
+        "rates": 76.7,
+        "liquidity": 51.8,
+        "sentiment": 86.3
+      }
+    },
+    {
+      "date": "2025-08-19",
+      "bmri": 66.99,
+      "buckets": {
+        "rates": 71.1,
+        "liquidity": 52.9,
+        "sentiment": 77.0
+      }
+    },
+    {
+      "date": "2025-08-20",
+      "bmri": 65.06,
+      "buckets": {
+        "rates": 68.9,
+        "liquidity": 48.6,
+        "sentiment": 77.7
+      }
+    },
+    {
+      "date": "2025-08-21",
+      "bmri": 61.9,
+      "buckets": {
+        "rates": 66.1,
+        "liquidity": 49.7,
+        "sentiment": 69.9
+      }
+    },
+    {
+      "date": "2025-08-22",
+      "bmri": 72.57,
+      "buckets": {
+        "rates": 78.9,
+        "liquidity": 48.4,
+        "sentiment": 90.4
+      }
+    },
+    {
+      "date": "2025-08-23",
+      "bmri": 71.82,
+      "buckets": {
+        "rates": 78.9,
+        "liquidity": 48.4,
+        "sentiment": 88.2
+      }
+    },
+    {
+      "date": "2025-08-24",
+      "bmri": 70.86,
+      "buckets": {
+        "rates": 78.9,
+        "liquidity": 48.4,
+        "sentiment": 85.3
+      }
+    },
+    {
+      "date": "2025-08-25",
+      "bmri": 66.68,
+      "buckets": {
+        "rates": 76.7,
+        "liquidity": 47.1,
+        "sentiment": 76.2
+      }
+    },
+    {
+      "date": "2025-08-26",
+      "bmri": 71.19,
+      "buckets": {
+        "rates": 83.3,
+        "liquidity": 49.3,
+        "sentiment": 81.0
+      }
+    },
+    {
+      "date": "2025-08-27",
+      "bmri": 70.44,
+      "buckets": {
+        "rates": 83.3,
+        "liquidity": 48.6,
+        "sentiment": 79.4
+      }
+    },
+    {
+      "date": "2025-08-28",
+      "bmri": 69.25,
+      "buckets": {
+        "rates": 75.8,
+        "liquidity": 48.9,
+        "sentiment": 83.1
+      }
+    },
+    {
+      "date": "2025-08-29",
+      "bmri": 63.96,
+      "buckets": {
+        "rates": 77.7,
+        "liquidity": 43.7,
+        "sentiment": 70.5
+      }
+    },
+    {
+      "date": "2025-08-30",
+      "bmri": 64.05,
+      "buckets": {
+        "rates": 77.3,
+        "liquidity": 43.7,
+        "sentiment": 71.2
+      }
+    },
+    {
+      "date": "2025-08-31",
+      "bmri": 63.34,
+      "buckets": {
+        "rates": 76.0,
+        "liquidity": 43.7,
+        "sentiment": 70.3
+      }
+    },
+    {
+      "date": "2025-09-01",
+      "bmri": 68.86,
+      "buckets": {
+        "rates": 75.6,
+        "liquidity": 62.4,
+        "sentiment": 68.6
+      }
+    },
+    {
+      "date": "2025-09-02",
+      "bmri": 66.05,
+      "buckets": {
+        "rates": 67.0,
+        "liquidity": 66.7,
+        "sentiment": 64.5
+      }
+    },
+    {
+      "date": "2025-09-03",
+      "bmri": 68.15,
+      "buckets": {
+        "rates": 67.2,
+        "liquidity": 66.7,
+        "sentiment": 70.6
+      }
+    },
+    {
+      "date": "2025-09-04",
+      "bmri": 69.65,
+      "buckets": {
+        "rates": 65.8,
+        "liquidity": 66.5,
+        "sentiment": 76.7
+      }
+    },
+    {
+      "date": "2025-09-05",
+      "bmri": 70.1,
+      "buckets": {
+        "rates": 68.0,
+        "liquidity": 66.4,
+        "sentiment": 75.8
+      }
+    },
+    {
+      "date": "2025-09-06",
+      "bmri": 69.87,
+      "buckets": {
+        "rates": 68.0,
+        "liquidity": 66.4,
+        "sentiment": 75.1
+      }
+    },
+    {
+      "date": "2025-09-07",
+      "bmri": 70.34,
+      "buckets": {
+        "rates": 68.0,
+        "liquidity": 66.4,
+        "sentiment": 76.5
+      }
+    },
+    {
+      "date": "2025-09-08",
+      "bmri": 69.45,
+      "buckets": {
+        "rates": 62.7,
+        "liquidity": 66.6,
+        "sentiment": 79.1
+      }
+    },
+    {
+      "date": "2025-09-09",
+      "bmri": 61.94,
+      "buckets": {
+        "rates": 57.4,
+        "liquidity": 49.4,
+        "sentiment": 79.0
+      }
+    },
+    {
+      "date": "2025-09-10",
+      "bmri": 62.04,
+      "buckets": {
+        "rates": 53.6,
+        "liquidity": 51.2,
+        "sentiment": 81.3
+      }
+    },
+    {
+      "date": "2025-09-11",
+      "bmri": 64.83,
+      "buckets": {
+        "rates": 56.8,
+        "liquidity": 51.4,
+        "sentiment": 86.3
+      }
+    },
+    {
+      "date": "2025-09-12",
+      "bmri": 65.53,
+      "buckets": {
+        "rates": 57.4,
+        "liquidity": 52.5,
+        "sentiment": 86.7
+      }
+    },
+    {
+      "date": "2025-09-13",
+      "bmri": 65.48,
+      "buckets": {
+        "rates": 57.4,
+        "liquidity": 52.5,
+        "sentiment": 86.5
+      }
+    },
+    {
+      "date": "2025-09-14",
+      "bmri": 65.16,
+      "buckets": {
+        "rates": 57.4,
+        "liquidity": 52.5,
+        "sentiment": 85.6
+      }
+    },
+    {
+      "date": "2025-09-15",
+      "bmri": 65.52,
+      "buckets": {
+        "rates": 62.1,
+        "liquidity": 52.5,
+        "sentiment": 82.0
+      }
+    },
+    {
+      "date": "2025-09-16",
+      "bmri": 65.01,
+      "buckets": {
+        "rates": 61.9,
+        "liquidity": 52.3,
+        "sentiment": 80.9
+      }
+    },
+    {
+      "date": "2025-09-17",
+      "bmri": 67.18,
+      "buckets": {
+        "rates": 63.4,
+        "liquidity": 55.4,
+        "sentiment": 82.7
+      }
+    },
+    {
+      "date": "2025-09-18",
+      "bmri": 73.92,
+      "buckets": {
+        "rates": 83.3,
+        "liquidity": 55.4,
+        "sentiment": 83.0
+      }
+    },
+    {
+      "date": "2025-09-19",
+      "bmri": 74.8,
+      "buckets": {
+        "rates": 87.1,
+        "liquidity": 55.4,
+        "sentiment": 81.9
+      }
+    },
+    {
+      "date": "2025-09-20",
+      "bmri": 74.83,
+      "buckets": {
+        "rates": 87.1,
+        "liquidity": 55.4,
+        "sentiment": 82.0
+      }
+    },
+    {
+      "date": "2025-09-21",
+      "bmri": 73.63,
+      "buckets": {
+        "rates": 87.1,
+        "liquidity": 55.4,
+        "sentiment": 78.4
+      }
+    },
+    {
+      "date": "2025-09-22",
+      "bmri": 68.93,
+      "buckets": {
+        "rates": 82.0,
+        "liquidity": 55.1,
+        "sentiment": 69.7
+      }
+    },
+    {
+      "date": "2025-09-23",
+      "bmri": 68.88,
+      "buckets": {
+        "rates": 88.1,
+        "liquidity": 55.1,
+        "sentiment": 63.5
+      }
+    },
+    {
+      "date": "2025-09-24",
+      "bmri": 69.75,
+      "buckets": {
+        "rates": 88.8,
+        "liquidity": 53.3,
+        "sentiment": 67.1
+      }
+    },
+    {
+      "date": "2025-09-25",
+      "bmri": 61.34,
+      "buckets": {
+        "rates": 76.7,
+        "liquidity": 53.7,
+        "sentiment": 53.6
+      }
+    },
+    {
+      "date": "2025-09-26",
+      "bmri": 66.07,
+      "buckets": {
+        "rates": 82.0,
+        "liquidity": 51.2,
+        "sentiment": 65.0
+      }
+    },
+    {
+      "date": "2025-09-27",
+      "bmri": 66.06,
+      "buckets": {
+        "rates": 82.0,
+        "liquidity": 51.2,
+        "sentiment": 65.0
+      }
+    },
+    {
+      "date": "2025-09-28",
+      "bmri": 67.66,
+      "buckets": {
+        "rates": 82.0,
+        "liquidity": 51.2,
+        "sentiment": 69.8
+      }
+    },
+    {
+      "date": "2025-09-29",
+      "bmri": 63.8,
+      "buckets": {
+        "rates": 75.2,
+        "liquidity": 45.7,
+        "sentiment": 70.5
+      }
+    },
+    {
+      "date": "2025-09-30",
+      "bmri": 63.99,
+      "buckets": {
+        "rates": 76.7,
+        "liquidity": 46.9,
+        "sentiment": 68.3
+      }
+    },
+    {
+      "date": "2025-10-01",
+      "bmri": 74.22,
+      "buckets": {
+        "rates": 77.5,
+        "liquidity": 66.7,
+        "sentiment": 78.5
+      }
+    },
+    {
+      "date": "2025-10-02",
+      "bmri": 74.0,
+      "buckets": {
+        "rates": 74.4,
+        "liquidity": 66.7,
+        "sentiment": 80.9
+      }
+    },
+    {
+      "date": "2025-10-03",
+      "bmri": 74.58,
+      "buckets": {
+        "rates": 75.2,
+        "liquidity": 64.1,
+        "sentiment": 84.5
+      }
+    },
+    {
+      "date": "2025-10-04",
+      "bmri": 74.7,
+      "buckets": {
+        "rates": 75.2,
+        "liquidity": 64.1,
+        "sentiment": 84.8
+      }
+    },
+    {
+      "date": "2025-10-05",
+      "bmri": 75.37,
+      "buckets": {
+        "rates": 75.2,
+        "liquidity": 64.1,
+        "sentiment": 86.9
+      }
+    },
+    {
+      "date": "2025-10-06",
+      "bmri": 78.59,
+      "buckets": {
+        "rates": 82.8,
+        "liquidity": 64.6,
+        "sentiment": 88.4
+      }
+    },
+    {
+      "date": "2025-10-07",
+      "bmri": 72.85,
+      "buckets": {
+        "rates": 76.7,
+        "liquidity": 66.7,
+        "sentiment": 75.2
+      }
+    },
+    {
+      "date": "2025-10-08",
+      "bmri": 75.03,
+      "buckets": {
+        "rates": 70.8,
+        "liquidity": 68.3,
+        "sentiment": 86.0
+      }
+    },
+    {
+      "date": "2025-10-09",
+      "bmri": 64.76,
+      "buckets": {
+        "rates": 61.0,
+        "liquidity": 52.6,
+        "sentiment": 80.8
+      }
+    },
+    {
+      "date": "2025-10-10",
+      "bmri": 42.63,
+      "buckets": {
+        "rates": 45.8,
+        "liquidity": 52.6,
+        "sentiment": 29.5
+      }
+    },
+    {
+      "date": "2025-10-11",
+      "bmri": 41.19,
+      "buckets": {
+        "rates": 45.8,
+        "liquidity": 52.6,
+        "sentiment": 25.2
+      }
+    },
+    {
+      "date": "2025-10-12",
+      "bmri": 44.11,
+      "buckets": {
+        "rates": 45.8,
+        "liquidity": 52.6,
+        "sentiment": 34.0
+      }
+    },
+    {
+      "date": "2025-10-13",
+      "bmri": 50.38,
+      "buckets": {
+        "rates": 45.8,
+        "liquidity": 52.6,
+        "sentiment": 52.8
+      }
+    },
+    {
+      "date": "2025-10-14",
+      "bmri": 48.65,
+      "buckets": {
+        "rates": 53.6,
+        "liquidity": 52.6,
+        "sentiment": 39.8
+      }
+    },
+    {
+      "date": "2025-10-15",
+      "bmri": 52.77,
+      "buckets": {
+        "rates": 64.5,
+        "liquidity": 56.1,
+        "sentiment": 37.7
+      }
+    },
+    {
+      "date": "2025-10-16",
+      "bmri": 47.55,
+      "buckets": {
+        "rates": 61.6,
+        "liquidity": 55.8,
+        "sentiment": 25.3
+      }
+    },
+    {
+      "date": "2025-10-17",
+      "bmri": 52.06,
+      "buckets": {
+        "rates": 58.6,
+        "liquidity": 56.5,
+        "sentiment": 41.2
+      }
+    },
+    {
+      "date": "2025-10-18",
+      "bmri": 52.52,
+      "buckets": {
+        "rates": 58.6,
+        "liquidity": 56.5,
+        "sentiment": 42.5
+      }
+    },
+    {
+      "date": "2025-10-19",
+      "bmri": 53.41,
+      "buckets": {
+        "rates": 58.6,
+        "liquidity": 56.5,
+        "sentiment": 45.2
+      }
+    },
+    {
+      "date": "2025-10-20",
+      "bmri": 58.63,
+      "buckets": {
+        "rates": 58.9,
+        "liquidity": 56.0,
+        "sentiment": 60.9
+      }
+    },
+    {
+      "date": "2025-10-21",
+      "bmri": 57.67,
+      "buckets": {
+        "rates": 58.8,
+        "liquidity": 56.3,
+        "sentiment": 57.9
+      }
+    },
+    {
+      "date": "2025-10-22",
+      "bmri": 52.87,
+      "buckets": {
+        "rates": 54.5,
+        "liquidity": 52.0,
+        "sentiment": 52.1
+      }
+    },
+    {
+      "date": "2025-10-23",
+      "bmri": 57.96,
+      "buckets": {
+        "rates": 59.5,
+        "liquidity": 51.3,
+        "sentiment": 63.1
+      }
+    },
+    {
+      "date": "2025-10-24",
+      "bmri": 62.37,
+      "buckets": {
+        "rates": 66.4,
+        "liquidity": 52.1,
+        "sentiment": 68.6
+      }
+    },
+    {
+      "date": "2025-10-25",
+      "bmri": 62.76,
+      "buckets": {
+        "rates": 66.4,
+        "liquidity": 52.1,
+        "sentiment": 69.7
+      }
+    },
+    {
+      "date": "2025-10-26",
+      "bmri": 64.54,
+      "buckets": {
+        "rates": 66.4,
+        "liquidity": 52.1,
+        "sentiment": 75.1
+      }
+    },
+    {
+      "date": "2025-10-27",
+      "bmri": 65.06,
+      "buckets": {
+        "rates": 69.0,
+        "liquidity": 50.2,
+        "sentiment": 76.0
+      }
+    },
+    {
+      "date": "2025-10-28",
+      "bmri": 62.46,
+      "buckets": {
+        "rates": 66.1,
+        "liquidity": 49.4,
+        "sentiment": 71.9
+      }
+    },
+    {
+      "date": "2025-10-29",
+      "bmri": 58.91,
+      "buckets": {
+        "rates": 65.7,
+        "liquidity": 46.0,
+        "sentiment": 65.1
+      }
+    },
+    {
+      "date": "2025-10-30",
+      "bmri": 53.21,
+      "buckets": {
+        "rates": 57.9,
+        "liquidity": 43.2,
+        "sentiment": 58.5
+      }
+    },
+    {
+      "date": "2025-10-31",
+      "bmri": 47.92,
+      "buckets": {
+        "rates": 53.8,
+        "liquidity": 30.0,
+        "sentiment": 59.9
+      }
+    },
+    {
+      "date": "2025-11-01",
+      "bmri": 55.99,
+      "buckets": {
+        "rates": 53.8,
+        "liquidity": 53.3,
+        "sentiment": 60.8
+      }
+    },
+    {
+      "date": "2025-11-02",
+      "bmri": 56.26,
+      "buckets": {
+        "rates": 53.8,
+        "liquidity": 53.3,
+        "sentiment": 61.6
+      }
+    },
+    {
+      "date": "2025-11-03",
+      "bmri": 55.03,
+      "buckets": {
+        "rates": 50.5,
+        "liquidity": 58.7,
+        "sentiment": 55.9
+      }
+    },
+    {
+      "date": "2025-11-04",
+      "bmri": 49.53,
+      "buckets": {
+        "rates": 42.3,
+        "liquidity": 61.3,
+        "sentiment": 45.1
+      }
+    },
+    {
+      "date": "2025-11-05",
+      "bmri": 55.73,
+      "buckets": {
+        "rates": 51.9,
+        "liquidity": 62.3,
+        "sentiment": 53.0
+      }
+    },
+    {
+      "date": "2025-11-06",
+      "bmri": 49.84,
+      "buckets": {
+        "rates": 46.4,
+        "liquidity": 63.2,
+        "sentiment": 39.9
+      }
+    },
+    {
+      "date": "2025-11-07",
+      "bmri": 53.14,
+      "buckets": {
+        "rates": 49.2,
+        "liquidity": 65.6,
+        "sentiment": 44.5
+      }
+    },
+    {
+      "date": "2025-11-08",
+      "bmri": 52.65,
+      "buckets": {
+        "rates": 49.2,
+        "liquidity": 65.6,
+        "sentiment": 43.1
+      }
+    },
+    {
+      "date": "2025-11-09",
+      "bmri": 48.07,
+      "buckets": {
+        "rates": 49.2,
+        "liquidity": 48.5,
+        "sentiment": 46.5
+      }
+    },
+    {
+      "date": "2025-11-10",
+      "bmri": 54.11,
+      "buckets": {
+        "rates": 56.0,
+        "liquidity": 46.9,
+        "sentiment": 59.4
+      }
+    },
+    {
+      "date": "2025-11-11",
+      "bmri": 53.32,
+      "buckets": {
+        "rates": 56.0,
+        "liquidity": 46.9,
+        "sentiment": 57.1
+      }
+    },
+    {
+      "date": "2025-11-12",
+      "bmri": 53.53,
+      "buckets": {
+        "rates": 49.8,
+        "liquidity": 56.2,
+        "sentiment": 54.7
+      }
+    },
+    {
+      "date": "2025-11-13",
+      "bmri": 47.81,
+      "buckets": {
+        "rates": 46.4,
+        "liquidity": 57.6,
+        "sentiment": 39.5
+      }
+    },
+    {
+      "date": "2025-11-14",
+      "bmri": 47.96,
+      "buckets": {
+        "rates": 45.6,
+        "liquidity": 58.5,
+        "sentiment": 39.8
+      }
+    },
+    {
+      "date": "2025-11-15",
+      "bmri": 48.33,
+      "buckets": {
+        "rates": 45.6,
+        "liquidity": 58.5,
+        "sentiment": 40.9
+      }
+    },
+    {
+      "date": "2025-11-16",
+      "bmri": 47.96,
+      "buckets": {
+        "rates": 45.6,
+        "liquidity": 58.5,
+        "sentiment": 39.8
+      }
+    },
+    {
+      "date": "2025-11-17",
+      "bmri": 43.07,
+      "buckets": {
+        "rates": 43.6,
+        "liquidity": 57.4,
+        "sentiment": 28.2
+      }
+    },
+    {
+      "date": "2025-11-18",
+      "bmri": 39.75,
+      "buckets": {
+        "rates": 42.3,
+        "liquidity": 58.5,
+        "sentiment": 18.5
+      }
+    },
+    {
+      "date": "2025-11-19",
+      "bmri": 39.53,
+      "buckets": {
+        "rates": 46.4,
+        "liquidity": 49.9,
+        "sentiment": 22.4
+      }
+    },
+    {
+      "date": "2025-11-20",
+      "bmri": 33.79,
+      "buckets": {
+        "rates": 46.4,
+        "liquidity": 46.4,
+        "sentiment": 8.6
+      }
+    },
+    {
+      "date": "2025-11-21",
+      "bmri": 38.5,
+      "buckets": {
+        "rates": 45.1,
+        "liquidity": 49.0,
+        "sentiment": 21.5
+      }
+    },
+    {
+      "date": "2025-11-22",
+      "bmri": 38.5,
+      "buckets": {
+        "rates": 45.1,
+        "liquidity": 49.0,
+        "sentiment": 21.5
+      }
+    },
+    {
+      "date": "2025-11-23",
+      "bmri": 39.08,
+      "buckets": {
+        "rates": 45.1,
+        "liquidity": 49.0,
+        "sentiment": 23.2
+      }
+    },
+    {
+      "date": "2025-11-24",
+      "bmri": 47.83,
+      "buckets": {
+        "rates": 53.9,
+        "liquidity": 49.9,
+        "sentiment": 39.7
+      }
+    },
+    {
+      "date": "2025-11-25",
+      "bmri": 51.63,
+      "buckets": {
+        "rates": 57.2,
+        "liquidity": 49.1,
+        "sentiment": 48.6
+      }
+    },
+    {
+      "date": "2025-11-26",
+      "bmri": 55.26,
+      "buckets": {
+        "rates": 58.3,
+        "liquidity": 49.1,
+        "sentiment": 58.3
+      }
+    },
+    {
+      "date": "2025-11-27",
+      "bmri": 55.68,
+      "buckets": {
+        "rates": 58.3,
+        "liquidity": 49.1,
+        "sentiment": 59.6
+      }
+    },
+    {
+      "date": "2025-11-28",
+      "bmri": 57.04,
+      "buckets": {
+        "rates": 62.9,
+        "liquidity": 44.0,
+        "sentiment": 64.2
+      }
+    },
+    {
+      "date": "2025-11-29",
+      "bmri": 57.01,
+      "buckets": {
+        "rates": 62.9,
+        "liquidity": 44.0,
+        "sentiment": 64.1
+      }
+    },
+    {
+      "date": "2025-11-30",
+      "bmri": 57.54,
+      "buckets": {
+        "rates": 64.9,
+        "liquidity": 44.0,
+        "sentiment": 63.8
+      }
+    },
+    {
+      "date": "2025-12-01",
+      "bmri": 61.37,
+      "buckets": {
+        "rates": 63.6,
+        "liquidity": 65.3,
+        "sentiment": 55.3
+      }
+    },
+    {
+      "date": "2025-12-02",
+      "bmri": 66.82,
+      "buckets": {
+        "rates": 74.5,
+        "liquidity": 63.8,
+        "sentiment": 62.1
+      }
+    },
+    {
+      "date": "2025-12-03",
+      "bmri": 70.17,
+      "buckets": {
+        "rates": 78.1,
+        "liquidity": 65.7,
+        "sentiment": 66.7
+      }
+    },
+    {
+      "date": "2025-12-04",
+      "bmri": 72.77,
+      "buckets": {
+        "rates": 85.5,
+        "liquidity": 65.9,
+        "sentiment": 67.0
+      }
+    },
+    {
+      "date": "2025-12-05",
+      "bmri": 72.39,
+      "buckets": {
+        "rates": 84.1,
+        "liquidity": 66.3,
+        "sentiment": 66.8
+      }
+    },
+    {
+      "date": "2025-12-06",
+      "bmri": 72.37,
+      "buckets": {
+        "rates": 84.1,
+        "liquidity": 66.3,
+        "sentiment": 66.7
+      }
+    },
+    {
+      "date": "2025-12-07",
+      "bmri": 72.69,
+      "buckets": {
+        "rates": 84.1,
+        "liquidity": 66.3,
+        "sentiment": 67.7
+      }
+    },
+    {
+      "date": "2025-12-08",
+      "bmri": 71.04,
+      "buckets": {
+        "rates": 84.8,
+        "liquidity": 66.2,
+        "sentiment": 62.1
+      }
+    },
+    {
+      "date": "2025-12-09",
+      "bmri": 61.97,
+      "buckets": {
+        "rates": 75.7,
+        "liquidity": 47.9,
+        "sentiment": 62.3
+      }
+    },
+    {
+      "date": "2025-12-10",
+      "bmri": 66.16,
+      "buckets": {
+        "rates": 80.5,
+        "liquidity": 48.7,
+        "sentiment": 69.3
+      }
+    },
+    {
+      "date": "2025-12-11",
+      "bmri": 70.37,
+      "buckets": {
+        "rates": 87.6,
+        "liquidity": 50.6,
+        "sentiment": 72.9
+      }
+    },
+    {
+      "date": "2025-12-12",
+      "bmri": 66.66,
+      "buckets": {
+        "rates": 85.6,
+        "liquidity": 52.4,
+        "sentiment": 61.9
+      }
+    },
+    {
+      "date": "2025-12-13",
+      "bmri": 66.65,
+      "buckets": {
+        "rates": 85.6,
+        "liquidity": 52.4,
+        "sentiment": 61.9
+      }
+    },
+    {
+      "date": "2025-12-14",
+      "bmri": 66.08,
+      "buckets": {
+        "rates": 85.6,
+        "liquidity": 52.4,
+        "sentiment": 60.2
+      }
+    },
+    {
+      "date": "2025-12-15",
+      "bmri": 64.0,
+      "buckets": {
+        "rates": 85.6,
+        "liquidity": 50.8,
+        "sentiment": 55.6
+      }
+    },
+    {
+      "date": "2025-12-16",
+      "bmri": 62.71,
+      "buckets": {
+        "rates": 81.0,
+        "liquidity": 51.8,
+        "sentiment": 55.3
+      }
+    },
+    {
+      "date": "2025-12-17",
+      "bmri": 59.91,
+      "buckets": {
+        "rates": 80.4,
+        "liquidity": 55.9,
+        "sentiment": 43.4
+      }
+    },
+    {
+      "date": "2025-12-18",
+      "bmri": 61.91,
+      "buckets": {
+        "rates": 81.2,
+        "liquidity": 54.7,
+        "sentiment": 49.9
+      }
+    },
+    {
+      "date": "2025-12-19",
+      "bmri": 70.67,
+      "buckets": {
+        "rates": 86.3,
+        "liquidity": 62.5,
+        "sentiment": 63.2
+      }
+    },
+    {
+      "date": "2025-12-20",
+      "bmri": 70.73,
+      "buckets": {
+        "rates": 86.3,
+        "liquidity": 62.5,
+        "sentiment": 63.4
+      }
+    },
+    {
+      "date": "2025-12-21",
+      "bmri": 70.81,
+      "buckets": {
+        "rates": 86.3,
+        "liquidity": 62.5,
+        "sentiment": 63.6
+      }
+    },
+    {
+      "date": "2025-12-22",
+      "bmri": 73.24,
+      "buckets": {
+        "rates": 88.0,
+        "liquidity": 63.9,
+        "sentiment": 67.8
+      }
+    },
+    {
+      "date": "2025-12-23",
+      "bmri": 72.03,
+      "buckets": {
+        "rates": 87.2,
+        "liquidity": 60.0,
+        "sentiment": 69.0
+      }
+    },
+    {
+      "date": "2025-12-24",
+      "bmri": 79.6,
+      "buckets": {
+        "rates": 85.8,
+        "liquidity": 83.9,
+        "sentiment": 69.1
+      }
+    },
+    {
+      "date": "2025-12-25",
+      "bmri": 79.48,
+      "buckets": {
+        "rates": 85.8,
+        "liquidity": 83.9,
+        "sentiment": 68.7
+      }
+    },
+    {
+      "date": "2025-12-26",
+      "bmri": 74.19,
+      "buckets": {
+        "rates": 84.4,
+        "liquidity": 69.8,
+        "sentiment": 68.3
+      }
+    },
+    {
+      "date": "2025-12-27",
+      "bmri": 74.33,
+      "buckets": {
+        "rates": 84.4,
+        "liquidity": 69.8,
+        "sentiment": 68.8
+      }
+    },
+    {
+      "date": "2025-12-28",
+      "bmri": 74.35,
+      "buckets": {
+        "rates": 84.4,
+        "liquidity": 69.8,
+        "sentiment": 68.8
+      }
+    },
+    {
+      "date": "2025-12-29",
+      "bmri": 75.3,
+      "buckets": {
+        "rates": 83.3,
+        "liquidity": 77.9,
+        "sentiment": 64.6
+      }
+    },
+    {
+      "date": "2025-12-30",
+      "bmri": 76.28,
+      "buckets": {
+        "rates": 88.4,
+        "liquidity": 75.9,
+        "sentiment": 64.5
+      }
+    },
+    {
+      "date": "2025-12-31",
+      "bmri": 67.13,
+      "buckets": {
+        "rates": 93.4,
+        "liquidity": 50.0,
+        "sentiment": 58.0
+      }
+    },
+    {
+      "date": "2026-01-01",
+      "bmri": 67.46,
+      "buckets": {
+        "rates": 93.4,
+        "liquidity": 50.0,
+        "sentiment": 58.9
+      }
+    },
+    {
+      "date": "2026-01-02",
+      "bmri": 84.38,
+      "buckets": {
+        "rates": 93.3,
+        "liquidity": 97.7,
+        "sentiment": 62.1
+      }
+    },
+    {
+      "date": "2026-01-03",
+      "bmri": 84.56,
+      "buckets": {
+        "rates": 93.3,
+        "liquidity": 97.7,
+        "sentiment": 62.7
+      }
+    },
+    {
+      "date": "2026-01-04",
+      "bmri": 84.81,
+      "buckets": {
+        "rates": 93.3,
+        "liquidity": 97.7,
+        "sentiment": 63.4
+      }
+    },
+    {
+      "date": "2026-01-05",
+      "bmri": 86.36,
+      "buckets": {
+        "rates": 93.4,
+        "liquidity": 97.3,
+        "sentiment": 68.3
+      }
+    },
+    {
+      "date": "2026-01-06",
+      "bmri": 88.43,
+      "buckets": {
+        "rates": 94.9,
+        "liquidity": 99.2,
+        "sentiment": 71.2
+      }
+    },
+    {
+      "date": "2026-01-07",
+      "bmri": 74.27,
+      "buckets": {
+        "rates": 90.8,
+        "liquidity": 66.3,
+        "sentiment": 65.8
+      }
+    },
+    {
+      "date": "2026-01-08",
+      "bmri": 76.47,
+      "buckets": {
+        "rates": 95.8,
+        "liquidity": 67.0,
+        "sentiment": 66.6
+      }
+    },
+    {
+      "date": "2026-01-09",
+      "bmri": 74.96,
+      "buckets": {
+        "rates": 87.5,
+        "liquidity": 66.9,
+        "sentiment": 70.5
+      }
+    },
+    {
+      "date": "2026-01-10",
+      "bmri": 74.91,
+      "buckets": {
+        "rates": 87.5,
+        "liquidity": 66.9,
+        "sentiment": 70.4
+      }
+    },
+    {
+      "date": "2026-01-11",
+      "bmri": 75.1,
+      "buckets": {
+        "rates": 87.5,
+        "liquidity": 66.9,
+        "sentiment": 70.9
+      }
+    },
+    {
+      "date": "2026-01-12",
+      "bmri": 75.15,
+      "buckets": {
+        "rates": 88.9,
+        "liquidity": 66.8,
+        "sentiment": 69.7
+      }
+    },
+    {
+      "date": "2026-01-13",
+      "bmri": 75.38,
+      "buckets": {
+        "rates": 88.2,
+        "liquidity": 66.9,
+        "sentiment": 71.1
+      }
+    },
+    {
+      "date": "2026-01-14",
+      "bmri": 74.95,
+      "buckets": {
+        "rates": 86.1,
+        "liquidity": 70.8,
+        "sentiment": 68.0
+      }
+    },
+    {
+      "date": "2026-01-15",
+      "bmri": 74.97,
+      "buckets": {
+        "rates": 83.3,
+        "liquidity": 71.3,
+        "sentiment": 70.2
+      }
+    },
+    {
+      "date": "2026-01-16",
+      "bmri": 76.79,
+      "buckets": {
+        "rates": 88.9,
+        "liquidity": 71.7,
+        "sentiment": 69.8
+      }
+    },
+    {
+      "date": "2026-01-17",
+      "bmri": 76.64,
+      "buckets": {
+        "rates": 88.9,
+        "liquidity": 71.7,
+        "sentiment": 69.3
+      }
+    },
+    {
+      "date": "2026-01-18",
+      "bmri": 76.09,
+      "buckets": {
+        "rates": 88.9,
+        "liquidity": 71.7,
+        "sentiment": 67.7
+      }
+    },
+    {
+      "date": "2026-01-19",
+      "bmri": 73.15,
+      "buckets": {
+        "rates": 88.9,
+        "liquidity": 71.7,
+        "sentiment": 58.8
+      }
+    },
+    {
+      "date": "2026-01-20",
+      "bmri": 67.22,
+      "buckets": {
+        "rates": 91.0,
+        "liquidity": 70.6,
+        "sentiment": 40.0
+      }
+    },
+    {
+      "date": "2026-01-21",
+      "bmri": 71.77,
+      "buckets": {
+        "rates": 87.9,
+        "liquidity": 72.1,
+        "sentiment": 55.4
+      }
+    },
+    {
+      "date": "2026-01-22",
+      "bmri": 74.4,
+      "buckets": {
+        "rates": 88.9,
+        "liquidity": 72.7,
+        "sentiment": 61.6
+      }
+    },
+    {
+      "date": "2026-01-23",
+      "bmri": 73.01,
+      "buckets": {
+        "rates": 85.1,
+        "liquidity": 73.2,
+        "sentiment": 60.7
+      }
+    },
+    {
+      "date": "2026-01-24",
+      "bmri": 72.87,
+      "buckets": {
+        "rates": 85.1,
+        "liquidity": 73.2,
+        "sentiment": 60.2
+      }
+    },
+    {
+      "date": "2026-01-25",
+      "bmri": 71.93,
+      "buckets": {
+        "rates": 85.1,
+        "liquidity": 73.2,
+        "sentiment": 57.4
+      }
+    },
+    {
+      "date": "2026-01-26",
+      "bmri": 74.08,
+      "buckets": {
+        "rates": 87.3,
+        "liquidity": 73.0,
+        "sentiment": 62.0
+      }
+    },
+    {
+      "date": "2026-01-27",
+      "bmri": 77.07,
+      "buckets": {
+        "rates": 93.1,
+        "liquidity": 73.1,
+        "sentiment": 65.1
+      }
+    },
+    {
+      "date": "2026-01-28",
+      "bmri": 76.86,
+      "buckets": {
+        "rates": 90.9,
+        "liquidity": 74.6,
+        "sentiment": 65.1
+      }
+    },
+    {
+      "date": "2026-01-29",
+      "bmri": 73.38,
+      "buckets": {
+        "rates": 89.2,
+        "liquidity": 73.7,
+        "sentiment": 57.2
+      }
+    },
+    {
+      "date": "2026-01-30",
+      "bmri": 71.48,
+      "buckets": {
+        "rates": 90.5,
+        "liquidity": 70.5,
+        "sentiment": 53.4
+      }
+    },
+    {
+      "date": "2026-01-31",
+      "bmri": 69.89,
+      "buckets": {
+        "rates": 85.7,
+        "liquidity": 70.5,
+        "sentiment": 53.4
+      }
+    },
+    {
+      "date": "2026-02-01",
+      "bmri": 69.89,
+      "buckets": {
+        "rates": 85.7,
+        "liquidity": 70.5,
+        "sentiment": 53.4
+      }
+    },
+    {
+      "date": "2026-02-02",
+      "bmri": 72.71,
+      "buckets": {
+        "rates": 86.9,
+        "liquidity": 70.1,
+        "sentiment": 61.1
+      }
+    },
+    {
+      "date": "2026-02-03",
+      "bmri": 69.2,
+      "buckets": {
+        "rates": 83.0,
+        "liquidity": 74.2,
+        "sentiment": 50.4
+      }
+    },
+    {
+      "date": "2026-02-04",
+      "bmri": 70.89,
+      "buckets": {
+        "rates": 83.9,
+        "liquidity": 82.7,
+        "sentiment": 46.1
+      }
+    },
+    {
+      "date": "2026-02-05",
+      "bmri": 65.01,
+      "buckets": {
+        "rates": 80.4,
+        "liquidity": 83.0,
+        "sentiment": 31.6
+      }
+    },
+    {
+      "date": "2026-02-06",
+      "bmri": 74.56,
+      "buckets": {
+        "rates": 83.3,
+        "liquidity": 82.4,
+        "sentiment": 58.0
+      }
+    },
+    {
+      "date": "2026-02-07",
+      "bmri": 74.23,
+      "buckets": {
+        "rates": 83.3,
+        "liquidity": 82.4,
+        "sentiment": 57.0
+      }
+    },
+    {
+      "date": "2026-02-08",
+      "bmri": 74.5,
+      "buckets": {
+        "rates": 83.3,
+        "liquidity": 82.4,
+        "sentiment": 57.9
+      }
+    },
+    {
+      "date": "2026-02-09",
+      "bmri": 77.64,
+      "buckets": {
+        "rates": 88.1,
+        "liquidity": 83.2,
         "sentiment": 61.6
       }
     },
     {
       "date": "2026-02-10",
-      "bmri": 81.48,
+      "bmri": 74.46,
       "buckets": {
-        "rates": 94.5,
-        "liquidity": 84.7,
-        "sentiment": 65.2
+        "rates": 82.4,
+        "liquidity": 83.2,
+        "sentiment": 57.9
       }
     },
     {
       "date": "2026-02-11",
-      "bmri": 82.24,
+      "bmri": 74.2,
       "buckets": {
-        "rates": 95.9,
-        "liquidity": 84.9,
-        "sentiment": 66.0
+        "rates": 82.4,
+        "liquidity": 83.3,
+        "sentiment": 56.9
       }
     },
     {
       "date": "2026-02-12",
-      "bmri": 80.91,
+      "bmri": 79.8,
       "buckets": {
-        "rates": 94.2,
-        "liquidity": 84.8,
-        "sentiment": 63.7
+        "rates": 82.4,
+        "liquidity": 99.8,
+        "sentiment": 57.2
       }
     }
   ]
