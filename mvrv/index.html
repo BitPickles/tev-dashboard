@@ -662,7 +662,8 @@
         mode: LightweightCharts.PriceScaleMode.Logarithmic 
       });
 
-      const firstTs = new Date(firstDate + 'T00:00:00Z').getTime() / 1000;
+      // Fixed start from 2014
+      const firstTs = new Date('2014-01-01T00:00:00Z').getTime() / 1000;
       const lastTs = new Date(lastDate + 'T00:00:00Z').getTime() / 1000;
       defaultRange = { from: firstTs, to: lastTs };
 
