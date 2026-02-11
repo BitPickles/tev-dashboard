@@ -432,7 +432,7 @@
     }
 
     function calculatePercentile(value, history) {
-      const sorted = [...history.map(d => d.mvrv)].sort((a, b) => a - b);
+      const sorted = [...history.map(d => d.value)].sort((a, b) => a - b);
       const index = sorted.findIndex(v => v >= value);
       return Math.round((index / sorted.length) * 100);
     }
@@ -542,13 +542,12 @@
       });
       resizeObserver.observe(container);
 
-      const mvrvData = history.map(d => ({ time: d.date, value: d.mvrv }));
+      const mvrvData = history.map(d => ({ time: d.date, value: d.value }));
 
       // Build lookup table
       history.forEach(d => { historyData[d.date] = d; });
 
-      // 锁定起始日期为 2014-01-01
-      const firstDate = '2014-01-01';
+      const firstDate = history[0].date;
       const lastDate = history[history.length - 1].date;
 
       // Zone backgrounds
@@ -634,12 +633,9 @@
 
       container.addEventListener('dblclick', () => resetChart());
 
-      // 立即设置图表范围，确保从 2014 年显示
-      chart.timeScale().setVisibleRange(defaultRange);
-      // 延迟再次设置，确保渲染完成后范围正确
       setTimeout(() => {
         chart.timeScale().setVisibleRange(defaultRange);
-      }, 200);
+      }, 100);
 
       // Crosshair tooltip
       chart.subscribeCrosshairMove((param) => {
