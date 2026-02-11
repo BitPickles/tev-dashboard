@@ -310,6 +310,10 @@
               <div class="legend-line" style="background: #a855f7;"></div>
               <span>MVRV</span>
             </div>
+            <div class="legend-item disabled" data-series="btc" onclick="toggleSeries('btc')">
+              <div class="legend-line" style="background: #f59e0b;"></div>
+              <span>BTC</span>
+            </div>
           </div>
         </div>
         <div class="chart-wrapper" id="chart-container"></div>
@@ -319,6 +323,11 @@
             <div class="tooltip-dot" style="background: #a855f7;"></div>
             <span class="tooltip-label">MVRV:</span>
             <span class="tooltip-value" id="tooltip-mvrv-value">—</span>
+          </div>
+          <div class="tooltip-item" id="tooltip-btc" style="display: none;">
+            <div class="tooltip-dot" style="background: #f59e0b;"></div>
+            <span class="tooltip-label">BTC:</span>
+            <span class="tooltip-value" id="tooltip-btc-value">—</span>
           </div>
         </div>
         <div class="chart-hint" data-zh="💡 拖动平移 · 滚轮缩放 · 双击重置" data-en="💡 Drag to pan · Scroll to zoom · Double-click to reset">💡 拖动平移 · 滚轮缩放 · 双击重置</div>
@@ -368,7 +377,7 @@
     let chart = null;
     let series = {};
     let zones = {};
-    let seriesVisible = { mvrv: true };
+    let seriesVisible = { mvrv: true, btc: false };
     let isLogScale = true;
     let defaultRange = { from: 0, to: 0 };
     let historyData = {};
@@ -445,6 +454,10 @@
       if (name === 'mvrv') {
         if (zones.green) zones.green.applyOptions({ visible: seriesVisible[name] });
         if (zones.red) zones.red.applyOptions({ visible: seriesVisible[name] });
+      }
+      
+      if (name === 'btc' && chart) {
+        chart.priceScale('left').applyOptions({ visible: seriesVisible[name] });
       }
       
       const legendItem = document.querySelector(`.legend-item[data-series="${name}"]`);
@@ -616,6 +629,28 @@
         axisLabelVisible: true,
       });
 
+      // BTC Price Series (on left scale, hidden by default)
+      const btcData = history.filter(d => d.btc_price).map(d => ({ time: d.date, value: d.btc_price }));
+      series.btc = chart.addLineSeries({
+        color: '#f59e0b',
+        lineWidth: 2,
+        priceScaleId: 'left',
+        priceFormat: { type: 'price', precision: 0, minMove: 1 },
+        lastValueVisible: false,
+        priceLineVisible: false,
+        title: 'BTC',
+        visible: false,
+      });
+      series.btc.setData(btcData);
+
+      // Configure left price scale for BTC
+      chart.priceScale('left').applyOptions({
+        visible: false,
+        borderColor: '#27272a',
+        scaleMargins: { top: 0.05, bottom: 0.05 },
+        mode: LightweightCharts.PriceScaleMode.Logarithmic,
+      });
+
       chart.timeScale().applyOptions({
         rightOffset: 0,
         minBarSpacing: 0.1,
@@ -641,10 +676,12 @@
       chart.subscribeCrosshairMove((param) => {
         const tooltipDate = document.getElementById('tooltip-date');
         const tooltipMvrv = document.getElementById('tooltip-mvrv');
+        const tooltipBtc = document.getElementById('tooltip-btc');
 
         if (!param.time || !param.point) {
           tooltipDate.textContent = '—';
           tooltipMvrv.style.display = 'none';
+          tooltipBtc.style.display = 'none';
           return;
         }
 
@@ -656,6 +693,13 @@
           document.getElementById('tooltip-mvrv-value').textContent = dataPoint.value.toFixed(2);
         } else {
           tooltipMvrv.style.display = 'none';
+        }
+
+        if (seriesVisible.btc && dataPoint && dataPoint.btc_price !== undefined) {
+          tooltipBtc.style.display = 'flex';
+          document.getElementById('tooltip-btc-value').textContent = '$' + dataPoint.btc_price.toLocaleString();
+        } else {
+          tooltipBtc.style.display = 'none';
         }
       });
     }
