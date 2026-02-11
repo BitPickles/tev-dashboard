@@ -564,43 +564,51 @@
 
     function updateBucketBar(id, value) {
       const bar = document.getElementById(id);
-      if (!bar || value === null) return;
+      if (!bar || value === undefined || value === null) return;
       
-      // Map value from [-2, 2] to [0%, 100%], with 50% at 0
-      const percent = Math.min(100, Math.max(0, (value + 2) / 4 * 100));
+      // Value is 0-100, map directly to width
+      const percent = Math.min(100, Math.max(0, value));
       bar.style.width = percent + '%';
-      bar.className = 'bucket-fill ' + (value >= 0 ? 'positive' : 'negative');
+      // High value = high risk = danger color
+      bar.className = 'bucket-fill ' + (value >= 70 ? 'danger' : value >= 50 ? 'warning' : 'safe');
     }
 
     function updateDisplay() {
-      const versionData = bmriData[currentVersion];
-      const current = versionData.current;
-      const thresholds = versionData.thresholds;
-      const regimeInfo = getRegimeInfo(current.regime, thresholds);
+      const current = bmriData.current;
+      const history = bmriData.history || [];
+      
+      // 根据值判断风险等级
+      const value = current.value;
+      let riskClass = 'neutral';
+      let riskLabel = current.risk_level || '中性';
+      if (value >= 70) riskClass = 'danger';
+      else if (value >= 50) riskClass = 'warning';
+      else if (value < 30) riskClass = 'safe';
 
       // Update main value
-      document.getElementById('bmri-value').textContent = current.value.toFixed(4);
-      document.getElementById('bmri-value').className = `stat-value ${regimeInfo.class}`;
-      document.getElementById('bmri-regime').textContent = regimeInfo.label;
-      document.getElementById('market-state').textContent = regimeInfo.state;
+      document.getElementById('bmri-value').textContent = value.toFixed(1);
+      document.getElementById('bmri-value').className = `stat-value ${riskClass}`;
+      document.getElementById('bmri-regime').textContent = riskLabel;
+      document.getElementById('market-state').textContent = value >= 70 ? '⚠️ 高风险' : value >= 50 ? '🟡 中风险' : '🟢 低风险';
       document.getElementById('update-date').textContent = current.date;
 
-      // Update bucket values
-      document.getElementById('rates-value').textContent = current.rates !== null ? current.rates.toFixed(2) : '—';
-      document.getElementById('liq-value').textContent = current.liq !== null ? current.liq.toFixed(2) : '—';
-      document.getElementById('risk-value').textContent = current.risk !== null ? current.risk.toFixed(2) : '—';
+      // Update bucket values (from buckets object)
+      const buckets = current.buckets || {};
+      document.getElementById('rates-value').textContent = buckets.rates !== undefined ? buckets.rates.toFixed(1) : '—';
+      document.getElementById('liq-value').textContent = buckets.liquidity !== undefined ? buckets.liquidity.toFixed(1) : '—';
+      document.getElementById('risk-value').textContent = buckets.sentiment !== undefined ? buckets.sentiment.toFixed(1) : '—';
 
-      // Update bucket bars
-      updateBucketBar('rates-bar', current.rates);
-      updateBucketBar('liq-bar', current.liq);
-      updateBucketBar('risk-bar', current.risk);
+      // Update bucket bars (scale 0-100)
+      updateBucketBar('rates-bar', buckets.rates);
+      updateBucketBar('liq-bar', buckets.liquidity);
+      updateBucketBar('risk-bar', buckets.sentiment);
 
-      // Update thresholds
-      document.getElementById('threshold-on').textContent = `> +${thresholds.on} Risk-On`;
-      document.getElementById('threshold-off').textContent = `< ${thresholds.off} Risk-Off`;
+      // Update thresholds display
+      document.getElementById('threshold-on').textContent = '< 30 低风险';
+      document.getElementById('threshold-off').textContent = '> 70 高风险';
 
       // Draw chart
-      drawChart(versionData.history, thresholds);
+      drawChart(history, {on: 30, off: 70});
     }
 
     function drawChart(history, thresholds) {
@@ -650,7 +658,7 @@
               displayColors: false,
               callbacks: {
                 title: (items) => items[0].label,
-                label: (item) => `BMRI: ${item.raw.toFixed(4)}`
+                label: (item) => `BMRI: ${item.raw.toFixed(1)}`
               }
             }
           },
