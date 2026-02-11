@@ -1339,9 +1339,7 @@
       });
 
       // Set default range starting from 2014
-      const startDate = '2014-01-01';
-      const lastDate = history[history.length - 1].date;
-      const startTs = new Date(startDate + 'T00:00:00Z').getTime() / 1000;
+      const startTs = new Date('2014-01-01T00:00:00Z').getTime() / 1000;
       const endTs = new Date(lastDate + 'T00:00:00Z').getTime() / 1000;
       defaultRange = { from: startTs, to: endTs };
       
