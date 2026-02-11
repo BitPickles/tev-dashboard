@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
@@ -11,455 +10,9 @@
   <title>BMRI 指标 — Crypto3D</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../indicators/css/common.css">
   <script src="https://unpkg.com/lightweight-charts@4/dist/lightweight-charts.standalone.production.js"></script>
-  <style>
-    :root {
-      --bg-primary: #0a0a0b;
-      --bg-secondary: #111113;
-      --bg-tertiary: #18181b;
-      --bg-hover: #1f1f23;
-      --border: #27272a;
-      --border-hover: #3f3f46;
-      --text-primary: #fafafa;
-      --text-secondary: #a1a1aa;
-      --text-tertiary: #71717a;
-      --accent: #22c55e;
-      --accent-dim: rgba(34, 197, 94, 0.1);
-      --warning: #f59e0b;
-      --warning-dim: rgba(245, 158, 11, 0.1);
-      --danger: #ef4444;
-      --danger-dim: rgba(239, 68, 68, 0.1);
-      --blue: #3b82f6;
-      --blue-dim: rgba(59, 130, 246, 0.1);
-      --purple: #a855f7;
-      --cyan: #06b6d4;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Noto Sans SC', 'Inter', -apple-system, sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* Header */
-    header {
-      border-bottom: 1px solid var(--border);
-      padding: 20px 0;
-      position: sticky;
-      top: 0;
-      background: rgba(10, 10, 11, 0.9);
-      backdrop-filter: blur(12px);
-      z-index: 100;
-    }
-
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-
-    .logo-icon { width: 36px; height: 36px; border-radius: 8px; }
-
-    .logo-text {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .nav-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--text-primary);
-    }
-
-    .lang-switch {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 6px 12px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    .lang-switch span { color: var(--text-secondary); }
-    .lang-switch .active { color: var(--text-primary); font-weight: 500; }
-
-    /* Main Content */
-    main {
-      padding: 40px 0;
-    }
-
-    .page-header {
-      margin-bottom: 24px;
-    }
-
-    .page-title {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .page-subtitle {
-      color: var(--text-secondary);
-      font-size: 16px;
-    }
-
-    /* Version Tabs */
-    .version-tabs {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-
-    .version-tab {
-      padding: 10px 24px;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      transition: all 0.2s;
-    }
-
-    .version-tab:hover {
-      border-color: var(--border-hover);
-      color: var(--text-primary);
-    }
-
-    .version-tab.active {
-      background: var(--accent-dim);
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .version-desc {
-      font-size: 12px;
-      color: var(--text-tertiary);
-      margin-top: 4px;
-    }
-
-    /* Stats Grid */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .stat-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-    }
-
-    .stat-card.main {
-      grid-column: span 2;
-    }
-
-    .stat-label {
-      font-size: 12px;
-      color: var(--text-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
-    }
-
-    .stat-value {
-      font-size: 32px;
-      font-weight: 700;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .stat-value.risk-on { color: var(--accent); }
-    .stat-value.neutral { color: var(--warning); }
-    .stat-value.risk-off { color: var(--danger); }
-
-    .stat-hint {
-      font-size: 13px;
-      color: var(--text-secondary);
-      margin-top: 8px;
-    }
-
-    /* Bucket Stats */
-    .bucket-value {
-      font-size: 20px;
-      font-weight: 600;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .bucket-bar {
-      height: 4px;
-      background: var(--bg-tertiary);
-      border-radius: 2px;
-      margin-top: 12px;
-      overflow: hidden;
-    }
-
-    .bucket-fill {
-      height: 100%;
-      border-radius: 2px;
-      transition: width 0.3s ease;
-    }
-
-    .bucket-fill.positive { background: var(--accent); }
-    .bucket-fill.negative { background: var(--danger); }
-
-    /* Zone Legend */
-    .zone-legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .zone-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-
-    .zone-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
-
-    .zone-dot.risk-on { background: var(--accent); }
-    .zone-dot.neutral { background: var(--warning); }
-    .zone-dot.risk-off { background: var(--danger); }
-
-    /* Chart */
-    .chart-container {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 32px;
-    }
-
-    .chart-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .chart-title {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
-    .chart-legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      color: var(--text-secondary);
-      cursor: pointer;
-      padding: 4px 8px;
-      border-radius: 4px;
-      transition: all 0.2s;
-    }
-
-    .legend-item:hover { background: var(--bg-tertiary); }
-    .legend-item.disabled { opacity: 0.4; }
-    .legend-item.fixed { cursor: default; opacity: 0.7; }
-    .legend-item.fixed:hover { background: transparent; }
-
-    .legend-item.scale-toggle {
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border);
-      font-weight: 500;
-    }
-    .legend-item.scale-toggle:hover {
-      border-color: var(--border-hover);
-    }
-
-    .legend-line {
-      width: 16px;
-      height: 3px;
-      border-radius: 1px;
-    }
-
-    .legend-line.dashed {
-      background: none;
-      border-top: 2px dashed currentColor;
-      height: 0;
-    }
-
-    .chart-wrapper {
-      position: relative;
-      height: 400px;
-    }
-
-    .chart-tooltip {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(17, 17, 19, 0.95);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px;
-      font-size: 13px;
-      pointer-events: none;
-      z-index: 10;
-      min-width: 140px;
-      opacity: 0;
-      transition: opacity 0.15s;
-    }
-
-    .chart-tooltip.visible { opacity: 1; }
-
-    .tooltip-date {
-      color: var(--text-primary);
-      font-weight: 500;
-      margin-bottom: 8px;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .tooltip-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 4px;
-    }
-
-    .tooltip-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
-
-    .tooltip-label { color: var(--text-tertiary); }
-    .tooltip-value { color: var(--text-primary); font-family: 'JetBrains Mono', monospace; }
-
-    .chart-hint {
-      text-align: center;
-      font-size: 12px;
-      color: var(--text-tertiary);
-      margin-top: 12px;
-    }
-
-    .data-update-time {
-      font-size: 12px;
-      color: var(--text-tertiary);
-      text-align: right;
-      margin-top: 8px;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    /* Info Section */
-    .info-section {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-    }
-
-    .info-title {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
-    .info-text {
-      color: var(--text-secondary);
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .info-text p {
-      margin-bottom: 12px;
-    }
-
-    .info-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 16px 0;
-      font-size: 14px;
-    }
-
-    .info-table th,
-    .info-table td {
-      padding: 10px 12px;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .info-table th {
-      color: var(--text-tertiary);
-      font-weight: 500;
-      text-transform: uppercase;
-      font-size: 12px;
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 24px 0;
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .footer-text {
-      font-size: 14px;
-      color: var(--text-tertiary);
-    }
-
-    @media (max-width: 768px) {
-      .page-title { font-size: 24px; }
-      .stat-value { font-size: 24px; }
-      .stat-card.main { grid-column: span 1; }
-      .chart-wrapper { height: 300px; }
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-    }
-  </style>
+  <script src="../indicators/js/chart-utils.js"></script>
 </head>
 <body>
   <header>
@@ -473,7 +26,7 @@
           <a href="../" data-zh="首页" data-en="Home">首页</a>
           <a href="../tev/" data-zh="TEV" data-en="TEV">TEV</a>
           <a href="../ahr999/">AHR999</a>
-          <div class="lang-switch" onclick="toggleLang()">
+          <div class="lang-switch" onclick="LangUtils.toggle(); updateDisplay();">
             <span id="lang-zh" class="active">中文</span>
             <span>/</span>
             <span id="lang-en">EN</span>
@@ -511,9 +64,9 @@
         </div>
         <div class="stat-card">
           <div class="stat-label" data-zh="市场状态" data-en="Market State">市场状态</div>
-          <div class="stat-value" id="market-state" style="font-size: 24px;">—</div>
-          <div class="stat-hint" id="regime-hint" style="margin-top: 4px;">—</div>
-          <div class="stat-hint" id="update-date" style="color: var(--text-tertiary); font-size: 12px;">—</div>
+          <div class="stat-value" id="market-state" style="font-size: 18px;">—</div>
+          <div class="stat-hint" id="regime-hint">—</div>
+          <div class="stat-hint" id="update-date" style="color: var(--text-tertiary); font-size: 11px;">—</div>
         </div>
       </div>
 
@@ -522,23 +75,17 @@
         <div class="stat-card">
           <div class="stat-label">Rates <span data-zh="利率" data-en="">(利率)</span></div>
           <div class="bucket-value" id="rates-value">—</div>
-          <div class="bucket-bar">
-            <div class="bucket-fill" id="rates-bar" style="width: 50%;"></div>
-          </div>
+          <div class="bucket-bar"><div class="bucket-fill" id="rates-bar" style="width: 50%;"></div></div>
         </div>
         <div class="stat-card">
           <div class="stat-label">Liquidity <span data-zh="流动性" data-en="">(流动性)</span></div>
           <div class="bucket-value" id="liq-value">—</div>
-          <div class="bucket-bar">
-            <div class="bucket-fill" id="liq-bar" style="width: 50%;"></div>
-          </div>
+          <div class="bucket-bar"><div class="bucket-fill" id="liq-bar" style="width: 50%;"></div></div>
         </div>
         <div class="stat-card">
           <div class="stat-label">Risk <span data-zh="风险偏好" data-en="">(风险偏好)</span></div>
           <div class="bucket-value" id="risk-value">—</div>
-          <div class="bucket-bar">
-            <div class="bucket-fill" id="risk-bar" style="width: 50%;"></div>
-          </div>
+          <div class="bucket-bar"><div class="bucket-fill" id="risk-bar" style="width: 50%;"></div></div>
         </div>
       </div>
 
@@ -546,7 +93,7 @@
       <div class="zone-legend">
         <div class="zone-item">
           <div class="zone-dot risk-on"></div>
-          <span id="threshold-on" data-zh="> +0.6 Risk-On" data-en="> +0.6 Risk-On">> +0.6 Risk-On</span>
+          <span id="threshold-on">> +0.6 Risk-On</span>
         </div>
         <div class="zone-item">
           <div class="zone-dot neutral"></div>
@@ -554,7 +101,7 @@
         </div>
         <div class="zone-item">
           <div class="zone-dot risk-off"></div>
-          <span id="threshold-off" data-zh="< -0.6 Risk-Off" data-en="< -0.6 Risk-Off">< -0.6 Risk-Off</span>
+          <span id="threshold-off">< -0.6 Risk-Off</span>
         </div>
       </div>
 
@@ -563,94 +110,36 @@
         <div class="chart-header">
           <div class="chart-title" data-zh="BMRI 历史走势" data-en="BMRI History">BMRI 历史走势</div>
           <div class="chart-legend">
-            <div class="legend-item fixed" title="阈值线始终显示">
-              <div class="legend-line dashed" style="color: #22c55e;"></div>
-              <span id="legend-on">+0.6</span>
-            </div>
-            <div class="legend-item fixed" title="阈值线始终显示">
-              <div class="legend-line dashed" style="color: #ef4444;"></div>
-              <span id="legend-off">-0.6</span>
-            </div>
-            <div class="legend-item" data-series="bmri" onclick="toggleSeries('bmri')">
-              <div class="legend-line" style="background: #3b82f6;"></div>
-              <span>BMRI</span>
-            </div>
-            <div class="legend-item disabled" data-series="rates" onclick="toggleSeries('rates')">
-              <div class="legend-line" style="background: #06b6d4;"></div>
-              <span>Rates</span>
-            </div>
-            <div class="legend-item disabled" data-series="liq" onclick="toggleSeries('liq')">
-              <div class="legend-line" style="background: #22c55e;"></div>
-              <span>Liquidity</span>
-            </div>
-            <div class="legend-item disabled" data-series="risk" onclick="toggleSeries('risk')">
-              <div class="legend-line" style="background: #f59e0b;"></div>
-              <span>Risk</span>
-            </div>
-            <div class="legend-item disabled" data-series="btcMcap" onclick="toggleSeries('btcMcap')">
-              <div class="legend-line" style="background: #f7931a;"></div>
-              <span data-zh="BTC市值" data-en="BTC MCap">BTC市值</span>
-            </div>
-            <div class="legend-item disabled" data-series="totalMcap" onclick="toggleSeries('totalMcap')">
-              <div class="legend-line" style="background: #8b5cf6;"></div>
-              <span data-zh="总市值" data-en="Total MCap">总市值</span>
-            </div>
+            <div class="legend-item fixed"><div class="legend-line dashed" style="color: #22c55e;"></div><span id="legend-on">+0.6</span></div>
+            <div class="legend-item fixed"><div class="legend-line dashed" style="color: #ef4444;"></div><span id="legend-off">-0.6</span></div>
+            <div class="legend-item" data-series="bmri" onclick="toggleSeries('bmri')"><div class="legend-line" style="background: #3b82f6;"></div><span>BMRI</span></div>
+            <div class="legend-item disabled" data-series="rates" onclick="toggleSeries('rates')"><div class="legend-line" style="background: #06b6d4;"></div><span>Rates</span></div>
+            <div class="legend-item disabled" data-series="liq" onclick="toggleSeries('liq')"><div class="legend-line" style="background: #22c55e;"></div><span>Liquidity</span></div>
+            <div class="legend-item disabled" data-series="risk" onclick="toggleSeries('risk')"><div class="legend-line" style="background: #f59e0b;"></div><span>Risk</span></div>
+            <div class="legend-item disabled" data-series="btcMcap" onclick="toggleSeries('btcMcap')"><div class="legend-line" style="background: #f7931a;"></div><span data-zh="BTC市值" data-en="BTC MCap">BTC市值</span></div>
+            <div class="legend-item disabled" data-series="totalMcap" onclick="toggleSeries('totalMcap')"><div class="legend-line" style="background: #8b5cf6;"></div><span data-zh="总市值" data-en="Total MCap">总市值</span></div>
           </div>
         </div>
         <div class="chart-wrapper" id="chart-container"></div>
-        <div class="chart-tooltip" id="chart-tooltip">
+        <div class="chart-tooltip floating" id="chart-tooltip">
           <div class="tooltip-date" id="tooltip-date">—</div>
-          <div class="tooltip-item" id="tooltip-bmri">
-            <div class="tooltip-dot" style="background: #3b82f6;"></div>
-            <span class="tooltip-label">BMRI:</span>
-            <span class="tooltip-value" id="tooltip-bmri-value">—</span>
-          </div>
-          <div class="tooltip-item" id="tooltip-rates" style="display: none;">
-            <div class="tooltip-dot" style="background: #06b6d4;"></div>
-            <span class="tooltip-label">Rates:</span>
-            <span class="tooltip-value" id="tooltip-rates-value">—</span>
-          </div>
-          <div class="tooltip-item" id="tooltip-liq" style="display: none;">
-            <div class="tooltip-dot" style="background: #22c55e;"></div>
-            <span class="tooltip-label">Liq:</span>
-            <span class="tooltip-value" id="tooltip-liq-value">—</span>
-          </div>
-          <div class="tooltip-item" id="tooltip-risk" style="display: none;">
-            <div class="tooltip-dot" style="background: #f59e0b;"></div>
-            <span class="tooltip-label">Risk:</span>
-            <span class="tooltip-value" id="tooltip-risk-value">—</span>
-          </div>
-          <div class="tooltip-item" id="tooltip-btcMcap" style="display: none;">
-            <div class="tooltip-dot" style="background: #f7931a;"></div>
-            <span class="tooltip-label">BTC:</span>
-            <span class="tooltip-value" id="tooltip-btcMcap-value">—</span>
-          </div>
-          <div class="tooltip-item" id="tooltip-totalMcap" style="display: none;">
-            <div class="tooltip-dot" style="background: #8b5cf6;"></div>
-            <span class="tooltip-label">Total:</span>
-            <span class="tooltip-value" id="tooltip-totalMcap-value">—</span>
-          </div>
+          <div class="tooltip-item" id="tooltip-bmri"><div class="tooltip-dot" style="background: #3b82f6;"></div><span class="tooltip-label">BMRI:</span><span class="tooltip-value" id="tooltip-bmri-value">—</span></div>
+          <div class="tooltip-item" id="tooltip-rates" style="display:none;"><div class="tooltip-dot" style="background: #06b6d4;"></div><span class="tooltip-label">Rates:</span><span class="tooltip-value" id="tooltip-rates-value">—</span></div>
+          <div class="tooltip-item" id="tooltip-liq" style="display:none;"><div class="tooltip-dot" style="background: #22c55e;"></div><span class="tooltip-label">Liq:</span><span class="tooltip-value" id="tooltip-liq-value">—</span></div>
+          <div class="tooltip-item" id="tooltip-risk" style="display:none;"><div class="tooltip-dot" style="background: #f59e0b;"></div><span class="tooltip-label">Risk:</span><span class="tooltip-value" id="tooltip-risk-value">—</span></div>
+          <div class="tooltip-item" id="tooltip-btcMcap" style="display:none;"><div class="tooltip-dot" style="background: #f7931a;"></div><span class="tooltip-label">BTC:</span><span class="tooltip-value" id="tooltip-btcMcap-value">—</span></div>
+          <div class="tooltip-item" id="tooltip-totalMcap" style="display:none;"><div class="tooltip-dot" style="background: #8b5cf6;"></div><span class="tooltip-label">Total:</span><span class="tooltip-value" id="tooltip-totalMcap-value">—</span></div>
         </div>
         <div class="chart-hint" data-zh="💡 拖动平移 · 滚轮缩放 · 双击重置" data-en="💡 Drag to pan · Scroll to zoom · Double-click to reset">💡 拖动平移 · 滚轮缩放 · 双击重置</div>
-        <div class="data-update-time" id="data-update-time" data-zh="数据更新: —" data-en="Data updated: —">数据更新: —</div>
+        <div class="data-update-time" id="data-update-time">—</div>
       </div>
 
-      <!-- Info Section: What is BMRI -->
-      <div class="info-section" style="margin-bottom: 24px;">
+      <!-- Info Sections -->
+      <div class="info-section">
         <h2 class="info-title" data-zh="💡 什么是 BMRI？" data-en="💡 What is BMRI?">💡 什么是 BMRI？</h2>
         <div class="info-text">
-          <p data-zh="BMRI（Bitcoin Macro Risk Index）是一个宏观风险评估指标，帮助你判断「现在的宏观环境对比特币是友好还是不友好」。" 
-             data-en="BMRI (Bitcoin Macro Risk Index) is a macro risk indicator that helps you determine whether the current macro environment is favorable or unfavorable for Bitcoin.">
-            BMRI（Bitcoin Macro Risk Index）是一个宏观风险评估指标，帮助你判断「现在的宏观环境对比特币是友好还是不友好」。
-          </p>
-          <p 
-            >
-            <strong>核心逻辑：</strong>比特币虽然常被称为「数字黄金」，但它本质上是一个风险资产。当全球流动性充裕、利率下降、市场风险偏好上升时，比特币往往表现更好；反之则承压。
-          </p>
-          <p data-zh="BMRI 将这些宏观因素量化成一个数字，给出三种信号：" 
-             data-en="BMRI quantifies these macro factors into a single number, providing three signals:">
-            BMRI 将这些宏观因素量化成一个数字，给出三种信号：
-          </p>
+          <p data-zh="BMRI（Bitcoin Macro Risk Index）是一个宏观风险评估指标，帮助你判断「现在的宏观环境对比特币是友好还是不友好」。" data-en="BMRI (Bitcoin Macro Risk Index) is a macro risk indicator that helps you determine whether the current macro environment is favorable or unfavorable for Bitcoin.">BMRI（Bitcoin Macro Risk Index）是一个宏观风险评估指标，帮助你判断「现在的宏观环境对比特币是友好还是不友好」。</p>
+          <p><strong>核心逻辑：</strong>比特币虽然常被称为「数字黄金」，但它本质上是一个风险资产。当全球流动性充裕、利率下降、市场风险偏好上升时，比特币往往表现更好；反之则承压。</p>
           <div style="background: var(--bg-tertiary); padding: 16px; border-radius: 8px; margin: 12px 0;">
             <p style="margin: 0 0 8px 0;">🟢 <strong>Risk-On</strong>：宏观环境友好，适合持有或加仓</p>
             <p style="margin: 0 0 8px 0;">🟡 <strong>Neutral</strong>：宏观环境中性，维持现有配置</p>
@@ -659,261 +148,39 @@
         </div>
       </div>
 
-      <!-- Info Section: Three Components -->
-      <div class="info-section" style="margin-bottom: 24px;">
+      <div class="info-section">
         <h2 class="info-title" data-zh="📊 三大组成部分" data-en="📊 Three Components">📊 三大组成部分</h2>
         <div class="info-text">
-          <p data-zh="BMRI 由三个「桶」组成，每个桶监测宏观环境的一个维度：" 
-             data-en="BMRI consists of three 'buckets', each monitoring one dimension of the macro environment:">
-            BMRI 由三个「桶」组成，每个桶监测宏观环境的一个维度：
-          </p>
-          
-          <!-- Rates Bucket -->
           <div style="background: var(--bg-tertiary); padding: 20px; border-radius: 12px; margin: 16px 0; border-left: 4px solid var(--blue);">
             <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--blue);">📉 Rates 利率桶（权重 35%）</h3>
-            <p style="margin-bottom: 8px;">
-              <strong>监测什么：</strong>美国国债利率的变化方向
-            </p>
-            <p style="margin-bottom: 8px;" 
-              >
-              <strong>为什么重要：</strong>利率上升 → 资金成本增加 → 风险资产承压。尤其是「实际利率」（扣除通胀后的利率），对比特币影响更大。
-            </p>
-            <p style="color: var(--text-tertiary); font-size: 13px;" data-zh="数据来源：10年期美债名义利率 (DGS10)、10年期 TIPS 实际利率 (DFII10)" 
-               data-en="Data sources: 10Y Treasury Nominal Rate (DGS10), 10Y TIPS Real Rate (DFII10)">
-              数据来源：10年期美债名义利率 (DGS10)、10年期 TIPS 实际利率 (DFII10)
-            </p>
+            <p style="margin-bottom: 8px;"><strong>监测什么：</strong>美国国债利率的变化方向</p>
+            <p style="color: var(--text-tertiary); font-size: 13px;">数据来源：10年期美债名义利率 (DGS10)、10年期 TIPS 实际利率 (DFII10)</p>
           </div>
-
-          <!-- Liquidity Bucket -->
           <div style="background: var(--bg-tertiary); padding: 20px; border-radius: 12px; margin: 16px 0; border-left: 4px solid var(--accent);">
             <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--accent);">💧 Liquidity 流动性桶（权重 35%）</h3>
-            <p style="margin-bottom: 8px;">
-              <strong>监测什么：</strong>全球美元流动性的松紧程度
-            </p>
-            <p style="margin-bottom: 8px;" 
-              >
-              <strong>为什么重要：</strong>流动性是所有资产价格的「水位线」。美联储扩表、美元走弱、逆回购释放 → 市场「水多」→ 有利于比特币。
-            </p>
-            <p style="color: var(--text-tertiary); font-size: 13px;" data-zh="数据来源：美元指数 (DXY)、美联储资产负债表 (WALCL)、隔夜逆回购 (RRP)" 
-               data-en="Data sources: Dollar Index (DXY), Fed Balance Sheet (WALCL), Overnight RRP">
-              数据来源：美元指数 (DXY)、美联储资产负债表 (WALCL)、隔夜逆回购 (RRP)
-            </p>
+            <p style="margin-bottom: 8px;"><strong>监测什么：</strong>全球美元流动性的松紧程度</p>
+            <p style="color: var(--text-tertiary); font-size: 13px;">数据来源：美元指数 (DXY)、美联储资产负债表 (WALCL)、隔夜逆回购 (RRP)</p>
           </div>
-
-          <!-- Risk Bucket -->
           <div style="background: var(--bg-tertiary); padding: 20px; border-radius: 12px; margin: 16px 0; border-left: 4px solid var(--warning);">
             <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--warning);">⚡ Risk 风险偏好桶（权重 30%）</h3>
-            <p style="margin-bottom: 8px;">
-              <strong>监测什么：</strong>市场的恐慌程度和信用风险
-            </p>
-            <p style="margin-bottom: 8px;" 
-              >
-              <strong>为什么重要：</strong>VIX 飙升、高收益债利差走阔 → 市场避险情绪升温 → 资金撤离风险资产（包括 BTC）。
-            </p>
-            <p style="color: var(--text-tertiary); font-size: 13px;" data-zh="数据来源：VIX 恐慌指数 (VIXCLS)、高收益债信用利差 (HY OAS)" 
-               data-en="Data sources: VIX Fear Index (VIXCLS), High Yield Credit Spread (HY OAS)">
-              数据来源：VIX 恐慌指数 (VIXCLS)、高收益债信用利差 (HY OAS)
-            </p>
+            <p style="margin-bottom: 8px;"><strong>监测什么：</strong>市场的恐慌程度和信用风险</p>
+            <p style="color: var(--text-tertiary); font-size: 13px;">数据来源：VIX 恐慌指数 (VIXCLS)、高收益债信用利差 (HY OAS)</p>
           </div>
         </div>
       </div>
 
-      <!-- Info Section: 1M vs 6M -->
-      <div class="info-section" style="margin-bottom: 24px;">
+      <div class="info-section">
         <h2 class="info-title" data-zh="🔄 1M 版 vs 6M 版" data-en="🔄 1M vs 6M Version">🔄 1M 版 vs 6M 版</h2>
         <div class="info-text">
-          <p data-zh="我们提供两个版本的 BMRI，适合不同的使用场景：" 
-             data-en="We offer two BMRI versions for different use cases:">
-            我们提供两个版本的 BMRI，适合不同的使用场景：
-          </p>
-          
           <table class="info-table">
-            <thead>
-              <tr>
-                <th></th>
-                <th>6M 版（推荐）</th>
-                <th>1M 版</th>
-              </tr>
-            </thead>
+            <thead><tr><th></th><th>6M 版（推荐）</th><th>1M 版</th></tr></thead>
             <tbody>
-              <tr>
-                <td style="font-weight: 500;">适用周期</td>
-                <td data-zh="1-6 个月调仓" data-en="1-6 month rebalancing">1-6 个月调仓</td>
-                <td data-zh="1-4 周调仓" data-en="1-4 week rebalancing">1-4 周调仓</td>
-              </tr>
-              <tr>
-                <td style="font-weight: 500;">信号特点</td>
-                <td data-zh="更稳定，过滤噪音" data-en="More stable, filters noise">更稳定，过滤噪音</td>
-                <td data-zh="更敏感，快速响应" data-en="More sensitive, faster">更敏感，快速响应</td>
-              </tr>
-              <tr>
-                <td style="font-weight: 500;">观察窗口</td>
-                <td data-zh="60 天变化" data-en="60-day changes">60 天变化</td>
-                <td data-zh="5-20 天变化" data-en="5-20 day changes">5-20 天变化</td>
-              </tr>
-              <tr>
-                <td style="font-weight: 500;">阈值</td>
-                <td>±0.6</td>
-                <td>±0.5</td>
-              </tr>
-              <tr>
-                <td style="font-weight: 500;">适合人群</td>
-                <td data-zh="长线投资者" data-en="Long-term investors">长线投资者</td>
-                <td data-zh="短线交易者" data-en="Short-term traders">短线交易者</td>
-              </tr>
+              <tr><td style="font-weight: 500;">适用周期</td><td>1-6 个月调仓</td><td>1-4 周调仓</td></tr>
+              <tr><td style="font-weight: 500;">信号特点</td><td>更稳定，过滤噪音</td><td>更敏感，快速响应</td></tr>
+              <tr><td style="font-weight: 500;">阈值</td><td>±0.6</td><td>±0.5</td></tr>
             </tbody>
           </table>
-
-          <div style="background: var(--accent-dim); padding: 16px; border-radius: 8px; margin-top: 16px; border: 1px solid rgba(34, 197, 94, 0.3);">
-            <p style="margin: 0; color: var(--accent);">💡 <strong data-zh="建议：" data-en="Tip: ">建议：</strong><span data-zh="大多数投资者使用 6M 版作为主要参考。如果你需要更及时的短期预警，可以叠加参考 1M 版。" data-en="Most investors should use 6M version. Add 1M version for short-term alerts if needed.">大多数投资者使用 6M 版作为主要参考。如果你需要更及时的短期预警，可以叠加参考 1M 版。</span></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Info Section: How to Use -->
-      <div class="info-section" style="margin-bottom: 24px;">
-        <h2 class="info-title" data-zh="🎯 如何使用 BMRI" data-en="🎯 How to Use BMRI">🎯 如何使用 BMRI</h2>
-        <div class="info-text">
-          <p data-zh="BMRI 是一个「宏观滤网」，不是精确的买卖信号。建议这样使用：" 
-             data-en="BMRI is a 'macro filter', not a precise buy/sell signal. Here's how to use it:">
-            BMRI 是一个「宏观滤网」，不是精确的买卖信号。建议这样使用：
-          </p>
-          
-          <div style="display: grid; gap: 16px; margin: 16px 0;">
-            <div style="background: var(--bg-tertiary); padding: 16px; border-radius: 8px;">
-              <p style="margin: 0 0 8px 0; font-weight: 500;">🟢 当 BMRI 处于 Risk-On 区域</p>
-              <ul style="margin: 0; padding-left: 20px; color: var(--text-secondary);">
-                <li data-zh="宏观环境支持风险资产，可以保持或增加 BTC 仓位" data-en="Macro supports risk assets, maintain or increase BTC position">宏观环境支持风险资产，可以保持或增加 BTC 仓位</li>
-                <li data-zh="定投计划可以正常执行或加大力度" data-en="DCA plan can continue or increase">定投计划可以正常执行或加大力度</li>
-              </ul>
-            </div>
-            <div style="background: var(--bg-tertiary); padding: 16px; border-radius: 8px;">
-              <p style="margin: 0 0 8px 0; font-weight: 500;">🟡 当 BMRI 处于 Neutral 区域</p>
-              <ul style="margin: 0; padding-left: 20px; color: var(--text-secondary);">
-                <li data-zh="维持现有配置，不做大幅调整" data-en="Maintain current allocation, no major changes">维持现有配置，不做大幅调整</li>
-                <li data-zh="关注 BMRI 的变化方向（上升还是下降）" data-en="Watch BMRI direction (rising or falling)">关注 BMRI 的变化方向（上升还是下降）</li>
-              </ul>
-            </div>
-            <div style="background: var(--bg-tertiary); padding: 16px; border-radius: 8px;">
-              <p style="margin: 0 0 8px 0; font-weight: 500;">🔴 当 BMRI 处于 Risk-Off 区域</p>
-              <ul style="margin: 0; padding-left: 20px; color: var(--text-secondary);">
-                <li data-zh="宏观逆风，考虑降低风险敞口" data-en="Macro headwinds, consider reducing risk exposure">宏观逆风，考虑降低风险敞口</li>
-                <li data-zh="可以暂停定投，等待更好的宏观窗口" data-en="May pause DCA, wait for better macro conditions">可以暂停定投，等待更好的宏观窗口</li>
-                <li data-zh="注意：不是让你清仓，而是谨慎行事" data-en="Note: Not suggesting to sell all, but to be cautious">注意：不是让你清仓，而是谨慎行事</li>
-              </ul>
-            </div>
-          </div>
-
-          <div style="background: var(--warning-dim); padding: 16px; border-radius: 8px; margin-top: 16px; border: 1px solid rgba(245, 158, 11, 0.3);">
-            <p style="margin: 0; color: var(--warning);">⚠️ <strong data-zh="重要提示：" data-en="Important: ">重要提示：</strong><span data-zh="BMRI 关注的是宏观背景，不能预测短期价格波动。即使 Risk-On，BTC 也可能因其他因素下跌；即使 Risk-Off，BTC 也可能反弹。它帮你判断「大环境」，不是择时工具。" data-en="BMRI focuses on macro backdrop, not short-term price prediction. BTC can drop even in Risk-On and rally in Risk-Off. It helps assess the 'big picture', not timing.">BMRI 关注的是宏观背景，不能预测短期价格波动。即使 Risk-On，BTC 也可能因其他因素下跌；即使 Risk-Off，BTC 也可能反弹。它帮你判断「大环境」，不是择时工具。</span></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Info Section: Backtest -->
-      <div class="info-section" style="margin-bottom: 24px;">
-        <h2 class="info-title" data-zh="📈 历史回测" data-en="📈 Historical Backtest">📈 历史回测</h2>
-        <div class="info-text">
-          <p data-zh="我们对 BMRI 进行了历史回测（2017-08 至 2026-02），按 BMRI 分位数分组，统计未来收益：" 
-             data-en="We backtested BMRI (2017-08 to 2026-02), grouping by BMRI percentiles and measuring future returns:">
-            我们对 BMRI 进行了历史回测（2017-08 至 2026-02），按 BMRI 分位数分组，统计未来收益：
-          </p>
-          
-          <p style="margin: 16px 0 8px 0; font-weight: 500;" data-zh="6M 版回测结果（分位桶平均未来 6 个月收益）：" 
-             data-en="6M Version Backtest (Avg 6-Month Forward Return by Quintile):">
-            6M 版回测结果（分位桶平均未来 6 个月收益）：
-          </p>
-          
-          <div style="display: flex; gap: 8px; margin: 12px 0; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 80px; background: var(--danger-dim); padding: 12px; border-radius: 8px; text-align: center;">
-              <div style="font-size: 12px; color: var(--text-tertiary);">桶 0 (最低)</div>
-              <div style="font-size: 18px; font-weight: 600; font-family: 'JetBrains Mono'; color: var(--danger);">+5.5%</div>
-            </div>
-            <div style="flex: 1; min-width: 80px; background: var(--bg-tertiary); padding: 12px; border-radius: 8px; text-align: center;">
-              <div style="font-size: 12px; color: var(--text-tertiary);">桶 1</div>
-              <div style="font-size: 18px; font-weight: 600; font-family: 'JetBrains Mono';">+19.9%</div>
-            </div>
-            <div style="flex: 1; min-width: 80px; background: var(--bg-tertiary); padding: 12px; border-radius: 8px; text-align: center;">
-              <div style="font-size: 12px; color: var(--text-tertiary);">桶 2</div>
-              <div style="font-size: 18px; font-weight: 600; font-family: 'JetBrains Mono';">+39.8%</div>
-            </div>
-            <div style="flex: 1; min-width: 80px; background: var(--bg-tertiary); padding: 12px; border-radius: 8px; text-align: center;">
-              <div style="font-size: 12px; color: var(--text-tertiary);">桶 3</div>
-              <div style="font-size: 18px; font-weight: 600; font-family: 'JetBrains Mono';">+50.2%</div>
-            </div>
-            <div style="flex: 1; min-width: 80px; background: var(--accent-dim); padding: 12px; border-radius: 8px; text-align: center;">
-              <div style="font-size: 12px; color: var(--text-tertiary);">桶 4 (最高)</div>
-              <div style="font-size: 18px; font-weight: 600; font-family: 'JetBrains Mono'; color: var(--accent);">+80.0%</div>
-            </div>
-          </div>
-          
-          <p style="color: var(--text-secondary);" data-zh="规律很清晰：BMRI 越高（宏观环境越好），未来 6 个月 BTC 的平均收益越高。最高分位的平均收益是最低分位的 14 倍以上。" 
-             data-en="Clear pattern: Higher BMRI (better macro) correlates with higher 6-month BTC returns. Top quintile averages 14x the return of the bottom.">
-            规律很清晰：BMRI 越高（宏观环境越好），未来 6 个月 BTC 的平均收益越高。最高分位的平均收益是最低分位的 14 倍以上。
-          </p>
-        </div>
-      </div>
-
-      <!-- Info Section: Data Sources -->
-      <div class="info-section">
-        <h2 class="info-title" data-zh="📚 数据来源" data-en="📚 Data Sources">📚 数据来源</h2>
-        <div class="info-text">
-          <p data-zh="BMRI 的所有数据来自美联储经济数据库（FRED），确保透明和可验证：" 
-             data-en="All BMRI data comes from FRED (Federal Reserve Economic Data), ensuring transparency and verifiability:">
-            BMRI 的所有数据来自美联储经济数据库（FRED），确保透明和可验证：
-          </p>
-          
-          <table class="info-table">
-            <thead>
-              <tr>
-                <th data-zh="指标" data-en="Indicator">指标</th>
-                <th data-zh="FRED 代码" data-en="FRED Code">FRED 代码</th>
-                <th data-zh="频率" data-en="Frequency">频率</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td data-zh="10年期美债利率" data-en="10Y Treasury Rate">10年期美债利率</td>
-                <td><a href="https://fred.stlouisfed.org/series/DGS10" target="_blank" style="color: var(--blue);">DGS10</a></td>
-                <td data-zh="日频" data-en="Daily">日频</td>
-              </tr>
-              <tr>
-                <td data-zh="10年期实际利率" data-en="10Y Real Rate (TIPS)">10年期实际利率</td>
-                <td><a href="https://fred.stlouisfed.org/series/DFII10" target="_blank" style="color: var(--blue);">DFII10</a></td>
-                <td data-zh="日频" data-en="Daily">日频</td>
-              </tr>
-              <tr>
-                <td data-zh="美元指数" data-en="Dollar Index">美元指数</td>
-                <td><a href="https://fred.stlouisfed.org/series/DTWEXBGS" target="_blank" style="color: var(--blue);">DTWEXBGS</a></td>
-                <td data-zh="日频" data-en="Daily">日频</td>
-              </tr>
-              <tr>
-                <td data-zh="美联储资产负债表" data-en="Fed Balance Sheet">美联储资产负债表</td>
-                <td><a href="https://fred.stlouisfed.org/series/WALCL" target="_blank" style="color: var(--blue);">WALCL</a></td>
-                <td data-zh="周频" data-en="Weekly">周频</td>
-              </tr>
-              <tr>
-                <td data-zh="隔夜逆回购" data-en="Overnight RRP">隔夜逆回购</td>
-                <td><a href="https://fred.stlouisfed.org/series/RRPONTTLD" target="_blank" style="color: var(--blue);">RRPONTTLD</a></td>
-                <td data-zh="日频" data-en="Daily">日频</td>
-              </tr>
-              <tr>
-                <td data-zh="VIX 恐慌指数" data-en="VIX Index">VIX 恐慌指数</td>
-                <td><a href="https://fred.stlouisfed.org/series/VIXCLS" target="_blank" style="color: var(--blue);">VIXCLS</a></td>
-                <td data-zh="日频" data-en="Daily">日频</td>
-              </tr>
-              <tr>
-                <td data-zh="高收益债利差" data-en="HY Credit Spread">高收益债利差</td>
-                <td><a href="https://fred.stlouisfed.org/series/BAMLH0A0HYM2" target="_blank" style="color: var(--blue);">BAMLH0A0HYM2</a></td>
-                <td data-zh="日频" data-en="Daily">日频</td>
-              </tr>
-            </tbody>
-          </table>
-          
-          <p style="color: var(--text-tertiary); font-size: 13px; margin-top: 16px;" data-zh="⚠️ 数据许可：ICE BofA OAS 和 VIX 系列在 FRED 上标注为版权受限数据，本站仅用于教育和研究目的。" 
-             data-en="⚠️ Data License: ICE BofA OAS and VIX series on FRED are copyright-restricted. This site is for educational and research purposes only.">
-            ⚠️ 数据许可：ICE BofA OAS 和 VIX 系列在 FRED 上标注为版权受限数据，本站仅用于教育和研究目的。
-          </p>
+          <div class="disclaimer">💡 <strong>建议：</strong>大多数投资者使用 6M 版作为主要参考。如果你需要更及时的短期预警，可以叠加参考 1M 版。</div>
         </div>
       </div>
     </div>
@@ -926,59 +193,38 @@
   </footer>
 
   <script>
-    let currentLang = 'zh';
+    // === State ===
     let currentVersion = '6m';
     let bmriData = null;
+    let mcapData = null;
     let chart = null;
     let series = {};
     let zones = {};
     let seriesVisible = { bmri: true, rates: false, liq: false, risk: false, btcMcap: false, totalMcap: false };
-    let mcapData = null;
-    let defaultRange = { from: 0, to: 0 };
+    let defaultRange = null;
     let historyData = {};
     let currentThresholds = { on: 0.6, off: -0.6 };
 
-    // Format market cap value
-    function formatMcap(value) {
-      if (value >= 1e12) return '$' + (value / 1e12).toFixed(2) + 'T';
-      if (value >= 1e9) return '$' + (value / 1e9).toFixed(0) + 'B';
-      return '$' + value.toLocaleString();
-    }
-
-    // Format time to YYYY/MM/DD
-    function formatTime(time) {
-      if (!time) return '—';
-      if (typeof time === 'string') {
-        const parts = time.split('-');
-        if (parts.length === 3) return `${parts[0]}/${parts[1]}/${parts[2]}`;
-        return time;
+    // === Regime Logic ===
+    function getRegimeInfo(regime) {
+      const lang = LangUtils.get();
+      if (regime === 'RISK_ON') {
+        return { class: 'risk-on', label: lang === 'zh' ? '风险开启' : 'Risk-On', state: '🟢 Risk-On', hint: lang === 'zh' ? '宏观环境友好，适合持有或加仓' : 'Favorable macro, hold or add' };
+      } else if (regime === 'RISK_OFF') {
+        return { class: 'risk-off', label: lang === 'zh' ? '风险关闭' : 'Risk-Off', state: '🔴 Risk-Off', hint: lang === 'zh' ? '宏观环境恶化，考虑减仓或对冲' : 'Unfavorable macro, reduce or hedge' };
       }
-      if (typeof time === 'number') {
-        const date = new Date(time * 1000);
-        return `${date.getFullYear()}/${String(date.getMonth() + 1).padStart(2, '0')}/${String(date.getDate()).padStart(2, '0')}`;
-      }
-      if (time.year !== undefined) {
-        return `${time.year}/${String(time.month).padStart(2, '0')}/${String(time.day).padStart(2, '0')}`;
-      }
-      return '—';
+      return { class: 'neutral', label: lang === 'zh' ? '中性' : 'Neutral', state: '🟡 Neutral', hint: lang === 'zh' ? '宏观环境中性，维持现有配置' : 'Neutral macro, maintain position' };
     }
 
-    function toggleLang() {
-      currentLang = currentLang === 'zh' ? 'en' : 'zh';
-      updateLang();
-      if (bmriData) updateDisplay();
+    function updateBucketBar(id, value) {
+      const bar = document.getElementById(id);
+      if (!bar || value === null) return;
+      const percent = Math.min(100, Math.max(0, (value + 1) * 50)); // -1~1 -> 0~100
+      bar.style.width = percent + '%';
+      bar.className = 'bucket-fill ' + (value >= 0 ? 'positive' : 'negative');
     }
 
-    function updateLang() {
-      document.getElementById('lang-zh').className = currentLang === 'zh' ? 'active' : '';
-      document.getElementById('lang-en').className = currentLang === 'en' ? 'active' : '';
-      document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
-      document.querySelectorAll('[data-zh]').forEach(el => {
-        el.textContent = el.getAttribute(`data-${currentLang}`);
-      });
-      localStorage.setItem('lang', currentLang);
-    }
-
+    // === Version Switch ===
     function switchVersion(version) {
       currentVersion = version;
       document.querySelectorAll('.version-tab').forEach(tab => {
@@ -987,71 +233,26 @@
       if (bmriData) updateDisplay();
     }
 
-    function getRegimeInfo(regime) {
-      if (regime === 'RISK_ON') {
-        return { 
-          class: 'risk-on', 
-          label: currentLang === 'zh' ? '风险开启' : 'Risk-On', 
-          state: '🟢 Risk-On',
-          hint: currentLang === 'zh' ? '宏观环境友好，适合持有或加仓' : 'Favorable macro, hold or add'
-        };
-      } else if (regime === 'RISK_OFF') {
-        return { 
-          class: 'risk-off', 
-          label: currentLang === 'zh' ? '风险关闭' : 'Risk-Off', 
-          state: '🔴 Risk-Off',
-          hint: currentLang === 'zh' ? '宏观环境恶化，考虑减仓或对冲' : 'Unfavorable macro, reduce or hedge'
-        };
-      } else {
-        return { 
-          class: 'neutral', 
-          label: currentLang === 'zh' ? '中性' : 'Neutral', 
-          state: '🟡 Neutral',
-          hint: currentLang === 'zh' ? '宏观环境中性，维持现有配置' : 'Neutral macro, maintain position'
-        };
-      }
-    }
-
-    function updateBucketBar(id, value) {
-      const bar = document.getElementById(id);
-      if (!bar || value === null) return;
-      const percent = Math.min(100, Math.max(0, value));
-      bar.style.width = percent + '%';
-      bar.className = 'bucket-fill ' + (value >= 0 ? 'positive' : 'negative');
-    }
-
+    // === Chart Controls ===
     function toggleSeries(name) {
-      if (!series[name]) return;
-      seriesVisible[name] = !seriesVisible[name];
-      series[name].applyOptions({ visible: seriesVisible[name] });
-      
-      // Toggle zone backgrounds with BMRI
-      if (name === 'bmri') {
-        if (zones.green) zones.green.applyOptions({ visible: seriesVisible[name] });
-        if (zones.red) zones.red.applyOptions({ visible: seriesVisible[name] });
-      }
-      
-      // Update tooltip visibility
-      const tooltipItem = document.getElementById(`tooltip-${name}`);
-      if (tooltipItem) tooltipItem.style.display = seriesVisible[name] ? 'flex' : 'none';
-      
-      const legendItem = document.querySelector(`.legend-item[data-series="${name}"]`);
-      if (legendItem) legendItem.classList.toggle('disabled', !seriesVisible[name]);
+      toggleSeriesVisibility(series, seriesVisible, name, { bmri: zones });
+      const el = document.getElementById(`tooltip-${name}`);
+      if (el) el.style.display = seriesVisible[name] ? 'flex' : 'none';
     }
 
     function resetChart() {
-      if (!chart || !defaultRange.from) return;
-      chart.timeScale().setVisibleRange(defaultRange);
+      if (chart && defaultRange) chart.timeScale().setVisibleRange(defaultRange);
     }
 
+    // === Display Update ===
     function updateDisplay() {
+      if (!bmriData) return;
       const versionData = bmriData[currentVersion];
       const current = versionData.current;
       const thresholds = versionData.thresholds;
       currentThresholds = thresholds;
       const regimeInfo = getRegimeInfo(current.regime);
 
-      // Update main value
       document.getElementById('bmri-value').textContent = current.value.toFixed(1);
       document.getElementById('bmri-value').className = `stat-value ${regimeInfo.class}`;
       document.getElementById('bmri-regime').textContent = regimeInfo.label;
@@ -1059,333 +260,124 @@
       document.getElementById('regime-hint').textContent = regimeInfo.hint;
       document.getElementById('update-date').textContent = current.date;
 
-      // Update bucket values
       document.getElementById('rates-value').textContent = current.rates !== null ? current.rates.toFixed(2) : '—';
       document.getElementById('liq-value').textContent = current.liq !== null ? current.liq.toFixed(2) : '—';
       document.getElementById('risk-value').textContent = current.risk !== null ? current.risk.toFixed(2) : '—';
 
-      // Update bucket bars
       updateBucketBar('rates-bar', current.rates);
       updateBucketBar('liq-bar', current.liq);
       updateBucketBar('risk-bar', current.risk);
 
-      // Update thresholds display
-      document.getElementById('threshold-on').textContent = `< ${thresholds.on} Risk-On`;
-      document.getElementById('threshold-off').textContent = `> ${thresholds.off} Risk-Off`;
+      document.getElementById('threshold-on').textContent = `> ${thresholds.on} Risk-On`;
+      document.getElementById('threshold-off').textContent = `< ${thresholds.off} Risk-Off`;
       document.getElementById('legend-on').textContent = `${thresholds.on}`;
       document.getElementById('legend-off').textContent = `${thresholds.off}`;
 
-      // Draw chart
+      if (bmriData.updated_at) {
+        const prefix = LangUtils.get() === 'zh' ? '数据更新: ' : 'Data updated: ';
+        document.getElementById('data-update-time').textContent = prefix + bmriData.updated_at;
+      }
+
       drawChart(versionData.history, thresholds);
     }
 
-    function drawChart(history, thresholds) {
-      const container = document.getElementById('chart-container');
-      
-      // Destroy existing chart
-      if (chart) {
-        chart.remove();
-        chart = null;
-        series = {};
-        zones = {};
-      }
-      
-      chart = LightweightCharts.createChart(container, {
-        layout: {
-          background: { type: 'solid', color: 'transparent' },
-          textColor: '#a1a1aa',
-          fontFamily: "'Inter', sans-serif",
-        },
-        grid: {
-          vertLines: { color: 'rgba(39, 39, 42, 0.5)' },
-          horzLines: { color: 'rgba(39, 39, 42, 0.5)' },
-        },
-        crosshair: {
-          mode: LightweightCharts.CrosshairMode.Normal,
-          vertLine: { color: 'rgba(59, 130, 246, 0.5)', labelBackgroundColor: '#3b82f6' },
-          horzLine: { color: 'rgba(59, 130, 246, 0.5)', labelBackgroundColor: '#3b82f6' },
-        },
-        rightPriceScale: {
-          borderColor: '#27272a',
-          scaleMargins: { top: 0.1, bottom: 0.1 },
-        },
-        leftPriceScale: {
-          visible: true,
-          borderColor: '#27272a',
-          scaleMargins: { top: 0.1, bottom: 0.1 },
-          mode: LightweightCharts.PriceScaleMode.Logarithmic,
-        },
-        timeScale: {
-          borderColor: '#27272a',
-          timeVisible: false,
-          secondsVisible: false,
-          minBarSpacing: 0.1,
-          tickMarkFormatter: (time) => {
-            if (typeof time === 'string') return time.substring(0, 4);
-            if (typeof time === 'number') return new Date(time * 1000).getFullYear().toString();
-            if (time.year !== undefined) return time.year.toString();
-            return '';
-          },
-        },
-        handleScroll: { mouseWheel: true, pressedMouseMove: true },
-        handleScale: { axisPressedMouseMove: true, mouseWheel: true, pinch: true },
-      });
-
-      // Resize handler
-      const resizeObserver = new ResizeObserver(entries => {
-        if (entries.length === 0) return;
-        const { width, height } = entries[0].contentRect;
-        chart.applyOptions({ width, height });
-      });
-      resizeObserver.observe(container);
-
-      // Prepare data
-      const bmriDataArr = history.map(d => ({ time: d.date, value: d.bmri }));
-      const ratesDataArr = history.map(d => ({ time: d.date, value: d.rates })).filter(d => d.value !== null);
-      const liqDataArr = history.map(d => ({ time: d.date, value: d.liq })).filter(d => d.value !== null);
-      const riskDataArr = history.map(d => ({ time: d.date, value: d.risk })).filter(d => d.value !== null);
-
-      // Build lookup table for tooltip
-      historyData = {};
-      history.forEach(d => { historyData[d.date] = d; });
-
-      const lastDate = history[history.length - 1].date;
-
-      // Zone backgrounds (BMRI 0-100: lower=safer, higher=riskier)
-      zones.green = chart.addBaselineSeries({
-        baseValue: { type: 'price', price: thresholds.on },
-        topLineColor: 'transparent',
-        topFillColor1: 'transparent',
-        topFillColor2: 'transparent',
-        bottomLineColor: 'transparent',
-        bottomFillColor1: 'rgba(34, 197, 94, 0.08)',
-        bottomFillColor2: 'rgba(34, 197, 94, 0.25)',
-        priceScaleId: 'right',
-        lastValueVisible: false,
-        priceLineVisible: false,
-      });
-      zones.green.setData(bmriDataArr);
-
-      zones.red = chart.addBaselineSeries({
-        baseValue: { type: 'price', price: thresholds.off },
-        topLineColor: 'transparent',
-        topFillColor1: 'rgba(239, 68, 68, 0.08)',
-        topFillColor2: 'rgba(239, 68, 68, 0.25)',
-        bottomLineColor: 'transparent',
-        bottomFillColor1: 'transparent',
-        bottomFillColor2: 'transparent',
-        priceScaleId: 'right',
-        lastValueVisible: false,
-        priceLineVisible: false,
-      });
-      zones.red.setData(bmriDataArr);
-
-      // Add future whitespace (90 days)
-      const lastDateObj = new Date(lastDate);
-      for (let i = 1; i <= 90; i++) {
-        const d = new Date(lastDateObj);
-        d.setDate(d.getDate() + i);
-        bmriDataArr.push({ time: d.toISOString().split('T')[0] });
-      }
-
-      // BMRI Series
-      series.bmri = chart.addLineSeries({
-        color: '#3b82f6',
-        lineWidth: 2,
-        priceScaleId: 'right',
-        priceFormat: { type: 'price', precision: 1, minMove: 0.1 },
-        lastValueVisible: false,
-        priceLineVisible: false,
-      });
-      series.bmri.setData(bmriDataArr);
-
-      // Threshold lines
-      series.bmri.createPriceLine({
-        price: thresholds.on,
-        color: '#22c55e',
-        lineWidth: 1,
-        lineStyle: LightweightCharts.LineStyle.Dashed,
-        axisLabelVisible: true,
-      });
-      series.bmri.createPriceLine({
-        price: thresholds.off,
-        color: '#ef4444',
-        lineWidth: 1,
-        lineStyle: LightweightCharts.LineStyle.Dashed,
-        axisLabelVisible: true,
-      });
-      series.bmri.createPriceLine({
-        price: 0,
-        color: 'rgba(161, 161, 170, 0.3)',
-        lineWidth: 1,
-        lineStyle: LightweightCharts.LineStyle.Dashed,
-        axisLabelVisible: false,
-      });
-
-      // Rates Series (hidden by default)
-      series.rates = chart.addLineSeries({
-        color: '#06b6d4',
-        lineWidth: 1.5,
-        priceScaleId: 'right',
-        priceFormat: { type: 'price', precision: 2, minMove: 0.01 },
-        lastValueVisible: false,
-        priceLineVisible: false,
-        visible: false,
-      });
-      series.rates.setData(ratesDataArr);
-
-      // Liquidity Series (hidden by default)
-      series.liq = chart.addLineSeries({
-        color: '#22c55e',
-        lineWidth: 1.5,
-        priceScaleId: 'right',
-        priceFormat: { type: 'price', precision: 2, minMove: 0.01 },
-        lastValueVisible: false,
-        priceLineVisible: false,
-        visible: false,
-      });
-      series.liq.setData(liqDataArr);
-
-      // Risk Series (hidden by default)
-      series.risk = chart.addLineSeries({
-        color: '#f59e0b',
-        lineWidth: 1.5,
-        priceScaleId: 'right',
-        priceFormat: { type: 'price', precision: 2, minMove: 0.01 },
-        lastValueVisible: false,
-        priceLineVisible: false,
-        visible: false,
-      });
-      series.risk.setData(riskDataArr);
-
-      // BTC Market Cap Series (left axis, hidden by default)
-      series.btcMcap = chart.addLineSeries({
-        color: '#f7931a',
-        lineWidth: 1.5,
-        priceScaleId: 'left',
-        priceFormat: { 
-          type: 'custom',
-          formatter: (price) => {
-            if (price >= 1e12) return (price / 1e12).toFixed(2) + 'T';
-            if (price >= 1e9) return (price / 1e9).toFixed(0) + 'B';
-            return price.toLocaleString();
-          }
-        },
-        lastValueVisible: false,
-        priceLineVisible: false,
-        visible: false,
-      });
-
-      // Total Market Cap Series (left axis, hidden by default)
-      series.totalMcap = chart.addLineSeries({
-        color: '#8b5cf6',
-        lineWidth: 1.5,
-        priceScaleId: 'left',
-        priceFormat: { 
-          type: 'custom',
-          formatter: (price) => {
-            if (price >= 1e12) return (price / 1e12).toFixed(2) + 'T';
-            if (price >= 1e9) return (price / 1e9).toFixed(0) + 'B';
-            return price.toLocaleString();
-          }
-        },
-        lastValueVisible: false,
-        priceLineVisible: false,
-        visible: false,
-      });
-
-      // Load market cap data if available
-      if (mcapData) {
-        const btcMcapArr = mcapData.filter(d => d.btc_mcap).map(d => ({ time: d.date, value: d.btc_mcap }));
-        const totalMcapArr = mcapData.filter(d => d.total_mcap).map(d => ({ time: d.date, value: d.total_mcap }));
-        if (btcMcapArr.length > 0) series.btcMcap.setData(btcMcapArr);
-        if (totalMcapArr.length > 0) series.totalMcap.setData(totalMcapArr);
-        // Merge mcap data into historyData for tooltip
-        mcapData.forEach(d => {
-          if (historyData[d.date]) {
-            historyData[d.date].btc_mcap = d.btc_mcap;
-            historyData[d.date].total_mcap = d.total_mcap;
-          }
-        });
-      }
-
-      // Double-click to reset
-      container.addEventListener('dblclick', resetChart);
-
-      // Crosshair tooltip
-      const tooltip = document.getElementById('chart-tooltip');
-      chart.subscribeCrosshairMove(param => {
-        if (!param.time || !param.point || param.point.x < 0) {
-          tooltip.classList.remove('visible');
-          return;
-        }
-        
-        const dateStr = typeof param.time === 'string' ? param.time : 
-          `${param.time.year}-${String(param.time.month).padStart(2, '0')}-${String(param.time.day).padStart(2, '0')}`;
-        const data = historyData[dateStr];
-        
-        if (data) {
-          document.getElementById('tooltip-date').textContent = formatTime(param.time);
-          document.getElementById('tooltip-bmri-value').textContent = data.bmri?.toFixed(1) ?? '—';
-          document.getElementById('tooltip-rates-value').textContent = data.rates?.toFixed(2) ?? '—';
-          document.getElementById('tooltip-liq-value').textContent = data.liq?.toFixed(2) ?? '—';
-          document.getElementById('tooltip-risk-value').textContent = data.risk?.toFixed(2) ?? '—';
-          document.getElementById('tooltip-btcMcap-value').textContent = data.btc_mcap ? formatMcap(data.btc_mcap) : '—';
-          document.getElementById('tooltip-totalMcap-value').textContent = data.total_mcap ? formatMcap(data.total_mcap) : '—';
-          tooltip.classList.add('visible');
-        } else {
-          tooltip.classList.remove('visible');
-        }
-      });
-
-      // Set default range starting from 2014
-      const startTs = new Date('2014-01-01T00:00:00Z').getTime() / 1000;
-      const endTs = new Date(lastDate + 'T00:00:00Z').getTime() / 1000;
-      defaultRange = { from: startTs, to: endTs };
-      
-      setTimeout(() => {
-        chart.timeScale().setVisibleRange(defaultRange);
-      }, 100);
-    }
-
+    // === Data Loading ===
     async function loadData() {
       try {
-        // Load BMRI data
-        const bmriRes = await fetch('../indicators/data/bmri.json');
-        const rawBmriData = await bmriRes.json();
-        
-        // Extract updated_at and set it
-        if (rawBmriData.updated_at) {
-          const updateEl = document.getElementById('data-update-time');
-          const prefix = currentLang === 'zh' ? '数据更新: ' : 'Data updated: ';
-          updateEl.textContent = prefix + rawBmriData.updated_at;
-        }
-        
-        // Store the data (keeping existing structure reference)
-        bmriData = rawBmriData;
-        
-        // Try to load market cap data
-        try {
-          const mcapRes = await fetch('../indicators/data/marketcap.json');
-          mcapData = await mcapRes.json();
-        } catch (e) {
-          console.log('Market cap data not available');
-          mcapData = null;
-        }
-        
+        const [bmriRes, mcapRes] = await Promise.all([
+          fetch('../indicators/data/bmri.json'),
+          fetch('../indicators/data/mcap.json').catch(() => null)
+        ]);
+        bmriData = await bmriRes.json();
+        if (mcapRes) mcapData = await mcapRes.json();
         updateDisplay();
       } catch (err) {
         console.error('Failed to load data:', err);
       }
     }
 
-    // Init
-    document.addEventListener('DOMContentLoaded', () => {
-      const saved = localStorage.getItem('lang');
-      if (saved) {
-        currentLang = saved;
-        updateLang();
+    // === Chart Drawing ===
+    function drawChart(history, thresholds) {
+      if (chart) { chart.remove(); chart = null; series = {}; zones = {}; }
+
+      chart = createChart('chart-container', {
+        leftPriceScale: { visible: true, mode: LightweightCharts.PriceScaleMode.Logarithmic },
+      });
+
+      // Prepare data
+      const bmriDataArr = history.map(d => ({ time: d.date, value: d.bmri }));
+      const ratesDataArr = history.filter(d => d.rates !== null).map(d => ({ time: d.date, value: d.rates }));
+      const liqDataArr = history.filter(d => d.liq !== null).map(d => ({ time: d.date, value: d.liq }));
+      const riskDataArr = history.filter(d => d.risk !== null).map(d => ({ time: d.date, value: d.risk }));
+      historyData = buildHistoryLookup(history);
+      const lastDate = history[history.length - 1].date;
+
+      // Zone backgrounds
+      zones.green = createZoneSeries(chart, thresholds.on, { bottomFill1: 'rgba(34, 197, 94, 0.08)', bottomFill2: 'rgba(34, 197, 94, 0.25)' });
+      zones.green.setData(bmriDataArr);
+      zones.red = createZoneSeries(chart, thresholds.off, { topFill1: 'rgba(239, 68, 68, 0.08)', topFill2: 'rgba(239, 68, 68, 0.25)' });
+      zones.red.setData(bmriDataArr);
+
+      // BMRI Series
+      const bmriWithWhitespace = addFutureWhitespace(bmriDataArr, lastDate, 90);
+      series.bmri = chart.addLineSeries({ color: '#3b82f6', lineWidth: 2, priceScaleId: 'right', priceFormat: { type: 'price', precision: 1, minMove: 0.1 }, lastValueVisible: false, priceLineVisible: false });
+      series.bmri.setData(bmriWithWhitespace);
+
+      createThresholdLine(series.bmri, thresholds.on, '#22c55e');
+      createThresholdLine(series.bmri, thresholds.off, '#ef4444');
+      createThresholdLine(series.bmri, 0, 'rgba(161, 161, 170, 0.3)', { axisLabelVisible: false });
+
+      // Bucket series (hidden)
+      series.rates = chart.addLineSeries({ color: '#06b6d4', lineWidth: 1.5, priceScaleId: 'right', priceFormat: { type: 'price', precision: 2, minMove: 0.01 }, lastValueVisible: false, priceLineVisible: false, visible: false });
+      series.rates.setData(ratesDataArr);
+
+      series.liq = chart.addLineSeries({ color: '#22c55e', lineWidth: 1.5, priceScaleId: 'right', priceFormat: { type: 'price', precision: 2, minMove: 0.01 }, lastValueVisible: false, priceLineVisible: false, visible: false });
+      series.liq.setData(liqDataArr);
+
+      series.risk = chart.addLineSeries({ color: '#f59e0b', lineWidth: 1.5, priceScaleId: 'right', priceFormat: { type: 'price', precision: 2, minMove: 0.01 }, lastValueVisible: false, priceLineVisible: false, visible: false });
+      series.risk.setData(riskDataArr);
+
+      // Market cap series (if available)
+      if (mcapData) {
+        const btcMcapData = mcapData.history.filter(d => d.btc_mcap).map(d => ({ time: d.date, value: d.btc_mcap }));
+        const totalMcapData = mcapData.history.filter(d => d.total_mcap).map(d => ({ time: d.date, value: d.total_mcap }));
+        
+        series.btcMcap = chart.addLineSeries({ color: '#f7931a', lineWidth: 1.5, priceScaleId: 'left', priceFormat: { type: 'price', precision: 0, minMove: 1e9 }, lastValueVisible: false, priceLineVisible: false, visible: false });
+        series.btcMcap.setData(btcMcapData);
+        
+        series.totalMcap = chart.addLineSeries({ color: '#8b5cf6', lineWidth: 1.5, priceScaleId: 'left', priceFormat: { type: 'price', precision: 0, minMove: 1e9 }, lastValueVisible: false, priceLineVisible: false, visible: false });
+        series.totalMcap.setData(totalMcapData);
       }
+
+      // Default range
+      defaultRange = setDefaultRange(chart, '2017-08-01', lastDate);
+
+      // Double-click reset
+      document.getElementById('chart-container').addEventListener('dblclick', resetChart);
+
+      // Tooltip
+      const tooltip = document.getElementById('chart-tooltip');
+      chart.subscribeCrosshairMove(param => {
+        if (!param.time || !param.point || param.point.x < 0) { tooltip.classList.remove('visible'); return; }
+        tooltip.classList.add('visible');
+        document.getElementById('tooltip-date').textContent = formatTime(param.time);
+        
+        const dateStr = typeof param.time === 'string' ? param.time : `${param.time.year}-${String(param.time.month).padStart(2,'0')}-${String(param.time.day).padStart(2,'0')}`;
+        const d = historyData[dateStr];
+        const mc = mcapData?.history.find(m => m.date === dateStr);
+
+        if (seriesVisible.bmri && d?.bmri !== undefined) { document.getElementById('tooltip-bmri').style.display = 'flex'; document.getElementById('tooltip-bmri-value').textContent = d.bmri.toFixed(1); } else { document.getElementById('tooltip-bmri').style.display = 'none'; }
+        if (seriesVisible.rates && d?.rates !== undefined) { document.getElementById('tooltip-rates').style.display = 'flex'; document.getElementById('tooltip-rates-value').textContent = d.rates.toFixed(2); } else { document.getElementById('tooltip-rates').style.display = 'none'; }
+        if (seriesVisible.liq && d?.liq !== undefined) { document.getElementById('tooltip-liq').style.display = 'flex'; document.getElementById('tooltip-liq-value').textContent = d.liq.toFixed(2); } else { document.getElementById('tooltip-liq').style.display = 'none'; }
+        if (seriesVisible.risk && d?.risk !== undefined) { document.getElementById('tooltip-risk').style.display = 'flex'; document.getElementById('tooltip-risk-value').textContent = d.risk.toFixed(2); } else { document.getElementById('tooltip-risk').style.display = 'none'; }
+        if (seriesVisible.btcMcap && mc?.btc_mcap) { document.getElementById('tooltip-btcMcap').style.display = 'flex'; document.getElementById('tooltip-btcMcap-value').textContent = formatMarketCap(mc.btc_mcap); } else { document.getElementById('tooltip-btcMcap').style.display = 'none'; }
+        if (seriesVisible.totalMcap && mc?.total_mcap) { document.getElementById('tooltip-totalMcap').style.display = 'flex'; document.getElementById('tooltip-totalMcap-value').textContent = formatMarketCap(mc.total_mcap); } else { document.getElementById('tooltip-totalMcap').style.display = 'none'; }
+      });
+    }
+
+    // === Init ===
+    document.addEventListener('DOMContentLoaded', () => {
+      LangUtils.init();
       loadData();
     });
   </script>

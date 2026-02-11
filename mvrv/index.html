@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
@@ -11,220 +10,9 @@
   <title>MVRV 指标 — Crypto3D</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../indicators/css/common.css">
   <script src="https://unpkg.com/lightweight-charts@4/dist/lightweight-charts.standalone.production.js"></script>
-  <style>
-    :root {
-      --bg-primary: #0a0a0b;
-      --bg-secondary: #111113;
-      --bg-tertiary: #18181b;
-      --bg-hover: #1f1f23;
-      --border: #27272a;
-      --border-hover: #3f3f46;
-      --text-primary: #fafafa;
-      --text-secondary: #a1a1aa;
-      --text-tertiary: #71717a;
-      --accent: #22c55e;
-      --accent-dim: rgba(34, 197, 94, 0.1);
-      --warning: #f59e0b;
-      --warning-dim: rgba(245, 158, 11, 0.1);
-      --danger: #ef4444;
-      --danger-dim: rgba(239, 68, 68, 0.1);
-      --blue: #3b82f6;
-      --purple: #a855f7;
-      --cyan: #06b6d4;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Noto Sans SC', 'Inter', -apple-system, sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-    /* Header */
-    header {
-      border-bottom: 1px solid var(--border);
-      padding: 20px 0;
-      position: sticky;
-      top: 0;
-      background: rgba(10, 10, 11, 0.9);
-      backdrop-filter: blur(12px);
-      z-index: 100;
-    }
-
-    .header-content { display: flex; justify-content: space-between; align-items: center; }
-
-    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-
-    .logo-icon { width: 36px; height: 36px; border-radius: 8px; }
-
-    .logo-text { font-size: 20px; font-weight: 700; color: var(--text-primary); }
-
-    .nav-links { display: flex; align-items: center; gap: 24px; }
-    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--text-primary); }
-
-    .lang-switch {
-      display: flex; align-items: center; gap: 8px;
-      background: var(--bg-secondary); border: 1px solid var(--border);
-      border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: 14px;
-    }
-    .lang-switch span { color: var(--text-secondary); }
-    .lang-switch .active { color: var(--text-primary); font-weight: 500; }
-
-    /* Main Content - Compact */
-    main { padding: 24px 0; }
-    .page-header { margin-bottom: 16px; }
-    .page-title { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
-    .page-subtitle { color: var(--text-secondary); font-size: 14px; }
-
-    /* Stats Grid - Compact */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .stat-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 14px;
-    }
-
-    .stat-label {
-      font-size: 11px; color: var(--text-tertiary);
-      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;
-    }
-
-    .stat-value { font-size: 20px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
-    .stat-value.undervalued { color: var(--accent); }
-    .stat-value.fair { color: var(--warning); }
-    .stat-value.overvalued { color: var(--danger); }
-
-    .stat-hint { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
-
-    /* Zone Legend */
-    .zone-legend { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
-    .zone-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
-    .zone-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .zone-dot.undervalued { background: var(--accent); }
-    .zone-dot.fair { background: var(--warning); }
-    .zone-dot.overvalued { background: var(--danger); }
-
-    /* Chart */
-    .chart-container {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 32px;
-    }
-
-    .chart-header {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 16px; flex-wrap: wrap; gap: 12px;
-    }
-
-    .chart-title { font-size: 16px; font-weight: 600; }
-
-    .chart-legend { display: flex; gap: 12px; flex-wrap: wrap; }
-
-    .legend-item {
-      display: flex; align-items: center; gap: 6px; font-size: 12px;
-      color: var(--text-secondary); cursor: pointer; padding: 4px 8px;
-      border-radius: 4px; transition: background 0.2s; user-select: none;
-    }
-    .legend-item:hover { background: var(--bg-tertiary); }
-    .legend-item.disabled { opacity: 0.4; }
-    .legend-item.fixed { cursor: default; opacity: 0.7; }
-    .legend-item.fixed:hover { background: transparent; }
-
-    .legend-item.scale-toggle {
-      background: var(--bg-tertiary); border: 1px solid var(--border);
-      padding: 4px 10px; font-weight: 500; color: var(--accent);
-    }
-    .legend-item.scale-toggle:hover { border-color: var(--accent); }
-
-    .legend-line { width: 16px; height: 3px; border-radius: 2px; }
-    .legend-line.dashed {
-      background: repeating-linear-gradient(90deg, currentColor 0, currentColor 4px, transparent 4px, transparent 8px);
-      height: 2px;
-    }
-
-    .chart-wrapper { position: relative; height: 500px; }
-
-    .chart-tooltip {
-      display: flex; flex-wrap: wrap; gap: 16px;
-      padding: 12px 16px; background: var(--bg-tertiary);
-      border-radius: 8px; margin-top: 12px; min-height: 44px; align-items: center;
-    }
-
-    .tooltip-date {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 14px; color: var(--text-primary); font-weight: 500; min-width: 100px;
-    }
-
-    .tooltip-item { display: flex; align-items: center; gap: 6px; font-size: 13px; }
-    .tooltip-dot { width: 8px; height: 8px; border-radius: 50%; }
-    .tooltip-label { color: var(--text-tertiary); }
-    .tooltip-value { font-family: 'JetBrains Mono', monospace; color: var(--text-primary); font-weight: 500; }
-
-    .chart-hint { font-size: 12px; color: var(--text-tertiary); margin-top: 12px; text-align: center; }
-    .data-update-time { font-size: 12px; color: var(--text-tertiary); text-align: right; margin-top: 8px; font-family: 'JetBrains Mono', monospace; }
-
-    /* Info Section */
-    .info-section {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-    }
-
-    .info-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-    .info-text { color: var(--text-secondary); font-size: 14px; line-height: 1.8; }
-    .info-text p { margin-bottom: 12px; }
-
-    .formula {
-      background: var(--bg-tertiary); border-radius: 8px; padding: 16px;
-      font-family: 'JetBrains Mono', monospace; font-size: 13px;
-      color: var(--text-primary); overflow-x: auto; margin: 16px 0;
-    }
-
-    .disclaimer {
-      margin-top: 16px; padding: 12px 16px;
-      background: var(--warning-dim); border: 1px solid rgba(245, 158, 11, 0.3);
-      border-radius: 8px; font-size: 13px; color: var(--warning);
-    }
-
-    /* Data Notice */
-    .data-notice {
-      background: var(--warning-dim); border: 1px solid var(--warning);
-      border-radius: 8px; padding: 10px 14px; margin-bottom: 16px;
-      font-size: 13px; color: var(--warning);
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 24px 0; text-align: center; margin-top: 40px;
-    }
-    .footer-text { font-size: 14px; color: var(--text-tertiary); }
-
-    @media (max-width: 768px) {
-      .page-title { font-size: 22px; }
-      .stat-value { font-size: 18px; }
-      .chart-wrapper { height: 400px; }
-      .chart-header { flex-direction: column; align-items: flex-start; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-  </style>
+  <script src="../indicators/js/chart-utils.js"></script>
 </head>
 <body>
   <header>
@@ -237,7 +25,7 @@
         <div class="nav-links">
           <a href="../" data-zh="首页" data-en="Home">首页</a>
           <a href="../tev/" data-zh="TEV" data-en="TEV">TEV</a>
-          <div class="lang-switch" onclick="toggleLang()">
+          <div class="lang-switch" onclick="LangUtils.toggle(); updateDisplay();">
             <span id="lang-zh" class="active">中文</span>
             <span>/</span>
             <span id="lang-en">EN</span>
@@ -341,9 +129,7 @@
              data-en="MVRV (Market Value to Realized Value) measures the relationship between Bitcoin's market cap and realized cap, used to identify market cycle tops and bottoms.">
             MVRV（Market Value to Realized Value）是衡量比特币市值与实现市值之间关系的指标，用于判断市场周期的顶部和底部。
           </p>
-          <div class="formula">
-            MVRV = 流通市值 (Market Cap) / 实现市值 (Realized Cap)
-          </div>
+          <div class="formula">MVRV = 流通市值 (Market Cap) / 实现市值 (Realized Cap)</div>
           <p data-zh="• 实现市值：按每个 UTXO 最后移动时的价格计算的市值总和" 
              data-en="• Realized Cap: Sum of all UTXOs valued at the price when they last moved">
             • 实现市值：按每个 UTXO 最后移动时的价格计算的市值总和
@@ -373,69 +159,36 @@
   </footer>
 
   <script>
-    let currentLang = 'zh';
+    // === State ===
     let chart = null;
     let series = {};
     let zones = {};
     let seriesVisible = { mvrv: true, btc: false };
     let isLogScale = true;
-    let defaultRange = { from: 0, to: 0 };
+    let defaultRange = null;
     let historyData = {};
+    let currentData = null;
 
-    // Format time to YYYY/MM/DD
-    function formatTime(time) {
-      if (!time) return '—';
-      if (typeof time === 'string') {
-        const parts = time.split('-');
-        if (parts.length === 3) return `${parts[0]}/${parts[1]}/${parts[2]}`;
-        return time;
-      }
-      if (typeof time === 'number') {
-        const date = new Date(time * 1000);
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-        return `${year}/${month}/${day}`;
-      }
-      if (time.year !== undefined) {
-        return `${time.year}/${String(time.month).padStart(2, '0')}/${String(time.day).padStart(2, '0')}`;
-      }
-      return '—';
-    }
-
-    function toggleLang() {
-      currentLang = currentLang === 'zh' ? 'en' : 'zh';
-      updateLang();
-    }
-
-    function updateLang() {
-      document.getElementById('lang-zh').className = currentLang === 'zh' ? 'active' : '';
-      document.getElementById('lang-en').className = currentLang === 'en' ? 'active' : '';
-      document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
-      document.querySelectorAll('[data-zh]').forEach(el => {
-        el.textContent = el.getAttribute(`data-${currentLang}`);
-      });
-      localStorage.setItem('lang', currentLang);
-    }
-
+    // === MVRV Zone Logic ===
     function getZoneInfo(value) {
+      const lang = LangUtils.get();
       if (value < 1.0) {
         return { 
           class: 'undervalued', 
-          zone: currentLang === 'zh' ? '低估区' : 'Undervalued',
-          state: currentLang === 'zh' ? '🟢 低估' : '🟢 Undervalued'
+          zone: lang === 'zh' ? '低估区' : 'Undervalued',
+          state: lang === 'zh' ? '🟢 低估' : '🟢 Undervalued'
         };
       } else if (value <= 3.0) {
         return { 
           class: 'fair', 
-          zone: currentLang === 'zh' ? '合理区' : 'Fair Value',
-          state: currentLang === 'zh' ? '🟡 合理' : '🟡 Fair'
+          zone: lang === 'zh' ? '合理区' : 'Fair Value',
+          state: lang === 'zh' ? '🟡 合理' : '🟡 Fair'
         };
       } else {
         return { 
           class: 'overvalued', 
-          zone: currentLang === 'zh' ? '高估区' : 'Overvalued',
-          state: currentLang === 'zh' ? '🔴 高估' : '🔴 Overvalued'
+          zone: lang === 'zh' ? '高估区' : 'Overvalued',
+          state: lang === 'zh' ? '🔴 高估' : '🔴 Overvalued'
         };
       }
     }
@@ -446,161 +199,92 @@
       return Math.round((index / sorted.length) * 100);
     }
 
+    // === Chart Controls ===
     function toggleSeries(name) {
-      if (!series[name]) return;
-      seriesVisible[name] = !seriesVisible[name];
-      series[name].applyOptions({ visible: seriesVisible[name] });
-      
-      if (name === 'mvrv') {
-        if (zones.green) zones.green.applyOptions({ visible: seriesVisible[name] });
-        if (zones.red) zones.red.applyOptions({ visible: seriesVisible[name] });
-      }
-      
+      toggleSeriesVisibility(series, seriesVisible, name, { mvrv: zones });
       if (name === 'btc' && chart) {
         chart.priceScale('left').applyOptions({ visible: seriesVisible[name] });
       }
-      
-      const legendItem = document.querySelector(`.legend-item[data-series="${name}"]`);
-      legendItem.classList.toggle('disabled', !seriesVisible[name]);
-    }
-
-    function resetChart() {
-      if (!chart || !defaultRange.from) return;
-      chart.timeScale().setVisibleRange(defaultRange);
+      // Update tooltip visibility
+      const el = document.getElementById(`tooltip-${name}`);
+      if (el) el.style.display = seriesVisible[name] ? 'flex' : 'none';
     }
 
     function toggleScale() {
-      if (!chart) return;
-      isLogScale = !isLogScale;
-      const mode = isLogScale 
-        ? LightweightCharts.PriceScaleMode.Logarithmic 
-        : LightweightCharts.PriceScaleMode.Normal;
-      chart.priceScale('right').applyOptions({ mode });
-      document.getElementById('scale-label').textContent = isLogScale ? 'Log' : 'Lin';
+      isLogScale = toggleScaleMode(chart, isLogScale, 'scale-label', ['right']);
     }
 
+    function resetChart() {
+      if (chart && defaultRange) chart.timeScale().setVisibleRange(defaultRange);
+    }
+
+    // === Display Update ===
+    function updateDisplay() {
+      if (!currentData) return;
+      const current = currentData.current;
+      const zoneInfo = getZoneInfo(current.value);
+      const percentile = calculatePercentile(current.value, currentData.history);
+
+      document.getElementById('current-value').textContent = current.value.toFixed(2);
+      document.getElementById('current-value').className = `stat-value ${zoneInfo.class}`;
+      document.getElementById('current-zone').textContent = zoneInfo.zone;
+      document.getElementById('market-state').textContent = zoneInfo.state;
+      document.getElementById('update-date').textContent = formatTime(current.date);
+      document.getElementById('percentile').textContent = percentile + '%';
+
+      if (currentData.updated_at) {
+        const prefix = LangUtils.get() === 'zh' ? '数据更新: ' : 'Data updated: ';
+        document.getElementById('data-update-time').textContent = prefix + currentData.updated_at;
+      }
+    }
+
+    // === Data Loading ===
     async function loadData() {
       try {
         const res = await fetch('../indicators/data/mvrv.json');
-        const data = await res.json();
-        
-        if (data.note && data.note.includes('Simulated')) {
+        currentData = await res.json();
+
+        if (currentData.note && currentData.note.includes('Simulated')) {
           document.getElementById('data-notice').style.display = 'block';
         }
-        
-        const current = data.current;
-        const zoneInfo = getZoneInfo(current.value);
-        const percentile = calculatePercentile(current.value, data.history);
-        
-        document.getElementById('current-value').textContent = current.value.toFixed(2);
-        document.getElementById('current-value').className = `stat-value ${zoneInfo.class}`;
-        document.getElementById('current-zone').textContent = zoneInfo.zone;
-        document.getElementById('market-state').textContent = zoneInfo.state;
-        document.getElementById('update-date').textContent = formatTime(current.date);
-        document.getElementById('percentile').textContent = percentile + '%';
 
-        // Set data update time
-        if (data.updated_at) {
-          const updateEl = document.getElementById('data-update-time');
-          const prefix = currentLang === 'zh' ? '数据更新: ' : 'Data updated: ';
-          updateEl.textContent = prefix + data.updated_at;
-        }
-
-        drawChart(data.history);
+        updateDisplay();
+        drawChart(currentData.history);
       } catch (err) {
         console.error('Failed to load data:', err);
       }
     }
 
+    // === Chart Drawing ===
     function drawChart(history) {
-      const container = document.getElementById('chart-container');
-      
-      chart = LightweightCharts.createChart(container, {
-        layout: {
-          background: { type: 'solid', color: 'transparent' },
-          textColor: '#a1a1aa',
-          fontFamily: "'Inter', sans-serif",
-        },
-        grid: {
-          vertLines: { color: 'rgba(39, 39, 42, 0.5)' },
-          horzLines: { color: 'rgba(39, 39, 42, 0.5)' },
-        },
+      chart = createChart('chart-container', {
         crosshair: {
-          mode: LightweightCharts.CrosshairMode.Normal,
           vertLine: { color: 'rgba(168, 85, 247, 0.5)', labelBackgroundColor: '#a855f7' },
           horzLine: { color: 'rgba(168, 85, 247, 0.5)', labelBackgroundColor: '#a855f7' },
         },
-        rightPriceScale: {
-          borderColor: '#27272a',
-          scaleMargins: { top: 0.05, bottom: 0.05 },
-        },
-        timeScale: {
-          borderColor: '#27272a',
-          timeVisible: false,
-          tickMarkFormatter: (time) => {
-            if (typeof time === 'string') return time.substring(0, 4);
-            if (typeof time === 'number') return new Date(time * 1000).getFullYear().toString();
-            if (time.year !== undefined) return time.year.toString();
-            return '';
-          },
-        },
-        handleScroll: { mouseWheel: true, pressedMouseMove: true },
-        handleScale: { axisPressedMouseMove: true, mouseWheel: true, pinch: true },
       });
 
-      const resizeObserver = new ResizeObserver(entries => {
-        if (entries.length === 0) return;
-        const { width, height } = entries[0].contentRect;
-        chart.applyOptions({ width, height });
-      });
-      resizeObserver.observe(container);
-
+      // Build data
       const mvrvData = history.map(d => ({ time: d.date, value: d.value }));
-
-      // Build lookup table
-      history.forEach(d => { historyData[d.date] = d; });
-
-      const firstDate = history[0].date;
+      const btcData = history.filter(d => d.btc_price).map(d => ({ time: d.date, value: d.btc_price }));
+      historyData = buildHistoryLookup(history);
       const lastDate = history[history.length - 1].date;
 
       // Zone backgrounds
-      zones.green = chart.addBaselineSeries({
-        baseValue: { type: 'price', price: 1.0 },
-        topLineColor: 'transparent',
-        topFillColor1: 'transparent',
-        topFillColor2: 'transparent',
-        bottomLineColor: 'transparent',
-        bottomFillColor1: 'rgba(34, 197, 94, 0.08)',
-        bottomFillColor2: 'rgba(34, 197, 94, 0.25)',
-        priceScaleId: 'right',
-        lastValueVisible: false,
-        priceLineVisible: false,
+      zones.green = createZoneSeries(chart, 1.0, {
+        bottomFill1: 'rgba(34, 197, 94, 0.08)',
+        bottomFill2: 'rgba(34, 197, 94, 0.25)',
       });
       zones.green.setData(mvrvData);
 
-      zones.red = chart.addBaselineSeries({
-        baseValue: { type: 'price', price: 3.0 },
-        topLineColor: 'transparent',
-        topFillColor1: 'rgba(239, 68, 68, 0.08)',
-        topFillColor2: 'rgba(239, 68, 68, 0.25)',
-        bottomLineColor: 'transparent',
-        bottomFillColor1: 'transparent',
-        bottomFillColor2: 'transparent',
-        priceScaleId: 'right',
-        lastValueVisible: false,
-        priceLineVisible: false,
+      zones.red = createZoneSeries(chart, 3.0, {
+        topFill1: 'rgba(239, 68, 68, 0.08)',
+        topFill2: 'rgba(239, 68, 68, 0.25)',
       });
       zones.red.setData(mvrvData);
 
-      // Future whitespace
-      const lastDateObj = new Date(lastDate);
-      for (let i = 1; i <= 180; i++) {
-        const d = new Date(lastDateObj);
-        d.setDate(d.getDate() + i);
-        mvrvData.push({ time: d.toISOString().split('T')[0] });
-      }
-
       // MVRV Series
+      const mvrvWithWhitespace = addFutureWhitespace(mvrvData, lastDate, 180);
       series.mvrv = chart.addLineSeries({
         color: '#a855f7',
         lineWidth: 2,
@@ -608,29 +292,14 @@
         priceFormat: { type: 'price', precision: 2, minMove: 0.01 },
         lastValueVisible: false,
         priceLineVisible: false,
-        title: 'MVRV',
       });
-      series.mvrv.setData(mvrvData);
+      series.mvrv.setData(mvrvWithWhitespace);
 
       // Threshold lines
-      series.mvrv.createPriceLine({
-        price: 1.0,
-        color: '#22c55e',
-        lineWidth: 1,
-        lineStyle: LightweightCharts.LineStyle.Dashed,
-        axisLabelVisible: true,
-      });
+      createThresholdLine(series.mvrv, 1.0, '#22c55e');
+      createThresholdLine(series.mvrv, 3.0, '#ef4444');
 
-      series.mvrv.createPriceLine({
-        price: 3.0,
-        color: '#ef4444',
-        lineWidth: 1,
-        lineStyle: LightweightCharts.LineStyle.Dashed,
-        axisLabelVisible: true,
-      });
-
-      // BTC Price Series (on left scale, hidden by default)
-      const btcData = history.filter(d => d.btc_price).map(d => ({ time: d.date, value: d.btc_price }));
+      // BTC Price Series (hidden by default)
       series.btc = chart.addLineSeries({
         color: '#f59e0b',
         lineWidth: 2,
@@ -638,76 +307,39 @@
         priceFormat: { type: 'price', precision: 0, minMove: 1 },
         lastValueVisible: false,
         priceLineVisible: false,
-        title: 'BTC',
         visible: false,
       });
       series.btc.setData(btcData);
 
-      // Configure left price scale for BTC
+      // Configure left scale
       chart.priceScale('left').applyOptions({
         visible: false,
-        borderColor: '#27272a',
-        scaleMargins: { top: 0.05, bottom: 0.05 },
+        mode: LightweightCharts.PriceScaleMode.Logarithmic,
+      });
+      chart.priceScale('right').applyOptions({
         mode: LightweightCharts.PriceScaleMode.Logarithmic,
       });
 
-      chart.timeScale().applyOptions({
-        rightOffset: 0,
-        minBarSpacing: 0.1,
-        fixLeftEdge: true,
-        fixRightEdge: false,
-      });
+      // Default range from 2014
+      defaultRange = setDefaultRange(chart, '2014-01-01', lastDate);
 
-      chart.priceScale('right').applyOptions({ 
-        mode: LightweightCharts.PriceScaleMode.Logarithmic 
-      });
+      // Double-click reset
+      document.getElementById('chart-container').addEventListener('dblclick', resetChart);
 
-      // Fixed start from 2014
-      const firstTs = new Date('2014-01-01T00:00:00Z').getTime() / 1000;
-      const lastTs = new Date(lastDate + 'T00:00:00Z').getTime() / 1000;
-      defaultRange = { from: firstTs, to: lastTs };
-
-      container.addEventListener('dblclick', () => resetChart());
-
-      setTimeout(() => {
-        chart.timeScale().setVisibleRange(defaultRange);
-      }, 100);
-
-      // Crosshair tooltip
-      chart.subscribeCrosshairMove((param) => {
-        const tooltipDate = document.getElementById('tooltip-date');
-        const tooltipMvrv = document.getElementById('tooltip-mvrv');
-        const tooltipBtc = document.getElementById('tooltip-btc');
-
-        if (!param.time || !param.point) {
-          tooltipDate.textContent = '—';
-          tooltipMvrv.style.display = 'none';
-          tooltipBtc.style.display = 'none';
-          return;
-        }
-
-        tooltipDate.textContent = formatTime(param.time);
-        const dataPoint = historyData[param.time];
-
-        if (seriesVisible.mvrv && dataPoint && dataPoint.value !== undefined) {
-          tooltipMvrv.style.display = 'flex';
-          document.getElementById('tooltip-mvrv-value').textContent = dataPoint.value.toFixed(2);
-        } else {
-          tooltipMvrv.style.display = 'none';
-        }
-
-        if (seriesVisible.btc && dataPoint && dataPoint.btc_price !== undefined) {
-          tooltipBtc.style.display = 'flex';
-          document.getElementById('tooltip-btc-value').textContent = '$' + dataPoint.btc_price.toLocaleString();
-        } else {
-          tooltipBtc.style.display = 'none';
-        }
+      // Tooltip
+      setupTooltip(chart, historyData, {
+        seriesVisible,
+        dateElementId: 'tooltip-date',
+        fields: [
+          { key: 'mvrv', dataKey: 'value', format: v => v.toFixed(2) },
+          { key: 'btc', dataKey: 'btc_price', format: v => '$' + v.toLocaleString() },
+        ],
       });
     }
 
+    // === Init ===
     document.addEventListener('DOMContentLoaded', () => {
-      const saved = localStorage.getItem('lang');
-      if (saved) { currentLang = saved; updateLang(); }
+      LangUtils.init();
       loadData();
     });
   </script>

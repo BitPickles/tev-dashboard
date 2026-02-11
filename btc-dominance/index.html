@@ -3,206 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
   <title>BTC Dominance — Crypto3D</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../indicators/css/common.css">
   <script src="https://unpkg.com/lightweight-charts@4/dist/lightweight-charts.standalone.production.js"></script>
-  <style>
-    :root {
-      --bg-primary: #0a0a0b;
-      --bg-secondary: #111113;
-      --bg-tertiary: #18181b;
-      --border: #27272a;
-      --border-hover: #3f3f46;
-      --text-primary: #fafafa;
-      --text-secondary: #a1a1aa;
-      --text-tertiary: #71717a;
-      --accent: #22c55e;
-      --accent-dim: rgba(34, 197, 94, 0.1);
-      --warning: #f59e0b;
-      --warning-dim: rgba(245, 158, 11, 0.1);
-      --danger: #ef4444;
-      --blue: #3b82f6;
-      --blue-dim: rgba(59, 130, 246, 0.1);
-      --purple: #a855f7;
-      --cyan: #06b6d4;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Noto Sans SC', 'Inter', -apple-system, sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-    header {
-      border-bottom: 1px solid var(--border);
-      padding: 20px 0;
-      position: sticky;
-      top: 0;
-      background: rgba(10, 10, 11, 0.9);
-      backdrop-filter: blur(12px);
-      z-index: 100;
-    }
-
-    .header-content { display: flex; justify-content: space-between; align-items: center; }
-
-    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .logo-icon {
-      width: 36px; height: 36px;
-      background: linear-gradient(135deg, var(--accent) 0%, #16a34a 100%);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 16px; color: var(--bg-primary);
-    }
-    .logo-text { font-size: 20px; font-weight: 700; color: var(--text-primary); }
-
-    .nav-links { display: flex; align-items: center; gap: 24px; }
-    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--text-primary); }
-
-    .lang-switch {
-      display: flex; align-items: center; gap: 8px;
-      background: var(--bg-secondary); border: 1px solid var(--border);
-      border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: 14px;
-    }
-    .lang-switch span { color: var(--text-secondary); }
-    .lang-switch .active { color: var(--text-primary); font-weight: 500; }
-
-    main { padding: 40px 0; }
-
-    .page-header { margin-bottom: 24px; }
-    .page-title { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
-    .page-subtitle { color: var(--text-secondary); font-size: 16px; }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .stat-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-    }
-
-    .stat-label {
-      font-size: 12px;
-      color: var(--text-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
-    }
-
-    .stat-value {
-      font-size: 32px;
-      font-weight: 700;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .stat-value.btc-dominant { color: var(--warning); }
-    .stat-value.balanced { color: var(--blue); }
-    .stat-value.alt-season { color: var(--purple); }
-
-    .stat-hint { font-size: 13px; color: var(--text-secondary); margin-top: 8px; }
-
-    .zone-legend { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
-    .zone-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-secondary); }
-    .zone-dot { width: 12px; height: 12px; border-radius: 50%; }
-    .zone-dot.btc-dominant { background: var(--warning); }
-    .zone-dot.balanced { background: var(--blue); }
-    .zone-dot.alt-season { background: var(--purple); }
-
-    .chart-container {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 32px;
-    }
-
-    .chart-header {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 16px; flex-wrap: wrap; gap: 12px;
-    }
-    .chart-title { font-size: 16px; font-weight: 600; }
-
-    .chart-legend { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-    .legend-item {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 13px; color: var(--text-secondary);
-      cursor: pointer; padding: 4px 8px; border-radius: 4px; transition: all 0.2s;
-    }
-    .legend-item:hover { background: var(--bg-tertiary); }
-    .legend-item.fixed { cursor: default; opacity: 0.7; }
-    .legend-item.fixed:hover { background: transparent; }
-    .legend-line { width: 16px; height: 3px; border-radius: 1px; }
-    .legend-line.dashed { background: none; border-top: 2px dashed currentColor; height: 0; }
-
-    .chart-wrapper { position: relative; height: 400px; }
-
-    .chart-tooltip {
-      position: absolute; top: 12px; left: 12px;
-      background: rgba(17, 17, 19, 0.95);
-      border: 1px solid var(--border);
-      border-radius: 8px; padding: 12px;
-      font-size: 13px; pointer-events: none;
-      z-index: 10; min-width: 140px;
-      opacity: 0; transition: opacity 0.15s;
-    }
-    .chart-tooltip.visible { opacity: 1; }
-    .tooltip-date { color: var(--text-primary); font-weight: 500; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
-    .tooltip-item { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
-    .tooltip-dot { width: 8px; height: 8px; border-radius: 50%; }
-    .tooltip-label { color: var(--text-tertiary); }
-    .tooltip-value { color: var(--text-primary); font-family: 'JetBrains Mono', monospace; }
-
-    .chart-hint { text-align: center; font-size: 12px; color: var(--text-tertiary); margin-top: 12px; }
-    .data-update-time { font-size: 12px; color: var(--text-tertiary); text-align: right; margin-top: 8px; font-family: 'JetBrains Mono', monospace; }
-
-    .info-section {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 24px;
-    }
-    .info-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-    .info-text { color: var(--text-secondary); font-size: 14px; line-height: 1.8; }
-    .info-text p { margin-bottom: 12px; }
-
-    footer { border-top: 1px solid var(--border); padding: 24px 0; text-align: center; margin-top: 40px; }
-    .footer-text { font-size: 14px; color: var(--text-tertiary); }
-
-    @media (max-width: 768px) {
-      .page-title { font-size: 24px; }
-      .stat-value { font-size: 24px; }
-      .chart-wrapper { height: 300px; }
-    }
-  </style>
+  <script src="../indicators/js/chart-utils.js"></script>
 </head>
 <body>
   <header>
     <div class="container">
       <div class="header-content">
         <a href="../" class="logo">
-          <div class="logo-icon">3D</div>
+          <img src="../logo.svg" alt="3D" class="logo-icon">
           <span class="logo-text">Crypto3D</span>
         </a>
         <div class="nav-links">
           <a href="../" data-zh="首页" data-en="Home">首页</a>
-          <a href="../tev/">TEV</a>
+          <a href="../tev/" data-zh="TEV" data-en="TEV">TEV</a>
           <a href="../ahr999/">AHR999</a>
           <a href="../bmri/">BMRI</a>
-          <div class="lang-switch" onclick="toggleLang()">
+          <div class="lang-switch" onclick="LangUtils.toggle(); updateDisplay();">
             <span id="lang-zh" class="active">中文</span>
             <span>/</span>
             <span id="lang-en">EN</span>
@@ -227,12 +52,12 @@
         </div>
         <div class="stat-card">
           <div class="stat-label" data-zh="市场状态" data-en="Market State">市场状态</div>
-          <div class="stat-value" id="market-state" style="font-size: 24px;">—</div>
+          <div class="stat-value" id="market-state" style="font-size: 18px;">—</div>
           <div class="stat-hint" id="zone-hint">—</div>
         </div>
         <div class="stat-card">
           <div class="stat-label" data-zh="更新日期" data-en="Updated">更新日期</div>
-          <div class="stat-value" id="update-date" style="font-size: 20px; color: var(--text-secondary);">—</div>
+          <div class="stat-value" id="update-date" style="font-size: 16px; color: var(--text-secondary);">—</div>
         </div>
       </div>
 
@@ -270,7 +95,7 @@
           </div>
         </div>
         <div class="chart-wrapper" id="chart-container"></div>
-        <div class="chart-tooltip" id="chart-tooltip">
+        <div class="chart-tooltip floating" id="chart-tooltip">
           <div class="tooltip-date" id="tooltip-date">—</div>
           <div class="tooltip-item">
             <div class="tooltip-dot" style="background: #3b82f6;"></div>
@@ -301,6 +126,11 @@
              data-en="• Low (<40%): Alt season, capital flowing into altcoins, typically late bull market">
             • 低占比 (<40%)：山寨季，资金大量流入山寨币，通常出现在牛市后期
           </p>
+          <div class="disclaimer" 
+               data-zh="⚠️ BTC Dominance 受稳定币市值影响较大。近年来稳定币市值增长迅速，导致 BTC.D 整体下移，需结合其他指标综合判断。"
+               data-en="⚠️ BTC Dominance is significantly affected by stablecoin market cap. Recent stablecoin growth has pushed BTC.D lower overall. Use with other indicators.">
+            ⚠️ BTC Dominance 受稳定币市值影响较大。近年来稳定币市值增长迅速，导致 BTC.D 整体下移，需结合其他指标综合判断。
+          </div>
         </div>
       </div>
     </div>
@@ -313,152 +143,89 @@
   </footer>
 
   <script>
-    let currentLang = 'zh';
+    // === State ===
     let chart = null;
     let series = null;
-    let historyData = {};
     let defaultRange = null;
+    let historyData = {};
+    let currentData = null;
 
-    function formatTime(time) {
-      if (!time) return '—';
-      if (typeof time === 'string') {
-        const parts = time.split('-');
-        if (parts.length === 3) return `${parts[0]}/${parts[1]}/${parts[2]}`;
-        return time;
-      }
-      if (time.year !== undefined) {
-        return `${time.year}/${String(time.month).padStart(2, '0')}/${String(time.day).padStart(2, '0')}`;
-      }
-      return '—';
-    }
-
-    function toggleLang() {
-      currentLang = currentLang === 'zh' ? 'en' : 'zh';
-      updateLang();
-    }
-
-    function updateLang() {
-      document.getElementById('lang-zh').className = currentLang === 'zh' ? 'active' : '';
-      document.getElementById('lang-en').className = currentLang === 'en' ? 'active' : '';
-      document.querySelectorAll('[data-zh]').forEach(el => {
-        el.textContent = el.getAttribute(`data-${currentLang}`);
-      });
-      localStorage.setItem('lang', currentLang);
-    }
-
+    // === BTC.D Zone Logic ===
     function getZoneInfo(value) {
+      const lang = LangUtils.get();
       if (value >= 60) {
         return {
           class: 'btc-dominant',
-          zone: currentLang === 'zh' ? 'BTC 主导' : 'BTC Dominant',
+          zone: lang === 'zh' ? 'BTC 主导' : 'BTC Dominant',
           state: '🟠 BTC 主导',
-          hint: currentLang === 'zh' ? '资金集中在 BTC，山寨币弱势' : 'Capital in BTC, altcoins weak'
+          hint: lang === 'zh' ? '资金集中在 BTC，山寨币弱势' : 'Capital in BTC, altcoins weak'
         };
       } else if (value >= 40) {
         return {
           class: 'balanced',
-          zone: currentLang === 'zh' ? '均衡市场' : 'Balanced',
+          zone: lang === 'zh' ? '均衡市场' : 'Balanced',
           state: '🔵 均衡',
-          hint: currentLang === 'zh' ? '市场相对均衡' : 'Market balanced'
+          hint: lang === 'zh' ? '市场相对均衡' : 'Market balanced'
         };
       } else {
         return {
           class: 'alt-season',
-          zone: currentLang === 'zh' ? '山寨季' : 'Alt Season',
+          zone: lang === 'zh' ? '山寨季' : 'Alt Season',
           state: '🟣 山寨季',
-          hint: currentLang === 'zh' ? '资金流向山寨币' : 'Capital flowing to alts'
+          hint: lang === 'zh' ? '资金流向山寨币' : 'Capital flowing to alts'
         };
       }
     }
 
+    // === Chart Controls ===
     function resetChart() {
-      if (chart && defaultRange) {
-        chart.timeScale().setVisibleRange(defaultRange);
+      if (chart && defaultRange) chart.timeScale().setVisibleRange(defaultRange);
+    }
+
+    // === Display Update ===
+    function updateDisplay() {
+      if (!currentData) return;
+      const current = currentData.current;
+      const zoneInfo = getZoneInfo(current.value);
+
+      document.getElementById('current-value').textContent = current.value.toFixed(2) + '%';
+      document.getElementById('current-value').className = `stat-value ${zoneInfo.class}`;
+      document.getElementById('current-zone').textContent = zoneInfo.zone;
+      document.getElementById('market-state').textContent = zoneInfo.state;
+      document.getElementById('zone-hint').textContent = zoneInfo.hint;
+      document.getElementById('update-date').textContent = current.date;
+
+      if (currentData.updated_at) {
+        const prefix = LangUtils.get() === 'zh' ? '数据更新: ' : 'Data updated: ';
+        document.getElementById('data-update-time').textContent = prefix + currentData.updated_at;
       }
     }
 
+    // === Data Loading ===
     async function loadData() {
       try {
         const res = await fetch('../indicators/data/btc-dominance.json');
-        const data = await res.json();
-
-        const current = data.current;
-        const zoneInfo = getZoneInfo(current.value);
-
-        document.getElementById('current-value').textContent = current.value.toFixed(2) + '%';
-        document.getElementById('current-value').className = `stat-value ${zoneInfo.class}`;
-        document.getElementById('current-zone').textContent = zoneInfo.zone;
-        document.getElementById('market-state').textContent = zoneInfo.state;
-        document.getElementById('zone-hint').textContent = zoneInfo.hint;
-        document.getElementById('update-date').textContent = current.date;
-
-        // Set data update time
-        if (data.updated_at) {
-          const updateEl = document.getElementById('data-update-time');
-          const prefix = currentLang === 'zh' ? '数据更新: ' : 'Data updated: ';
-          updateEl.textContent = prefix + data.updated_at;
-        }
-
-        drawChart(data.history);
+        currentData = await res.json();
+        updateDisplay();
+        drawChart(currentData.history);
       } catch (err) {
         console.error('Failed to load data:', err);
       }
     }
 
+    // === Chart Drawing ===
     function drawChart(history) {
-      const container = document.getElementById('chart-container');
+      chart = createChart('chart-container');
 
-      chart = LightweightCharts.createChart(container, {
-        layout: {
-          background: { type: 'solid', color: 'transparent' },
-          textColor: '#a1a1aa',
-          fontFamily: "'Inter', sans-serif",
-        },
-        grid: {
-          vertLines: { color: 'rgba(39, 39, 42, 0.5)' },
-          horzLines: { color: 'rgba(39, 39, 42, 0.5)' },
-        },
-        crosshair: {
-          mode: LightweightCharts.CrosshairMode.Normal,
-          vertLine: { color: 'rgba(59, 130, 246, 0.5)', labelBackgroundColor: '#3b82f6' },
-          horzLine: { color: 'rgba(59, 130, 246, 0.5)', labelBackgroundColor: '#3b82f6' },
-        },
-        rightPriceScale: {
-          borderColor: '#27272a',
-          scaleMargins: { top: 0.1, bottom: 0.1 },
-        },
-        timeScale: {
-          borderColor: '#27272a',
-          timeVisible: false,
-          minBarSpacing: 0.1,
-          tickMarkFormatter: (time) => {
-            if (typeof time === 'string') return time.substring(0, 4);
-            if (time.year !== undefined) return time.year.toString();
-            return '';
-          },
-        },
-        handleScroll: { mouseWheel: true, pressedMouseMove: true },
-        handleScale: { axisPressedMouseMove: true, mouseWheel: true, pinch: true },
-      });
-
-      const resizeObserver = new ResizeObserver(entries => {
-        if (entries.length === 0) return;
-        const { width, height } = entries[0].contentRect;
-        chart.applyOptions({ width, height });
-      });
-      resizeObserver.observe(container);
-
+      // Prepare data
       const chartData = history.map(d => ({ time: d.date, value: d.value }));
-      history.forEach(d => { historyData[d.date] = d; });
+      historyData = buildHistoryLookup(history);
+      const lastDate = history[history.length - 1].date;
 
-      // Add future whitespace
-      const lastDate = new Date(history[history.length - 1].date);
-      for (let i = 1; i <= 90; i++) {
-        const d = new Date(lastDate);
-        d.setDate(d.getDate() + i);
-        chartData.push({ time: d.toISOString().split('T')[0] });
-      }
+      // Add whitespace
+      const dataWithWhitespace = addFutureWhitespace(chartData, lastDate, 90);
 
+      // Main series
       series = chart.addLineSeries({
         color: '#3b82f6',
         lineWidth: 2,
@@ -466,23 +233,30 @@
         lastValueVisible: false,
         priceLineVisible: false,
       });
-      series.setData(chartData);
+      series.setData(dataWithWhitespace);
 
       // Threshold lines
-      series.createPriceLine({ price: 60, color: '#f59e0b', lineWidth: 1, lineStyle: LightweightCharts.LineStyle.Dashed, axisLabelVisible: true });
-      series.createPriceLine({ price: 40, color: '#a855f7', lineWidth: 1, lineStyle: LightweightCharts.LineStyle.Dashed, axisLabelVisible: true });
+      createThresholdLine(series, 60, '#f59e0b');
+      createThresholdLine(series, 40, '#a855f7');
 
-      container.addEventListener('dblclick', resetChart);
+      // Default range from 2014
+      defaultRange = setDefaultRange(chart, '2014-01-01', lastDate);
 
+      // Double-click reset
+      document.getElementById('chart-container').addEventListener('dblclick', resetChart);
+
+      // Tooltip
       const tooltip = document.getElementById('chart-tooltip');
       chart.subscribeCrosshairMove(param => {
         if (!param.time || !param.point || param.point.x < 0) {
           tooltip.classList.remove('visible');
           return;
         }
+        
         const dateStr = typeof param.time === 'string' ? param.time :
           `${param.time.year}-${String(param.time.month).padStart(2, '0')}-${String(param.time.day).padStart(2, '0')}`;
         const data = historyData[dateStr];
+        
         if (data) {
           document.getElementById('tooltip-date').textContent = formatTime(param.time);
           document.getElementById('tooltip-value').textContent = data.value.toFixed(2) + '%';
@@ -492,13 +266,13 @@
         }
       });
 
+      // Fit content then set default range
       chart.timeScale().fitContent();
-      setTimeout(() => { defaultRange = chart.timeScale().getVisibleRange(); }, 100);
     }
 
+    // === Init ===
     document.addEventListener('DOMContentLoaded', () => {
-      const saved = localStorage.getItem('lang');
-      if (saved) { currentLang = saved; updateLang(); }
+      LangUtils.init();
       loadData();
     });
   </script>
