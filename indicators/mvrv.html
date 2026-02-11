@@ -431,7 +431,7 @@
     }
 
     function calculatePercentile(value, history) {
-      const sorted = [...history.map(d => d.mvrv)].sort((a, b) => a - b);
+      const sorted = [...history.map(d => d.value)].sort((a, b) => a - b);
       const index = sorted.findIndex(v => v >= value);
       return Math.round((index / sorted.length) * 100);
     }
@@ -469,7 +469,7 @@
       const ctx = document.getElementById('mvrv-chart').getContext('2d');
       
       const labels = history.map(d => d.date);
-      const values = history.map(d => d.mvrv);
+      const values = history.map(d => d.value);
 
       chart = new Chart(ctx, {
         type: 'line',
