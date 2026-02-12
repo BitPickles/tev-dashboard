@@ -63,30 +63,32 @@
         </div>
       </div>
 
-      <!-- Compact Stats Row -->
-      <div class="stats-row-compact">
-        <div class="stat-item main">
-          <span class="stat-label">BMRI</span>
-          <span class="stat-value" id="bmri-value">—</span>
-          <span class="stat-regime" id="market-state">—</span>
+      <!-- Stats Cards Row -->
+      <div class="stats-cards-row">
+        <div class="stat-card-h main">
+          <div class="stat-label">BMRI</div>
+          <div class="stat-value" id="bmri-value">—</div>
+          <div class="stat-badge" id="market-state">—</div>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-label">Rates</span>
-          <span class="stat-value small" id="rates-value">—</span>
-          <div class="bucket-bar-mini"><div class="bucket-fill" id="rates-bar"></div></div>
+        <div class="stat-card-h">
+          <div class="stat-label">Rates</div>
+          <div class="stat-value" id="rates-value">—</div>
+          <div class="bucket-bar"><div class="bucket-fill" id="rates-bar"></div></div>
         </div>
-        <div class="stat-item">
-          <span class="stat-label">Liq</span>
-          <span class="stat-value small" id="liq-value">—</span>
-          <div class="bucket-bar-mini"><div class="bucket-fill" id="liq-bar"></div></div>
+        <div class="stat-card-h">
+          <div class="stat-label">Liquidity</div>
+          <div class="stat-value" id="liq-value">—</div>
+          <div class="bucket-bar"><div class="bucket-fill" id="liq-bar"></div></div>
         </div>
-        <div class="stat-item">
-          <span class="stat-label">Risk</span>
-          <span class="stat-value small" id="risk-value">—</span>
-          <div class="bucket-bar-mini"><div class="bucket-fill" id="risk-bar"></div></div>
+        <div class="stat-card-h">
+          <div class="stat-label">Risk</div>
+          <div class="stat-value" id="risk-value">—</div>
+          <div class="bucket-bar"><div class="bucket-fill" id="risk-bar"></div></div>
         </div>
-        <div class="stat-date" id="update-date">—</div>
+        <div class="stat-card-h date">
+          <div class="stat-label" data-zh="更新" data-en="Updated">更新</div>
+          <div class="stat-value small" id="update-date">—</div>
+        </div>
       </div>
       <!-- Hidden elements for JS compatibility -->
       <span id="bmri-regime" style="display:none;"></span>

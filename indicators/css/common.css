@@ -1343,3 +1343,87 @@ tr:last-child { border-bottom: none; }
     margin-left: 0;
   }
 }
+
+/* === Horizontal Stats Cards Row === */
+.stats-cards-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.stat-card-h {
+  flex: 1;
+  min-width: 100px;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-card-h.main {
+  min-width: 140px;
+  flex: 1.5;
+}
+
+.stat-card-h.date {
+  flex: 0.8;
+  min-width: 80px;
+}
+
+.stat-card-h .stat-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-card-h .stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.stat-card-h .stat-value.small {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.stat-card-h .stat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--bg-tertiary);
+  width: fit-content;
+}
+
+.stat-card-h .bucket-bar {
+  height: 4px;
+  background: var(--bg-tertiary);
+  border-radius: 2px;
+  margin-top: 4px;
+}
+
+.stat-card-h .bucket-bar .bucket-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .stats-cards-row {
+    flex-wrap: wrap;
+  }
+  .stat-card-h {
+    min-width: calc(50% - 8px);
+    flex: unset;
+  }
+  .stat-card-h.main {
+    min-width: 100%;
+  }
+}
