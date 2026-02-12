@@ -75,6 +75,9 @@
         <div class="chart-header">
           <div class="chart-title" data-zh="BTC Dominance 历史走势" data-en="BTC Dominance History">BTC Dominance 历史走势</div>
           <div class="chart-legend">
+            <div class="legend-item scale-toggle" onclick="toggleScale()" title="切换线性/对数坐标">
+              <span id="scale-label">Log</span>
+            </div>
             <div class="legend-item fixed">
               <div class="legend-line dashed" style="color: #f59e0b;"></div>
               <span>60%</span>
@@ -87,6 +90,10 @@
               <div class="legend-line" style="background: #3b82f6;"></div>
               <span>BTC.D</span>
             </div>
+            <div class="legend-item disabled" data-series="btcPrice" onclick="toggleSeries('btcPrice')">
+              <div class="legend-line" style="background: #f59e0b;"></div>
+              <span data-zh="BTC价格" data-en="BTC Price">BTC价格</span>
+            </div>
           </div>
         </div>
         <div class="chart-wrapper" id="chart-container"></div>
@@ -96,6 +103,11 @@
             <div class="tooltip-dot" style="background: #3b82f6;"></div>
             <span class="tooltip-label">BTC.D:</span>
             <span class="tooltip-value" id="tooltip-value">—</span>
+          </div>
+          <div class="tooltip-item" id="tooltip-btcPrice" style="display:none;">
+            <div class="tooltip-dot" style="background: #f59e0b;"></div>
+            <span class="tooltip-label">BTC:</span>
+            <span class="tooltip-value" id="tooltip-btcPrice-value">—</span>
           </div>
         </div>
         <div class="chart-hint" data-zh="💡 拖动平移 · 滚轮缩放 · 双击重置" data-en="💡 Drag to pan · Scroll to zoom · Double-click to reset">💡 拖动平移 · 滚轮缩放 · 双击重置</div>
@@ -144,6 +156,10 @@
     let defaultRange = null;
     let historyData = {};
     let currentData = null;
+    let seriesVisible = { btcDominance: true, btcPrice: false };
+    let isLogScale = true;
+    let defaultRange = null;
+    let btcPriceData = null;
 
     // === BTC.D Zone Logic ===
     function getZoneInfo(value) {
@@ -177,6 +193,19 @@
       if (chart && defaultRange) chart.timeScale().setVisibleRange(defaultRange);
     }
 
+    function toggleScale() {
+      isLogScale = toggleScaleMode(chart, isLogScale, 'scale-label', ['right']);
+    }
+
+    function toggleSeries(name) {
+      toggleSeriesVisibility(series, seriesVisible, name, { btcDominance: null });
+      const el = document.getElementById(`tooltip-${name}`);
+      if (el) el.style.display = seriesVisible[name] ? 'flex' : 'none';
+      if (name === 'btcPrice' && chart) {
+        chart.priceScale('left').applyOptions({ visible: seriesVisible[name] });
+      }
+    }
+
     // === Display Update ===
     function updateDisplay() {
       if (!currentData) return;
@@ -198,8 +227,12 @@
     // === Data Loading ===
     async function loadData() {
       try {
-        const res = await fetch('../indicators/data/btc-dominance.json');
-        currentData = await res.json();
+        const [dominanceRes, btcPriceRes] = await Promise.all([
+          fetch('../indicators/data/btc-dominance.json'),
+          fetch('../indicators/data/shared/btc-price.json')
+        ]);
+        currentData = await dominanceRes.json();
+        if (btcPriceRes && btcPriceRes.ok) btcPriceData = await btcPriceRes.json();
         updateDisplay();
         drawChart(currentData.history);
       } catch (err) {
@@ -219,19 +252,49 @@
       // Add whitespace
       const dataWithWhitespace = addFutureWhitespace(chartData, lastDate, 90);
 
+      // BTC Price series (from shared data, hidden by default)
+      let btcPriceDataArr = [];
+      if (btcPriceData) {
+        btcPriceDataArr = history.map(d => {
+          const priceRecord = btcPriceData.history.find(p => p.date === d.date);
+          return { time: d.date, value: priceRecord?.price || null };
+        }).filter(d => d.value !== null);
+      }
+
       // Main series
-      series = chart.addLineSeries({
+      series.btcDominance = chart.addLineSeries({
         color: '#3b82f6',
         lineWidth: 2,
         priceFormat: { type: 'price', precision: 2, minMove: 0.01 },
         lastValueVisible: false,
         priceLineVisible: false,
       });
-      series.setData(dataWithWhitespace);
+      series.btcDominance.setData(dataWithWhitespace);
+
+      // BTC Price series (hidden by default)
+      series.btcPrice = chart.addLineSeries({
+        color: '#f59e0b',
+        lineWidth: 2,
+        priceScaleId: 'left',
+        priceFormat: { type: 'price', precision: 0, minMove: 1 },
+        lastValueVisible: false,
+        priceLineVisible: false,
+        visible: false,
+      });
+      series.btcPrice.setData(btcPriceDataArr);
+
+      // Configure scales
+      chart.priceScale('right').applyOptions({
+        mode: LightweightCharts.PriceScaleMode.Logarithmic,
+      });
+      chart.priceScale('left').applyOptions({
+        visible: false,
+        mode: LightweightCharts.PriceScaleMode.Logarithmic,
+      });
 
       // Threshold lines
-      createThresholdLine(series, 60, '#f59e0b');
-      createThresholdLine(series, 40, '#a855f7');
+      createThresholdLine(series.btcDominance, 60, '#f59e0b');
+      createThresholdLine(series.btcDominance, 40, '#a855f7');
 
       // Default range from 2014
       defaultRange = setDefaultRange(chart, '2014-01-01', lastDate);
@@ -250,14 +313,20 @@
         const dateStr = typeof param.time === 'string' ? param.time :
           `${param.time.year}-${String(param.time.month).padStart(2, '0')}-${String(param.time.day).padStart(2, '0')}`;
         const data = historyData[dateStr];
+        const priceRecord = btcPriceData?.history.find(p => p.date === dateStr);
         
         if (data) {
           document.getElementById('tooltip-date').textContent = formatTime(param.time);
           document.getElementById('tooltip-value').textContent = data.value.toFixed(2) + '%';
           tooltip.classList.add('visible');
+          if (seriesVisible.btcPrice && priceRecord?.price) {
+            document.getElementById('tooltip-btcPrice').style.display = 'flex';
+            document.getElementById('tooltip-btcPrice-value').textContent = '$' + priceRecord.price.toLocaleString();
+          } else {
+            document.getElementById('tooltip-btcPrice').style.display = 'none'; }
         } else {
           tooltip.classList.remove('visible');
-        }
+          document.getElementById('tooltip-btcPrice').style.display = 'none'; }
       });
 
       // Fit content then set default range
