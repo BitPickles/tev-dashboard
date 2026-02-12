@@ -101,7 +101,7 @@
       <div class="zone-legend">
         <div class="zone-item">
           <div class="zone-dot risk-on"></div>
-          <span id="threshold-on">> +0.6 Risk-On</span>
+          <span id="threshold-on">< 30 Risk-On</span>
         </div>
         <div class="zone-item">
           <div class="zone-dot neutral"></div>
@@ -109,7 +109,7 @@
         </div>
         <div class="zone-item">
           <div class="zone-dot risk-off"></div>
-          <span id="threshold-off">< -0.6 Risk-Off</span>
+          <span id="threshold-off">> 70 Risk-Off</span>
         </div>
       </div>
 
@@ -118,8 +118,8 @@
         <div class="chart-header">
           <div class="chart-title" data-zh="BMRI 历史走势" data-en="BMRI History">BMRI 历史走势</div>
           <div class="chart-legend">
-            <div class="legend-item fixed"><div class="legend-line dashed" style="color: #22c55e;"></div><span id="legend-on">+0.6</span></div>
-            <div class="legend-item fixed"><div class="legend-line dashed" style="color: #ef4444;"></div><span id="legend-off">-0.6</span></div>
+            <div class="legend-item fixed"><div class="legend-line dashed" style="color: #22c55e;"></div><span id="legend-on">30</span></div>
+            <div class="legend-item fixed"><div class="legend-line dashed" style="color: #ef4444;"></div><span id="legend-off">70</span></div>
             <div class="legend-item" data-series="bmri" onclick="toggleSeries('bmri')"><div class="legend-line" style="background: #3b82f6;"></div><span>BMRI</span></div>
             <div class="legend-item disabled" data-series="rates" onclick="toggleSeries('rates')"><div class="legend-line" style="background: #06b6d4;"></div><span>Rates</span></div>
             <div class="legend-item disabled" data-series="liq" onclick="toggleSeries('liq')"><div class="legend-line" style="background: #22c55e;"></div><span>Liquidity</span></div>
@@ -228,9 +228,10 @@
     function updateBucketBar(id, value) {
       const bar = document.getElementById(id);
       if (!bar || value === null) return;
-      const percent = Math.min(100, Math.max(0, (value + 1) * 50)); // -1~1 -> 0~100
+      // Data is already 0-100 range; lower values = better (risk-on)
+      const percent = Math.min(100, Math.max(0, value));
       bar.style.width = percent + '%';
-      bar.className = 'bucket-fill ' + (value >= 0 ? 'positive' : 'negative');
+      bar.className = 'bucket-fill ' + (value <= 50 ? 'positive' : 'negative');
     }
 
     // === Version Switch ===
