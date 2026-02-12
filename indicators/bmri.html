@@ -574,41 +574,50 @@
     }
 
     function updateDisplay() {
-      const current = bmriData.current;
-      const history = bmriData.history || [];
+      const versionData = bmriData[currentVersion];
+      if (!versionData) {
+        console.error('No data for version:', currentVersion);
+        return;
+      }
+      const current = versionData.current;
+      const history = versionData.history || [];
+      const thresholds = versionData.thresholds || { on: 30, off: 70 };
       
       // 根据值判断风险等级
       const value = current.value;
       let riskClass = 'neutral';
-      let riskLabel = current.risk_level || '中性';
-      if (value >= 70) riskClass = 'danger';
-      else if (value >= 50) riskClass = 'warning';
-      else if (value < 30) riskClass = 'safe';
+      let riskLabel = currentLang === 'zh' ? '中性' : 'Neutral';
+      if (value >= thresholds.off) {
+        riskClass = 'risk-off';
+        riskLabel = currentLang === 'zh' ? '高风险' : 'Risk-Off';
+      } else if (value <= thresholds.on) {
+        riskClass = 'risk-on';
+        riskLabel = currentLang === 'zh' ? '低风险' : 'Risk-On';
+      }
 
       // Update main value
       document.getElementById('bmri-value').textContent = value.toFixed(1);
       document.getElementById('bmri-value').className = `stat-value ${riskClass}`;
       document.getElementById('bmri-regime').textContent = riskLabel;
-      document.getElementById('market-state').textContent = value >= 70 ? '⚠️ 高风险' : value >= 50 ? '🟡 中风险' : '🟢 低风险';
+      document.getElementById('market-state').textContent = value >= thresholds.off ? '🔴 Risk-Off' : value <= thresholds.on ? '🟢 Risk-On' : '🟡 Neutral';
       document.getElementById('update-date').textContent = current.date;
 
-      // Update bucket values (from buckets object)
-      const buckets = current.buckets || {};
-      document.getElementById('rates-value').textContent = buckets.rates !== undefined ? buckets.rates.toFixed(1) : '—';
-      document.getElementById('liq-value').textContent = buckets.liquidity !== undefined ? buckets.liquidity.toFixed(1) : '—';
-      document.getElementById('risk-value').textContent = buckets.sentiment !== undefined ? buckets.sentiment.toFixed(1) : '—';
+      // Update bucket values (直接从 current 读取 rates/liq/risk)
+      document.getElementById('rates-value').textContent = current.rates !== undefined ? current.rates.toFixed(1) : '—';
+      document.getElementById('liq-value').textContent = current.liq !== undefined ? current.liq.toFixed(1) : '—';
+      document.getElementById('risk-value').textContent = current.risk !== undefined ? current.risk.toFixed(1) : '—';
 
       // Update bucket bars (scale 0-100)
-      updateBucketBar('rates-bar', buckets.rates);
-      updateBucketBar('liq-bar', buckets.liquidity);
-      updateBucketBar('risk-bar', buckets.sentiment);
+      updateBucketBar('rates-bar', current.rates);
+      updateBucketBar('liq-bar', current.liq);
+      updateBucketBar('risk-bar', current.risk);
 
       // Update thresholds display
-      document.getElementById('threshold-on').textContent = '< 30 低风险';
-      document.getElementById('threshold-off').textContent = '> 70 高风险';
+      document.getElementById('threshold-on').textContent = `< ${thresholds.on} ${currentLang === 'zh' ? '低风险' : 'Low Risk'}`;
+      document.getElementById('threshold-off').textContent = `> ${thresholds.off} ${currentLang === 'zh' ? '高风险' : 'High Risk'}`;
 
       // Draw chart
-      drawChart(history, {on: 30, off: 70});
+      drawChart(history, thresholds);
     }
 
     function drawChart(history, thresholds) {
