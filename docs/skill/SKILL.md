@@ -63,8 +63,16 @@ tev-dashboard/
 6. **报告 Boss** - 等待批准后合并到 main
 
 ## 相关文档
+
+### 通用规范
 - [架构说明](./architecture.md)
 - [设计系统](./design-system.md)
 - [页面模板](./page-template.md)
 - [数据规范](./data-spec.md)
 - [组件说明](./components.md)
+
+### 指标专属设计
+- [AHR999](./indicators/ahr999.md) - 九神指标，定投时机判断
+- [BMRI](./indicators/bmri.md) - 宏观风险指数，多版本切换
+- [MVRV](./indicators/mvrv.md) - 链上估值，市值/已实现市值
+- [BTC.D](./indicators/btc-dominance.md) - 市值占比，资金流向
