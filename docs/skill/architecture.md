@@ -42,12 +42,26 @@
 - **增量更新** - 历史数据持久化，只追加新数据
 - **不重复获取** - 避免 API 调用浪费
 
-## 页面类型
+## 页面类型与导航结构
+
+### 页面层级
+```
+首页 (/)
+├── 指标页面（独立工具）
+│   ├── /mvrv/
+│   ├── /ahr999/
+│   ├── /bmri/
+│   └── /btc-dominance/
+└── TEV 专题（独立项目）
+    ├── /tev/ (列表页)
+    └── /tev/protocol.html (详情页)
+```
 
 ### 1. 指标页面 (Indicator Pages)
 - 路径: `/{indicator}/index.html`
 - 结构统一，参见 [page-template.md](./page-template.md)
 - 例: `/ahr999/`, `/bmri/`, `/mvrv/`
+- **导航**: 只有「首页」
 
 ### 2. 首页 (Landing)
 - 路径: `/index.html`
@@ -58,6 +72,9 @@
 - 路径: `/tev/`
 - 独立设计，不在通用模板范围内
 - 有自己的数据和样式
+- **导航规则**:
+  - `/tev/index.html` (列表页): 只有「首页」
+  - `/tev/protocol.html` (详情页): 「首页」+「TEV」
 
 ## 响应式设计
 
