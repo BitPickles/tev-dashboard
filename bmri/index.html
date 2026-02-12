@@ -63,39 +63,34 @@
         </div>
       </div>
 
-      <!-- Main Stats -->
-      <div class="stats-grid">
-        <div class="stat-card main">
-          <div class="stat-label">BMRI</div>
-          <div class="stat-value" id="bmri-value">—</div>
-          <div class="stat-hint" id="bmri-regime">—</div>
+      <!-- Compact Stats Row -->
+      <div class="stats-row-compact">
+        <div class="stat-item main">
+          <span class="stat-label">BMRI</span>
+          <span class="stat-value" id="bmri-value">—</span>
+          <span class="stat-regime" id="market-state">—</span>
         </div>
-        <div class="stat-card">
-          <div class="stat-label" data-zh="市场状态" data-en="Market State">市场状态</div>
-          <div class="stat-value" id="market-state" style="font-size: 18px;">—</div>
-          <div class="stat-hint" id="regime-hint">—</div>
-          <div class="stat-hint" id="update-date" style="color: var(--text-tertiary); font-size: 11px;">—</div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-label">Rates</span>
+          <span class="stat-value small" id="rates-value">—</span>
+          <div class="bucket-bar-mini"><div class="bucket-fill" id="rates-bar"></div></div>
         </div>
+        <div class="stat-item">
+          <span class="stat-label">Liq</span>
+          <span class="stat-value small" id="liq-value">—</span>
+          <div class="bucket-bar-mini"><div class="bucket-fill" id="liq-bar"></div></div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Risk</span>
+          <span class="stat-value small" id="risk-value">—</span>
+          <div class="bucket-bar-mini"><div class="bucket-fill" id="risk-bar"></div></div>
+        </div>
+        <div class="stat-date" id="update-date">—</div>
       </div>
-
-      <!-- Bucket Stats -->
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-label">Rates <span data-zh="利率" data-en="">(利率)</span></div>
-          <div class="bucket-value" id="rates-value">—</div>
-          <div class="bucket-bar"><div class="bucket-fill" id="rates-bar" style="width: 50%;"></div></div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Liquidity <span data-zh="流动性" data-en="">(流动性)</span></div>
-          <div class="bucket-value" id="liq-value">—</div>
-          <div class="bucket-bar"><div class="bucket-fill" id="liq-bar" style="width: 50%;"></div></div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Risk <span data-zh="风险偏好" data-en="">(风险偏好)</span></div>
-          <div class="bucket-value" id="risk-value">—</div>
-          <div class="bucket-bar"><div class="bucket-fill" id="risk-bar" style="width: 50%;"></div></div>
-        </div>
-      </div>
+      <!-- Hidden elements for JS compatibility -->
+      <span id="bmri-regime" style="display:none;"></span>
+      <span id="regime-hint" style="display:none;"></span>
 
       <!-- Zone Legend -->
       <div class="zone-legend">

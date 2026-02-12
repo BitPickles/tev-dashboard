@@ -1245,3 +1245,101 @@ tr:last-child { border-bottom: none; }
   .burn-charts-grid { grid-template-columns: 1fr; }
   .burn-progress-stats { grid-template-columns: 1fr; gap: 12px; }
 }
+
+/* === Compact Stats Row (BMRI) === */
+.stats-row-compact {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.stats-row-compact .stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stats-row-compact .stat-item.main {
+  gap: 12px;
+}
+
+.stats-row-compact .stat-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.stats-row-compact .stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.stats-row-compact .stat-value.small {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.stats-row-compact .stat-regime {
+  font-size: 14px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--bg-tertiary);
+}
+
+.stats-row-compact .stat-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--border-color);
+  margin: 0 8px;
+}
+
+.stats-row-compact .stat-date {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+.bucket-bar-mini {
+  width: 40px;
+  height: 4px;
+  background: var(--bg-tertiary);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.bucket-bar-mini .bucket-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.bucket-bar-mini .bucket-fill.positive {
+  background: var(--accent);
+}
+
+.bucket-bar-mini .bucket-fill.negative {
+  background: var(--danger);
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .stats-row-compact {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .stats-row-compact .stat-divider {
+    display: none;
+  }
+  
+  .stats-row-compact .stat-date {
+    margin-left: 0;
+  }
+}
