@@ -431,7 +431,7 @@ const LangUtils = {
   }
 };
 
-// 导出 (兼容 ES modules 和全局变量)
+// 导出 (兼容 ES modules、Node.js 和浏览器全局变量)
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     formatTime,
@@ -450,4 +450,23 @@ if (typeof module !== 'undefined' && module.exports) {
     deepMerge,
     LangUtils,
   };
+}
+
+// 浏览器环境：确保全局可用
+if (typeof window !== 'undefined') {
+  window.formatTime = formatTime;
+  window.formatNumber = formatNumber;
+  window.formatPrice = formatPrice;
+  window.formatMarketCap = formatMarketCap;
+  window.createChart = createChart;
+  window.setupTooltip = setupTooltip;
+  window.setDefaultRange = setDefaultRange;
+  window.addFutureWhitespace = addFutureWhitespace;
+  window.createZoneSeries = createZoneSeries;
+  window.createThresholdLine = createThresholdLine;
+  window.toggleSeriesVisibility = toggleSeriesVisibility;
+  window.toggleScaleMode = toggleScaleMode;
+  window.buildHistoryLookup = buildHistoryLookup;
+  window.deepMerge = deepMerge;
+  window.LangUtils = LangUtils;
 }
