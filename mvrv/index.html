@@ -54,7 +54,6 @@
         <div class="stat-card">
           <div class="stat-label" data-zh="市场状态" data-en="Market State">市场状态</div>
           <div class="stat-value" id="market-state" style="font-size: 18px;">—</div>
-          <div class="stat-hint" id="update-date">—</div>
         </div>
         <div class="stat-card">
           <div class="stat-label" data-zh="历史分位" data-en="Historical Percentile">历史分位</div>
@@ -228,7 +227,6 @@
       document.getElementById('current-value').className = `stat-value ${zoneInfo.class}`;
       document.getElementById('current-zone').textContent = zoneInfo.zone;
       document.getElementById('market-state').textContent = zoneInfo.state;
-      document.getElementById('update-date').textContent = formatTime(current.date);
       document.getElementById('percentile').textContent = percentile + '%';
 
       if (currentData.updated_at) {

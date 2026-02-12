@@ -50,7 +50,6 @@
         <div class="stat-card">
           <div class="stat-label" data-zh="BTC 价格" data-en="BTC Price">BTC 价格</div>
           <div class="stat-value" id="current-price" style="color: var(--text-primary)">—</div>
-          <div class="stat-hint" id="update-date">—</div>
         </div>
         <div class="stat-card">
           <div class="stat-label" data-zh="200日定投成本" data-en="200d DCA Cost">200日定投成本</div>
@@ -239,7 +238,6 @@
       document.getElementById('current-value').className = `stat-value ${zoneInfo.class}`;
       document.getElementById('current-zone').textContent = zoneInfo.zone;
       document.getElementById('current-price').textContent = '$' + current.price.toLocaleString();
-      document.getElementById('update-date').textContent = current.date;
       document.getElementById('current-cost').textContent = '$' + current.cost_200d.toLocaleString();
       document.getElementById('current-fitted').textContent = '$' + current.fitted_price.toLocaleString();
       document.getElementById('suggestion').textContent = zoneInfo.suggestion;
