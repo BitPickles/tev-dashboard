@@ -63,38 +63,25 @@
         </div>
       </div>
 
-      <!-- Stats Cards Row -->
-      <div style="display: flex; gap: 12px; margin-bottom: 16px;">
-        <div class="stat-card" style="flex: 1.2; min-width: 0;">
+      <!-- Main BMRI Value -->
+      <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
+        <div class="stat-card" style="flex: 0 0 auto; padding: 12px 24px;">
           <div class="stat-label">BMRI</div>
           <div class="stat-value" id="bmri-value">—</div>
           <div class="stat-hint" id="market-state">—</div>
         </div>
-        <div class="stat-card" style="flex: 1; min-width: 0;">
-          <div class="stat-label">Rates</div>
-          <div class="stat-value" style="font-size: 18px;" id="rates-value">—</div>
-          <div class="bucket-bar"><div class="bucket-fill" id="rates-bar"></div></div>
-        </div>
-        <div class="stat-card" style="flex: 1; min-width: 0;">
-          <div class="stat-label">Liquidity</div>
-          <div class="stat-value" style="font-size: 18px;" id="liq-value">—</div>
-          <div class="bucket-bar"><div class="bucket-fill" id="liq-bar"></div></div>
-        </div>
-        <div class="stat-card" style="flex: 1; min-width: 0;">
-          <div class="stat-label">Risk</div>
-          <div class="stat-value" style="font-size: 18px;" id="risk-value">—</div>
-          <div class="bucket-bar"><div class="bucket-fill" id="risk-bar"></div></div>
-        </div>
-        <div class="stat-card" style="flex: 0.8; min-width: 0;">
-          <div class="stat-label" data-zh="更新" data-en="Updated">更新</div>
-          <div class="stat-value" style="font-size: 14px;" id="update-date">—</div>
+        <div class="zone-legend" style="margin: 0;">
+          <div class="zone-item"><div class="zone-dot risk-on"></div><span id="threshold-on">—</span></div>
+          <div class="zone-item"><div class="zone-dot neutral"></div><span data-zh="中性" data-en="Neutral">中性</span></div>
+          <div class="zone-item"><div class="zone-dot risk-off"></div><span id="threshold-off">—</span></div>
         </div>
       </div>
       <!-- Hidden elements for JS compatibility -->
       <span id="bmri-regime" style="display:none;"></span>
       <span id="regime-hint" style="display:none;"></span>
 
-      <!-- Zone Legend -->
+      <!-- Zone Legend (hidden, replaced above) -->
+      <div class="zone-legend" style="display: none;">
       <div class="zone-legend">
         <div class="zone-item">
           <div class="zone-dot risk-on"></div>
@@ -137,6 +124,29 @@
         </div>
         <div class="chart-hint" data-zh="💡 拖动平移 · 滚轮缩放 · 双击重置" data-en="💡 Drag to pan · Scroll to zoom · Double-click to reset">💡 拖动平移 · 滚轮缩放 · 双击重置</div>
         <div class="data-update-time" id="data-update-time">—</div>
+      </div>
+
+      <!-- Detail Stats (below chart) -->
+      <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+        <div class="stat-card" style="flex: 1; min-width: 0;">
+          <div class="stat-label">Rates <span style="color: var(--text-tertiary);">(利率)</span></div>
+          <div class="stat-value" style="font-size: 20px;" id="rates-value">—</div>
+          <div class="bucket-bar"><div class="bucket-fill" id="rates-bar"></div></div>
+        </div>
+        <div class="stat-card" style="flex: 1; min-width: 0;">
+          <div class="stat-label">Liquidity <span style="color: var(--text-tertiary);">(流动性)</span></div>
+          <div class="stat-value" style="font-size: 20px;" id="liq-value">—</div>
+          <div class="bucket-bar"><div class="bucket-fill" id="liq-bar"></div></div>
+        </div>
+        <div class="stat-card" style="flex: 1; min-width: 0;">
+          <div class="stat-label">Risk <span style="color: var(--text-tertiary);">(风险偏好)</span></div>
+          <div class="stat-value" style="font-size: 20px;" id="risk-value">—</div>
+          <div class="bucket-bar"><div class="bucket-fill" id="risk-bar"></div></div>
+        </div>
+        <div class="stat-card" style="flex: 0.6; min-width: 0;">
+          <div class="stat-label" data-zh="数据更新" data-en="Updated">数据更新</div>
+          <div class="stat-value" style="font-size: 14px;" id="update-date">—</div>
+        </div>
       </div>
 
       <!-- Info Sections -->
