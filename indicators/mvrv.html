@@ -219,6 +219,22 @@
       height: 400px;
     }
 
+    .chart-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .chart-footer .data-update-time {
+      position: absolute;
+      right: 0;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
     /* Info Section */
     .info-section {
       background: var(--bg-secondary);
@@ -355,9 +371,8 @@
           <canvas id="mvrv-chart"></canvas>
         </div>
         <div class="chart-footer">
-          <div></div>
-          <div class="chart-hint" data-zh="💡 拖动平移 · 滚轮缩放 · 双击重置" data-en="💡 Drag to pan · Scroll to zoom · Double-click to reset">💡 拖动平移 · 滚轮缩放 · 双击重置</div>
-          <div class="data-update-time" id="data-update-time">—</div>
+          <span class="chart-hint" data-zh="💡 拖动平移 · 滚轮缩放 · 双击重置" data-en="💡 Drag to pan · Scroll to zoom · Double-click to reset">💡 拖动平移 · 滚轮缩放 · 双击重置</span>
+          <span class="data-update-time" id="data-update-time">—</span>
         </div>
       </div>
 
