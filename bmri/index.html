@@ -38,6 +38,14 @@
 
   <main>
     <div class="container">
+      <!-- Loading State -->
+      <div id="loading" class="loading">
+        <div class="loading-spinner"></div>
+        <div data-zh="加载 BMRI 数据中..." data-en="Loading BMRI data...">加载 BMRI 数据中...</div>
+      </div>
+
+      <!-- Main Content (hidden until data loads) -->
+      <div id="content" style="display: none;">
       <div class="page-header">
         <h1 class="page-title">BMRI <span data-zh="宏观风险指标" data-en="Macro Risk Index">宏观风险指标</span></h1>
         <p class="page-subtitle" data-zh="Bitcoin Macro Risk Index — 综合利率、流动性、风险偏好的宏观环境评估" data-en="Bitcoin Macro Risk Index — Rates, Liquidity, and Risk Appetite assessment">Bitcoin Macro Risk Index — 综合利率、流动性、风险偏好的宏观环境评估</p>
@@ -183,6 +191,7 @@
           <div class="disclaimer">💡 <strong>建议：</strong>大多数投资者使用 6M 版作为主要参考。如果你需要更及时的短期预警，可以叠加参考 1M 版。</div>
         </div>
       </div>
+      </div><!-- end content -->
     </div>
   </main>
 
@@ -290,9 +299,15 @@
         ]);
         bmriData = await bmriRes.json();
         if (mcapRes) mcapData = await mcapRes.json();
+        
+        // Hide loading, show content
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+        
         updateDisplay();
       } catch (err) {
         console.error('Failed to load data:', err);
+        document.getElementById('loading').innerHTML = '<div style="color: var(--danger);">加载失败</div>';
       }
     }
 
