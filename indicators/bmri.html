@@ -745,11 +745,17 @@
 
     async function loadData() {
       try {
-        const res = await fetch('../indicators/data/bmri.json');
+        const res = await fetch('./data/bmri.json');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         bmriData = await res.json();
         updateDisplay();
       } catch (err) {
         console.error('Failed to load data:', err);
+        document.querySelector('.stats-grid').innerHTML = 
+          `<div class="stat-card main" style="grid-column: span 3; text-align: center; padding: 40px;">
+            <div style="color: var(--danger); font-size: 18px;">⚠️ 加载失败</div>
+            <div style="color: var(--text-tertiary); margin-top: 8px; font-size: 14px;">${err.message}</div>
+          </div>`;
       }
     }
 
