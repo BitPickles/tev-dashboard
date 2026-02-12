@@ -64,30 +64,30 @@
       </div>
 
       <!-- Stats Cards Row -->
-      <div class="stats-cards-row">
-        <div class="stat-card-h main">
+      <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+        <div class="stat-card" style="flex: 1.2; min-width: 0;">
           <div class="stat-label">BMRI</div>
           <div class="stat-value" id="bmri-value">—</div>
-          <div class="stat-badge" id="market-state">—</div>
+          <div class="stat-hint" id="market-state">—</div>
         </div>
-        <div class="stat-card-h">
+        <div class="stat-card" style="flex: 1; min-width: 0;">
           <div class="stat-label">Rates</div>
-          <div class="stat-value" id="rates-value">—</div>
+          <div class="stat-value" style="font-size: 18px;" id="rates-value">—</div>
           <div class="bucket-bar"><div class="bucket-fill" id="rates-bar"></div></div>
         </div>
-        <div class="stat-card-h">
+        <div class="stat-card" style="flex: 1; min-width: 0;">
           <div class="stat-label">Liquidity</div>
-          <div class="stat-value" id="liq-value">—</div>
+          <div class="stat-value" style="font-size: 18px;" id="liq-value">—</div>
           <div class="bucket-bar"><div class="bucket-fill" id="liq-bar"></div></div>
         </div>
-        <div class="stat-card-h">
+        <div class="stat-card" style="flex: 1; min-width: 0;">
           <div class="stat-label">Risk</div>
-          <div class="stat-value" id="risk-value">—</div>
+          <div class="stat-value" style="font-size: 18px;" id="risk-value">—</div>
           <div class="bucket-bar"><div class="bucket-fill" id="risk-bar"></div></div>
         </div>
-        <div class="stat-card-h date">
+        <div class="stat-card" style="flex: 0.8; min-width: 0;">
           <div class="stat-label" data-zh="更新" data-en="Updated">更新</div>
-          <div class="stat-value small" id="update-date">—</div>
+          <div class="stat-value" style="font-size: 14px;" id="update-date">—</div>
         </div>
       </div>
       <!-- Hidden elements for JS compatibility -->
