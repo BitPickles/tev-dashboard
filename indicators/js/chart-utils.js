@@ -126,11 +126,33 @@ function createChart(container, options = {}) {
       minBarSpacing: 0.1,
       fixLeftEdge: true,
       fixRightEdge: false,
-      tickMarkFormatter: (time) => {
-        if (typeof time === 'string') return time.substring(0, 4);
-        if (typeof time === 'number') return new Date(time * 1000).getFullYear().toString();
-        if (time.year !== undefined) return time.year.toString();
-        return '';
+      tickMarkFormatter: (time, tickMarkType, locale) => {
+        // tickMarkType: 0=Year, 1=Month, 2=DayOfMonth, 3=Time, 4=TimeWithSeconds
+        let date;
+        if (typeof time === 'string') {
+          date = new Date(time);
+        } else if (typeof time === 'number') {
+          date = new Date(time * 1000);
+        } else if (time.year !== undefined) {
+          date = new Date(time.year, (time.month || 1) - 1, time.day || 1);
+        } else {
+          return '';
+        }
+        
+        // Year tick: show year
+        if (tickMarkType === 0) {
+          return date.getFullYear().toString();
+        }
+        // Month tick: show month only (1-12)
+        if (tickMarkType === 1) {
+          return (date.getMonth() + 1).toString();
+        }
+        // Day tick: show day
+        if (tickMarkType === 2) {
+          return date.getDate().toString();
+        }
+        // Default: year
+        return date.getFullYear().toString();
       },
     },
     handleScroll: { mouseWheel: true, pressedMouseMove: true },
