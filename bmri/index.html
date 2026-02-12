@@ -255,12 +255,16 @@
 
     // === Display Update ===
     function updateDisplay() {
+      console.log('[BMRI] updateDisplay called, bmriData:', !!bmriData, 'currentVersion:', currentVersion);
       if (!bmriData) return;
+      try {
       const versionData = bmriData[currentVersion];
+      console.log('[BMRI] versionData:', !!versionData, versionData ? Object.keys(versionData) : null);
       const current = versionData.current;
       const thresholds = versionData.thresholds;
       currentThresholds = thresholds;
       const regimeInfo = getRegimeInfo(current.regime);
+      console.log('[BMRI] current:', current, 'regimeInfo:', regimeInfo);
 
       document.getElementById('bmri-value').textContent = current.value.toFixed(1);
       document.getElementById('bmri-value').className = `stat-value ${regimeInfo.class}`;
@@ -287,27 +291,43 @@
         document.getElementById('data-update-time').textContent = prefix + bmriData.updated_at;
       }
 
+      console.log('[BMRI] Calling drawChart...');
       drawChart(versionData.history, thresholds);
+      console.log('[BMRI] drawChart completed');
+      } catch (err) {
+        console.error('[BMRI] updateDisplay error:', err);
+        console.error('[BMRI] Error stack:', err.stack);
+        throw err; // Re-throw to be caught by loadData
+      }
     }
 
     // === Data Loading ===
     async function loadData() {
+      console.log('[BMRI] loadData started');
       try {
+        console.log('[BMRI] Fetching data...');
         const [bmriRes, mcapRes] = await Promise.all([
           fetch('../indicators/data/bmri.json'),
           fetch('../indicators/data/mcap.json').catch(() => null)
         ]);
+        console.log('[BMRI] bmriRes status:', bmriRes.status, bmriRes.ok);
+        if (!bmriRes.ok) throw new Error(`HTTP ${bmriRes.status}: ${bmriRes.statusText}`);
+        
         bmriData = await bmriRes.json();
-        if (mcapRes) mcapData = await mcapRes.json();
+        console.log('[BMRI] bmriData keys:', Object.keys(bmriData));
+        if (mcapRes && mcapRes.ok) mcapData = await mcapRes.json();
         
         // Hide loading, show content
         document.getElementById('loading').style.display = 'none';
         document.getElementById('content').style.display = 'block';
         
+        console.log('[BMRI] Calling updateDisplay...');
         updateDisplay();
+        console.log('[BMRI] updateDisplay completed');
       } catch (err) {
-        console.error('Failed to load data:', err);
-        document.getElementById('loading').innerHTML = '<div style="color: var(--danger);">加载失败</div>';
+        console.error('[BMRI] Failed to load data:', err);
+        console.error('[BMRI] Error stack:', err.stack);
+        document.getElementById('loading').innerHTML = `<div style="color: var(--danger);">加载失败: ${err.message}</div>`;
       }
     }
 
