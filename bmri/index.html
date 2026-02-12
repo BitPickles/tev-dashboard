@@ -266,7 +266,7 @@
     // === State ===
     let currentVersion = '6m';
     let bmriData = null;
-    let mcapData = null;
+    let marketcapData = null;
     let chart = null;
     let series = {};
     let zones = {};
@@ -380,7 +380,7 @@
       console.log('[BMRI] loadData started');
       try {
         console.log('[BMRI] Fetching data...');
-        const [bmriRes, mcapRes, btcPriceRes] = await Promise.all([
+        const [bmriRes, marketcapRes, btcPriceRes] = await Promise.all([
           fetch('../indicators/data/bmri.json'),
           fetch('../indicators/data/mcap.json').catch(() => null),
           fetch('../indicators/data/shared/btc-price.json')
@@ -390,7 +390,7 @@
 
         bmriData = await bmriRes.json();
         console.log('[BMRI] bmriData keys:', Object.keys(bmriData));
-        if (mcapRes && mcapRes.ok) mcapData = await mcapRes.json();
+        if (marketcapRes && marketcapRes.ok) marketcapData = await marketcapRes.json();
         if (btcPriceRes && btcPriceRes.ok) btcPriceData = await btcPriceRes.json();
 
         // Hide loading, show content
@@ -471,7 +471,7 @@
       if (btcPriceData) {
         const currentBtcD = bmriDataArr[bmriDataArr.length - 1].value;
         const btcDValue = currentBtcD || 50;
-        const btcMcapData = mcapData.history.filter(d => d.btc_mcap).map(d => ({ time: d.date, value: d.btc_mcap }));
+        const btcMcapData = marketcapData.history.filter(d => d.btc_mcap).map(d => ({ time: d.date, value: d.btc_mcap }));
         const cryptoTotalMcapData = btcMcapData.map(d => ({
           time: d.date,
           value: btcDValue > 0 ? d.btc_mcap / (btcDValue / 100) : 0
@@ -504,7 +504,7 @@
         
         const dateStr = typeof param.time === 'string' ? param.time : `${param.time.year}-${String(param.time.month).padStart(2,'0')}-${String(param.time.day).padStart(2,'0')}`;
         const d = historyData[dateStr];
-        const mc = mcapData?.history.find(m => m.date === dateStr);
+        const mc = marketcapData?.history.find(m => m.date === dateStr);
 
         if (seriesVisible.bmri && d?.bmri !== undefined) { document.getElementById('tooltip-bmri').style.display = 'flex'; document.getElementById('tooltip-bmri-value').textContent = d.bmri.toFixed(1); } else { document.getElementById('tooltip-bmri').style.display = 'none'; }
         if (seriesVisible.rates && d?.rates !== undefined) { document.getElementById('tooltip-rates').style.display = 'flex'; document.getElementById('tooltip-rates-value').textContent = d.rates.toFixed(2); } else { document.getElementById('tooltip-rates').style.display = 'none'; }
@@ -512,7 +512,7 @@
         if (seriesVisible.risk && d?.risk !== undefined) { document.getElementById('tooltip-risk').style.display = 'flex'; document.getElementById('tooltip-risk-value').textContent = d.risk.toFixed(2); } else { document.getElementById('tooltip-risk').style.display = 'none'; }
         const dateStr = typeof param.time === 'string' ? param.time : `${param.time.year}-${String(param.time.month).padStart(2,'0')}-${String(param.time.day).padStart(2,'0')}`;
         const d = historyData[dateStr];
-        const mc = mcapData?.history.find(m => m.date === dateStr);
+        const mc = marketcapData?.history.find(m => m.date === dateStr);
         const priceRecord = btcPriceData?.history.find(p => p.date === dateStr);
         const currentBtcD = bmriDataArr[bmriDataArr.length - 1].value || 50;
 
