@@ -333,16 +333,13 @@
 
     // === Display Update ===
     function updateDisplay() {
-      console.log('[BMRI] updateDisplay called, bmriData:', !!bmriData, 'currentVersion:', currentVersion);
       if (!bmriData) return;
       try {
       const versionData = bmriData[currentVersion];
-      console.log('[BMRI] versionData:', !!versionData, versionData ? Object.keys(versionData) : null);
       const current = versionData.current;
       const thresholds = versionData.thresholds;
       currentThresholds = thresholds;
       const regimeInfo = getRegimeInfo(current.regime);
-      console.log('[BMRI] current:', current, 'regimeInfo:', regimeInfo);
 
       document.getElementById('bmri-value').textContent = current.value.toFixed(1);
       document.getElementById('bmri-value').className = `stat-value ${regimeInfo.class}`;
@@ -365,9 +362,7 @@
         document.getElementById('data-update-time').textContent = prefix + bmriData.updated_at;
       }
 
-      console.log('[BMRI] Calling drawChart...');
       drawChart(versionData.history, thresholds);
-      console.log('[BMRI] drawChart completed');
       } catch (err) {
         console.error('[BMRI] updateDisplay error:', err);
         console.error('[BMRI] Error stack:', err.stack);
@@ -377,19 +372,15 @@
 
     // === Data Loading ===
     async function loadData() {
-      console.log('[BMRI] loadData started');
       try {
-        console.log('[BMRI] Fetching data...');
         const [bmriRes, marketcapRes, btcPriceRes] = await Promise.all([
           fetch('../indicators/data/bmri.json'),
-          fetch('../indicators/data/mcap.json').catch(() => null),
+          fetch('../indicators/data/marketcap.json').catch(() => null),
           fetch('../indicators/data/shared/btc-price.json')
         ]);
-        console.log('[BMRI] bmriRes status:', bmriRes.status, bmriRes.ok);
         if (!bmriRes.ok) throw new Error(`HTTP ${bmriRes.status}: ${bmriRes.statusText}`);
 
         bmriData = await bmriRes.json();
-        console.log('[BMRI] bmriData keys:', Object.keys(bmriData));
         if (marketcapRes && marketcapRes.ok) marketcapData = await marketcapRes.json();
         if (btcPriceRes && btcPriceRes.ok) btcPriceData = await btcPriceRes.json();
 
@@ -397,9 +388,7 @@
         document.getElementById('loading').style.display = 'none';
         document.getElementById('content').style.display = 'block';
 
-        console.log('[BMRI] Calling updateDisplay...');
         updateDisplay();
-        console.log('[BMRI] updateDisplay completed');
       } catch (err) {
         console.error('[BMRI] Failed to load data:', err);
         console.error('[BMRI] Error stack:', err.stack);
@@ -468,7 +457,7 @@
       }
 
       // Crypto Total Market Cap series
-      if (btcPriceData) {
+      if (btcPriceData && marketcapData) {
         const currentBtcD = bmriDataArr[bmriDataArr.length - 1].value;
         const btcDValue = currentBtcD || 50;
         const btcMcapData = marketcapData.history.filter(d => d.btc_mcap).map(d => ({ time: d.date, value: d.btc_mcap }));

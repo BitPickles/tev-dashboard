@@ -226,17 +226,27 @@
 
     // === Data Loading ===
     async function loadData() {
+      console.log('[BTC-D] loadData started');
       try {
         const [dominanceRes, btcPriceRes] = await Promise.all([
           fetch('../indicators/data/btc-dominance.json'),
-          fetch('../indicators/data/shared/btc-price.json')
+          fetch('../indicators/data/shared/btc-price.json').catch(() => null)
         ]);
+        console.log('[BTC-D] dominanceRes:', dominanceRes.status, dominanceRes.ok);
+        if (!dominanceRes.ok) throw new Error(`HTTP ${dominanceRes.status}`);
         currentData = await dominanceRes.json();
+        console.log('[BTC-D] currentData keys:', Object.keys(currentData));
         if (btcPriceRes && btcPriceRes.ok) btcPriceData = await btcPriceRes.json();
         updateDisplay();
         drawChart(currentData.history);
+        console.log('[BTC-D] Load complete');
       } catch (err) {
-        console.error('Failed to load data:', err);
+        console.error('[BTC-D] Failed to load data:', err);
+        document.querySelector('.stats-grid').innerHTML = 
+          `<div class="stat-card" style="grid-column: span 2; text-align: center; padding: 40px;">
+            <div style="color: var(--danger); font-size: 18px;">⚠️ 加载失败</div>
+            <div style="color: var(--text-tertiary); margin-top: 8px;">${err.message}</div>
+          </div>`;
       }
     }
 
