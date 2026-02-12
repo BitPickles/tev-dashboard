@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uniswap CCA Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1>Uniswap CCA Dashboard</h1>
+            <p class="subtitle">Live-style overview of current continuous clearing auctions</p>
+          </div>
+        </div>
+      </header>
+
+      <section class="cards" aria-label="Summary cards">
+        <article class="card">
+          <p class="card-label">Total Auctions</p>
+          <p id="totalAuctions" class="card-value">-</p>
+        </article>
+        <article class="card">
+          <p class="card-label">Total Raised</p>
+          <p id="totalRaised" class="card-value">-</p>
+        </article>
+        <article class="card">
+          <p class="card-label">Active Auctions</p>
+          <p id="activeAuctions" class="card-value">-</p>
+        </article>
+      </section>
+
+      <section class="panel" aria-label="Auction list">
+        <h2>Auctions</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Raised</th>
+                <th>Clearing Price</th>
+                <th>Bidders</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="auctionRows"></tbody>
+          </table>
+        </div>
+        <div id="tableMessage" class="empty" hidden></div>
+      </section>
+    </main>
+
+    <script>
+      const FALLBACK_AUCTIONS = {
+        generatedAt: "2026-02-12T00:00:00.000Z",
+        auctions: [
+          {
+            id: "0x1a2b3c4d5e6f708192aabbccddeeff0011223344",
+            name: "Aztec CCA",
+            status: "active",
+            raisedUsd: 1250000,
+            clearingPriceUsd: 2.34,
+            bidders: 184
+          },
+          {
+            id: "0x2b3c4d5e6f708192aabbccddeeff001122334455",
+            name: "Scroll CCA",
+            status: "settled",
+            raisedUsd: 870000,
+            clearingPriceUsd: 1.91,
+            bidders: 129
+          },
+          {
+            id: "0x3c4d5e6f708192aabbccddeeff00112233445566",
+            name: "Unichain CCA",
+            status: "upcoming",
+            raisedUsd: 0,
+            clearingPriceUsd: 0,
+            bidders: 0
+          }
+        ]
+      };
+
+      function formatCurrency(amount) {
+        return new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+          maximumFractionDigits: amount >= 1000 ? 0 : 2
+        }).format(amount);
+      }
+
+      function statusClass(status) {
+        const normalized = (status || "").toLowerCase();
+        if (normalized === "active") return "status status-active";
+        if (normalized === "settled") return "status status-settled";
+        return "status status-upcoming";
+      }
+
+      async function loadAuctions() {
+        try {
+          const response = await fetch("../data/cca/auctions.json", { cache: "no-store" });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          return await response.json();
+        } catch (error) {
+          return FALLBACK_AUCTIONS;
+        }
+      }
+
+      function renderSummary(auctions) {
+        const totalRaised = auctions.reduce((sum, auction) => sum + (auction.raisedUsd || 0), 0);
+        const active = auctions.filter((auction) => (auction.status || "").toLowerCase() === "active").length;
+
+        document.getElementById("totalAuctions").textContent = String(auctions.length);
+        document.getElementById("totalRaised").textContent = formatCurrency(totalRaised);
+        document.getElementById("activeAuctions").textContent = String(active);
+      }
+
+      function renderTable(auctions) {
+        const rowsEl = document.getElementById("auctionRows");
+        const messageEl = document.getElementById("tableMessage");
+        rowsEl.innerHTML = "";
+
+        if (!auctions.length) {
+          messageEl.hidden = false;
+          messageEl.textContent = "No auctions available in dataset.";
+          return;
+        }
+
+        messageEl.hidden = true;
+
+        auctions.forEach((auction) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${auction.name || auction.id}</td>
+            <td><span class="${statusClass(auction.status)}">${auction.status || "unknown"}</span></td>
+            <td>${formatCurrency(auction.raisedUsd || 0)}</td>
+            <td>${auction.clearingPriceUsd ? formatCurrency(auction.clearingPriceUsd) : "-"}</td>
+            <td>${auction.bidders || 0}</td>
+            <td><a class="button" href="./auction.html?id=${encodeURIComponent(auction.id)}">View</a></td>
+          `;
+          rowsEl.appendChild(tr);
+        });
+      }
+
+      async function init() {
+        const data = await loadAuctions();
+        const auctions = Array.isArray(data.auctions) ? data.auctions : [];
+        renderSummary(auctions);
+        renderTable(auctions);
+      }
+
+      init();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auction Details | Uniswap CCA Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1 id="auctionTitle">Auction Detail</h1>
+            <p class="subtitle" id="auctionAddress"></p>
+          </div>
+        </div>
+        <a class="button secondary" href="./index.html">Back to Dashboard</a>
+      </header>
+
+      <div id="errorState" class="error" hidden></div>
+
+      <section class="grid-2" id="content" hidden>
+        <article class="panel">
+          <h2>Clearing Price History</h2>
+          <p class="subtitle" id="statusLine"></p>
+          <canvas id="priceChart" height="120"></canvas>
+        </article>
+
+        <article class="panel">
+          <h2>Participation Stats</h2>
+          <div class="stats-list" id="statsList"></div>
+        </article>
+      </section>
+    </main>
+
+    <script>
+      const FALLBACK_DETAILS = {
+        "0x1a2b3c4d5e6f708192aabbccddeeff0011223344": {
+          id: "0x1a2b3c4d5e6f708192aabbccddeeff0011223344",
+          name: "Aztec CCA",
+          status: "active",
+          clearingPriceUsd: 2.34,
+          raisedUsd: 1250000,
+          bidders: 184,
+          participation: {
+            uniqueWallets: 184,
+            repeatBidders: 51,
+            avgBidUsd: 6793.48,
+            largestBidUsd: 84500
+          },
+          priceHistory: [
+            { timestamp: "2026-02-01", priceUsd: 1.82 },
+            { timestamp: "2026-02-03", priceUsd: 1.95 },
+            { timestamp: "2026-02-05", priceUsd: 2.08 },
+            { timestamp: "2026-02-07", priceUsd: 2.16 },
+            { timestamp: "2026-02-09", priceUsd: 2.28 },
+            { timestamp: "2026-02-11", priceUsd: 2.34 }
+          ]
+        },
+        "0x2b3c4d5e6f708192aabbccddeeff001122334455": {
+          id: "0x2b3c4d5e6f708192aabbccddeeff001122334455",
+          name: "Scroll CCA",
+          status: "settled",
+          clearingPriceUsd: 1.91,
+          raisedUsd: 870000,
+          bidders: 129,
+          participation: {
+            uniqueWallets: 129,
+            repeatBidders: 33,
+            avgBidUsd: 6744.19,
+            largestBidUsd: 61800
+          },
+          priceHistory: [
+            { timestamp: "2026-01-23", priceUsd: 1.46 },
+            { timestamp: "2026-01-25", priceUsd: 1.58 },
+            { timestamp: "2026-01-28", priceUsd: 1.69 },
+            { timestamp: "2026-01-30", priceUsd: 1.77 },
+            { timestamp: "2026-02-02", priceUsd: 1.85 },
+            { timestamp: "2026-02-04", priceUsd: 1.91 }
+          ]
+        },
+        "0x3c4d5e6f708192aabbccddeeff00112233445566": {
+          id: "0x3c4d5e6f708192aabbccddeeff00112233445566",
+          name: "Unichain CCA",
+          status: "upcoming",
+          clearingPriceUsd: 0,
+          raisedUsd: 0,
+          bidders: 0,
+          participation: {
+            uniqueWallets: 0,
+            repeatBidders: 0,
+            avgBidUsd: 0,
+            largestBidUsd: 0
+          },
+          priceHistory: [
+            { timestamp: "2026-02-10", priceUsd: 1.12 },
+            { timestamp: "2026-02-11", priceUsd: 1.14 },
+            { timestamp: "2026-02-12", priceUsd: 1.18 }
+          ]
+        }
+      };
+
+      function formatCurrency(amount) {
+        return new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+          maximumFractionDigits: amount >= 1000 ? 0 : 2
+        }).format(amount);
+      }
+
+      async function loadAuction(id) {
+        if (!id) {
+          throw new Error("Missing auction id parameter. Use ?id=<auction_address>.");
+        }
+
+        try {
+          const response = await fetch(`../data/cca/auctions/${id}.json`, { cache: "no-store" });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          return await response.json();
+        } catch (error) {
+          if (FALLBACK_DETAILS[id]) return FALLBACK_DETAILS[id];
+          throw new Error("Could not load auction details from data files.");
+        }
+      }
+
+      function renderStats(auction) {
+        const stats = [
+          ["Status", auction.status || "unknown"],
+          ["Current Clearing Price", auction.clearingPriceUsd ? formatCurrency(auction.clearingPriceUsd) : "-"],
+          ["Raised", formatCurrency(auction.raisedUsd || 0)],
+          ["Unique Wallets", String(auction.participation?.uniqueWallets || 0)],
+          ["Repeat Bidders", String(auction.participation?.repeatBidders || 0)],
+          ["Avg Bid", formatCurrency(auction.participation?.avgBidUsd || 0)],
+          ["Largest Bid", formatCurrency(auction.participation?.largestBidUsd || 0)]
+        ];
+
+        const statsList = document.getElementById("statsList");
+        statsList.innerHTML = "";
+
+        stats.forEach(([label, value]) => {
+          const row = document.createElement("div");
+          row.className = "stats-item";
+          row.innerHTML = `<span class="label">${label}</span><strong>${value}</strong>`;
+          statsList.appendChild(row);
+        });
+      }
+
+      function renderChart(auction) {
+        const history = Array.isArray(auction.priceHistory) ? auction.priceHistory : [];
+        const labels = history.map((point) => point.timestamp);
+        const values = history.map((point) => point.priceUsd);
+
+        const ctx = document.getElementById("priceChart").getContext("2d");
+        new Chart(ctx, {
+          type: "line",
+          data: {
+            labels,
+            datasets: [
+              {
+                label: "Clearing Price (USD)",
+                data: values,
+                borderColor: "#36d399",
+                backgroundColor: "rgba(54, 211, 153, 0.18)",
+                borderWidth: 2,
+                pointRadius: 3,
+                tension: 0.25,
+                fill: true
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                labels: {
+                  color: "#e9eefc"
+                }
+              }
+            },
+            scales: {
+              x: {
+                ticks: { color: "#9aacd1" },
+                grid: { color: "rgba(154, 172, 209, 0.1)" }
+              },
+              y: {
+                ticks: {
+                  color: "#9aacd1",
+                  callback: (value) => `$${value}`
+                },
+                grid: { color: "rgba(154, 172, 209, 0.1)" }
+              }
+            }
+          }
+        });
+      }
+
+      async function init() {
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+        const errorEl = document.getElementById("errorState");
+
+        try {
+          const auction = await loadAuction(id);
+          document.getElementById("auctionTitle").textContent = auction.name || "Auction Detail";
+          document.getElementById("auctionAddress").textContent = auction.id || "";
+          document.getElementById("statusLine").textContent = `Status: ${auction.status || "unknown"}`;
+
+          renderStats(auction);
+          renderChart(auction);
+
+          document.getElementById("content").hidden = false;
+        } catch (error) {
+          errorEl.hidden = false;
+          errorEl.textContent = error.message;
+        }
+      }
+
+      init();
+    </script>
+  </body>
+</html>

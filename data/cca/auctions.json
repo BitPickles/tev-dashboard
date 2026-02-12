@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-02-12T00:00:00.000Z",
+  "chain": "ethereum",
+  "auctions": [
+    {
+      "id": "0x1a2b3c4d5e6f708192aabbccddeeff0011223344",
+      "name": "Aztec CCA",
+      "status": "active",
+      "raisedUsd": 1250000,
+      "clearingPriceUsd": 2.34,
+      "bidders": 184
+    },
+    {
+      "id": "0x2b3c4d5e6f708192aabbccddeeff001122334455",
+      "name": "Scroll CCA",
+      "status": "settled",
+      "raisedUsd": 870000,
+      "clearingPriceUsd": 1.91,
+      "bidders": 129
+    },
+    {
+      "id": "0x3c4d5e6f708192aabbccddeeff00112233445566",
+      "name": "Unichain CCA",
+      "status": "upcoming",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0,
+      "bidders": 0
+    }
+  ]
+}
