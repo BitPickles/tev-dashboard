@@ -302,6 +302,11 @@
     }
     function sortProtocols(arr, f, d) {
       return [...arr].sort((a, b) => {
+        // 没有 TEV yield 的项目排在后面
+        const aHasYield = (a.metrics?.tev_yield_decimal || 0) > 0 ? 1 : 0;
+        const bHasYield = (b.metrics?.tev_yield_decimal || 0) > 0 ? 1 : 0;
+        if (bHasYield !== aHasYield) return bHasYield - aHasYield;
+        
         let cmp = getSortValue(b, f) - getSortValue(a, f);
         if (d === 'asc') cmp = -cmp;
         if (cmp === 0) cmp = (b.latest_record?.market_cap_usd || 0) - (a.latest_record?.market_cap_usd || 0);
