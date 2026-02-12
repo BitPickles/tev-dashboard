@@ -495,13 +495,6 @@
         const d = historyData[dateStr];
         const mc = marketcapData?.find(m => m.date === dateStr);
 
-        if (seriesVisible.bmri && d?.bmri !== undefined) { document.getElementById('tooltip-bmri').style.display = 'flex'; document.getElementById('tooltip-bmri-value').textContent = d.bmri.toFixed(1); } else { document.getElementById('tooltip-bmri').style.display = 'none'; }
-        if (seriesVisible.rates && d?.rates !== undefined) { document.getElementById('tooltip-rates').style.display = 'flex'; document.getElementById('tooltip-rates-value').textContent = d.rates.toFixed(2); } else { document.getElementById('tooltip-rates').style.display = 'none'; }
-        if (seriesVisible.liq && d?.liq !== undefined) { document.getElementById('tooltip-liq').style.display = 'flex'; document.getElementById('tooltip-liq-value').textContent = d.liq.toFixed(2); } else { document.getElementById('tooltip-liq').style.display = 'none'; }
-        if (seriesVisible.risk && d?.risk !== undefined) { document.getElementById('tooltip-risk').style.display = 'flex'; document.getElementById('tooltip-risk-value').textContent = d.risk.toFixed(2); } else { document.getElementById('tooltip-risk').style.display = 'none'; }
-        const dateStr = typeof param.time === 'string' ? param.time : `${param.time.year}-${String(param.time.month).padStart(2,'0')}-${String(param.time.day).padStart(2,'0')}`;
-        const d = historyData[dateStr];
-        const mc = marketcapData?.find(m => m.date === dateStr);
         const priceRecord = btcPriceData?.history.find(p => p.date === dateStr);
         const currentBtcD = bmriDataArr[bmriDataArr.length - 1].value || 50;
 
