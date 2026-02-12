@@ -1137,3 +1137,111 @@ tr:last-child { border-bottom: none; }
     gap: 20px;
   }
 }
+
+/* ==============================================
+   Protocol Detail Page Styles
+   ============================================== */
+
+/* Breadcrumb */
+.breadcrumb { padding: 20px 0; font-size: 14px; color: var(--text-tertiary); }
+.breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+.breadcrumb a:hover { color: var(--text-primary); }
+
+/* Protocol Header */
+.protocol-header { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 32px; flex-wrap: wrap; gap: 24px; }
+.protocol-title { display: flex; align-items: center; gap: 16px; }
+.protocol-icon-lg { width: 64px; height: 64px; border-radius: 16px; background: var(--bg-tertiary); display: flex; align-items: center; justify-content: center; font-size: 32px; overflow: hidden; }
+.protocol-icon-lg img { width: 100%; height: 100%; object-fit: cover; }
+.protocol-info h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; }
+.protocol-links { display: flex; gap: 8px; margin-top: 12px; }
+.protocol-link { padding: 6px 12px; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 6px; color: var(--text-secondary); text-decoration: none; font-size: 13px; transition: all 0.2s; }
+.protocol-link:hover { border-color: var(--text-tertiary); color: var(--text-primary); }
+
+/* TEV Highlight */
+.tev-highlight { text-align: right; min-width: 200px; }
+.tev-status { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+.tev-status.active { color: var(--accent); }
+.tev-status.none { color: var(--danger); }
+.tev-status.partial { color: var(--warning); }
+.tev-value { font-size: 32px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+.tev-label { font-size: 13px; color: var(--text-tertiary); margin-top: 4px; }
+
+/* Section */
+.section { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+.section-title { font-size: 16px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+
+/* TEV Summary Grid */
+.tev-summary-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.tev-summary-item { background: var(--bg-tertiary); padding: 16px; border-radius: 8px; text-align: center; }
+.tev-summary-label { font-size: 11px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+.tev-summary-value { font-size: 14px; font-weight: 700; }
+.value-on { color: var(--accent); }
+.value-off { color: var(--danger); }
+.value-partial { color: var(--warning); }
+.value-none { color: var(--text-tertiary); }
+
+/* Chart Section */
+.chart-section { display: none; }
+.chart-section.has-data { display: block; }
+.chart-container { background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+.chart-canvas-wrap { position: relative; height: 360px; }
+.chart-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+.chart-stat { text-align: center; }
+.chart-stat-value { font-size: 20px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--accent); }
+.chart-stat-label { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; text-transform: uppercase; }
+
+/* Mechanism Cards */
+.mechanism-list { display: flex; flex-direction: column; gap: 16px; }
+.mechanism-card { background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+.mechanism-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+.mechanism-name { font-size: 15px; font-weight: 700; }
+.mechanism-type { font-size: 11px; color: var(--text-tertiary); text-transform: uppercase; margin-top: 2px; }
+.mechanism-status { padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; text-transform: uppercase; }
+.status-active { background: var(--accent-dim); color: var(--accent); }
+.status-planned { background: var(--blue-dim); color: var(--blue); }
+.status-inactive { background: var(--danger-dim); color: var(--danger); }
+.mechanism-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+.mechanism-meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--text-tertiary); }
+.mechanism-meta a { color: var(--blue); text-decoration: none; }
+.mechanism-meta a:hover { text-decoration: underline; }
+
+/* No TEV Notice */
+.no-tev-notice { background: var(--danger-dim); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 10px; padding: 24px; text-align: center; }
+.no-tev-notice .icon { font-size: 32px; margin-bottom: 12px; }
+.no-tev-notice h3 { color: var(--danger); margin-bottom: 8px; }
+.no-tev-notice p { color: var(--text-secondary); font-size: 14px; }
+
+/* Sources List */
+.sources-list { display: flex; flex-direction: column; gap: 8px; }
+.source-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--bg-tertiary); border-radius: 8px; }
+.source-name { font-size: 14px; font-weight: 500; }
+.source-type { font-size: 11px; color: var(--text-tertiary); text-transform: uppercase; margin-left: 8px; }
+.source-link { color: var(--blue); text-decoration: none; font-size: 13px; }
+.source-link:hover { text-decoration: underline; }
+
+/* Protocol Notes */
+.protocol-notes { font-size: 14px; color: var(--text-secondary); line-height: 1.8; padding: 16px; background: var(--bg-tertiary); border-radius: 8px; border-left: 3px solid var(--accent); }
+
+/* Burn Progress */
+.burn-progress-container { background: var(--bg-tertiary); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+.burn-progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 14px; color: var(--text-secondary); }
+.burn-progress-bar { height: 24px; background: var(--bg-hover); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+.burn-progress-fill { height: 100%; border-radius: 12px; transition: width 0.5s ease; display: flex; align-items: center; justify-content: flex-end; padding-right: 12px; font-size: 12px; font-weight: 700; color: #000; }
+.burn-progress-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center; }
+.burn-stat-value { font-size: 20px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+.burn-stat-label { font-size: 12px; color: var(--text-tertiary); margin-top: 4px; }
+.burn-charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.burn-chart-card { background: var(--bg-tertiary); border-radius: 12px; padding: 20px; }
+.burn-chart-card h4 { font-size: 14px; font-weight: 500; color: var(--text-secondary); margin-bottom: 16px; }
+
+/* Protocol Detail Responsive */
+@media (max-width: 768px) {
+  .protocol-header { flex-direction: column; }
+  .tev-highlight { text-align: left; }
+  .tev-summary-grid { grid-template-columns: repeat(2, 1fr); }
+  .mechanism-header { flex-direction: column; gap: 8px; }
+  .chart-canvas-wrap { height: 260px; }
+  .chart-stats { grid-template-columns: repeat(2, 1fr); }
+  .burn-charts-grid { grid-template-columns: 1fr; }
+  .burn-progress-stats { grid-template-columns: 1fr; gap: 12px; }
+}
