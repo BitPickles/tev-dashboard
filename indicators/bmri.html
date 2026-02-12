@@ -453,6 +453,11 @@
         <div class="chart-wrapper">
           <canvas id="bmri-chart"></canvas>
         </div>
+        <div class="chart-footer">
+          <div></div>
+          <div class="chart-hint" data-zh="💡 拖动平移 · 滚轮缩放 · 双击重置" data-en="💡 Drag to pan · Scroll to zoom · Double-click to reset">💡 拖动平移 · 滚轮缩放 · 双击重置</div>
+          <div class="data-update-time" id="data-update-time">—</div>
+        </div>
       </div>
 
       <!-- Info Section -->
@@ -515,6 +520,7 @@
     let currentVersion = '6m';
     let bmriData = null;
     let chart = null;
+    let currentDate = null;
 
     function toggleLang() {
       currentLang = currentLang === 'zh' ? 'en' : 'zh';
@@ -529,6 +535,10 @@
       document.querySelectorAll('[data-zh]').forEach(el => {
         el.textContent = el.getAttribute(`data-${currentLang}`);
       });
+      // Update data-update-time with current language
+      if (currentDate) {
+        document.getElementById('data-update-time').textContent = (currentLang === 'zh' ? '数据更新：' : 'Updated: ') + currentDate;
+      }
       localStorage.setItem('lang', currentLang);
     }
 
@@ -600,7 +610,9 @@
       document.getElementById('bmri-value').className = `stat-value ${riskClass}`;
       document.getElementById('bmri-regime').textContent = riskLabel;
       document.getElementById('market-state').textContent = value >= thresholds.off ? '🔴 Risk-Off' : value <= thresholds.on ? '🟢 Risk-On' : '🟡 Neutral';
+      currentDate = current.date;
       document.getElementById('update-date').textContent = current.date;
+      document.getElementById('data-update-time').textContent = (currentLang === 'zh' ? '数据更新：' : 'Updated: ') + currentDate;
 
       // Update bucket values (直接从 current 读取 rates/liq/risk)
       document.getElementById('rates-value').textContent = current.rates !== undefined ? current.rates.toFixed(1) : '—';

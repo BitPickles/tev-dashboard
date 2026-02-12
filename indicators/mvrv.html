@@ -354,6 +354,11 @@
         <div class="chart-wrapper">
           <canvas id="mvrv-chart"></canvas>
         </div>
+        <div class="chart-footer">
+          <div></div>
+          <div class="chart-hint" data-zh="💡 拖动平移 · 滚轮缩放 · 双击重置" data-en="💡 Drag to pan · Scroll to zoom · Double-click to reset">💡 拖动平移 · 滚轮缩放 · 双击重置</div>
+          <div class="data-update-time" id="data-update-time">—</div>
+        </div>
       </div>
 
       <div class="info-section">
@@ -392,6 +397,7 @@
   <script>
     let currentLang = 'zh';
     let chart = null;
+    let currentDate = null;
 
     function toggleLang() {
       currentLang = currentLang === 'zh' ? 'en' : 'zh';
@@ -405,6 +411,10 @@
       document.querySelectorAll('[data-zh]').forEach(el => {
         el.textContent = el.getAttribute(`data-${currentLang}`);
       });
+      // Update data-update-time with current language
+      if (currentDate) {
+        document.getElementById('data-update-time').textContent = (currentLang === 'zh' ? '数据更新：' : 'Updated: ') + currentDate;
+      }
       localStorage.setItem('lang', currentLang);
     }
 
@@ -455,7 +465,9 @@
         document.getElementById('current-value').className = `stat-value ${zoneInfo.class}`;
         document.getElementById('current-zone').textContent = zoneInfo.zone;
         document.getElementById('market-state').textContent = zoneInfo.state;
+        currentDate = current.date;
         document.getElementById('update-date').textContent = current.date;
+        document.getElementById('data-update-time').textContent = (currentLang === 'zh' ? '数据更新：' : 'Updated: ') + currentDate;
         document.getElementById('percentile').textContent = percentile + '%';
 
         // Draw chart

@@ -332,19 +332,24 @@ main {
   height: 500px;
 }
 
-.chart-hint {
+/* Chart Footer Row - hint + update time on same line */
+.chart-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
   font-size: 12px;
   color: var(--text-tertiary);
-  margin-top: 12px;
+}
+
+.chart-hint {
+  flex: 1;
   text-align: center;
 }
 
 .data-update-time {
-  font-size: 12px;
-  color: var(--text-tertiary);
-  text-align: right;
-  margin-top: 8px;
   font-family: 'JetBrains Mono', monospace;
+  white-space: nowrap;
 }
 
 /* === Chart Tooltip (inline style) === */
