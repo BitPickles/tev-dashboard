@@ -2,8 +2,8 @@
   "protocol": "pendle",
   "period": "2026-02",
   "source": "defillama+coingecko",
-  "fetched_at": "2026-02-09T07:04:43.573Z",
-  "record_count": 7,
+  "fetched_at": "2026-02-13T20:04:46.806Z",
+  "record_count": 11,
   "records": [
     {
       "date": "2026-02-01",
@@ -73,6 +73,46 @@
       "daily_revenue_usd": 4558,
       "daily_holders_revenue_usd": 3647,
       "daily_tev_usd": 3647,
+      "tev_source": "defillama_holdersRevenue"
+    },
+    {
+      "date": "2026-02-09",
+      "price_usd": null,
+      "market_cap_usd": null,
+      "daily_fees_usd": 128864,
+      "daily_revenue_usd": 128559,
+      "daily_holders_revenue_usd": 102847,
+      "daily_tev_usd": 102847,
+      "tev_source": "defillama_holdersRevenue"
+    },
+    {
+      "date": "2026-02-10",
+      "price_usd": null,
+      "market_cap_usd": null,
+      "daily_fees_usd": 9868,
+      "daily_revenue_usd": 9560,
+      "daily_holders_revenue_usd": 7647,
+      "daily_tev_usd": 7647,
+      "tev_source": "defillama_holdersRevenue"
+    },
+    {
+      "date": "2026-02-11",
+      "price_usd": null,
+      "market_cap_usd": null,
+      "daily_fees_usd": 9712,
+      "daily_revenue_usd": 9495,
+      "daily_holders_revenue_usd": 7595,
+      "daily_tev_usd": 7595,
+      "tev_source": "defillama_holdersRevenue"
+    },
+    {
+      "date": "2026-02-12",
+      "price_usd": null,
+      "market_cap_usd": null,
+      "daily_fees_usd": 19018,
+      "daily_revenue_usd": 18468,
+      "daily_holders_revenue_usd": 14774,
+      "daily_tev_usd": 14774,
       "tev_source": "defillama_holdersRevenue"
     }
   ]
