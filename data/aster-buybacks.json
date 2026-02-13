@@ -4,12 +4,12 @@
   "total_supply": 1000000000,
   "updated_at": "2026-02-13T21:43:50.273870",
   "summary": {
-    "total_buyback_aster": 159041927,
-    "total_buyback_usd": 214000024,
-    "total_days": 109,
-    "start_date": "2025-10-28",
-    "end_date": "2026-02-13",
-    "note": "Stage 1-4 来自报道，Stage 5-6 来自钱包余额，均为估算"
+    "total_buyback_aster": 152129552,
+    "stage14_aster": 143379992,
+    "stage5_aster": 8057985,
+    "stage6_aster": 691575,
+    "total_days": 102,
+    "note": "Stage 1-4/5 \u4e3a\u4f30\u7b97, Stage 6 \u4e3a\u94fe\u4e0a\u771f\u5b9e\u6570\u636e(\u90e8\u5206)"
   },
   "stages": [
     {
@@ -836,84 +836,25 @@
       "source": "wallet_balance"
     },
     {
-      "date": "2026-02-04",
-      "aster": 760395,
-      "usd": null,
-      "stage": "6",
-      "data_type": "estimated",
-      "source": "wallet_balance"
-    },
-    {
-      "date": "2026-02-05",
-      "aster": 760395,
-      "usd": null,
-      "stage": "6",
-      "data_type": "estimated",
-      "source": "wallet_balance"
-    },
-    {
-      "date": "2026-02-06",
-      "aster": 760395,
-      "usd": null,
-      "stage": "6",
-      "data_type": "estimated",
-      "source": "wallet_balance"
-    },
-    {
-      "date": "2026-02-07",
-      "aster": 760395,
-      "usd": null,
-      "stage": "6",
-      "data_type": "estimated",
-      "source": "wallet_balance"
-    },
-    {
-      "date": "2026-02-08",
-      "aster": 760395,
-      "usd": null,
-      "stage": "6",
-      "data_type": "estimated",
-      "source": "wallet_balance"
-    },
-    {
-      "date": "2026-02-09",
-      "aster": 760395,
-      "usd": null,
-      "stage": "6",
-      "data_type": "estimated",
-      "source": "wallet_balance"
-    },
-    {
-      "date": "2026-02-10",
-      "aster": 760395,
-      "usd": null,
-      "stage": "6",
-      "data_type": "estimated",
-      "source": "wallet_balance"
-    },
-    {
       "date": "2026-02-11",
-      "aster": 760395,
-      "usd": null,
+      "aster": 72786,
       "stage": "6",
-      "data_type": "estimated",
-      "source": "wallet_balance"
+      "data_type": "onchain",
+      "tx_count": 10
     },
     {
       "date": "2026-02-12",
-      "aster": 760395,
-      "usd": null,
+      "aster": 340532,
       "stage": "6",
-      "data_type": "estimated",
-      "source": "wallet_balance"
+      "data_type": "onchain",
+      "tx_count": 50
     },
     {
       "date": "2026-02-13",
-      "aster": 760395,
-      "usd": null,
+      "aster": 278257,
       "stage": "6",
-      "data_type": "estimated",
-      "source": "wallet_balance"
+      "data_type": "onchain",
+      "tx_count": 40
     }
   ]
 }
