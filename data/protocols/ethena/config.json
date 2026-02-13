@@ -31,11 +31,12 @@
     },
     {
       "type": "buyback_accumulate",
-      "name": "ENA Buyback Program",
-      "description": "资本运作驱动的回购，非经营利润分红。总计宣布 $570M 回购（$260M + $310M）",
+      "name": "ENA Buyback Program（资本运作）",
+      "description": "总计 $570M 回购（$260M + $310M）。⚠️ 这是资本运作/融资驱动的回购，不是经营利润分红，不算持续 TEV。资金来源是 StablecoinX PIPE 融资，非协议日常收入",
       "status": "active",
+      "tev_eligible": false,
       "amount_usd": 570000000,
-      "note": "StablecoinX 子公司执行，6-8周周期，第三方做市商操作",
+      "note": "StablecoinX 子公司执行，6-8周周期，第三方做市商操作。可持续性取决于后续融资安排",
       "source": {
         "type": "governance",
         "title": "Ethena Governance Updates",
@@ -140,6 +141,6 @@
       "note": "回购安排、ENA 处置限制"
     }
   ],
-  "analyst_notes": "## Ethena TEV 分析\n\n### 一句话总结\n\nEthena 的经营性收益主要服务于 **USDe/sUSDe 产品竞争力**（yield 给 sUSDe）与 **系统安全垫**（Reserve Fund）；**ENA/sENA 的 fee switch 尚未落地成可观测的持续分配**。\n\n### Token Holder Net Income = $0\n\n协议收益不分配给 ENA/sENA 持有人（DefiLlama 口径）。\n\n### 收入口径\n\n| 指标 | 30天 | 年化 |\n|-----|------|------|\n| Fees | $22.33M | $272M |\n| Revenue | $437K | $5.3M |\n| 留存率 | 2% | — |\n\n### Fee Switch 进度\n\n| 时间 | 状态 |\n|------|------|\n| 2024-11 | 提出参数讨论，分配比例待定 |\n| 2025-07 | 部分指标已满足，CEX adoption (4/5) 未满足 |\n| 2026-01 | 仍需 legal engineering，未全面运行 |\n\n⚠️ **Fee switch 应视为"期权/未来变量"，非当前现金流**\n\n### 回购（$570M）\n\n| 时间 | 金额 | 性质 |\n|------|------|------|\n| 2025-07 | $260M | StablecoinX 融资驱动 |\n| 2025-09 | $310M | 第三方做市商执行 |\n\n⚠️ **融资/资本市场结构驱动，非经营利润分红**\n\n### 数据来源\n\n- [DefiLlama](https://defillama.com/protocol/ethena-usde)\n- [Fee Switch Parameters](https://gov.ethenafoundation.com/t/ena-fee-switch-parameters/396)\n- [Governance Updates](https://gov.ethenafoundation.com)",
+  "analyst_notes": "## Ethena TEV 分析\n\n### 结论：无持续 TEV\n\nEthena 的经营性收益主要服务于 **USDe/sUSDe 产品竞争力**（yield 给 sUSDe）与 **系统安全垫**（Reserve Fund）；**ENA/sENA 目前没有持续的利润分配**。\n\n### Token Holder Net Income = $0\n\n协议收益不分配给 ENA/sENA 持有人（DefiLlama 口径）。\n\n### 回购 $570M：资本运作，非 TEV\n\n| 时间 | 金额 | 来源 |\n|------|------|------|\n| 2025-07 | $260M | StablecoinX PIPE 融资 |\n| 2025-09 | $310M | PIPE 融资 |\n\n**⚠️ 重要说明**：\n- 这是**资本运作/融资驱动**的回购\n- **不是经营利润分红**\n- **不算持续 TEV**\n- 资金来源是 PIPE 融资，非协议日常收入\n- 可持续性取决于后续融资安排\n\n### Fee Switch 进度\n\n| 时间 | 状态 |\n|------|------|\n| 2024-11 | 提出参数讨论，分配比例待定 |\n| 2025-07 | 部分指标已满足，CEX adoption 未满足 |\n| 2026-01 | 仍需 legal engineering，未运行 |\n\nFee switch 应视为**未来期权**，非当前现金流。\n\n### 收入去向\n\n| 去向 | 说明 |\n|------|------|\n| sUSDe Staking | 大部分收益给 sUSDe 持有者 |\n| Reserve Fund | 系统安全垫 |\n| ENA/sENA 持有人 | **$0** |\n\n### 数据来源\n\n- [DefiLlama](https://defillama.com/protocol/ethena-usde)\n- [Fee Switch Parameters](https://gov.ethenafoundation.com/t/ena-fee-switch-parameters/396)\n- [Governance Updates](https://gov.ethenafoundation.com)",
   "last_updated": "2026-02-14"
 }
