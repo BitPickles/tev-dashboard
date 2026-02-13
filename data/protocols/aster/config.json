@@ -10,13 +10,28 @@
   "token": {
     "chain": "BNB Chain (BEP-20)",
     "contract_address": "0x000Ae314E2A2172a039B26378814C252734f556A",
-    "coingecko_id": "aster-2"
+    "coingecko_id": "aster-2",
+    "total_supply": 1000000000
   },
   "tev_mechanisms": [
     {
       "type": "buyback",
-      "name": "每日回购",
-      "description": "平台手续费用于回购 ASTER",
+      "name": "每日自动回购 (40%)",
+      "description": "平台手续费的 40% 用于每日自动回购 ASTER，回购后的代币进入协议储备",
+      "status": "active",
+      "fee_share_percentage": 40
+    },
+    {
+      "type": "buyback",
+      "name": "战略回购储备 (20-40%)",
+      "description": "额外 20-40% 手续费进入战略回购储备，用于市场波动时的回购操作",
+      "status": "active",
+      "fee_share_percentage": 30
+    },
+    {
+      "type": "buyback_burn",
+      "name": "销毁机制",
+      "description": "部分回购的 ASTER 会被销毁，减少流通供应",
       "status": "active"
     }
   ],
@@ -25,19 +40,42 @@
     "buybacks": "ACTIVE",
     "dividends": "NONE",
     "burns": "ACTIVE",
-    "primary_value_accrual": "手续费回购"
+    "primary_value_accrual": "手续费回购 (60-80%)"
   },
   "confidence": "high",
+  "notes": "**当前 TEV 情况**\n\nAster 是目前 DeFi 领域 TEV 机制最激进的协议之一，将高达 60-80% 的平台手续费用于代币回购。\n\n**回购机制分层：**\n- **40% 自动每日回购**：每日自动执行，持续买入 ASTER\n- **20-40% 战略储备**：灵活运用，可在市场低迷时加大回购力度\n\n**历史数据：**\n- Stage 1-4 (2025.10-12): 为 Season 3 空投准备，35天回购超 $2亿\n- Stage 5-6 (2025.12至今): 新回购机制，日均约 $40-50万\n\n**透明度**：回购钱包地址公开，可通过 BscScan 实时验证，数据可信度高。",
   "data_sources": [
     {
-      "name": "Aster Docs",
+      "name": "Aster Tokenomics",
       "type": "documentation",
       "url": "https://docs.asterdex.com/usdaster/tokenomics"
     },
     {
+      "name": "Aster Buyback Mechanism",
+      "type": "documentation", 
+      "url": "https://docs.asterdex.com/usdaster/buyback-mechanism"
+    },
+    {
       "name": "CoinGecko",
       "type": "api",
-      "url": "https://api.coingecko.com/api/v3/coins/aster-2"
+      "url": "https://www.coingecko.com/en/coins/aster-2"
+    },
+    {
+      "name": "BscScan 回购钱包",
+      "type": "onchain",
+      "url": "https://bscscan.com/address/0x664827c71193018D7843f0D0F41A5D0D6dcEBE0F"
+    }
+  ],
+  "references": [
+    {
+      "title": "Aster Buyback 分析 (Cryptopolitan)",
+      "url": "https://www.cryptopolitan.com/aster-buyback-214-million/",
+      "date": "2025-11-14"
+    },
+    {
+      "title": "CZ 购入 ASTER",
+      "url": "https://www.binance.com/en/square/post/16828691763650",
+      "date": "2025-11-13"
     }
   ],
   "last_updated": "2026-02-13"
