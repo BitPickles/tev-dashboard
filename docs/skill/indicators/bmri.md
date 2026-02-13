@@ -165,3 +165,39 @@ function switchVersion(version) {
 - 进度条中点是 50
 - 版本切换时阈值线位置会变化
 - FRED 数据非实时，有 1-2 天延迟
+
+## Bug 修复记录 (2026-02)
+
+### 字段名匹配问题
+**问题**: btcPrice 数据映射使用 `d.date` 而非 `d.time`，cryptoTotalMcap 使用 `d.btc_mcap` 而非 `d.value`
+
+**修复**: 统一使用正确的字段名
+```javascript
+// BTC Price - 使用 shared/btc-price.json
+const btcPriceChartData = btcPriceData.history.map(d => ({
+  time: d.date,
+  value: d.price
+}))
+
+// Crypto Total MCap - 使用 marketcap.json
+const cryptoTotalMcapData = marketcapData
+  .filter(d => d.total_mcap)
+  .map(d => ({ time: d.date, value: d.total_mcap }))
+```
+
+### 日期范围解耦
+**问题**: BTC 价格线受限于 BMRI 数据范围，无法显示更早的历史数据
+
+**修复**: BTC 价格数据独立于 BMRI 数据加载和渲染
+- BTC 价格使用 `shared/btc-price.json`（数据从 2010-07-18 开始）
+- 图表默认范围设为 2014-01-01 起
+- 左轴价格轴仅在 btcPrice 或 cryptoTotalMcap 可见时显示
+
+### 数据可用范围
+| 数据文件 | 起始日期 |
+|----------|----------|
+| btc-price.json | 2010-07-18 |
+| bmri.json | 2015-07-20 |
+| marketcap.json | 2019-10-25 |
+
+⚠️ `marketcap.json` 只有 2019 年后的数据，无法显示更早的加密总市值
