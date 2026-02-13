@@ -114,9 +114,11 @@ function hexToAddress(hex) {
 
 // Q96 价格转可读格式 (考虑代币精度)
 function q96ToHuman(priceQ96, tokenDecimals = 18, currencyDecimals = 6) {
-  if (priceQ96 === 0n) return '0';
-  // 价格 = priceQ96 / 2^96 * 10^(tokenDecimals - currencyDecimals)
-  const decimalAdjust = BigInt(10) ** BigInt(tokenDecimals - currencyDecimals);
+  if (priceQ96 === 0n || !priceQ96) return '0';
+  const decimals = tokenDecimals ?? 18;
+  const cDecimals = currencyDecimals ?? 6;
+  // 价格 = priceQ96 / 2^96 * 10^(decimals - cDecimals)
+  const decimalAdjust = BigInt(10) ** BigInt(decimals - cDecimals);
   const priceScaled = priceQ96 * decimalAdjust;
   const human = Number(priceScaled) / Number(Q96);
   return human.toFixed(8);
@@ -377,16 +379,16 @@ async function fetchAuctionDetails(auctionInfo) {
     },
     
     metrics: {
-      clearingPriceQ96: clearingPriceQ96.toString(),
-      clearingPriceHuman: q96ToHuman(clearingPriceQ96, tokenInfo.decimals, currencyInfo.decimals),
-      currencyRaised: currencyRaised.toString(),
-      currencyRaisedHuman: formatCurrency(currencyRaised, currencyInfo.decimals),
-      raisedUsd: parseFloat(formatCurrency(currencyRaised, currencyInfo.decimals)), // USDC = USD
-      totalCleared: totalCleared.toString(),
-      totalClearedHuman: formatTokens(totalCleared, tokenInfo.decimals),
-      bidCount: Number(nextBidId),
-      bidders: bidders.size,
-      isGraduated
+      clearingPriceQ96: clearingPriceQ96?.toString() || '0',
+      clearingPriceHuman: q96ToHuman(clearingPriceQ96, tokenInfo?.decimals, currencyInfo?.decimals),
+      currencyRaised: currencyRaised?.toString() || '0',
+      currencyRaisedHuman: formatCurrency(currencyRaised, currencyInfo?.decimals || 6),
+      raisedUsd: parseFloat(formatCurrency(currencyRaised, currencyInfo?.decimals || 6)), // USDC = USD
+      totalCleared: totalCleared?.toString() || '0',
+      totalClearedHuman: formatTokens(totalCleared, tokenInfo?.decimals || 18),
+      bidCount: Number(nextBidId) || 0,
+      bidders: bidders?.size || 0,
+      isGraduated: isGraduated
     },
     
     progress: {
