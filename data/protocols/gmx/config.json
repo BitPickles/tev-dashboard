@@ -73,7 +73,7 @@
       "reliability": "high"
     }
   ],
-  "analyst_notes": "【2026-02-05 调研核对】\n\n## TEV Yield 核对结果\n\n**TEV Yield ≈ 23.5%**\n\n### 计算过程\n- 30天 holders revenue: $1,208,117\n- 年化: ~$14.5M\n- 流通市值: ~$61.6M\n- TEV Yield = $14.5M / $61.6M = 23.5%\n\n### GMX TEV Yield 较高的原因\n\n1. **市值相对较小**: GMX 流通市值约 $61.6M\n2. **收入较高**: 永续合约交易所收入模式成熟，年化平台收入约 $48M（GMX stakers 获得 30% = $14.5M）\n3. **分配比例**: 30% 平台费用直接分给 GMX 质押者\n\n### 协议对比\n| 协议 | TEV Yield | 市值 |\n|------|-----------|------|\n| GMX | ~23.5% | $61M |\n| dYdX | 待核实 | 待核实 |\n| Hyperliquid | ~12% | $7.8B |\n\n### 结论\n数据核实完成。高 yield 主要因为市值相对较小但收入较高。\n\n如果前端显示的数值明显高于 23%（如 50%+），则需排查：\n- 是否错用了 staking market cap 而非 token market cap\n- 是否有数据重复计算",
+  "analyst_notes": "## GMX TEV 机制\n\n### 核心机制\nGMX 质押者获得 **30%** 平台交易费用作为分红（ETH/AVAX）。\n\n### 费用分配\n| 来源 | 分配 |\n|------|------|\n| 平台交易费 30% | GMX 质押者 |\n| 平台交易费 70% | GLP/GM 持有者 |\n\n### 数据来源\n| 数据 | 来源 |\n|------|------|\n| 每日分红 | DefiLlama `holdersRevenue` |\n| 价格/市值 | CoinGecko |\n\n### 质押方式\n- 质押 GMX → 获得 esGMX + ETH/AVAX 分红\n- esGMX 需 vesting 1年才能转为 GMX\n\n### 参考链接\n- [GMX 质押文档](https://docs.gmx.io/docs/tokenomics/rewards)\n- [费用分配说明](https://docs.gmx.io/docs/tokenomics/fee-distribution)",
   "last_updated": "2026-02-14",
   "tev_data": {
     "has_tev": true,
