@@ -105,21 +105,41 @@
       "note": "Fees/Revenue/Token Holder Revenue 定义"
     },
     {
-      "title": "Ethena September 2025 Governance Update",
-      "url": "https://gov.ethenafoundation.com/t/ethena-s-september-2025-governance-update/704",
-      "note": "$310M 回购计划"
+      "title": "ENA Fee Switch Parameters",
+      "url": "https://gov.ethenafoundation.com/t/ena-fee-switch-parameters/396",
+      "note": "2024-11 提出，分配比例待定，需满足成功指标"
     },
     {
       "title": "Ethena July 2025 Governance Update",
-      "url": "https://gov.ethenafoundation.com/t/ethena-s-july-2025-governance-update",
-      "note": "StablecoinX 初始回购"
+      "url": "https://gov.ethenafoundation.com/t/ethena-s-july-2025-governance-update/670",
+      "note": "$260M 回购，部分指标已满足，CEX adoption 未满足"
     },
     {
-      "title": "Nasdaq - Ethena Buyback",
-      "url": "https://www.nasdaq.com/articles/ethena-buyback",
+      "title": "Ethena September 2025 Governance Update",
+      "url": "https://gov.ethenafoundation.com/t/ethena-s-september-2025-governance-update/704",
+      "note": "$310M 回购计划，StablecoinX 持仓约束"
+    },
+    {
+      "title": "Protocol Revenue Explanation",
+      "url": "https://docs.ethena.fi/solution-overview/protocol-revenue-explanation",
+      "note": "收入来源结构说明"
+    },
+    {
+      "title": "How to Stake ENA",
+      "url": "https://docs.ethena.fi/video-guides/how-to-stake-ena",
+      "note": "sENA 分配是 discretional"
+    },
+    {
+      "title": "Nasdaq Press Release",
+      "url": "https://www.nasdaq.com/press-release/tlgy-acquisition-corp-and-stablecoinx-assets-inc-announce-additional-530-million-pipe",
       "note": "总计 $570M 回购披露"
+    },
+    {
+      "title": "SEC Filing - StablecoinX",
+      "url": "https://www.sec.gov/Archives/edgar/data/1879814/000121390025065921/ea024961801ex99-1_tlgyacq.htm",
+      "note": "回购安排、ENA 处置限制"
     }
   ],
-  "analyst_notes": "## Ethena TEV 分析\n\n### 核心结论\n\n**Token Holder Net Income = $0**\n\n协议收益不分配给 ENA/sENA 持有人。\n\n### 收入口径\n\n| 指标 | 30天 | 年化 |\n|-----|------|------|\n| Fees | $22.33M | $272M |\n| Revenue | $437K | $5.3M |\n| 留存率 | 2% | — |\n\n**Fees** = 用户总费用（含 staking rewards）\n**Revenue** = 协议留存部分\n\n### 收入流向\n\n| 去向 | 说明 |\n|------|------|\n| sUSDe Staking Rewards | 大部分，给 sUSDe 持有者 |\n| Reserve Fund | 部分进入储备 |\n| Mint Fees | 协议直接留存 |\n| **ENA/sENA 持有人** | **$0** |\n\n### ENA 价值来源\n\n唯一明确的价值回流是**回购**：\n\n| 时间 | 金额 | 来源 |\n|------|------|------|\n| 2025-07 | $260M | StablecoinX |\n| 2025-09 | $310M | 治理更新 |\n| **合计** | **$570M** | — |\n\n⚠️ 这是**资本运作/融资驱动**，非协议经营利润自动分红。\n\n### sENA 分配\n\nEthena 文档明确：给 sENA 分配是 **discretional（可自行决定）**。\n\n截至 2025-09，**无持续分配**。\n\n### 数据来源\n\n- [DefiLlama Ethena USDe](https://defillama.com/protocol/ethena-usde)\n- [Governance Updates](https://gov.ethenafoundation.com)\n- [Ethena Docs](https://docs.ethena.fi)",
+  "analyst_notes": "## Ethena TEV 分析\n\n### 一句话总结\n\nEthena 的经营性收益主要服务于 **USDe/sUSDe 产品竞争力**（yield 给 sUSDe）与 **系统安全垫**（Reserve Fund）；**ENA/sENA 的 fee switch 尚未落地成可观测的持续分配**。\n\n### Token Holder Net Income = $0\n\n协议收益不分配给 ENA/sENA 持有人（DefiLlama 口径）。\n\n### 收入口径\n\n| 指标 | 30天 | 年化 |\n|-----|------|------|\n| Fees | $22.33M | $272M |\n| Revenue | $437K | $5.3M |\n| 留存率 | 2% | — |\n\n### Fee Switch 进度\n\n| 时间 | 状态 |\n|------|------|\n| 2024-11 | 提出参数讨论，分配比例待定 |\n| 2025-07 | 部分指标已满足，CEX adoption (4/5) 未满足 |\n| 2026-01 | 仍需 legal engineering，未全面运行 |\n\n⚠️ **Fee switch 应视为"期权/未来变量"，非当前现金流**\n\n### 回购（$570M）\n\n| 时间 | 金额 | 性质 |\n|------|------|------|\n| 2025-07 | $260M | StablecoinX 融资驱动 |\n| 2025-09 | $310M | 第三方做市商执行 |\n\n⚠️ **融资/资本市场结构驱动，非经营利润分红**\n\n### 数据来源\n\n- [DefiLlama](https://defillama.com/protocol/ethena-usde)\n- [Fee Switch Parameters](https://gov.ethenafoundation.com/t/ena-fee-switch-parameters/396)\n- [Governance Updates](https://gov.ethenafoundation.com)",
   "last_updated": "2026-02-14"
 }
