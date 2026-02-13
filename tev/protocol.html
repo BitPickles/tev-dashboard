@@ -94,6 +94,10 @@
       <div class="section" id="buyback-chart-section" style="display: none;">
         <div class="section-title"><span class="icon">💰</span><span data-i18n="section.buybackData">回购数据</span></div>
         <div class="chart-container" style="height:400px;"><div class="chart-canvas-wrap"><canvas id="buyback-activity-chart"></canvas></div></div>
+        <div class="chart-legend" style="display:flex;justify-content:center;gap:24px;margin-top:12px;font-size:12px;">
+          <span style="color:#787878;">■ Stage 1-4 (历史报道)</span>
+          <span style="color:#22c55e;">■ Stage 5-6 (链上数据)</span>
+        </div>
         <div class="chart-hint" style="text-align:center;color:var(--text-tertiary);font-size:11px;margin-top:8px;" data-i18n="chart.zoomHint">🖱️ 滚轮缩放 · 拖动平移 · 双击重置</div>
         
         <div class="buyback-progress-container" id="buyback-progress-section" style="margin-top:24px;">
@@ -212,16 +216,15 @@
         if (!resp.ok) return;
         const data = await resp.json();
         
-        // 支持两种数据格式：chart_data (阶段汇总) 或 daily_buybacks (每日明细)
-        const chartData = data.chart_data || [];
+        const dailyData = data.daily_buybacks || [];
         const stages = data.stages || [];
         
-        if (!chartData.length && !stages.length) return;
+        if (!dailyData.length) return;
         
         document.getElementById('buyback-chart-section').style.display = 'block';
         
         // Calculate totals for progress bar
-        const totalAster = stages.reduce((s, st) => s + (st.total_aster || 0), 0);
+        const totalAster = dailyData.reduce((s, d) => s + (d.aster || 0), 0);
         const totalSupply = data.total_supply || 1e9;
         const progress = (totalAster / totalSupply) * 100;
         
@@ -239,31 +242,41 @@
         const ctx = document.getElementById('buyback-activity-chart').getContext('2d');
         if (buybackChart) buybackChart.destroy();
         
-        // 阶段汇总图表 (柱状图)
-        const labels = chartData.map(d => d.label);
-        const asterData = chartData.map(d => d.aster);
-        const usdData = chartData.map(d => d.usd || 0);
-        const barColors = chartData.map(d => d.quality === 'reported' ? 'rgba(34,197,94,0.8)' : 'rgba(59,130,246,0.8)');
+        // 每日数据图表 - 用颜色区分阶段和数据类型
+        // Stage 1-4 (估算): 灰色半透明
+        // Stage 5-6 (链上): 绿色
+        const getBarColor = (d) => {
+          if (d.stage === '1-4') return 'rgba(120,120,120,0.5)';  // 灰色 - 估算
+          return 'rgba(34,197,94,0.8)';  // 绿色 - 链上
+        };
+        
+        const chartPoints = dailyData.map(d => ({
+          x: new Date(d.date),
+          y: d.aster,
+          stage: d.stage,
+          dataType: d.data_type,
+          source: d.source,
+          usd: d.usd
+        }));
         
         buybackChart = new Chart(ctx, {
           type: 'bar',
           data: {
-            labels,
-            datasets: [
-              {
-                label: 'ASTER',
-                data: asterData,
-                backgroundColor: barColors,
-                borderColor: barColors.map(c => c.replace('0.8', '1')),
-                borderWidth: 1,
-                borderRadius: 6,
-                yAxisID: 'y'
-              }
-            ]
+            datasets: [{
+              label: 'ASTER',
+              data: chartPoints,
+              backgroundColor: dailyData.map(d => getBarColor(d)),
+              borderColor: dailyData.map(d => d.stage === '1-4' ? 'rgba(120,120,120,0.8)' : 'rgba(34,197,94,1)'),
+              borderWidth: 1,
+              borderRadius: 2,
+              barPercentage: 1,
+              categoryPercentage: 1
+            }]
           },
           options: {
             responsive: true,
             maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
             plugins: {
               legend: { display: false },
               tooltip: {
@@ -271,25 +284,40 @@
                 titleColor: '#fafafa',
                 bodyColor: '#a1a1aa',
                 callbacks: {
-                  title: (items) => items[0].label,
-                  afterTitle: (items) => chartData[items[0].dataIndex]?.period || '',
-                  label: (ctx) => ` ${(ctx.raw/1e6).toFixed(2)}M ASTER`,
+                  title: (items) => items[0].raw.x.toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US'),
+                  label: (ctx) => ` ${(ctx.raw.y/1e6).toFixed(2)}M ASTER`,
                   afterLabel: (ctx) => {
-                    const d = chartData[ctx.dataIndex];
-                    const lines = [];
-                    if (d.usd) lines.push(` ${fmtCurrency(d.usd)}`);
-                    lines.push(` Data: ${d.quality === 'reported' ? '第三方报道' : '链上余额'}`);
+                    const d = ctx.raw;
+                    const lines = [`Stage: ${d.stage}`];
+                    if (d.usd) lines.push(`USD: ${fmtCurrency(d.usd)}`);
+                    lines.push(d.dataType === 'estimated' ? '⚠️ 估算数据' : '✅ 链上数据');
                     return lines;
                   }
                 }
+              },
+              zoom: {
+                pan: { enabled: true, mode: 'x' },
+                zoom: { wheel: { enabled: true }, pinch: { enabled: true }, mode: 'x' }
               }
             },
             scales: {
-              x: { grid: { display: false }, ticks: { color: '#a1a1aa', font: { size: 12 } } },
-              y: { grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#a1a1aa', callback: v => (v/1e6).toFixed(0) + 'M' }, title: { display: true, text: 'ASTER', color: '#a1a1aa' } }
+              x: {
+                type: 'time',
+                time: { unit: 'week', displayFormats: { week: 'MM-dd', day: 'MM-dd' } },
+                grid: { display: false },
+                ticks: { color: '#71717a', maxRotation: 0, font: { size: 10 }, maxTicksLimit: 12 }
+              },
+              y: {
+                grid: { color: 'rgba(39,39,42,0.5)' },
+                ticks: { color: '#a1a1aa', callback: v => (v/1e6).toFixed(1) + 'M' },
+                title: { display: true, text: 'ASTER / day', color: '#a1a1aa' }
+              }
             }
           }
         });
+        
+        // Double-click to reset zoom
+        ctx.canvas.ondblclick = () => buybackChart.resetZoom();
       } catch (e) { console.log(`No buyback data for ${pid}:`, e.message); }
     }
 
