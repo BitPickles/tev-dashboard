@@ -108,17 +108,39 @@ def get_token_balance(address: str, contract: str) -> float:
 def get_aster_price() -> float:
     """获取 ASTER 当前价格 (USD)"""
     try:
-        # CoinGecko API (免费)
         resp = requests.get(
             "https://api.coingecko.com/api/v3/simple/price",
-            params={"ids": "aster-defi", "vs_currencies": "usd"},
+            params={"ids": "aster-2", "vs_currencies": "usd"},
             timeout=10
         )
         data = resp.json()
-        return data.get("aster-defi", {}).get("usd", 0.55)  # 默认 $0.55
+        return data.get("aster-2", {}).get("usd", 0.55)
     except Exception as e:
         print(f"⚠️ Price fetch failed, using default: {e}")
         return 0.55
+
+
+def get_historical_prices(days: int = 30) -> dict:
+    """获取 ASTER 历史价格 (CoinGecko)"""
+    try:
+        resp = requests.get(
+            "https://api.coingecko.com/api/v3/coins/aster-2/market_chart",
+            params={"vs_currency": "usd", "days": days},
+            timeout=15
+        )
+        data = resp.json()
+        prices = data.get("prices", [])
+        
+        # 转换为 {date: price} 格式
+        price_map = {}
+        for ts, price in prices:
+            date = datetime.fromtimestamp(ts / 1000).strftime("%Y-%m-%d")
+            price_map[date] = price  # 同一天可能有多个点，取最后一个
+        
+        return price_map
+    except Exception as e:
+        print(f"⚠️ Historical prices fetch failed: {e}")
+        return {}
 
 
 def load_data() -> dict:
@@ -155,13 +177,17 @@ def get_last_balance(data: dict) -> tuple[str, float]:
     return last_date, cumulative
 
 
-def sync_stage6_data(data: dict, current_balance: float, price: float) -> dict:
+def sync_stage6_data(data: dict, current_balance: float, current_price: float) -> dict:
     """
-    同步 Stage 6 数据：用实际余额校正估算数据
+    同步 Stage 6 数据：用实际余额 + 历史价格校正估算数据
+    
+    逻辑：
+    - 假设每日 USD 回购金额相对稳定
+    - ASTER 数量 = 当日 USD / 当日价格
+    - 总 USD = 总 ASTER × 加权平均价格
+    
     Stage 6 开始日期: 2026-02-04
     """
-    from datetime import datetime
-    
     stage6_start = datetime(2026, 2, 4)
     today = datetime.now()
     today_str = today.strftime("%Y-%m-%d")
@@ -169,26 +195,60 @@ def sync_stage6_data(data: dict, current_balance: float, price: float) -> dict:
     # 计算 Stage 6 天数
     days_since_start = (today - stage6_start).days + 1
     
-    # 每日平均回购
-    daily_avg = current_balance / days_since_start
-    daily_avg_usd = daily_avg * price
-    
     print(f"\n🔄 Syncing Stage 6 data...")
     print(f"   Days: {days_since_start}")
-    print(f"   Daily avg: {daily_avg:,.0f} ASTER (${daily_avg_usd:,.2f})")
+    print(f"   Total ASTER: {current_balance:,.0f}")
+    
+    # 获取历史价格
+    print("   Fetching historical prices...")
+    price_map = get_historical_prices(days=days_since_start + 5)
+    
+    if not price_map:
+        print("   ⚠️ No historical prices, using current price for all days")
+        price_map = {}
     
     # 移除旧的 Stage 6 数据
     data["daily_buybacks"] = [d for d in data.get("daily_buybacks", []) if d.get("stage") != "6"]
     
-    # 重新生成 Stage 6 每日数据
+    # 计算每日价格，用于估算每日 ASTER
+    daily_prices = []
     for i in range(days_since_start):
         date = (stage6_start + timedelta(days=i)).strftime("%Y-%m-%d")
+        price = price_map.get(date, current_price)
+        daily_prices.append((date, price))
+    
+    # 计算加权：假设每日 USD 固定，求每日 ASTER
+    # 总 ASTER = sum(daily_usd / price_i)
+    # 设 daily_usd = k，则 current_balance = k × sum(1/price_i)
+    # k = current_balance / sum(1/price_i)
+    
+    sum_inv_price = sum(1 / p for _, p in daily_prices if p > 0)
+    if sum_inv_price > 0:
+        daily_usd = current_balance / sum_inv_price
+    else:
+        daily_usd = current_balance * current_price / days_since_start
+    
+    print(f"   Estimated daily USD: ${daily_usd:,.2f}")
+    
+    # 生成每日数据
+    total_aster_check = 0
+    for date, price in daily_prices:
+        if price > 0:
+            daily_aster = daily_usd / price
+        else:
+            daily_aster = daily_usd / current_price
+        
+        total_aster_check += daily_aster
+        
         data["daily_buybacks"].append({
             "date": date,
-            "usd": round(daily_avg_usd, 2),
-            "aster": round(daily_avg, 0),
+            "usd": round(daily_usd, 2),
+            "aster": round(daily_aster, 0),
+            "price": round(price, 4),
             "stage": "6"
         })
+    
+    print(f"   Verify total ASTER: {total_aster_check:,.0f} (actual: {current_balance:,.0f})")
     
     # 排序
     data["daily_buybacks"].sort(key=lambda x: x["date"])
