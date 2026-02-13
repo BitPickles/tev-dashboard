@@ -2,60 +2,2920 @@
   "protocol": "hyperliquid",
   "ticker": "HYPE",
   "total_supply": 1000000000,
-  "updated_at": "2026-02-13T23:10:38.986406",
+  "updated_at": "2026-02-13T23:36:50.169229",
   "summary": {
-    "total_buyback_hype": 40849452,
+    "total_buyback_hype": 40851147,
     "total_buyback_usd": 975144842,
     "avg_price": 23.87,
-    "data_source": "Assistance Fund 余额 (spotClearinghouseState)",
+    "total_days": 413,
     "af_address": "0xfefefefefefefefefefefefefefefefefefefefe",
-    "note": "累计数据来自链上余额，每日明细来自 userFills API (最近数据)"
+    "data_sources": {
+      "daily_usd": "DefiLlama holdersRevenue",
+      "daily_hype": "估算 (链上余额校正)",
+      "recent_hype": "Hyperliquid API userFills",
+      "total_balance": "Hyperliquid API spotClearinghouseState"
+    },
+    "note": "每日 USD 来自 DefiLlama，HYPE 数量按链上累计余额校正"
   },
   "daily_buybacks": [
     {
+      "date": "2024-12-23",
+      "usd": 1424462,
+      "hype": 59006.77,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2024-12-24",
+      "usd": 1303665,
+      "hype": 54002.9,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2024-12-25",
+      "usd": 1014518,
+      "hype": 42025.3,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2024-12-26",
+      "usd": 1273897,
+      "hype": 52769.78,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2024-12-27",
+      "usd": 1258520,
+      "hype": 52132.81,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2024-12-28",
+      "usd": 949315,
+      "hype": 39324.33,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2024-12-29",
+      "usd": 471167,
+      "hype": 19517.57,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2024-12-30",
+      "usd": 1486794,
+      "hype": 61588.81,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2024-12-31",
+      "usd": 1327977,
+      "hype": 55009.99,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-01",
+      "usd": 498037,
+      "hype": 20630.63,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-02",
+      "usd": 1270220,
+      "hype": 52617.47,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-03",
+      "usd": 1369500,
+      "hype": 56730.04,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-04",
+      "usd": 1042972,
+      "hype": 43203.97,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-05",
+      "usd": 985187,
+      "hype": 40810.29,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-06",
+      "usd": 1036760,
+      "hype": 42946.64,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-07",
+      "usd": 2114140,
+      "hype": 87575.93,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-08",
+      "usd": 1758819,
+      "hype": 72857.14,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-09",
+      "usd": 1921239,
+      "hype": 79585.21,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-10",
+      "usd": 1475032,
+      "hype": 61101.58,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-11",
+      "usd": 458402,
+      "hype": 18988.8,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-14",
+      "usd": 1230157,
+      "hype": 50957.91,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-15",
+      "usd": 1231497,
+      "hype": 51013.41,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-16",
+      "usd": 1644992,
+      "hype": 68141.99,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-17",
+      "usd": 1647338,
+      "hype": 68239.17,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-18",
+      "usd": 2754660,
+      "hype": 114108.77,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-19",
+      "usd": 4182537,
+      "hype": 173257.01,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-20",
+      "usd": 3956440,
+      "hype": 163891.19,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-21",
+      "usd": 2003967,
+      "hype": 83012.13,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-22",
+      "usd": 1392360,
+      "hype": 57676.99,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-23",
+      "usd": 2736794,
+      "hype": 113368.69,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-24",
+      "usd": 1268918,
+      "hype": 52563.53,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-25",
+      "usd": 1043099,
+      "hype": 43209.24,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-26",
+      "usd": 1050474,
+      "hype": 43514.73,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-27",
+      "usd": 2618211,
+      "hype": 108456.51,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-28",
+      "usd": 1482994,
+      "hype": 61431.39,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-29",
+      "usd": 1822611,
+      "hype": 75499.66,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-30",
+      "usd": 1405939,
+      "hype": 58239.48,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-01-31",
+      "usd": 1723246,
+      "hype": 71383.58,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-01",
+      "usd": 1390845,
+      "hype": 57614.23,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-02",
+      "usd": 2002237,
+      "hype": 82940.47,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-03",
+      "usd": 4133623,
+      "hype": 171230.8,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-04",
+      "usd": 2436561,
+      "hype": 100931.87,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-05",
+      "usd": 1400074,
+      "hype": 57996.53,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-06",
+      "usd": 1300731,
+      "hype": 53881.36,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-07",
+      "usd": 1510714,
+      "hype": 62579.67,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-08",
+      "usd": 770646,
+      "hype": 31923.16,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-09",
+      "usd": 964647,
+      "hype": 39959.44,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-10",
+      "usd": 1101082,
+      "hype": 45611.11,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-11",
+      "usd": 1507923,
+      "hype": 62464.06,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-12",
+      "usd": 1755146,
+      "hype": 72705.0,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-13",
+      "usd": 1364454,
+      "hype": 56521.01,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-14",
+      "usd": 995279,
+      "hype": 41228.34,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-15",
+      "usd": 719690,
+      "hype": 29812.37,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-16",
+      "usd": 590017,
+      "hype": 24440.81,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-17",
+      "usd": 1284898,
+      "hype": 53225.49,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-18",
+      "usd": 1600692,
+      "hype": 66306.91,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-19",
+      "usd": 979405,
+      "hype": 40570.77,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-20",
+      "usd": 1159166,
+      "hype": 48017.18,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-21",
+      "usd": 2316528,
+      "hype": 95959.63,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-22",
+      "usd": 871664,
+      "hype": 36107.72,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-23",
+      "usd": 730962,
+      "hype": 30279.29,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-24",
+      "usd": 1485788,
+      "hype": 61547.14,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-25",
+      "usd": 3739612,
+      "hype": 154909.32,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-26",
+      "usd": 2149527,
+      "hype": 89041.79,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-27",
+      "usd": 1512278,
+      "hype": 62644.46,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-02-28",
+      "usd": 2432393,
+      "hype": 100759.21,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-01",
+      "usd": 986055,
+      "hype": 40846.25,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-02",
+      "usd": 2543535,
+      "hype": 105363.15,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-03",
+      "usd": 2309308,
+      "hype": 95660.54,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-04",
+      "usd": 2752695,
+      "hype": 114027.36,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-05",
+      "usd": 1426600,
+      "hype": 59095.34,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-06",
+      "usd": 1542778,
+      "hype": 63907.88,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-07",
+      "usd": 2285221,
+      "hype": 94662.77,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-08",
+      "usd": 625934,
+      "hype": 25928.63,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-09",
+      "usd": 1192088,
+      "hype": 49380.93,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-10",
+      "usd": 2131600,
+      "hype": 88299.19,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-11",
+      "usd": 1830963,
+      "hype": 75845.63,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-12",
+      "usd": 1519532,
+      "hype": 62944.94,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-13",
+      "usd": 1101752,
+      "hype": 45638.87,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-14",
+      "usd": 932668,
+      "hype": 38634.75,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-15",
+      "usd": 603903,
+      "hype": 25016.02,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-16",
+      "usd": 818086,
+      "hype": 33888.31,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-17",
+      "usd": 785447,
+      "hype": 32536.28,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-18",
+      "usd": 1091874,
+      "hype": 45229.68,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-19",
+      "usd": 1367967,
+      "hype": 56666.53,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-20",
+      "usd": 1127141,
+      "hype": 46690.58,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-21",
+      "usd": 832781,
+      "hype": 34497.04,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-22",
+      "usd": 513437,
+      "hype": 21268.56,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-23",
+      "usd": 554756,
+      "hype": 22980.16,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-24",
+      "usd": 1201729,
+      "hype": 49780.3,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-25",
+      "usd": 953188,
+      "hype": 39484.77,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-26",
+      "usd": 1097481,
+      "hype": 45461.94,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-27",
+      "usd": 802000,
+      "hype": 33221.97,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-28",
+      "usd": 1068000,
+      "hype": 44240.72,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-29",
+      "usd": 770163,
+      "hype": 31903.16,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-30",
+      "usd": 654159,
+      "hype": 27097.82,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-03-31",
+      "usd": 1264433,
+      "hype": 52377.75,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-01",
+      "usd": 1146261,
+      "hype": 47482.6,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-02",
+      "usd": 1838424,
+      "hype": 76154.7,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-03",
+      "usd": 1342024,
+      "hype": 55591.87,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-04",
+      "usd": 1756574,
+      "hype": 72764.15,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-05",
+      "usd": 528823,
+      "hype": 21905.91,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-06",
+      "usd": 1719831,
+      "hype": 71242.11,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-07",
+      "usd": 3023660,
+      "hype": 125251.8,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-08",
+      "usd": 1694180,
+      "hype": 70179.54,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-09",
+      "usd": 2759073,
+      "hype": 114291.57,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-10",
+      "usd": 1622446,
+      "hype": 67208.05,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-11",
+      "usd": 1287708,
+      "hype": 53341.89,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-12",
+      "usd": 1113618,
+      "hype": 46130.4,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-13",
+      "usd": 1324152,
+      "hype": 54851.54,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-14",
+      "usd": 1322546,
+      "hype": 54785.01,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-15",
+      "usd": 1199108,
+      "hype": 49671.73,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-16",
+      "usd": 1460444,
+      "hype": 60497.29,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-17",
+      "usd": 1038066,
+      "hype": 43000.74,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-18",
+      "usd": 496788,
+      "hype": 20578.89,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-19",
+      "usd": 562144,
+      "hype": 23286.2,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-20",
+      "usd": 642831,
+      "hype": 26628.57,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-21",
+      "usd": 1423948,
+      "hype": 58985.48,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-22",
+      "usd": 2145623,
+      "hype": 88880.07,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-23",
+      "usd": 1909969,
+      "hype": 79118.36,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-24",
+      "usd": 1289136,
+      "hype": 53401.05,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-25",
+      "usd": 1572104,
+      "hype": 65122.68,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-26",
+      "usd": 823272,
+      "hype": 34103.14,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-27",
+      "usd": 759749,
+      "hype": 31471.77,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-28",
+      "usd": 1469659,
+      "hype": 60879.01,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-29",
+      "usd": 1099343,
+      "hype": 45539.07,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-04-30",
+      "usd": 1288676,
+      "hype": 53381.99,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-01",
+      "usd": 1338031,
+      "hype": 55426.47,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-02",
+      "usd": 939636,
+      "hype": 38923.39,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-03",
+      "usd": 592890,
+      "hype": 24559.82,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-04",
+      "usd": 793007,
+      "hype": 32849.45,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-05",
+      "usd": 1281707,
+      "hype": 53093.31,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-06",
+      "usd": 1447785,
+      "hype": 59972.91,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-07",
+      "usd": 1552175,
+      "hype": 64297.14,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-08",
+      "usd": 3180904,
+      "hype": 131765.46,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-09",
+      "usd": 2764942,
+      "hype": 114534.69,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-10",
+      "usd": 1662874,
+      "hype": 68882.73,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-11",
+      "usd": 1997512,
+      "hype": 82744.74,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-12",
+      "usd": 3268612,
+      "hype": 135398.66,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-13",
+      "usd": 2403255,
+      "hype": 99552.2,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-14",
+      "usd": 1955155,
+      "hype": 80990.15,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-15",
+      "usd": 2125697,
+      "hype": 88054.66,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-16",
+      "usd": 1712441,
+      "hype": 70935.99,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-17",
+      "usd": 1177900,
+      "hype": 48793.22,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-18",
+      "usd": 2071821,
+      "hype": 85822.91,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-19",
+      "usd": 2588316,
+      "hype": 107218.15,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-20",
+      "usd": 3057049,
+      "hype": 126634.9,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-21",
+      "usd": 4775512,
+      "hype": 197820.35,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-22",
+      "usd": 3281122,
+      "hype": 135916.88,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-23",
+      "usd": 3756733,
+      "hype": 155618.54,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-24",
+      "usd": 1883745,
+      "hype": 78032.06,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-25",
+      "usd": 2434658,
+      "hype": 100853.04,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-26",
+      "usd": 1948708,
+      "hype": 80723.09,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-27",
+      "usd": 3014974,
+      "hype": 124891.99,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-28",
+      "usd": 2452815,
+      "hype": 101605.17,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-29",
+      "usd": 3040621,
+      "hype": 125954.38,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-30",
+      "usd": 2998143,
+      "hype": 124194.78,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-05-31",
+      "usd": 1228420,
+      "hype": 50885.95,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-01",
+      "usd": 1068838,
+      "hype": 44275.44,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-02",
+      "usd": 1777312,
+      "hype": 73623.2,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-03",
+      "usd": 2101528,
+      "hype": 87053.49,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-04",
+      "usd": 1643750,
+      "hype": 68090.54,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-05",
+      "usd": 3007634,
+      "hype": 124587.94,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-06",
+      "usd": 1813845,
+      "hype": 75136.54,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-07",
+      "usd": 891466,
+      "hype": 36928.0,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-10",
+      "usd": 2686696,
+      "hype": 111293.43,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-11",
+      "usd": 2676739,
+      "hype": 110880.98,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-12",
+      "usd": 2914973,
+      "hype": 120749.56,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-13",
+      "usd": 3915066,
+      "hype": 162177.31,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-14",
+      "usd": 1275234,
+      "hype": 52825.17,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-15",
+      "usd": 1162491,
+      "hype": 48154.91,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-16",
+      "usd": 2854433,
+      "hype": 118241.76,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-17",
+      "usd": 3286231,
+      "hype": 136128.52,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-18",
+      "usd": 2305701,
+      "hype": 95511.14,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-19",
+      "usd": 1497051,
+      "hype": 62013.69,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-20",
+      "usd": 2558842,
+      "hype": 105997.22,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-21",
+      "usd": 1633258,
+      "hype": 67655.92,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-22",
+      "usd": 3569490,
+      "hype": 147862.21,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-23",
+      "usd": 3966284,
+      "hype": 164298.96,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-24",
+      "usd": 2164479,
+      "hype": 89661.16,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-25",
+      "usd": 2045161,
+      "hype": 84718.55,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-26",
+      "usd": 1690238,
+      "hype": 70016.25,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-27",
+      "usd": 1485371,
+      "hype": 61529.87,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-28",
+      "usd": 602415,
+      "hype": 24954.38,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-29",
+      "usd": 1100815,
+      "hype": 45600.06,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-06-30",
+      "usd": 1764837,
+      "hype": 73106.44,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-01",
+      "usd": 1762027,
+      "hype": 72990.04,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-02",
+      "usd": 2537083,
+      "hype": 105095.88,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-03",
+      "usd": 1854022,
+      "hype": 76800.83,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-04",
+      "usd": 1606529,
+      "hype": 66548.7,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-05",
+      "usd": 716043,
+      "hype": 29661.3,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-06",
+      "usd": 1216434,
+      "hype": 50389.44,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-07",
+      "usd": 1561436,
+      "hype": 64680.77,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-08",
+      "usd": 1595903,
+      "hype": 66108.53,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-09",
+      "usd": 2634456,
+      "hype": 109129.45,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-10",
+      "usd": 3373427,
+      "hype": 139740.51,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-11",
+      "usd": 3711898,
+      "hype": 153761.3,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-12",
+      "usd": 1717431,
+      "hype": 71142.69,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-13",
+      "usd": 1950704,
+      "hype": 80805.77,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-14",
+      "usd": 3956307,
+      "hype": 163885.67,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-15",
+      "usd": 4906721,
+      "hype": 203255.54,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-16",
+      "usd": 4351078,
+      "hype": 180238.63,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-17",
+      "usd": 4849291,
+      "hype": 200876.56,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-18",
+      "usd": 5022645,
+      "hype": 208057.56,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-19",
+      "usd": 1682330,
+      "hype": 69688.68,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-20",
+      "usd": 3126281,
+      "hype": 129502.76,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-21",
+      "usd": 4144314,
+      "hype": 171673.66,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-22",
+      "usd": 4666512,
+      "hype": 193305.13,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-23",
+      "usd": 3873940,
+      "hype": 160473.71,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-24",
+      "usd": 3662390,
+      "hype": 151710.49,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-25",
+      "usd": 4273232,
+      "hype": 177013.95,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-26",
+      "usd": 1615004,
+      "hype": 66899.77,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-27",
+      "usd": 2114191,
+      "hype": 87578.04,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-28",
+      "usd": 3366083,
+      "hype": 139436.3,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-29",
+      "usd": 3088940,
+      "hype": 127955.95,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-30",
+      "usd": 2751061,
+      "hype": 113959.69,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-07-31",
+      "usd": 3111381,
+      "hype": 128885.54,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-01",
+      "usd": 5565168,
+      "hype": 230530.98,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-02",
+      "usd": 2571541,
+      "hype": 106523.27,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-03",
+      "usd": 1857636,
+      "hype": 76950.53,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-04",
+      "usd": 2825805,
+      "hype": 117055.87,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-05",
+      "usd": 3111117,
+      "hype": 128874.61,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-06",
+      "usd": 2324237,
+      "hype": 96278.97,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-07",
+      "usd": 3265969,
+      "hype": 135289.18,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-08",
+      "usd": 3384426,
+      "hype": 140196.13,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-09",
+      "usd": 3281422,
+      "hype": 135929.3,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-10",
+      "usd": 2973762,
+      "hype": 123184.83,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-11",
+      "usd": 5185766,
+      "hype": 214814.66,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-12",
+      "usd": 5124037,
+      "hype": 212257.6,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-13",
+      "usd": 6285384,
+      "hype": 260365.14,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-14",
+      "usd": 8513405,
+      "hype": 352658.46,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-15",
+      "usd": 4444759,
+      "hype": 184119.27,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-16",
+      "usd": 1646689,
+      "hype": 68212.28,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-17",
+      "usd": 2072438,
+      "hype": 85848.47,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-18",
+      "usd": 4871286,
+      "hype": 201787.67,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-19",
+      "usd": 4913118,
+      "hype": 203520.52,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-20",
+      "usd": 4482737,
+      "hype": 185692.46,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-21",
+      "usd": 3576052,
+      "hype": 148134.03,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-22",
+      "usd": 6916345,
+      "hype": 286502.0,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-23",
+      "usd": 2890216,
+      "hype": 119724.03,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-24",
+      "usd": 6320764,
+      "hype": 261830.71,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-25",
+      "usd": 6658074,
+      "hype": 275803.4,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-26",
+      "usd": 5216518,
+      "hype": 216088.53,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-27",
+      "usd": 4335438,
+      "hype": 179590.76,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-28",
+      "usd": 3395840,
+      "hype": 140668.95,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-29",
+      "usd": 5389820,
+      "hype": 223267.38,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-30",
+      "usd": 2216684,
+      "hype": 91823.71,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-08-31",
+      "usd": 2111819,
+      "hype": 87479.78,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-01",
+      "usd": 3662539,
+      "hype": 151716.66,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-02",
+      "usd": 3556701,
+      "hype": 147332.44,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-03",
+      "usd": 2613502,
+      "hype": 108261.45,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-04",
+      "usd": 3032367,
+      "hype": 125612.48,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-05",
+      "usd": 4136138,
+      "hype": 171334.97,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-06",
+      "usd": 1199579,
+      "hype": 49691.24,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-07",
+      "usd": 1331387,
+      "hype": 55151.25,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-08",
+      "usd": 3239677,
+      "hype": 134200.07,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-09",
+      "usd": 3582659,
+      "hype": 148407.72,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-10",
+      "usd": 3828855,
+      "hype": 158606.12,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-11",
+      "usd": 4143545,
+      "hype": 171641.81,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-12",
+      "usd": 4627223,
+      "hype": 191677.63,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-13",
+      "usd": 3223167,
+      "hype": 133516.15,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-14",
+      "usd": 3715865,
+      "hype": 153925.63,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-15",
+      "usd": 4032465,
+      "hype": 167040.43,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-16",
+      "usd": 3276886,
+      "hype": 135741.41,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-17",
+      "usd": 4716497,
+      "hype": 195375.71,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-18",
+      "usd": 3837135,
+      "hype": 158949.1,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-19",
+      "usd": 3381187,
+      "hype": 140061.96,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-20",
+      "usd": 1863615,
+      "hype": 77198.21,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-21",
+      "usd": 2132216,
+      "hype": 88324.71,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-22",
+      "usd": 5675346,
+      "hype": 235094.98,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-23",
+      "usd": 3217697,
+      "hype": 133289.56,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-24",
+      "usd": 2833081,
+      "hype": 117357.27,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-25",
+      "usd": 5412926,
+      "hype": 224224.52,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-26",
+      "usd": 3196433,
+      "hype": 132408.73,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-27",
+      "usd": 1529083,
+      "hype": 63340.58,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-28",
+      "usd": 1928232,
+      "hype": 79874.89,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-29",
+      "usd": 2600887,
+      "hype": 107738.89,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-09-30",
+      "usd": 2712733,
+      "hype": 112371.99,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-01",
+      "usd": 3108599,
+      "hype": 128770.31,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-02",
+      "usd": 3456115,
+      "hype": 143165.77,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-03",
+      "usd": 3299242,
+      "hype": 136667.47,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-04",
+      "usd": 1629742,
+      "hype": 67510.27,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-05",
+      "usd": 3033713,
+      "hype": 125668.23,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-06",
+      "usd": 3369422,
+      "hype": 139574.61,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-07",
+      "usd": 4416839,
+      "hype": 182962.71,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-08",
+      "usd": 2968401,
+      "hype": 122962.75,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-09",
+      "usd": 3410919,
+      "hype": 141293.58,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-10",
+      "usd": 9863306,
+      "hype": 408576.63,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-11",
+      "usd": 3361969,
+      "hype": 139265.88,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-12",
+      "usd": 3617260,
+      "hype": 149841.03,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-13",
+      "usd": 2858078,
+      "hype": 118392.75,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-14",
+      "usd": 4639586,
+      "hype": 192189.76,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-15",
+      "usd": 2772963,
+      "hype": 114866.94,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-16",
+      "usd": 3485897,
+      "hype": 144399.45,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-17",
+      "usd": 3651550,
+      "hype": 151261.45,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-18",
+      "usd": 1290709,
+      "hype": 53466.2,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-19",
+      "usd": 1902682,
+      "hype": 78816.52,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-20",
+      "usd": 2904377,
+      "hype": 120310.63,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-21",
+      "usd": 4929190,
+      "hype": 204186.29,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-22",
+      "usd": 3925851,
+      "hype": 162624.07,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-23",
+      "usd": 3018218,
+      "hype": 125026.37,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-24",
+      "usd": 2399438,
+      "hype": 99394.09,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-25",
+      "usd": 1257151,
+      "hype": 52076.1,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-26",
+      "usd": 2370893,
+      "hype": 98211.64,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-27",
+      "usd": 3145144,
+      "hype": 130284.14,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-28",
+      "usd": 3553237,
+      "hype": 147188.94,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-29",
+      "usd": 3824629,
+      "hype": 158431.06,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-30",
+      "usd": 4447207,
+      "hype": 184220.67,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-10-31",
+      "usd": 2637720,
+      "hype": 109264.66,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-01",
+      "usd": 1163595,
+      "hype": 48200.64,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-02",
+      "usd": 1580548,
+      "hype": 65472.46,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-03",
+      "usd": 4299210,
+      "hype": 178090.05,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-04",
+      "usd": 6388273,
+      "hype": 264627.19,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-05",
+      "usd": 3284604,
+      "hype": 136061.12,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-06",
+      "usd": 3550102,
+      "hype": 147059.08,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-07",
+      "usd": 3986639,
+      "hype": 165142.14,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-08",
+      "usd": 2089766,
+      "hype": 86566.26,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-09",
+      "usd": 2210298,
+      "hype": 91559.17,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-10",
+      "usd": 3134694,
+      "hype": 129851.26,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-11",
+      "usd": 3293135,
+      "hype": 136414.5,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-12",
+      "usd": 2852238,
+      "hype": 118150.83,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-13",
+      "usd": 4575057,
+      "hype": 189516.71,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-14",
+      "usd": 4754492,
+      "hype": 196949.61,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-15",
+      "usd": 1714279,
+      "hype": 71012.12,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-16",
+      "usd": 2603695,
+      "hype": 107855.21,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-17",
+      "usd": 3545968,
+      "hype": 146887.83,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-18",
+      "usd": 3059692,
+      "hype": 126744.38,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-19",
+      "usd": 3706429,
+      "hype": 153534.75,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-20",
+      "usd": 4196685,
+      "hype": 173843.07,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-21",
+      "usd": 5416989,
+      "hype": 224392.82,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-22",
+      "usd": 1755491,
+      "hype": 72719.29,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-23",
+      "usd": 2285831,
+      "hype": 94688.04,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-24",
+      "usd": 3284307,
+      "hype": 136048.81,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-25",
+      "usd": 2794604,
+      "hype": 115763.4,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-26",
+      "usd": 2484382,
+      "hype": 102912.8,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-27",
+      "usd": 1740764,
+      "hype": 72109.24,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-28",
+      "usd": 2008056,
+      "hype": 83181.51,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-29",
+      "usd": 1064236,
+      "hype": 44084.81,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-11-30",
+      "usd": 1054555,
+      "hype": 43683.79,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-01",
+      "usd": 3812007,
+      "hype": 157908.2,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-02",
+      "usd": 2722168,
+      "hype": 112762.82,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-03",
+      "usd": 2689493,
+      "hype": 111409.29,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-04",
+      "usd": 2279614,
+      "hype": 94430.5,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-05",
+      "usd": 2567388,
+      "hype": 106351.23,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-06",
+      "usd": 887055,
+      "hype": 36745.28,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-07",
+      "usd": 2256876,
+      "hype": 93488.61,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-08",
+      "usd": 2231413,
+      "hype": 92433.83,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-09",
+      "usd": 3033155,
+      "hype": 125645.12,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-10",
+      "usd": 2864859,
+      "hype": 118673.64,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-11",
+      "usd": 2882930,
+      "hype": 119422.21,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-12",
+      "usd": 2136305,
+      "hype": 88494.09,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-13",
+      "usd": 580436,
+      "hype": 24043.92,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-14",
+      "usd": 1239775,
+      "hype": 51356.32,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-15",
+      "usd": 2508769,
+      "hype": 103923.01,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-16",
+      "usd": 1917513,
+      "hype": 79430.87,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-17",
+      "usd": 2811574,
+      "hype": 116466.36,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-18",
+      "usd": 3104259,
+      "hype": 128590.52,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-19",
+      "usd": 2439717,
+      "hype": 101062.6,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-20",
+      "usd": 625308,
+      "hype": 25902.7,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-21",
+      "usd": 908950,
+      "hype": 37652.26,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-22",
+      "usd": 2171058,
+      "hype": 89933.69,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-23",
+      "usd": 1922898,
+      "hype": 79653.94,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-24",
+      "usd": 1204545,
+      "hype": 49896.95,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-25",
+      "usd": 851772,
+      "hype": 35283.72,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-26",
+      "usd": 1687383,
+      "hype": 69897.99,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-27",
+      "usd": 538802,
+      "hype": 22319.28,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-28",
+      "usd": 695497,
+      "hype": 28810.2,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-29",
+      "usd": 2358263,
+      "hype": 97688.45,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-30",
+      "usd": 1459474,
+      "hype": 60457.11,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2025-12-31",
+      "usd": 1239076,
+      "hype": 51327.36,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-01",
+      "usd": 917184,
+      "hype": 37993.34,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-02",
+      "usd": 2537008,
+      "hype": 105092.78,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-03",
+      "usd": 1214868,
+      "hype": 50324.57,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-04",
+      "usd": 1286536,
+      "hype": 53293.34,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-05",
+      "usd": 2646159,
+      "hype": 109614.23,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-06",
+      "usd": 2953807,
+      "hype": 122358.22,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-07",
+      "usd": 2256194,
+      "hype": 93460.35,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-08",
+      "usd": 2621468,
+      "hype": 108591.43,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-09",
+      "usd": 2203471,
+      "hype": 91276.36,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-10",
+      "usd": 556235,
+      "hype": 23041.43,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-11",
+      "usd": 1064579,
+      "hype": 44099.02,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-12",
+      "usd": 2377754,
+      "hype": 98495.85,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-13",
+      "usd": 2869296,
+      "hype": 118857.44,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-14",
+      "usd": 2949271,
+      "hype": 122170.31,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-15",
+      "usd": 2356925,
+      "hype": 97633.03,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-16",
+      "usd": 1509550,
+      "hype": 62531.45,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-17",
+      "usd": 706662,
+      "hype": 29272.7,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-18",
+      "usd": 990418,
+      "hype": 41026.97,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-19",
+      "usd": 2108725,
+      "hype": 87351.62,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-20",
+      "usd": 2979773,
+      "hype": 123433.83,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-21",
+      "usd": 3124197,
+      "hype": 129416.44,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-22",
+      "usd": 2084601,
+      "hype": 86352.31,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-23",
+      "usd": 2251697,
+      "hype": 93274.07,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-24",
+      "usd": 519206,
+      "hype": 21507.54,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-25",
+      "usd": 1893994,
+      "hype": 78456.62,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-26",
+      "usd": 2161284,
+      "hype": 89528.81,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-27",
+      "usd": 1975662,
+      "hype": 81839.63,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-28",
+      "usd": 2709847,
+      "hype": 112252.43,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-29",
+      "usd": 4300098,
+      "hype": 178126.84,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-30",
+      "usd": 4350711,
+      "hype": 180223.42,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-01-31",
+      "usd": 4315723,
+      "hype": 178774.08,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-02-01",
+      "usd": 2945934,
+      "hype": 122032.08,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-02-02",
+      "usd": 3385716,
+      "hype": 140249.57,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-02-03",
+      "usd": 3947414,
+      "hype": 163517.29,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-02-04",
+      "usd": 3941854,
+      "hype": 163286.98,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-02-05",
+      "usd": 6841945,
+      "hype": 283420.06,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-02-06",
+      "usd": 4999164,
+      "hype": 207084.88,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-02-07",
+      "usd": 2069695,
+      "hype": 85734.84,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
+      "date": "2026-02-08",
+      "usd": 1374691,
+      "hype": 56945.07,
+      "data_type": "estimated",
+      "source": "DefiLlama holdersRevenue"
+    },
+    {
       "date": "2026-02-09",
+      "usd": 2090434,
       "hype": 5154.55,
-      "usd": 162419.7,
-      "avg_price": 31.51,
-      "txs": 55,
       "data_type": "onchain",
-      "source": "hyperliquid_api"
+      "source": "hyperliquid_api",
+      "avg_price": 31.51,
+      "txs": 55
     },
     {
       "date": "2026-02-10",
+      "usd": 1799439,
       "hype": 44496.58,
-      "usd": 1332395.4,
-      "avg_price": 29.9438,
-      "txs": 438,
       "data_type": "onchain",
-      "source": "hyperliquid_api"
+      "source": "hyperliquid_api",
+      "avg_price": 29.9438,
+      "txs": 438
     },
     {
       "date": "2026-02-11",
+      "usd": 2329330,
       "hype": 58485.15,
-      "usd": 1702428.31,
-      "avg_price": 29.1087,
-      "txs": 774,
       "data_type": "onchain",
-      "source": "hyperliquid_api"
+      "source": "hyperliquid_api",
+      "avg_price": 29.1087,
+      "txs": 774
     },
     {
       "date": "2026-02-12",
+      "usd": 1816261,
       "hype": 43963.05,
-      "usd": 1335922.25,
+      "data_type": "onchain",
+      "source": "hyperliquid_api",
       "avg_price": 30.3874,
-      "txs": 481,
-      "data_type": "onchain",
-      "source": "hyperliquid_api"
-    },
-    {
-      "date": "2026-02-13",
-      "hype": 19321.67,
-      "usd": 592096.31,
-      "avg_price": 30.6442,
-      "txs": 200,
-      "data_type": "onchain",
-      "source": "hyperliquid_api"
+      "txs": 481
     }
   ]
 }
