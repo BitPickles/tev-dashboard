@@ -281,12 +281,12 @@
           const res = await fetch(`../data/daily/${key}/latest.json`);
           if (!res.ok) throw new Error();
           const data = await res.json();
-          // 计算 tevRatio = TEV / 协议总利润(fees)，优先用365天数据
+          // 计算 tevRatio = TEV / 协议利润(revenue)，优先用365天数据
           const tev365d = data.metrics?.trailing_365d_tev_usd;
-          const fees365d = data.metrics?.trailing_365d_fees_usd;
+          const revenue365d = data.metrics?.trailing_365d_revenue_usd;
           const tev30d = data.metrics?.trailing_30d_tev_usd || 0;
-          const fees30d = data.metrics?.trailing_30d_fees_usd || 0;
-          const tevRatio = fees365d > 0 ? tev365d / fees365d : (fees30d > 0 ? tev30d / fees30d : 0);
+          const revenue30d = data.metrics?.trailing_30d_revenue_usd || 0;
+          const tevRatio = revenue365d > 0 ? tev365d / revenue365d : (revenue30d > 0 ? tev30d / revenue30d : 0);
           return { key, ...config, ...data, tevRatio };
         } catch { return { key, ...config, error: true }; }
       }));
@@ -299,7 +299,7 @@
         case 'tevStatus': return TEV_STATUS_ORDER[p.tevStatus] || 0;
         case 'tevRatio': return p.tevRatio || 0;
         case 'mcap': return p.latest_record?.market_cap_usd || 0;
-        case 'earningYield': { const mc = p.latest_record?.market_cap_usd || p.metrics?.current_market_cap_usd || 0; const af = p.metrics?.trailing_365d_fees_usd || (p.metrics?.trailing_30d_fees_usd || 0) * 12; return mc > 0 ? af / mc : 0; }
+        case 'earningYield': { const mc = p.latest_record?.market_cap_usd || p.metrics?.current_market_cap_usd || 0; const ar = p.metrics?.trailing_365d_revenue_usd || (p.metrics?.trailing_30d_revenue_usd || 0) * 12; return mc > 0 ? ar / mc : 0; }
         case 'tevYield': return p.metrics?.tev_yield_decimal || 0;
         default: return 0;
       }
@@ -364,9 +364,9 @@
         const tevRatio = p.tevRatio || 0;
         // 使用 getMarketCap 函数获取市值，优先使用 all-protocols.json 中的值
         const mcap = getMarketCap(p);
-        // 收益率 = 协议总收入(fees) / 市值，使用365天数据
-        const annualFees = p.metrics?.trailing_365d_fees_usd || (p.metrics?.trailing_30d_fees_usd || 0) * 12;
-        const earningYield = mcap > 0 ? annualFees / mcap : 0;
+        // 收益率 = 协议利润(revenue) / 市值，使用365天数据
+        const annualRevenue = p.metrics?.trailing_365d_revenue_usd || (p.metrics?.trailing_30d_revenue_usd || 0) * 12;
+        const earningYield = mcap > 0 ? annualRevenue / mcap : 0;
 
         const row = document.createElement('tr');
         row.onclick = () => window.location.href = `protocol.html?id=${p.key}`;
