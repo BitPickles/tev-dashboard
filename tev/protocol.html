@@ -277,90 +277,59 @@
         if (!resp.ok) return;
         const data = await resp.json();
         
-        // Show section
         document.getElementById('buyback-chart-section').style.display = 'block';
         
-        // Calculate totals
-        const activeWallet = data.wallets?.find(w => w.status === 'active' && w.type === 'auto_daily');
-        const totalValue = activeWallet?.current_value_usd || 0;
-        const earliestDate = data.summary?.earliest_activity || '-';
-        const isActive = data.summary?.daily_buyback_active;
-        const totalWallets = data.wallets?.length || 0;
+        const s = data.summary || {};
+        const w = data.wallets?.stage_6_auto || {};
+        const dailyData = data.daily_buybacks || [];
         
-        // Calculate total tx count
-        const totalTx = data.buyback_history?.reduce((sum, h) => sum + (h.tx_count_approx || 0), 0) || 0;
-        
-        // Render overview stats
+        // Render overview
         const overview = document.getElementById('buyback-overview');
         overview.innerHTML = `
           <div class="buyback-stats-grid">
             <div class="buyback-stat-card main">
-              <div class="stat-label">${currentLang === 'zh' ? '当前回购钱包价值' : 'Current Buyback Wallet Value'}</div>
-              <div class="stat-value">${fmtCurrency(totalValue)}</div>
-              <div class="stat-sub">Stage 6 Auto Daily</div>
+              <div class="stat-label">${currentLang === 'zh' ? '累计回购' : 'Total Buyback'}</div>
+              <div class="stat-value">${fmtCurrency(s.stage_6_total_usd || 0)}</div>
+              <div class="stat-sub">${(s.stage_6_total_aster/1e6).toFixed(2)}M ASTER</div>
             </div>
             <div class="buyback-stat-card">
-              <div class="stat-label">${currentLang === 'zh' ? '最早活动' : 'Earliest Activity'}</div>
-              <div class="stat-value">${earliestDate}</div>
+              <div class="stat-label">${currentLang === 'zh' ? '日均回购' : 'Avg Daily'}</div>
+              <div class="stat-value">${fmtCurrency(s.avg_daily_usd || 0)}</div>
+              <div class="stat-sub">~${((s.avg_daily_aster||0)/1e6).toFixed(2)}M ASTER</div>
             </div>
             <div class="buyback-stat-card">
-              <div class="stat-label">${currentLang === 'zh' ? '状态' : 'Status'}</div>
-              <div class="stat-value ${isActive ? 'active' : ''}">${isActive ? (currentLang === 'zh' ? '✓ 每日执行' : '✓ Daily Active') : '-'}</div>
+              <div class="stat-label">${currentLang === 'zh' ? '运行天数' : 'Days'}</div>
+              <div class="stat-value">${s.stage_6_days || 0}</div>
             </div>
             <div class="buyback-stat-card">
-              <div class="stat-label">${currentLang === 'zh' ? '回购钱包数' : 'Wallets'}</div>
-              <div class="stat-value">${totalWallets}</div>
+              <div class="stat-label">${currentLang === 'zh' ? '回购钱包' : 'Wallet'}</div>
+              <div class="stat-value" style="font-size:12px;"><a href="${w.bscscan}" target="_blank" style="color:var(--blue);">${w.address?.slice(0,8)}...</a></div>
             </div>
           </div>
-          
-          <div class="buyback-history-section">
-            <h4>${currentLang === 'zh' ? '📅 回购历史' : '📅 Buyback History'}</h4>
-            <div class="history-timeline">
-              ${data.buyback_history?.map(h => `
-                <div class="history-item ${h.status === 'active' ? 'active' : ''}">
-                  <div class="history-stage">${h.stage}</div>
-                  <div class="history-period">${h.period}</div>
-                  <div class="history-mechanism">${h.mechanism}</div>
-                  ${h.accumulated_value_usd ? `<div class="history-value">${fmtCurrency(h.accumulated_value_usd)}</div>` : ''}
-                  ${h.tx_count_approx ? `<div class="history-tx">~${h.tx_count_approx} txs</div>` : ''}
-                </div>
-              `).join('') || ''}
-            </div>
-          </div>
-          
-          <div class="buyback-wallets-section">
-            <h4>${currentLang === 'zh' ? '💼 回购钱包' : '💼 Buyback Wallets'}</h4>
-            <div class="wallets-grid">
-              ${data.wallets?.map(w => `
-                <div class="wallet-card ${w.status}">
-                  <div class="wallet-label">${w.label}</div>
-                  <div class="wallet-address"><code>${w.address.slice(0,10)}...${w.address.slice(-8)}</code></div>
-                  ${w.current_value_usd ? `<div class="wallet-value">${fmtCurrency(w.current_value_usd)}</div>` : ''}
-                  <div class="wallet-status">${w.status === 'active' ? '🟢 Active' : w.status === 'migrated' ? '🔄 Migrated' : '⚫ Depleted'}</div>
-                  <a href="${w.bscscan}" target="_blank" class="wallet-link">BscScan →</a>
-                </div>
-              `).join('') || ''}
-            </div>
-          </div>
+          ${s.data_note ? `<div class="buyback-note">⚠️ ${s.data_note}</div>` : ''}
         `;
         
-        // Render activity chart (Stage 6)
-        const chartData = data.charts?.stage_6_daily;
-        if (chartData) {
+        // Render daily chart
+        if (dailyData.length) {
           const ctx = document.getElementById('buyback-activity-chart').getContext('2d');
           if (buybackChart) buybackChart.destroy();
+          
+          const labels = dailyData.map(d => d.date.slice(5));
+          const usdData = dailyData.map(d => d.usd);
+          const asterData = dailyData.map(d => d.aster);
           
           buybackChart = new Chart(ctx, {
             type: 'bar',
             data: {
-              labels: chartData.labels,
+              labels,
               datasets: [{
-                label: currentLang === 'zh' ? 'Stage 6 每日回购' : 'Stage 6 Daily Buyback',
-                data: chartData.data,
+                label: currentLang === 'zh' ? '每日回购 (USD)' : 'Daily Buyback (USD)',
+                data: usdData,
                 backgroundColor: 'rgba(34, 197, 94, 0.7)',
                 borderColor: '#22c55e',
                 borderWidth: 1,
-                borderRadius: 4
+                borderRadius: 4,
+                yAxisID: 'y'
               }]
             },
             options: {
@@ -368,20 +337,21 @@
               maintainAspectRatio: false,
               plugins: {
                 legend: { display: false },
-                title: {
-                  display: true,
-                  text: currentLang === 'zh' ? 'Stage 6 每日回购交易' : 'Stage 6 Daily Buyback Transactions',
-                  color: '#a1a1aa'
-                },
                 tooltip: {
                   callbacks: {
-                    label: ctx => ` ${ctx.raw} ${currentLang === 'zh' ? '笔交易' : 'txs'}`
+                    label: (ctx) => {
+                      const i = ctx.dataIndex;
+                      return [
+                        ` ${fmtCurrency(usdData[i])}`,
+                        ` ${(asterData[i]/1e6).toFixed(2)}M ASTER`
+                      ];
+                    }
                   }
                 }
               },
               scales: {
                 x: { grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a' } },
-                y: { grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', stepSize: 1 }, beginAtZero: true }
+                y: { grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => '$' + (v/1e3).toFixed(0) + 'K' }, beginAtZero: true }
               }
             }
           });

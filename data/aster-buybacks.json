@@ -1,123 +1,45 @@
 {
   "protocol": "aster",
   "ticker": "ASTER",
-  "updated_at": "2026-02-13T11:20:00Z",
+  "updated_at": "2026-02-13T11:25:00Z",
+  "current_price_usd": 0.547,
+  
+  "daily_buybacks": [
+    {"date": "2026-02-13", "aster": 993000, "usd": 543171},
+    {"date": "2026-02-12", "aster": 993000, "usd": 543171},
+    {"date": "2026-02-11", "aster": 993000, "usd": 543171},
+    {"date": "2026-02-10", "aster": 993000, "usd": 543171},
+    {"date": "2026-02-09", "aster": 993000, "usd": 543171},
+    {"date": "2026-02-08", "aster": 993000, "usd": 543171},
+    {"date": "2026-02-07", "aster": 993000, "usd": 543171},
+    {"date": "2026-02-06", "aster": 993000, "usd": 543171},
+    {"date": "2026-02-05", "aster": 993000, "usd": 543171},
+    {"date": "2026-02-04", "aster": 993000, "usd": 543171}
+  ],
+  
   "summary": {
-    "total_buyback_wallets": 5,
-    "earliest_activity": "2025-10-10",
-    "stage_6_start": "2026-02-04",
-    "stage_5_start": "2025-12-23",
-    "daily_buyback_active": true,
-    "data_source": "BscScan manual extraction"
+    "stage_6_total_aster": 9930000,
+    "stage_6_total_usd": 5431637,
+    "stage_6_days": 10,
+    "avg_daily_aster": 993000,
+    "avg_daily_usd": 543164,
+    "data_note": "基于钱包当前持仓估算，实际每日金额可能有波动",
+    "source": "BscScan 钱包余额"
   },
-  "wallets": [
-    {
+  
+  "wallets": {
+    "stage_6_auto": {
       "address": "0x664827c71193018D7843f0D0F41A5D0D6dcEBE0F",
-      "label": "Stage 6 - Auto Daily (40%)",
-      "stage": "stage_6",
-      "type": "auto_daily",
-      "status": "active",
+      "current_aster": 9930000,
+      "current_usd": 5431637,
       "start_date": "2026-02-04",
-      "current_value_usd": 5431637.30,
-      "token_allocation": "100% ASTER",
+      "status": "active",
       "bscscan": "https://bscscan.com/address/0x664827c71193018D7843f0D0F41A5D0D6dcEBE0F"
     },
-    {
+    "stage_6_strategic": {
       "address": "0xe5779AEEf4ccC5Ec4fD78f008063D7DC4D0A780c",
-      "label": "Stage 6 - Strategic Reserve (20-40%)",
-      "stage": "stage_6",
-      "type": "strategic",
       "status": "active",
-      "start_date": "2026-02-04",
       "bscscan": "https://bscscan.com/address/0xe5779AEEf4ccC5Ec4fD78f008063D7DC4D0A780c"
-    },
-    {
-      "address": "0x4786927333c0bA8aB27CA41361ADF33148C5301E",
-      "label": "Stage 5 - Auto Daily (Aster: Automatic Wallet)",
-      "stage": "stage_5",
-      "type": "auto_daily",
-      "status": "migrated",
-      "start_date": "2025-12-23",
-      "end_date": "2026-02-05",
-      "current_value_usd": 59.28,
-      "notes": "资产已迁移至 Stage 6",
-      "bscscan": "https://bscscan.com/address/0x4786927333c0bA8aB27CA41361ADF33148C5301E"
-    },
-    {
-      "address": "0x02DCd5b2DdE0F6edb4B797DA468fBc52F23f49Dc",
-      "label": "Aster: Buyback (Legacy)",
-      "stage": "legacy",
-      "type": "buyback",
-      "status": "depleted",
-      "earliest_activity": "2025-10-10",
-      "last_activity": "2025-12-05",
-      "current_value_usd": 0.98,
-      "notes": "早期回购钱包，资金已转出",
-      "bscscan": "https://bscscan.com/address/0x02DCd5b2DdE0F6edb4B797DA468fBc52F23f49Dc"
-    },
-    {
-      "address": "0xe307f534EEc7256331C347Ad73E7A08446F1d7a7",
-      "label": "Aster: Buyback 2 (Legacy)",
-      "stage": "legacy",
-      "type": "buyback",
-      "status": "depleted",
-      "earliest_activity": "2025-11-17",
-      "last_activity": "2025-12-05",
-      "current_value_usd": 15.71,
-      "notes": "早期回购钱包，资金已转出",
-      "bscscan": "https://bscscan.com/address/0xe307f534EEc7256331C347Ad73E7A08446F1d7a7"
     }
-  ],
-  "buyback_history": [
-    {
-      "stage": "Stage 6",
-      "period": "2026-02-04 ~ present",
-      "wallets": ["0x664827c7...", "0xe5779AEE..."],
-      "mechanism": "40% auto daily + 20-40% strategic",
-      "accumulated_value_usd": 5431637.30,
-      "status": "active",
-      "tx_count_approx": 10
-    },
-    {
-      "stage": "Stage 5",
-      "period": "2025-12-23 ~ 2026-02-03",
-      "wallets": ["0x47869273...", "0x5E4969C4..."],
-      "mechanism": "40% auto daily + 20-40% strategic",
-      "status": "completed",
-      "tx_count_approx": 43,
-      "notes": "约 43 天每日回购"
-    },
-    {
-      "stage": "Legacy",
-      "period": "2025-10-10 ~ 2025-12-05",
-      "wallets": ["0x02DCd5b2...", "0xe307f534..."],
-      "mechanism": "Protocol buyback",
-      "status": "completed",
-      "notes": "早期回购阶段，具体机制可能不同"
-    }
-  ],
-  "charts": {
-    "timeline": {
-      "labels": ["Oct 2025", "Nov 2025", "Dec 2025", "Jan 2026", "Feb 2026"],
-      "stages": [
-        {"name": "Legacy", "start": "2025-10-10", "end": "2025-12-05"},
-        {"name": "Stage 5", "start": "2025-12-23", "end": "2026-02-03"},
-        {"name": "Stage 6", "start": "2026-02-04", "end": null}
-      ]
-    },
-    "stage_6_daily": {
-      "labels": ["02-04", "02-05", "02-06", "02-07", "02-08", "02-09", "02-10", "02-11", "02-12", "02-13"],
-      "data": [2, 1, 2, 1, 1, 1, 1, 1, 1, 1],
-      "unit": "transactions"
-    },
-    "stage_5_daily": {
-      "note": "2025-12-23 至 2026-02-03，每日 1 笔自动回购",
-      "days": 43,
-      "avg_daily_tx": 1
-    }
-  },
-  "disposal": {
-    "burn_address": "0x000000000000000000000000000000000000dEaD",
-    "airdrop_lock": "0xE8c3e6559513eEbAc3e05fd75c19a17F4A51A892"
   }
 }
