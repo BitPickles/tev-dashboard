@@ -1,0 +1,36 @@
+{
+  "id": "0x40916086b2ca626455b3339eaaf613e706ca4890",
+  "name": "TOKEN CCA",
+  "status": "ended",
+  "token": {
+    "address": "0x945a43f72e3ed646f0de482385fef96213f26f55",
+    "symbol": "TOKEN",
+    "decimals": 18
+  },
+  "currency": {
+    "address": "0x0000000000000000000000000000000000000000",
+    "symbol": "USDC",
+    "decimals": 6
+  },
+  "config": {
+    "startBlock": 23935044,
+    "endBlock": 23935344,
+    "floorPriceHuman": "0"
+  },
+  "metrics": {
+    "clearingPriceHuman": "0",
+    "currencyRaisedHuman": "0",
+    "raisedUsd": 0,
+    "bidCount": 0,
+    "bidders": 0,
+    "isGraduated": true
+  },
+  "progress": {
+    "progressPercent": 100
+  },
+  "bids": [],
+  "checkpoints": [],
+  "timestamps": {
+    "createdAt": "2026-02-13T19:56:56.702Z"
+  }
+}

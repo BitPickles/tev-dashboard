@@ -24,8 +24,8 @@
     "floorPriceHuman": "1.00000000"
   },
   "metrics": {
-    "clearingPriceQ96": "79228162514264337593543950336",
-    "clearingPriceHuman": "1.00000000",
+    "clearingPriceQ96": "0",
+    "clearingPriceHuman": "0",
     "currencyRaised": "19999999999",
     "currencyRaisedHuman": "0.00",
     "raisedUsd": 0,
@@ -36,7 +36,7 @@
     "isGraduated": true
   },
   "progress": {
-    "currentBlock": 24450006,
+    "currentBlock": 24450085,
     "progressPercent": 100
   },
   "bids": [],
@@ -59,6 +59,7 @@
     "createdBlock": 24251194
   },
   "errors": [
+    "clearingPrice: socket hang up",
     "fundsRecipient: RPC error: execution reverted",
     "tokensRecipient: RPC error: execution reverted"
   ]
