@@ -281,10 +281,12 @@
           const res = await fetch(`../data/daily/${key}/latest.json`);
           if (!res.ok) throw new Error();
           const data = await res.json();
-          // 计算 tevRatio = TEV / 协议总利润(fees)
+          // 计算 tevRatio = TEV / 协议总利润(fees)，优先用365天数据
+          const tev365d = data.metrics?.trailing_365d_tev_usd;
+          const fees365d = data.metrics?.trailing_365d_fees_usd;
           const tev30d = data.metrics?.trailing_30d_tev_usd || 0;
           const fees30d = data.metrics?.trailing_30d_fees_usd || 0;
-          const tevRatio = fees30d > 0 ? tev30d / fees30d : 0;
+          const tevRatio = fees365d > 0 ? tev365d / fees365d : (fees30d > 0 ? tev30d / fees30d : 0);
           return { key, ...config, ...data, tevRatio };
         } catch { return { key, ...config, error: true }; }
       }));

@@ -199,6 +199,8 @@ async function processProtocol(protocol) {
   // Write latest.json
   const latestRecord = records[records.length - 1];
   const trailing30dTev = records.slice(-30).reduce((sum, r) => sum + (r.daily_tev_usd || 0), 0);
+  const trailing365dTev = records.slice(-365).reduce((sum, r) => sum + (r.daily_tev_usd || 0), 0);
+  const trailing365dFees = records.slice(-365).reduce((sum, r) => sum + (r.daily_fees_usd || 0), 0);
   const annualizedTev = trailing30dTev * 12;
   const marketCap = latestRecord.market_cap_usd || 0;
   const tevYield = marketCap > 0 ? annualizedTev / marketCap : 0;
@@ -210,6 +212,8 @@ async function processProtocol(protocol) {
     metrics: {
       trailing_30d_tev_usd: trailing30dTev,
       trailing_30d_fees_usd: records.slice(-30).reduce((sum, r) => sum + (r.daily_fees_usd || 0), 0),
+      trailing_365d_tev_usd: trailing365dTev,
+      trailing_365d_fees_usd: trailing365dFees,
       annualized_tev_usd: annualizedTev,
       current_market_cap_usd: marketCap,
       tev_yield: (tevYield * 100).toFixed(2) + '%',
