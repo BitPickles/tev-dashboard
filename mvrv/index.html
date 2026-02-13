@@ -98,12 +98,12 @@
             </div>
             <div class="legend-item disabled" data-series="btc" onclick="toggleSeries('btc')">
               <div class="legend-line" style="background: #f59e0b;"></div>
-              <span>BTC</span>
+              <span data-zh="BTC价格" data-en="BTC Price">BTC价格</span>
             </div>
           </div>
         </div>
         <div class="chart-wrapper" id="chart-container"></div>
-        <div class="chart-tooltip" id="chart-tooltip">
+        <div class="chart-tooltip floating" id="chart-tooltip">
           <div class="tooltip-date" id="tooltip-date">—</div>
           <div class="tooltip-item" id="tooltip-mvrv" style="display: none;">
             <div class="tooltip-dot" style="background: #a855f7;"></div>
@@ -166,6 +166,7 @@
     let defaultRange = null;
     let historyData = {};
     let currentData = null;
+    let btcPriceData = null;
 
     // === MVRV Zone Logic ===
     function getZoneInfo(value) {
@@ -238,8 +239,12 @@
     // === Data Loading ===
     async function loadData() {
       try {
-        const res = await fetch('../indicators/data/mvrv.json');
-        currentData = await res.json();
+        const [mvrvRes, btcPriceRes] = await Promise.all([
+          fetch('../indicators/data/mvrv.json'),
+          fetch('../indicators/data/shared/btc-price.json')
+        ]);
+        currentData = await mvrvRes.json();
+        if (btcPriceRes.ok) btcPriceData = await btcPriceRes.json();
 
         if (currentData.note && currentData.note.includes('Simulated')) {
           document.getElementById('data-notice').style.display = 'block';
@@ -263,7 +268,11 @@
 
       // Build data
       const mvrvData = history.map(d => ({ time: d.date, value: d.mvrv }));
-      const btcData = history.filter(d => d.btc_price).map(d => ({ time: d.date, value: d.btc_price }));
+      // BTC price from shared data
+      const btcData = btcPriceData ? mvrvData.map(d => {
+        const priceRecord = btcPriceData.history.find(p => p.date === d.time);
+        return priceRecord ? { time: d.time, value: priceRecord.price } : null;
+      }).filter(d => d !== null) : [];
       historyData = buildHistoryLookup(history);
       const lastDate = history[history.length - 1].date;
 
@@ -324,13 +333,29 @@
       document.getElementById('chart-container').addEventListener('dblclick', resetChart);
 
       // Tooltip
-      setupTooltip(chart, historyData, {
-        seriesVisible,
-        dateElementId: 'tooltip-date',
-        fields: [
-          { key: 'mvrv', dataKey: 'mvrv', format: v => v.toFixed(2) },
-          { key: 'btc', dataKey: 'btc_price', format: v => '$' + v.toLocaleString() },
-        ],
+      const tooltip = document.getElementById('chart-tooltip');
+      chart.subscribeCrosshairMove(param => {
+        if (!param.time || !param.point || param.point.x < 0) { tooltip.classList.remove('visible'); return; }
+        tooltip.classList.add('visible');
+        document.getElementById('tooltip-date').textContent = formatTime(param.time);
+        
+        const dateStr = typeof param.time === 'string' ? param.time : `${param.time.year}-${String(param.time.month).padStart(2,'0')}-${String(param.time.day).padStart(2,'0')}`;
+        const d = historyData[dateStr];
+        const priceRecord = btcPriceData?.history.find(p => p.date === dateStr);
+
+        if (seriesVisible.mvrv && d?.mvrv !== undefined) {
+          document.getElementById('tooltip-mvrv').style.display = 'flex';
+          document.getElementById('tooltip-mvrv-value').textContent = d.mvrv.toFixed(2);
+        } else {
+          document.getElementById('tooltip-mvrv').style.display = 'none';
+        }
+        
+        if (seriesVisible.btc && priceRecord?.price) {
+          document.getElementById('tooltip-btc').style.display = 'flex';
+          document.getElementById('tooltip-btc-value').textContent = '$' + priceRecord.price.toLocaleString();
+        } else {
+          document.getElementById('tooltip-btc').style.display = 'none';
+        }
       });
     }
 
