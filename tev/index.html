@@ -348,12 +348,11 @@
 
       filtered.forEach((p, i) => {
         // 优先使用 all-protocols.json 中的 tev_yield_percent
-        const tevYield = (p.tev_yield_percent !== undefined && p.tev_yield_percent > 0)
-          ? p.tev_yield_percent / 100
-          : (p.metrics?.tev_yield_decimal || 0);
+        const tevYield = getTevYield(p);
         const tevStatus = p.tevStatus || 'none';
         const tevRatio = p.tevRatio || 0;
-        const mcap = p.latest_record?.market_cap_usd || p.metrics?.current_market_cap_usd || 0;
+        // 使用 getMarketCap 函数获取市值，优先使用 all-protocols.json 中的值
+        const mcap = getMarketCap(p);
         const annualTev = (p.metrics?.trailing_30d_tev_usd || 0) * 12;
         const earningYield = mcap > 0 ? annualTev / mcap : 0;
 
@@ -380,9 +379,9 @@
     function updateStats(protocols) {
       const valid = protocols.filter(p => !p.error);
       document.getElementById('stat-protocols').textContent = valid.length;
-      document.getElementById('stat-mcap').textContent = formatCurrency(valid.reduce((s, p) => s + (p.latest_record?.market_cap_usd || 0), 0));
-      document.getElementById('stat-fees').textContent = formatCurrency(valid.reduce((s, p) => s + (p.trailing30dFees || 0), 0));
-      document.getElementById('stat-tev').textContent = formatCurrency(valid.reduce((s, p) => s + (p.trailing30dTev || 0), 0));
+      document.getElementById('stat-mcap').textContent = formatCurrency(valid.reduce((s, p) => s + getMarketCap(p), 0));
+      document.getElementById('stat-fees').textContent = formatCurrency(valid.reduce((s, p) => s + (p.metrics?.trailing_30d_fees_usd || 0), 0));
+      document.getElementById('stat-tev').textContent = formatCurrency(valid.reduce((s, p) => s + (p.metrics?.trailing_30d_tev_usd || 0), 0));
     }
 
     function updateFooter(protocols) {
