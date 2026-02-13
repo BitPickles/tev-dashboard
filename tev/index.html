@@ -282,9 +282,9 @@
           if (!res.ok) throw new Error();
           const data = await res.json();
           // 计算 tevRatio = TEV / 协议总利润(fees)
-          const annualTev = data.metrics?.annualized_tev_usd || 0;
-          const annualFees = data.metrics?.annualized_fees_usd || 0;
-          const tevRatio = annualFees > 0 ? annualTev / annualFees : 0;
+          const tev30d = data.metrics?.trailing_30d_tev_usd || 0;
+          const fees30d = data.metrics?.trailing_30d_fees_usd || 0;
+          const tevRatio = fees30d > 0 ? tev30d / fees30d : 0;
           return { key, ...config, ...data, tevRatio };
         } catch { return { key, ...config, error: true }; }
       }));
