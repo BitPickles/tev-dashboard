@@ -1,9 +1,21 @@
 {
-  "generatedAt": "2026-02-13T13:26:45.155Z",
+  "generatedAt": "2026-02-13T18:26:15.073Z",
   "chain": "ethereum",
-  "rpcUrl": "https://eth.llamarpc.com",
-  "fromBlock": 0,
-  "toBlock": 0,
-  "auctions": [],
-  "errors": []
+  "chainId": 1,
+  "factory": "0xCCccCcCAE7503Cac057829BF2811De42E16e0bD5",
+  "totalAuctions": 1,
+  "activeAuctions": 0,
+  "totalRaised": 0,
+  "auctions": [
+    {
+      "id": "0x9084cb9a700a52909cbef3113db8bac01c01efd6",
+      "name": "rCAP CCA",
+      "status": "ended",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0.015,
+      "bidders": 0,
+      "token": "rCAP",
+      "currency": "USDC"
+    }
+  ]
 }

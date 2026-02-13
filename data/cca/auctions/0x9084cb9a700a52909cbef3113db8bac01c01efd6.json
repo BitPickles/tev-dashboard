@@ -1,0 +1,63 @@
+{
+  "id": "0x9084cb9a700a52909cbef3113db8bac01c01efd6",
+  "name": "rCAP CCA",
+  "status": "ended",
+  "token": {
+    "address": "0xcccc87d42db3d35018ecae712a0bc53e79d9cccc",
+    "symbol": "rCAP",
+    "name": "CAP Redeemable Receipt Token",
+    "decimals": 18,
+    "totalSupply": "1000000000000000000000000000",
+    "totalSupplyHuman": "1.00B"
+  },
+  "currency": {
+    "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6
+  },
+  "config": {
+    "startBlock": 24420030,
+    "endBlock": 0,
+    "claimBlock": 24484830,
+    "floorPriceQ96": "0",
+    "floorPriceHuman": "0"
+  },
+  "metrics": {
+    "clearingPriceQ96": "1188422437713900",
+    "clearingPriceHuman": "0.01500000",
+    "currencyRaised": "0",
+    "currencyRaisedHuman": "0.00",
+    "raisedUsd": 0,
+    "totalCleared": "0",
+    "totalClearedHuman": "0.00",
+    "bidCount": 0,
+    "bidders": 0,
+    "isGraduated": false
+  },
+  "progress": {
+    "currentBlock": 24449638,
+    "progressPercent": 100
+  },
+  "bids": [],
+  "checkpoints": [
+    {
+      "blockNumber": 24370981,
+      "clearingPriceQ96": "1188422437713900",
+      "clearingPriceHuman": "0.01500000",
+      "timestamp": 1770057083
+    }
+  ],
+  "timestamps": {
+    "createdAt": "2026-02-02T18:31:23.000Z",
+    "createdBlock": 24370981
+  },
+  "errors": [
+    "isGraduated: API error: NOTOK",
+    "nextBidId: API error: NOTOK",
+    "endBlock: API error: NOTOK",
+    "floorPrice: API error: NOTOK",
+    "fundsRecipient: API error: NOTOK",
+    "tokensRecipient: API error: NOTOK"
+  ]
+}
