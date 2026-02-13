@@ -280,7 +280,12 @@
         try {
           const res = await fetch(`../data/daily/${key}/latest.json`);
           if (!res.ok) throw new Error();
-          return { key, ...config, ...(await res.json()) };
+          const data = await res.json();
+          // 计算 tevRatio = TEV / 协议总利润(fees)
+          const annualTev = data.metrics?.annualized_tev_usd || 0;
+          const annualFees = data.metrics?.annualized_fees_usd || 0;
+          const tevRatio = annualFees > 0 ? annualTev / annualFees : 0;
+          return { key, ...config, ...data, tevRatio };
         } catch { return { key, ...config, error: true }; }
       }));
     }
