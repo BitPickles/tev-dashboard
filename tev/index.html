@@ -299,7 +299,9 @@
     }
     // 获取 TEV Yield：优先用我们计算的 tev_yield_percent，兼容旧的 metrics.tev_yield_decimal
     function getTevYield(p) {
-      if (p.tev_yield_percent) return p.tev_yield_percent / 100;
+      // 优先使用 all-protocols.json 中的 tev_yield_percent
+      if (p.tev_yield_percent !== undefined && p.tev_yield_percent > 0) return p.tev_yield_percent / 100;
+      // 回退到 metrics.tev_yield_decimal
       if (p.metrics?.tev_yield_decimal) return p.metrics.tev_yield_decimal;
       return 0;
     }
@@ -345,7 +347,10 @@
       updateSortIndicators();
 
       filtered.forEach((p, i) => {
-        const tevYield = p.metrics?.tev_yield_decimal || 0;
+        // 优先使用 all-protocols.json 中的 tev_yield_percent
+        const tevYield = (p.tev_yield_percent !== undefined && p.tev_yield_percent > 0)
+          ? p.tev_yield_percent / 100
+          : (p.metrics?.tev_yield_decimal || 0);
         const tevStatus = p.tevStatus || 'none';
         const tevRatio = p.tevRatio || 0;
         const mcap = p.latest_record?.market_cap_usd || p.metrics?.current_market_cap_usd || 0;
