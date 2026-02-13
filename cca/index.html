@@ -19,9 +19,10 @@
           <div class="logo" aria-hidden="true"></div>
           <div>
             <h1>Uniswap CCA Dashboard</h1>
-            <p class="subtitle">Live-style overview of current continuous clearing auctions</p>
+            <p class="subtitle">Live-style overview of Continuous Clearing Auctions</p>
           </div>
         </div>
+        <p class="update-time" id="updateTime"></p>
       </header>
 
       <section class="cards" aria-label="Summary cards">
@@ -45,11 +46,13 @@
           <table>
             <thead>
               <tr>
-                <th>Name</th>
+                <th>Token</th>
                 <th>Status</th>
-                <th>Raised</th>
+                <th>Progress</th>
                 <th>Clearing Price</th>
-                <th>Bidders</th>
+                <th>Floor Price</th>
+                <th>Raised</th>
+                <th>Bids</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -58,71 +61,78 @@
         </div>
         <div id="tableMessage" class="empty" hidden></div>
       </section>
+
+      <section class="panel info-panel">
+        <h2>About CCA</h2>
+        <p>
+          <strong>Continuous Clearing Auction (CCA)</strong> is Uniswap's fair token launch mechanism.
+          All successful bidders pay the same final clearing price, eliminating front-running and timing games.
+        </p>
+        <ul>
+          <li><strong>Fair Price Discovery</strong>: Uniform clearing price for all participants</li>
+          <li><strong>Time-weighted Supply</strong>: Tokens released gradually over auction period</li>
+          <li><strong>Graduation Mechanism</strong>: Requires minimum raise to complete</li>
+        </ul>
+        <p>
+          <a href="https://docs.uniswap.org/contracts/liquidity-launchpad/CCA" target="_blank" rel="noopener">
+            Learn more →
+          </a>
+        </p>
+      </section>
     </main>
 
     <script>
-      const FALLBACK_AUCTIONS = {
-        generatedAt: "2026-02-12T00:00:00.000Z",
-        auctions: [
-          {
-            id: "0x1a2b3c4d5e6f708192aabbccddeeff0011223344",
-            name: "Aztec CCA",
-            status: "active",
-            raisedUsd: 1250000,
-            clearingPriceUsd: 2.34,
-            bidders: 184
-          },
-          {
-            id: "0x2b3c4d5e6f708192aabbccddeeff001122334455",
-            name: "Scroll CCA",
-            status: "settled",
-            raisedUsd: 870000,
-            clearingPriceUsd: 1.91,
-            bidders: 129
-          },
-          {
-            id: "0x3c4d5e6f708192aabbccddeeff00112233445566",
-            name: "Unichain CCA",
-            status: "upcoming",
-            raisedUsd: 0,
-            clearingPriceUsd: 0,
-            bidders: 0
-          }
-        ]
-      };
-
-      function formatCurrency(amount) {
-        return new Intl.NumberFormat("en-US", {
-          style: "currency",
-          currency: "USD",
-          maximumFractionDigits: amount >= 1000 ? 0 : 2
-        }).format(amount);
-      }
-
-      function statusClass(status) {
-        const normalized = (status || "").toLowerCase();
-        if (normalized === "active") return "status status-active";
-        if (normalized === "settled") return "status status-settled";
-        return "status status-upcoming";
-      }
-
       async function loadAuctions() {
         try {
           const response = await fetch("../data/cca/auctions.json", { cache: "no-store" });
           if (!response.ok) throw new Error(`HTTP ${response.status}`);
           return await response.json();
         } catch (error) {
-          return FALLBACK_AUCTIONS;
+          console.error("Failed to load auctions:", error);
+          return { auctions: [], totalAuctions: 0, activeAuctions: 0, totalRaised: 0 };
         }
       }
 
-      function renderSummary(auctions) {
-        const totalRaised = auctions.reduce((sum, auction) => sum + (auction.raisedUsd || 0), 0);
-        const active = auctions.filter((auction) => (auction.status || "").toLowerCase() === "active").length;
+      function formatCurrency(amount) {
+        if (amount >= 1e6) return "$" + (amount / 1e6).toFixed(2) + "M";
+        if (amount >= 1e3) return "$" + (amount / 1e3).toFixed(1) + "K";
+        return "$" + amount.toFixed(2);
+      }
 
-        document.getElementById("totalAuctions").textContent = String(auctions.length);
-        document.getElementById("totalRaised").textContent = formatCurrency(totalRaised);
-        document.getElementById("activeAuctions").textContent = String(active);
+      function formatPrice(price) {
+        if (!price || price === 0) return "-";
+        if (price < 0.01) return "$" + price.toFixed(6);
+        if (price < 1) return "$" + price.toFixed(4);
+        return "$" + price.toFixed(2);
+      }
+
+      function statusClass(status) {
+        const normalized = (status || "").toLowerCase();
+        if (normalized === "active") return "status status-active";
+        if (normalized === "graduated" || normalized === "settled") return "status status-settled";
+        if (normalized === "ended") return "status status-ended";
+        return "status status-upcoming";
+      }
+
+      function statusLabel(status) {
+        const normalized = (status || "").toLowerCase();
+        if (normalized === "active") return "🟢 Active";
+        if (normalized === "graduated") return "✅ Graduated";
+        if (normalized === "settled") return "✅ Settled";
+        if (normalized === "ended") return "🔴 Ended";
+        if (normalized === "upcoming") return "🕐 Upcoming";
+        return status || "Unknown";
+      }
+
+      function renderSummary(data) {
+        document.getElementById("totalAuctions").textContent = String(data.totalAuctions || 0);
+        document.getElementById("totalRaised").textContent = formatCurrency(data.totalRaised || 0);
+        document.getElementById("activeAuctions").textContent = String(data.activeAuctions || 0);
+        
+        if (data.generatedAt) {
+          document.getElementById("updateTime").textContent = 
+            "Updated: " + new Date(data.generatedAt).toLocaleString();
+        }
       }
 
       function renderTable(auctions) {
@@ -130,9 +140,9 @@
         const messageEl = document.getElementById("tableMessage");
         rowsEl.innerHTML = "";
 
-        if (!auctions.length) {
+        if (!auctions || !auctions.length) {
           messageEl.hidden = false;
-          messageEl.textContent = "No auctions available in dataset.";
+          messageEl.textContent = "No auctions available. Check back later!";
           return;
         }
 
@@ -140,11 +150,28 @@
 
         auctions.forEach((auction) => {
           const tr = document.createElement("tr");
+          
+          // 计算进度条
+          const progress = auction.progress?.progressPercent || 0;
+          const progressBar = `
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: ${progress}%"></div>
+              <span class="progress-text">${progress}%</span>
+            </div>
+          `;
+          
           tr.innerHTML = `
-            <td>${auction.name || auction.id}</td>
-            <td><span class="${statusClass(auction.status)}">${auction.status || "unknown"}</span></td>
+            <td>
+              <div class="token-cell">
+                <strong>${auction.token || auction.name || "Unknown"}</strong>
+                <small>${auction.currency || "USDC"}</small>
+              </div>
+            </td>
+            <td><span class="${statusClass(auction.status)}">${statusLabel(auction.status)}</span></td>
+            <td>${progressBar}</td>
+            <td>${formatPrice(auction.clearingPriceUsd)}</td>
+            <td>${formatPrice(auction.floorPriceUsd)}</td>
             <td>${formatCurrency(auction.raisedUsd || 0)}</td>
-            <td>${auction.clearingPriceUsd ? formatCurrency(auction.clearingPriceUsd) : "-"}</td>
             <td>${auction.bidders || 0}</td>
             <td><a class="button" href="./auction.html?id=${encodeURIComponent(auction.id)}">View</a></td>
           `;
@@ -154,12 +181,90 @@
 
       async function init() {
         const data = await loadAuctions();
-        const auctions = Array.isArray(data.auctions) ? data.auctions : [];
-        renderSummary(auctions);
+        
+        // 转换数据格式以适配新表格
+        const auctions = (data.auctions || []).map(a => ({
+          ...a,
+          floorPriceUsd: a.floorPriceUsd || a.clearingPriceUsd, // 如果没有 floorPrice 就用 clearingPrice
+          progress: a.progress || { progressPercent: 0 }
+        }));
+        
+        renderSummary(data);
         renderTable(auctions);
       }
 
       init();
     </script>
+
+    <style>
+      .update-time {
+        font-size: 0.85rem;
+        color: #9aacd1;
+      }
+      
+      .token-cell {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+      
+      .token-cell small {
+        color: #9aacd1;
+        font-size: 0.8rem;
+      }
+      
+      .progress-bar {
+        position: relative;
+        width: 100%;
+        height: 20px;
+        background: rgba(154, 172, 209, 0.1);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #36d399 0%, #22c55e 100%);
+        transition: width 0.3s ease;
+      }
+      
+      .progress-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #e9eefc;
+      }
+      
+      .status-ended {
+        background: rgba(239, 68, 68, 0.15);
+        color: #ef4444;
+      }
+      
+      .info-panel {
+        margin-top: 2rem;
+      }
+      
+      .info-panel ul {
+        margin: 1rem 0;
+        padding-left: 1.5rem;
+      }
+      
+      .info-panel li {
+        margin-bottom: 0.5rem;
+        color: #9aacd1;
+      }
+      
+      .info-panel a {
+        color: #36d399;
+        text-decoration: none;
+      }
+      
+      .info-panel a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </body>
 </html>

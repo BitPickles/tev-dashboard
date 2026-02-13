@@ -54,8 +54,14 @@ function fetch(url) {
   });
 }
 
+// 延迟函数
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 // Etherscan API 调用
 async function etherscanApi(params) {
+  await sleep(200); // 200ms 延迟避免速率限制
   const url = `https://api.etherscan.io/v2/api?chainid=${CONFIG.chainId}&apikey=${CONFIG.apiKey}&${new URLSearchParams(params)}`;
   const result = await fetch(url);
   
@@ -423,9 +429,12 @@ async function main() {
       status: a.status,
       raisedUsd: a.metrics.raisedUsd,
       clearingPriceUsd: parseFloat(a.metrics.clearingPriceHuman),
+      floorPriceUsd: parseFloat(a.config.floorPriceHuman),
       bidders: a.metrics.bidders,
+      bidCount: a.metrics.bidCount,
       token: a.token.symbol,
-      currency: a.currency.symbol
+      currency: a.currency.symbol,
+      progress: a.progress
     }))
   };
   

@@ -1,21 +1,27 @@
 {
-  "generatedAt": "2026-02-13T18:26:15.073Z",
+  "generatedAt": "2026-02-13T18:28:56.290Z",
   "chain": "ethereum",
   "chainId": 1,
   "factory": "0xCCccCcCAE7503Cac057829BF2811De42E16e0bD5",
   "totalAuctions": 1,
-  "activeAuctions": 0,
+  "activeAuctions": 1,
   "totalRaised": 0,
   "auctions": [
     {
       "id": "0x9084cb9a700a52909cbef3113db8bac01c01efd6",
       "name": "rCAP CCA",
-      "status": "ended",
+      "status": "active",
       "raisedUsd": 0,
       "clearingPriceUsd": 0.015,
+      "floorPriceUsd": 0.015,
       "bidders": 0,
+      "bidCount": 0,
       "token": "rCAP",
-      "currency": "USDC"
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449651,
+        "progressPercent": 46
+      }
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "id": "0x9084cb9a700a52909cbef3113db8bac01c01efd6",
   "name": "rCAP CCA",
-  "status": "ended",
+  "status": "active",
   "token": {
     "address": "0xcccc87d42db3d35018ecae712a0bc53e79d9cccc",
     "symbol": "rCAP",
@@ -18,10 +18,10 @@
   },
   "config": {
     "startBlock": 24420030,
-    "endBlock": 0,
+    "endBlock": 24484830,
     "claimBlock": 24484830,
-    "floorPriceQ96": "0",
-    "floorPriceHuman": "0"
+    "floorPriceQ96": "1188422437713900",
+    "floorPriceHuman": "0.01500000"
   },
   "metrics": {
     "clearingPriceQ96": "1188422437713900",
@@ -33,11 +33,11 @@
     "totalClearedHuman": "0.00",
     "bidCount": 0,
     "bidders": 0,
-    "isGraduated": false
+    "isGraduated": true
   },
   "progress": {
-    "currentBlock": 24449638,
-    "progressPercent": 100
+    "currentBlock": 24449651,
+    "progressPercent": 46
   },
   "bids": [],
   "checkpoints": [
@@ -53,11 +53,7 @@
     "createdBlock": 24370981
   },
   "errors": [
-    "isGraduated: API error: NOTOK",
-    "nextBidId: API error: NOTOK",
-    "endBlock: API error: NOTOK",
-    "floorPrice: API error: NOTOK",
-    "fundsRecipient: API error: NOTOK",
-    "tokensRecipient: API error: NOTOK"
+    "fundsRecipient: RPC error: execution reverted",
+    "tokensRecipient: RPC error: execution reverted"
   ]
 }
