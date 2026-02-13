@@ -1,0 +1,61 @@
+{
+  "protocol": "hyperliquid",
+  "ticker": "HYPE",
+  "total_supply": 1000000000,
+  "updated_at": "2026-02-13T23:10:38.986406",
+  "summary": {
+    "total_buyback_hype": 40849452,
+    "total_buyback_usd": 975144842,
+    "avg_price": 23.87,
+    "data_source": "Assistance Fund 余额 (spotClearinghouseState)",
+    "af_address": "0xfefefefefefefefefefefefefefefefefefefefe",
+    "note": "累计数据来自链上余额，每日明细来自 userFills API (最近数据)"
+  },
+  "daily_buybacks": [
+    {
+      "date": "2026-02-09",
+      "hype": 5154.55,
+      "usd": 162419.7,
+      "avg_price": 31.51,
+      "txs": 55,
+      "data_type": "onchain",
+      "source": "hyperliquid_api"
+    },
+    {
+      "date": "2026-02-10",
+      "hype": 44496.58,
+      "usd": 1332395.4,
+      "avg_price": 29.9438,
+      "txs": 438,
+      "data_type": "onchain",
+      "source": "hyperliquid_api"
+    },
+    {
+      "date": "2026-02-11",
+      "hype": 58485.15,
+      "usd": 1702428.31,
+      "avg_price": 29.1087,
+      "txs": 774,
+      "data_type": "onchain",
+      "source": "hyperliquid_api"
+    },
+    {
+      "date": "2026-02-12",
+      "hype": 43963.05,
+      "usd": 1335922.25,
+      "avg_price": 30.3874,
+      "txs": 481,
+      "data_type": "onchain",
+      "source": "hyperliquid_api"
+    },
+    {
+      "date": "2026-02-13",
+      "hype": 19321.67,
+      "usd": 592096.31,
+      "avg_price": 30.6442,
+      "txs": 200,
+      "data_type": "onchain",
+      "source": "hyperliquid_api"
+    }
+  ]
+}
