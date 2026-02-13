@@ -1845,3 +1845,61 @@ tr:last-child { border-bottom: none; }
   border-radius: 6px;
   margin-top: 12px;
 }
+
+/* === Buyback Stages Row === */
+.buyback-stages {
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stage-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.stage-row.active {
+  border-color: var(--accent);
+  background: linear-gradient(90deg, var(--accent-dim), transparent);
+}
+
+.stage-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 70px;
+}
+
+.stage-period {
+  color: var(--text-tertiary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  min-width: 180px;
+}
+
+.stage-value {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent);
+  flex: 1;
+}
+
+.stage-source {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .stage-row {
+    flex-wrap: wrap;
+  }
+  .stage-period, .stage-source {
+    min-width: unset;
+  }
+}
