@@ -89,16 +89,9 @@
         </div>
       </div>
 
-      <div class="section" id="buyback-addresses-section" style="display: none;">
-        <div class="section-title"><span class="icon">📍</span><span data-i18n="section.buybackAddresses">回购地址</span></div>
-        <div id="buyback-stats-container"></div>
-        <div id="buyback-addresses-container"></div>
-      </div>
-      
       <div class="section" id="buyback-chart-section" style="display: none;">
         <div class="section-title"><span class="icon">💰</span><span data-i18n="section.buybackData">回购数据</span></div>
-        <div class="buyback-overview" id="buyback-overview"></div>
-        <div class="chart-container"><div class="chart-canvas-wrap"><canvas id="buyback-activity-chart"></canvas></div></div>
+        <div class="chart-container" style="height:400px;"><div class="chart-canvas-wrap"><canvas id="buyback-activity-chart"></canvas></div></div>
       </div>
 
       <div class="section"><div class="section-title"><span class="icon">⚙️</span><span data-i18n="section.tevMechanisms">TEV 机制详情</span></div><div id="mechanisms-container"></div></div>
@@ -125,86 +118,6 @@
     const TEV_COLORS = { buyback_burn: { bg: 'rgba(34,197,94,0.7)', border: '#22c55e' }, buyback: { bg: 'rgba(34,197,94,0.6)', border: '#22c55e' }, staking_reward: { bg: 'rgba(59,130,246,0.7)', border: '#3b82f6' }, direct_distribution: { bg: 'rgba(168,85,247,0.7)', border: '#a855f7' }, ve_reward: { bg: 'rgba(245,158,11,0.7)', border: '#f59e0b' }, fee_sharing: { bg: 'rgba(236,72,153,0.7)', border: '#ec4899' }, aggregate: { bg: 'rgba(99,102,241,0.7)', border: '#6366f1' } };
     const BURN_CONFIG = { bnb: { file: 'bnb-burns.json', ticker: 'BNB', color: 'rgba(240,185,11,0.8)', borderColor: '#f0b90b', title: { zh: 'BNB 季度销毁', en: 'BNB Quarterly Burns' }, dataType: 'quarterly', initialSupply: 2e8, targetSupply: 1e8 }, hype: { file: 'hype-burns.json', ticker: 'HYPE', color: 'rgba(59,130,246,0.8)', borderColor: '#3b82f6', title: { zh: 'HYPE 月度销毁', en: 'HYPE Monthly Burns' }, dataType: 'monthly' }, uniswap: { file: 'uni-burns.json', ticker: 'UNI', color: 'rgba(255,0,122,0.8)', borderColor: '#ff007a', title: { zh: 'UNI 月度销毁', en: 'UNI Monthly Burns' }, dataType: 'monthly' } };
     let tevChart = null, burnAmtChart = null, burnValChart = null, buybackChart = null;
-
-    function renderBuybackAddresses(buybackAddresses, revenueDistribution) {
-      const section = document.getElementById('buyback-addresses-section');
-      const container = document.getElementById('buyback-addresses-container');
-      if (!buybackAddresses) { section.style.display = 'none'; return; }
-      section.style.display = 'block';
-      let html = '';
-      
-      // Revenue distribution summary
-      if (revenueDistribution) {
-        html += `<div class="revenue-distribution-card">
-          <div class="revenue-dist-header">${currentLang === 'zh' ? '收入分配' : 'Revenue Distribution'}: <strong>${revenueDistribution.total_to_buyback}</strong> ${currentLang === 'zh' ? '用于回购' : 'to buyback'}</div>
-          <div class="revenue-dist-breakdown">
-            ${revenueDistribution.breakdown ? Object.entries(revenueDistribution.breakdown).filter(([k]) => !k.includes('note')).map(([k, v]) => `<span class="revenue-item"><span class="revenue-label">${k.replace(/_/g, ' ')}</span><span class="revenue-value">${v}</span></span>`).join('') : ''}
-          </div>
-        </div>`;
-      }
-      
-      // Current stage
-      const stages = Object.entries(buybackAddresses).filter(([k]) => k.startsWith('stage_')).sort((a, b) => b[0].localeCompare(a[0]));
-      stages.forEach(([stageKey, stage], idx) => {
-        const isCurrent = idx === 0 || stage.status === 'current';
-        const stageNum = stageKey.replace('stage_', '');
-        html += `<div class="address-stage ${isCurrent ? 'current' : 'historical'}">
-          <div class="stage-header">
-            <span class="stage-badge ${isCurrent ? 'badge-active' : 'badge-none'}">${isCurrent ? t('buyback.current') : t('buyback.historical')}</span>
-            <span class="stage-name">Stage ${stageNum}</span>
-            <span class="stage-date">${stage.start_date || ''}</span>
-          </div>
-          <div class="address-grid">
-            ${stage.auto_daily ? `<div class="address-card">
-              <div class="address-label">${t('buyback.autoDailyBuyback')}</div>
-              <div class="address-allocation">${stage.auto_daily.allocation || ''}</div>
-              <div class="address-value"><code>${stage.auto_daily.address}</code></div>
-              <a href="${stage.auto_daily.bscscan || 'https://bscscan.com/address/' + stage.auto_daily.address}" target="_blank" class="address-link">BscScan →</a>
-            </div>` : ''}
-            ${stage.strategic_reserve ? `<div class="address-card">
-              <div class="address-label">${t('buyback.strategicReserve')}</div>
-              <div class="address-allocation">${stage.strategic_reserve.allocation || ''}</div>
-              <div class="address-value"><code>${stage.strategic_reserve.address}</code></div>
-              <a href="${stage.strategic_reserve.bscscan || 'https://bscscan.com/address/' + stage.strategic_reserve.address}" target="_blank" class="address-link">BscScan →</a>
-            </div>` : ''}
-          </div>
-        </div>`;
-      });
-      
-      // Legacy wallets
-      if (buybackAddresses.legacy?.addresses?.length) {
-        html += `<div class="address-stage legacy">
-          <div class="stage-header"><span class="stage-badge badge-none">${t('buyback.legacy')}</span><span class="stage-note">${buybackAddresses.legacy.note || ''}</span></div>
-          <div class="address-grid">
-            ${buybackAddresses.legacy.addresses.map(a => `<div class="address-card small">
-              <div class="address-label">${a.label}</div>
-              <div class="address-value"><code>${a.address}</code></div>
-              <a href="${a.bscscan || 'https://bscscan.com/address/' + a.address}" target="_blank" class="address-link">BscScan →</a>
-            </div>`).join('')}
-          </div>
-        </div>`;
-      }
-      
-      // Disposal addresses
-      if (buybackAddresses.disposal) {
-        html += `<div class="address-stage disposal">
-          <div class="stage-header"><span class="stage-badge badge-burn">🔥 ${t('buyback.disposal')}</span></div>
-          <div class="address-grid">
-            ${buybackAddresses.disposal.burn_address ? `<div class="address-card burn">
-              <div class="address-label">${t('buyback.burnAddress')}</div>
-              <div class="address-value"><code>${buybackAddresses.disposal.burn_address}</code></div>
-            </div>` : ''}
-            ${buybackAddresses.disposal.airdrop_lock ? `<div class="address-card">
-              <div class="address-label">${t('buyback.airdropLock')}</div>
-              <div class="address-value"><code>${buybackAddresses.disposal.airdrop_lock}</code></div>
-              <a href="https://bscscan.com/address/${buybackAddresses.disposal.airdrop_lock}" target="_blank" class="address-link">BscScan →</a>
-            </div>` : ''}
-          </div>
-        </div>`;
-      }
-      
-      container.innerHTML = html;
-    }
 
     function renderMechanisms(mechanisms) {
       const c = document.getElementById('mechanisms-container');
@@ -277,102 +190,71 @@
         if (!resp.ok) return;
         const data = await resp.json();
         
+        const dailyData = data.daily_buybacks || [];
+        if (!dailyData.length) return;
+        
         document.getElementById('buyback-chart-section').style.display = 'block';
         
-        const s = data.summary || {};
-        const w = data.wallets?.stage_6_auto || {};
-        const dailyData = data.daily_buybacks || [];
-        const stages = data.stages || [];
+        const ctx = document.getElementById('buyback-activity-chart').getContext('2d');
+        if (buybackChart) buybackChart.destroy();
         
-        // Render overview
-        const overview = document.getElementById('buyback-overview');
-        overview.innerHTML = `
-          <div class="buyback-stats-grid">
-            <div class="buyback-stat-card main">
-              <div class="stat-label">${currentLang === 'zh' ? '累计回购' : 'Total Buyback'}</div>
-              <div class="stat-value">${fmtCurrency(s.total_usd || 0)}</div>
-              <div class="stat-sub">${((s.total_aster||0)/1e6).toFixed(1)}M ASTER</div>
-            </div>
-            <div class="buyback-stat-card">
-              <div class="stat-label">${currentLang === 'zh' ? '日均回购' : 'Avg Daily'}</div>
-              <div class="stat-value">${fmtCurrency(s.avg_daily_usd || 0)}</div>
-              <div class="stat-sub">~${((s.avg_daily_aster||0)/1e6).toFixed(2)}M ASTER</div>
-            </div>
-            <div class="buyback-stat-card">
-              <div class="stat-label">${currentLang === 'zh' ? '运行天数' : 'Days'}</div>
-              <div class="stat-value">${s.total_days || 0}</div>
-              <div class="stat-sub">${s.start_date} ~</div>
-            </div>
-            <div class="buyback-stat-card">
-              <div class="stat-label">${currentLang === 'zh' ? 'Stage 6 确认' : 'Stage 6 Confirmed'}</div>
-              <div class="stat-value">${fmtCurrency(s.stage_6_confirmed_usd || 0)}</div>
-              <div class="stat-sub">${((s.stage_6_confirmed_aster||0)/1e6).toFixed(1)}M ASTER</div>
-            </div>
-          </div>
-          ${stages.length ? `
-          <div class="buyback-stages">
-            ${stages.map(st => `
-              <div class="stage-row ${st.status === 'active' ? 'active' : ''}">
-                <span class="stage-name">${st.name}</span>
-                <span class="stage-period">${st.period}</span>
-                <span class="stage-value">${fmtCurrency(st.total_usd)} / ${(st.total_aster/1e6).toFixed(1)}M</span>
-                <span class="stage-source">${st.data_source}</span>
-              </div>
-            `).join('')}
-          </div>` : ''}
-          ${s.data_note ? `<div class="buyback-note">⚠️ ${s.data_note}</div>` : ''}
-        `;
+        const labels = dailyData.map(d => d.date);
+        const usdData = dailyData.map(d => d.usd);
+        const asterData = dailyData.map(d => d.aster);
         
-        // Render daily chart
-        if (dailyData.length) {
-          const ctx = document.getElementById('buyback-activity-chart').getContext('2d');
-          if (buybackChart) buybackChart.destroy();
-          
-          const labels = dailyData.map(d => d.date.slice(5));
-          const usdData = dailyData.map(d => d.usd);
-          const asterData = dailyData.map(d => d.aster);
-          const stageColors = dailyData.map(d => d.stage === 'Stage 6' ? 'rgba(34,197,94,0.8)' : 'rgba(59,130,246,0.6)');
-          
-          buybackChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-              labels,
-              datasets: [{
-                label: currentLang === 'zh' ? '每日回购 (USD)' : 'Daily Buyback (USD)',
+        buybackChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels,
+            datasets: [
+              {
+                label: currentLang === 'zh' ? '回购金额 (USD)' : 'Buyback (USD)',
                 data: usdData,
-                backgroundColor: stageColors,
-                borderColor: stageColors.map(c => c.replace('0.8', '1').replace('0.6', '1')),
+                backgroundColor: 'rgba(34,197,94,0.7)',
+                borderColor: '#22c55e',
                 borderWidth: 1,
-                borderRadius: 2
-              }]
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              plugins: {
-                legend: { display: false },
-                tooltip: {
-                  callbacks: {
-                    title: (items) => dailyData[items[0].dataIndex].date,
-                    label: (ctx) => {
-                      const i = ctx.dataIndex;
-                      const d = dailyData[i];
-                      return [
-                        ` ${fmtCurrency(d.usd)}`,
-                        ` ${(d.aster/1e6).toFixed(2)}M ASTER`,
-                        ` ${d.stage} (${d.source === 'estimated' ? '估算' : '确认'})`
-                      ];
-                    }
+                borderRadius: 3,
+                yAxisID: 'y'
+              },
+              {
+                label: currentLang === 'zh' ? '回购数量 (ASTER)' : 'Buyback (ASTER)',
+                data: asterData,
+                type: 'line',
+                borderColor: '#f59e0b',
+                backgroundColor: 'rgba(245,158,11,0.1)',
+                borderWidth: 2,
+                pointRadius: 2,
+                fill: false,
+                yAxisID: 'y2'
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+              legend: { position: 'top', labels: { color: '#a1a1aa', font: { size: 11 }, boxWidth: 12 } },
+              tooltip: {
+                backgroundColor: '#18181b',
+                titleColor: '#fafafa',
+                bodyColor: '#a1a1aa',
+                callbacks: {
+                  title: (items) => items[0].label,
+                  label: (ctx) => {
+                    if (ctx.datasetIndex === 0) return ` ${fmtCurrency(ctx.raw)}`;
+                    return ` ${(ctx.raw/1e6).toFixed(2)}M ASTER`;
                   }
                 }
-              },
-              scales: {
-                x: { grid: { display: false }, ticks: { color: '#71717a', maxRotation: 45, font: { size: 10 } } },
-                y: { grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => '$' + (v/1e6).toFixed(1) + 'M' }, beginAtZero: true }
               }
+            },
+            scales: {
+              x: { grid: { display: false }, ticks: { color: '#71717a', maxRotation: 45, font: { size: 9 } } },
+              y: { position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#22c55e', callback: v => '$' + (v/1e3).toFixed(0) + 'K' }, title: { display: true, text: 'USD', color: '#22c55e' } },
+              y2: { position: 'right', grid: { display: false }, ticks: { color: '#f59e0b', callback: v => (v/1e6).toFixed(1) + 'M' }, title: { display: true, text: 'ASTER', color: '#f59e0b' } }
             }
-          });
-        }
+          }
+        });
       } catch (e) { console.log(`No buyback data for ${pid}:`, e.message); }
     }
 
@@ -409,7 +291,6 @@
         const confEl = document.getElementById('summary-confidence');
         confEl.textContent = t('confidence.' + (cfg.confidence || 'medium'));
         confEl.className = `tev-summary-value ${cfg.confidence === 'high' ? 'value-on' : cfg.confidence === 'low' ? 'value-off' : 'value-partial'}`;
-        renderBuybackAddresses(cfg.buyback_addresses, cfg.revenue_distribution);
         renderMechanisms(cfg.tev_mechanisms);
         renderSources(cfg.data_sources);
         if (cfg.notes) { document.getElementById('notes-section').style.display = 'block'; document.getElementById('protocol-notes').textContent = cfg.notes; }
