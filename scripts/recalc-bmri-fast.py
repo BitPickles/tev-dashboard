@@ -67,6 +67,37 @@ def get_rolling_percentile(series_name, date_str, lookback_days=252):
     rank = sum(1 for v in sorted_window if v <= value)
     return (rank / len(sorted_window)) * 100
 
+def calculate_bmri_6m(date_str):
+    """计算单日 BMRI (6m版本，使用更长的lookback)"""
+    bucket_scores = {}
+    lookback = 504  # 约2年，比1m版本更平滑
+    
+    for bucket_name, config in BUCKETS.items():
+        scores = []
+        for i, indicator in enumerate(config["indicators"]):
+            percentile = get_rolling_percentile(indicator, date_str, lookback_days=lookback)
+            if percentile is None:
+                continue
+            
+            if config["invert"][i]:
+                percentile = 100 - percentile
+            scores.append(percentile)
+        
+        if scores:
+            bucket_scores[bucket_name] = sum(scores) / len(scores)
+    
+    if len(bucket_scores) < 3:
+        return None
+    
+    bmri = sum(bucket_scores.get(b, 50) * BUCKETS[b]["weight"] for b in BUCKETS)
+    
+    return {
+        "bmri": round(bmri, 2),
+        "rates": round(bucket_scores.get("rates", 50), 1),
+        "liq": round(bucket_scores.get("liq", 50), 1),
+        "risk": round(bucket_scores.get("risk", 50), 1)
+    }
+
 def calculate_bmri(date_str):
     """计算单日 BMRI"""
     bucket_scores = {}
@@ -109,18 +140,18 @@ history_1m = []
 history_6m = []
 
 for i, date in enumerate(all_dates):
-    result = calculate_bmri(date)
+    # 1m 版本
+    result_1m = calculate_bmri(date)
+    if result_1m:
+        history_1m.append({"date": date, **result_1m})
     
-    if result:
-        entry = {"date": date, **result}
-        history_1m.append(entry)
-        
-        dt = datetime.strptime(date, "%Y-%m-%d")
-        if dt.weekday() == 5 or date == all_dates[-1]:
-            history_6m.append(entry)
+    # 6m 版本（每日都计算，使用更长的lookback）
+    result_6m = calculate_bmri_6m(date)
+    if result_6m:
+        history_6m.append({"date": date, **result_6m})
     
     if (i + 1) % 500 == 0:
-        print(f"  {i+1}/{len(all_dates)}... (有效: {len(history_1m)})")
+        print(f"  {i+1}/{len(all_dates)}... (1m: {len(history_1m)}, 6m: {len(history_6m)})")
 
 print(f"\n1M: {len(history_1m)}, 6M: {len(history_6m)}")
 
