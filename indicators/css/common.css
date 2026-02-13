@@ -1430,3 +1430,198 @@ tr:last-child { border-bottom: none; }
     min-width: 100%;
   }
 }
+
+/* === Buyback Addresses Section === */
+.revenue-distribution-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+
+.revenue-dist-header {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.revenue-dist-header strong {
+  color: var(--accent);
+  font-size: 16px;
+}
+
+.revenue-dist-breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.revenue-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 12px;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+  min-width: 120px;
+}
+
+.revenue-label {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  text-transform: capitalize;
+}
+
+.revenue-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.address-stage {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+
+.address-stage.current {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent-dim);
+}
+
+.address-stage.historical {
+  opacity: 0.7;
+}
+
+.address-stage.legacy {
+  opacity: 0.6;
+}
+
+.address-stage.disposal {
+  border-color: var(--warning);
+}
+
+.stage-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.stage-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stage-badge.badge-active {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+.stage-badge.badge-none {
+  background: var(--bg-tertiary);
+  color: var(--text-tertiary);
+}
+
+.stage-badge.badge-burn {
+  background: var(--warning-dim);
+  color: var(--warning);
+}
+
+.stage-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.stage-date {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.stage-note {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.address-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.address-card {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+.address-card.small {
+  padding: 10px 14px;
+}
+
+.address-card.burn {
+  border-color: var(--danger);
+  background: var(--danger-dim);
+}
+
+.address-label {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-bottom: 4px;
+}
+
+.address-allocation {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.address-value {
+  margin-bottom: 8px;
+}
+
+.address-value code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-secondary);
+  background: var(--bg-primary);
+  padding: 6px 10px;
+  border-radius: 6px;
+  display: block;
+  word-break: break-all;
+  user-select: all;
+}
+
+.address-link {
+  font-size: 12px;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.address-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .address-grid {
+    grid-template-columns: 1fr;
+  }
+  .revenue-dist-breakdown {
+    flex-direction: column;
+  }
+  .revenue-item {
+    min-width: unset;
+  }
+}

@@ -89,6 +89,11 @@
         </div>
       </div>
 
+      <div class="section" id="buyback-addresses-section" style="display: none;">
+        <div class="section-title"><span class="icon">📍</span><span data-i18n="section.buybackAddresses">回购地址</span></div>
+        <div id="buyback-addresses-container"></div>
+      </div>
+
       <div class="section"><div class="section-title"><span class="icon">⚙️</span><span data-i18n="section.tevMechanisms">TEV 机制详情</span></div><div id="mechanisms-container"></div></div>
       <div class="section"><div class="section-title"><span class="icon">🔗</span><span data-i18n="section.dataSources">数据来源</span></div><div class="sources-list" id="sources-container"></div></div>
       <div class="section" id="notes-section" style="display: none;"><div class="section-title"><span class="icon">📝</span><span data-i18n="section.notes">分析师备注</span></div><div class="protocol-notes" id="protocol-notes"></div></div>
@@ -99,8 +104,8 @@
 
   <script>
     const i18n = {
-      zh: { 'nav.dashboard': '仪表盘', 'loading': '加载中...', 'section.tevSummary': 'TEV 概览', 'section.tevHistory': 'TEV 历史记录', 'section.tevMechanisms': 'TEV 机制详情', 'section.dataSources': '数据来源', 'section.notes': '分析师备注', 'chart.totalTev': '累计 TEV', 'chart.records': '记录数', 'chart.avgMonthly': '月均 TEV', 'chart.period': '数据周期', 'chart.cumulative': '累计 TEV', 'tev.feeSwitch': '费用开关', 'tev.buybacks': '回购', 'tev.dividends': '分红', 'tev.burns': '销毁', 'tev.confidence': '可信度', 'footer.lastUpdated': '最后更新', 'status.active': '活跃', 'status.planned': '计划中', 'status.inactive': '未激活', 'status.ON': '已开启', 'status.OFF': '未开启', 'status.PARTIAL': '部分', 'status.NONE': '无', 'status.ACTIVE': '活跃', 'noTev.title': '该协议目前没有 TEV 机制', 'noTev.desc': '代币仅用于治理，协议收入未分配给代币持有者', 'mechanism.type.buyback': '回购', 'mechanism.type.buyback_burn': '回购销毁', 'mechanism.type.staking_reward': '质押奖励', 'mechanism.type.fee_sharing': '费用分成', 'mechanism.type.ve_distribution': 've 分配', 'mechanism.type.airdrop': '空投', 'source.governance': '治理', 'source.documentation': '文档', 'source.report': '报告', 'source.api': 'API', 'source.onchain': '链上', 'confidence.high': '高', 'confidence.medium': '中', 'confidence.low': '低', 'burn.progress': '销毁进度', 'burn.totalBurned': '已销毁', 'burn.remaining': '剩余供应', 'burn.target': '目标供应' },
-      en: { 'nav.dashboard': 'Dashboard', 'loading': 'Loading...', 'section.tevSummary': 'TEV Summary', 'section.tevHistory': 'TEV History', 'section.tevMechanisms': 'TEV Mechanisms', 'section.dataSources': 'Data Sources', 'section.notes': 'Analyst Notes', 'chart.totalTev': 'Total TEV', 'chart.records': 'Records', 'chart.avgMonthly': 'Avg Monthly', 'chart.period': 'Period', 'chart.cumulative': 'Cumulative TEV', 'tev.feeSwitch': 'Fee Switch', 'tev.buybacks': 'Buybacks', 'tev.dividends': 'Dividends', 'tev.burns': 'Burns', 'tev.confidence': 'Confidence', 'footer.lastUpdated': 'Last Updated', 'status.active': 'Active', 'status.planned': 'Planned', 'status.inactive': 'Inactive', 'status.ON': 'ON', 'status.OFF': 'OFF', 'status.PARTIAL': 'Partial', 'status.NONE': 'None', 'status.ACTIVE': 'Active', 'noTev.title': 'No TEV Mechanisms', 'noTev.desc': 'Token is governance-only, protocol revenue not distributed to holders', 'mechanism.type.buyback': 'Buyback', 'mechanism.type.buyback_burn': 'Buyback & Burn', 'mechanism.type.staking_reward': 'Staking Reward', 'mechanism.type.fee_sharing': 'Fee Sharing', 'mechanism.type.ve_distribution': 've Distribution', 'mechanism.type.airdrop': 'Airdrop', 'source.governance': 'Governance', 'source.documentation': 'Docs', 'source.report': 'Report', 'source.api': 'API', 'source.onchain': 'On-chain', 'confidence.high': 'High', 'confidence.medium': 'Medium', 'confidence.low': 'Low', 'burn.progress': 'Burn Progress', 'burn.totalBurned': 'Total Burned', 'burn.remaining': 'Remaining Supply', 'burn.target': 'Target Supply' }
+      zh: { 'nav.dashboard': '仪表盘', 'loading': '加载中...', 'section.tevSummary': 'TEV 概览', 'section.tevHistory': 'TEV 历史记录', 'section.buybackAddresses': '回购地址', 'section.tevMechanisms': 'TEV 机制详情', 'section.dataSources': '数据来源', 'section.notes': '分析师备注', 'buyback.current': '当前阶段', 'buyback.historical': '历史阶段', 'buyback.legacy': '历史钱包', 'buyback.disposal': '处置地址', 'buyback.autoDailyBuyback': '自动每日回购', 'buyback.strategicReserve': '战略回购储备', 'buyback.burnAddress': '销毁地址', 'buyback.airdropLock': '空投锁仓', 'chart.totalTev': '累计 TEV', 'chart.records': '记录数', 'chart.avgMonthly': '月均 TEV', 'chart.period': '数据周期', 'chart.cumulative': '累计 TEV', 'tev.feeSwitch': '费用开关', 'tev.buybacks': '回购', 'tev.dividends': '分红', 'tev.burns': '销毁', 'tev.confidence': '可信度', 'footer.lastUpdated': '最后更新', 'status.active': '活跃', 'status.planned': '计划中', 'status.inactive': '未激活', 'status.ON': '已开启', 'status.OFF': '未开启', 'status.PARTIAL': '部分', 'status.NONE': '无', 'status.ACTIVE': '活跃', 'noTev.title': '该协议目前没有 TEV 机制', 'noTev.desc': '代币仅用于治理，协议收入未分配给代币持有者', 'mechanism.type.buyback': '回购', 'mechanism.type.buyback_burn': '回购销毁', 'mechanism.type.staking_reward': '质押奖励', 'mechanism.type.fee_sharing': '费用分成', 'mechanism.type.ve_distribution': 've 分配', 'mechanism.type.airdrop': '空投', 'source.governance': '治理', 'source.documentation': '文档', 'source.report': '报告', 'source.api': 'API', 'source.onchain': '链上', 'confidence.high': '高', 'confidence.medium': '中', 'confidence.low': '低', 'burn.progress': '销毁进度', 'burn.totalBurned': '已销毁', 'burn.remaining': '剩余供应', 'burn.target': '目标供应' },
+      en: { 'nav.dashboard': 'Dashboard', 'loading': 'Loading...', 'section.tevSummary': 'TEV Summary', 'section.tevHistory': 'TEV History', 'section.buybackAddresses': 'Buyback Addresses', 'section.tevMechanisms': 'TEV Mechanisms', 'section.dataSources': 'Data Sources', 'section.notes': 'Analyst Notes', 'buyback.current': 'Current Stage', 'buyback.historical': 'Historical Stage', 'buyback.legacy': 'Legacy Wallets', 'buyback.disposal': 'Disposal Addresses', 'buyback.autoDailyBuyback': 'Auto Daily Buyback', 'buyback.strategicReserve': 'Strategic Reserve', 'buyback.burnAddress': 'Burn Address', 'buyback.airdropLock': 'Airdrop Lock', 'chart.totalTev': 'Total TEV', 'chart.records': 'Records', 'chart.avgMonthly': 'Avg Monthly', 'chart.period': 'Period', 'chart.cumulative': 'Cumulative TEV', 'tev.feeSwitch': 'Fee Switch', 'tev.buybacks': 'Buybacks', 'tev.dividends': 'Dividends', 'tev.burns': 'Burns', 'tev.confidence': 'Confidence', 'footer.lastUpdated': 'Last Updated', 'status.active': 'Active', 'status.planned': 'Planned', 'status.inactive': 'Inactive', 'status.ON': 'ON', 'status.OFF': 'OFF', 'status.PARTIAL': 'Partial', 'status.NONE': 'None', 'status.ACTIVE': 'Active', 'noTev.title': 'No TEV Mechanisms', 'noTev.desc': 'Token is governance-only, protocol revenue not distributed to holders', 'mechanism.type.buyback': 'Buyback', 'mechanism.type.buyback_burn': 'Buyback & Burn', 'mechanism.type.staking_reward': 'Staking Reward', 'mechanism.type.fee_sharing': 'Fee Sharing', 'mechanism.type.ve_distribution': 've Distribution', 'mechanism.type.airdrop': 'Airdrop', 'source.governance': 'Governance', 'source.documentation': 'Docs', 'source.report': 'Report', 'source.api': 'API', 'source.onchain': 'On-chain', 'confidence.high': 'High', 'confidence.medium': 'Medium', 'confidence.low': 'Low', 'burn.progress': 'Burn Progress', 'burn.totalBurned': 'Total Burned', 'burn.remaining': 'Remaining Supply', 'burn.target': 'Target Supply' }
     };
     let currentLang = 'zh';
     const t = k => i18n[currentLang][k] || k;
@@ -113,6 +118,86 @@
     const TEV_COLORS = { buyback_burn: { bg: 'rgba(34,197,94,0.7)', border: '#22c55e' }, buyback: { bg: 'rgba(34,197,94,0.6)', border: '#22c55e' }, staking_reward: { bg: 'rgba(59,130,246,0.7)', border: '#3b82f6' }, direct_distribution: { bg: 'rgba(168,85,247,0.7)', border: '#a855f7' }, ve_reward: { bg: 'rgba(245,158,11,0.7)', border: '#f59e0b' }, fee_sharing: { bg: 'rgba(236,72,153,0.7)', border: '#ec4899' }, aggregate: { bg: 'rgba(99,102,241,0.7)', border: '#6366f1' } };
     const BURN_CONFIG = { bnb: { file: 'bnb-burns.json', ticker: 'BNB', color: 'rgba(240,185,11,0.8)', borderColor: '#f0b90b', title: { zh: 'BNB 季度销毁', en: 'BNB Quarterly Burns' }, dataType: 'quarterly', initialSupply: 2e8, targetSupply: 1e8 }, hype: { file: 'hype-burns.json', ticker: 'HYPE', color: 'rgba(59,130,246,0.8)', borderColor: '#3b82f6', title: { zh: 'HYPE 月度销毁', en: 'HYPE Monthly Burns' }, dataType: 'monthly' }, uniswap: { file: 'uni-burns.json', ticker: 'UNI', color: 'rgba(255,0,122,0.8)', borderColor: '#ff007a', title: { zh: 'UNI 月度销毁', en: 'UNI Monthly Burns' }, dataType: 'monthly' } };
     let tevChart = null, burnAmtChart = null, burnValChart = null;
+
+    function renderBuybackAddresses(buybackAddresses, revenueDistribution) {
+      const section = document.getElementById('buyback-addresses-section');
+      const container = document.getElementById('buyback-addresses-container');
+      if (!buybackAddresses) { section.style.display = 'none'; return; }
+      section.style.display = 'block';
+      let html = '';
+      
+      // Revenue distribution summary
+      if (revenueDistribution) {
+        html += `<div class="revenue-distribution-card">
+          <div class="revenue-dist-header">${currentLang === 'zh' ? '收入分配' : 'Revenue Distribution'}: <strong>${revenueDistribution.total_to_buyback}</strong> ${currentLang === 'zh' ? '用于回购' : 'to buyback'}</div>
+          <div class="revenue-dist-breakdown">
+            ${revenueDistribution.breakdown ? Object.entries(revenueDistribution.breakdown).filter(([k]) => !k.includes('note')).map(([k, v]) => `<span class="revenue-item"><span class="revenue-label">${k.replace(/_/g, ' ')}</span><span class="revenue-value">${v}</span></span>`).join('') : ''}
+          </div>
+        </div>`;
+      }
+      
+      // Current stage
+      const stages = Object.entries(buybackAddresses).filter(([k]) => k.startsWith('stage_')).sort((a, b) => b[0].localeCompare(a[0]));
+      stages.forEach(([stageKey, stage], idx) => {
+        const isCurrent = idx === 0 || stage.status === 'current';
+        const stageNum = stageKey.replace('stage_', '');
+        html += `<div class="address-stage ${isCurrent ? 'current' : 'historical'}">
+          <div class="stage-header">
+            <span class="stage-badge ${isCurrent ? 'badge-active' : 'badge-none'}">${isCurrent ? t('buyback.current') : t('buyback.historical')}</span>
+            <span class="stage-name">Stage ${stageNum}</span>
+            <span class="stage-date">${stage.start_date || ''}</span>
+          </div>
+          <div class="address-grid">
+            ${stage.auto_daily ? `<div class="address-card">
+              <div class="address-label">${t('buyback.autoDailyBuyback')}</div>
+              <div class="address-allocation">${stage.auto_daily.allocation || ''}</div>
+              <div class="address-value"><code>${stage.auto_daily.address}</code></div>
+              <a href="${stage.auto_daily.bscscan || 'https://bscscan.com/address/' + stage.auto_daily.address}" target="_blank" class="address-link">BscScan →</a>
+            </div>` : ''}
+            ${stage.strategic_reserve ? `<div class="address-card">
+              <div class="address-label">${t('buyback.strategicReserve')}</div>
+              <div class="address-allocation">${stage.strategic_reserve.allocation || ''}</div>
+              <div class="address-value"><code>${stage.strategic_reserve.address}</code></div>
+              <a href="${stage.strategic_reserve.bscscan || 'https://bscscan.com/address/' + stage.strategic_reserve.address}" target="_blank" class="address-link">BscScan →</a>
+            </div>` : ''}
+          </div>
+        </div>`;
+      });
+      
+      // Legacy wallets
+      if (buybackAddresses.legacy?.addresses?.length) {
+        html += `<div class="address-stage legacy">
+          <div class="stage-header"><span class="stage-badge badge-none">${t('buyback.legacy')}</span><span class="stage-note">${buybackAddresses.legacy.note || ''}</span></div>
+          <div class="address-grid">
+            ${buybackAddresses.legacy.addresses.map(a => `<div class="address-card small">
+              <div class="address-label">${a.label}</div>
+              <div class="address-value"><code>${a.address}</code></div>
+              <a href="${a.bscscan || 'https://bscscan.com/address/' + a.address}" target="_blank" class="address-link">BscScan →</a>
+            </div>`).join('')}
+          </div>
+        </div>`;
+      }
+      
+      // Disposal addresses
+      if (buybackAddresses.disposal) {
+        html += `<div class="address-stage disposal">
+          <div class="stage-header"><span class="stage-badge badge-burn">🔥 ${t('buyback.disposal')}</span></div>
+          <div class="address-grid">
+            ${buybackAddresses.disposal.burn_address ? `<div class="address-card burn">
+              <div class="address-label">${t('buyback.burnAddress')}</div>
+              <div class="address-value"><code>${buybackAddresses.disposal.burn_address}</code></div>
+            </div>` : ''}
+            ${buybackAddresses.disposal.airdrop_lock ? `<div class="address-card">
+              <div class="address-label">${t('buyback.airdropLock')}</div>
+              <div class="address-value"><code>${buybackAddresses.disposal.airdrop_lock}</code></div>
+              <a href="https://bscscan.com/address/${buybackAddresses.disposal.airdrop_lock}" target="_blank" class="address-link">BscScan →</a>
+            </div>` : ''}
+          </div>
+        </div>`;
+      }
+      
+      container.innerHTML = html;
+    }
 
     function renderMechanisms(mechanisms) {
       const c = document.getElementById('mechanisms-container');
@@ -212,6 +297,7 @@
         const confEl = document.getElementById('summary-confidence');
         confEl.textContent = t('confidence.' + (cfg.confidence || 'medium'));
         confEl.className = `tev-summary-value ${cfg.confidence === 'high' ? 'value-on' : cfg.confidence === 'low' ? 'value-off' : 'value-partial'}`;
+        renderBuybackAddresses(cfg.buyback_addresses, cfg.revenue_distribution);
         renderMechanisms(cfg.tev_mechanisms);
         renderSources(cfg.data_sources);
         if (cfg.notes) { document.getElementById('notes-section').style.display = 'block'; document.getElementById('protocol-notes').textContent = cfg.notes; }
