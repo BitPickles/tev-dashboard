@@ -1,0 +1,116 @@
+{
+  "protocol": "bnb",
+  "updated_at": "2026-02-14",
+  "data_source": "BNB Chain Blog (Auto-Burn) + On-chain data (BEP-95/Staking) + slisBNB validation",
+  "note": "BNB TEV 由三部分构成：Auto-Burn (公式计算) + BEP-95/Staking (链上) + Holder Perks (Launchpool等)",
+  "records": [
+    {
+      "id": "bnb-auto-burn-2025-Q2",
+      "date": "2025-04-15",
+      "type": "burn",
+      "mechanism": "Auto-Burn (公式计算)",
+      "amount_usd": 274000000,
+      "period": "2025-Q2",
+      "source": { "type": "official", "provider": "BNB Chain", "url": "https://www.bnbchain.org/en/blog/31st-bnb-burn" }
+    },
+    {
+      "id": "bnb-auto-burn-2025-Q3",
+      "date": "2025-07-15",
+      "type": "burn",
+      "mechanism": "Auto-Burn (公式计算)",
+      "amount_usd": 305000000,
+      "period": "2025-Q3",
+      "source": { "type": "official", "provider": "BNB Chain", "url": "https://www.bnbchain.org/en/blog/32nd-bnb-burn" }
+    },
+    {
+      "id": "bnb-auto-burn-2025-Q4",
+      "date": "2025-10-15",
+      "type": "burn",
+      "mechanism": "Auto-Burn (公式计算)",
+      "amount_usd": 300000000,
+      "period": "2025-Q4",
+      "source": { "type": "official", "provider": "BNB Chain", "url": "https://www.bnbchain.org/en/blog/33rd-bnb-burn" }
+    },
+    {
+      "id": "bnb-auto-burn-2026-Q1",
+      "date": "2026-01-15",
+      "type": "burn",
+      "mechanism": "Auto-Burn (公式计算)",
+      "amount_usd": 335000000,
+      "period": "2026-Q1",
+      "source": { "type": "official", "provider": "BNB Chain", "url": "https://www.bnbchain.org/en/blog/33rd-bnb-burn", "tx_hash": "0x8c85b7c3be353083ba5994eceb15da64cb0bf0618e70bb4932e6ef6b3de10f07" }
+    },
+    {
+      "id": "bnb-bep95-staking-2025-Q2",
+      "date": "2025-04-15",
+      "type": "staking",
+      "mechanism": "BEP-95 Real-Time Burn + Staking Rewards",
+      "amount_usd": 98000000,
+      "period": "2025-Q2",
+      "source": { "type": "onchain", "provider": "BSC Chain", "url": "https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP95.md" }
+    },
+    {
+      "id": "bnb-bep95-staking-2025-Q3",
+      "date": "2025-07-15",
+      "type": "staking",
+      "mechanism": "BEP-95 Real-Time Burn + Staking Rewards",
+      "amount_usd": 100000000,
+      "period": "2025-Q3",
+      "source": { "type": "onchain", "provider": "BSC Chain", "url": "https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP95.md" }
+    },
+    {
+      "id": "bnb-bep95-staking-2025-Q4",
+      "date": "2025-10-15",
+      "type": "staking",
+      "mechanism": "BEP-95 Real-Time Burn + Staking Rewards",
+      "amount_usd": 105000000,
+      "period": "2025-Q4",
+      "source": { "type": "onchain", "provider": "BSC Chain", "url": "https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP95.md" }
+    },
+    {
+      "id": "bnb-bep95-staking-2026-Q1",
+      "date": "2026-01-15",
+      "type": "staking",
+      "mechanism": "BEP-95 Real-Time Burn + Staking Rewards",
+      "amount_usd": 120000000,
+      "period": "2026-Q1",
+      "source": { "type": "onchain", "provider": "BSC Chain", "url": "https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP95.md" }
+    },
+    {
+      "id": "bnb-holder-perks-2025-Q2",
+      "date": "2025-04-15",
+      "type": "airdrop",
+      "mechanism": "Holder Perks (Launchpool/HODLer/Megadrop)",
+      "amount_usd": 115000000,
+      "period": "2025-Q2",
+      "source": { "type": "estimated", "provider": "Binance", "url": "https://www.binance.com/en/launchpool" }
+    },
+    {
+      "id": "bnb-holder-perks-2025-Q3",
+      "date": "2025-07-15",
+      "type": "airdrop",
+      "mechanism": "Holder Perks (Launchpool/HODLer/Megadrop)",
+      "amount_usd": 118000000,
+      "period": "2025-Q3",
+      "source": { "type": "estimated", "provider": "Binance", "url": "https://www.binance.com/en/launchpool" }
+    },
+    {
+      "id": "bnb-holder-perks-2025-Q4",
+      "date": "2025-10-15",
+      "type": "airdrop",
+      "mechanism": "Holder Perks (Launchpool/HODLer/Megadrop)",
+      "amount_usd": 122000000,
+      "period": "2025-Q4",
+      "source": { "type": "estimated", "provider": "Binance", "url": "https://www.binance.com/en/launchpool" }
+    },
+    {
+      "id": "bnb-holder-perks-2026-Q1",
+      "date": "2026-01-15",
+      "type": "airdrop",
+      "mechanism": "Holder Perks (Launchpool/HODLer/Megadrop)",
+      "amount_usd": 140000000,
+      "period": "2026-Q1",
+      "source": { "type": "estimated", "provider": "Binance", "url": "https://www.binance.com/en/launchpool" }
+    }
+  ]
+}
