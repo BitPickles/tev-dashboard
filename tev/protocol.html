@@ -212,15 +212,17 @@
         if (!resp.ok) return;
         const data = await resp.json();
         
-        const dailyData = data.daily_buybacks || [];
-        if (!dailyData.length) return;
+        // 支持两种数据格式：chart_data (阶段汇总) 或 daily_buybacks (每日明细)
+        const chartData = data.chart_data || [];
+        const stages = data.stages || [];
+        
+        if (!chartData.length && !stages.length) return;
         
         document.getElementById('buyback-chart-section').style.display = 'block';
         
         // Calculate totals for progress bar
-        const totalAster = dailyData.reduce((s, d) => s + (d.aster || 0), 0);
-        const totalUsd = dailyData.reduce((s, d) => s + (d.usd || 0), 0);
-        const totalSupply = data.total_supply || 1e9; // 1 billion default
+        const totalAster = stages.reduce((s, st) => s + (st.total_aster || 0), 0);
+        const totalSupply = data.total_supply || 1e9;
         const progress = (totalAster / totalSupply) * 100;
         
         // Update progress bar
@@ -228,88 +230,66 @@
         document.getElementById('buyback-progress-fill').textContent = `${progress.toFixed(2)}%`;
         document.getElementById('buyback-progress-text').textContent = `${(totalAster / 1e6).toFixed(2)}M / ${(totalSupply / 1e9).toFixed(0)}B (${progress.toFixed(2)}%)`;
         document.getElementById('buyback-total').textContent = `${(totalAster / 1e6).toFixed(2)}M`;
-        document.getElementById('buyback-usd').textContent = fmtCurrency(totalUsd);
+        
+        // USD 只显示有数据的部分
+        const totalUsd = stages.reduce((s, st) => s + (st.total_usd || 0), 0);
+        document.getElementById('buyback-usd').textContent = totalUsd > 0 ? fmtCurrency(totalUsd) : '—';
         document.getElementById('buyback-supply').textContent = `${(totalSupply / 1e9).toFixed(0)}B`;
         
         const ctx = document.getElementById('buyback-activity-chart').getContext('2d');
         if (buybackChart) buybackChart.destroy();
         
-        // Prepare data with Date objects for time scale
-        const chartData = dailyData.map(d => ({ x: new Date(d.date), usd: d.usd, aster: d.aster }));
+        // 阶段汇总图表 (柱状图)
+        const labels = chartData.map(d => d.label);
+        const asterData = chartData.map(d => d.aster);
+        const usdData = chartData.map(d => d.usd || 0);
+        const barColors = chartData.map(d => d.quality === 'reported' ? 'rgba(34,197,94,0.8)' : 'rgba(59,130,246,0.8)');
         
         buybackChart = new Chart(ctx, {
           type: 'bar',
           data: {
+            labels,
             datasets: [
               {
-                label: currentLang === 'zh' ? '回购金额 (USD)' : 'Buyback (USD)',
-                data: chartData.map(d => ({ x: d.x, y: d.usd })),
-                backgroundColor: 'rgba(34,197,94,0.7)',
-                borderColor: '#22c55e',
+                label: 'ASTER',
+                data: asterData,
+                backgroundColor: barColors,
+                borderColor: barColors.map(c => c.replace('0.8', '1')),
                 borderWidth: 1,
-                borderRadius: 3,
-                yAxisID: 'y',
-                barPercentage: 0.8,
-                categoryPercentage: 0.9
-              },
-              {
-                label: currentLang === 'zh' ? '回购数量 (ASTER)' : 'Buyback (ASTER)',
-                data: chartData.map(d => ({ x: d.x, y: d.aster })),
-                type: 'line',
-                borderColor: '#f59e0b',
-                backgroundColor: 'rgba(245,158,11,0.1)',
-                borderWidth: 2,
-                pointRadius: 1,
-                pointHoverRadius: 4,
-                fill: false,
-                yAxisID: 'y2',
-                tension: 0.1
+                borderRadius: 6,
+                yAxisID: 'y'
               }
             ]
           },
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            interaction: { mode: 'index', intersect: false },
             plugins: {
-              legend: { position: 'top', labels: { color: '#a1a1aa', font: { size: 11 }, boxWidth: 12 } },
+              legend: { display: false },
               tooltip: {
                 backgroundColor: '#18181b',
                 titleColor: '#fafafa',
                 bodyColor: '#a1a1aa',
                 callbacks: {
-                  title: (items) => items[0].raw.x.toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US'),
-                  label: (ctx) => {
-                    if (ctx.datasetIndex === 0) return ` ${fmtCurrency(ctx.raw.y)}`;
-                    return ` ${(ctx.raw.y/1e6).toFixed(2)}M ASTER`;
+                  title: (items) => items[0].label,
+                  afterTitle: (items) => chartData[items[0].dataIndex]?.period || '',
+                  label: (ctx) => ` ${(ctx.raw/1e6).toFixed(2)}M ASTER`,
+                  afterLabel: (ctx) => {
+                    const d = chartData[ctx.dataIndex];
+                    const lines = [];
+                    if (d.usd) lines.push(` ${fmtCurrency(d.usd)}`);
+                    lines.push(` Data: ${d.quality === 'reported' ? '第三方报道' : '链上余额'}`);
+                    return lines;
                   }
-                }
-              },
-              zoom: {
-                pan: { enabled: true, mode: 'x' },
-                zoom: {
-                  wheel: { enabled: true },
-                  pinch: { enabled: true },
-                  mode: 'x',
-                  onZoomComplete: () => buybackChart.update('none')
                 }
               }
             },
             scales: {
-              x: {
-                type: 'time',
-                time: { unit: 'day', displayFormats: { day: 'MM-dd' } },
-                grid: { display: false },
-                ticks: { color: '#71717a', maxRotation: 45, font: { size: 9 }, maxTicksLimit: 15 }
-              },
-              y: { position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#22c55e', callback: v => '$' + (v/1e3).toFixed(0) + 'K' }, title: { display: true, text: 'USD', color: '#22c55e' } },
-              y2: { position: 'right', grid: { display: false }, ticks: { color: '#f59e0b', callback: v => (v/1e6).toFixed(1) + 'M' }, title: { display: true, text: 'ASTER', color: '#f59e0b' } }
+              x: { grid: { display: false }, ticks: { color: '#a1a1aa', font: { size: 12 } } },
+              y: { grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#a1a1aa', callback: v => (v/1e6).toFixed(0) + 'M' }, title: { display: true, text: 'ASTER', color: '#a1a1aa' } }
             }
           }
         });
-        
-        // Double-click to reset zoom
-        ctx.canvas.ondblclick = () => buybackChart.resetZoom();
       } catch (e) { console.log(`No buyback data for ${pid}:`, e.message); }
     }
 

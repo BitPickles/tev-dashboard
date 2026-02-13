@@ -179,12 +179,12 @@ def get_last_balance(data: dict) -> tuple[str, float]:
 
 def sync_stage6_data(data: dict, current_balance: float, current_price: float) -> dict:
     """
-    同步 Stage 6 数据：用实际余额 + 历史价格校正估算数据
+    同步 Stage 6 数据：只记录累计总量，不伪造每日数据
     
-    逻辑：
-    - 假设每日 USD 回购金额相对稳定
-    - ASTER 数量 = 当日 USD / 当日价格
-    - 总 USD = 总 ASTER × 加权平均价格
+    因为无法获取每日真实交易，只能记录：
+    - 阶段开始日期
+    - 当前累计 ASTER 总量
+    - 当前价格计算的 USD 价值
     
     Stage 6 开始日期: 2026-02-04
     """
@@ -196,59 +196,27 @@ def sync_stage6_data(data: dict, current_balance: float, current_price: float) -
     days_since_start = (today - stage6_start).days + 1
     
     print(f"\n🔄 Syncing Stage 6 data...")
-    print(f"   Days: {days_since_start}")
+    print(f"   Period: {stage6_start.strftime('%Y-%m-%d')} ~ {today_str} ({days_since_start} days)")
     print(f"   Total ASTER: {current_balance:,.0f}")
+    print(f"   Current price: ${current_price:.4f}")
     
-    # 获取历史价格
-    print("   Fetching historical prices...")
-    price_map = get_historical_prices(days=days_since_start + 5)
-    
-    if not price_map:
-        print("   ⚠️ No historical prices, using current price for all days")
-        price_map = {}
+    total_usd = current_balance * current_price
+    print(f"   Total USD (at current price): ${total_usd:,.2f}")
     
     # 移除旧的 Stage 6 数据
     data["daily_buybacks"] = [d for d in data.get("daily_buybacks", []) if d.get("stage") != "6"]
     
-    # 计算每日价格，用于估算每日 ASTER
-    daily_prices = []
-    for i in range(days_since_start):
-        date = (stage6_start + timedelta(days=i)).strftime("%Y-%m-%d")
-        price = price_map.get(date, current_price)
-        daily_prices.append((date, price))
-    
-    # 计算加权：假设每日 USD 固定，求每日 ASTER
-    # 总 ASTER = sum(daily_usd / price_i)
-    # 设 daily_usd = k，则 current_balance = k × sum(1/price_i)
-    # k = current_balance / sum(1/price_i)
-    
-    sum_inv_price = sum(1 / p for _, p in daily_prices if p > 0)
-    if sum_inv_price > 0:
-        daily_usd = current_balance / sum_inv_price
-    else:
-        daily_usd = current_balance * current_price / days_since_start
-    
-    print(f"   Estimated daily USD: ${daily_usd:,.2f}")
-    
-    # 生成每日数据
-    total_aster_check = 0
-    for date, price in daily_prices:
-        if price > 0:
-            daily_aster = daily_usd / price
-        else:
-            daily_aster = daily_usd / current_price
-        
-        total_aster_check += daily_aster
-        
-        data["daily_buybacks"].append({
-            "date": date,
-            "usd": round(daily_usd, 2),
-            "aster": round(daily_aster, 0),
-            "price": round(price, 4),
-            "stage": "6"
-        })
-    
-    print(f"   Verify total ASTER: {total_aster_check:,.0f} (actual: {current_balance:,.0f})")
+    # Stage 6 只记录一条汇总数据（按当前日期）
+    # 标记为汇总数据，图表可以特殊处理
+    data["daily_buybacks"].append({
+        "date": today_str,
+        "usd": round(total_usd, 2),
+        "aster": round(current_balance, 0),
+        "stage": "6",
+        "type": "cumulative",  # 标记为累计数据，非每日数据
+        "period_start": stage6_start.strftime("%Y-%m-%d"),
+        "period_days": days_since_start
+    })
     
     # 排序
     data["daily_buybacks"].sort(key=lambda x: x["date"])
