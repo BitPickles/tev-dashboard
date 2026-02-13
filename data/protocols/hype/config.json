@@ -50,22 +50,6 @@
     "snapshot_date": "2026-02-05",
     "data_source": "CoinGecko"
   },
-  "tvl": {
-    "total_usd": 4220000000,
-    "breakdown": {
-      "bridge": {
-        "amount_usd": 3870000000,
-        "note": "USDC deposits on Hyperliquid bridge"
-      },
-      "hyperliquid_l1": {
-        "amount_usd": 354000000,
-        "note": "Native chain liquidity (USDC.E + other)"
-      }
-    },
-    "snapshot_date": "2026-02-13",
-    "data_source": "DefiLlama",
-    "api_url": "https://api.llama.fi/protocol/hyperliquid"
-  },
   "calculated_tev": {
     "tev_yield_percent": 12.29,
     "calculation_status": "CALCULATED",
