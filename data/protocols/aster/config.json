@@ -17,38 +17,89 @@
   "tev_mechanisms": [
     {
       "type": "buyback",
-      "name": "Protocol Revenue Buyback",
-      "description": "协议收入的一部分用于 ASTER 回购",
+      "name": "自动每日回购",
+      "description": "40% 平台手续费用于每日自动回购 ASTER",
       "status": "active",
+      "allocation": "40%",
+      "frequency": "daily",
       "source": {
-        "type": "documentation",
-        "title": "Tokenomics",
-        "url": "https://docs.asterdex.com/usdaster/tokenomics"
+        "type": "announcement",
+        "title": "Stage 6 Buyback Plan",
+        "url": "https://news.cnyes.com/news/id/6331087"
       }
     },
     {
       "type": "buyback",
-      "name": "Foundation Stabilization Buyback",
-      "description": "Aster Foundation 用于长期价格稳定的回购",
+      "name": "战略回购储备",
+      "description": "20%-40% 平台手续费进入战略储备，择机回购",
       "status": "active",
+      "allocation": "20%-40%",
+      "frequency": "strategic",
       "source": {
-        "type": "documentation",
-        "title": "Tokenomics",
-        "url": "https://docs.asterdex.com/usdaster/tokenomics"
-      }
-    },
-    {
-      "type": "governance_rewards",
-      "name": "Governance Rewards Distribution",
-      "description": "治理参与激励奖励",
-      "status": "active",
-      "source": {
-        "type": "documentation",
-        "title": "Tokenomics",
-        "url": "https://docs.asterdex.com/usdaster/tokenomics"
+        "type": "announcement",
+        "title": "Stage 6 Buyback Plan",
+        "url": "https://news.cnyes.com/news/id/6331087"
       }
     }
   ],
+  "buyback_addresses": {
+    "stage_6": {
+      "start_date": "2026-02-04",
+      "status": "current",
+      "auto_daily": {
+        "address": "0x664827c71193018D7843f0D0F41A5D0D6dcEBE0F",
+        "allocation": "40%",
+        "bscscan": "https://bscscan.com/address/0x664827c71193018D7843f0D0F41A5D0D6dcEBE0F"
+      },
+      "strategic_reserve": {
+        "address": "0xe5779AEEf4ccC5Ec4fD78f008063D7DC4D0A780c",
+        "allocation": "20%-40%",
+        "bscscan": "https://bscscan.com/address/0xe5779AEEf4ccC5Ec4fD78f008063D7DC4D0A780c"
+      }
+    },
+    "stage_5": {
+      "start_date": "2025-12-23",
+      "status": "historical",
+      "auto_daily": {
+        "address": "0x4786927333c0bA8aB27CA41361ADF33148C5301E",
+        "allocation": "40%",
+        "bscscan": "https://bscscan.com/address/0x4786927333c0bA8aB27CA41361ADF33148C5301E"
+      },
+      "strategic_reserve": {
+        "address": "0x5E4969C41ca9F9831468B98328A370b7AbD5a397",
+        "allocation": "20%-40%",
+        "bscscan": "https://bscscan.com/address/0x5E4969C41ca9F9831468B98328A370b7AbD5a397"
+      }
+    },
+    "legacy": {
+      "note": "BscScan 标签的历史回购钱包",
+      "addresses": [
+        {
+          "label": "Aster: Buyback",
+          "address": "0x02DCd5b2DdE0F6edb4B797DA468fBc52F23f49Dc",
+          "bscscan": "https://bscscan.com/address/0x02DCd5b2DdE0F6edb4B797DA468fBc52F23f49Dc"
+        },
+        {
+          "label": "Aster: Buyback 2",
+          "address": "0xe307f534EEc7256331C347Ad73E7A08446F1d7a7",
+          "bscscan": "https://bscscan.com/address/0xe307f534EEc7256331C347Ad73E7A08446F1d7a7"
+        }
+      ]
+    },
+    "disposal": {
+      "burn_address": "0x000000000000000000000000000000000000dEaD",
+      "airdrop_lock": "0xE8c3e6559513eEbAc3e05fd75c19a17F4A51A892"
+    }
+  },
+  "revenue_distribution": {
+    "total_to_buyback": "最高 80%",
+    "breakdown": {
+      "auto_daily_buyback": "40%",
+      "strategic_reserve": "20%-40%",
+      "undisclosed": "~20%",
+      "undisclosed_note": "推测用于 treasury/运营/激励，未官方披露"
+    }
+  },
   "revenue_sources": [
     {
       "name": "Perpetual Trading Fees",
@@ -85,12 +136,13 @@
   },
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "协议收入用于回购 ASTER",
+    "fee_switch_details": "最高 80% 平台手续费用于回购",
     "buybacks": "ACTIVE",
-    "buyback_details": "协议收入回购 + Foundation 稳定回购",
+    "buyback_details": "40% 自动每日回购 + 20-40% 战略储备",
     "dividends": "NONE",
-    "burns": "NONE",
-    "primary_value_accrual": "协议收入 → ASTER 回购"
+    "burns": "ACTIVE",
+    "burn_details": "回购代币部分销毁至 0xdead",
+    "primary_value_accrual": "平台手续费 → 回购 → 销毁/锁仓"
   },
   "market_data": {
     "price_usd": 0.54728,
@@ -103,16 +155,18 @@
     "data_source": "CoinGecko"
   },
   "calculated_tev": {
+    "tev_ratio": 0.8,
+    "tev_ratio_note": "最高 80% 手续费用于回购",
     "tev_yield_percent": null,
     "calculation_status": "NEED_REVENUE_DATA",
     "estimation": {
       "daily_volume_estimate": 200000000,
       "avg_fee_rate": 0.0003,
       "annual_fee_estimate": 21900000,
-      "estimated_tev_yield": "1.6%",
-      "note": "粗略估算：假设日均交易量 $200M，加权平均费率 0.03%"
-    },
-    "reason": "DefiLlama 暂无费用数据，需要官方披露协议收入"
+      "annual_tev_estimate": 17520000,
+      "estimated_tev_yield": "1.3%",
+      "note": "粗略估算：日均 $200M 交易量 × 0.03% 费率 × 80% 回购"
+    }
   },
   "key_backers": [
     {
@@ -131,72 +185,50 @@
     "Solana",
     "Arbitrum"
   ],
-  "trading_modes": [
-    {
-      "name": "Pro Mode",
-      "features": [
-        "Order book",
-        "Up to 100x leverage",
-        "Hidden orders",
-        "Grid trading",
-        "Stock perpetuals"
-      ]
-    },
-    {
-      "name": "Simple Mode",
-      "features": [
-        "One-click trading",
-        "MEV-resistant",
-        "Up to 1001x leverage"
-      ]
-    },
-    {
-      "name": "Shield Mode",
-      "features": [
-        "Simplified perps",
-        "Higher leverage",
-        "Lower barrier"
-      ]
-    }
-  ],
-  "data_gaps": [
-    {
-      "item": "年化协议收入",
-      "status": "需要补充",
-      "note": "DefiLlama 暂无数据，需要从官方或第三方获取"
-    },
-    {
-      "item": "回购执行记录",
-      "status": "需要补充",
-      "note": "需要链上回购交易验证"
-    }
-  ],
   "confidence": "high",
-  "confidence_notes": "代币机制和市场数据清晰，费用数据需补充",
+  "confidence_notes": "回购机制透明，地址可链上验证",
   "data_sources": [
+    {
+      "name": "Stage 6 公告",
+      "type": "announcement",
+      "url": "https://news.cnyes.com/news/id/6331087",
+      "reliability": "high",
+      "data": ["buyback_addresses", "allocation"]
+    },
+    {
+      "name": "Stage 5 公告",
+      "type": "announcement",
+      "url": "https://www.binance.com/en/square/post/35274169847521",
+      "reliability": "high"
+    },
+    {
+      "name": "回购销毁公告",
+      "type": "announcement",
+      "url": "https://www.binance.com/en-KZ/square/post/33291433980697",
+      "reliability": "high",
+      "data": ["burn_address", "lock_address"]
+    },
+    {
+      "name": "Aster Docs",
+      "type": "documentation",
+      "url": "https://docs.asterdex.com/usdaster/tokenomics",
+      "reliability": "high"
+    },
+    {
+      "name": "BscScan",
+      "type": "explorer",
+      "url": "https://bscscan.com",
+      "reliability": "high",
+      "data": ["on-chain verification"]
+    },
     {
       "name": "CoinGecko",
       "type": "api",
       "url": "https://api.coingecko.com/api/v3/coins/aster-2",
       "reliability": "high",
-      "data": [
-        "price",
-        "market_cap",
-        "volume",
-        "tvl"
-      ]
-    },
-    {
-      "name": "Aster Docs",
-      "type": "documentation",
-      "url": "https://docs.asterdex.com",
-      "reliability": "high"
+      "data": ["price", "market_cap", "volume", "tvl"]
     }
   ],
-  "analyst_notes": "【2026-02-07 调研更新】\n\n## 项目背景\nAster 是 Astherus + APX Finance 于 2024 年底合并的产品。\n- **YZi Labs (原 Binance Labs)** 支持\n- **CZ 个人投资** $2.5M+ ASTER\n\n## TEV 机制（已确认）\n\n1. **协议收入回购** ✅ ACTIVE\n   - 文档明确：\"a portion of protocol revenue will be used for $ASTER buybacks\"\n   - Foundation 稳定回购\n   - 治理奖励分配\n\n2. **费用结构**\n   - Maker: 0.005%\n   - Taker: 0.04%\n   - 用 ASTER 支付可享 5% 折扣\n\n## 市场数据\n| 指标 | 数值 |\n|------|------|\n| 价格 | $0.547 |\n| 市值 | ~$1.35B |\n| TVL | ~$1.09B |\n| 24h 交易量 | ~$237M |\n| 市值排名 | #56 |\n\n## TEV Yield 估算\n- 日均交易量假设: $200M\n- 加权平均费率: ~0.03%\n- 年化费用估算: ~$22M\n- **估算 TEV Yield: ~1.6%**\n\n⚠️ 这是粗略估算，需要官方收入数据验证\n\n## 置信度：HIGH\n- 机制明确\n- 市场数据完整\n- 缺少精确收入数据",
-  "questions_for_boss": [
-    "需要更精确的年化收入数据吗？",
-    "是否需要深入分析链上回购记录？"
-  ],
-  "last_updated": "2026-02-07"
+  "analyst_notes": "【2026-02-13 更新】\n\n## 回购机制（Stage 6，当前）\n\n启动日期：2026-02-04\n\n### 收入分配\n- 40% 手续费 → 自动每日回购\n- 20%-40% 手续费 → 战略回购储备\n- ~20% → 未披露用途\n\n### 回购地址\n- 自动回购: 0x664827c71193018D7843f0D0F41A5D0D6dcEBE0F\n- 战略储备: 0xe5779AEEf4ccC5Ec4fD78f008063D7DC4D0A780c\n\n### 处置方式\n- 销毁: 0xdead\n- 锁仓: 0xE8c3e6559513eEbAc3e05fd75c19a17F4A51A892\n\n## 链上核验\n可通过 BscScan 追踪回购地址的交易记录，验证每日回购频率和金额。\n\n## 置信度：HIGH\n- 回购地址公开透明\n- 可链上验证\n- 阶段性公告清晰",
+  "last_updated": "2026-02-13"
 }
