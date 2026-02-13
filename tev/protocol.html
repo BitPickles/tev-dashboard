@@ -81,6 +81,7 @@
       <div class="section">
         <div class="section-title"><span class="icon">📊</span><span data-i18n="section.tevSummary">TEV 概览</span></div>
         <div class="tev-summary-grid">
+          <div class="tev-summary-item" id="summary-tvl-item" style="display:none;"><div class="tev-summary-label">TVL</div><div class="tev-summary-value" id="summary-tvl">—</div></div>
           <div class="tev-summary-item"><div class="tev-summary-label">Fee Switch<br><span class="label-zh">费用开关</span></div><div class="tev-summary-value" id="summary-feeswitch">—</div></div>
           <div class="tev-summary-item"><div class="tev-summary-label">Buybacks<br><span class="label-zh">回购</span></div><div class="tev-summary-value" id="summary-buybacks">—</div></div>
           <div class="tev-summary-item"><div class="tev-summary-label">Dividends<br><span class="label-zh">分红</span></div><div class="tev-summary-value" id="summary-dividends">—</div></div>
@@ -390,6 +391,12 @@
         const confEl = document.getElementById('summary-confidence');
         confEl.textContent = t('confidence.' + (cfg.confidence || 'medium'));
         confEl.className = `tev-summary-value ${cfg.confidence === 'high' ? 'value-on' : cfg.confidence === 'low' ? 'value-off' : 'value-partial'}`;
+        // TVL display
+        if (cfg.tvl?.total_usd) {
+          document.getElementById('summary-tvl-item').style.display = '';
+          document.getElementById('summary-tvl').textContent = fmtCurrency(cfg.tvl.total_usd);
+          document.getElementById('summary-tvl').className = 'tev-summary-value value-on';
+        }
         renderMechanisms(cfg.tev_mechanisms);
         renderSources(cfg.data_sources);
         renderReferences(cfg.references);
