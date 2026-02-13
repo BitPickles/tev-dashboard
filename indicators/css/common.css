@@ -1176,7 +1176,8 @@ tr:last-child { border-bottom: none; }
 /* TEV Summary Grid */
 .tev-summary-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
 .tev-summary-item { background: var(--bg-tertiary); padding: 16px; border-radius: 8px; text-align: center; }
-.tev-summary-label { font-size: 11px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+.tev-summary-label { font-size: 11px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; line-height: 1.6; }
+.tev-summary-label .label-zh { display: block; font-size: 10px; text-transform: none; letter-spacing: 0; color: var(--text-tertiary); opacity: 0.8; margin-top: 2px; }
 .tev-summary-value { font-size: 14px; font-weight: 700; }
 .value-on { color: var(--accent); }
 .value-off { color: var(--danger); }
