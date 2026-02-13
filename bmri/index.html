@@ -474,8 +474,8 @@
         series.cryptoTotalMcap.setData(cryptoTotalMcapData);
       }
 
-      // Default range
-      defaultRange = setDefaultRange(chart, '2013-01-01', lastDate);
+      // Default range (start from 2014)
+      defaultRange = setDefaultRange(chart, '2014-01-01', lastDate);
 
       // Double-click reset
       document.getElementById('chart-container').addEventListener('dblclick', resetChart);
