@@ -192,7 +192,7 @@
     }
 
     function calculatePercentile(value, history) {
-      const sorted = [...history.map(d => d.value)].sort((a, b) => a - b);
+      const sorted = [...history.map(d => d.mvrv)].sort((a, b) => a - b);
       const index = sorted.findIndex(v => v >= value);
       return Math.round((index / sorted.length) * 100);
     }
@@ -262,7 +262,7 @@
       });
 
       // Build data
-      const mvrvData = history.map(d => ({ time: d.date, value: d.value }));
+      const mvrvData = history.map(d => ({ time: d.date, value: d.mvrv }));
       const btcData = history.filter(d => d.btc_price).map(d => ({ time: d.date, value: d.btc_price }));
       historyData = buildHistoryLookup(history);
       const lastDate = history[history.length - 1].date;
@@ -328,7 +328,7 @@
         seriesVisible,
         dateElementId: 'tooltip-date',
         fields: [
-          { key: 'mvrv', dataKey: 'value', format: v => v.toFixed(2) },
+          { key: 'mvrv', dataKey: 'mvrv', format: v => v.toFixed(2) },
           { key: 'btc', dataKey: 'btc_price', format: v => '$' + v.toLocaleString() },
         ],
       });
