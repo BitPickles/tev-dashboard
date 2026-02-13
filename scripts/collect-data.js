@@ -40,6 +40,12 @@ const PROTOCOLS = {
     coingecko_id: 'uniswap',
     tev_ratio: 0.0, // Currently 0% fee switch
   },
+  hype: {
+    name: 'Hyperliquid',
+    defillama_slug: 'hyperliquid',
+    coingecko_id: 'hyperliquid',
+    tev_ratio: 0.99, // 99% to Assistance Fund buyback
+  },
 };
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
