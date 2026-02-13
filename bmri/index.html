@@ -440,8 +440,8 @@
       // BTC Price series (from shared data)
       if (btcPriceData) {
         const btcPriceChartData = bmriDataArr.map(d => {
-          const priceRecord = btcPriceData.history.find(p => p.date === d.date);
-          return { time: d.date, value: priceRecord?.price || null };
+          const priceRecord = btcPriceData.history.find(p => p.date === d.time);
+          return { time: d.time, value: priceRecord?.price || null };
         }).filter(d => d.value !== null);
         
         series.btcPrice = chart.addLineSeries({
@@ -462,8 +462,8 @@
         const btcDValue = currentBtcD || 50;
         const btcMcapData = marketcapData.filter(d => d.btc_mcap).map(d => ({ time: d.date, value: d.btc_mcap }));
         const cryptoTotalMcapData = btcMcapData.map(d => ({
-          time: d.date,
-          value: btcDValue > 0 ? d.btc_mcap / (btcDValue / 100) : 0
+          time: d.time,
+          value: btcDValue > 0 ? d.value / (btcDValue / 100) : 0
         }));
 
         series.cryptoTotalMcap = chart.addLineSeries({
