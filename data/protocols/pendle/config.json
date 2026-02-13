@@ -19,7 +19,7 @@
       "name": "vePENDLE Revenue Share",
       "description": "80% 协议收入用于回购 PENDLE 并分配给 vePENDLE 持有者",
       "status": "active",
-      "ratio": 0.80,
+      "ratio": 0.8,
       "distribution_contract": "0x07282F2CEEbD7a65451Fcd268b364300D9e6D7f5",
       "source": {
         "type": "docs",
@@ -61,6 +61,6 @@
       "reliability": "high"
     }
   ],
-  "notes": "【机制说明】Pendle 于 2026-01-29 从 vePENDLE 切换至 sPENDLE 模式，80% 协议收入回购 PENDLE 并分配给 sPENDLE 持有者。sPENDLE 有 14天解锁冷却期，或支付 5% 费用即时赎回。是 TEV 表现最好的协议之一。",
+  "notes": "【机制说明】Pendle 于 2026-01-29 从 vePENDLE 切换至 sPENDLE 模式，80% 协议收入回购 PENDLE 并分配给 sPENDLE 持有者。sPENDLE 有 14天解锁冷却期，或支付 5% 费用即时赎回。",
   "last_updated": "2026-02-05"
 }
