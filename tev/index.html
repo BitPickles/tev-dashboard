@@ -300,13 +300,21 @@
     function sortProtocols(arr, f, d) {
       return [...arr].sort((a, b) => {
         // 没有 TEV yield 的项目排在后面
-        const aHasYield = (a.metrics?.tev_yield_decimal || 0) > 0 ? 1 : 0;
-        const bHasYield = (b.metrics?.tev_yield_decimal || 0) > 0 ? 1 : 0;
+        const aYield = a.metrics?.tev_yield_decimal || 0;
+        const bYield = b.metrics?.tev_yield_decimal || 0;
+        const aHasYield = aYield > 0 ? 1 : 0;
+        const bHasYield = bYield > 0 ? 1 : 0;
         if (bHasYield !== aHasYield) return bHasYield - aHasYield;
+        
+        // 有 yield 的协议，先按 yield 降序
+        if (aHasYield && bHasYield) {
+          const yieldCmp = bYield - aYield;
+          if (yieldCmp !== 0) return yieldCmp;
+        }
         
         let cmp = getSortValue(b, f) - getSortValue(a, f);
         if (d === 'asc') cmp = -cmp;
-        if (cmp === 0) cmp = (b.latest_record?.market_cap_usd || 0) - (a.latest_record?.market_cap_usd || 0);
+        if (cmp === 0) cmp = (b.tvl || 0) - (a.tvl || 0);
         return cmp;
       });
     }
