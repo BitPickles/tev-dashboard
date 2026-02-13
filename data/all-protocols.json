@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-13T21:13:57.915Z",
+  "generated_at": "2026-02-13T21:17:03.501Z",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -23,6 +23,7 @@
       "tev_yield_percent": 9.55,
       "market_cap_usd": 1501563922,
       "tvl": 0,
+      "tevRatio": 0.7,
       "tevRatioNote": "手续费回购 (60-80%)"
     },
     "bgb": {
@@ -78,6 +79,7 @@
       "tev_yield_percent": 3.28,
       "market_cap_usd": 355558659,
       "tvl": 1901718037.9135764,
+      "tevRatio": 0.5,
       "tevRatioNote": "分红 - veCRV 持有者每周获得 crvUSD 分红"
     },
     "dydx": {
@@ -90,6 +92,7 @@
       "tev_yield_percent": 5.33,
       "market_cap_usd": 90016535,
       "tvl": 173263911,
+      "tevRatio": 0.75,
       "tevRatioNote": "回购 - 75% 净协议费用用于 DYDX 回购"
     },
     "eigenlayer": {
@@ -138,6 +141,7 @@
       "tev_yield_percent": 24.13,
       "market_cap_usd": 61633069,
       "tvl": 278147585,
+      "tevRatio": 0.3,
       "tevRatioNote": "分红 - 质押 GMX 获得 ETH/AVAX 分红"
     },
     "hype": {
@@ -150,6 +154,7 @@
       "tev_yield_percent": 12.26,
       "market_cap_usd": 7762595982,
       "tvl": 4247382710,
+      "tevRatio": 0.9,
       "tevRatioNote": "回购销毁 - Assistance Fund 使用约90%费用回购并销毁 HYPE",
       "metrics": {
         "tev_yield_decimal": 0.1229,
@@ -215,6 +220,7 @@
       "tev_yield_percent": 1.18,
       "market_cap_usd": 332824153,
       "tvl": 2214127923.0503182,
+      "tevRatio": 0.2,
       "tevRatioNote": "回购分配 - 20% 协议收入回购 SYRUP 并分配给质押者"
     },
     "mnt": {
@@ -251,6 +257,7 @@
       "tev_yield_percent": 0,
       "market_cap_usd": 1503276222,
       "tvl": 0,
+      "tevRatio": 0.3,
       "tevRatioNote": "回购销毁 - 季度用 30% 收入回购销毁 OKB"
     },
     "pancakeswap": {
@@ -263,6 +270,7 @@
       "tev_yield_percent": 6.33,
       "market_cap_usd": 507012632,
       "tvl": 2053662488,
+      "tevRatio": 0.15,
       "tevRatioNote": "回购销毁 - 协议收入 15% 用于 CAKE 回购销毁（veCAKE 分红已结束）"
     },
     "pendle": {
@@ -275,6 +283,7 @@
       "tev_yield_percent": 5.2,
       "market_cap_usd": 190965986,
       "tvl": 2516386243.086277,
+      "tevRatio": 0.8,
       "tevRatioNote": "回购+分红 - 80% 协议收入转化为 PENDLE 回购，分配给 sPENDLE 持有者"
     },
     "sky": {
