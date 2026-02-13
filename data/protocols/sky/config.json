@@ -19,7 +19,7 @@
       "name": "Smart Burn Engine (SBE)",
       "description": "协议盈余用于回购 MKR 并添加流动性（Smart Burn Engine）",
       "status": "active",
-      "ratio": 0.70,
+      "ratio": 0.7,
       "contract": "0x0000000000000000000000000000000000000000",
       "source": {
         "type": "governance",
@@ -58,5 +58,21 @@
     }
   ],
   "notes": "MakerDAO (现 Sky) 是最早实现代币回购销毁的 DeFi 协议之一。Smart Burn Engine 机制确保协议盈余持续回馈给 MKR 持有者。",
-  "last_updated": "2026-02-02"
+  "last_updated": "2026-02-14",
+  "tev_data": {
+    "has_tev": true,
+    "tev_yield_percent": 6.21,
+    "annual_tev_usd": 99103164,
+    "market_cap_usd": 1595994273,
+    "calculation_date": "2026-02-14",
+    "sources": [
+      {
+        "name": "DefiLlama holdersRevenue",
+        "type": "defillama",
+        "annual_usd": 99103164,
+        "note": "Smart Burn Engine 回购"
+      }
+    ],
+    "calculation": "$99.10M / $1595.99M = 6.21%"
+  }
 }

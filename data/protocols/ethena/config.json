@@ -142,5 +142,11 @@
     }
   ],
   "analyst_notes": "## Ethena TEV 分析\n\n### 结论：无持续 TEV\n\nEthena 的经营性收益主要服务于 **USDe/sUSDe 产品竞争力**（yield 给 sUSDe）与 **系统安全垫**（Reserve Fund）；**ENA/sENA 目前没有持续的利润分配**。\n\n### Token Holder Net Income = $0\n\n协议收益不分配给 ENA/sENA 持有人（DefiLlama 口径）。\n\n### 回购 $570M：资本运作，非 TEV\n\n| 时间 | 金额 | 来源 |\n|------|------|------|\n| 2025-07 | $260M | StablecoinX PIPE 融资 |\n| 2025-09 | $310M | PIPE 融资 |\n\n**⚠️ 重要说明**：\n- 这是**资本运作/融资驱动**的回购\n- **不是经营利润分红**\n- **不算持续 TEV**\n- 资金来源是 PIPE 融资，非协议日常收入\n- 可持续性取决于后续融资安排\n\n### Fee Switch 进度\n\n| 时间 | 状态 |\n|------|------|\n| 2024-11 | 提出参数讨论，分配比例待定 |\n| 2025-07 | 部分指标已满足，CEX adoption 未满足 |\n| 2026-01 | 仍需 legal engineering，未运行 |\n\nFee switch 应视为**未来期权**，非当前现金流。\n\n### 收入去向\n\n| 去向 | 说明 |\n|------|------|\n| sUSDe Staking | 大部分收益给 sUSDe 持有者 |\n| Reserve Fund | 系统安全垫 |\n| ENA/sENA 持有人 | **$0** |\n\n### 数据来源\n\n- [DefiLlama](https://defillama.com/protocol/ethena-usde)\n- [Fee Switch Parameters](https://gov.ethenafoundation.com/t/ena-fee-switch-parameters/396)\n- [Governance Updates](https://gov.ethenafoundation.com)",
-  "last_updated": "2026-02-14"
+  "last_updated": "2026-02-14",
+  "tev_data": {
+    "has_tev": false,
+    "tev_yield_percent": 0,
+    "annual_tev_usd": 0,
+    "note": "无持续 TEV"
+  }
 }

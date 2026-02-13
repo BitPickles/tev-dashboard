@@ -62,5 +62,13 @@
     }
   ],
   "notes": "⚠️ 维持 PARTIAL，原因：(1) JST staking 机制缺乏透明文档，无法确认具体分配比例；(2) TRON 生态整体透明度较低，缺少 Dune 等独立数据分析工具；(3) DefiLlama 无 tokenRights 数据；(4) JST 代币跨多个 JUST 产品使用，实际 TEV 归属不清；(5) 与 Justin Sun 团队关联，中心化程度较高。如需进一步确认，建议通过浏览器直接操作 JustLend DApp 验证 staking 功能。",
-  "last_updated": "2026-02-05"
+  "last_updated": "2026-02-14",
+  "tev_data": {
+    "has_tev": true,
+    "tev_yield_percent": 0,
+    "annual_tev_usd": 0,
+    "calculation_date": "2026-02-14",
+    "note": "JST 质押奖励，透明度低",
+    "sources": []
+  }
 }

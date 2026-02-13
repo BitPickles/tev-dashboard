@@ -74,5 +74,21 @@
     }
   ],
   "analyst_notes": "【2026-02-05 调研核对】\n\n## TEV Yield 核对结果\n\n**TEV Yield ≈ 23.5%**\n\n### 计算过程\n- 30天 holders revenue: $1,208,117\n- 年化: ~$14.5M\n- 流通市值: ~$61.6M\n- TEV Yield = $14.5M / $61.6M = 23.5%\n\n### GMX TEV Yield 较高的原因\n\n1. **市值相对较小**: GMX 流通市值约 $61.6M\n2. **收入较高**: 永续合约交易所收入模式成熟，年化平台收入约 $48M（GMX stakers 获得 30% = $14.5M）\n3. **分配比例**: 30% 平台费用直接分给 GMX 质押者\n\n### 协议对比\n| 协议 | TEV Yield | 市值 |\n|------|-----------|------|\n| GMX | ~23.5% | $61M |\n| dYdX | 待核实 | 待核实 |\n| Hyperliquid | ~12% | $7.8B |\n\n### 结论\n数据核实完成。高 yield 主要因为市值相对较小但收入较高。\n\n如果前端显示的数值明显高于 23%（如 50%+），则需排查：\n- 是否错用了 staking market cap 而非 token market cap\n- 是否有数据重复计算",
-  "last_updated": "2026-02-05"
+  "last_updated": "2026-02-14",
+  "tev_data": {
+    "has_tev": true,
+    "tev_yield_percent": 24.13,
+    "annual_tev_usd": 15622476,
+    "market_cap_usd": 64744597,
+    "calculation_date": "2026-02-14",
+    "sources": [
+      {
+        "name": "DefiLlama holdersRevenue",
+        "type": "defillama",
+        "annual_usd": 15622476,
+        "note": "GMX 质押分红"
+      }
+    ],
+    "calculation": "$15.62M / $64.74M = 24.13%"
+  }
 }

@@ -19,7 +19,7 @@
       "name": "veCRV Fee Distribution",
       "description": "50% 交易手续费分配给 veCRV 持有者（以 crvUSD 形式）",
       "status": "active",
-      "ratio": 0.50,
+      "ratio": 0.5,
       "distribution_contract": "0xA464e6DCda8AC41e03616F95f4BC98a13b8922Dc",
       "distribution_frequency": "weekly",
       "source": {
@@ -94,5 +94,21 @@
     }
   ],
   "analyst_notes": "【2026-02-05 调研更新】\n\n## Curve 双重激励模式说明\n\nCurve 采用特殊的双重激励模式，需区分 TEV 和 LP 激励：\n\n### 1. TEV 部分（计入 TEV yield）\n- **50% 交易手续费** 分配给 **veCRV 持有者**\n- 以 crvUSD（稳定币 LP token）形式每周分发\n- 分发合约: 0xA464e6DCda8AC41e03616F95f4BC98a13b8922Dc\n- 过去30天分红: ~$97万，年化约 $1165万\n\n### 2. LP 激励部分（不计入 TEV）\n- **CRV 代币奖励** 分配给 **LP 提供者**\n- 通过 Gauge 系统分发\n- 这是代币通胀/增发激励，不是协议收入分配\n- veCRV 持有者投票决定各池子的 CRV 奖励权重\n\n### TEV Yield 计算\n- 年化 holders revenue: ~$11.65M\n- CRV 流通市值: ~$355M\n- **TEV Yield ≈ 3.28%**\n\n### 为什么显示 0% 需排查\n前端显示 TEV yield 为 0% 是错误的，实际数据显示约 3.28%。\n可能原因：\n1. 前端未正确读取 calculated_tev 字段\n2. 数据管道问题\n3. 计算逻辑缺失\n\n建议检查前端 TEV yield 计算逻辑。",
-  "last_updated": "2026-02-05"
+  "last_updated": "2026-02-14",
+  "tev_data": {
+    "has_tev": true,
+    "tev_yield_percent": 3.28,
+    "annual_tev_usd": 11650512,
+    "market_cap_usd": 355558659,
+    "calculation_date": "2026-02-14",
+    "sources": [
+      {
+        "name": "DefiLlama holdersRevenue",
+        "type": "defillama",
+        "annual_usd": 11650512,
+        "note": "veCRV 分红"
+      }
+    ],
+    "calculation": "$11.65M / $355.56M = 3.28%"
+  }
 }

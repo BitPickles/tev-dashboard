@@ -74,5 +74,21 @@
     }
   ],
   "notes": "【重要更新】veCAKE 于 2025年4月23日 (UTC) 正式结束（Tokenomics 3.0）。Revenue Sharing (5%) 于 2025年5月7日结束，原分成收入现全部转为回购销毁，burn rate 从 10% 提升至 15%。当前 TEV 机制：全额回购销毁，无 ve 分红。",
-  "last_updated": "2026-02-04"
+  "last_updated": "2026-02-14",
+  "tev_data": {
+    "has_tev": true,
+    "tev_yield_percent": 6.33,
+    "annual_tev_usd": 32093402,
+    "market_cap_usd": 507012632,
+    "calculation_date": "2026-02-14",
+    "sources": [
+      {
+        "name": "DefiLlama holdersRevenue",
+        "type": "defillama",
+        "annual_usd": 32093402,
+        "note": "Tokenomics 3.0 回购销毁"
+      }
+    ],
+    "calculation": "$32.09M / $507.01M = 6.33%"
+  }
 }

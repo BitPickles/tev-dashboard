@@ -111,12 +111,28 @@
     }
   ],
   "analyst_notes": "## HYPE TEV 机制\n\n### 核心机制\n**Assistance Fund**: 99% 永续交易费用 → 自动回购 HYPE → **销毁**\n\n销毁的 HYPE 从 circulating + total supply 永久移除。\n\n### 费用分配\n| 来源 | 分配 |\n|------|------|\n| 永续交易费 99% | Assistance Fund (回购销毁) |\n| 永续交易费 1% | HLP Vault |\n| Builder 费用 | 全部给 Builder |\n\n### 数据来源\n| 数据 | 来源 |\n|------|------|\n| 累计回购 | Hyperliquid API `spotClearinghouseState` |\n| 每日明细 | DefiLlama `holdersRevenue` |\n| 价格/市值 | CoinGecko |\n\n### 关键地址\n**Assistance Fund**: `0xfefefefefefefefefefefefefefefefefefefefe`\n\n### 参考链接\n- [Fees 文档](https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees)\n- [API 文档](https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/info-endpoint)",
-  "last_updated": "2026-02-13",
+  "last_updated": "2026-02-14",
   "buyback_data": {
     "enabled": true,
     "data_file": "hype-buybacks.json",
     "af_address": "0xfefefefefefefefefefefefefefefefefefefefe",
     "api_endpoint": "https://api.hyperliquid.xyz/info",
     "note": "Assistance Fund 回购数据，HYPE 直接从 circulating + total supply 移除"
+  },
+  "tev_data": {
+    "has_tev": true,
+    "tev_yield_percent": 12.26,
+    "annual_tev_usd": 955951452,
+    "market_cap_usd": 7797841433,
+    "calculation_date": "2026-02-14",
+    "sources": [
+      {
+        "name": "DefiLlama holdersRevenue",
+        "type": "defillama",
+        "annual_usd": 955951452,
+        "note": "Assistance Fund 回购销毁"
+      }
+    ],
+    "calculation": "$955.95M / $7797.84M = 12.26%"
   }
 }

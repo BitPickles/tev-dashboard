@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-08T16:20:44.819Z",
+  "generated_at": "2026-02-14T00:00:00Z",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -20,7 +20,9 @@
       "confidence": "high",
       "tevStatus": "none",
       "tevRatio": 0,
-      "tvl": 20453052897
+      "tvl": 20453052897,
+      "tev_yield_percent": 0,
+      "market_cap_usd": 0
     },
     "eigenlayer": {
       "name": "EigenLayer",
@@ -30,7 +32,9 @@
       "confidence": "high",
       "tevStatus": "none",
       "tevRatio": 0,
-      "tvl": 9710144847
+      "tvl": 9710144847,
+      "tev_yield_percent": 0,
+      "market_cap_usd": 0
     },
     "etherfi": {
       "name": "ether.fi",
@@ -41,7 +45,9 @@
       "tevStatus": "active",
       "tevRatio": null,
       "tevRatioNote": "提现收入用于回购，TEV yield ~5.69%",
-      "tvl": 6394743902
+      "tvl": 6394743902,
+      "tev_yield_percent": 4.37,
+      "market_cap_usd": 343511106
     },
     "ethena": {
       "name": "Ethena",
@@ -52,7 +58,9 @@
       "tevStatus": "none",
       "tevRatio": 0,
       "tevRatioNote": "Token Holder Income=$0，Fee switch 未落地，回购是资本运作非经营分红",
-      "tvl": 6429000000
+      "tvl": 6429000000,
+      "tev_yield_percent": 0,
+      "market_cap_usd": 0
     },
     "morpho": {
       "name": "Morpho",
@@ -62,7 +70,9 @@
       "confidence": "high",
       "tevStatus": "none",
       "tevRatio": 0,
-      "tvl": 5964542718
+      "tvl": 5964542718,
+      "tev_yield_percent": 0,
+      "market_cap_usd": 0
     },
     "sky": {
       "name": "Sky",
@@ -72,7 +82,9 @@
       "confidence": "high",
       "tevStatus": "active",
       "tevRatio": 0.7,
-      "tvl": 5200000000
+      "tvl": 5200000000,
+      "tev_yield_percent": 6.21,
+      "market_cap_usd": 1595994273
     },
     "uniswap": {
       "name": "Uniswap",
@@ -83,7 +95,9 @@
       "tevStatus": "active",
       "tevRatio": 1,
       "tvl": 4500000000,
-      "note": "100% fee burn via Firepit + Unichain"
+      "note": "100% fee burn via Firepit + Unichain",
+      "tev_yield_percent": 1.13,
+      "market_cap_usd": 2234088105
     },
     "justlend": {
       "name": "JustLend",
@@ -94,7 +108,8 @@
       "tevStatus": "partial",
       "tevRatio": null,
       "tevRatioNote": "透明度低，具体比例无法验证",
-      "tvl": 3147428011
+      "tvl": 3147428011,
+      "tev_yield_percent": 0
     },
     "spark": {
       "name": "Spark",
@@ -104,7 +119,9 @@
       "confidence": "medium",
       "tevStatus": "none",
       "tevRatio": 0,
-      "tvl": 4899085111
+      "tvl": 4899085111,
+      "tev_yield_percent": 0,
+      "market_cap_usd": 0
     },
     "maple": {
       "name": "Maple",
@@ -115,7 +132,9 @@
       "tevStatus": "active",
       "tevRatio": 0.25,
       "tevRatioNote": "25%~33% 协议收入用于 SYRUP 回购，TEV yield ~1.18%",
-      "tvl": 2477341241
+      "tvl": 2477341241,
+      "tev_yield_percent": 1.18,
+      "market_cap_usd": 332824153
     },
     "pancakeswap": {
       "name": "PancakeSwap",
@@ -126,7 +145,9 @@
       "tevStatus": "active",
       "tevRatio": 0.6,
       "tvl": 2185582442,
-      "tevRatioNote": "veCAKE 已于 2025-04-23 结束，Tokenomics 3.0 回购销毁"
+      "tevRatioNote": "veCAKE 已于 2025-04-23 结束，Tokenomics 3.0 回购销毁",
+      "tev_yield_percent": 6.33,
+      "market_cap_usd": 507012632
     },
     "kamino": {
       "name": "Kamino",
@@ -136,7 +157,9 @@
       "confidence": "high",
       "tevStatus": "none",
       "tevRatio": 0,
-      "tvl": 1988205710
+      "tvl": 1988205710,
+      "tev_yield_percent": 0,
+      "market_cap_usd": 0
     },
     "curve": {
       "name": "Curve",
@@ -147,7 +170,9 @@
       "tevStatus": "active",
       "tevRatio": 0.5,
       "tvl": 1900000000,
-      "tevRatioNote": "crvUSD 分红给 veCRV 持有者（已从3CRV转换）"
+      "tevRatioNote": "crvUSD 分红给 veCRV 持有者（已从3CRV转换）",
+      "tev_yield_percent": 3.28,
+      "market_cap_usd": 355558659
     },
     "compound": {
       "name": "Compound",
@@ -157,7 +182,9 @@
       "confidence": "high",
       "tevStatus": "none",
       "tevRatio": 0,
-      "tvl": 1442440027
+      "tvl": 1442440027,
+      "tev_yield_percent": 0,
+      "market_cap_usd": 0
     },
     "jito": {
       "name": "Jito",
@@ -167,7 +194,9 @@
       "confidence": "medium",
       "tevStatus": "none",
       "tevRatio": 0,
-      "tvl": 1296426251
+      "tvl": 1296426251,
+      "tev_yield_percent": 0,
+      "market_cap_usd": 0
     },
     "gmx": {
       "name": "GMX",
@@ -177,7 +206,9 @@
       "confidence": "high",
       "tevStatus": "active",
       "tevRatio": 0.3,
-      "tvl": 312983643
+      "tvl": 312983643,
+      "tev_yield_percent": 24.13,
+      "market_cap_usd": 64744597
     },
     "pendle": {
       "name": "Pendle",
@@ -187,7 +218,9 @@
       "confidence": "high",
       "tevStatus": "active",
       "tevRatio": 0.8,
-      "tvl": 300000000
+      "tvl": 300000000,
+      "tev_yield_percent": 5.2,
+      "market_cap_usd": 190965986
     },
     "dydx": {
       "name": "dYdX",
@@ -197,7 +230,9 @@
       "confidence": "high",
       "tevStatus": "active",
       "tevRatio": 1,
-      "tvl": 189151204
+      "tvl": 189151204,
+      "tev_yield_percent": 5.33,
+      "market_cap_usd": 89864094
     },
     "bnb": {
       "name": "BNB",
@@ -205,10 +240,11 @@
       "icon": "https://coin-images.coingecko.com/coins/images/825/large/bnb-icon2_2x.png",
       "category": "cex",
       "confidence": "low",
-      "tevStatus": "active",
+      "tevStatus": "partial",
       "tevRatio": null,
       "tevRatioNote": "CEX 财务不公开，季度销毁但比例未知",
-      "tvl": 0
+      "tvl": 0,
+      "tev_yield_percent": 0
     },
     "okb": {
       "name": "OKB",
@@ -216,10 +252,11 @@
       "icon": "https://coin-images.coingecko.com/coins/images/4463/large/WeChat_Image_20220118095654.png",
       "category": "cex",
       "confidence": "low",
-      "tevStatus": "active",
+      "tevStatus": "partial",
       "tevRatio": null,
       "tevRatioNote": "CEX 财务不公开，声称30%收入但无法验证",
-      "tvl": 0
+      "tvl": 0,
+      "tev_yield_percent": 0
     },
     "bgb": {
       "name": "Bitget Token",
@@ -227,10 +264,11 @@
       "icon": "https://coin-images.coingecko.com/coins/images/11610/large/Bitget_logo.png",
       "category": "cex",
       "confidence": "low",
-      "tevStatus": "active",
+      "tevStatus": "partial",
       "tevRatio": null,
       "tevRatioNote": "CEX 财务不公开，销毁比例未知",
-      "tvl": 0
+      "tvl": 0,
+      "tev_yield_percent": 0
     },
     "hype": {
       "name": "Hyperliquid",
@@ -245,7 +283,9 @@
         "tev_yield_decimal": 0.1229,
         "trailing_30d_tev_usd": 79662621,
         "current_market_cap_usd": 7780000000
-      }
+      },
+      "tev_yield_percent": 12.26,
+      "market_cap_usd": 7797841433
     },
     "mnt": {
       "name": "Mantle",
@@ -256,7 +296,8 @@
       "tevStatus": "none",
       "tevRatio": null,
       "tevRatioNote": "MNT 主要用于治理，无明确的协议收入分配机制",
-      "tvl": 0
+      "tvl": 0,
+      "tev_yield_percent": 0
     },
     "aster": {
       "name": "Aster",
@@ -267,7 +308,9 @@
       "tevStatus": "active",
       "tevRatio": 0.9,
       "tevRatioNote": "TEV Yield 9.55%，高分配协议",
-      "tvl": 1091092274
+      "tvl": 1091092274,
+      "tev_yield_percent": 9.55,
+      "market_cap_usd": 1501563922
     }
   }
 }

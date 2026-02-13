@@ -53,7 +53,7 @@
     },
     {
       "name": "Aster Buyback Mechanism",
-      "type": "documentation", 
+      "type": "documentation",
       "url": "https://docs.asterdex.com/usdaster/buyback-mechanism"
     },
     {
@@ -74,5 +74,21 @@
       "date": "2025-11-14"
     }
   ],
-  "last_updated": "2026-02-13"
+  "last_updated": "2026-02-14",
+  "tev_data": {
+    "has_tev": true,
+    "tev_yield_percent": 9.55,
+    "annual_tev_usd": 143398020,
+    "market_cap_usd": 1501563922,
+    "calculation_date": "2026-02-14",
+    "sources": [
+      {
+        "name": "DefiLlama holdersRevenue",
+        "type": "defillama",
+        "annual_usd": 143398020,
+        "note": "60-80% 手续费回购"
+      }
+    ],
+    "calculation": "$143.40M / $1501.56M = 9.55%"
+  }
 }

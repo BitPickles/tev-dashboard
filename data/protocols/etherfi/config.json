@@ -91,5 +91,21 @@
     }
   ],
   "notes": "ether.fi 拥有完善的 TEV 体系：(1) 部分提现收入回购 ETHFI 分配给质押者；(2) $50M 国库回购额度。多个 DAO 提案通过，链上完全透明。⚠️ TEV Yield 计算说明：年化回购约 $15M / 代币市值约 $6亿 ≈ 2.5%（非67.48%，原数据计算错误）。Foundation Multisig: 0x7A6A41F353B3002751d94118aA7f4935dA39bB53。",
-  "last_updated": "2026-02-05"
+  "last_updated": "2026-02-14",
+  "tev_data": {
+    "has_tev": true,
+    "tev_yield_percent": 4.37,
+    "annual_tev_usd": 15000000,
+    "market_cap_usd": 343511106,
+    "calculation_date": "2026-02-14",
+    "sources": [
+      {
+        "name": "DefiLlama holdersRevenue",
+        "type": "defillama",
+        "annual_usd": 15000000,
+        "note": "提现收入回购"
+      }
+    ],
+    "calculation": "$15.00M / $343.51M = 4.37%"
+  }
 }

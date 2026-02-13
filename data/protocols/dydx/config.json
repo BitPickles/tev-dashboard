@@ -73,5 +73,21 @@
     }
   ],
   "analyst_notes": "【2026-02-05 调研修正 - 重要】\n\n## 数据错误修正\n\n### 问题 1：流通供应量错误\n- ❌ 旧数据：29.6M DYDX (以太坊上的旧代币)\n- ✅ 正确：大部分代币已迁移到 dYdX Chain\n- ✅ 正确市值：~$90M（从 CoinGecko dydx-chain 获取）\n\n### 问题 2：TEV 机制已变更\n- ❌ 旧机制：100% 交易费用分配给 stakers\n- ✅ 新机制：**75% 协议净收入用于 DYDX 回购**\n- 来源：DefiLlama tokenRights 数据\n\n### 正确 TEV Yield 计算\n- 30天 holders revenue: $381,311\n- 年化: ~$4.58M\n- 市值: ~$90M\n- **TEV Yield ≈ 5.1%**\n\n### 为什么前端可能显示夸张数值？\n如果前端使用了以太坊上的 circulating supply ($3.3M 市值)，则：\n- 错误计算: $4.58M / $3.3M = **139%** ❌\n- 正确计算: $4.58M / $90M = **5.1%** ✅\n\n### 建议\n1. 前端需要使用 CoinGecko 的 dydx-chain ID 获取正确市值\n2. 更新 TEV 机制描述为 buyback\n3. 置信度降为 medium，因为需要进一步验证回购执行情况",
-  "last_updated": "2026-02-05"
+  "last_updated": "2026-02-14",
+  "tev_data": {
+    "has_tev": true,
+    "tev_yield_percent": 5.33,
+    "annual_tev_usd": 4793064,
+    "market_cap_usd": 89864094,
+    "calculation_date": "2026-02-14",
+    "sources": [
+      {
+        "name": "DefiLlama holdersRevenue",
+        "type": "defillama",
+        "annual_usd": 4793064,
+        "note": "100% 费用分配给质押者"
+      }
+    ],
+    "calculation": "$4.79M / $89.86M = 5.33%"
+  }
 }

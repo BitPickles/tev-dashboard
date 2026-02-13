@@ -118,5 +118,21 @@
     }
   ],
   "analyst_notes": "【2026-02-05 调研更新】\n\n1. UNIfication 提案已通过执行，fee switch 于 2025-12-28 开启\n\n2. 销毁机制：\n   - TokenJar 收集所有链上的协议费用\n   - Firepit 合约执行销毁（发送至 0xdead）\n   - Mainnet Firepit: 0x0D5Cd355e2aBEB8fb1552F56c965B867346d6721\n   - 阈值：每次 release 需 2000 UNI\n\n3. 收入来源（已启用）:\n   - v2 协议费: 0.05%（已启用）\n   - v3 协议费: 1/4~1/6 of LP fee（部分池已启用）\n   - Unichain sequencer 收入 85%\n\n4. 收入来源（规划中）:\n   - v4 协议费\n   - PFDA (MEV 内化)\n   - Aggregator hooks\n\n5. 年化协议收入规模：\n   - Uniswap 年化费用 $1B+，假设 10-15% 归协议 → 约 $100M-$150M/年\n   - Unichain 年化 sequencer 收入约 $7.5M，85% 约 $6.4M\n\n6. 市值数据：流通市值约 $2.3B，假设年化 TEV $100M，yield 约 4.3%",
-  "last_updated": "2026-02-05"
+  "last_updated": "2026-02-14",
+  "tev_data": {
+    "has_tev": true,
+    "tev_yield_percent": 1.13,
+    "annual_tev_usd": 25323000,
+    "market_cap_usd": 2234088105,
+    "calculation_date": "2026-02-14",
+    "sources": [
+      {
+        "name": "DefiLlama holdersRevenue",
+        "type": "defillama",
+        "annual_usd": 25323000,
+        "note": "Firepit + Unichain fee burn"
+      }
+    ],
+    "calculation": "$25.32M / $2234.09M = 1.13%"
+  }
 }

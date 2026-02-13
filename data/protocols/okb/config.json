@@ -21,7 +21,7 @@
       "name": "Quarterly Buy-Back & Burn",
       "description": "OKX 用平台收入的 30% 回购并销毁 OKB",
       "status": "active",
-      "ratio": 0.30,
+      "ratio": 0.3,
       "frequency": "quarterly",
       "source": {
         "type": "official",
@@ -108,5 +108,13 @@
     "OKB 30% 回购销毁比例是否为最新政策？",
     "是否需要整理历史季度销毁数据？"
   ],
-  "last_updated": "2026-02-05"
+  "last_updated": "2026-02-14",
+  "tev_data": {
+    "has_tev": true,
+    "tev_yield_percent": 0,
+    "annual_tev_usd": 0,
+    "calculation_date": "2026-02-14",
+    "note": "声称30%收入回购销毁，透明度低",
+    "sources": []
+  }
 }
