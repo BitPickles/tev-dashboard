@@ -299,10 +299,12 @@
     }
     function sortProtocols(arr, f, d) {
       return [...arr].sort((a, b) => {
-        // 1. 没有 TEV 的排后面 (tevStatus === 'none')
-        const aHasTev = a.tevStatus !== 'none' ? 1 : 0;
-        const bHasTev = b.tevStatus !== 'none' ? 1 : 0;
-        if (bHasTev !== aHasTev) return bHasTev - aHasTev;
+        // 1. 有 tev_yield > 0 的排前面，= 0 的排后面
+        const aYield = a.metrics?.tev_yield_decimal || 0;
+        const bYield = b.metrics?.tev_yield_decimal || 0;
+        const aHasYield = aYield > 0 ? 1 : 0;
+        const bHasYield = bYield > 0 ? 1 : 0;
+        if (bHasYield !== aHasYield) return bHasYield - aHasYield;
         
         // 2. 按代币市值排序
         const aMcap = a.metrics?.current_market_cap_usd || a.latest_record?.market_cap_usd || 0;
