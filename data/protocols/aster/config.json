@@ -29,7 +29,11 @@
       "type": "buyback_burn",
       "name": "销毁机制",
       "description": "部分回购的 ASTER 会被销毁至 0xdead 地址，减少流通供应",
-      "status": "active"
+      "status": "active",
+      "source": {
+        "title": "BscScan Burn Address",
+        "url": "https://bscscan.com/token/0x000Ae314E2A2172a039B26378814C252734f556A?a=0x000000000000000000000000000000000000dead"
+      }
     }
   ],
   "tev_summary": {
