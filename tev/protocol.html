@@ -12,6 +12,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../indicators/css/common.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2"></script>
   <script src="../indicators/js/chart-utils.js"></script>
 </head>
 <body>
@@ -92,6 +94,17 @@
       <div class="section" id="buyback-chart-section" style="display: none;">
         <div class="section-title"><span class="icon">💰</span><span data-i18n="section.buybackData">回购数据</span></div>
         <div class="chart-container" style="height:400px;"><div class="chart-canvas-wrap"><canvas id="buyback-activity-chart"></canvas></div></div>
+        <div class="chart-hint" style="text-align:center;color:var(--text-tertiary);font-size:11px;margin-top:8px;" data-i18n="chart.zoomHint">🖱️ 滚轮缩放 · 拖动平移 · 双击重置</div>
+        
+        <div class="buyback-progress-container" id="buyback-progress-section" style="margin-top:24px;">
+          <div class="burn-progress-header"><span data-i18n="buyback.progress">回购进度</span><span id="buyback-progress-text">—</span></div>
+          <div class="burn-progress-bar"><div class="burn-progress-fill" id="buyback-progress-fill" style="background:linear-gradient(90deg,#22c55e,#16a34a);"></div></div>
+          <div class="burn-progress-stats">
+            <div class="burn-stat"><span class="burn-stat-value" id="buyback-total">—</span><span class="burn-stat-label" data-i18n="buyback.totalBought">已回购</span></div>
+            <div class="burn-stat"><span class="burn-stat-value" id="buyback-usd">—</span><span class="burn-stat-label" data-i18n="buyback.totalUsd">回购价值</span></div>
+            <div class="burn-stat"><span class="burn-stat-value" id="buyback-supply">1B</span><span class="burn-stat-label" data-i18n="buyback.totalSupply">代币总量</span></div>
+          </div>
+        </div>
       </div>
 
       <div class="section"><div class="section-title"><span class="icon">⚙️</span><span data-i18n="section.tevMechanisms">TEV 机制详情</span></div><div id="mechanisms-container"></div></div>
@@ -104,8 +117,8 @@
 
   <script>
     const i18n = {
-      zh: { 'nav.dashboard': '仪表盘', 'loading': '加载中...', 'section.tevSummary': 'TEV 概览', 'section.tevHistory': 'TEV 历史记录', 'section.buybackAddresses': '回购地址', 'section.tevMechanisms': 'TEV 机制详情', 'section.dataSources': '数据来源', 'section.notes': '分析师备注', 'buyback.current': '当前阶段', 'buyback.historical': '历史阶段', 'buyback.legacy': '历史钱包', 'buyback.disposal': '处置地址', 'buyback.autoDailyBuyback': '自动每日回购', 'buyback.strategicReserve': '战略回购储备', 'buyback.burnAddress': '销毁地址', 'buyback.airdropLock': '空投锁仓', 'section.buybackData': '回购数据', 'chart.totalTev': '累计 TEV', 'chart.records': '记录数', 'chart.avgMonthly': '月均 TEV', 'chart.period': '数据周期', 'chart.cumulative': '累计 TEV', 'tev.feeSwitch': '费用开关', 'tev.buybacks': '回购', 'tev.dividends': '分红', 'tev.burns': '销毁', 'tev.confidence': '可信度', 'footer.lastUpdated': '最后更新', 'status.active': '活跃', 'status.planned': '计划中', 'status.inactive': '未激活', 'status.ON': '已开启', 'status.OFF': '未开启', 'status.PARTIAL': '部分', 'status.NONE': '无', 'status.ACTIVE': '活跃', 'noTev.title': '该协议目前没有 TEV 机制', 'noTev.desc': '代币仅用于治理，协议收入未分配给代币持有者', 'mechanism.type.buyback': '回购', 'mechanism.type.buyback_burn': '回购销毁', 'mechanism.type.staking_reward': '质押奖励', 'mechanism.type.fee_sharing': '费用分成', 'mechanism.type.ve_distribution': 've 分配', 'mechanism.type.airdrop': '空投', 'source.governance': '治理', 'source.documentation': '文档', 'source.report': '报告', 'source.api': 'API', 'source.onchain': '链上', 'confidence.high': '高', 'confidence.medium': '中', 'confidence.low': '低', 'burn.progress': '销毁进度', 'burn.totalBurned': '已销毁', 'burn.remaining': '剩余供应', 'burn.target': '目标供应' },
-      en: { 'nav.dashboard': 'Dashboard', 'loading': 'Loading...', 'section.tevSummary': 'TEV Summary', 'section.tevHistory': 'TEV History', 'section.buybackAddresses': 'Buyback Addresses', 'section.tevMechanisms': 'TEV Mechanisms', 'section.dataSources': 'Data Sources', 'section.notes': 'Analyst Notes', 'buyback.current': 'Current Stage', 'buyback.historical': 'Historical Stage', 'buyback.legacy': 'Legacy Wallets', 'buyback.disposal': 'Disposal Addresses', 'buyback.autoDailyBuyback': 'Auto Daily Buyback', 'buyback.strategicReserve': 'Strategic Reserve', 'buyback.burnAddress': 'Burn Address', 'buyback.airdropLock': 'Airdrop Lock', 'section.buybackData': 'Buyback Data', 'chart.totalTev': 'Total TEV', 'chart.records': 'Records', 'chart.avgMonthly': 'Avg Monthly', 'chart.period': 'Period', 'chart.cumulative': 'Cumulative TEV', 'tev.feeSwitch': 'Fee Switch', 'tev.buybacks': 'Buybacks', 'tev.dividends': 'Dividends', 'tev.burns': 'Burns', 'tev.confidence': 'Confidence', 'footer.lastUpdated': 'Last Updated', 'status.active': 'Active', 'status.planned': 'Planned', 'status.inactive': 'Inactive', 'status.ON': 'ON', 'status.OFF': 'OFF', 'status.PARTIAL': 'Partial', 'status.NONE': 'None', 'status.ACTIVE': 'Active', 'noTev.title': 'No TEV Mechanisms', 'noTev.desc': 'Token is governance-only, protocol revenue not distributed to holders', 'mechanism.type.buyback': 'Buyback', 'mechanism.type.buyback_burn': 'Buyback & Burn', 'mechanism.type.staking_reward': 'Staking Reward', 'mechanism.type.fee_sharing': 'Fee Sharing', 'mechanism.type.ve_distribution': 've Distribution', 'mechanism.type.airdrop': 'Airdrop', 'source.governance': 'Governance', 'source.documentation': 'Docs', 'source.report': 'Report', 'source.api': 'API', 'source.onchain': 'On-chain', 'confidence.high': 'High', 'confidence.medium': 'Medium', 'confidence.low': 'Low', 'burn.progress': 'Burn Progress', 'burn.totalBurned': 'Total Burned', 'burn.remaining': 'Remaining Supply', 'burn.target': 'Target Supply' }
+      zh: { 'nav.dashboard': '仪表盘', 'loading': '加载中...', 'section.tevSummary': 'TEV 概览', 'section.tevHistory': 'TEV 历史记录', 'section.buybackAddresses': '回购地址', 'section.tevMechanisms': 'TEV 机制详情', 'section.dataSources': '数据来源', 'section.notes': '分析师备注', 'buyback.current': '当前阶段', 'buyback.historical': '历史阶段', 'buyback.legacy': '历史钱包', 'buyback.disposal': '处置地址', 'buyback.autoDailyBuyback': '自动每日回购', 'buyback.strategicReserve': '战略回购储备', 'buyback.burnAddress': '销毁地址', 'buyback.airdropLock': '空投锁仓', 'buyback.progress': '回购进度', 'buyback.totalBought': '已回购', 'buyback.totalUsd': '回购价值', 'buyback.totalSupply': '代币总量', 'section.buybackData': '回购数据', 'chart.totalTev': '累计 TEV', 'chart.records': '记录数', 'chart.avgMonthly': '月均 TEV', 'chart.period': '数据周期', 'chart.cumulative': '累计 TEV', 'chart.zoomHint': '🖱️ 滚轮缩放 · 拖动平移 · 双击重置', 'tev.feeSwitch': '费用开关', 'tev.buybacks': '回购', 'tev.dividends': '分红', 'tev.burns': '销毁', 'tev.confidence': '可信度', 'footer.lastUpdated': '最后更新', 'status.active': '活跃', 'status.planned': '计划中', 'status.inactive': '未激活', 'status.ON': '已开启', 'status.OFF': '未开启', 'status.PARTIAL': '部分', 'status.NONE': '无', 'status.ACTIVE': '活跃', 'noTev.title': '该协议目前没有 TEV 机制', 'noTev.desc': '代币仅用于治理，协议收入未分配给代币持有者', 'mechanism.type.buyback': '回购', 'mechanism.type.buyback_burn': '回购销毁', 'mechanism.type.staking_reward': '质押奖励', 'mechanism.type.fee_sharing': '费用分成', 'mechanism.type.ve_distribution': 've 分配', 'mechanism.type.airdrop': '空投', 'source.governance': '治理', 'source.documentation': '文档', 'source.report': '报告', 'source.api': 'API', 'source.onchain': '链上', 'confidence.high': '高', 'confidence.medium': '中', 'confidence.low': '低', 'burn.progress': '销毁进度', 'burn.totalBurned': '已销毁', 'burn.remaining': '剩余供应', 'burn.target': '目标供应' },
+      en: { 'nav.dashboard': 'Dashboard', 'loading': 'Loading...', 'section.tevSummary': 'TEV Summary', 'section.tevHistory': 'TEV History', 'section.buybackAddresses': 'Buyback Addresses', 'section.tevMechanisms': 'TEV Mechanisms', 'section.dataSources': 'Data Sources', 'section.notes': 'Analyst Notes', 'buyback.current': 'Current Stage', 'buyback.historical': 'Historical Stage', 'buyback.legacy': 'Legacy Wallets', 'buyback.disposal': 'Disposal Addresses', 'buyback.autoDailyBuyback': 'Auto Daily Buyback', 'buyback.strategicReserve': 'Strategic Reserve', 'buyback.burnAddress': 'Burn Address', 'buyback.airdropLock': 'Airdrop Lock', 'buyback.progress': 'Buyback Progress', 'buyback.totalBought': 'Total Bought', 'buyback.totalUsd': 'Total Value', 'buyback.totalSupply': 'Total Supply', 'section.buybackData': 'Buyback Data', 'chart.totalTev': 'Total TEV', 'chart.records': 'Records', 'chart.avgMonthly': 'Avg Monthly', 'chart.period': 'Period', 'chart.cumulative': 'Cumulative TEV', 'chart.zoomHint': '🖱️ Scroll to zoom · Drag to pan · Double-click to reset', 'tev.feeSwitch': 'Fee Switch', 'tev.buybacks': 'Buybacks', 'tev.dividends': 'Dividends', 'tev.burns': 'Burns', 'tev.confidence': 'Confidence', 'footer.lastUpdated': 'Last Updated', 'status.active': 'Active', 'status.planned': 'Planned', 'status.inactive': 'Inactive', 'status.ON': 'ON', 'status.OFF': 'OFF', 'status.PARTIAL': 'Partial', 'status.NONE': 'None', 'status.ACTIVE': 'Active', 'noTev.title': 'No TEV Mechanisms', 'noTev.desc': 'Token is governance-only, protocol revenue not distributed to holders', 'mechanism.type.buyback': 'Buyback', 'mechanism.type.buyback_burn': 'Buyback & Burn', 'mechanism.type.staking_reward': 'Staking Reward', 'mechanism.type.fee_sharing': 'Fee Sharing', 'mechanism.type.ve_distribution': 've Distribution', 'mechanism.type.airdrop': 'Airdrop', 'source.governance': 'Governance', 'source.documentation': 'Docs', 'source.report': 'Report', 'source.api': 'API', 'source.onchain': 'On-chain', 'confidence.high': 'High', 'confidence.medium': 'Medium', 'confidence.low': 'Low', 'burn.progress': 'Burn Progress', 'burn.totalBurned': 'Total Burned', 'burn.remaining': 'Remaining Supply', 'burn.target': 'Target Supply' }
     };
     let currentLang = 'zh';
     const t = k => i18n[currentLang][k] || k;
@@ -195,37 +208,53 @@
         
         document.getElementById('buyback-chart-section').style.display = 'block';
         
+        // Calculate totals for progress bar
+        const totalAster = dailyData.reduce((s, d) => s + (d.aster || 0), 0);
+        const totalUsd = dailyData.reduce((s, d) => s + (d.usd || 0), 0);
+        const totalSupply = data.total_supply || 1e9; // 1 billion default
+        const progress = (totalAster / totalSupply) * 100;
+        
+        // Update progress bar
+        document.getElementById('buyback-progress-fill').style.width = `${Math.min(progress, 100)}%`;
+        document.getElementById('buyback-progress-fill').textContent = `${progress.toFixed(2)}%`;
+        document.getElementById('buyback-progress-text').textContent = `${(totalAster / 1e6).toFixed(2)}M / ${(totalSupply / 1e9).toFixed(0)}B (${progress.toFixed(2)}%)`;
+        document.getElementById('buyback-total').textContent = `${(totalAster / 1e6).toFixed(2)}M`;
+        document.getElementById('buyback-usd').textContent = fmtCurrency(totalUsd);
+        document.getElementById('buyback-supply').textContent = `${(totalSupply / 1e9).toFixed(0)}B`;
+        
         const ctx = document.getElementById('buyback-activity-chart').getContext('2d');
         if (buybackChart) buybackChart.destroy();
         
-        const labels = dailyData.map(d => d.date);
-        const usdData = dailyData.map(d => d.usd);
-        const asterData = dailyData.map(d => d.aster);
+        // Prepare data with Date objects for time scale
+        const chartData = dailyData.map(d => ({ x: new Date(d.date), usd: d.usd, aster: d.aster }));
         
         buybackChart = new Chart(ctx, {
           type: 'bar',
           data: {
-            labels,
             datasets: [
               {
                 label: currentLang === 'zh' ? '回购金额 (USD)' : 'Buyback (USD)',
-                data: usdData,
+                data: chartData.map(d => ({ x: d.x, y: d.usd })),
                 backgroundColor: 'rgba(34,197,94,0.7)',
                 borderColor: '#22c55e',
                 borderWidth: 1,
                 borderRadius: 3,
-                yAxisID: 'y'
+                yAxisID: 'y',
+                barPercentage: 0.8,
+                categoryPercentage: 0.9
               },
               {
                 label: currentLang === 'zh' ? '回购数量 (ASTER)' : 'Buyback (ASTER)',
-                data: asterData,
+                data: chartData.map(d => ({ x: d.x, y: d.aster })),
                 type: 'line',
                 borderColor: '#f59e0b',
                 backgroundColor: 'rgba(245,158,11,0.1)',
                 borderWidth: 2,
-                pointRadius: 2,
+                pointRadius: 1,
+                pointHoverRadius: 4,
                 fill: false,
-                yAxisID: 'y2'
+                yAxisID: 'y2',
+                tension: 0.1
               }
             ]
           },
@@ -240,21 +269,38 @@
                 titleColor: '#fafafa',
                 bodyColor: '#a1a1aa',
                 callbacks: {
-                  title: (items) => items[0].label,
+                  title: (items) => items[0].raw.x.toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US'),
                   label: (ctx) => {
-                    if (ctx.datasetIndex === 0) return ` ${fmtCurrency(ctx.raw)}`;
-                    return ` ${(ctx.raw/1e6).toFixed(2)}M ASTER`;
+                    if (ctx.datasetIndex === 0) return ` ${fmtCurrency(ctx.raw.y)}`;
+                    return ` ${(ctx.raw.y/1e6).toFixed(2)}M ASTER`;
                   }
+                }
+              },
+              zoom: {
+                pan: { enabled: true, mode: 'x' },
+                zoom: {
+                  wheel: { enabled: true },
+                  pinch: { enabled: true },
+                  mode: 'x',
+                  onZoomComplete: () => buybackChart.update('none')
                 }
               }
             },
             scales: {
-              x: { grid: { display: false }, ticks: { color: '#71717a', maxRotation: 45, font: { size: 9 } } },
+              x: {
+                type: 'time',
+                time: { unit: 'day', displayFormats: { day: 'MM-dd' } },
+                grid: { display: false },
+                ticks: { color: '#71717a', maxRotation: 45, font: { size: 9 }, maxTicksLimit: 15 }
+              },
               y: { position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#22c55e', callback: v => '$' + (v/1e3).toFixed(0) + 'K' }, title: { display: true, text: 'USD', color: '#22c55e' } },
               y2: { position: 'right', grid: { display: false }, ticks: { color: '#f59e0b', callback: v => (v/1e6).toFixed(1) + 'M' }, title: { display: true, text: 'ASTER', color: '#f59e0b' } }
             }
           }
         });
+        
+        // Double-click to reset zoom
+        ctx.canvas.ondblclick = () => buybackChart.resetZoom();
       } catch (e) { console.log(`No buyback data for ${pid}:`, e.message); }
     }
 
