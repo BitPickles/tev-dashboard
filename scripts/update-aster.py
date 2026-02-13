@@ -1,325 +1,312 @@
 #!/usr/bin/env python3
 """
-Aster Buyback Daily Update Script
-每日更新 Aster 回购数据
+Aster Buyback 增量更新脚本
 
-数据源：BscScan API 或 BSC RPC
-- 读取 Stage 6 回购钱包 ASTER 余额
-- 计算今日新增回购
-- 追加到 aster-buybacks.json
+核心逻辑：
+1. 读取上次同步状态 (last-sync.json)
+2. 只查询新数据 (Moralis API)
+3. 合并到历史数据
+4. 保存并更新同步状态
 
 用法：
-  python3 scripts/update-aster.py                    # 使用 BSC RPC
-  python3 scripts/update-aster.py --apikey YOUR_KEY  # 使用 BscScan API
-  BSCSCAN_API_KEY=xxx python3 scripts/update-aster.py
+  python3 scripts/update-aster.py          # 增量更新
+  python3 scripts/update-aster.py --sync   # 强制全量同步
 """
 
-import requests
+import subprocess
 import json
 import os
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 
-# BscScan API
-BSCSCAN_API = "https://api.bscscan.com/api"
-BSCSCAN_API_KEY = os.environ.get("BSCSCAN_API_KEY", "")
+# API Keys
+MORALIS_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6IjdmYWFmNTdkLTNiOWQtNGNhNS1hNGY3LTExZGI4Y2YyYzBlNiIsIm9yZ0lkIjoiNTAwNDkyIiwidXNlcklkIjoiNTE0OTg0IiwidHlwZUlkIjoiMjA4MzcyMWEtZmJjMC00NzQzLWEzNGItNGEyYmFlY2ExNTNlIiwidHlwZSI6IlBST0pFQ1QiLCJpYXQiOjE3NzA5OTIwNTMsImV4cCI6NDkyNjc1MjA1M30.Ef1yoypuIgSdnMMFnB9aFaDX6ILinqWuchJ8npxEZrA"
 
-# BSC 公共 RPC
-BSC_RPC = "https://bsc-dataseed.binance.org/"
+# Token and Wallets
+ASTER_TOKEN = "0x000ae314e2a2172a039b26378814c252734f556a"
+STAGE5_WALLET = "0x4786927333c0ba8ab27ca41361adf33148c5301e"
+STAGE6_WALLET = "0x664827c71193018d7843f0d0f41a5d0d6dcebe0f"
 
-# ASTER token contract on BSC
-ASTER_CONTRACT = "0x000Ae314E2A2172a039B26378814C252734f556A"
-
-# Stage 6 回购钱包 (当前活跃)
-STAGE6_AUTO = "0x664827c71193018D7843f0D0F41A5D0D6dcEBE0F"
-
-# 数据文件路径
+# Paths
 SCRIPT_DIR = Path(__file__).parent
-DATA_FILE = SCRIPT_DIR / "../data/aster-buybacks.json"
+DATA_DIR = SCRIPT_DIR / "../data"
+BUYBACKS_FILE = DATA_DIR / "aster-buybacks.json"
+ONCHAIN_FILE = DATA_DIR / "aster-onchain.json"
+SYNC_STATE_FILE = DATA_DIR / "aster-last-sync.json"
+
+# Stage 1-4 constants (historical, not changing)
+STAGE14_TOTAL_ASTER = 143000000
+STAGE14_TOTAL_USD = 214000000
+STAGE14_DAYS = 56
+STAGE14_START = "2025-10-28"
+STAGE14_END = "2025-12-22"
 
 
-def get_token_balance_rpc(address: str, contract: str) -> float:
-    """使用 BSC RPC 获取代币余额 (ERC20 balanceOf)"""
-    # balanceOf(address) function signature: 0x70a08231
-    # Pad address to 32 bytes
-    padded_address = address.lower().replace("0x", "").zfill(64)
-    data = f"0x70a08231{padded_address}"
+def run_curl(url: str, headers: dict = None) -> dict:
+    """使用 curl 发送请求（避免 Python SSL 问题）"""
+    cmd = ["curl", "-s", url]
+    if headers:
+        for k, v in headers.items():
+            cmd.extend(["-H", f"{k}: {v}"])
     
-    payload = {
-        "jsonrpc": "2.0",
-        "method": "eth_call",
-        "params": [{"to": contract, "data": data}, "latest"],
-        "id": 1
-    }
-    
-    try:
-        resp = requests.post(BSC_RPC, json=payload, timeout=15)
-        result = resp.json()
-        if "result" in result and result["result"] != "0x":
-            balance_hex = result["result"]
-            return int(balance_hex, 16) / 1e18
-        else:
-            print(f"⚠️ RPC error: {result.get('error', 'no result')}")
-    except Exception as e:
-        print(f"❌ RPC request failed: {e}")
-    return 0
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    if result.returncode == 0:
+        return json.loads(result.stdout)
+    return {}
 
 
-def get_token_balance_bscscan(address: str, contract: str, apikey: str = "") -> float:
-    """使用 BscScan API 获取代币余额"""
-    params = {
-        "module": "account",
-        "action": "tokenbalance",
-        "address": address,
-        "contractaddress": contract,
-        "tag": "latest"
-    }
-    if apikey:
-        params["apikey"] = apikey
-        
-    try:
-        resp = requests.get(BSCSCAN_API, params=params, timeout=15)
-        data = resp.json()
-        if data.get("status") == "1":
-            return int(data.get("result", 0)) / 1e18
-        else:
-            print(f"⚠️ BscScan API error: {data.get('message', 'unknown')}")
-    except Exception as e:
-        print(f"❌ BscScan request failed: {e}")
-    return 0
-
-
-def get_token_balance(address: str, contract: str) -> float:
-    """获取地址的代币余额（优先 RPC，失败则用 BscScan）"""
-    # 先尝试 RPC (免费无限制)
-    balance = get_token_balance_rpc(address, contract)
-    if balance > 0:
-        return balance
-    
-    # 再尝试 BscScan API
-    if BSCSCAN_API_KEY:
-        print("   Trying BscScan API with key...")
-        return get_token_balance_bscscan(address, contract, BSCSCAN_API_KEY)
-    
-    return 0
-
-
-def get_aster_price() -> float:
-    """获取 ASTER 当前价格 (USD)"""
-    try:
-        resp = requests.get(
-            "https://api.coingecko.com/api/v3/simple/price",
-            params={"ids": "aster-2", "vs_currencies": "usd"},
-            timeout=10
-        )
-        data = resp.json()
-        return data.get("aster-2", {}).get("usd", 0.55)
-    except Exception as e:
-        print(f"⚠️ Price fetch failed, using default: {e}")
-        return 0.55
-
-
-def get_historical_prices(days: int = 30) -> dict:
-    """获取 ASTER 历史价格 (CoinGecko)"""
-    try:
-        resp = requests.get(
-            "https://api.coingecko.com/api/v3/coins/aster-2/market_chart",
-            params={"vs_currency": "usd", "days": days},
-            timeout=15
-        )
-        data = resp.json()
-        prices = data.get("prices", [])
-        
-        # 转换为 {date: price} 格式
-        price_map = {}
-        for ts, price in prices:
-            date = datetime.fromtimestamp(ts / 1000).strftime("%Y-%m-%d")
-            price_map[date] = price  # 同一天可能有多个点，取最后一个
-        
-        return price_map
-    except Exception as e:
-        print(f"⚠️ Historical prices fetch failed: {e}")
-        return {}
-
-
-def load_data() -> dict:
-    """加载现有数据"""
-    if DATA_FILE.exists():
-        with open(DATA_FILE, "r") as f:
+def load_sync_state() -> dict:
+    """加载同步状态"""
+    if SYNC_STATE_FILE.exists():
+        with open(SYNC_STATE_FILE) as f:
             return json.load(f)
+    return {"last_date": None, "last_block": None}
+
+
+def save_sync_state(state: dict):
+    """保存同步状态"""
+    state["updated_at"] = datetime.now().isoformat()
+    with open(SYNC_STATE_FILE, "w") as f:
+        json.dump(state, f, indent=2)
+
+
+def load_onchain_data() -> list:
+    """加载链上数据"""
+    if ONCHAIN_FILE.exists():
+        with open(ONCHAIN_FILE) as f:
+            return json.load(f)
+    return []
+
+
+def save_onchain_data(data: list):
+    """保存链上数据"""
+    with open(ONCHAIN_FILE, "w") as f:
+        json.dump(data, f, indent=2)
+
+
+def fetch_transfers_since(wallet: str, stage: str, from_date: str = None, from_block: int = None) -> list:
+    """获取指定日期/区块后的新转入"""
+    print(f"   Fetching {stage} transfers since {from_date or from_block}...")
+    
+    transfers = []
+    cursor = None
+    page = 0
+    
+    while True:
+        page += 1
+        url = f"https://deep-index.moralis.io/api/v2.2/{wallet}/erc20/transfers?chain=bsc&contract_addresses%5B0%5D={ASTER_TOKEN}&limit=100"
+        if cursor:
+            url += f"&cursor={cursor}"
+        if from_block:
+            url += f"&from_block={from_block}"
+        
+        headers = {"X-API-Key": MORALIS_API_KEY}
+        data = run_curl(url, headers)
+        
+        if "result" not in data:
+            print(f"   ⚠️ API error: {data}")
+            break
+        
+        # 筛选转入（to_address == wallet）
+        for tx in data["result"]:
+            if tx["to_address"].lower() == wallet.lower():
+                tx_date = tx["block_timestamp"][:10]
+                
+                # 如果指定了 from_date，跳过更早的数据
+                if from_date and tx_date < from_date:
+                    continue
+                
+                amount = float(tx.get("value_decimal", 0) or 0)
+                if amount > 0:
+                    transfers.append({
+                        "date": tx_date,
+                        "amount": amount,
+                        "block": int(tx["block_number"]),
+                        "tx_hash": tx["transaction_hash"],
+                        "stage": stage
+                    })
+        
+        print(f"   Page {page}: {len(data['result'])} records")
+        
+        cursor = data.get("cursor")
+        if not cursor:
+            break
+        if page >= 50:
+            print("   Reached page limit")
+            break
+    
+    return transfers
+
+
+def aggregate_by_date(transfers: list, existing: list = None) -> list:
+    """按日期聚合，合并到现有数据"""
+    from collections import defaultdict
+    
+    # 现有数据转为字典
+    existing_dict = {}
+    if existing:
+        for r in existing:
+            existing_dict[r["date"]] = r
+    
+    # 聚合新数据
+    daily = defaultdict(lambda: {"aster": 0.0, "txs": 0, "stage": None, "max_block": 0})
+    for tx in transfers:
+        date = tx["date"]
+        daily[date]["aster"] += tx["amount"]
+        daily[date]["txs"] += 1
+        daily[date]["stage"] = tx["stage"]
+        daily[date]["max_block"] = max(daily[date]["max_block"], tx["block"])
+    
+    # 合并到现有
+    for date, d in daily.items():
+        if date in existing_dict:
+            # 更新现有（可能有新交易）
+            existing_dict[date]["aster"] = round(d["aster"], 2)
+            existing_dict[date]["txs"] = d["txs"]
+        else:
+            # 添加新日期
+            existing_dict[date] = {
+                "date": date,
+                "aster": round(d["aster"], 2),
+                "txs": d["txs"],
+                "stage": d["stage"],
+                "data_type": "onchain",
+                "source": "moralis"
+            }
+    
+    # 转回列表并排序
+    result = list(existing_dict.values())
+    result.sort(key=lambda x: x["date"])
+    return result
+
+
+def generate_stage14_data() -> list:
+    """生成 Stage 1-4 估算数据"""
+    from datetime import date, timedelta
+    
+    daily_aster = STAGE14_TOTAL_ASTER / STAGE14_DAYS
+    daily_usd = STAGE14_TOTAL_USD / STAGE14_DAYS
+    
+    start = date.fromisoformat(STAGE14_START)
+    result = []
+    
+    for i in range(STAGE14_DAYS):
+        d = start + timedelta(days=i)
+        result.append({
+            "date": d.isoformat(),
+            "aster": round(daily_aster),
+            "usd": round(daily_usd),
+            "stage": "1-4",
+            "data_type": "estimated",
+            "source": "Cryptopolitan"
+        })
+    
+    return result
+
+
+def merge_all_data(stage14: list, onchain: list) -> dict:
+    """合并所有数据到主文件"""
+    all_data = stage14 + onchain
+    
+    # 计算汇总
+    stage14_sum = sum(r["aster"] for r in all_data if r.get("stage") == "1-4")
+    stage5_sum = sum(r["aster"] for r in all_data if r.get("stage") == "stage5")
+    stage6_sum = sum(r["aster"] for r in all_data if r.get("stage") == "stage6")
+    
     return {
         "protocol": "aster",
         "ticker": "ASTER",
-        "total_supply": 1_000_000_000,
-        "daily_buybacks": [],
-        "stages": []
+        "total_supply": 1000000000,
+        "updated_at": datetime.now().isoformat(),
+        "summary": {
+            "total_buyback_aster": round(stage14_sum + stage5_sum + stage6_sum),
+            "stage14_aster": round(stage14_sum),
+            "stage14_usd": STAGE14_TOTAL_USD,
+            "stage5_aster": round(stage5_sum),
+            "stage6_aster": round(stage6_sum),
+            "total_days": len(all_data),
+            "note": "Stage 1-4 为估算 (Cryptopolitan), Stage 5-6 为链上真实数据 (Moralis API)"
+        },
+        "daily_buybacks": all_data
     }
-
-
-def save_data(data: dict):
-    """保存数据"""
-    data["updated_at"] = datetime.now().isoformat()
-    with open(DATA_FILE, "w") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-    print(f"✅ Saved to {DATA_FILE}")
-
-
-def get_last_balance(data: dict) -> tuple[str, float]:
-    """获取最后一条记录的日期和累计余额"""
-    daily = data.get("daily_buybacks", [])
-    if not daily:
-        return None, 0
-    
-    # 计算到最后日期的累计 ASTER
-    last_date = daily[-1]["date"]
-    cumulative = sum(d.get("aster", 0) for d in daily if d.get("stage") == "6")
-    return last_date, cumulative
-
-
-def sync_stage6_data(data: dict, current_balance: float, current_price: float) -> dict:
-    """
-    同步 Stage 6 数据：只记录累计总量，不伪造每日数据
-    
-    因为无法获取每日真实交易，只能记录：
-    - 阶段开始日期
-    - 当前累计 ASTER 总量
-    - 当前价格计算的 USD 价值
-    
-    Stage 6 开始日期: 2026-02-04
-    """
-    stage6_start = datetime(2026, 2, 4)
-    today = datetime.now()
-    today_str = today.strftime("%Y-%m-%d")
-    
-    # 计算 Stage 6 天数
-    days_since_start = (today - stage6_start).days + 1
-    
-    print(f"\n🔄 Syncing Stage 6 data...")
-    print(f"   Period: {stage6_start.strftime('%Y-%m-%d')} ~ {today_str} ({days_since_start} days)")
-    print(f"   Total ASTER: {current_balance:,.0f}")
-    print(f"   Current price: ${current_price:.4f}")
-    
-    total_usd = current_balance * current_price
-    print(f"   Total USD (at current price): ${total_usd:,.2f}")
-    
-    # 移除旧的 Stage 6 数据
-    data["daily_buybacks"] = [d for d in data.get("daily_buybacks", []) if d.get("stage") != "6"]
-    
-    # Stage 6 只记录一条汇总数据（按当前日期）
-    # 标记为汇总数据，图表可以特殊处理
-    data["daily_buybacks"].append({
-        "date": today_str,
-        "usd": round(total_usd, 2),
-        "aster": round(current_balance, 0),
-        "stage": "6",
-        "type": "cumulative",  # 标记为累计数据，非每日数据
-        "period_start": stage6_start.strftime("%Y-%m-%d"),
-        "period_days": days_since_start
-    })
-    
-    # 排序
-    data["daily_buybacks"].sort(key=lambda x: x["date"])
-    
-    return data
 
 
 def main():
     print("=" * 50)
-    print("Aster Buyback Daily Update")
+    print("Aster Buyback 增量更新")
     print(f"Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 50)
     
-    # 检查命令行参数
-    sync_mode = "--sync" in sys.argv
+    full_sync = "--sync" in sys.argv
     
-    # 加载现有数据
-    data = load_data()
-    today = datetime.now().strftime("%Y-%m-%d")
+    # 加载同步状态
+    state = load_sync_state()
+    print(f"\n📋 上次同步: {state.get('last_date', '无')}")
     
-    # 获取当前钱包余额
-    print(f"\n📊 Fetching Stage 6 wallet balance...")
-    current_balance = get_token_balance(STAGE6_AUTO, ASTER_CONTRACT)
-    print(f"   Current balance: {current_balance:,.0f} ASTER")
+    # 加载现有链上数据
+    onchain = load_onchain_data()
+    print(f"   现有数据: {len(onchain)} 天")
     
-    if current_balance == 0:
-        print("❌ Failed to fetch balance, aborting.")
-        return
-    
-    # 获取价格
-    print(f"\n💰 Fetching ASTER price...")
-    price = get_aster_price()
-    print(f"   Price: ${price:.4f}")
-    
-    # 检查 Stage 6 累计数据是否需要校正
-    stage6_cumulative = sum(
-        d.get("aster", 0) 
-        for d in data.get("daily_buybacks", []) 
-        if d.get("stage") == "6"
-    )
-    
-    diff = current_balance - stage6_cumulative
-    diff_pct = abs(diff / current_balance * 100) if current_balance else 0
-    
-    print(f"\n📋 Stage 6 data check:")
-    print(f"   Recorded: {stage6_cumulative:,.0f} ASTER")
-    print(f"   Actual: {current_balance:,.0f} ASTER")
-    print(f"   Diff: {diff:,.0f} ({diff_pct:.1f}%)")
-    
-    # 如果偏差超过 5% 或首次运行，执行同步
-    if diff_pct > 5 or sync_mode or stage6_cumulative == 0:
-        print(f"\n⚠️ Data discrepancy detected, syncing...")
-        data = sync_stage6_data(data, current_balance, price)
-    elif diff > 10000:
-        # 正常增量：有新回购
-        print(f"\n✅ New buyback detected: {diff:,.0f} ASTER")
+    if full_sync or not state.get("last_date"):
+        print("\n🔄 执行全量同步...")
         
-        # 检查今日是否已有数据
-        today_exists = any(d["date"] == today and d.get("stage") == "6" for d in data["daily_buybacks"])
+        # Stage 5
+        print("\n📊 Stage 5:")
+        s5_transfers = fetch_transfers_since(STAGE5_WALLET, "stage5")
+        print(f"   获取 {len(s5_transfers)} 笔交易")
         
-        if today_exists:
-            # 更新今日数据
-            for d in data["daily_buybacks"]:
-                if d["date"] == today and d.get("stage") == "6":
-                    d["aster"] = round(d["aster"] + diff, 0)
-                    d["usd"] = round(d["aster"] * price, 2)
-        else:
-            # 添加今日数据
-            data["daily_buybacks"].append({
-                "date": today,
-                "usd": round(diff * price, 2),
-                "aster": round(diff, 0),
-                "stage": "6"
-            })
-            data["daily_buybacks"].sort(key=lambda x: x["date"])
+        # Stage 6
+        print("\n📊 Stage 6:")
+        s6_transfers = fetch_transfers_since(STAGE6_WALLET, "stage6")
+        print(f"   获取 {len(s6_transfers)} 笔交易")
+        
+        all_transfers = s5_transfers + s6_transfers
+        onchain = aggregate_by_date(all_transfers)
+        
     else:
-        print(f"\n✅ Data is up to date, no changes needed.")
-        return
+        print("\n📊 增量更新...")
+        
+        # 只获取最新日期之后的数据
+        from_date = state["last_date"]
+        
+        # Stage 5 (如果还在活跃)
+        s5_transfers = fetch_transfers_since(STAGE5_WALLET, "stage5", from_date=from_date)
+        
+        # Stage 6
+        s6_transfers = fetch_transfers_since(STAGE6_WALLET, "stage6", from_date=from_date)
+        
+        new_transfers = s5_transfers + s6_transfers
+        print(f"\n   新增 {len(new_transfers)} 笔交易")
+        
+        if new_transfers:
+            onchain = aggregate_by_date(new_transfers, onchain)
     
-    # 更新汇总
-    total_aster = sum(d.get("aster", 0) for d in data["daily_buybacks"])
-    total_usd = sum(d.get("usd", 0) for d in data["daily_buybacks"])
+    # 保存链上数据
+    save_onchain_data(onchain)
     
-    data["summary"] = {
-        "total_buyback_usd": round(total_usd, 2),
-        "total_buyback_aster": round(total_aster, 0),
-        "total_days": len(data["daily_buybacks"]),
-        "start_date": data["daily_buybacks"][0]["date"] if data["daily_buybacks"] else today,
-        "end_date": today,
-        "data_sources": ["BSC RPC", "CoinGecko"]
-    }
+    # 更新同步状态
+    if onchain:
+        latest_date = max(r["date"] for r in onchain)
+        save_sync_state({"last_date": latest_date})
+        print(f"\n✅ 同步状态已更新: {latest_date}")
     
-    # 保存
-    save_data(data)
+    # 生成 Stage 1-4 数据
+    stage14 = generate_stage14_data()
     
-    # 输出摘要
-    print(f"\n📊 Total buybacks:")
-    print(f"   ASTER: {total_aster:,.0f}")
-    print(f"   USD: ${total_usd:,.2f}")
-    print(f"   Days: {len(data['daily_buybacks'])}")
+    # 合并并保存主文件
+    result = merge_all_data(stage14, onchain)
+    with open(BUYBACKS_FILE, "w") as f:
+        json.dump(result, f, indent=2, ensure_ascii=False)
     
-    progress = (total_aster / 1_000_000_000) * 100
-    print(f"\n🎯 Progress: {progress:.2f}% of total supply")
+    # 输出汇总
+    print(f"\n📊 汇总:")
+    print(f"   Stage 1-4: {result['summary']['stage14_aster']:,} ASTER (估算)")
+    print(f"   Stage 5: {result['summary']['stage5_aster']:,} ASTER (链上)")
+    print(f"   Stage 6: {result['summary']['stage6_aster']:,} ASTER (链上)")
+    print(f"   总计: {result['summary']['total_buyback_aster']:,} ASTER")
+    print(f"   占比: {result['summary']['total_buyback_aster'] / 1e9 * 100:.2f}%")
+    print(f"\n✅ 已保存到 {BUYBACKS_FILE}")
 
 
 if __name__ == "__main__":
