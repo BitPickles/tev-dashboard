@@ -437,12 +437,12 @@
       series.risk = chart.addLineSeries({ color: '#f59e0b', lineWidth: 1.5, priceScaleId: 'right', priceFormat: { type: 'price', precision: 2, minMove: 0.01 }, lastValueVisible: false, priceLineVisible: false, visible: false });
       series.risk.setData(riskDataArr);
 
-      // BTC Price series (from shared data)
+      // BTC Price series (from shared data, independent of BMRI date range)
       if (btcPriceData) {
-        const btcPriceChartData = bmriDataArr.map(d => {
-          const priceRecord = btcPriceData.history.find(p => p.date === d.time);
-          return { time: d.time, value: priceRecord?.price || null };
-        }).filter(d => d.value !== null);
+        const btcPriceChartData = btcPriceData.history.map(d => ({
+          time: d.date,
+          value: d.price
+        })).filter(d => d.value !== null);
         
         series.btcPrice = chart.addLineSeries({
           color: '#f59e0b',
@@ -456,15 +456,11 @@
         series.btcPrice.setData(btcPriceChartData);
       }
 
-      // Crypto Total Market Cap series
-      if (btcPriceData && marketcapData) {
-        const currentBtcD = bmriDataArr[bmriDataArr.length - 1].value;
-        const btcDValue = currentBtcD || 50;
-        const btcMcapData = marketcapData.filter(d => d.btc_mcap).map(d => ({ time: d.date, value: d.btc_mcap }));
-        const cryptoTotalMcapData = btcMcapData.map(d => ({
-          time: d.time,
-          value: btcDValue > 0 ? d.value / (btcDValue / 100) : 0
-        }));
+      // Crypto Total Market Cap series (use total_mcap directly from marketcap.json)
+      if (marketcapData) {
+        const cryptoTotalMcapData = marketcapData
+          .filter(d => d.total_mcap)
+          .map(d => ({ time: d.date, value: d.total_mcap }));
 
         series.cryptoTotalMcap = chart.addLineSeries({
           color: '#8b5cf6',
@@ -496,17 +492,13 @@
         const mc = marketcapData?.find(m => m.date === dateStr);
 
         const priceRecord = btcPriceData?.history.find(p => p.date === dateStr);
-        const currentBtcD = bmriDataArr[bmriDataArr.length - 1].value || 50;
-
         if (seriesVisible.bmri && d?.bmri !== undefined) { document.getElementById('tooltip-bmri').style.display = 'flex'; document.getElementById('tooltip-bmri-value').textContent = d.bmri.toFixed(1); } else { document.getElementById('tooltip-bmri').style.display = 'none'; }
         if (seriesVisible.rates && d?.rates !== undefined) { document.getElementById('tooltip-rates').style.display = 'flex'; document.getElementById('tooltip-rates-value').textContent = d.rates.toFixed(2); } else { document.getElementById('tooltip-rates').style.display = 'none'; }
         if (seriesVisible.liq && d?.liq !== undefined) { document.getElementById('tooltip-liq').style.display = 'flex'; document.getElementById('tooltip-liq-value').textContent = d.liq.toFixed(2); } else { document.getElementById('tooltip-liq').style.display = 'none'; }
         if (seriesVisible.risk && d?.risk !== undefined) { document.getElementById('tooltip-risk').style.display = 'flex'; document.getElementById('tooltip-risk-value').textContent = d.risk.toFixed(2); } else { document.getElementById('tooltip-risk').style.display = 'none'; }
         if (seriesVisible.btcPrice && priceRecord?.price) { document.getElementById('tooltip-btcPrice').style.display = 'flex'; document.getElementById('tooltip-btcPrice-value').textContent = '$' + priceRecord.price.toLocaleString(); } else { document.getElementById('tooltip-btcPrice').style.display = 'none'; }
-        if (seriesVisible.cryptoTotalMcap && mc?.btc_mcap) {
-          const btcDValue = currentBtcD || 50;
-          const totalMcap = btcDValue > 0 ? mc.btc_mcap / (btcDValue / 100) : 0;
-          document.getElementById('tooltip-cryptoTotalMcap').style.display = 'flex'; document.getElementById('tooltip-cryptoTotalMcap-value').textContent = formatMarketCap(totalMcap);
+        if (seriesVisible.cryptoTotalMcap && mc?.total_mcap) {
+          document.getElementById('tooltip-cryptoTotalMcap').style.display = 'flex'; document.getElementById('tooltip-cryptoTotalMcap-value').textContent = formatMarketCap(mc.total_mcap);
         } else { document.getElementById('tooltip-cryptoTotalMcap').style.display = 'none'; }
       });
     }
