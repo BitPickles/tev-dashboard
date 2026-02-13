@@ -103,9 +103,11 @@
         <div class="buyback-progress-container" id="buyback-progress-section" style="margin-top:24px;">
           <div class="burn-progress-header"><span data-i18n="buyback.progress">回购进度</span><span id="buyback-progress-text">—</span></div>
           <div class="burn-progress-bar"><div class="burn-progress-fill" id="buyback-progress-fill" style="background:linear-gradient(90deg,#22c55e,#16a34a);"></div></div>
-          <div class="burn-progress-stats">
+          <div class="burn-progress-stats" style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;">
             <div class="burn-stat"><span class="burn-stat-value" id="buyback-total">—</span><span class="burn-stat-label" data-i18n="buyback.totalBought">已回购</span></div>
             <div class="burn-stat"><span class="burn-stat-value" id="buyback-usd">—</span><span class="burn-stat-label" data-i18n="buyback.totalUsd">回购价值</span></div>
+            <div class="burn-stat"><span class="burn-stat-value" id="buyback-avg-price">—</span><span class="burn-stat-label">均价</span></div>
+            <div class="burn-stat"><span class="burn-stat-value" id="buyback-days">—</span><span class="burn-stat-label">天数</span></div>
             <div class="burn-stat"><span class="burn-stat-value" id="buyback-supply">1B</span><span class="burn-stat-label" data-i18n="buyback.totalSupply">代币总量</span></div>
           </div>
         </div>
@@ -243,6 +245,12 @@
         // USD display
         document.getElementById('buyback-usd').textContent = displayUsd > 0 ? fmtCurrency(displayUsd) : '—';
         document.getElementById('buyback-supply').textContent = `${(totalSupply / 1e9).toFixed(0)}B`;
+        
+        // Additional stats
+        const avgPrice = data.summary?.avg_price || (displayUsd / displayTotal);
+        const totalDays = data.summary?.total_days || dailyData.length;
+        document.getElementById('buyback-avg-price').textContent = avgPrice > 0 ? `$${avgPrice.toFixed(2)}` : '—';
+        document.getElementById('buyback-days').textContent = totalDays > 0 ? `${totalDays}` : '—';
         
         const ctx = document.getElementById('buyback-activity-chart').getContext('2d');
         if (buybackChart) buybackChart.destroy();
