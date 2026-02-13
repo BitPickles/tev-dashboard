@@ -12,7 +12,12 @@ const path = require('path');
 const CONFIG = {
   apiKey: 'BUWR46PIP7JVZK98IP7YRQARRSABIP3V92',
   chainId: 1,
-  factoryAddress: '0xCCccCcCAE7503Cac057829BF2811De42E16e0bD5',
+  // 所有 CCA Factory 合约地址（按部署时间排序）
+  factoryAddresses: [
+    '0x0000ccadf55c911a2fbc0bb9d2942aa77c6faa1d', // v1 - 44 auctions (包含 Aztec)
+    '0xcca110c1136b93eb113cceae3c25e52e180b32c9', // v2 - 4 auctions
+    '0xCCccCcCAE7503Cac057829BF2811De42E16e0bD5', // v3 - 1 auction (最新)
+  ],
   auctionCreatedTopic: '0x7ede475fad18ccf0039f2b956c4d43a8b4ed0853de4daaa8ae25299f331ae3b9',
   outputDir: path.resolve(__dirname, '../../data/cca'),
   // 函数选择器
@@ -143,6 +148,7 @@ async function getTokenInfo(address) {
     '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2': { symbol: 'WETH', name: 'Wrapped Ether', decimals: 18 },
     '0xcccc87d42db3d35018ecae712a0bc53e79d9cccc': { symbol: 'rCAP', name: 'CAP Redeemable Receipt Token', decimals: 18 },
     '0x6b175474e89094c44da98b954eedeac495271d0f': { symbol: 'DAI', name: 'Dai Stablecoin', decimals: 18 },
+    '0xa27ec0006e59f245217ff08cd52a7e8b169e62d2': { symbol: 'AZTEC', name: 'Aztec', decimals: 18 },
   };
   
   if (knownTokens[addr]) {
@@ -167,30 +173,46 @@ async function getLogs(address, topic0 = null, fromBlock = 0) {
   return await etherscanApi(params);
 }
 
-// 发现所有拍卖
+// 发现所有拍卖（扫描所有 Factory 合约）
 async function discoverAuctions() {
-  console.log('🔍 发现拍卖...');
-  const logs = await getLogs(CONFIG.factoryAddress, CONFIG.auctionCreatedTopic);
+  console.log('🔍 发现拍卖（扫描所有 Factory 合约）...');
   
   const auctions = [];
-  for (const log of logs) {
-    // 解析 AuctionCreated 事件
-    // topics[1] = auction address, topics[2] = token address
-    const auctionAddress = hexToAddress(log.topics[1]);
-    const tokenAddress = hexToAddress(log.topics[2]);
-    const creatorAddress = log.topics[3] ? hexToAddress(log.topics[3]) : null;
+  
+  for (const factoryAddress of CONFIG.factoryAddresses) {
+    console.log(`  📦 扫描 Factory: ${factoryAddress}`);
     
-    auctions.push({
-      address: auctionAddress,
-      tokenAddress,
-      creatorAddress,
-      blockNumber: parseInt(log.blockNumber, 16),
-      transactionHash: log.transactionHash,
-      timestamp: parseInt(log.timeStamp, 16)
-    });
-    
-    console.log(`  ✓ 发现拍卖: ${auctionAddress}`);
+    try {
+      const logs = await getLogs(factoryAddress, CONFIG.auctionCreatedTopic);
+      
+      for (const log of logs) {
+        // 解析 AuctionCreated 事件
+        // topics[1] = auction address, topics[2] = token address
+        const auctionAddress = hexToAddress(log.topics[1]);
+        const tokenAddress = hexToAddress(log.topics[2]);
+        const creatorAddress = log.topics[3] ? hexToAddress(log.topics[3]) : null;
+        
+        auctions.push({
+          address: auctionAddress,
+          tokenAddress,
+          creatorAddress,
+          factoryAddress: factoryAddress.toLowerCase(),
+          blockNumber: parseInt(log.blockNumber, 16),
+          transactionHash: log.transactionHash,
+          timestamp: parseInt(log.timeStamp, 16)
+        });
+        
+        console.log(`    ✓ 发现拍卖: ${auctionAddress}`);
+      }
+      
+      console.log(`    共 ${logs.length} 个拍卖`);
+    } catch (e) {
+      console.error(`    ❌ 扫描失败: ${e.message}`);
+    }
   }
+  
+  // 按时间排序（最新的在前）
+  auctions.sort((a, b) => b.timestamp - a.timestamp);
   
   return auctions;
 }

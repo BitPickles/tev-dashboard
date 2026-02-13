@@ -1,0 +1,52 @@
+{
+  "id": "0x340c12a5ef86fa214967250de722758158f50802",
+  "name": "TOKEN CCA",
+  "status": "graduated",
+  "token": {
+    "address": "0x796d6b2269275f8efc0bb68d07b907b65003bf5a",
+    "symbol": "TOKEN",
+    "name": "Unknown Token",
+    "decimals": 18,
+    "totalSupply": "20",
+    "totalSupplyHuman": "0.00"
+  },
+  "currency": {
+    "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6
+  },
+  "config": {
+    "startBlock": 24221640,
+    "endBlock": 24221660,
+    "claimBlock": 24221660,
+    "floorPriceQ96": "4294967296",
+    "floorPriceHuman": "0.00000005"
+  },
+  "metrics": {
+    "clearingPriceQ96": "0",
+    "clearingPriceHuman": "0",
+    "currencyRaised": "0",
+    "currencyRaisedHuman": "0.00",
+    "raisedUsd": 0,
+    "totalCleared": "0",
+    "totalClearedHuman": "0.00",
+    "bidCount": 0,
+    "bidders": 0,
+    "isGraduated": true
+  },
+  "progress": {
+    "currentBlock": 24449986,
+    "progressPercent": 100
+  },
+  "bids": [],
+  "checkpoints": [],
+  "timestamps": {
+    "createdAt": "2026-01-12T22:32:59.000Z",
+    "createdBlock": 24221640
+  },
+  "errors": [
+    "fundsRecipient: RPC error: execution reverted",
+    "tokensRecipient: RPC error: execution reverted"
+  ]
+}

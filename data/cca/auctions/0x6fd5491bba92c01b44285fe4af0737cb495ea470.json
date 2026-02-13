@@ -1,0 +1,65 @@
+{
+  "id": "0x6fd5491bba92c01b44285fe4af0737cb495ea470",
+  "name": "TOKEN CCA",
+  "status": "graduated",
+  "token": {
+    "address": "0xa6e7e7787376ff23ed6166706c9a8472a521ad1f",
+    "symbol": "TOKEN",
+    "name": "Unknown Token",
+    "decimals": 18,
+    "totalSupply": "20",
+    "totalSupplyHuman": "0.00"
+  },
+  "currency": {
+    "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6
+  },
+  "config": {
+    "startBlock": 24215563,
+    "endBlock": 24215583,
+    "claimBlock": 24215583,
+    "floorPriceQ96": "4294967296",
+    "floorPriceHuman": "0.00000005"
+  },
+  "metrics": {
+    "clearingPriceQ96": "4724464026",
+    "clearingPriceHuman": "0.00000006",
+    "currencyRaised": "0",
+    "currencyRaisedHuman": "0.00",
+    "raisedUsd": 0,
+    "totalCleared": "17",
+    "totalClearedHuman": "0.00",
+    "bidCount": 1,
+    "bidders": 0,
+    "isGraduated": true
+  },
+  "progress": {
+    "currentBlock": 24449988,
+    "progressPercent": 100
+  },
+  "bids": [],
+  "checkpoints": [
+    {
+      "blockNumber": 24215566,
+      "clearingPriceQ96": "4294967296",
+      "clearingPriceHuman": "0.00000005",
+      "timestamp": 1768183895
+    },
+    {
+      "blockNumber": 24215583,
+      "clearingPriceQ96": "4724464026",
+      "clearingPriceHuman": "0.00000006",
+      "timestamp": 1768184483
+    }
+  ],
+  "timestamps": {
+    "createdAt": "2026-01-12T02:10:59.000Z",
+    "createdBlock": 24215563
+  },
+  "errors": [
+    "fundsRecipient: RPC error: execution reverted",
+    "tokensRecipient: RPC error: execution reverted"
+  ]
+}
