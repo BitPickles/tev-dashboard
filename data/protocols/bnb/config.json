@@ -142,7 +142,9 @@
     "circulating_market_cap": 85309283181,
     "target_supply": 100000000,
     "snapshot_date": "2026-02-05",
-    "data_source": "CoinGecko"
+    "data_source": "CoinGecko",
+    "tvl": 5737562622.633954,
+    "tvl_updated": "2026-02-13T21:13:43.927Z"
   },
   "tev_data": {
     "has_tev": true,
@@ -198,28 +200,42 @@
       "type": "explorer",
       "url": "https://bscscan.com",
       "reliability": "high",
-      "data": ["burn_transactions", "staking_events", "supply"]
+      "data": [
+        "burn_transactions",
+        "staking_events",
+        "supply"
+      ]
     },
     {
       "name": "BNB Chain Blog",
       "type": "official",
       "url": "https://www.bnbchain.org/en/blog",
       "reliability": "high",
-      "data": ["burn_announcements", "mechanism_docs"]
+      "data": [
+        "burn_announcements",
+        "mechanism_docs"
+      ]
     },
     {
       "name": "CoinGecko",
       "type": "api",
       "url": "https://api.coingecko.com/api/v3/coins/binancecoin",
       "reliability": "high",
-      "data": ["price", "market_cap", "supply"]
+      "data": [
+        "price",
+        "market_cap",
+        "supply"
+      ]
     },
     {
       "name": "BSC Genesis Contract",
       "type": "github",
       "url": "https://github.com/bnb-chain/bsc-genesis-contract",
       "reliability": "high",
-      "data": ["system_contracts", "addresses"]
+      "data": [
+        "system_contracts",
+        "addresses"
+      ]
     }
   ],
   "analyst_notes": "【2026-02-14 完整调研 + LSD 验证】\n\n## BNB TEV 计算方法\n\n采用 **slisBNB 净值增长法** 验证 BNB 持有综合收益率。\n\n### slisBNB 数据（DefiLlama）\n- APY: 6.98%\n- TVL: $634M\n- Project: Lista DAO\n\n### 收益构成\n1. **Auto-Burn** ($3.35B, 56%): 公式计算，与 CEX 收入无关\n2. **BEP-95 + Staking** ($1.2B, 20%): 链上 gas fee 机制\n3. **Holder Perks** ($1.4B, 24%): Launchpool/HODLer/Megadrop 等\n\n### 关键结论\n- TEV Yield: **6.98%** (通过 LSD 净值验证)\n- 不是典型「利润分润」，是混合机制\n- 持币激励虽发放其他代币，但价值实在，应计入 TEV",

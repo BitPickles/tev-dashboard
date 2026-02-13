@@ -33,18 +33,44 @@ const DEFILLAMA_MAPPING = {
   'sky': 'makerdao',
   'spark': 'spark',
   'uniswap': 'uniswap',
-  // CEX tokens 没有 TVL
-  'bgb': null,
-  'bnb': null,
-  'mnt': null,
-  'okb': null,
+  // CEX tokens - 部分有特殊 TVL 来源
+  'bgb': null,        // Bitget - 无 TVL
+  'bnb': 'chain:BSC', // BNB - 使用 BNB Chain 整条链的 TVL
+  'mnt': null,        // Mantle - 无 TVL (L2 token)
+  'okb': null,        // OKB - 无 TVL
 };
+
+// 链 TVL API 端点
+const CHAIN_TVL_ENDPOINT = 'https://api.llama.fi/v2/chains';
 
 async function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// 缓存链 TVL 数据
+let chainTvlCache = null;
+
+async function fetchChainTvl(chainName) {
+  if (!chainTvlCache) {
+    const res = await fetch(CHAIN_TVL_ENDPOINT);
+    if (!res.ok) {
+      console.error(`  ✗ Failed to fetch chain TVL data: HTTP ${res.status}`);
+      return null;
+    }
+    chainTvlCache = await res.json();
+  }
+  const chain = chainTvlCache.find(c => c.name === chainName);
+  return chain ? chain.tvl : null;
+}
+
 async function fetchTVL(defillamaId) {
+  // 处理链 TVL (格式: chain:CHAIN_NAME)
+  if (defillamaId.startsWith('chain:')) {
+    const chainName = defillamaId.replace('chain:', '');
+    return fetchChainTvl(chainName);
+  }
+  
+  // 普通协议 TVL
   const url = `https://api.llama.fi/tvl/${defillamaId}`;
   const res = await fetch(url);
   if (!res.ok) {
@@ -74,7 +100,7 @@ async function main() {
     const defillamaId = DEFILLAMA_MAPPING[dir];
     
     if (defillamaId === null) {
-      console.log(`⏭ ${dir}: CEX token, no TVL`);
+      console.log(`⏭ ${dir}: No TVL source configured`);
       skipped++;
       continue;
     }
