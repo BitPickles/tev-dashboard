@@ -441,7 +441,7 @@ async function main() {
     generatedAt: new Date().toISOString(),
     chain: 'ethereum',
     chainId: CONFIG.chainId,
-    factory: CONFIG.factoryAddress,
+    factory: 'Multiple CCA Factories',
     totalAuctions: auctions.length,
     activeAuctions: auctions.filter(a => a.status === 'active').length,
     totalRaised: auctions.reduce((sum, a) => sum + a.metrics.raisedUsd, 0),

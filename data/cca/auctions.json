@@ -1,12 +1,348 @@
 {
-  "generatedAt": "2026-02-13T19:24:30.967Z",
+  "generatedAt": "2026-02-13T19:44:43.496Z",
   "chain": "ethereum",
   "chainId": 1,
-  "factory": "0xCCccCcCAE7503Cac057829BF2811De42E16e0bD5",
-  "totalAuctions": 1,
-  "activeAuctions": 1,
+  "factory": "Multiple CCA Factories",
+  "totalAuctions": 38,
+  "activeAuctions": 2,
   "totalRaised": 0,
   "auctions": [
+    {
+      "id": "0x014b0530296f1bb7373965c2d002742d825ebad8",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 1,
+      "floorPriceUsd": 1,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "TOKEN",
+      "progress": {
+        "currentBlock": 24450007,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x298ab4dd6f59ca336d9d0eb387718bdb2b967163",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 6e-8,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 1,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449984,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x31e8017b81cd27f8b3b0d54d66efa9c365f1fc29",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 6e-8,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 1,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449988,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x340c12a5ef86fa214967250de722758158f50802",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449986,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x3564dabfced4cb10f62c646be55e85b223afe2f2",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449995,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x35b056c6ae55c2e8e37731146b007edcbb85e814",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 6e-8,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 1,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449981,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x35bab4e90f485e8b3c06e423f2faaf19c13dce8f",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 6e-8,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 1,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449995,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x3a487e6eb4d628edcf1043e17d93f24c4ca1b1e3",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 6e-8,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 1,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449982,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x44881998134e0badbaeb119e672371886d1ab9e7",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449992,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x483bef828a9a5269b29fa2747e24e0783e54ff3a",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449993,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x4c87651cce647e7a7ee27e8eb2675bde635bb4a8",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449992,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x51a94b34c62928f57aefb34ba4a9951691d33f18",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449999,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x5aa5c644329a0e6e8909d41d801ac383c59877a5",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 6e-8,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 1,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449989,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x63c48824d44d99ec5f0d19c02d2fccc25928d237",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449985,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x670e0171243524bb3bd46bb83f2b0d8d1f186684",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449997,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x6f16da2ec90cd881c7df55b56aec1a805c5f20eb",
+      "name": "TOKEN CCA",
+      "status": "ended",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0,
+      "floorPriceUsd": 10000000000,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449982,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x6fd5491bba92c01b44285fe4af0737cb495ea470",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 6e-8,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 1,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449988,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x73279aebbfd8ef6b1fd6bd12232374fd9297b506",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449991,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x79aaf24793a8c20dbd5ca0c6bc7b0f5eb26648e9",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 6e-8,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 1,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449996,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x8ba7fa225e1db245d4ad0eed9b732fbffab2f7e2",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 1,
+      "floorPriceUsd": 1,
+      "bidders": 0,
+      "bidCount": 1,
+      "token": "TOKEN",
+      "currency": "TOKEN",
+      "progress": {
+        "currentBlock": 24450006,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x8d155af2de509f0e7d85605da73fd6961ef880f4",
+      "name": "TOKEN CCA",
+      "status": "active",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0.00001,
+      "floorPriceUsd": 0.00001,
+      "bidders": 1,
+      "bidCount": 2,
+      "token": "TOKEN",
+      "currency": "TOKEN",
+      "progress": {
+        "currentBlock": 24450006,
+        "progressPercent": 5
+      }
+    },
     {
       "id": "0x9084cb9a700a52909cbef3113db8bac01c01efd6",
       "name": "rCAP CCA",
@@ -19,8 +355,264 @@
       "token": "rCAP",
       "currency": "USDC",
       "progress": {
-        "currentBlock": 24449928,
+        "currentBlock": 24450005,
         "progressPercent": 46
+      }
+    },
+    {
+      "id": "0x90b2132af21c1c75ca97f087e46331ee0a348d50",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449990,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x928e95fdb7721d33b8c2cf7443040596a56561ff",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 1,
+      "floorPriceUsd": 1,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "TOKEN",
+      "progress": {
+        "currentBlock": 24450007,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x940711d4094ffd354c80c8205ffc3f11ea323995",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449999,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0x9a76ac064852454db0ded6dcc4fca80c6429ad19",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449993,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0xa6d47fba0270d72bd67f4aeb00a22781496b264e",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 6e-8,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 1,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449985,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0xb1c2a5fb9100516fc99e1bfd73b0c506edbbebec",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24450000,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0xbff0713a9b3ec71b4d6b06c81ae518d9b451fd02",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 6e-8,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 1,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449981,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0xc2dcb1235f3f08a9c6bfa5742e9cfa8d76692b0d",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 6e-8,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 1,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449989,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0xcff592a66a5cf64df893c3771ad1d55347a51de7",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 1,
+      "floorPriceUsd": 1,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "TOKEN",
+      "progress": {
+        "currentBlock": 24450006,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0xd3324218bcfea32fd05278abb4fc272c3c5b305b",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 6e-8,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 1,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449994,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0xd3a26e68cdb406c1d8a478afa7d025c2e01d4a31",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449991,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0xd4fff99bcfb011a8ed999b4a78666ea204158a5a",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 6e-8,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 1,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449987,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0xd5abcda9555f4274e05ad0518292ade840a059a0",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 5e-8,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 1,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449999,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0xdab3fc1e3140eaf5de610ad4f7bfea75c41dce80",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 0,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 0,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24450001,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0xdbfd523c5cf915083698d09a39749301a50d8446",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 6e-8,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 1,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449981,
+        "progressPercent": 100
+      }
+    },
+    {
+      "id": "0xf6962559f52bb23edb2b74b8c49036723207a63f",
+      "name": "TOKEN CCA",
+      "status": "graduated",
+      "raisedUsd": 0,
+      "clearingPriceUsd": 6e-8,
+      "floorPriceUsd": 5e-8,
+      "bidders": 0,
+      "bidCount": 1,
+      "token": "TOKEN",
+      "currency": "USDC",
+      "progress": {
+        "currentBlock": 24449998,
+        "progressPercent": 100
       }
     }
   ]
