@@ -18,69 +18,108 @@
   "tev_mechanisms": [
     {
       "type": "staking_reward",
-      "name": "sUSDe Yield (非 ENA 直接收益)",
-      "description": "⚠️ 协议主要收益分配给 sUSDe 持有者（质押 USDe），sUSDe APY 约 7.83%。sENA 质押者仅获得治理权和部分激励，不是协议主要收益接收方",
+      "name": "sUSDe Yield (非 ENA 收益)",
+      "description": "协议收益主要分配给 sUSDe 持有者，ENA/sENA 持有人不直接受益",
       "status": "active",
       "tev_eligible": false,
+      "note": "sUSDe APY ~7.83%，但这不是 ENA 的 TEV",
       "source": {
-        "type": "api",
-        "title": "DefiLlama tokenRights",
-        "url": "https://api.llama.fi/protocol/ethena",
-        "provider": "DefiLlama"
+        "type": "documentation",
+        "title": "DefiLlama Ethena USDe",
+        "url": "https://defillama.com/protocol/ethena-usde"
       }
     },
     {
       "type": "buyback_accumulate",
-      "name": "$310M ENA Buyback Program",
-      "description": "StablecoinX Inc. 子公司执行 $310M ENA 回购（6-8周），总 PIPE 融资约 $895M。StablecoinX 持有 3B+ ENA（~20% 供应量），Foundation 对转售有否决权",
+      "name": "ENA Buyback Program",
+      "description": "资本运作驱动的回购，非经营利润分红。总计宣布 $570M 回购（$260M + $310M）",
       "status": "active",
-      "start_date": "2025-09-01",
+      "amount_usd": 570000000,
+      "note": "StablecoinX 子公司执行，6-8周周期，第三方做市商操作",
       "source": {
         "type": "governance",
-        "title": "Ethena's September 2025 Governance Update",
+        "title": "Ethena Governance Updates",
         "url": "https://gov.ethenafoundation.com/t/ethena-s-september-2025-governance-update/704"
       }
     }
   ],
-  "tev_summary": {
-    "fee_switch": "PARTIAL",
-    "fee_switch_details": "⚠️ 主要收益给 sUSDe 持有者，ENA 仅受益于回购计划",
-    "buybacks": "ACTIVE",
-    "dividends": "NONE",
-    "burns": "NONE",
-    "primary_value_accrual": "回购 — 仅 $310M 回购计划赋能 ENA，协议收益主要流向 sUSDe"
+  "fee_distribution": {
+    "fees_30d_usd": 22330000,
+    "revenue_30d_usd": 437221,
+    "retention_rate": 0.0196,
+    "note": "Fees 包含 staking rewards + yield distribution，协议留存仅约 2%",
+    "breakdown": {
+      "sUSDe_staking_rewards": "大部分 Fees 分配给 sUSDe 持有者",
+      "reserve_fund": "部分进入 Reserve Fund",
+      "mint_fees": "协议直接留存部分",
+      "token_holder_income": "$0 (DefiLlama 口径)"
+    },
+    "source": {
+      "title": "DefiLlama Income Statement",
+      "url": "https://defillama.com/protocol/ethena-usde"
+    }
   },
-  "confidence": "medium",
+  "tev_summary": {
+    "fee_switch": "OFF",
+    "fee_switch_details": "Token Holder Net Income = $0，协议收益不分配给 ENA 持有人",
+    "buybacks": "ACTIVE",
+    "buybacks_details": "$570M 回购（资本运作驱动，非经营利润）",
+    "dividends": "NONE",
+    "dividends_details": "sENA 分配是 discretional，截至 2025-09 无持续分配",
+    "burns": "NONE",
+    "primary_value_accrual": "仅回购（$570M）— 资本运作驱动，非协议经营利润分红"
+  },
+  "market_data": {
+    "tvl_usd": 6429000000,
+    "snapshot_date": "2026-02-09",
+    "data_source": "DefiLlama"
+  },
+  "confidence": "high",
   "data_sources": [
     {
-      "name": "DefiLlama tokenRights",
+      "name": "DefiLlama Ethena USDe",
       "type": "api",
-      "url": "https://api.llama.fi/protocol/ethena",
-      "description": "tokenRights 数据确认 fee switch ON, dividends ACTIVE",
+      "url": "https://defillama.com/protocol/ethena-usde",
+      "description": "Fees/Revenue/Income Statement 数据",
       "reliability": "high"
     },
     {
       "name": "Ethena Governance Forum",
       "type": "governance",
       "url": "https://gov.ethenafoundation.com",
-      "description": "月度治理更新，含财务数据和重大决策",
+      "description": "回购计划、sENA 分配政策",
       "reliability": "high"
     },
     {
-      "name": "Dune - Ethena USDe",
-      "type": "dune",
-      "url": "https://dune.com/entropy_advisors/ethena-usde",
-      "description": "USDe 供应量、DEX 流动性等链上数据",
-      "reliability": "high"
-    },
-    {
-      "name": "StablecoinX 公告",
-      "type": "report",
-      "url": "https://x.com/ethena_labs/status/1964063567772340432",
-      "description": "$530M 追加融资和 $310M 回购计划",
+      "name": "Ethena Documentation",
+      "type": "documentation",
+      "url": "https://docs.ethena.fi",
+      "description": "sENA 分配说明",
       "reliability": "high"
     }
   ],
-  "notes": "Ethena 是 2024-2025 年增长最快的协议之一。⚠️ 收入分配复杂且不完全公开：大部分收入分配给 sUSDe 持有者（质押收益），剩余部分进入风险储备基金(Reserve Fund)。sENA 质押可获得治理权和部分收益分配。sUSDe APY ~7.83%，USDe 总供应 $14.55B。协议担保率 100.57%，储备金 $62M。Foundation Multisig: 0x3B0AAf6e6fCd4a7cEEf8c92C32DFeA9E64dC1862。",
-  "last_updated": "2026-02-05"
+  "references": [
+    {
+      "title": "DefiLlama Fees Methodology",
+      "url": "https://docs.llama.fi/list-your-project/how-to-write-a-fetch-function/fees-and-revenue",
+      "note": "Fees/Revenue/Token Holder Revenue 定义"
+    },
+    {
+      "title": "Ethena September 2025 Governance Update",
+      "url": "https://gov.ethenafoundation.com/t/ethena-s-september-2025-governance-update/704",
+      "note": "$310M 回购计划"
+    },
+    {
+      "title": "Ethena July 2025 Governance Update",
+      "url": "https://gov.ethenafoundation.com/t/ethena-s-july-2025-governance-update",
+      "note": "StablecoinX 初始回购"
+    },
+    {
+      "title": "Nasdaq - Ethena Buyback",
+      "url": "https://www.nasdaq.com/articles/ethena-buyback",
+      "note": "总计 $570M 回购披露"
+    }
+  ],
+  "analyst_notes": "## Ethena TEV 分析\n\n### 核心结论\n\n**Token Holder Net Income = $0**\n\n协议收益不分配给 ENA/sENA 持有人。\n\n### 收入口径\n\n| 指标 | 30天 | 年化 |\n|-----|------|------|\n| Fees | $22.33M | $272M |\n| Revenue | $437K | $5.3M |\n| 留存率 | 2% | — |\n\n**Fees** = 用户总费用（含 staking rewards）\n**Revenue** = 协议留存部分\n\n### 收入流向\n\n| 去向 | 说明 |\n|------|------|\n| sUSDe Staking Rewards | 大部分，给 sUSDe 持有者 |\n| Reserve Fund | 部分进入储备 |\n| Mint Fees | 协议直接留存 |\n| **ENA/sENA 持有人** | **$0** |\n\n### ENA 价值来源\n\n唯一明确的价值回流是**回购**：\n\n| 时间 | 金额 | 来源 |\n|------|------|------|\n| 2025-07 | $260M | StablecoinX |\n| 2025-09 | $310M | 治理更新 |\n| **合计** | **$570M** | — |\n\n⚠️ 这是**资本运作/融资驱动**，非协议经营利润自动分红。\n\n### sENA 分配\n\nEthena 文档明确：给 sENA 分配是 **discretional（可自行决定）**。\n\n截至 2025-09，**无持续分配**。\n\n### 数据来源\n\n- [DefiLlama Ethena USDe](https://defillama.com/protocol/ethena-usde)\n- [Governance Updates](https://gov.ethenafoundation.com)\n- [Ethena Docs](https://docs.ethena.fi)",
+  "last_updated": "2026-02-14"
 }
