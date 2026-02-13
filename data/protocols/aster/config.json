@@ -16,22 +16,19 @@
   "tev_mechanisms": [
     {
       "type": "buyback",
-      "name": "每日自动回购 (40%)",
-      "description": "平台手续费的 40% 用于每日自动回购 ASTER，回购后的代币进入协议储备",
+      "name": "协议回购",
+      "description": "平台手续费的大部分（约60-80%）用于回购 ASTER，包括每日自动回购和战略储备回购，回购后的代币进入协议储备或销毁",
       "status": "active",
-      "fee_share_percentage": 40
-    },
-    {
-      "type": "buyback",
-      "name": "战略回购储备 (20-40%)",
-      "description": "额外 20-40% 手续费进入战略回购储备，用于市场波动时的回购操作",
-      "status": "active",
-      "fee_share_percentage": 30
+      "fee_share_percentage": 70,
+      "source": {
+        "title": "Aster Tokenomics",
+        "url": "https://docs.asterdex.com/usdaster/tokenomics"
+      }
     },
     {
       "type": "buyback_burn",
       "name": "销毁机制",
-      "description": "部分回购的 ASTER 会被销毁，减少流通供应",
+      "description": "部分回购的 ASTER 会被销毁至 0xdead 地址，减少流通供应",
       "status": "active"
     }
   ],
@@ -43,7 +40,7 @@
     "primary_value_accrual": "手续费回购 (60-80%)"
   },
   "confidence": "high",
-  "notes": "**当前 TEV 情况**\n\nAster 是目前 DeFi 领域 TEV 机制最激进的协议之一，将高达 60-80% 的平台手续费用于代币回购。\n\n**回购机制分层：**\n- **40% 自动每日回购**：每日自动执行，持续买入 ASTER\n- **20-40% 战略储备**：灵活运用，可在市场低迷时加大回购力度\n\n**历史数据：**\n- Stage 1-4 (2025.10-12): 为 Season 3 空投准备，35天回购超 $2亿\n- Stage 5-6 (2025.12至今): 新回购机制，日均约 $40-50万\n\n**透明度**：回购钱包地址公开，可通过 BscScan 实时验证，数据可信度高。",
+  "notes": "**当前 TEV 情况**\n\nAster 将大部分协议收入（约60-80%）用于回购 ASTER，是 DeFi 领域 TEV 机制最激进的协议之一。\n\n**历史数据：**\n- Stage 1-4 (2025.10-12): 为 Season 3 空投准备，35天回购超 $2亿\n- Stage 5-6 (2025.12至今): 持续回购，日均约 $40-50万\n\n**透明度**：回购钱包地址公开，可通过 BscScan 实时验证。\n\n**注意**：官方文档未公布具体的回购比例分配，60-80% 为社区估算值。",
   "data_sources": [
     {
       "name": "Aster Tokenomics",
