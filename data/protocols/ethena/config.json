@@ -12,8 +12,8 @@
     "chain": "ethereum",
     "coingecko_id": "ethena",
     "defillama_id": "ethena-usde",
-    "circulating_supply": 7957812500.0,
-    "total_supply": 15000000000.0
+    "circulating_supply": 7957812500,
+    "total_supply": 15000000000
   },
   "tev_mechanisms": [
     {
@@ -73,7 +73,9 @@
   "market_data": {
     "tvl_usd": 6429000000,
     "snapshot_date": "2026-02-09",
-    "data_source": "DefiLlama"
+    "data_source": "DefiLlama",
+    "tvl": 7046001911.21009,
+    "tvl_updated": "2026-02-13T21:10:28.949Z"
   },
   "confidence": "high",
   "data_sources": [

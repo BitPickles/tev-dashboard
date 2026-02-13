@@ -12,8 +12,8 @@
     "chain": "ethereum",
     "coingecko_id": "ether-fi",
     "defillama_id": "ether.fi",
-    "circulating_supply": 699363510.0,
-    "total_supply": 998535999.0
+    "circulating_supply": 699363510,
+    "total_supply": 998535999
   },
   "tev_mechanisms": [
     {
@@ -107,5 +107,9 @@
       }
     ],
     "calculation": "$15.00M / $343.51M = 4.37%"
+  },
+  "market_data": {
+    "tvl": 5931075595.75895,
+    "tvl_updated": "2026-02-13T21:10:30.523Z"
   }
 }
