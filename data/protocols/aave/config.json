@@ -66,6 +66,37 @@
       "reliability": "high"
     }
   ],
-  "notes": "Aave 在 2024 年通过 Aavenomics 升级开启了代币回购机制，每周从协议收入中拿出一部分回购 AAVE。Safety Module 也是重要的 TEV 来源。",
-  "last_updated": "2026-02-02"
+  "market_data": {
+    "price_usd": 180.5,
+    "market_cap_usd": 1736849395,
+    "snapshot_date": "2026-02-14",
+    "data_source": "CoinGecko"
+  },
+  "tev_data": {
+    "has_tev": true,
+    "tev_yield_percent": 5.28,
+    "annual_tev_usd": 91860000,
+    "market_cap_usd": 1736849395,
+    "calculation_date": "2026-02-14",
+    "sources": [
+      {
+        "name": "Safety Module Staking Rewards",
+        "type": "defillama",
+        "annual_usd": 41860000,
+        "data_date": "2026-02-14",
+        "api": "https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue",
+        "note": "DefiLlama holdersRevenue，质押奖励"
+      },
+      {
+        "name": "Annual Buyback Program",
+        "type": "governance",
+        "annual_usd": 50000000,
+        "source_url": "https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/18937",
+        "note": "Aavenomics 年度 $50M 回购预算"
+      }
+    ],
+    "calculation": "$41.86M (staking) + $50M (buyback) = $91.86M → $91.86M / $1.74B = 5.28%"
+  },
+  "notes": "Aave 在 2024 年通过 Aavenomics 升级开启了代币回购机制。TEV 来源：Safety Module 质押奖励 + 年度回购。",
+  "last_updated": "2026-02-14"
 }

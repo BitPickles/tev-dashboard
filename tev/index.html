@@ -297,19 +297,27 @@
         default: return 0;
       }
     }
+    // 获取 TEV Yield：优先用我们计算的 tev_yield_percent，兼容旧的 metrics.tev_yield_decimal
+    function getTevYield(p) {
+      if (p.tev_yield_percent) return p.tev_yield_percent / 100;
+      if (p.metrics?.tev_yield_decimal) return p.metrics.tev_yield_decimal;
+      return 0;
+    }
+    // 获取市值：优先用 market_cap_usd，兼容旧字段
+    function getMarketCap(p) {
+      return p.market_cap_usd || p.metrics?.current_market_cap_usd || p.latest_record?.market_cap_usd || 0;
+    }
     function sortProtocols(arr, f, d) {
       return [...arr].sort((a, b) => {
         // 1. 有 tev_yield > 0 的排前面，= 0 的排后面
-        const aYield = a.metrics?.tev_yield_decimal || 0;
-        const bYield = b.metrics?.tev_yield_decimal || 0;
+        const aYield = getTevYield(a);
+        const bYield = getTevYield(b);
         const aHasYield = aYield > 0 ? 1 : 0;
         const bHasYield = bYield > 0 ? 1 : 0;
         if (bHasYield !== aHasYield) return bHasYield - aHasYield;
         
         // 2. 按代币市值排序
-        const aMcap = a.metrics?.current_market_cap_usd || a.latest_record?.market_cap_usd || 0;
-        const bMcap = b.metrics?.current_market_cap_usd || b.latest_record?.market_cap_usd || 0;
-        return bMcap - aMcap;
+        return getMarketCap(b) - getMarketCap(a);
       });
     }
     function updateSortIndicators() {
