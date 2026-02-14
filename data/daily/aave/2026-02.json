@@ -2,8 +2,8 @@
   "protocol": "aave",
   "period": "2026-02",
   "source": "defillama+coingecko",
-  "fetched_at": "2026-02-13T21:53:18.362Z",
-  "record_count": 13,
+  "fetched_at": "2026-02-14T06:57:17.823Z",
+  "record_count": 14,
   "records": [
     {
       "date": "2026-02-01",
@@ -130,8 +130,18 @@
       "date": "2026-02-13",
       "price_usd": null,
       "market_cap_usd": null,
-      "daily_fees_usd": 1686070,
-      "daily_revenue_usd": 225992,
+      "daily_fees_usd": 1685307,
+      "daily_revenue_usd": 225316,
+      "daily_holders_revenue_usd": 0,
+      "daily_tev_usd": 0,
+      "tev_source": "defillama_holdersRevenue"
+    },
+    {
+      "date": "2026-02-14",
+      "price_usd": null,
+      "market_cap_usd": null,
+      "daily_fees_usd": 5023,
+      "daily_revenue_usd": 4549,
       "daily_holders_revenue_usd": 0,
       "daily_tev_usd": 0,
       "tev_source": "defillama_holdersRevenue"

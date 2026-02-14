@@ -2,8 +2,8 @@
   "protocol": "gmx",
   "period": "2026-02",
   "source": "defillama+coingecko",
-  "fetched_at": "2026-02-13T21:53:29.756Z",
-  "record_count": 12,
+  "fetched_at": "2026-02-14T06:57:33.229Z",
+  "record_count": 13,
   "records": [
     {
       "date": "2026-02-01",
@@ -123,6 +123,16 @@
       "daily_revenue_usd": 52584,
       "daily_holders_revenue_usd": 38372,
       "daily_tev_usd": 38372,
+      "tev_source": "defillama_holdersRevenue"
+    },
+    {
+      "date": "2026-02-13",
+      "price_usd": null,
+      "market_cap_usd": null,
+      "daily_fees_usd": 57301,
+      "daily_revenue_usd": 21202,
+      "daily_holders_revenue_usd": 15471,
+      "daily_tev_usd": 15471,
       "tev_source": "defillama_holdersRevenue"
     }
   ]

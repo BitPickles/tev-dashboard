@@ -2,8 +2,8 @@
   "protocol": "ether.fi",
   "period": "2026-02",
   "source": "defillama+coingecko",
-  "fetched_at": "2026-02-13T21:53:35.036Z",
-  "record_count": 12,
+  "fetched_at": "2026-02-14T06:57:40.357Z",
+  "record_count": 13,
   "records": [
     {
       "date": "2026-02-01",
@@ -123,6 +123,16 @@
       "daily_revenue_usd": 75008,
       "daily_holders_revenue_usd": 0,
       "daily_tev_usd": 0,
+      "tev_source": "defillama_holdersRevenue"
+    },
+    {
+      "date": "2026-02-13",
+      "price_usd": null,
+      "market_cap_usd": null,
+      "daily_fees_usd": 407850,
+      "daily_revenue_usd": 73842,
+      "daily_holders_revenue_usd": 99974,
+      "daily_tev_usd": 99974,
       "tev_source": "defillama_holdersRevenue"
     }
   ]

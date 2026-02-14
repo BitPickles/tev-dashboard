@@ -2,8 +2,8 @@
   "protocol": "hyperliquid",
   "period": "2026-02",
   "source": "defillama+coingecko",
-  "fetched_at": "2026-02-13T21:53:42.290Z",
-  "record_count": 12,
+  "fetched_at": "2026-02-14T06:57:48.368Z",
+  "record_count": 13,
   "records": [
     {
       "date": "2026-02-01",
@@ -123,6 +123,16 @@
       "daily_revenue_usd": 1816261,
       "daily_holders_revenue_usd": 1816261,
       "daily_tev_usd": 1816261,
+      "tev_source": "defillama_holdersRevenue"
+    },
+    {
+      "date": "2026-02-13",
+      "price_usd": null,
+      "market_cap_usd": null,
+      "daily_fees_usd": 1792364,
+      "daily_revenue_usd": 1595205,
+      "daily_holders_revenue_usd": 1595205,
+      "daily_tev_usd": 1595205,
       "tev_source": "defillama_holdersRevenue"
     }
   ]
