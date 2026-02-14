@@ -17,60 +17,69 @@
 const fs = require('fs');
 const path = require('path');
 
-// 协议配置：DefiLlama slug, CoinGecko id, tevRatio
+// 协议配置：DefiLlama slug, CoinGecko id, CMC slug, tevRatio
 const PROTOCOL_CONFIG = {
   aave: { 
     defillamaSlug: 'aave', 
-    coingeckoId: 'aave', 
+    coingeckoId: 'aave',
+    cmcSlug: 'aave',
     tevRatio: null,  // 特殊：固定年度回购 $50M
     fixedTevUsd: 50000000,
     note: '年度回购 $50M + Safety Module'
   },
   curve: { 
     defillamaSlug: 'curve-dex', 
-    coingeckoId: 'curve-dao-token', 
+    coingeckoId: 'curve-dao-token',
+    cmcSlug: 'curve-dao-token',
     tevRatio: 0.5,
     note: 'veCRV 分红 50%'
   },
   dydx: { 
     defillamaSlug: 'dydx', 
-    coingeckoId: 'dydx-chain', 
+    coingeckoId: 'dydx-chain',
+    cmcSlug: 'dydx',
     tevRatio: 0.75,
     note: '75% 净协议费用回购'
   },
   etherfi: { 
     defillamaSlug: 'ether.fi', 
-    coingeckoId: 'ether-fi', 
+    coingeckoId: 'ether-fi',
+    cmcSlug: 'ether-fi',
     tevRatio: null,  // 从 TEV Yield 反推
     note: '提现收入回购'
   },
   gmx: { 
     defillamaSlug: 'gmx', 
-    coingeckoId: 'gmx', 
+    coingeckoId: 'gmx',
+    cmcSlug: 'gmx',
     tevRatio: 0.3,
     note: '30% 费用分红'
   },
   maple: { 
     defillamaSlug: 'maple', 
-    coingeckoId: 'maple', 
+    coingeckoId: 'maple',
+    cmcSlug: 'syrup',
     tevRatio: 0.2,
     note: '20% 协议收入回购 SYRUP'
   },
   pancakeswap: { 
     defillamaSlug: 'pancakeswap', 
-    coingeckoId: 'pancakeswap-token', 
+    coingeckoId: 'pancakeswap-token',
+    cmcSlug: 'pancakeswap',
     tevRatio: null,  // 从 TEV Yield 反推
     note: 'CAKE 回购销毁'
   },
   pendle: { 
     defillamaSlug: 'pendle', 
-    coingeckoId: 'pendle', 
+    coingeckoId: 'pendle',
+    cmcSlug: 'pendle',
     tevRatio: 0.8,
     note: '80% 协议收入回购分配'
   },
   sky: { 
     defillamaSlug: 'sky', 
-    coingeckoId: 'maker', 
+    coingeckoId: 'maker',
+    cmcSlug: 'maker',
     tevRatio: null,  // 从 TEV Yield 反推
     note: 'Smart Burn Engine'
   },
@@ -104,22 +113,55 @@ async function getDefillamaRevenue(slug) {
 }
 
 // 获取 CoinGecko 市值（带重试）
-async function getCoingeckoMarketCap(id, retries = 3) {
+async function getCoingeckoMarketCap(id, retries = 2) {
   for (let i = 0; i < retries; i++) {
     try {
       if (i > 0) {
-        console.log(`  ⏳ 重试 ${i + 1}/${retries}...`);
-        await new Promise(r => setTimeout(r, 5000 * i));
+        console.log(`  ⏳ CoinGecko 重试 ${i + 1}/${retries}...`);
+        await new Promise(r => setTimeout(r, 3000 * i));
       }
       const data = await fetchJson(`https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=usd&include_market_cap=true`);
-      return data[id]?.usd_market_cap || 0;
+      const mcap = data[id]?.usd_market_cap || 0;
+      if (mcap > 0) return mcap;
     } catch (e) {
       if (i === retries - 1) {
         console.warn(`  ⚠️ CoinGecko ${id}: ${e.message}`);
-        return null;
       }
     }
   }
+  return null;
+}
+
+// 获取 CMC 市值（备用源）
+async function getCmcMarketCap(slug) {
+  try {
+    // 使用 CMC 公开 API
+    const data = await fetchJson(`https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail?slug=${slug}`);
+    const mcap = data?.data?.statistics?.marketCap || 0;
+    if (mcap > 0) {
+      console.log(`  ✓ CMC 备用成功`);
+      return mcap;
+    }
+  } catch (e) {
+    console.warn(`  ⚠️ CMC ${slug}: ${e.message}`);
+  }
+  return null;
+}
+
+// 获取市值（CoinGecko 优先，CMC 备用）
+async function getMarketCap(coingeckoId, cmcSlug) {
+  // 先尝试 CoinGecko
+  let mcap = await getCoingeckoMarketCap(coingeckoId);
+  if (mcap && mcap > 0) return mcap;
+  
+  // CoinGecko 失败，尝试 CMC
+  if (cmcSlug) {
+    console.log(`  → 切换到 CMC...`);
+    mcap = await getCmcMarketCap(cmcSlug);
+    if (mcap && mcap > 0) return mcap;
+  }
+  
+  return null;
 }
 
 // 主函数
@@ -164,8 +206,8 @@ async function main() {
       continue;
     }
     
-    // 获取市值
-    const marketCap = await getCoingeckoMarketCap(config.coingeckoId);
+    // 获取市值（CoinGecko + CMC 双源）
+    const marketCap = await getMarketCap(config.coingeckoId, config.cmcSlug);
     if (!marketCap) {
       errors++;
       continue;
