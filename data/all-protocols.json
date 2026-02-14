@@ -15,7 +15,9 @@
       "metrics": {
         "current_market_cap_usd": 1736849395,
         "trailing_365d_tev_usd": 91705648.06,
-        "trailing_30d_tev_usd": 7642137.34
+        "trailing_30d_tev_usd": 7642137.34,
+        "trailing_365d_revenue_usd": 108351519,
+        "trailing_30d_revenue_usd": 9029293.25
       }
     },
     "aster": {
@@ -44,7 +46,7 @@
       "icon": "https://coin-images.coingecko.com/coins/images/11610/large/Bitget_logo.png",
       "category": "cex_token",
       "confidence": "low",
-      "tevStatus": "active",
+      "tevStatus": "none",
       "tev_yield_percent": 0,
       "market_cap_usd": 1888393751,
       "tvl": 0,
@@ -402,7 +404,9 @@
       "metrics": {
         "current_market_cap_usd": 1595994273,
         "trailing_365d_tev_usd": 99111244.35,
-        "trailing_30d_tev_usd": 8259270.36
+        "trailing_30d_tev_usd": 8259270.36,
+        "trailing_365d_revenue_usd": 245735035,
+        "trailing_30d_revenue_usd": 20477919.583333332
       }
     },
     "spark": {
@@ -430,7 +434,7 @@
       "tev_yield_percent": 1.13,
       "market_cap_usd": 2292835462,
       "tvl": 3164843396,
-      "tevRatioNote": "多源 UNI 销毁 - 协议费 + Sequencer 收入 + PFDA + Aggregator hooks",
+      "tevRatioNote": "多源 UNI 销毁 - 协议费 + Sequencer 收入用于回购销毁 UNI，分配比例不适用",
       "metrics": {
         "current_market_cap_usd": 2292835462,
         "trailing_365d_tev_usd": 25909040.72,
