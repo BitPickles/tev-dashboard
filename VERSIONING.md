@@ -2,7 +2,7 @@
 
 ## 当前版本
 
-**v0.0.0.1** - 测试 0.0.0.1
+**v0.0.1.0** - 数据自动化更新
 
 ## 版本命名规范
 
@@ -19,11 +19,34 @@ v{主版本}.{次版本}.{修订}.{构建}
 
 | 版本 | 日期 | 说明 |
 |-----|------|-----|
+| v0.0.1.0 | 2026-02-15 | 数据自动化更新 - TEV数据修复、自动同步脚本、双数据源 |
 | v0.0.0.1 | 2026-02-13 | 测试 0.0.0.1 - 初始稳定版本 |
 
-## 回滚方法
+## v0.0.1.0 更新内容
 
-### 快速回滚到指定版本
+### 新功能
+- sync-tev-data.js 自动同步脚本
+- CoinGecko + CMC 双数据源
+- 每日 9:00/21:00 自动更新 + 自检汇报
+
+### 数据修复
+- GMX: TEV Yield 10%, 收益率 33%
+- Curve: TEV Yield 1.47% (重算)
+- PancakeSwap: Revenue 改用 DefiLlama 数据
+- ether.fi: 补充 Revenue 数据
+- Sky: CMC slug 修正
+- OKB: 改为无 TEV (2025-08 后停止回购)
+- BGB: 改为无 TEV
+
+### 优化
+- 指标页面 Tooltip 改为固定位置
+- 图表默认范围使用数据实际起始日期
+- BMRI 数据扩展到 2014 年
+
+### 移除
+- 剥离 CCA 实验页面
+
+## 回滚方法
 
 ```bash
 # 查看所有版本
@@ -31,46 +54,4 @@ git tag -l
 
 # 回滚到指定版本
 git checkout v0.0.0.1
-
-# 如需在该版本上修复，创建分支
-git checkout -b hotfix/issue-xxx v0.0.0.1
-```
-
-### 生产环境回滚
-
-```bash
-# 1. 切换到 main 分支
-git checkout main
-
-# 2. 硬重置到指定版本
-git reset --hard v0.0.0.1
-
-# 3. 强制推送（谨慎）
-git push origin main --force
-```
-
-### 保守回滚（推荐）
-
-```bash
-# 创建回滚提交，保留历史
-git revert HEAD~n..HEAD
-git push origin main
-```
-
-## 发版流程
-
-1. dev 分支开发测试
-2. 测试通过后打 tag
-3. 合并到 main
-4. 推送 tag 到远程
-
-```bash
-# 打版本标签
-git tag -a v0.0.0.2 -m "版本说明"
-git push origin v0.0.0.2
-
-# 合并到 main
-git checkout main
-git merge dev
-git push origin main
 ```
