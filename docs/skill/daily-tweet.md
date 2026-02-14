@@ -131,16 +131,67 @@ indicators/data/bmri.json → 6m.history[-1]
 
 ## 发布工具
 
-```bash
-# 使用 bird CLI 发推
-bird --chrome-profile "Default" tweet '推文内容'
+### bird CLI（推荐）
 
+```bash
 # 检查登录状态
 bird --chrome-profile "Default" whoami
+# 输出示例：🙋 @22333D (3D 加密频道)
+
+# 发送推文
+bird --chrome-profile "Default" tweet '推文内容'
+
+# 发送带图片的推文
+bird --chrome-profile "Default" --media /path/to/image.png tweet '推文内容'
 ```
 
-**注意**：Twitter 字符限制约 280 字符（中文约 140 字），需精简内容。
+### 发推流程
+
+1. **获取数据**
+   ```bash
+   cd ~/.openclaw/workspace-engineer/tev-dashboard
+   cat indicators/data/ahr999.json | jq '.history[-1]'
+   cat indicators/data/mvrv.json | jq '.history[-1]'
+   cat indicators/data/btc-dominance.json | jq '.history[-1]'
+   cat indicators/data/bmri.json | jq '.["6m"].history[-1]'
+   ```
+
+2. **编写推文**（按模板，基于真实数据）
+
+3. **检查字符数**
+   - Twitter 限制：280 字符（中文约 140 字）
+   - 如果超长：考虑发 thread（多条推文）或精简
+
+4. **发布**
+   ```bash
+   bird --chrome-profile "Default" tweet '内容'
+   ```
+
+5. **确认发布成功**
+   - 检查返回的链接
+   - 必要时在浏览器验证
+
+### 发 Thread（长内容）
+
+```bash
+# 先发第一条
+bird --chrome-profile "Default" tweet '第一条内容'
+# 记下返回的 tweet ID
+
+# 回复形成 thread
+bird --chrome-profile "Default" reply <tweet-id> '第二条内容'
+```
+
+### 常见问题
+
+| 问题 | 解决方案 |
+|-----|---------|
+| Chrome cookies 找不到 | 确认 Chrome 已登录 x.com，profile 名称用 "Default" |
+| 推文太长 | 精简内容或发 thread |
+| Safari cookies 权限错误 | 忽略，只要 Chrome 能用就行 |
 
 ## 更新日志
 
-- 2026-02-15: 创建规则，新增数据真实性要求，新增 bird CLI 发布方法
+- 2026-02-15: 创建规则
+- 2026-02-15: 新增数据真实性要求（不能瞎编）
+- 2026-02-15: 新增 bird CLI 完整发布流程
