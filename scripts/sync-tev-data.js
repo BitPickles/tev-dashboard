@@ -79,7 +79,7 @@ const PROTOCOL_CONFIG = {
   sky: { 
     defillamaSlug: 'sky', 
     coingeckoId: 'maker',
-    cmcSlug: 'maker',
+    cmcSlug: 'sky',
     tevRatio: null,  // 从 TEV Yield 反推
     note: 'Smart Burn Engine'
   },
