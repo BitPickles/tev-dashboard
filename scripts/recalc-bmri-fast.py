@@ -158,7 +158,8 @@ print(f"\n1M: {len(history_1m)}, 6M: {len(history_6m)}")
 if history_1m:
     print(f"范围: {history_1m[0]['date']} ~ {history_1m[-1]['date']}")
 
-latest = history_1m[-1] if history_1m else None
+latest_1m = history_1m[-1] if history_1m else None
+latest_6m = history_6m[-1] if history_6m else None
 
 def get_regime(value, thresholds):
     if value < thresholds['on']:
@@ -171,25 +172,25 @@ output = {
     "updated_at": datetime.now().strftime("%Y-%m-%d"),
     "1m": {
         "current": {
-            "value": latest['bmri'],
-            "date": latest['date'],
-            "rates": latest['rates'],
-            "liq": latest['liq'],
-            "risk": latest['risk'],
-            "regime": get_regime(latest['bmri'], {"on": 30, "off": 70})
-        } if latest else None,
+            "value": latest_1m['bmri'],
+            "date": latest_1m['date'],
+            "rates": latest_1m['rates'],
+            "liq": latest_1m['liq'],
+            "risk": latest_1m['risk'],
+            "regime": get_regime(latest_1m['bmri'], {"on": 30, "off": 70})
+        } if latest_1m else None,
         "thresholds": {"on": 30, "off": 70},
         "history": history_1m
     },
     "6m": {
         "current": {
-            "value": latest['bmri'],
-            "date": latest['date'],
-            "rates": latest['rates'],
-            "liq": latest['liq'],
-            "risk": latest['risk'],
-            "regime": get_regime(latest['bmri'], {"on": 30, "off": 70})
-        } if latest else None,
+            "value": latest_6m['bmri'],
+            "date": latest_6m['date'],
+            "rates": latest_6m['rates'],
+            "liq": latest_6m['liq'],
+            "risk": latest_6m['risk'],
+            "regime": get_regime(latest_6m['bmri'], {"on": 30, "off": 70})
+        } if latest_6m else None,
         "thresholds": {"on": 30, "off": 70},
         "history": history_6m
     }
