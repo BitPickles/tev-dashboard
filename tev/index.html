@@ -281,13 +281,15 @@
           const res = await fetch(`../data/daily/${key}/latest.json`);
           if (!res.ok) throw new Error();
           const data = await res.json();
+          // 合并 metrics：优先用 daily 数据，回退到 all-protocols.json
+          const mergedMetrics = { ...config.metrics, ...data.metrics };
           // 计算 tevRatio = TEV / 协议利润(revenue)，优先用365天数据
-          const tev365d = data.metrics?.trailing_365d_tev_usd;
-          const revenue365d = data.metrics?.trailing_365d_revenue_usd;
-          const tev30d = data.metrics?.trailing_30d_tev_usd || 0;
-          const revenue30d = data.metrics?.trailing_30d_revenue_usd || 0;
+          const tev365d = mergedMetrics.trailing_365d_tev_usd || 0;
+          const revenue365d = mergedMetrics.trailing_365d_revenue_usd || 0;
+          const tev30d = mergedMetrics.trailing_30d_tev_usd || 0;
+          const revenue30d = mergedMetrics.trailing_30d_revenue_usd || 0;
           const tevRatio = revenue365d > 0 ? tev365d / revenue365d : (revenue30d > 0 ? tev30d / revenue30d : 0);
-          return { key, ...config, ...data, tevRatio };
+          return { key, ...config, ...data, metrics: mergedMetrics, tevRatio };
         } catch { return { key, ...config, error: true }; }
       }));
     }
