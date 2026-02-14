@@ -475,8 +475,11 @@
         series.cryptoTotalMcap.setData(cryptoTotalMcapData);
       }
 
-      // Default range (start from first data point)
-      defaultRange = setDefaultRange(chart, firstDate, lastDate);
+      // Default range: show last 6 months (user can scroll to see full history from 2014)
+      const sixMonthsAgo = new Date(lastDate);
+      sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+      const defaultStart = sixMonthsAgo.toISOString().split('T')[0];
+      defaultRange = setDefaultRange(chart, defaultStart, lastDate);
 
       // Double-click reset
       document.getElementById('chart-container').addEventListener('dblclick', resetChart);
