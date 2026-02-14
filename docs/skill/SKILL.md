@@ -1,5 +1,30 @@
 # Crypto3D Dashboard Skill
 
+---
+## ⚠️ 核心公式（不可更改）
+
+| 指标 | 公式 | 数据口径 |
+|-----|------|---------|
+| **TEV** | 项目分配给代币持有者的价值（回购+分润+分代币） | **过去365天累计** |
+| **TEV Yield** | `TEV ÷ 代币市值` | 年化 |
+| **分配比例** | `TEV ÷ 协议利润(Revenue)` | 年化 |
+| **收益率** | `协议利润(Revenue) ÷ 市值` | 年化 |
+
+### 关键区分
+- **Fees（收入）**: 协议产生的总手续费，含分给LP/存款用户的部分
+- **Revenue（利润）**: 协议自己留下的收入，扣除LP分成后
+
+### 数据来源
+| 数据 | 来源 | 字段 |
+|-----|------|------|
+| 协议利润 | DefiLlama | `trailing_365d_revenue_usd` |
+| 代币市值 | CMC / 交易所 API | `market_cap_usd` |
+| TEV | **每个项目单独计算** | `trailing_365d_tev_usd` |
+
+> **重要**：所有数据口径统一为「过去365天」，每个协议必须输出 `trailing_365d_tev_usd` 值。
+
+---
+
 ## 概述
 Crypto3D 数据看板网站的架构规范和开发指南。包含设计系统、页面模板、数据规范等。
 
@@ -69,7 +94,10 @@ tev-dashboard/
 - [设计系统](./design-system.md)
 - [页面模板](./page-template.md)
 - [数据规范](./data-spec.md)
+- [TEV 数据层](./tev-data-layer.md) ← **TEV 口径合并逻辑**
 - [组件说明](./components.md)
+- [运营手册](./operations.md) ← **日常工作流程**
+- [每日推文](./daily-tweet.md) ← **日常推特发布规范**
 
 ### 指标专属设计
 - [AHR999](./indicators/ahr999.md) - 九神指标，定投时机判断
