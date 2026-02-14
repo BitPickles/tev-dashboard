@@ -105,7 +105,7 @@
           </div>
         </div>
         <div class="chart-wrapper" id="chart-container"></div>
-        <div class="chart-tooltip floating" id="chart-tooltip">
+        <div class="chart-tooltip" id="chart-tooltip">
           <div class="tooltip-date" id="tooltip-date">—</div>
           <div class="tooltip-item" id="tooltip-bmri"><div class="tooltip-dot" style="background: #3b82f6;"></div><span class="tooltip-label">BMRI:</span><span class="tooltip-value" id="tooltip-bmri-value">—</span></div>
           <div class="tooltip-item" id="tooltip-rates" style="display:none;"><div class="tooltip-dot" style="background: #06b6d4;"></div><span class="tooltip-label">Rates:</span><span class="tooltip-value" id="tooltip-rates-value">—</span></div>
@@ -481,25 +481,30 @@
       document.getElementById('chart-container').addEventListener('dblclick', resetChart);
 
       // Tooltip
-      const tooltip = document.getElementById('chart-tooltip');
       chart.subscribeCrosshairMove(param => {
-        if (!param.time || !param.point || param.point.x < 0) { tooltip.classList.remove('visible'); return; }
-        tooltip.classList.add('visible');
+        if (!param.time || !param.point || param.point.x < 0) {
+          document.getElementById('tooltip-date').textContent = '—';
+          document.getElementById('tooltip-bmri-value').textContent = '—';
+          document.getElementById('tooltip-rates-value').textContent = '—';
+          document.getElementById('tooltip-liq-value').textContent = '—';
+          document.getElementById('tooltip-risk-value').textContent = '—';
+          document.getElementById('tooltip-btcPrice-value').textContent = '—';
+          document.getElementById('tooltip-cryptoTotalMcap-value').textContent = '—';
+          return;
+        }
         document.getElementById('tooltip-date').textContent = formatTime(param.time);
         
         const dateStr = typeof param.time === 'string' ? param.time : `${param.time.year}-${String(param.time.month).padStart(2,'0')}-${String(param.time.day).padStart(2,'0')}`;
         const d = historyData[dateStr];
         const mc = marketcapData?.find(m => m.date === dateStr);
-
         const priceRecord = btcPriceData?.history.find(p => p.date === dateStr);
-        if (seriesVisible.bmri && d?.bmri !== undefined) { document.getElementById('tooltip-bmri').style.display = 'flex'; document.getElementById('tooltip-bmri-value').textContent = d.bmri.toFixed(1); } else { document.getElementById('tooltip-bmri').style.display = 'none'; }
-        if (seriesVisible.rates && d?.rates !== undefined) { document.getElementById('tooltip-rates').style.display = 'flex'; document.getElementById('tooltip-rates-value').textContent = d.rates.toFixed(2); } else { document.getElementById('tooltip-rates').style.display = 'none'; }
-        if (seriesVisible.liq && d?.liq !== undefined) { document.getElementById('tooltip-liq').style.display = 'flex'; document.getElementById('tooltip-liq-value').textContent = d.liq.toFixed(2); } else { document.getElementById('tooltip-liq').style.display = 'none'; }
-        if (seriesVisible.risk && d?.risk !== undefined) { document.getElementById('tooltip-risk').style.display = 'flex'; document.getElementById('tooltip-risk-value').textContent = d.risk.toFixed(2); } else { document.getElementById('tooltip-risk').style.display = 'none'; }
-        if (seriesVisible.btcPrice && priceRecord?.price) { document.getElementById('tooltip-btcPrice').style.display = 'flex'; document.getElementById('tooltip-btcPrice-value').textContent = '$' + priceRecord.price.toLocaleString(); } else { document.getElementById('tooltip-btcPrice').style.display = 'none'; }
-        if (seriesVisible.cryptoTotalMcap && mc?.total_mcap) {
-          document.getElementById('tooltip-cryptoTotalMcap').style.display = 'flex'; document.getElementById('tooltip-cryptoTotalMcap-value').textContent = formatMarketCap(mc.total_mcap);
-        } else { document.getElementById('tooltip-cryptoTotalMcap').style.display = 'none'; }
+
+        document.getElementById('tooltip-bmri-value').textContent = d?.bmri !== undefined ? d.bmri.toFixed(1) : '—';
+        if (seriesVisible.rates) { document.getElementById('tooltip-rates').style.display = 'flex'; document.getElementById('tooltip-rates-value').textContent = d?.rates !== undefined ? d.rates.toFixed(2) : '—'; } else { document.getElementById('tooltip-rates').style.display = 'none'; }
+        if (seriesVisible.liq) { document.getElementById('tooltip-liq').style.display = 'flex'; document.getElementById('tooltip-liq-value').textContent = d?.liq !== undefined ? d.liq.toFixed(2) : '—'; } else { document.getElementById('tooltip-liq').style.display = 'none'; }
+        if (seriesVisible.risk) { document.getElementById('tooltip-risk').style.display = 'flex'; document.getElementById('tooltip-risk-value').textContent = d?.risk !== undefined ? d.risk.toFixed(2) : '—'; } else { document.getElementById('tooltip-risk').style.display = 'none'; }
+        if (seriesVisible.btcPrice) { document.getElementById('tooltip-btcPrice').style.display = 'flex'; document.getElementById('tooltip-btcPrice-value').textContent = priceRecord?.price ? '$' + priceRecord.price.toLocaleString() : '—'; } else { document.getElementById('tooltip-btcPrice').style.display = 'none'; }
+        if (seriesVisible.cryptoTotalMcap) { document.getElementById('tooltip-cryptoTotalMcap').style.display = 'flex'; document.getElementById('tooltip-cryptoTotalMcap-value').textContent = mc?.total_mcap ? formatMarketCap(mc.total_mcap) : '—'; } else { document.getElementById('tooltip-cryptoTotalMcap').style.display = 'none'; }
       });
     }
 

@@ -97,14 +97,14 @@
           </div>
         </div>
         <div class="chart-wrapper" id="chart-container"></div>
-        <div class="chart-tooltip floating" id="chart-tooltip">
+        <div class="chart-tooltip" id="chart-tooltip">
           <div class="tooltip-date" id="tooltip-date">—</div>
-          <div class="tooltip-item">
+          <div class="tooltip-item" id="tooltip-btcd">
             <div class="tooltip-dot" style="background: #3b82f6;"></div>
             <span class="tooltip-label">BTC.D:</span>
             <span class="tooltip-value" id="tooltip-value">—</span>
           </div>
-          <div class="tooltip-item" id="tooltip-btcPrice" style="display:none;">
+          <div class="tooltip-item" id="tooltip-btcPrice">
             <div class="tooltip-dot" style="background: #f59e0b;"></div>
             <span class="tooltip-label">BTC:</span>
             <span class="tooltip-value" id="tooltip-btcPrice-value">—</span>
@@ -312,10 +312,11 @@
       document.getElementById('chart-container').addEventListener('dblclick', resetChart);
 
       // Tooltip
-      const tooltip = document.getElementById('chart-tooltip');
       chart.subscribeCrosshairMove(param => {
         if (!param.time || !param.point || param.point.x < 0) {
-          tooltip.classList.remove('visible');
+          document.getElementById('tooltip-date').textContent = '—';
+          document.getElementById('tooltip-value').textContent = '—';
+          document.getElementById('tooltip-btcPrice-value').textContent = '—';
           return;
         }
         
@@ -324,18 +325,9 @@
         const data = historyData[dateStr];
         const priceRecord = btcPriceData?.history.find(p => p.date === dateStr);
         
-        if (data) {
-          document.getElementById('tooltip-date').textContent = formatTime(param.time);
-          document.getElementById('tooltip-value').textContent = data.value.toFixed(2) + '%';
-          tooltip.classList.add('visible');
-          if (seriesVisible.btcPrice && priceRecord?.price) {
-            document.getElementById('tooltip-btcPrice').style.display = 'flex';
-            document.getElementById('tooltip-btcPrice-value').textContent = '$' + priceRecord.price.toLocaleString();
-          } else {
-            document.getElementById('tooltip-btcPrice').style.display = 'none'; }
-        } else {
-          tooltip.classList.remove('visible');
-          document.getElementById('tooltip-btcPrice').style.display = 'none'; }
+        document.getElementById('tooltip-date').textContent = formatTime(param.time);
+        document.getElementById('tooltip-value').textContent = data ? data.value.toFixed(2) + '%' : '—';
+        document.getElementById('tooltip-btcPrice-value').textContent = priceRecord?.price ? '$' + priceRecord.price.toLocaleString() : '—';
       });
 
       // Fit content then set default range

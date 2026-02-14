@@ -103,14 +103,14 @@
           </div>
         </div>
         <div class="chart-wrapper" id="chart-container"></div>
-        <div class="chart-tooltip floating" id="chart-tooltip">
+        <div class="chart-tooltip" id="chart-tooltip">
           <div class="tooltip-date" id="tooltip-date">—</div>
-          <div class="tooltip-item" id="tooltip-mvrv" style="display: none;">
+          <div class="tooltip-item" id="tooltip-mvrv">
             <div class="tooltip-dot" style="background: #a855f7;"></div>
             <span class="tooltip-label">MVRV:</span>
             <span class="tooltip-value" id="tooltip-mvrv-value">—</span>
           </div>
-          <div class="tooltip-item" id="tooltip-btc" style="display: none;">
+          <div class="tooltip-item" id="tooltip-btc">
             <div class="tooltip-dot" style="background: #f59e0b;"></div>
             <span class="tooltip-label">BTC:</span>
             <span class="tooltip-value" id="tooltip-btc-value">—</span>
@@ -333,29 +333,21 @@
       document.getElementById('chart-container').addEventListener('dblclick', resetChart);
 
       // Tooltip
-      const tooltip = document.getElementById('chart-tooltip');
       chart.subscribeCrosshairMove(param => {
-        if (!param.time || !param.point || param.point.x < 0) { tooltip.classList.remove('visible'); return; }
-        tooltip.classList.add('visible');
+        if (!param.time || !param.point || param.point.x < 0) {
+          document.getElementById('tooltip-date').textContent = '—';
+          document.getElementById('tooltip-mvrv-value').textContent = '—';
+          document.getElementById('tooltip-btc-value').textContent = '—';
+          return;
+        }
         document.getElementById('tooltip-date').textContent = formatTime(param.time);
         
         const dateStr = typeof param.time === 'string' ? param.time : `${param.time.year}-${String(param.time.month).padStart(2,'0')}-${String(param.time.day).padStart(2,'0')}`;
         const d = historyData[dateStr];
         const priceRecord = btcPriceData?.history.find(p => p.date === dateStr);
 
-        if (seriesVisible.mvrv && d?.mvrv !== undefined) {
-          document.getElementById('tooltip-mvrv').style.display = 'flex';
-          document.getElementById('tooltip-mvrv-value').textContent = d.mvrv.toFixed(2);
-        } else {
-          document.getElementById('tooltip-mvrv').style.display = 'none';
-        }
-        
-        if (seriesVisible.btc && priceRecord?.price) {
-          document.getElementById('tooltip-btc').style.display = 'flex';
-          document.getElementById('tooltip-btc-value').textContent = '$' + priceRecord.price.toLocaleString();
-        } else {
-          document.getElementById('tooltip-btc').style.display = 'none';
-        }
+        document.getElementById('tooltip-mvrv-value').textContent = d?.mvrv !== undefined ? d.mvrv.toFixed(2) : '—';
+        document.getElementById('tooltip-btc-value').textContent = priceRecord?.price ? '$' + priceRecord.price.toLocaleString() : '—';
       });
     }
 
