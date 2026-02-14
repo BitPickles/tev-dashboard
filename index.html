@@ -634,7 +634,7 @@
         document.getElementById('mvrv-value').textContent = mvrvVal.toFixed(2);
         document.getElementById('mvrv-zone').textContent = getMvrvZone(mvrvVal, currentLang);
         
-        const mvrvHistory = mvrvData.history.slice(-7).map(d => ({ value: d.value }));
+        const mvrvHistory = mvrvData.history.slice(-7).map(d => ({ value: d.mvrv }));
         drawSparkline('mvrv-spark', mvrvHistory, '#a855f7');
         showChange('mvrv-change', mvrvHistory);
         if (mvrvData.updated_at && (!btcCycleUpdate || mvrvData.updated_at > btcCycleUpdate)) btcCycleUpdate = mvrvData.updated_at;
