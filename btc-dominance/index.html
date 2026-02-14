@@ -256,6 +256,7 @@
       // Prepare data
       const chartData = history.map(d => ({ time: d.date, value: d.value }));
       historyData = buildHistoryLookup(history);
+      const firstDate = history[0].date;
       const lastDate = history[history.length - 1].date;
 
       // Add whitespace
@@ -306,7 +307,7 @@
       createThresholdLine(series.btcDominance, 40, '#a855f7');
 
       // Default range from 2014
-      defaultRange = setDefaultRange(chart, '2014-01-01', lastDate);
+      defaultRange = setDefaultRange(chart, firstDate, lastDate);
 
       // Double-click reset
       document.getElementById('chart-container').addEventListener('dblclick', resetChart);

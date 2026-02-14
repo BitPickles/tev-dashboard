@@ -410,6 +410,7 @@
       const liqDataArr = history.filter(d => d.liq !== null).map(d => ({ time: d.date, value: d.liq }));
       const riskDataArr = history.filter(d => d.risk !== null).map(d => ({ time: d.date, value: d.risk }));
       historyData = buildHistoryLookup(history);
+      const firstDate = history[0].date;
       const lastDate = history[history.length - 1].date;
 
       // Zone backgrounds
@@ -474,8 +475,8 @@
         series.cryptoTotalMcap.setData(cryptoTotalMcapData);
       }
 
-      // Default range (start from 2014)
-      defaultRange = setDefaultRange(chart, '2014-01-01', lastDate);
+      // Default range (start from first data point)
+      defaultRange = setDefaultRange(chart, firstDate, lastDate);
 
       // Double-click reset
       document.getElementById('chart-container').addEventListener('dblclick', resetChart);
