@@ -129,6 +129,18 @@ indicators/data/bmri.json → 6m.history[-1]
   - risk: 风险值
 ```
 
+## 发布工具
+
+```bash
+# 使用 bird CLI 发推
+bird --chrome-profile "Default" tweet '推文内容'
+
+# 检查登录状态
+bird --chrome-profile "Default" whoami
+```
+
+**注意**：Twitter 字符限制约 280 字符（中文约 140 字），需精简内容。
+
 ## 更新日志
 
-- 2026-02-15: 创建规则
+- 2026-02-15: 创建规则，新增数据真实性要求，新增 bird CLI 发布方法
