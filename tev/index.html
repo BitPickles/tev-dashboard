@@ -324,15 +324,27 @@
     }
     function sortProtocols(arr, f, d) {
       return [...arr].sort((a, b) => {
-        // 1. 有 tev_yield > 0 的排前面，= 0 的排后面
-        const aYield = getTevYield(a);
-        const bYield = getTevYield(b);
-        const aHasYield = aYield > 0 ? 1 : 0;
-        const bHasYield = bYield > 0 ? 1 : 0;
-        if (bHasYield !== aHasYield) return bHasYield - aHasYield;
-        
-        // 2. 按代币市值排序
-        return getMarketCap(b) - getMarketCap(a);
+        // 获取排序字段的值
+        let aVal, bVal;
+        switch (f) {
+          case 'tvl': aVal = a.tvl || 0; bVal = b.tvl || 0; break;
+          case 'tevStatus': aVal = TEV_STATUS_ORDER[a.tevStatus] || 0; bVal = TEV_STATUS_ORDER[b.tevStatus] || 0; break;
+          case 'tevRatio': aVal = a.tevRatio || 0; bVal = b.tevRatio || 0; break;
+          case 'mcap': aVal = getMarketCap(a); bVal = getMarketCap(b); break;
+          case 'earningYield': {
+            const mcA = getMarketCap(a), mcB = getMarketCap(b);
+            const arA = a.metrics?.trailing_365d_revenue_usd || (a.metrics?.trailing_30d_revenue_usd || 0) * 12;
+            const arB = b.metrics?.trailing_365d_revenue_usd || (b.metrics?.trailing_30d_revenue_usd || 0) * 12;
+            aVal = mcA > 0 ? arA / mcA : 0;
+            bVal = mcB > 0 ? arB / mcB : 0;
+            break;
+          }
+          case 'tevYield': aVal = getTevYield(a); bVal = getTevYield(b); break;
+          default: aVal = getMarketCap(a); bVal = getMarketCap(b);
+        }
+        // 根据方向排序
+        const diff = bVal - aVal;  // 默认降序
+        return d === 'asc' ? -diff : diff;
       });
     }
     function updateSortIndicators() {
