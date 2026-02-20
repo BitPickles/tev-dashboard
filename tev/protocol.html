@@ -81,6 +81,10 @@
       <div class="section">
         <div class="section-title"><span class="icon">📊</span><span data-i18n="section.tevSummary">TEV 概览</span></div>
         <div class="tev-summary-grid">
+          <div class="tev-summary-item"><div class="tev-summary-label">TEV Ratio<br><span class="label-zh">分配比例</span></div><div class="tev-summary-value" id="summary-tevratio">—</div></div>
+          <div class="tev-summary-item"><div class="tev-summary-label">Market Cap<br><span class="label-zh">市值</span></div><div class="tev-summary-value" id="summary-marketcap">—</div></div>
+          <div class="tev-summary-item"><div class="tev-summary-label">Earnings Yield<br><span class="label-zh">收益率</span></div><div class="tev-summary-value" id="summary-earningsyield">—</div></div>
+          <div class="tev-summary-item"><div class="tev-summary-label">TEV Yield<br><span class="label-zh">TEV 收益率</span></div><div class="tev-summary-value" id="summary-tevyield">—</div></div>
           <div class="tev-summary-item"><div class="tev-summary-label">Fee Switch<br><span class="label-zh">费用开关</span></div><div class="tev-summary-value" id="summary-feeswitch">—</div></div>
           <div class="tev-summary-item"><div class="tev-summary-label">Buybacks<br><span class="label-zh">回购</span></div><div class="tev-summary-value" id="summary-buybacks">—</div></div>
           <div class="tev-summary-item"><div class="tev-summary-label">Dividends<br><span class="label-zh">分红</span></div><div class="tev-summary-value" id="summary-dividends">—</div></div>
@@ -425,6 +429,43 @@
         statusText.className = `tev-status ${tevStatus}`;
         document.getElementById('primary-value').textContent = cfg.tev_summary?.fee_switch === 'ON' ? '✓ ON' : cfg.tev_summary?.fee_switch === 'PARTIAL' ? '~ PARTIAL' : '✗ OFF';
         document.getElementById('primary-label').textContent = cfg.tev_summary?.primary_value_accrual || '—';
+        
+        // 从 all-protocols.json 获取汇总数据
+        let protoData = null;
+        try {
+          const allResp = await fetch('../data/all-protocols.json');
+          if (allResp.ok) {
+            const allData = await allResp.json();
+            protoData = allData.protocols?.[pid];
+          }
+        } catch (e) { console.log('Failed to load all-protocols.json'); }
+        
+        // TEV 概览 - 新增字段
+        const tevRatioEl = document.getElementById('summary-tevratio');
+        const marketCapEl = document.getElementById('summary-marketcap');
+        const earningsYieldEl = document.getElementById('summary-earningsyield');
+        const tevYieldEl = document.getElementById('summary-tevyield');
+        
+        if (protoData) {
+          // 分配比例
+          const tevRatio = protoData.tevRatio;
+          tevRatioEl.textContent = tevRatio ? `${(tevRatio * 100).toFixed(0)}%` : '—';
+          
+          // 市值
+          const marketCap = protoData.market_cap_usd;
+          marketCapEl.textContent = marketCap ? `$${(marketCap / 1e9).toFixed(2)}B` : '—';
+          
+          // 收益率 = 年化收入 / 市值
+          const revenue = protoData.metrics?.trailing_365d_revenue_usd;
+          const earningsYield = (revenue && marketCap) ? (revenue / marketCap * 100) : null;
+          earningsYieldEl.textContent = earningsYield ? `${earningsYield.toFixed(2)}%` : '—';
+          
+          // TEV Yield
+          const tevYield = protoData.tev_yield_percent;
+          tevYieldEl.textContent = tevYield ? `${tevYield.toFixed(2)}%` : '—';
+          tevYieldEl.className = `tev-summary-value ${tevYield > 5 ? 'value-on' : tevYield > 0 ? 'value-partial' : ''}`;
+        }
+        
         const s = cfg.tev_summary || {};
         ['feeswitch', 'buybacks', 'dividends', 'burns'].forEach(k => { const el = document.getElementById(`summary-${k}`); const v = s[k.replace('feeswitch', 'fee_switch')] || 'NONE'; el.textContent = t('status.' + v); el.className = `tev-summary-value ${getValueClass(v)}`; });
         const confEl = document.getElementById('summary-confidence');
