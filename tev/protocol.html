@@ -248,9 +248,12 @@
         
         document.getElementById('buyback-chart-section').style.display = 'block';
         
-        // Calculate totals for progress bar - support aster, hype, and fluid fields
-        const amountField = chartData[0]?.aster !== undefined ? 'aster' : (chartData[0]?.hype !== undefined ? 'hype' : (chartData[0]?.usd !== undefined ? 'usd' : 'fluid'));
-        const isUsdOnly = amountField === 'usd';  // Fluid 等只有 USD 数据的协议
+        // Calculate totals for progress bar - support aster, hype, fluid fields
+        // 优先使用代币数量字段 (aster/hype/fluid)，只有纯 USD 数据才用 usd
+        const amountField = chartData[0]?.aster !== undefined ? 'aster' : 
+                           (chartData[0]?.hype !== undefined ? 'hype' : 
+                           (chartData[0]?.fluid !== undefined ? 'fluid' : 'usd'));
+        const isUsdOnly = amountField === 'usd';  // 只有 USD 数据的协议
         const totalAmount = chartData.reduce((s, d) => s + (d[amountField] || 0), 0);
         const totalSupply = data.total_supply || 1e9;
         const ticker = data.ticker || 'TOKEN';

@@ -2,27 +2,319 @@
   "protocol": "fluid",
   "ticker": "FLUID",
   "total_supply": 100000000,
-  "updated_at": "2026-02-21T01:45:00Z",
-  "data_type": "quarterly",
-  "data_source": "official_reports",
-  "data_source_note": "链上数据暂不可追踪，使用官方报告季度数据",
-  "summary": {
-    "total_buyback_usd": 3210000,
-    "total_quarters": 1,
-    "first_date": "2025-10-01",
-    "last_date": "2025-12-31",
-    "note": "Q4 2025 官方披露"
-  },
-  "quarterly_buybacks": [
-    {
-      "quarter": "2025-Q4",
-      "date": "2025-12-31",
-      "usd": 3210000,
-      "dataType": "estimated",
-      "source": "Official Blog",
-      "source_url": "https://blog.instadapp.io/fluid-reserve-buybacks-growth-strategy/",
-      "note": "Q4 2025 回购总额"
-    }
+  "updated_at": "2026-02-20T17:51:52.587868+00:00",
+  "data_type": "daily",
+  "data_source": "onchain",
+  "data_source_note": "追踪 FLUID 流入储备钱包 (Etherscan API)",
+  "reserve_wallets": [
+    "0x3e6FeBd2b195e1Ef3e8e3F4AABB6772aada32353",
+    "0x9Afb8C1798B93a8E04a18553eE65bAFa41a012F1"
   ],
-  "daily_buybacks": []
+  "summary": {
+    "total_buyback_fluid": 1057192.13,
+    "total_buyback_usd": 4184598.41,
+    "total_days": 33,
+    "first_date": "2025-10-03",
+    "last_date": "2026-02-20",
+    "avg_daily_fluid": 32036.13
+  },
+  "daily_buybacks": [
+    {
+      "date": "2025-10-03",
+      "fluid": 30896.49,
+      "usd": 189891.21,
+      "price": 6.146,
+      "txs": 5,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-10-04",
+      "fluid": 67566.1,
+      "usd": 435810.82,
+      "price": 6.4501,
+      "txs": 7,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-10-05",
+      "fluid": 35613.41,
+      "usd": 229976.98,
+      "price": 6.4576,
+      "txs": 2,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-10-06",
+      "fluid": 16340.69,
+      "usd": 105636.32,
+      "price": 6.4646,
+      "txs": 1,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-10-07",
+      "fluid": 43769.83,
+      "usd": 300532.86,
+      "price": 6.8662,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-10-08",
+      "fluid": 16512.31,
+      "usd": 109110.07,
+      "price": 6.6078,
+      "txs": 6,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-10-10",
+      "fluid": 39674.67,
+      "usd": 245177.91,
+      "price": 6.1797,
+      "txs": 6,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-10-11",
+      "fluid": 14710.17,
+      "usd": 74346.24,
+      "price": 5.0541,
+      "txs": 1,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-02",
+      "fluid": 0.09,
+      "usd": 0.39,
+      "price": 4.3114,
+      "txs": 1,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-04",
+      "fluid": 20104.67,
+      "usd": 74328.1,
+      "price": 3.6971,
+      "txs": 1,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-05",
+      "fluid": 73372.56,
+      "usd": 258145.98,
+      "price": 3.5183,
+      "txs": 4,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-06",
+      "fluid": 36268.15,
+      "usd": 134635.11,
+      "price": 3.7122,
+      "txs": 2,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-07",
+      "fluid": 52537.29,
+      "usd": 189339.17,
+      "price": 3.6039,
+      "txs": 3,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-08",
+      "fluid": 18561.1,
+      "usd": 72120.48,
+      "price": 3.8856,
+      "txs": 1,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-09",
+      "fluid": 37537.84,
+      "usd": 144014.03,
+      "price": 3.8365,
+      "txs": 2,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-01",
+      "fluid": 64845.76,
+      "usd": 196794.08,
+      "price": 3.0348,
+      "txs": 6,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-02",
+      "fluid": 48837.06,
+      "usd": 139462.7,
+      "price": 2.8557,
+      "txs": 5,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-03",
+      "fluid": 18037.97,
+      "usd": 54424.82,
+      "price": 3.0172,
+      "txs": 2,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-06",
+      "fluid": 28596.35,
+      "usd": 90246.52,
+      "price": 3.1559,
+      "txs": 3,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-07",
+      "fluid": 19017.29,
+      "usd": 60262.27,
+      "price": 3.1688,
+      "txs": 2,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-09",
+      "fluid": 37948.91,
+      "usd": 122338.58,
+      "price": 3.2238,
+      "txs": 3,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-07",
+      "fluid": 30704.3,
+      "usd": 95483.7,
+      "price": 3.1098,
+      "txs": 1,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-08",
+      "fluid": 30208.92,
+      "usd": 91119.42,
+      "price": 3.0163,
+      "txs": 1,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-10",
+      "fluid": 29773.16,
+      "usd": 90798.54,
+      "price": 3.0497,
+      "txs": 1,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-11",
+      "fluid": 30492.36,
+      "usd": 91860.29,
+      "price": 3.0126,
+      "txs": 1,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-12",
+      "fluid": 27455.19,
+      "usd": 83490.04,
+      "price": 3.041,
+      "txs": 3,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-14",
+      "fluid": 30434.71,
+      "usd": 96607.94,
+      "price": 3.1743,
+      "txs": 3,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-15",
+      "fluid": 50697.64,
+      "usd": 164835.31,
+      "price": 3.2513,
+      "txs": 5,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-05",
+      "fluid": 8669.15,
+      "usd": 21625.73,
+      "price": 2.4946,
+      "txs": 1,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-07",
+      "fluid": 25797.83,
+      "usd": 61171.95,
+      "price": 2.3712,
+      "txs": 3,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-09",
+      "fluid": 26728.11,
+      "usd": 61899.31,
+      "price": 2.3159,
+      "txs": 3,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-11",
+      "fluid": 26883.4,
+      "usd": 59974.7,
+      "price": 2.2309,
+      "txs": 3,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-20",
+      "fluid": 18598.65,
+      "usd": 39136.84,
+      "price": 2.1043,
+      "txs": 2,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    }
+  ]
 }
