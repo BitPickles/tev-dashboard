@@ -246,6 +246,7 @@
         
         // Calculate totals for progress bar - support aster, hype, and fluid fields
         const amountField = dailyData[0]?.aster !== undefined ? 'aster' : (dailyData[0]?.hype !== undefined ? 'hype' : (dailyData[0]?.usd !== undefined ? 'usd' : 'fluid'));
+        const isUsdOnly = amountField === 'usd';  // Fluid 等只有 USD 数据的协议
         const totalAmount = dailyData.reduce((s, d) => s + (d[amountField] || 0), 0);
         const totalSupply = data.total_supply || 1e9;
         const ticker = data.ticker || 'TOKEN';
@@ -284,7 +285,6 @@
         // 每日数据图表 - 用颜色区分阶段和数据类型
         // estimated / 1-4 / defillama / official: 灰色半透明
         // onchain / 5 / 6: 绿色
-        const isUsdOnly = amountField === 'usd';
         const getBarColor = (d) => {
           // 估算数据 - 灰色
           if (d.dataType === 'estimated' || d.data_type === 'estimated' || 
