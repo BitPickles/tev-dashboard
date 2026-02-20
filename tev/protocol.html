@@ -29,6 +29,30 @@
     .protocol-notes li { margin: 6px 0; }
     .protocol-notes strong { color: var(--text-primary); }
     .protocol-notes hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+    /* TEV 概览紧凑样式 */
+    .tev-grid-compact { 
+      display: grid; 
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 8px; 
+    }
+    .tev-grid-compact .tev-summary-item { 
+      padding: 12px 8px; 
+      min-height: auto;
+    }
+    .tev-grid-compact .tev-summary-label { 
+      font-size: 10px; 
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .tev-grid-compact .tev-summary-label .label-zh { 
+      font-size: 9px; 
+    }
+    .tev-grid-compact .tev-summary-value { 
+      font-size: 14px; 
+    }
+    @media (max-width: 640px) {
+      .tev-grid-compact { grid-template-columns: repeat(2, 1fr); }
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -80,12 +104,11 @@
 
       <div class="section">
         <div class="section-title"><span class="icon">📊</span><span data-i18n="section.tevSummary">TEV 概览</span></div>
-        <div class="tev-summary-grid">
+        <div class="tev-summary-grid tev-grid-compact">
           <div class="tev-summary-item"><div class="tev-summary-label">TEV Ratio<br><span class="label-zh">分配比例</span></div><div class="tev-summary-value" id="summary-tevratio">—</div></div>
           <div class="tev-summary-item"><div class="tev-summary-label">Market Cap<br><span class="label-zh">市值</span></div><div class="tev-summary-value" id="summary-marketcap">—</div></div>
           <div class="tev-summary-item"><div class="tev-summary-label">Earnings Yield<br><span class="label-zh">收益率</span></div><div class="tev-summary-value" id="summary-earningsyield">—</div></div>
           <div class="tev-summary-item"><div class="tev-summary-label">TEV Yield<br><span class="label-zh">TEV 收益率</span></div><div class="tev-summary-value" id="summary-tevyield">—</div></div>
-          <div class="tev-summary-item"><div class="tev-summary-label">Fee Switch<br><span class="label-zh">费用开关</span></div><div class="tev-summary-value" id="summary-feeswitch">—</div></div>
           <div class="tev-summary-item"><div class="tev-summary-label">Buybacks<br><span class="label-zh">回购</span></div><div class="tev-summary-value" id="summary-buybacks">—</div></div>
           <div class="tev-summary-item"><div class="tev-summary-label">Dividends<br><span class="label-zh">分红</span></div><div class="tev-summary-value" id="summary-dividends">—</div></div>
           <div class="tev-summary-item"><div class="tev-summary-label">Burns<br><span class="label-zh">销毁</span></div><div class="tev-summary-value" id="summary-burns">—</div></div>
@@ -467,7 +490,7 @@
         }
         
         const s = cfg.tev_summary || {};
-        ['feeswitch', 'buybacks', 'dividends', 'burns'].forEach(k => { const el = document.getElementById(`summary-${k}`); const v = s[k.replace('feeswitch', 'fee_switch')] || 'NONE'; el.textContent = t('status.' + v); el.className = `tev-summary-value ${getValueClass(v)}`; });
+        ['buybacks', 'dividends', 'burns'].forEach(k => { const el = document.getElementById(`summary-${k}`); const v = s[k] || 'NONE'; el.textContent = t('status.' + v); el.className = `tev-summary-value ${getValueClass(v)}`; });
         const confEl = document.getElementById('summary-confidence');
         confEl.textContent = t('confidence.' + (cfg.confidence || 'medium'));
         confEl.className = `tev-summary-value ${cfg.confidence === 'high' ? 'value-on' : cfg.confidence === 'low' ? 'value-off' : 'value-partial'}`;
