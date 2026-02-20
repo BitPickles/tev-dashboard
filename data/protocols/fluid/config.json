@@ -81,7 +81,7 @@
       "type": "media"
     }
   ],
-  "analyst_notes": "## 链上数据追踪\n\n**追踪方法**: 监控 FLUID 代币流入储备钱包\n\n**储备钱包地址**:\n- `0x3e6FeBd2b195e1Ef3e8e3F4AABB6772aada32353`\n- `0x9Afb8C1798B93a8E04a18553eE65bAFa41a012F1`\n\n**原理**:\n回购 = 在市场买入 FLUID → 转入储备钱包\n追踪所有转入这两个地址的 FLUID = 回购量\n\n**数据统计** (截至 2026-02-21):\n- 总回购: 1,057,192 FLUID\n- 总价值: ~$4.18M\n- 交易笔数: 100\n- 追踪天数: 33 天 (2025-10 起)\n\n**vs 官方报告**:\n- 官方 Q4 2025: $3.21M\n- 链上追踪: $4.18M (包含更多时间段)\n\n**数据来源**:\n- Etherscan API V2 (ERC20 Transfer 事件)\n- 价格: CoinGecko (instadapp)\n- 参考: [Dune Dashboard](https://dune.com/murathan/fluid-buybacks)\n\n**更新脚本**: `scripts/update-fluid-buybacks.py`\n\n---\n*更新: 2026-02-21*",
+  "analyst_notes": "## 链上数据追踪\n\n**追踪方法**: 监控 FLUID 代币流入储备钱包\n\n**储备钱包地址**:\n- `0x3e6FeBd2b195e1Ef3e8e3F4AABB6772aada32353`\n- `0x9Afb8C1798B93a8E04a18553eE65bAFa41a012F1`\n\n**原理**:\n回购 = 在市场买入 FLUID → 转入储备钱包\n追踪所有转入这两个地址的 FLUID = 回购量\n\n**数据来源**:\n- Etherscan (ERC20 Transfer 事件)\n- 价格: CoinGecko\n- 参考: [Dune Dashboard](https://dune.com/murathan/fluid-buybacks)",
   "last_updated": "2026-02-21",
   "data_confidence": "high",
   "data_source_note": "链上追踪 (FLUID 流入储备钱包)"
