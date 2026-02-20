@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-20T01:02:12.624Z",
+  "generated_at": "2026-02-20T13:01:10.357Z",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -8,16 +8,16 @@
       "category": "lending",
       "confidence": "high",
       "tevStatus": "active",
-      "tev_yield_percent": 2.61,
-      "market_cap_usd": 1912128647.9656339,
+      "tev_yield_percent": 2.65,
+      "market_cap_usd": 1884731282.359266,
       "tvl": 27886636450,
       "tevRatioNote": "回购 - Aave DAO 每年拨出 $50M 预算用于回购 AAVE 代币",
       "metrics": {
-        "current_market_cap_usd": 1912128647.9656339,
+        "current_market_cap_usd": 1884731282.359266,
         "trailing_365d_tev_usd": 50000000,
         "trailing_30d_tev_usd": 4166666.6666666665,
-        "trailing_365d_revenue_usd": 108465665,
-        "trailing_30d_revenue_usd": 10719588
+        "trailing_365d_revenue_usd": 108468122,
+        "trailing_30d_revenue_usd": 10650893
       }
     },
     "aster": {
@@ -101,17 +101,17 @@
       "category": "dex",
       "confidence": "high",
       "tevStatus": "active",
-      "tev_yield_percent": 1.47,
-      "market_cap_usd": 356261287.35897607,
+      "tev_yield_percent": 1.46,
+      "market_cap_usd": 356361923.1269477,
       "tvl": 1901718037.9135764,
       "tevRatio": 0.5,
       "tevRatioNote": "分红 - veCRV 持有者每周获得 crvUSD 分红",
       "metrics": {
-        "current_market_cap_usd": 356261287.35897607,
-        "trailing_365d_tev_usd": 5223941,
-        "trailing_30d_tev_usd": 435328.4166666667,
-        "trailing_365d_revenue_usd": 10447882,
-        "trailing_30d_revenue_usd": 824955
+        "current_market_cap_usd": 356361923.1269477,
+        "trailing_365d_tev_usd": 5220472,
+        "trailing_30d_tev_usd": 435039.3333333333,
+        "trailing_365d_revenue_usd": 10440944,
+        "trailing_30d_revenue_usd": 715771
       }
     },
     "dydx": {
@@ -121,17 +121,17 @@
       "category": "perpetuals",
       "confidence": "medium",
       "tevStatus": "active",
-      "tev_yield_percent": 12.64,
-      "market_cap_usd": 81332650.64948109,
+      "tev_yield_percent": 12.81,
+      "market_cap_usd": 80140012.48080961,
       "tvl": 173263911,
       "tevRatio": 0.75,
       "tevRatioNote": "回购 - 75% 净协议费用用于 DYDX 回购",
       "metrics": {
-        "current_market_cap_usd": 81332650.64948109,
-        "trailing_365d_tev_usd": 10279866.75,
-        "trailing_30d_tev_usd": 856655.5625,
-        "trailing_365d_revenue_usd": 13706489,
-        "trailing_30d_revenue_usd": 405886
+        "current_market_cap_usd": 80140012.48080961,
+        "trailing_365d_tev_usd": 10267649.25,
+        "trailing_30d_tev_usd": 855637.4375,
+        "trailing_365d_revenue_usd": 13690199,
+        "trailing_30d_revenue_usd": 398721
       }
     },
     "eigenlayer": {
@@ -172,15 +172,40 @@
       "confidence": "medium",
       "tevStatus": "active",
       "tev_yield_percent": 4.37,
-      "market_cap_usd": 287355981.63,
+      "market_cap_usd": 292836014.36,
       "tvl": 5931075595.75895,
       "tevRatioNote": "回购分配 — 提现收入回购 ETHFI，年化约 $15M / 市值约 $600M ≈ 2.5%",
       "metrics": {
-        "current_market_cap_usd": 287355981.63,
-        "trailing_365d_tev_usd": 12557456.397231,
-        "trailing_30d_tev_usd": 1046454.69976925,
-        "trailing_365d_revenue_usd": 52817926,
-        "trailing_30d_revenue_usd": 2934548
+        "current_market_cap_usd": 292836014.36,
+        "trailing_365d_tev_usd": 12796933.827532,
+        "trailing_30d_tev_usd": 1066411.1522943333,
+        "trailing_365d_revenue_usd": 52779986,
+        "trailing_30d_revenue_usd": 2898427
+      }
+    },
+    "fluid": {
+      "name": "Fluid",
+      "ticker": "FLUID",
+      "icon": "https://coin-images.coingecko.com/coins/images/33382/large/fluid.png",
+      "category": "lending",
+      "confidence": "high",
+      "tevStatus": "active",
+      "tev_yield_percent": 2.48,
+      "market_cap_usd": 160727608.11,
+      "tvl": 6000000000,
+      "tevRatio": 0.35,
+      "tevRatioNote": "回购 - 35% Revenue 用于 Treasury 回购 FLUID（Q4 2025 启动）",
+      "metrics": {
+        "current_market_cap_usd": 160727608.11,
+        "trailing_365d_tev_usd": 3981364.0999999996,
+        "trailing_30d_tev_usd": 331780.3416666666,
+        "trailing_365d_revenue_usd": 11375326,
+        "trailing_30d_revenue_usd": 883787
+      },
+      "links": {
+        "website": "https://fluid.io",
+        "docs": "https://docs.fluid.instadapp.io",
+        "buybackInfo": "https://blog.instadapp.io/fluid-reserve-buybacks-growth-strategy/"
       }
     },
     "gmx": {

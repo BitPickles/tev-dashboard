@@ -1,0 +1,86 @@
+{
+  "id": "fluid",
+  "name": "Fluid",
+  "ticker": "FLUID",
+  "icon": "https://coin-images.coingecko.com/coins/images/33382/large/fluid.png",
+  "category": "lending",
+  "description": "Lending + DEX 一体化协议，由 Instadapp 团队推出，建立在统一的 Liquidity Layer 上",
+  "website": "https://fluid.io",
+  "docs": "https://docs.fluid.instadapp.io",
+  "token": {
+    "address": "0x6f40d4A6237C257fff2dB00FA0510DeEECd303eb",
+    "chain": "ethereum",
+    "coingecko_id": "fluid",
+    "defillama_id": "fluid"
+  },
+  "tev_mechanisms": [
+    {
+      "type": "buyback",
+      "name": "Fluid Reserve Buyback",
+      "description": "Treasury 用协议收入回购 FLUID 代币，建立链上储备",
+      "status": "active",
+      "start_date": "2025-10-01",
+      "tev_ratio": 0.35,
+      "source": {
+        "type": "blog",
+        "title": "FLUID Reserve: Buybacks & Growth Strategy",
+        "url": "https://blog.instadapp.io/fluid-reserve-buybacks-growth-strategy/"
+      }
+    }
+  ],
+  "tev_summary": {
+    "fee_switch": "ON",
+    "fee_switch_details": "35% Revenue 用于回购",
+    "buybacks": "ACTIVE",
+    "dividends": "NONE",
+    "burns": "NONE",
+    "primary_value_accrual": "回购 - Treasury 用 35% Revenue 回购 FLUID，Q4 2025 启动"
+  },
+  "confidence": "high",
+  "data_sources": [
+    {
+      "name": "DefiLlama",
+      "type": "data",
+      "url": "https://defillama.com/protocol/fluid",
+      "reliability": "high"
+    },
+    {
+      "name": "Instadapp Blog",
+      "type": "official",
+      "url": "https://blog.instadapp.io",
+      "reliability": "high"
+    },
+    {
+      "name": "Fluid Governance",
+      "type": "governance",
+      "url": "https://gov.fluid.io",
+      "reliability": "high"
+    },
+    {
+      "name": "Dune Dashboard",
+      "type": "onchain",
+      "url": "https://dune.com/murathan/fluid-buybacks",
+      "reliability": "high"
+    }
+  ],
+  "references": [
+    {
+      "title": "FLUID Reserve: Buybacks & Growth Strategy",
+      "url": "https://blog.instadapp.io/fluid-reserve-buybacks-growth-strategy/",
+      "type": "blog",
+      "date": "2025-10-06"
+    },
+    {
+      "title": "Fluid Growth Vision & Community Buyback Discussion",
+      "url": "https://gov.fluid.io/t/fluid-growth-vision-community-buyback-discussion/1691",
+      "type": "governance"
+    },
+    {
+      "title": "The Defiant - Instadapp Proposes Rebrand",
+      "url": "https://thedefiant.io/news/defi/instadapp-proposes-rebrand-and-new-tokenomics-following-fluid-launch",
+      "type": "media"
+    }
+  ],
+  "analyst_notes": "## 收入口径（DeFiLlama 三层）\n\n| 口径 | 30天 | 年化 |\n|------|------|------|\n| Fees | $5.98M | $72.99M |\n| Revenue | $1.05M | $12.75M |\n| Holders Revenue | $365K | $4.46M |\n\n## 经营比例\n\n- **协议抽成率** (Revenue/Fees): ~17.5%\n- **代币回流强度** (Holders Revenue/Revenue): ~35%\n\n## 回购机制\n\n- **启动时间**: 2025年10月\n- **第一个月**: 100% 以太坊主网收入用于回购\n- **Q4 2025 总回购**: $3.21M\n- **执行方式**: 多笔小额交易，链上透明\n\n## 关键点\n\n1. 回购是**制度化**的（Fluid Reserve 项目），非口头承诺\n2. 回购比例由治理动态决定（FDV/TWAP/混合模型）\n3. 回购代币进 Treasury，**不一定 burn**，后续用途由治理定\n4. Q1-Q3 2025 因激励投放，Earnings 为负；Q4 起转正",
+  "last_updated": "2026-02-20"
+}
