@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-19T16:31:47.688Z",
+  "generated_at": "2026-02-20T01:02:12.624Z",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -8,16 +8,16 @@
       "category": "lending",
       "confidence": "high",
       "tevStatus": "active",
-      "tev_yield_percent": 2.69,
-      "market_cap_usd": 1856969331.3039005,
+      "tev_yield_percent": 2.61,
+      "market_cap_usd": 1912128647.9656339,
       "tvl": 27886636450,
       "tevRatioNote": "回购 - Aave DAO 每年拨出 $50M 预算用于回购 AAVE 代币",
       "metrics": {
-        "current_market_cap_usd": 1856969331.3039005,
+        "current_market_cap_usd": 1912128647.9656339,
         "trailing_365d_tev_usd": 50000000,
         "trailing_30d_tev_usd": 4166666.6666666665,
-        "trailing_365d_revenue_usd": 108465167,
-        "trailing_30d_revenue_usd": 10719090
+        "trailing_365d_revenue_usd": 108465665,
+        "trailing_30d_revenue_usd": 10719588
       }
     },
     "aster": {
@@ -101,17 +101,17 @@
       "category": "dex",
       "confidence": "high",
       "tevStatus": "active",
-      "tev_yield_percent": 1.5,
-      "market_cap_usd": 348980311.1741339,
+      "tev_yield_percent": 1.47,
+      "market_cap_usd": 356261287.35897607,
       "tvl": 1901718037.9135764,
       "tevRatio": 0.5,
       "tevRatioNote": "分红 - veCRV 持有者每周获得 crvUSD 分红",
       "metrics": {
-        "current_market_cap_usd": 348980311.1741339,
-        "trailing_365d_tev_usd": 5223591.5,
-        "trailing_30d_tev_usd": 435299.2916666667,
-        "trailing_365d_revenue_usd": 10447183,
-        "trailing_30d_revenue_usd": 824256
+        "current_market_cap_usd": 356261287.35897607,
+        "trailing_365d_tev_usd": 5223941,
+        "trailing_30d_tev_usd": 435328.4166666667,
+        "trailing_365d_revenue_usd": 10447882,
+        "trailing_30d_revenue_usd": 824955
       }
     },
     "dydx": {
@@ -121,13 +121,13 @@
       "category": "perpetuals",
       "confidence": "medium",
       "tevStatus": "active",
-      "tev_yield_percent": 12.98,
-      "market_cap_usd": 79222853.28570716,
+      "tev_yield_percent": 12.64,
+      "market_cap_usd": 81332650.64948109,
       "tvl": 173263911,
       "tevRatio": 0.75,
       "tevRatioNote": "回购 - 75% 净协议费用用于 DYDX 回购",
       "metrics": {
-        "current_market_cap_usd": 79222853.28570716,
+        "current_market_cap_usd": 81332650.64948109,
         "trailing_365d_tev_usd": 10279866.75,
         "trailing_30d_tev_usd": 856655.5625,
         "trailing_365d_revenue_usd": 13706489,
@@ -172,13 +172,13 @@
       "confidence": "medium",
       "tevStatus": "active",
       "tev_yield_percent": 4.37,
-      "market_cap_usd": 338562921.0278538,
+      "market_cap_usd": 287355981.63,
       "tvl": 5931075595.75895,
       "tevRatioNote": "回购分配 — 提现收入回购 ETHFI，年化约 $15M / 市值约 $600M ≈ 2.5%",
       "metrics": {
-        "current_market_cap_usd": 338562921.0278538,
-        "trailing_365d_tev_usd": 14795199.64891721,
-        "trailing_30d_tev_usd": 1232933.304076434,
+        "current_market_cap_usd": 287355981.63,
+        "trailing_365d_tev_usd": 12557456.397231,
+        "trailing_30d_tev_usd": 1046454.69976925,
         "trailing_365d_revenue_usd": 52817926,
         "trailing_30d_revenue_usd": 2934548
       }
@@ -190,13 +190,13 @@
       "category": "perp_dex",
       "confidence": "high",
       "tevStatus": "active",
-      "tev_yield_percent": 10.3,
-      "market_cap_usd": 66746587.41,
+      "tev_yield_percent": 9.92,
+      "market_cap_usd": 69257630.78,
       "tvl": 278147585,
       "tevRatio": 0.3,
       "tevRatioNote": "分红 - 质押 GMX 获得 ETH/AVAX 分红",
       "metrics": {
-        "current_market_cap_usd": 66746587.41,
+        "current_market_cap_usd": 69257630.78,
         "trailing_365d_tev_usd": 6872856.3,
         "trailing_30d_tev_usd": 572738.025,
         "trailing_365d_revenue_usd": 22909521,
@@ -358,16 +358,16 @@
       "confidence": "high",
       "tevStatus": "active",
       "tev_yield_percent": 6.33,
-      "market_cap_usd": 414517089.56,
+      "market_cap_usd": 415982636.95,
       "tvl": 2053662488,
       "tevRatio": 0.15,
       "tevRatioNote": "回购销毁 - 协议收入 15% 用于 CAKE 回购销毁（veCAKE 分红已结束）",
       "metrics": {
-        "current_market_cap_usd": 414517089.56,
-        "trailing_365d_tev_usd": 26238931.769148003,
-        "trailing_30d_tev_usd": 2186577.647429,
-        "trailing_365d_revenue_usd": 111531886,
-        "trailing_30d_revenue_usd": 4389366
+        "current_market_cap_usd": 415982636.95,
+        "trailing_365d_tev_usd": 26331700.918934997,
+        "trailing_30d_tev_usd": 2194308.4099112498,
+        "trailing_365d_revenue_usd": 111532375,
+        "trailing_30d_revenue_usd": 4389855
       }
     },
     "pendle": {
@@ -377,13 +377,13 @@
       "category": "yield",
       "confidence": "high",
       "tevStatus": "active",
-      "tev_yield_percent": 14.93,
-      "market_cap_usd": 190988590.42,
+      "tev_yield_percent": 14.37,
+      "market_cap_usd": 198539326.53,
       "tvl": 2516386243.086277,
       "tevRatio": 0.8,
       "tevRatioNote": "回购+分红 - 80% 协议收入转化为 PENDLE 回购，分配给 sPENDLE 持有者",
       "metrics": {
-        "current_market_cap_usd": 190988590.42,
+        "current_market_cap_usd": 198539326.53,
         "trailing_365d_tev_usd": 28522163.200000003,
         "trailing_30d_tev_usd": 2376846.9333333336,
         "trailing_365d_revenue_usd": 35652704,
@@ -398,15 +398,15 @@
       "confidence": "high",
       "tevStatus": "active",
       "tev_yield_percent": 6.27,
-      "market_cap_usd": 1445758811.61,
+      "market_cap_usd": 1473184318.98,
       "tvl": 5371348279.30749,
       "tevRatioNote": "回购 - Smart Burn Engine 使用协议盈余回购 MKR 并添加流动性",
       "metrics": {
-        "current_market_cap_usd": 1445758811.61,
-        "trailing_365d_tev_usd": 90649077.48794699,
-        "trailing_30d_tev_usd": 7554089.790662249,
-        "trailing_365d_revenue_usd": 247558295,
-        "trailing_30d_revenue_usd": 18830604
+        "current_market_cap_usd": 1473184318.98,
+        "trailing_365d_tev_usd": 92368656.80004598,
+        "trailing_30d_tev_usd": 7697388.066670499,
+        "trailing_365d_revenue_usd": 247931241,
+        "trailing_30d_revenue_usd": 18784359
       }
     },
     "spark": {
