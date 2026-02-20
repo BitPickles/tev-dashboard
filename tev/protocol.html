@@ -237,17 +237,21 @@
         if (!resp.ok) return;
         const data = await resp.json();
         
+        // 支持季度数据（如 Fluid）或每日数据
+        const quarterlyData = data.quarterly_buybacks || [];
         const dailyData = data.daily_buybacks || [];
+        const isQuarterly = data.data_type === 'quarterly' || (!dailyData.length && quarterlyData.length);
+        const chartData = isQuarterly ? quarterlyData : dailyData;
         const stages = data.stages || [];
         
-        if (!dailyData.length) return;
+        if (!chartData.length) return;
         
         document.getElementById('buyback-chart-section').style.display = 'block';
         
         // Calculate totals for progress bar - support aster, hype, and fluid fields
-        const amountField = dailyData[0]?.aster !== undefined ? 'aster' : (dailyData[0]?.hype !== undefined ? 'hype' : (dailyData[0]?.usd !== undefined ? 'usd' : 'fluid'));
+        const amountField = chartData[0]?.aster !== undefined ? 'aster' : (chartData[0]?.hype !== undefined ? 'hype' : (chartData[0]?.usd !== undefined ? 'usd' : 'fluid'));
         const isUsdOnly = amountField === 'usd';  // Fluid 等只有 USD 数据的协议
-        const totalAmount = dailyData.reduce((s, d) => s + (d[amountField] || 0), 0);
+        const totalAmount = chartData.reduce((s, d) => s + (d[amountField] || 0), 0);
         const totalSupply = data.total_supply || 1e9;
         const ticker = data.ticker || 'TOKEN';
         
@@ -301,28 +305,24 @@
           return 'rgba(34,197,94,1)';
         };
         
-        const chartPoints = dailyData.map(d => ({
-          x: new Date(d.date),
-          y: d[amountField] || 0,
-          stage: d.stage,
-          dataType: d.dataType || d.data_type,  // 支持两种字段名
-          source: d.source,
-          usd: d.usd,
-          avgPrice: d.avg_price
-        }));
+        // 季度数据用 category 轴，每日数据用 time 轴
+        const chartPoints = isQuarterly 
+          ? chartData.map(d => ({ x: d.quarter, y: d.usd || 0, ...d, dataType: d.dataType || d.data_type }))
+          : chartData.map(d => ({ x: new Date(d.date), y: d[amountField] || 0, stage: d.stage, dataType: d.dataType || d.data_type, source: d.source, usd: d.usd, avgPrice: d.avg_price }));
         
         buybackChart = new Chart(ctx, {
           type: 'bar',
           data: {
+            labels: isQuarterly ? chartData.map(d => d.quarter) : undefined,
             datasets: [{
               label: isUsdOnly ? 'USD' : ticker,
               data: chartPoints,
-              backgroundColor: dailyData.map(d => getBarColor(d)),
-              borderColor: dailyData.map(d => getBorderColor(d)),
+              backgroundColor: chartData.map(d => getBarColor(d)),
+              borderColor: chartData.map(d => getBorderColor(d)),
               borderWidth: 1,
-              borderRadius: 2,
-              barPercentage: 1,
-              categoryPercentage: 1
+              borderRadius: 4,
+              barPercentage: isQuarterly ? 0.6 : 1,
+              categoryPercentage: isQuarterly ? 0.8 : 1
             }]
           },
           options: {
@@ -336,15 +336,16 @@
                 titleColor: '#fafafa',
                 bodyColor: '#a1a1aa',
                 callbacks: {
-                  title: (items) => items[0].raw.x.toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US'),
-                  label: (ctx) => isUsdOnly ? ` $${(ctx.raw.y/1e3).toFixed(1)}K` : ` ${(ctx.raw.y/1e3).toFixed(1)}K ${ticker}`,
+                  title: (items) => isQuarterly ? items[0].raw.quarter : items[0].raw.x.toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US'),
+                  label: (ctx) => isUsdOnly || isQuarterly ? ` $${(ctx.raw.y/1e6).toFixed(2)}M` : ` ${(ctx.raw.y/1e3).toFixed(1)}K ${ticker}`,
                   afterLabel: (ctx) => {
                     const d = ctx.raw;
                     const lines = [];
-                    if (d.stage) lines.push(`Stage: ${d.stage}`);
-                    if (d.usd) lines.push(`USD: ${fmtCurrency(d.usd)}`);
+                    if (d.source) lines.push(`来源: ${d.source}`);
+                    if (!isQuarterly && d.stage) lines.push(`Stage: ${d.stage}`);
+                    if (!isQuarterly && !isUsdOnly && d.usd) lines.push(`USD: ${fmtCurrency(d.usd)}`);
                     if (d.avgPrice) lines.push(`Avg: $${d.avgPrice.toFixed(2)}`);
-                    lines.push(d.dataType === 'estimated' ? '⚠️ 估算数据' : '✅ 链上数据');
+                    lines.push(d.dataType === 'estimated' ? '⚠️ 估算数据（官方报告）' : '✅ 链上数据');
                     return lines;
                   }
                 }
@@ -355,7 +356,11 @@
               }
             },
             scales: {
-              x: {
+              x: isQuarterly ? {
+                type: 'category',
+                grid: { display: false },
+                ticks: { color: '#71717a', font: { size: 12 } }
+              } : {
                 type: 'time',
                 time: { unit: 'week', displayFormats: { week: 'MM-dd', day: 'MM-dd' } },
                 grid: { display: false },
@@ -363,8 +368,8 @@
               },
               y: {
                 grid: { color: 'rgba(39,39,42,0.5)' },
-                ticks: { color: '#a1a1aa', callback: v => isUsdOnly ? '$' + (v/1e3).toFixed(0) + 'K' : (v/1e6).toFixed(1) + 'M' },
-                title: { display: true, text: isUsdOnly ? 'USD / day' : `${ticker} / day`, color: '#a1a1aa' }
+                ticks: { color: '#a1a1aa', callback: v => isQuarterly || isUsdOnly ? '$' + (v/1e6).toFixed(1) + 'M' : (v/1e6).toFixed(1) + 'M' },
+                title: { display: true, text: isQuarterly ? 'USD / quarter' : (isUsdOnly ? 'USD / day' : `${ticker} / day`), color: '#a1a1aa' }
               }
             }
           }
