@@ -114,9 +114,8 @@
       <div class="section" id="buyback-chart-section" style="display: none;">
         <div class="section-title"><span class="icon">💰</span><span data-i18n="section.buybackData">回购数据</span></div>
         <div class="chart-container" style="height:400px;"><div class="chart-canvas-wrap"><canvas id="buyback-activity-chart"></canvas></div></div>
-        <div class="chart-legend" style="display:flex;justify-content:center;gap:24px;margin-top:12px;font-size:12px;">
-          <span style="color:#787878;">■ Stage 1-4 (历史报道)</span>
-          <span style="color:#22c55e;">■ Stage 5-6 (链上数据)</span>
+        <div class="chart-legend" id="buyback-legend" style="display:flex;justify-content:center;gap:24px;margin-top:12px;font-size:12px;">
+          <!-- 动态根据协议填充 -->
         </div>
         <div class="chart-hint" style="text-align:center;color:var(--text-tertiary);font-size:11px;margin-top:8px;" data-i18n="chart.zoomHint">🖱️ 滚轮缩放 · 拖动平移 · 双击重置</div>
         
@@ -245,39 +244,36 @@
         
         document.getElementById('buyback-chart-section').style.display = 'block';
         
-        // Calculate totals for progress bar - support aster, hype, fluid, or USD-only
-        const amountField = dailyData[0]?.aster !== undefined ? 'aster' : 
-                           dailyData[0]?.hype !== undefined ? 'hype' :
-                           dailyData[0]?.fluid !== undefined ? 'fluid' : 'usd';
-        const isUsdOnly = amountField === 'usd';
+        // Calculate totals for progress bar - support aster, hype, and fluid fields
+        const amountField = dailyData[0]?.aster !== undefined ? 'aster' : (dailyData[0]?.hype !== undefined ? 'hype' : (dailyData[0]?.usd !== undefined ? 'usd' : 'fluid'));
         const totalAmount = dailyData.reduce((s, d) => s + (d[amountField] || 0), 0);
         const totalSupply = data.total_supply || 1e9;
         const ticker = data.ticker || 'TOKEN';
         
-        // Use summary totals if available (more accurate for HYPE)
-        const displayTotal = data.summary?.total_buyback_hype || data.summary?.total_buyback_aster || 
-                            data.summary?.total_buyback_fluid || (isUsdOnly ? 0 : totalAmount);
+        // Use summary totals if available (more accurate)
+        const displayTotal = data.summary?.total_buyback_hype || data.summary?.total_buyback_aster || data.summary?.total_buyback_fluid || (isUsdOnly ? 0 : totalAmount);
         const displayUsd = data.summary?.total_buyback_usd || (isUsdOnly ? totalAmount : 0);
         const progress = isUsdOnly ? 0 : (displayTotal / totalSupply) * 100;
         
-        // Update progress bar - hide for USD-only mode
-        if (isUsdOnly) {
-          document.querySelector('.buyback-progress-container')?.style && (document.querySelector('.buyback-progress-container').style.display = 'none');
+        // Update progress bar - hide for USD-only mode (no token amounts)
+        const progressContainer = document.querySelector('.buyback-progress-container');
+        if (isUsdOnly && progressContainer) {
+          progressContainer.style.display = 'none';
           document.getElementById('buyback-total').textContent = '—';
-          document.getElementById('buyback-supply').textContent = `${(totalSupply / 1e6).toFixed(0)}M`;
         } else {
+          if (progressContainer) progressContainer.style.display = '';
           document.getElementById('buyback-progress-fill').style.width = `${Math.min(progress, 100)}%`;
           document.getElementById('buyback-progress-fill').textContent = `${progress.toFixed(2)}%`;
           document.getElementById('buyback-progress-text').textContent = `${(displayTotal / 1e6).toFixed(2)}M / ${(totalSupply / 1e9).toFixed(0)}B (${progress.toFixed(2)}%)`;
           document.getElementById('buyback-total').textContent = `${(displayTotal / 1e6).toFixed(2)}M`;
-          document.getElementById('buyback-supply').textContent = `${(totalSupply / 1e9).toFixed(0)}B`;
         }
         
         // USD display
         document.getElementById('buyback-usd').textContent = displayUsd > 0 ? fmtCurrency(displayUsd) : '—';
+        document.getElementById('buyback-supply').textContent = `${(totalSupply / 1e6).toFixed(0)}M`;
         
         // Additional stats
-        const avgPrice = data.summary?.avg_price || (displayUsd / displayTotal);
+        const avgPrice = data.summary?.avg_price || data.summary?.avg_daily || (displayUsd / displayTotal);
         const totalDays = data.summary?.total_days || dailyData.length;
         document.getElementById('buyback-avg-price').textContent = avgPrice > 0 ? `$${avgPrice.toFixed(2)}` : '—';
         document.getElementById('buyback-days').textContent = totalDays > 0 ? `${totalDays}` : '—';
@@ -285,23 +281,31 @@
         const ctx = document.getElementById('buyback-activity-chart').getContext('2d');
         if (buybackChart) buybackChart.destroy();
         
-        // 每日数据图表 - 用颜色区分数据类型
-        // estimated: 灰色半透明
-        // onchain: 绿色
+        // 每日数据图表 - 用颜色区分阶段和数据类型
+        // estimated / 1-4 / defillama / official: 灰色半透明
+        // onchain / 5 / 6: 绿色
+        const isUsdOnly = amountField === 'usd';
         const getBarColor = (d) => {
-          if (d.data_type === 'estimated' || d.stage === '1-4') return 'rgba(120,120,120,0.5)';  // 灰色 - 估算
+          // 估算数据 - 灰色
+          if (d.dataType === 'estimated' || d.data_type === 'estimated' || 
+              d.stage === '1-4' || d.stage === 'defillama' || d.stage === 'official') {
+            return 'rgba(120,120,120,0.5)';
+          }
           return 'rgba(34,197,94,0.8)';  // 绿色 - 链上
         };
         const getBorderColor = (d) => {
-          if (d.data_type === 'estimated' || d.stage === '1-4') return 'rgba(120,120,120,0.8)';
+          if (d.dataType === 'estimated' || d.data_type === 'estimated' || 
+              d.stage === '1-4' || d.stage === 'defillama' || d.stage === 'official') {
+            return 'rgba(120,120,120,0.8)';
+          }
           return 'rgba(34,197,94,1)';
         };
         
         const chartPoints = dailyData.map(d => ({
           x: new Date(d.date),
-          y: isUsdOnly ? (d.usd || 0) : (d[amountField] || 0),
+          y: d[amountField] || 0,
           stage: d.stage,
-          dataType: d.data_type,
+          dataType: d.dataType || d.data_type,  // 支持两种字段名
           source: d.source,
           usd: d.usd,
           avgPrice: d.avg_price
@@ -333,12 +337,12 @@
                 bodyColor: '#a1a1aa',
                 callbacks: {
                   title: (items) => items[0].raw.x.toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US'),
-                  label: (ctx) => isUsdOnly ? ` $${(ctx.raw.y/1e6).toFixed(2)}M` : ` ${(ctx.raw.y/1e3).toFixed(1)}K ${ticker}`,
+                  label: (ctx) => isUsdOnly ? ` $${(ctx.raw.y/1e3).toFixed(1)}K` : ` ${(ctx.raw.y/1e3).toFixed(1)}K ${ticker}`,
                   afterLabel: (ctx) => {
                     const d = ctx.raw;
                     const lines = [];
                     if (d.stage) lines.push(`Stage: ${d.stage}`);
-                    if (!isUsdOnly && d.usd) lines.push(`USD: ${fmtCurrency(d.usd)}`);
+                    if (d.usd) lines.push(`USD: ${fmtCurrency(d.usd)}`);
                     if (d.avgPrice) lines.push(`Avg: $${d.avgPrice.toFixed(2)}`);
                     lines.push(d.dataType === 'estimated' ? '⚠️ 估算数据' : '✅ 链上数据');
                     return lines;
@@ -359,8 +363,8 @@
               },
               y: {
                 grid: { color: 'rgba(39,39,42,0.5)' },
-                ticks: { color: '#a1a1aa', callback: v => isUsdOnly ? '$' + (v/1e6).toFixed(1) + 'M' : (v/1e6).toFixed(1) + 'M' },
-                title: { display: true, text: isUsdOnly ? 'USD / period' : `${ticker} / day`, color: '#a1a1aa' }
+                ticks: { color: '#a1a1aa', callback: v => isUsdOnly ? '$' + (v/1e3).toFixed(0) + 'K' : (v/1e6).toFixed(1) + 'M' },
+                title: { display: true, text: isUsdOnly ? 'USD / day' : `${ticker} / day`, color: '#a1a1aa' }
               }
             }
           }
@@ -368,6 +372,20 @@
         
         // Double-click to reset zoom
         ctx.canvas.ondblclick = () => buybackChart.resetZoom();
+
+        // 设置图例（根据协议）
+        const legendEl = document.getElementById('buyback-legend');
+        if (legendEl) {
+          if (pid === 'aster') {
+            legendEl.innerHTML = '<span style="color:#787878;">■ Stage 1-4 (历史报道)</span><span style="color:#22c55e;">■ Stage 5-6 (链上数据)</span>';
+          } else if (pid === 'hype') {
+            legendEl.innerHTML = '<span style="color:#787878;">■ 估算</span><span style="color:#22c55e;">■ 链上数据</span>';
+          } else if (pid === 'fluid') {
+            legendEl.innerHTML = '<span style="color:#787878;">■ 官方博客数据 (Q4 2025)</span>';
+          } else {
+            legendEl.innerHTML = '';
+          }
+        }
       } catch (e) { console.log(`No buyback data for ${pid}:`, e.message); }
     }
 
@@ -414,7 +432,7 @@
         document.getElementById('content').style.display = 'block';
         loadTevChart(pid);
         if (['bnb', 'hype', 'uniswap'].includes(pid)) loadBurnsChart(pid);
-        if (['aster','hype'].includes(pid)) loadBuybackData(pid);
+        if (['aster','hype','fluid'].includes(pid)) loadBuybackData(pid);
       } catch (e) {
         console.error('Failed:', e);
         document.getElementById('loading').innerHTML = `<div style="color:var(--danger);">Failed to load protocol</div><div style="margin-top:8px;font-size:12px;">${e.message}</div><div style="margin-top:16px;"><a href="index.html" style="color:var(--blue);">← Back</a></div>`;

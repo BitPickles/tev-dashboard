@@ -48,6 +48,13 @@ const PROTOCOL_CONFIG = {
     tevRatio: null,  // 从 TEV Yield 反推
     note: '提现收入回购'
   },
+  fluid: {
+    defillamaSlug: 'fluid',
+    coingeckoId: 'fluid',
+    cmcSlug: 'instadapp',
+    tevRatio: 0.35,
+    note: '35% Revenue 用于 Treasury 回购'
+  },
   gmx: { 
     defillamaSlug: 'gmx', 
     coingeckoId: 'gmx',

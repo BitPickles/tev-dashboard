@@ -4,7 +4,7 @@
   "ticker": "FLUID",
   "icon": "https://coin-images.coingecko.com/coins/images/33382/large/fluid.png",
   "category": "lending",
-  "description": "Lending + DEX 一体化协议，由 Instadapp 团队推出，建立在统一的 Liquidity Layer 上",
+  "description": "Lending + DEX \u4e00\u4f53\u5316\u534f\u8bae\uff0c\u7531 Instadapp \u56e2\u961f\u63a8\u51fa\uff0c\u5efa\u7acb\u5728\u7edf\u4e00\u7684 Liquidity Layer \u4e0a",
   "website": "https://fluid.io",
   "docs": "https://docs.fluid.instadapp.io",
   "token": {
@@ -17,7 +17,7 @@
     {
       "type": "buyback",
       "name": "Fluid Reserve Buyback",
-      "description": "Treasury 用协议收入回购 FLUID 代币，建立链上储备",
+      "description": "Treasury \u7528\u534f\u8bae\u6536\u5165\u56de\u8d2d FLUID \u4ee3\u5e01\uff0c\u5efa\u7acb\u94fe\u4e0a\u50a8\u5907",
       "status": "active",
       "start_date": "2025-10-01",
       "tev_ratio": 0.35,
@@ -30,11 +30,11 @@
   ],
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "35% Revenue 用于回购",
+    "fee_switch_details": "35% Revenue \u7528\u4e8e\u56de\u8d2d",
     "buybacks": "ACTIVE",
     "dividends": "NONE",
     "burns": "NONE",
-    "primary_value_accrual": "回购 - Treasury 用 35% Revenue 回购 FLUID，Q4 2025 启动"
+    "primary_value_accrual": "\u56de\u8d2d - Treasury \u7528 35% Revenue \u56de\u8d2d FLUID\uff0cQ4 2025 \u542f\u52a8"
   },
   "confidence": "high",
   "data_sources": [
@@ -81,6 +81,8 @@
       "type": "media"
     }
   ],
-  "analyst_notes": "## 收入口径（DeFiLlama 三层）\n\n| 口径 | 30天 | 年化 |\n|------|------|------|\n| Fees | $5.98M | $72.99M |\n| Revenue | $1.05M | $12.75M |\n| Holders Revenue | $365K | $4.46M |\n\n## 经营比例\n\n- **协议抽成率** (Revenue/Fees): ~17.5%\n- **代币回流强度** (Holders Revenue/Revenue): ~35%\n\n## 回购机制\n\n- **启动时间**: 2025年10月\n- **第一个月**: 100% 以太坊主网收入用于回购\n- **Q4 2025 总回购**: $3.21M\n- **执行方式**: 多笔小额交易，链上透明\n\n## 关键点\n\n1. 回购是**制度化**的（Fluid Reserve 项目），非口头承诺\n2. 回购比例由治理动态决定（FDV/TWAP/混合模型）\n3. 回购代币进 Treasury，**不一定 burn**，后续用途由治理定\n4. Q1-Q3 2025 因激励投放，Earnings 为负；Q4 起转正",
-  "last_updated": "2026-02-20"
+  "analyst_notes": "## \u6570\u636e\u6765\u6e90\u8bf4\u660e\n\n**\u56de\u8d2d\u6570\u636e\u6765\u6e90**: \u5b98\u65b9\u535a\u5ba2 Q4 2025 \u6570\u636e\n- \u603b\u989d: $3.21M (2025\u5e7410\u6708-12\u6708)\n- \u6765\u6e90: [FLUID Reserve: Buybacks & Growth Strategy](https://blog.instadapp.io/fluid-reserve-buybacks-growth-strategy/)\n\n**\u4e3a\u4ec0\u4e48\u6ca1\u6709\u94fe\u4e0a\u8ffd\u8e2a\u6570\u636e**:\n1. Fluid \u901a\u8fc7 Avocado Broadcaster \u5408\u7ea6\u6267\u884c\u56de\u8d2d\n2. \u65e0\u4e13\u7528\u56de\u8d2d\u5408\u7ea6/\u94b1\u5305\n3. DAO Treasury \u6a21\u5f0f\uff0c\u94fe\u4e0a\u8ffd\u8e2a\u590d\u6742\n4. \u5b98\u65b9\u8ffd\u8e2a\u7cfb\u7edf\u5f00\u53d1\u4e2d\n\n**\u53ef\u7528\u6570\u636e\u6e90**:\n- Dune Dashboard: https://dune.com/murathan/fluid-buybacks (\u793e\u533a\u8ffd\u8e2a)\n- DefiLlama: Holders Revenue (\u805a\u5408\u6570\u636e\uff0c\u5927\u90e8\u5206\u4e3a0)\n\n**\u540e\u7eed\u8ba1\u5212**:\n\u7b49\u5b98\u65b9\u8ffd\u8e2a\u7cfb\u7edf\u4e0a\u7ebf\u540e\u66f4\u65b0\u4e3a\u94fe\u4e0a\u6570\u636e\u3002\n\n---\n*\u66f4\u65b0: 2026-02-20*",
+  "last_updated": "2026-02-20",
+  "data_confidence": "medium",
+  "data_source_note": "\u5b98\u65b9\u535a\u5ba2 Q4 2025 \u6570\u636e\uff0c\u975e\u94fe\u4e0a\u8ffd\u8e2a"
 }
