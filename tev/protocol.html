@@ -245,26 +245,36 @@
         
         document.getElementById('buyback-chart-section').style.display = 'block';
         
-        // Calculate totals for progress bar - support both aster and hype fields
-        const amountField = dailyData[0]?.aster !== undefined ? 'aster' : 'hype';
+        // Calculate totals for progress bar - support aster, hype, fluid, or USD-only
+        const amountField = dailyData[0]?.aster !== undefined ? 'aster' : 
+                           dailyData[0]?.hype !== undefined ? 'hype' :
+                           dailyData[0]?.fluid !== undefined ? 'fluid' : 'usd';
+        const isUsdOnly = amountField === 'usd';
         const totalAmount = dailyData.reduce((s, d) => s + (d[amountField] || 0), 0);
         const totalSupply = data.total_supply || 1e9;
         const ticker = data.ticker || 'TOKEN';
         
         // Use summary totals if available (more accurate for HYPE)
-        const displayTotal = data.summary?.total_buyback_hype || data.summary?.total_buyback_aster || totalAmount;
-        const displayUsd = data.summary?.total_buyback_usd || 0;
-        const progress = (displayTotal / totalSupply) * 100;
+        const displayTotal = data.summary?.total_buyback_hype || data.summary?.total_buyback_aster || 
+                            data.summary?.total_buyback_fluid || (isUsdOnly ? 0 : totalAmount);
+        const displayUsd = data.summary?.total_buyback_usd || (isUsdOnly ? totalAmount : 0);
+        const progress = isUsdOnly ? 0 : (displayTotal / totalSupply) * 100;
         
-        // Update progress bar
-        document.getElementById('buyback-progress-fill').style.width = `${Math.min(progress, 100)}%`;
-        document.getElementById('buyback-progress-fill').textContent = `${progress.toFixed(2)}%`;
-        document.getElementById('buyback-progress-text').textContent = `${(displayTotal / 1e6).toFixed(2)}M / ${(totalSupply / 1e9).toFixed(0)}B (${progress.toFixed(2)}%)`;
-        document.getElementById('buyback-total').textContent = `${(displayTotal / 1e6).toFixed(2)}M`;
+        // Update progress bar - hide for USD-only mode
+        if (isUsdOnly) {
+          document.querySelector('.buyback-progress-container')?.style && (document.querySelector('.buyback-progress-container').style.display = 'none');
+          document.getElementById('buyback-total').textContent = '—';
+          document.getElementById('buyback-supply').textContent = `${(totalSupply / 1e6).toFixed(0)}M`;
+        } else {
+          document.getElementById('buyback-progress-fill').style.width = `${Math.min(progress, 100)}%`;
+          document.getElementById('buyback-progress-fill').textContent = `${progress.toFixed(2)}%`;
+          document.getElementById('buyback-progress-text').textContent = `${(displayTotal / 1e6).toFixed(2)}M / ${(totalSupply / 1e9).toFixed(0)}B (${progress.toFixed(2)}%)`;
+          document.getElementById('buyback-total').textContent = `${(displayTotal / 1e6).toFixed(2)}M`;
+          document.getElementById('buyback-supply').textContent = `${(totalSupply / 1e9).toFixed(0)}B`;
+        }
         
         // USD display
         document.getElementById('buyback-usd').textContent = displayUsd > 0 ? fmtCurrency(displayUsd) : '—';
-        document.getElementById('buyback-supply').textContent = `${(totalSupply / 1e9).toFixed(0)}B`;
         
         // Additional stats
         const avgPrice = data.summary?.avg_price || (displayUsd / displayTotal);
@@ -275,17 +285,21 @@
         const ctx = document.getElementById('buyback-activity-chart').getContext('2d');
         if (buybackChart) buybackChart.destroy();
         
-        // 每日数据图表 - 用颜色区分阶段和数据类型
-        // Stage 1-4 (估算): 灰色半透明
-        // Stage 5-6 (链上): 绿色
+        // 每日数据图表 - 用颜色区分数据类型
+        // estimated: 灰色半透明
+        // onchain: 绿色
         const getBarColor = (d) => {
-          if (d.stage === '1-4') return 'rgba(120,120,120,0.5)';  // 灰色 - 估算
+          if (d.data_type === 'estimated' || d.stage === '1-4') return 'rgba(120,120,120,0.5)';  // 灰色 - 估算
           return 'rgba(34,197,94,0.8)';  // 绿色 - 链上
+        };
+        const getBorderColor = (d) => {
+          if (d.data_type === 'estimated' || d.stage === '1-4') return 'rgba(120,120,120,0.8)';
+          return 'rgba(34,197,94,1)';
         };
         
         const chartPoints = dailyData.map(d => ({
           x: new Date(d.date),
-          y: d[amountField] || 0,
+          y: isUsdOnly ? (d.usd || 0) : (d[amountField] || 0),
           stage: d.stage,
           dataType: d.data_type,
           source: d.source,
@@ -297,10 +311,10 @@
           type: 'bar',
           data: {
             datasets: [{
-              label: ticker,
+              label: isUsdOnly ? 'USD' : ticker,
               data: chartPoints,
               backgroundColor: dailyData.map(d => getBarColor(d)),
-              borderColor: dailyData.map(d => d.stage === '1-4' ? 'rgba(120,120,120,0.8)' : 'rgba(34,197,94,1)'),
+              borderColor: dailyData.map(d => getBorderColor(d)),
               borderWidth: 1,
               borderRadius: 2,
               barPercentage: 1,
@@ -319,12 +333,12 @@
                 bodyColor: '#a1a1aa',
                 callbacks: {
                   title: (items) => items[0].raw.x.toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US'),
-                  label: (ctx) => ` ${(ctx.raw.y/1e3).toFixed(1)}K ${ticker}`,
+                  label: (ctx) => isUsdOnly ? ` $${(ctx.raw.y/1e6).toFixed(2)}M` : ` ${(ctx.raw.y/1e3).toFixed(1)}K ${ticker}`,
                   afterLabel: (ctx) => {
                     const d = ctx.raw;
                     const lines = [];
                     if (d.stage) lines.push(`Stage: ${d.stage}`);
-                    if (d.usd) lines.push(`USD: ${fmtCurrency(d.usd)}`);
+                    if (!isUsdOnly && d.usd) lines.push(`USD: ${fmtCurrency(d.usd)}`);
                     if (d.avgPrice) lines.push(`Avg: $${d.avgPrice.toFixed(2)}`);
                     lines.push(d.dataType === 'estimated' ? '⚠️ 估算数据' : '✅ 链上数据');
                     return lines;
@@ -345,8 +359,8 @@
               },
               y: {
                 grid: { color: 'rgba(39,39,42,0.5)' },
-                ticks: { color: '#a1a1aa', callback: v => (v/1e6).toFixed(1) + 'M' },
-                title: { display: true, text: `${ticker} / day`, color: '#a1a1aa' }
+                ticks: { color: '#a1a1aa', callback: v => isUsdOnly ? '$' + (v/1e6).toFixed(1) + 'M' : (v/1e6).toFixed(1) + 'M' },
+                title: { display: true, text: isUsdOnly ? 'USD / period' : `${ticker} / day`, color: '#a1a1aa' }
               }
             }
           }

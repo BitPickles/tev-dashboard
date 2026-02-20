@@ -2,13 +2,56 @@
   "protocol": "fluid",
   "ticker": "FLUID",
   "total_supply": 100000000,
-  "updated_at": "2026-02-20T09:26:00.059763Z",
+  "updated_at": "2026-02-21T01:30:00Z",
+  "data_source": "official_reports",
+  "data_source_note": "链上数据暂不可追踪（Avocado Broadcaster），使用官方报告估算",
   "summary": {
-    "total_buyback_usd": 0,
-    "total_days": 0,
-    "first_date": null,
-    "last_date": null,
-    "note": "Etherscan Treasury \u539f\u751f\u4ee3\u5e01\u652f\u51fa\uff08ETH \u2192 Router\uff09"
+    "total_buyback_usd": 3210000,
+    "total_buyback_fluid": 0,
+    "total_days": 92,
+    "first_date": "2025-10-01",
+    "last_date": "2025-12-31",
+    "note": "Q4 2025 官方披露数据"
   },
-  "daily_buybacks": []
+  "quarterly_buybacks": [
+    {
+      "quarter": "2025-Q4",
+      "start_date": "2025-10-01",
+      "end_date": "2025-12-31",
+      "buyback_usd": 3210000,
+      "data_type": "estimated",
+      "source": "Instadapp Blog - Fluid Reserve Buybacks",
+      "source_url": "https://blog.instadapp.io/fluid-reserve-buybacks-growth-strategy/",
+      "note": "官方披露：Q4 2025 回购总额 $3.21M"
+    }
+  ],
+  "daily_buybacks": [
+    {
+      "date": "2025-10-15",
+      "usd": 1070000,
+      "fluid": 0,
+      "data_type": "estimated",
+      "stage": "Q4-1",
+      "source": "official_estimate",
+      "note": "Q4 第一个月估算 (1/3)"
+    },
+    {
+      "date": "2025-11-15",
+      "usd": 1070000,
+      "fluid": 0,
+      "data_type": "estimated",
+      "stage": "Q4-2",
+      "source": "official_estimate",
+      "note": "Q4 第二个月估算 (1/3)"
+    },
+    {
+      "date": "2025-12-15",
+      "usd": 1070000,
+      "fluid": 0,
+      "data_type": "estimated",
+      "stage": "Q4-3",
+      "source": "official_estimate",
+      "note": "Q4 第三个月估算 (1/3)"
+    }
+  ]
 }
