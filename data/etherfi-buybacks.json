@@ -1,0 +1,933 @@
+{
+  "protocol": "etherfi",
+  "ticker": "ETHFI",
+  "total_supply": 1000000000,
+  "updated_at": "2026-02-21T03:10:30.433695+00:00",
+  "last_block": 24499603,
+  "data_type": "daily",
+  "data_source": "onchain",
+  "data_source_note": "追踪 ETHFI 流入回购地址 (Etherscan API)",
+  "buyback_receivers": [
+    "0x0c83EAe1FE72c390A02E426572854931EefF93BA",
+    "0x2f5301a3D59388c509C65f8698f521377D41Fd0F"
+  ],
+  "summary": {
+    "total_buyback_ethfi": 16378902.07,
+    "total_buyback_usd": 14433661.29,
+    "total_days": 101,
+    "first_date": "2025-05-09",
+    "last_date": "2026-02-20",
+    "avg_daily_ethfi": 162167.35
+  },
+  "daily_buybacks": [
+    {
+      "date": "2025-05-09",
+      "ethfi": 437014.15,
+      "usd": 309465.64,
+      "price": 0.7081,
+      "txs": 25,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-05-16",
+      "ethfi": 186903.52,
+      "usd": 269299.64,
+      "price": 1.4408,
+      "txs": 16,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-05-19",
+      "ethfi": 1681.14,
+      "usd": 2261.01,
+      "price": 1.3449,
+      "txs": 1,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-05-23",
+      "ethfi": 205507.38,
+      "usd": 279568.21,
+      "price": 1.3604,
+      "txs": 14,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-05-30",
+      "ethfi": 218582.1,
+      "usd": 292194.89,
+      "price": 1.3368,
+      "txs": 9,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-06-06",
+      "ethfi": 98174.29,
+      "usd": 104442.3,
+      "price": 1.0638,
+      "txs": 5,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-06-13",
+      "ethfi": 110928.96,
+      "usd": 124837.92,
+      "price": 1.1254,
+      "txs": 5,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-06-20",
+      "ethfi": 123101.7,
+      "usd": 123482.1,
+      "price": 1.0031,
+      "txs": 5,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-06-27",
+      "ethfi": 129442.26,
+      "usd": 119942.43,
+      "price": 0.9266,
+      "txs": 5,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-07-04",
+      "ethfi": 133994.38,
+      "usd": 133140.86,
+      "price": 0.9936,
+      "txs": 5,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-07-12",
+      "ethfi": 137398.72,
+      "usd": 155841.08,
+      "price": 1.1342,
+      "txs": 5,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-07-18",
+      "ethfi": 134892.47,
+      "usd": 178938.51,
+      "price": 1.3265,
+      "txs": 5,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-07-25",
+      "ethfi": 150863.92,
+      "usd": 168511.79,
+      "price": 1.117,
+      "txs": 5,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-08-02",
+      "ethfi": 193944.64,
+      "usd": 183754.51,
+      "price": 0.9475,
+      "txs": 5,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-08-08",
+      "ethfi": 397587.16,
+      "usd": 436400.86,
+      "price": 1.0976,
+      "txs": 12,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-08-15",
+      "ethfi": 341789.21,
+      "usd": 404722.31,
+      "price": 1.1841,
+      "txs": 8,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-08-24",
+      "ethfi": 259501.92,
+      "usd": 331296.84,
+      "price": 1.2767,
+      "txs": 7,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-08-29",
+      "ethfi": 774538.18,
+      "usd": 879929.28,
+      "price": 1.1361,
+      "txs": 20,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-09-05",
+      "ethfi": 263241.9,
+      "usd": 291330.63,
+      "price": 1.1067,
+      "txs": 8,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-09-13",
+      "ethfi": 246985.3,
+      "usd": 356963.36,
+      "price": 1.4453,
+      "txs": 8,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-09-19",
+      "ethfi": 317822.86,
+      "usd": 510580.85,
+      "price": 1.6065,
+      "txs": 12,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-09-27",
+      "ethfi": 126595.0,
+      "usd": 200966.64,
+      "price": 1.5875,
+      "txs": 5,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-10-04",
+      "ethfi": 107778.93,
+      "usd": 194774.91,
+      "price": 1.8072,
+      "txs": 6,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-10-11",
+      "ethfi": 128159.37,
+      "usd": 152671.46,
+      "price": 1.1913,
+      "txs": 4,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-10-17",
+      "ethfi": 70107.13,
+      "usd": 77546.86,
+      "price": 1.1061,
+      "txs": 4,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-10-18",
+      "ethfi": 35750.26,
+      "usd": 38525.86,
+      "price": 1.0776,
+      "txs": 2,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-10-24",
+      "ethfi": 107711.75,
+      "usd": 104659.94,
+      "price": 0.9717,
+      "txs": 3,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-03",
+      "ethfi": 111038.75,
+      "usd": 110697.37,
+      "price": 0.9969,
+      "txs": 3,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-04",
+      "ethfi": 66342.81,
+      "usd": 57202.67,
+      "price": 0.8622,
+      "txs": 11,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-05",
+      "ethfi": 395898.46,
+      "usd": 326731.54,
+      "price": 0.8253,
+      "txs": 40,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-06",
+      "ethfi": 308697.58,
+      "usd": 268648.0,
+      "price": 0.8703,
+      "txs": 28,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-07",
+      "ethfi": 223403.57,
+      "usd": 191514.1,
+      "price": 0.8573,
+      "txs": 20,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-08",
+      "ethfi": 9961.53,
+      "usd": 9775.61,
+      "price": 0.9813,
+      "txs": 1,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-09",
+      "ethfi": 207335.57,
+      "usd": 199508.72,
+      "price": 0.9623,
+      "txs": 20,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-10",
+      "ethfi": 99248.43,
+      "usd": 98723.45,
+      "price": 0.9947,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-11",
+      "ethfi": 103013.44,
+      "usd": 104666.15,
+      "price": 1.016,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-12",
+      "ethfi": 105679.86,
+      "usd": 100146.7,
+      "price": 0.9476,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-13",
+      "ethfi": 63992.6,
+      "usd": 59476.22,
+      "price": 0.9294,
+      "txs": 6,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-14",
+      "ethfi": 270235.63,
+      "usd": 262727.37,
+      "price": 0.9722,
+      "txs": 27,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-15",
+      "ethfi": 108039.28,
+      "usd": 97506.34,
+      "price": 0.9025,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-16",
+      "ethfi": 112456.13,
+      "usd": 104323.95,
+      "price": 0.9277,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-17",
+      "ethfi": 116265.91,
+      "usd": 104110.78,
+      "price": 0.8955,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-18",
+      "ethfi": 108757.66,
+      "usd": 91548.77,
+      "price": 0.8418,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-19",
+      "ethfi": 115050.74,
+      "usd": 105817.85,
+      "price": 0.9197,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-21",
+      "ethfi": 134754.25,
+      "usd": 109882.32,
+      "price": 0.8154,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-24",
+      "ethfi": 131365.9,
+      "usd": 88981.36,
+      "price": 0.6774,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-25",
+      "ethfi": 40185.77,
+      "usd": 30750.0,
+      "price": 0.7652,
+      "txs": 3,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-26",
+      "ethfi": 131335.99,
+      "usd": 99852.87,
+      "price": 0.7603,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-27",
+      "ethfi": 122633.13,
+      "usd": 94619.83,
+      "price": 0.7716,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-28",
+      "ethfi": 120903.66,
+      "usd": 96915.29,
+      "price": 0.8016,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-11-30",
+      "ethfi": 121125.73,
+      "usd": 98338.88,
+      "price": 0.8119,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-01",
+      "ethfi": 398250.44,
+      "usd": 322710.95,
+      "price": 0.8103,
+      "txs": 30,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-02",
+      "ethfi": 117278.5,
+      "usd": 87713.68,
+      "price": 0.7479,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-03",
+      "ethfi": 119280.6,
+      "usd": 100779.47,
+      "price": 0.8449,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-04",
+      "ethfi": 121123.52,
+      "usd": 103119.95,
+      "price": 0.8514,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-05",
+      "ethfi": 250764.2,
+      "usd": 205850.13,
+      "price": 0.8209,
+      "txs": 20,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-06",
+      "ethfi": 123365.12,
+      "usd": 96042.64,
+      "price": 0.7785,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-07",
+      "ethfi": 244309.65,
+      "usd": 195364.11,
+      "price": 0.7997,
+      "txs": 20,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-08",
+      "ethfi": 118659.13,
+      "usd": 92943.91,
+      "price": 0.7833,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-09",
+      "ethfi": 57061.59,
+      "usd": 47655.68,
+      "price": 0.8352,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-10",
+      "ethfi": 46498.67,
+      "usd": 40768.76,
+      "price": 0.8768,
+      "txs": 4,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-11",
+      "ethfi": 49496.39,
+      "usd": 41664.78,
+      "price": 0.8418,
+      "txs": 4,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-12",
+      "ethfi": 124149.21,
+      "usd": 101902.55,
+      "price": 0.8208,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-13",
+      "ethfi": 61436.54,
+      "usd": 49354.33,
+      "price": 0.8033,
+      "txs": 5,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-14",
+      "ethfi": 49015.21,
+      "usd": 39578.59,
+      "price": 0.8075,
+      "txs": 4,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-15",
+      "ethfi": 116520.71,
+      "usd": 91797.66,
+      "price": 0.7878,
+      "txs": 9,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-16",
+      "ethfi": 127073.56,
+      "usd": 99496.8,
+      "price": 0.783,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-17",
+      "ethfi": 136097.73,
+      "usd": 106253.33,
+      "price": 0.7807,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-22",
+      "ethfi": 138741.43,
+      "usd": 99851.79,
+      "price": 0.7197,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-23",
+      "ethfi": 139746.32,
+      "usd": 100749.15,
+      "price": 0.7209,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-24",
+      "ethfi": 143275.35,
+      "usd": 101445.22,
+      "price": 0.708,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-25",
+      "ethfi": 142563.3,
+      "usd": 99852.29,
+      "price": 0.7004,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-26",
+      "ethfi": 143284.22,
+      "usd": 95111.74,
+      "price": 0.6638,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-27",
+      "ethfi": 140645.16,
+      "usd": 98143.54,
+      "price": 0.6978,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-28",
+      "ethfi": 139454.01,
+      "usd": 99600.97,
+      "price": 0.7142,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2025-12-30",
+      "ethfi": 140827.97,
+      "usd": 96985.92,
+      "price": 0.6887,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-03",
+      "ethfi": 140399.96,
+      "usd": 108299.97,
+      "price": 0.7714,
+      "txs": 11,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-04",
+      "ethfi": 115266.01,
+      "usd": 88411.13,
+      "price": 0.767,
+      "txs": 9,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-05",
+      "ethfi": 125826.8,
+      "usd": 97291.66,
+      "price": 0.7732,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-06",
+      "ethfi": 124873.26,
+      "usd": 99797.79,
+      "price": 0.7992,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-08",
+      "ethfi": 131253.41,
+      "usd": 99355.4,
+      "price": 0.757,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-10",
+      "ethfi": 132636.24,
+      "usd": 98311.92,
+      "price": 0.7412,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-12",
+      "ethfi": 132392.16,
+      "usd": 97733.98,
+      "price": 0.7382,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-13",
+      "ethfi": 135409.1,
+      "usd": 97789.4,
+      "price": 0.7222,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-15",
+      "ethfi": 134845.09,
+      "usd": 105085.21,
+      "price": 0.7793,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-16",
+      "ethfi": 134956.86,
+      "usd": 100182.93,
+      "price": 0.7423,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-18",
+      "ethfi": 134144.21,
+      "usd": 99456.92,
+      "price": 0.7414,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-20",
+      "ethfi": 162521.61,
+      "usd": 105411.95,
+      "price": 0.6486,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-24",
+      "ethfi": 163762.39,
+      "usd": 99308.94,
+      "price": 0.6064,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-25",
+      "ethfi": 87590.06,
+      "usd": 53076.06,
+      "price": 0.606,
+      "txs": 5,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-29",
+      "ethfi": 173125.73,
+      "usd": 107309.0,
+      "price": 0.6198,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-01-31",
+      "ethfi": 90387.32,
+      "usd": 49483.35,
+      "price": 0.5475,
+      "txs": 5,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-02",
+      "ethfi": 138868.83,
+      "usd": 67384.63,
+      "price": 0.4852,
+      "txs": 7,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-04",
+      "ethfi": 194022.74,
+      "usd": 96425.16,
+      "price": 0.497,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-05",
+      "ethfi": 200216.89,
+      "usd": 100746.46,
+      "price": 0.5032,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-06",
+      "ethfi": 340118.59,
+      "usd": 146468.21,
+      "price": 0.4306,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-08",
+      "ethfi": 421426.38,
+      "usd": 197626.65,
+      "price": 0.4689,
+      "txs": 20,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-09",
+      "ethfi": 150704.36,
+      "usd": 69041.08,
+      "price": 0.4581,
+      "txs": 7,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-11",
+      "ethfi": 227550.43,
+      "usd": 98592.92,
+      "price": 0.4333,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-13",
+      "ethfi": 218529.68,
+      "usd": 100937.19,
+      "price": 0.4619,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-20",
+      "ethfi": 211434.45,
+      "usd": 96878.61,
+      "price": 0.4582,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    }
+  ]
+}
