@@ -38,8 +38,8 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'dydx', 
     coingeckoId: 'dydx-chain',
     cmcSlug: 'dydx',
-    tevRatio: 0.75,
-    note: '75% 净协议费用回购'
+    tevRatio: 0.90,
+    note: '90% TEV (75% 回购 + 15% 质押)'
   },
   etherfi: { 
     defillamaSlug: 'ether.fi', 
@@ -59,22 +59,22 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'gmx', 
     coingeckoId: 'gmx',
     cmcSlug: 'gmx',
-    tevRatio: 0.3,
-    note: '30% 费用分红'
+    tevRatio: 0.27,
+    note: '27% 费用分红 (docs.gmx.io)'
   },
   maple: { 
     defillamaSlug: 'maple', 
     coingeckoId: 'maple',
     cmcSlug: 'syrup',
-    tevRatio: 0.2,
-    note: '20% 协议收入回购 SYRUP'
+    tevRatio: 0.25,
+    note: '25% 协议收入回购 SYRUP (MIP-018)'
   },
   pancakeswap: { 
     defillamaSlug: 'pancakeswap', 
     coingeckoId: 'pancakeswap-token',
     cmcSlug: 'pancakeswap',
-    tevRatio: null,  // 从 TEV Yield 反推
-    note: 'CAKE 回购销毁'
+    tevRatio: 0.58,
+    note: '58% 回购销毁 (44-72% 按费率取中间值)'
   },
   pendle: { 
     defillamaSlug: 'pendle', 
@@ -87,8 +87,8 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'sky', 
     coingeckoId: 'maker',
     cmcSlug: 'sky',
-    tevRatio: null,  // 从 TEV Yield 反推
-    note: 'Smart Burn Engine'
+    tevRatio: 0.5,
+    note: '50% Smart Burn Engine 回购销毁'
   },
 };
 
