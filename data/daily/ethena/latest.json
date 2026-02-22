@@ -1,21 +1,36 @@
 {
   "protocol": "ethena",
-  "updated_at": "2026-02-14T00:00:00.000Z",
+  "updated_at": "2026-02-22T01:05:46.259609+00:00",
   "data_sources": {
     "tvl": "DefiLlama",
+    "fees": "DefiLlama",
     "market": "CoinGecko"
   },
   "latest_record": {
-    "date": "2026-02-14",
-    "price_usd": 0.135,
-    "market_cap_usd": 1074000000,
-    "tvl_usd": 6429000000
+    "date": "2026-02-22",
+    "price_usd": 0.106582,
+    "market_cap_usd": 875291504,
+    "fdv_usd": 1596276299,
+    "circulating_supply": 8225000000.0,
+    "total_supply": 15000000000.0,
+    "tvl_usd": 6214825695.585198,
+    "daily_fees_usd": 530,
+    "daily_tev_usd": 0,
+    "tev_ratio_used": 0
   },
   "metrics": {
-    "current_market_cap_usd": 1074000000,
-    "tvl_usd": 6429000000,
-    "tev_yield_decimal": 0,
+    "trailing_30d_fees_usd": 19800656,
     "trailing_30d_tev_usd": 0,
-    "note": "No continuous TEV - Token Holder Income = $0"
+    "annualized_fees_usd": 237607872,
+    "annualized_tev_usd": 0,
+    "current_market_cap_usd": 875291504,
+    "tev_yield": "0.00%",
+    "tev_yield_decimal": 0.0,
+    "tvl_usd": 6214825695.585198,
+    "mcap_tvl_ratio": 0.1408,
+    "calculated_at": "2026-02-22T01:05:46.259609+00:00"
+  },
+  "fees_breakdown": {
+    "ethena-usde": 19800656
   }
 }

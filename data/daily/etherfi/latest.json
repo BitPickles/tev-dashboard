@@ -1,40 +1,38 @@
 {
   "protocol": "etherfi",
-  "updated_at": "2026-02-04T18:39:08.765661+00:00",
+  "updated_at": "2026-02-22T01:05:53.104834+00:00",
   "data_sources": {
     "tvl": "DefiLlama",
     "fees": "DefiLlama",
     "market": "CoinGecko"
   },
   "latest_record": {
-    "date": "2026-02-04",
-    "price_usd": 0.491634,
-    "market_cap_usd": 343511106,
-    "fdv_usd": 490457681,
-    "circulating_supply": 699363510.0,
+    "date": "2026-02-22",
+    "price_usd": 0.455031,
+    "market_cap_usd": 338474853,
+    "fdv_usd": 454234172,
+    "circulating_supply": 744064067.0,
     "total_supply": 998535999.0,
-    "tvl_usd": 6394743902.42865,
-    "daily_fees_usd": 549705,
-    "daily_tev_usd": 549705.0,
-    "tev_ratio_used": 1.0
+    "tvl_usd": 5621760386.82633,
+    "daily_fees_usd": 435122,
+    "daily_tev_usd": 0,
+    "tev_ratio_used": 0
   },
   "metrics": {
-    "trailing_30d_fees_usd": 19317266,
-    "trailing_30d_tev_usd": 1250000,
-    "annualized_fees_usd": 231807192,
-    "annualized_tev_usd": 15000000,
-    "current_market_cap_usd": 343511106,
-    "tev_yield": "4.37%",
-    "tev_yield_decimal": 0.0437,
-    "tvl_usd": 6394743902.42865,
-    "mcap_tvl_ratio": 0.0537,
-    "calculated_at": "2026-02-05T09:26:00.000Z",
-    "manual_override": true,
-    "override_note": "年化回购约 $15M，原67.48%数据错误（误将全部费用计为TEV）"
+    "trailing_30d_fees_usd": 16043215,
+    "trailing_30d_tev_usd": 0,
+    "annualized_fees_usd": 192518580,
+    "annualized_tev_usd": 0,
+    "current_market_cap_usd": 338474853,
+    "tev_yield": "0.00%",
+    "tev_yield_decimal": 0.0,
+    "tvl_usd": 5621760386.82633,
+    "mcap_tvl_ratio": 0.0602,
+    "calculated_at": "2026-02-22T01:05:53.104834+00:00"
   },
   "fees_breakdown": {
-    "ether.fi-liquid": 16952514,
-    "etherfi-borrowing-market": 63687,
-    "etherfi-cash-liquid": 2301065
+    "ether.fi-liquid": 14183795,
+    "etherfi-borrowing-market": 60233,
+    "etherfi-cash-liquid": 1799187
   }
 }
