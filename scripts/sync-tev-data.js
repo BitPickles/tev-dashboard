@@ -90,6 +90,63 @@ const PROTOCOL_CONFIG = {
     tevRatio: 0.5,
     note: '50% Smart Burn Engine 回购销毁'
   },
+  // 以下协议无 TEV (tevStatus=none)，仅获取市值
+  compound: {
+    defillamaSlug: 'compound-v3',
+    coingeckoId: 'compound-governance-token',
+    cmcSlug: 'compound',
+    tevRatio: 0,
+    note: '纯治理代币'
+  },
+  eigenlayer: {
+    defillamaSlug: 'eigenlayer',
+    coingeckoId: 'eigenlayer',
+    cmcSlug: 'eigenlayer',
+    tevRatio: 0,
+    note: '纯治理代币'
+  },
+  ethena: {
+    defillamaSlug: 'ethena',
+    coingeckoId: 'ethena',
+    cmcSlug: 'ethena',
+    tevRatio: 0,
+    note: '纯治理代币'
+  },
+  jito: {
+    defillamaSlug: 'jito',
+    coingeckoId: 'jito-governance-token',
+    cmcSlug: 'jito',
+    tevRatio: 0,
+    note: '纯治理代币'
+  },
+  kamino: {
+    defillamaSlug: 'kamino',
+    coingeckoId: 'kamino',
+    cmcSlug: 'kamino-finance',
+    tevRatio: 0,
+    note: '纯治理代币'
+  },
+  lido: {
+    defillamaSlug: 'lido',
+    coingeckoId: 'lido-dao',
+    cmcSlug: 'lido-dao',
+    tevRatio: 0,
+    note: '纯治理代币'
+  },
+  morpho: {
+    defillamaSlug: 'morpho',
+    coingeckoId: 'morpho',
+    cmcSlug: 'morpho',
+    tevRatio: 0,
+    note: '纯治理代币'
+  },
+  spark: {
+    defillamaSlug: 'spark',
+    coingeckoId: 'spark',
+    cmcSlug: 'spark',
+    tevRatio: 0,
+    note: '收入归 Sky DAO'
+  },
 };
 
 // 不自动更新的协议
