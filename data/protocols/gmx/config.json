@@ -11,7 +11,9 @@
     "address": "0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a",
     "chain": "arbitrum",
     "coingecko_id": "gmx",
-    "defillama_id": "gmx"
+    "defillama_id": "gmx",
+    "circulating_supply": 10394463.42351323,
+    "total_supply": 10394463.42351323
   },
   "tev_mechanisms": [
     {
@@ -77,7 +79,7 @@
     }
   ],
   "analyst_notes": "## GMX TEV 机制\n\n### 核心机制\nGMX 质押者获得 **30%** 平台交易费用作为分红（ETH/AVAX）。\n\n### 费用分配\n| 来源 | 分配 |\n|------|------|\n| 平台交易费 30% | GMX 质押者 |\n| 平台交易费 70% | GLP/GM 持有者 |\n\n### 数据来源\n| 数据 | 来源 |\n|------|------|\n| 每日分红 | DefiLlama `holdersRevenue` |\n| 价格/市值 | CoinGecko |\n\n### 质押方式\n- 质押 GMX → 获得 esGMX + ETH/AVAX 分红\n- esGMX 需 vesting 1年才能转为 GMX\n\n### 参考链接\n- [GMX 质押文档](https://docs.gmx.io/docs/tokenomics/rewards)\n- [费用分配说明](https://docs.gmx.io/docs/tokenomics/fee-distribution)",
-  "last_updated": "2026-02-14",
+  "last_updated": "2026-02-22",
   "tev_data": {
     "has_tev": true,
     "tev_yield_percent": 24.13,

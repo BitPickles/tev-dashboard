@@ -12,7 +12,9 @@
     "chain": "dydx-chain",
     "coingecko_id": "dydx-chain",
     "defillama_id": "dydx",
-    "note": "大部分代币已从以太坊迁移到 dYdX Chain"
+    "note": "大部分代币已从以太坊迁移到 dYdX Chain",
+    "circulating_supply": 29630256.481182758,
+    "total_supply": 824145891.8983325
   },
   "tev_mechanisms": [
     {
@@ -76,7 +78,7 @@
     }
   ],
   "analyst_notes": "## dYdX TEV 机制\n\n### 核心机制\ndYdX Chain 将 **100%** 协议费用分配给验证者和质押者。\n\n### 费用分配\n| 来源 | 分配 |\n|------|------|\n| 交易费 100% | 验证者 + 质押者 |\n\n### 质押方式\n- 质押 DYDX 到验证者 → 获得费用分红\n- 分红以 USDC 形式发放\n\n### 数据来源\n| 数据 | 来源 |\n|------|------|\n| 每日分红 | DefiLlama `holdersRevenue` |\n| 价格/市值 | CoinGecko |\n\n### 参考链接\n- [dYdX Chain 文档](https://docs.dydx.exchange/)\n- [质押教程](https://docs.dydx.exchange/users/staking)",
-  "last_updated": "2026-02-14",
+  "last_updated": "2026-02-22",
   "tev_data": {
     "has_tev": true,
     "tev_yield_percent": 5.33,

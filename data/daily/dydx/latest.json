@@ -1,32 +1,36 @@
 {
   "protocol": "dydx",
-  "updated_at": "2026-02-14T06:57:36.896Z",
+  "updated_at": "2026-02-22T01:05:31.825949+00:00",
+  "data_sources": {
+    "tvl": "DefiLlama",
+    "fees": "DefiLlama",
+    "market": "CoinGecko"
+  },
   "latest_record": {
-    "date": "2026-02-13",
-    "price_usd": null,
-    "market_cap_usd": null,
-    "daily_fees_usd": 6892,
-    "daily_revenue_usd": 6892,
-    "daily_holders_revenue_usd": 6892,
-    "daily_tev_usd": 6892,
-    "tev_source": "defillama_holdersRevenue"
+    "date": "2026-02-22",
+    "price_usd": 0.098938,
+    "market_cap_usd": 2931567,
+    "fdv_usd": 81539597,
+    "circulating_supply": 29630256.481182758,
+    "total_supply": 824145891.8983325,
+    "tvl_usd": 170437359,
+    "daily_fees_usd": 2125,
+    "daily_tev_usd": 2125.0,
+    "tev_ratio_used": 1.0
   },
   "metrics": {
-    "trailing_30d_tev_usd": 396863,
-    "trailing_30d_fees_usd": 396863,
-    "trailing_30d_revenue_usd": 396863,
-    "trailing_365d_tev_usd": 13794249,
-    "trailing_365d_fees_usd": 13794249,
-    "trailing_365d_revenue_usd": 13794249,
-    "annualized_tev_usd": 4762356,
-    "current_market_cap_usd": 0,
-    "tev_yield": "0.00%",
-    "tev_yield_decimal": 0,
-    "calculated_at": "2026-02-14T06:57:36.896Z"
+    "trailing_30d_fees_usd": 383803,
+    "trailing_30d_tev_usd": 383803.0,
+    "annualized_fees_usd": 4605636,
+    "annualized_tev_usd": 4605636.0,
+    "current_market_cap_usd": 2931567,
+    "tev_yield": "157.10%",
+    "tev_yield_decimal": 1.571049,
+    "tvl_usd": 170437359,
+    "mcap_tvl_ratio": 0.0172,
+    "calculated_at": "2026-02-22T01:05:31.825949+00:00"
   },
-  "data_range": {
-    "start": "2023-11-13",
-    "end": "2026-02-13",
-    "total_days": 820
+  "fees_breakdown": {
+    "dydx-v4": 383803
   }
 }

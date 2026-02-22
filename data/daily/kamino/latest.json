@@ -1,37 +1,37 @@
 {
   "protocol": "kamino",
-  "updated_at": "2026-02-04T18:40:25.296122+00:00",
+  "updated_at": "2026-02-22T01:04:35.137242+00:00",
   "data_sources": {
     "tvl": "DefiLlama",
     "fees": "DefiLlama",
     "market": "CoinGecko"
   },
   "latest_record": {
-    "date": "2026-02-04",
-    "price_usd": 0.03257967,
-    "market_cap_usd": 125230535,
-    "fdv_usd": 324464647,
-    "circulating_supply": 3859589230.0,
-    "total_supply": 9999959341.50722,
-    "tvl_usd": 1988205710,
+    "date": "2026-02-22",
+    "price_usd": null,
+    "market_cap_usd": null,
+    "fdv_usd": null,
+    "circulating_supply": null,
+    "total_supply": null,
+    "tvl_usd": 1958825217,
     "daily_fees_usd": 0,
     "daily_tev_usd": 0,
     "tev_ratio_used": 0
   },
   "metrics": {
-    "trailing_30d_fees_usd": 4836255,
+    "trailing_30d_fees_usd": 4963550,
     "trailing_30d_tev_usd": 0,
-    "annualized_fees_usd": 58035060,
+    "annualized_fees_usd": 59562600,
     "annualized_tev_usd": 0,
-    "current_market_cap_usd": 125230535,
-    "tev_yield": "0.00%",
+    "current_market_cap_usd": 0,
+    "tev_yield": "N/A",
     "tev_yield_decimal": 0,
-    "tvl_usd": 1988205710,
-    "mcap_tvl_ratio": 0.063,
-    "calculated_at": "2026-02-04T18:40:25.296122+00:00"
+    "tvl_usd": 1958825217,
+    "mcap_tvl_ratio": 0.0,
+    "calculated_at": "2026-02-22T01:04:35.137242+00:00"
   },
   "fees_breakdown": {
-    "kamino-liquidity": 224140,
-    "kamino-lend": 4612115
+    "kamino-liquidity": 343815,
+    "kamino-lend": 4619735
   }
 }
