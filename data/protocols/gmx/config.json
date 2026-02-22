@@ -19,9 +19,9 @@
     {
       "type": "fee_sharing",
       "name": "GMX Staking Rewards",
-      "description": "30% 平台费用分配给质押的 GMX（以 ETH/AVAX 形式）",
+      "description": "27% 平台费用分配给质押的 GMX（通过回购机制分配）",
       "status": "active",
-      "ratio": 0.3,
+      "ratio": 0.27,
       "staking_contract": "0x908C4D94D34924765f1eDc22A1DD098397c59dD4",
       "source": {
         "type": "docs",
@@ -32,12 +32,12 @@
   ],
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "30% 平台费用分配给质押 GMX 持有者",
-    "buybacks": "NONE",
+    "fee_switch_details": "27% 平台费用分配给质押 GMX 持有者（通过回购机制）",
+    "buybacks": "ACTIVE",
     "dividends": "ACTIVE",
     "burns": "NONE",
-    "primary_value_accrual": "分红 - 质押 GMX 获得 ETH/AVAX 分红",
-    "tevRatio": 0.3
+    "primary_value_accrual": "回购分红 - 质押 GMX 获得回购分配的 GMX",
+    "tevRatio": 0.27
   },
   "market_data": {
     "price_usd": 5.93,
@@ -78,7 +78,7 @@
       "reliability": "high"
     }
   ],
-  "analyst_notes": "## GMX TEV 机制\n\n### 核心机制\nGMX 质押者获得 **30%** 平台交易费用作为分红（ETH/AVAX）。\n\n### 费用分配\n| 来源 | 分配 |\n|------|------|\n| 平台交易费 30% | GMX 质押者 |\n| 平台交易费 70% | GLP/GM 持有者 |\n\n### 数据来源\n| 数据 | 来源 |\n|------|------|\n| 每日分红 | DefiLlama `holdersRevenue` |\n| 价格/市值 | CoinGecko |\n\n### 质押方式\n- 质押 GMX → 获得 esGMX + ETH/AVAX 分红\n- esGMX 需 vesting 1年才能转为 GMX\n\n### 参考链接\n- [GMX 质押文档](https://docs.gmx.io/docs/tokenomics/rewards)\n- [费用分配说明](https://docs.gmx.io/docs/tokenomics/fee-distribution)",
+  "analyst_notes": "## GMX TEV 机制\n\n### 核心机制\nGMX 质押者获得 **27%** 平台交易费用（通过回购机制转换为 GMX 后分配）。\n\n### 费用分配\n| 来源 | 分配 |\n|------|------|\n| 平台交易费 27% | GMX 质押者（回购分配） |\n| 平台交易费 63% | GM/GLP 持有者 |\n| 平台交易费 10% | DAO Treasury |\n\n### 机制变更\n- 原机制：ETH/AVAX 直接分红\n- 新机制：回购 GMX 后分配（DAO 投票通过）\n\n### 数据来源\n| 数据 | 来源 |\n|------|------|\n| 每日分红 | DefiLlama `holdersRevenue` |\n| 价格/市值 | CoinGecko |\n\n### 官方依据\n- 文档：https://docs.gmx.io/docs/tokenomics/gmx-token/\n- 原文：\"earning 27% of the fees from leverage trading, liquidations, borrowing fees, and swaps\"\n- DAO投票：https://www.tally.xyz/gov/gmx/proposal/81921330482579592877925554009800798217173652653143694483196169672340561914053\n\n### 参考链接\n- [GMX 质押文档](https://docs.gmx.io/docs/tokenomics/rewards)\n- [GMX Token 文档](https://docs.gmx.io/docs/tokenomics/gmx-token/)",
   "last_updated": "2026-02-22",
   "tev_data": {
     "has_tev": true,
