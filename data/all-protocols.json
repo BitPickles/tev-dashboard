@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-22T01:02:52.780Z",
+  "generated_at": "2026-02-22T13:01:08.643Z",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -8,16 +8,16 @@
       "category": "lending",
       "confidence": "high",
       "tevStatus": "active",
-      "tev_yield_percent": 2.74,
-      "market_cap_usd": 1826808227.3074706,
+      "tev_yield_percent": 2.78,
+      "market_cap_usd": 1795734206.8891656,
       "tvl": 27886636450,
       "tevRatioNote": "回购 - Aave DAO 每年拨出 $50M 预算用于回购 AAVE 代币",
       "metrics": {
-        "current_market_cap_usd": 1826808227.3074706,
+        "current_market_cap_usd": 1795734206.8891656,
         "trailing_365d_tev_usd": 50000000,
         "trailing_30d_tev_usd": 4166666.6666666665,
-        "trailing_365d_revenue_usd": 108468727,
-        "trailing_30d_revenue_usd": 10598786
+        "trailing_365d_revenue_usd": 108443818,
+        "trailing_30d_revenue_usd": 10540521
       }
     },
     "aster": {
@@ -101,17 +101,17 @@
       "category": "dex",
       "confidence": "high",
       "tevStatus": "active",
-      "tev_yield_percent": 1.48,
-      "market_cap_usd": 351418289.67463744,
+      "tev_yield_percent": 1.54,
+      "market_cap_usd": 338291788.93609375,
       "tvl": 1901718037.9135764,
       "tevRatio": 0.5,
       "tevRatioNote": "分红 - veCRV 持有者每周获得 crvUSD 分红",
       "metrics": {
-        "current_market_cap_usd": 351418289.67463744,
-        "trailing_365d_tev_usd": 5217015,
-        "trailing_30d_tev_usd": 434751.25,
-        "trailing_365d_revenue_usd": 10434030,
-        "trailing_30d_revenue_usd": 696838
+        "current_market_cap_usd": 338291788.93609375,
+        "trailing_365d_tev_usd": 5215026.5,
+        "trailing_30d_tev_usd": 434585.5416666667,
+        "trailing_365d_revenue_usd": 10430053,
+        "trailing_30d_revenue_usd": 678910
       }
     },
     "dydx": {
@@ -121,13 +121,13 @@
       "category": "perpetuals",
       "confidence": "medium",
       "tevStatus": "active",
-      "tev_yield_percent": 12.58,
-      "market_cap_usd": 81398143.30655082,
+      "tev_yield_percent": 13.02,
+      "market_cap_usd": 78609774.77857968,
       "tvl": 173263911,
       "tevRatio": 0.75,
       "tevRatioNote": "回购 - 75% 净协议费用用于 DYDX 回购",
       "metrics": {
-        "current_market_cap_usd": 81398143.30655082,
+        "current_market_cap_usd": 78609774.77857968,
         "trailing_365d_tev_usd": 10237035,
         "trailing_30d_tev_usd": 853086.25,
         "trailing_365d_revenue_usd": 13649380,
@@ -172,13 +172,13 @@
       "confidence": "medium",
       "tevStatus": "active",
       "tev_yield_percent": 4.37,
-      "market_cap_usd": 338035750.91149557,
+      "market_cap_usd": 296063369.27,
       "tvl": 5931075595.75895,
       "tevRatioNote": "回购分配 — 提现收入回购 ETHFI，年化约 $15M / 市值约 $600M ≈ 2.5%",
       "metrics": {
-        "current_market_cap_usd": 338035750.91149557,
-        "trailing_365d_tev_usd": 14772162.314832356,
-        "trailing_30d_tev_usd": 1231013.5262360296,
+        "current_market_cap_usd": 296063369.27,
+        "trailing_365d_tev_usd": 12937969.237099,
+        "trailing_30d_tev_usd": 1078164.1030915834,
         "trailing_365d_revenue_usd": 52717378,
         "trailing_30d_revenue_usd": 2717620
       }
@@ -191,16 +191,16 @@
       "confidence": "high",
       "tevStatus": "active",
       "tev_yield_percent": 2.43,
-      "market_cap_usd": 163978023.93,
+      "market_cap_usd": 163697376.52,
       "tvl": 6000000000,
       "tevRatio": 0.35,
       "tevRatioNote": "回购 - 35% Revenue 用于 Treasury 回购 FLUID（Q4 2025 启动）",
       "metrics": {
-        "current_market_cap_usd": 163978023.93,
-        "trailing_365d_tev_usd": 3981212.55,
-        "trailing_30d_tev_usd": 331767.71249999997,
-        "trailing_365d_revenue_usd": 11374893,
-        "trailing_30d_revenue_usd": 865831
+        "current_market_cap_usd": 163697376.52,
+        "trailing_365d_tev_usd": 3977869.6999999997,
+        "trailing_30d_tev_usd": 331489.14166666666,
+        "trailing_365d_revenue_usd": 11365342,
+        "trailing_30d_revenue_usd": 847360
       },
       "links": {
         "website": "https://fluid.io",
@@ -215,17 +215,17 @@
       "category": "perp_dex",
       "confidence": "high",
       "tevStatus": "active",
-      "tev_yield_percent": 9.88,
-      "market_cap_usd": 69116703.53,
+      "tev_yield_percent": 10.24,
+      "market_cap_usd": 66105168.59,
       "tvl": 278147585,
       "tevRatio": 0.3,
       "tevRatioNote": "分红 - 质押 GMX 获得 ETH/AVAX 分红",
       "metrics": {
-        "current_market_cap_usd": 69116703.53,
-        "trailing_365d_tev_usd": 6828092.399999999,
-        "trailing_30d_tev_usd": 569007.7,
-        "trailing_365d_revenue_usd": 22760308,
-        "trailing_30d_revenue_usd": 930070
+        "current_market_cap_usd": 66105168.59,
+        "trailing_365d_tev_usd": 6772181.7,
+        "trailing_30d_tev_usd": 564348.475,
+        "trailing_365d_revenue_usd": 22573939,
+        "trailing_30d_revenue_usd": 926180
       }
     },
     "hype": {
@@ -383,16 +383,16 @@
       "confidence": "high",
       "tevStatus": "active",
       "tev_yield_percent": 6.33,
-      "market_cap_usd": 436029118.64,
+      "market_cap_usd": 430674893.12,
       "tvl": 2053662488,
       "tevRatio": 0.15,
       "tevRatioNote": "回购销毁 - 协议收入 15% 用于 CAKE 回购销毁（veCAKE 分红已结束）",
       "metrics": {
-        "current_market_cap_usd": 436029118.64,
-        "trailing_365d_tev_usd": 27600643.209912,
-        "trailing_30d_tev_usd": 2300053.600826,
-        "trailing_365d_revenue_usd": 111601806,
-        "trailing_30d_revenue_usd": 4219339
+        "current_market_cap_usd": 430674893.12,
+        "trailing_365d_tev_usd": 27261720.734496,
+        "trailing_30d_tev_usd": 2271810.061208,
+        "trailing_365d_revenue_usd": 111573154,
+        "trailing_30d_revenue_usd": 4131044
       }
     },
     "pendle": {
