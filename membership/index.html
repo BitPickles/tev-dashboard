@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>会员服务 — Crypto3D</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0a0b;
+      --bg-secondary: #111113;
+      --bg-tertiary: #18181b;
+      --bg-hover: #1f1f23;
+      --border: #27272a;
+      --border-hover: #3f3f46;
+      --text-primary: #fafafa;
+      --text-secondary: #a1a1aa;
+      --text-tertiary: #71717a;
+      --accent: #22c55e;
+      --accent-dim: rgba(34, 197, 94, 0.1);
+      --accent-glow: rgba(34, 197, 94, 0.15);
+      --purple: #a855f7;
+      --purple-dim: rgba(168, 85, 247, 0.1);
+      --blue: #3b82f6;
+      --blue-dim: rgba(59, 130, 246, 0.1);
+      --orange: #f59e0b;
+      --orange-dim: rgba(245, 158, 11, 0.1);
+      --cyan: #06b6d4;
+      --red: #ef4444;
+      --gold: #fbbf24;
+      --gold-dim: rgba(251, 191, 36, 0.1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans SC', 'Inter', -apple-system, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      background: rgba(10, 10, 11, 0.9);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .header-content { display: flex; justify-content: space-between; align-items: center; }
+
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon { width: 36px; height: 36px; border-radius: 8px; }
+    .logo-text { font-size: 20px; font-weight: 700; color: var(--text-primary); }
+
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text-primary); }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+      background: radial-gradient(ellipse at top, rgba(251, 191, 36, 0.08) 0%, transparent 60%);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold-dim);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+
+    /* Benefits Section */
+    .section { padding: 60px 0; }
+    .section-title {
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .benefits-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 32px; }
+    }
+
+    .benefit-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: all 0.3s;
+    }
+
+    .benefit-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .benefit-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .benefit-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .benefit-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Pricing */
+    .pricing-section {
+      padding: 60px 0;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 600px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+
+    .pricing-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .pricing-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 0 30px rgba(251, 191, 36, 0.1);
+    }
+
+    .pricing-card.popular {
+      border-color: var(--gold);
+    }
+
+    .pricing-card.popular::before {
+      content: '推荐';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: #000;
+      padding: 4px 16px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .pricing-period {
+      font-size: 14px;
+      color: var(--text-tertiary);
+      margin-bottom: 8px;
+    }
+
+    .pricing-amount {
+      font-size: 48px;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 4px;
+    }
+
+    .pricing-currency {
+      font-size: 16px;
+      color: var(--text-secondary);
+    }
+
+    .pricing-save {
+      display: inline-block;
+      background: var(--accent-dim);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      margin-top: 12px;
+    }
+
+    .pricing-features {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: left;
+    }
+
+    .pricing-feature {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .pricing-feature::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* Join Section */
+    .join-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .join-steps {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .join-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      max-width: 200px;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gold-dim);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .step-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+
+    .qr-container {
+      display: inline-block;
+      background: var(--bg-secondary);
+      padding: 20px;
+      border-radius: 20px;
+      border: 2px solid var(--border-hover);
+      margin: 24px 0;
+    }
+
+    .qr-container img {
+      width: 200px;
+      height: 200px;
+      display: block;
+      border-radius: 12px;
+    }
+
+    .wechat-id {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 16px;
+    }
+
+    .wechat-id code {
+      background: var(--bg-tertiary);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-primary);
+    }
+
+    /* Resources */
+    .resources-section {
+      padding: 60px 0;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+    }
+
+    .resource-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      padding: 16px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.2s;
+    }
+
+    .resource-link:hover {
+      border-color: var(--purple);
+      background: var(--purple-dim);
+    }
+
+    .resource-link svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Disclaimer */
+    .disclaimer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .disclaimer-content {
+      background: rgba(239, 68, 68, 0.05);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .disclaimer-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+
+    .disclaimer-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* Footer */
+    footer {
+      padding: 24px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-text {
+      font-size: 14px;
+      color: var(--text-tertiary);
+    }
+
+    /* Glow effect */
+    .glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="../" class="logo">
+          <img src="../logo.svg" alt="3D" class="logo-icon">
+          <span class="logo-text">Crypto3D</span>
+        </a>
+        <div class="nav-links">
+          <a href="../">首页</a>
+          <a href="../tev/">TEV 数据</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-badge">
+          <span>👑</span>
+          <span>3D 加密频道会员</span>
+        </div>
+        <h1 class="hero-title">3D加密频道会员2026</h1>
+        <p class="hero-subtitle">加入会员社区，获取独家策略直播、深度研究、1v1 咨询，与志同道合的投资者一起成长。</p>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">会员权益</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon" style="background: var(--purple-dim);">📺</div>
+            <h3 class="benefit-title">会员专属策略直播</h3>
+            <p class="benefit-desc">非固定频率，跟随市场变化。涵盖 Beta（大盘判断）+ Alpha（具体机会），第一时间获取直播通知。</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon" style="background: var(--blue-dim);">💬</div>
+            <h3 class="benefit-title">会员专属社群</h3>
+            <p class="benefit-desc">直播通知 & 同步高时效性信息 & 提供沟通交流平台，与其他会员一起讨论市场。</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon" style="background: var(--accent-dim);">🎯</div>
+            <h3 class="benefit-title">1v1 咨询沟通</h3>
+            <p class="benefit-desc">针对具体问题的单独沟通交流，获得更有针对性的建议和指导。</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon" style="background: var(--orange-dim);">🛠️</div>
+            <h3 class="benefit-title">自动化工具</h3>
+            <p class="benefit-desc">获取会员专属自动化工具使用权限，提升投资效率。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing-section">
+      <div class="container">
+        <h2 class="section-title">订阅套餐</h2>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-period">月度会员</div>
+            <div class="pricing-amount">100</div>
+            <div class="pricing-currency">USDT / 月</div>
+            <div class="pricing-features">
+              <div class="pricing-feature">全部会员权益</div>
+              <div class="pricing-feature">灵活订阅</div>
+              <div class="pricing-feature">随时续费</div>
+            </div>
+          </div>
+          <div class="pricing-card popular">
+            <div class="pricing-period">年度会员</div>
+            <div class="pricing-amount">800</div>
+            <div class="pricing-currency">USDT / 年</div>
+            <div class="pricing-save">省 400 USDT</div>
+            <div class="pricing-features">
+              <div class="pricing-feature">全部会员权益</div>
+              <div class="pricing-feature">相当于 8 折</div>
+              <div class="pricing-feature">免去续费烦恼</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Join -->
+    <section class="join-section">
+      <div class="container">
+        <h2 class="section-title">如何加入</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 24px;">加入会员请联系小助理</p>
+        <div class="qr-container">
+          <img src="wechat-qr.png" alt="3D小助理微信二维码">
+        </div>
+        <div class="wechat-id">
+          <span>微信号：</span>
+          <code>Bitcoin3D</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <section class="disclaimer">
+      <div class="container">
+        <div class="disclaimer-content">
+          <div class="disclaimer-title">
+            <span>⚠️</span>
+            <span>风险提示</span>
+          </div>
+          <div class="disclaimer-text">
+            本会员服务内容仅用于信息分享与研究交流，不构成任何投资建议、收益承诺或保本承诺。<br><br>
+            加密资产及链上操作具有高风险与高波动性，可能导致部分或全部本金损失。所有观点均基于个人研究与主观判断，可能存在错误或失效情形。<br><br>
+            会员需基于自身判断独立决策，所有操作及其后果由会员自行承担。<br><br>
+            <strong>是否订阅，请基于对本服务定位的认可，而非对收益的期待。</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p class="footer-text">© 2026 Crypto3D · 3D 加密频道</p>
+    </div>
+  </footer>
+</body>
+</html>

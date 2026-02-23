@@ -38,8 +38,8 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'dydx', 
     coingeckoId: 'dydx-chain',
     cmcSlug: 'dydx',
-    tevRatio: 0.75,
-    note: '75% 净协议费用回购'
+    tevRatio: 0.90,
+    note: '90% TEV (75% 回购 + 15% 质押)'
   },
   etherfi: { 
     defillamaSlug: 'ether.fi', 
@@ -48,26 +48,33 @@ const PROTOCOL_CONFIG = {
     tevRatio: null,  // 从 TEV Yield 反推
     note: '提现收入回购'
   },
+  fluid: {
+    defillamaSlug: 'fluid',
+    coingeckoId: 'fluid',
+    cmcSlug: 'instadapp',
+    tevRatio: 0.35,
+    note: '35% Revenue 用于 Treasury 回购'
+  },
   gmx: { 
     defillamaSlug: 'gmx', 
     coingeckoId: 'gmx',
     cmcSlug: 'gmx',
-    tevRatio: 0.3,
-    note: '30% 费用分红'
+    tevRatio: 0.27,
+    note: '27% 费用分红 (docs.gmx.io)'
   },
   maple: { 
     defillamaSlug: 'maple', 
     coingeckoId: 'maple',
     cmcSlug: 'syrup',
-    tevRatio: 0.2,
-    note: '20% 协议收入回购 SYRUP'
+    tevRatio: 0.25,
+    note: '25% 协议收入回购 SYRUP (MIP-018)'
   },
   pancakeswap: { 
     defillamaSlug: 'pancakeswap', 
     coingeckoId: 'pancakeswap-token',
     cmcSlug: 'pancakeswap',
-    tevRatio: null,  // 从 TEV Yield 反推
-    note: 'CAKE 回购销毁'
+    tevRatio: 0.58,
+    note: '58% 回购销毁 (44-72% 按费率取中间值)'
   },
   pendle: { 
     defillamaSlug: 'pendle', 
@@ -80,8 +87,65 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'sky', 
     coingeckoId: 'maker',
     cmcSlug: 'sky',
-    tevRatio: null,  // 从 TEV Yield 反推
-    note: 'Smart Burn Engine'
+    tevRatio: 0.5,
+    note: '50% Smart Burn Engine 回购销毁'
+  },
+  // 以下协议无 TEV (tevStatus=none)，仅获取市值
+  compound: {
+    defillamaSlug: 'compound-v3',
+    coingeckoId: 'compound-governance-token',
+    cmcSlug: 'compound',
+    tevRatio: 0,
+    note: '纯治理代币'
+  },
+  eigenlayer: {
+    defillamaSlug: 'eigenlayer',
+    coingeckoId: 'eigenlayer',
+    cmcSlug: 'eigenlayer',
+    tevRatio: 0,
+    note: '纯治理代币'
+  },
+  ethena: {
+    defillamaSlug: 'ethena',
+    coingeckoId: 'ethena',
+    cmcSlug: 'ethena',
+    tevRatio: 0,
+    note: '纯治理代币'
+  },
+  jito: {
+    defillamaSlug: 'jito',
+    coingeckoId: 'jito-governance-token',
+    cmcSlug: 'jito',
+    tevRatio: 0,
+    note: '纯治理代币'
+  },
+  kamino: {
+    defillamaSlug: 'kamino',
+    coingeckoId: 'kamino',
+    cmcSlug: 'kamino-finance',
+    tevRatio: 0,
+    note: '纯治理代币'
+  },
+  lido: {
+    defillamaSlug: 'lido',
+    coingeckoId: 'lido-dao',
+    cmcSlug: 'lido-dao',
+    tevRatio: 0,
+    note: '纯治理代币'
+  },
+  morpho: {
+    defillamaSlug: 'morpho',
+    coingeckoId: 'morpho',
+    cmcSlug: 'morpho',
+    tevRatio: 0,
+    note: '纯治理代币'
+  },
+  spark: {
+    defillamaSlug: 'spark',
+    coingeckoId: 'spark',
+    cmcSlug: 'spark',
+    tevRatio: 0,
+    note: '收入归 Sky DAO'
   },
 };
 

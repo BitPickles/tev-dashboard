@@ -29,6 +29,30 @@
     .protocol-notes li { margin: 6px 0; }
     .protocol-notes strong { color: var(--text-primary); }
     .protocol-notes hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+    /* TEV 概览紧凑样式 */
+    .tev-grid-compact { 
+      display: grid; 
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 8px; 
+    }
+    .tev-grid-compact .tev-summary-item { 
+      padding: 12px 8px; 
+      min-height: auto;
+    }
+    .tev-grid-compact .tev-summary-label { 
+      font-size: 10px; 
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .tev-grid-compact .tev-summary-label .label-zh { 
+      font-size: 9px; 
+    }
+    .tev-grid-compact .tev-summary-value { 
+      font-size: 14px; 
+    }
+    @media (max-width: 640px) {
+      .tev-grid-compact { grid-template-columns: repeat(2, 1fr); }
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -80,8 +104,11 @@
 
       <div class="section">
         <div class="section-title"><span class="icon">📊</span><span data-i18n="section.tevSummary">TEV 概览</span></div>
-        <div class="tev-summary-grid">
-          <div class="tev-summary-item"><div class="tev-summary-label">Fee Switch<br><span class="label-zh">费用开关</span></div><div class="tev-summary-value" id="summary-feeswitch">—</div></div>
+        <div class="tev-summary-grid tev-grid-compact">
+          <div class="tev-summary-item"><div class="tev-summary-label">TEV Ratio<br><span class="label-zh">分配比例</span></div><div class="tev-summary-value" id="summary-tevratio">—</div></div>
+          <div class="tev-summary-item"><div class="tev-summary-label">Market Cap<br><span class="label-zh">市值</span></div><div class="tev-summary-value" id="summary-marketcap">—</div></div>
+          <div class="tev-summary-item"><div class="tev-summary-label">Earnings Yield<br><span class="label-zh">收益率</span></div><div class="tev-summary-value" id="summary-earningsyield">—</div></div>
+          <div class="tev-summary-item"><div class="tev-summary-label">TEV Yield<br><span class="label-zh">TEV 收益率</span></div><div class="tev-summary-value" id="summary-tevyield">—</div></div>
           <div class="tev-summary-item"><div class="tev-summary-label">Buybacks<br><span class="label-zh">回购</span></div><div class="tev-summary-value" id="summary-buybacks">—</div></div>
           <div class="tev-summary-item"><div class="tev-summary-label">Dividends<br><span class="label-zh">分红</span></div><div class="tev-summary-value" id="summary-dividends">—</div></div>
           <div class="tev-summary-item"><div class="tev-summary-label">Burns<br><span class="label-zh">销毁</span></div><div class="tev-summary-value" id="summary-burns">—</div></div>
@@ -114,9 +141,8 @@
       <div class="section" id="buyback-chart-section" style="display: none;">
         <div class="section-title"><span class="icon">💰</span><span data-i18n="section.buybackData">回购数据</span></div>
         <div class="chart-container" style="height:400px;"><div class="chart-canvas-wrap"><canvas id="buyback-activity-chart"></canvas></div></div>
-        <div class="chart-legend" style="display:flex;justify-content:center;gap:24px;margin-top:12px;font-size:12px;">
-          <span style="color:#787878;">■ Stage 1-4 (历史报道)</span>
-          <span style="color:#22c55e;">■ Stage 5-6 (链上数据)</span>
+        <div class="chart-legend" id="buyback-legend" style="display:flex;justify-content:center;gap:24px;margin-top:12px;font-size:12px;">
+          <!-- 动态根据协议填充 -->
         </div>
         <div class="chart-hint" style="text-align:center;color:var(--text-tertiary);font-size:11px;margin-top:8px;" data-i18n="chart.zoomHint">🖱️ 滚轮缩放 · 拖动平移 · 双击重置</div>
         
@@ -238,36 +264,51 @@
         if (!resp.ok) return;
         const data = await resp.json();
         
+        // 支持季度数据（如 Fluid）或每日数据
+        const quarterlyData = data.quarterly_buybacks || [];
         const dailyData = data.daily_buybacks || [];
+        const isQuarterly = data.data_type === 'quarterly' || (!dailyData.length && quarterlyData.length);
+        const chartData = isQuarterly ? quarterlyData : dailyData;
         const stages = data.stages || [];
         
-        if (!dailyData.length) return;
+        if (!chartData.length) return;
         
         document.getElementById('buyback-chart-section').style.display = 'block';
         
-        // Calculate totals for progress bar - support both aster and hype fields
-        const amountField = dailyData[0]?.aster !== undefined ? 'aster' : 'hype';
-        const totalAmount = dailyData.reduce((s, d) => s + (d[amountField] || 0), 0);
+        // Calculate totals for progress bar - support aster, hype, fluid fields
+        // 优先使用代币数量字段 (aster/hype/fluid)，只有纯 USD 数据才用 usd
+        const amountField = chartData[0]?.aster !== undefined ? 'aster' : 
+                           (chartData[0]?.hype !== undefined ? 'hype' : 
+                           (chartData[0]?.fluid !== undefined ? 'fluid' : 'usd'));
+        const isUsdOnly = amountField === 'usd';  // 只有 USD 数据的协议
+        const totalAmount = chartData.reduce((s, d) => s + (d[amountField] || 0), 0);
         const totalSupply = data.total_supply || 1e9;
         const ticker = data.ticker || 'TOKEN';
         
-        // Use summary totals if available (more accurate for HYPE)
-        const displayTotal = data.summary?.total_buyback_hype || data.summary?.total_buyback_aster || totalAmount;
-        const displayUsd = data.summary?.total_buyback_usd || 0;
-        const progress = (displayTotal / totalSupply) * 100;
+        // Use summary totals if available (more accurate)
+        const displayTotal = data.summary?.total_buyback_hype || data.summary?.total_buyback_aster || data.summary?.total_buyback_fluid || (isUsdOnly ? 0 : totalAmount);
+        const displayUsd = data.summary?.total_buyback_usd || (isUsdOnly ? totalAmount : 0);
+        const progress = isUsdOnly ? 0 : (displayTotal / totalSupply) * 100;
         
-        // Update progress bar
-        document.getElementById('buyback-progress-fill').style.width = `${Math.min(progress, 100)}%`;
-        document.getElementById('buyback-progress-fill').textContent = `${progress.toFixed(2)}%`;
-        document.getElementById('buyback-progress-text').textContent = `${(displayTotal / 1e6).toFixed(2)}M / ${(totalSupply / 1e9).toFixed(0)}B (${progress.toFixed(2)}%)`;
-        document.getElementById('buyback-total').textContent = `${(displayTotal / 1e6).toFixed(2)}M`;
+        // Update progress bar - hide for USD-only mode (no token amounts)
+        const progressContainer = document.querySelector('.buyback-progress-container');
+        if (isUsdOnly && progressContainer) {
+          progressContainer.style.display = 'none';
+          document.getElementById('buyback-total').textContent = '—';
+        } else {
+          if (progressContainer) progressContainer.style.display = '';
+          document.getElementById('buyback-progress-fill').style.width = `${Math.min(progress, 100)}%`;
+          document.getElementById('buyback-progress-fill').textContent = `${progress.toFixed(2)}%`;
+          document.getElementById('buyback-progress-text').textContent = `${(displayTotal / 1e6).toFixed(2)}M / ${(totalSupply / 1e9).toFixed(0)}B (${progress.toFixed(2)}%)`;
+          document.getElementById('buyback-total').textContent = `${(displayTotal / 1e6).toFixed(2)}M`;
+        }
         
         // USD display
         document.getElementById('buyback-usd').textContent = displayUsd > 0 ? fmtCurrency(displayUsd) : '—';
-        document.getElementById('buyback-supply').textContent = `${(totalSupply / 1e9).toFixed(0)}B`;
+        document.getElementById('buyback-supply').textContent = `${(totalSupply / 1e6).toFixed(0)}M`;
         
         // Additional stats
-        const avgPrice = data.summary?.avg_price || (displayUsd / displayTotal);
+        const avgPrice = data.summary?.avg_price || data.summary?.avg_daily || (displayUsd / displayTotal);
         const totalDays = data.summary?.total_days || dailyData.length;
         document.getElementById('buyback-avg-price').textContent = avgPrice > 0 ? `$${avgPrice.toFixed(2)}` : '—';
         document.getElementById('buyback-days').textContent = totalDays > 0 ? `${totalDays}` : '—';
@@ -276,35 +317,42 @@
         if (buybackChart) buybackChart.destroy();
         
         // 每日数据图表 - 用颜色区分阶段和数据类型
-        // Stage 1-4 (估算): 灰色半透明
-        // Stage 5-6 (链上): 绿色
+        // estimated / 1-4 / defillama / official: 灰色半透明
+        // onchain / 5 / 6: 绿色
         const getBarColor = (d) => {
-          if (d.stage === '1-4') return 'rgba(120,120,120,0.5)';  // 灰色 - 估算
+          // 估算数据 - 灰色
+          if (d.dataType === 'estimated' || d.data_type === 'estimated' || 
+              d.stage === '1-4' || d.stage === 'defillama' || d.stage === 'official') {
+            return 'rgba(120,120,120,0.5)';
+          }
           return 'rgba(34,197,94,0.8)';  // 绿色 - 链上
         };
+        const getBorderColor = (d) => {
+          if (d.dataType === 'estimated' || d.data_type === 'estimated' || 
+              d.stage === '1-4' || d.stage === 'defillama' || d.stage === 'official') {
+            return 'rgba(120,120,120,0.8)';
+          }
+          return 'rgba(34,197,94,1)';
+        };
         
-        const chartPoints = dailyData.map(d => ({
-          x: new Date(d.date),
-          y: d[amountField] || 0,
-          stage: d.stage,
-          dataType: d.data_type,
-          source: d.source,
-          usd: d.usd,
-          avgPrice: d.avg_price
-        }));
+        // 季度数据用 category 轴，每日数据用 time 轴
+        const chartPoints = isQuarterly 
+          ? chartData.map(d => ({ x: d.quarter, y: d.usd || 0, ...d, dataType: d.dataType || d.data_type }))
+          : chartData.map(d => ({ x: new Date(d.date), y: d[amountField] || 0, stage: d.stage, dataType: d.dataType || d.data_type, source: d.source, usd: d.usd, avgPrice: d.avg_price }));
         
         buybackChart = new Chart(ctx, {
           type: 'bar',
           data: {
+            labels: isQuarterly ? chartData.map(d => d.quarter) : undefined,
             datasets: [{
-              label: ticker,
+              label: isUsdOnly ? 'USD' : ticker,
               data: chartPoints,
-              backgroundColor: dailyData.map(d => getBarColor(d)),
-              borderColor: dailyData.map(d => d.stage === '1-4' ? 'rgba(120,120,120,0.8)' : 'rgba(34,197,94,1)'),
+              backgroundColor: chartData.map(d => getBarColor(d)),
+              borderColor: chartData.map(d => getBorderColor(d)),
               borderWidth: 1,
-              borderRadius: 2,
-              barPercentage: 1,
-              categoryPercentage: 1
+              borderRadius: 4,
+              barPercentage: isQuarterly ? 0.6 : 1,
+              categoryPercentage: isQuarterly ? 0.8 : 1
             }]
           },
           options: {
@@ -318,15 +366,16 @@
                 titleColor: '#fafafa',
                 bodyColor: '#a1a1aa',
                 callbacks: {
-                  title: (items) => items[0].raw.x.toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US'),
-                  label: (ctx) => ` ${(ctx.raw.y/1e3).toFixed(1)}K ${ticker}`,
+                  title: (items) => isQuarterly ? items[0].raw.quarter : items[0].raw.x.toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US'),
+                  label: (ctx) => isUsdOnly || isQuarterly ? ` $${(ctx.raw.y/1e6).toFixed(2)}M` : ` ${(ctx.raw.y/1e3).toFixed(1)}K ${ticker}`,
                   afterLabel: (ctx) => {
                     const d = ctx.raw;
                     const lines = [];
-                    if (d.stage) lines.push(`Stage: ${d.stage}`);
-                    if (d.usd) lines.push(`USD: ${fmtCurrency(d.usd)}`);
+                    if (d.source) lines.push(`来源: ${d.source}`);
+                    if (!isQuarterly && d.stage) lines.push(`Stage: ${d.stage}`);
+                    if (!isQuarterly && !isUsdOnly && d.usd) lines.push(`USD: ${fmtCurrency(d.usd)}`);
                     if (d.avgPrice) lines.push(`Avg: $${d.avgPrice.toFixed(2)}`);
-                    lines.push(d.dataType === 'estimated' ? '⚠️ 估算数据' : '✅ 链上数据');
+                    lines.push(d.dataType === 'estimated' ? '⚠️ 估算数据（官方报告）' : '✅ 链上数据');
                     return lines;
                   }
                 }
@@ -337,7 +386,11 @@
               }
             },
             scales: {
-              x: {
+              x: isQuarterly ? {
+                type: 'category',
+                grid: { display: false },
+                ticks: { color: '#71717a', font: { size: 12 } }
+              } : {
                 type: 'time',
                 time: { unit: 'week', displayFormats: { week: 'MM-dd', day: 'MM-dd' } },
                 grid: { display: false },
@@ -345,8 +398,8 @@
               },
               y: {
                 grid: { color: 'rgba(39,39,42,0.5)' },
-                ticks: { color: '#a1a1aa', callback: v => (v/1e6).toFixed(1) + 'M' },
-                title: { display: true, text: `${ticker} / day`, color: '#a1a1aa' }
+                ticks: { color: '#a1a1aa', callback: v => isQuarterly || isUsdOnly ? '$' + (v/1e6).toFixed(1) + 'M' : (v/1e6).toFixed(1) + 'M' },
+                title: { display: true, text: isQuarterly ? 'USD / quarter' : (isUsdOnly ? 'USD / day' : `${ticker} / day`), color: '#a1a1aa' }
               }
             }
           }
@@ -354,6 +407,20 @@
         
         // Double-click to reset zoom
         ctx.canvas.ondblclick = () => buybackChart.resetZoom();
+
+        // 设置图例（根据协议）
+        const legendEl = document.getElementById('buyback-legend');
+        if (legendEl) {
+          if (pid === 'aster') {
+            legendEl.innerHTML = '<span style="color:#787878;">■ Stage 1-4 (历史报道)</span><span style="color:#22c55e;">■ Stage 5-6 (链上数据)</span>';
+          } else if (pid === 'hype') {
+            legendEl.innerHTML = '<span style="color:#787878;">■ 估算</span><span style="color:#22c55e;">■ 链上数据</span>';
+          } else if (pid === 'fluid') {
+            legendEl.innerHTML = '<span style="color:#787878;">■ 官方博客数据 (Q4 2025)</span>';
+          } else {
+            legendEl.innerHTML = '';
+          }
+        }
       } catch (e) { console.log(`No buyback data for ${pid}:`, e.message); }
     }
 
@@ -385,8 +452,45 @@
         statusText.className = `tev-status ${tevStatus}`;
         document.getElementById('primary-value').textContent = cfg.tev_summary?.fee_switch === 'ON' ? '✓ ON' : cfg.tev_summary?.fee_switch === 'PARTIAL' ? '~ PARTIAL' : '✗ OFF';
         document.getElementById('primary-label').textContent = cfg.tev_summary?.primary_value_accrual || '—';
+        
+        // 从 all-protocols.json 获取汇总数据
+        let protoData = null;
+        try {
+          const allResp = await fetch('../data/all-protocols.json');
+          if (allResp.ok) {
+            const allData = await allResp.json();
+            protoData = allData.protocols?.[pid];
+          }
+        } catch (e) { console.log('Failed to load all-protocols.json'); }
+        
+        // TEV 概览 - 新增字段
+        const tevRatioEl = document.getElementById('summary-tevratio');
+        const marketCapEl = document.getElementById('summary-marketcap');
+        const earningsYieldEl = document.getElementById('summary-earningsyield');
+        const tevYieldEl = document.getElementById('summary-tevyield');
+        
+        if (protoData) {
+          // 分配比例
+          const tevRatio = protoData.tevRatio;
+          tevRatioEl.textContent = tevRatio ? `${(tevRatio * 100).toFixed(0)}%` : '—';
+          
+          // 市值
+          const marketCap = protoData.market_cap_usd;
+          marketCapEl.textContent = marketCap ? `$${(marketCap / 1e9).toFixed(2)}B` : '—';
+          
+          // 收益率 = 年化收入 / 市值
+          const revenue = protoData.metrics?.trailing_365d_revenue_usd;
+          const earningsYield = (revenue && marketCap) ? (revenue / marketCap * 100) : null;
+          earningsYieldEl.textContent = earningsYield ? `${earningsYield.toFixed(2)}%` : '—';
+          
+          // TEV Yield
+          const tevYield = protoData.tev_yield_percent;
+          tevYieldEl.textContent = tevYield ? `${tevYield.toFixed(2)}%` : '—';
+          tevYieldEl.className = `tev-summary-value ${tevYield > 5 ? 'value-on' : tevYield > 0 ? 'value-partial' : ''}`;
+        }
+        
         const s = cfg.tev_summary || {};
-        ['feeswitch', 'buybacks', 'dividends', 'burns'].forEach(k => { const el = document.getElementById(`summary-${k}`); const v = s[k.replace('feeswitch', 'fee_switch')] || 'NONE'; el.textContent = t('status.' + v); el.className = `tev-summary-value ${getValueClass(v)}`; });
+        ['buybacks', 'dividends', 'burns'].forEach(k => { const el = document.getElementById(`summary-${k}`); const v = s[k] || 'NONE'; el.textContent = t('status.' + v); el.className = `tev-summary-value ${getValueClass(v)}`; });
         const confEl = document.getElementById('summary-confidence');
         confEl.textContent = t('confidence.' + (cfg.confidence || 'medium'));
         confEl.className = `tev-summary-value ${cfg.confidence === 'high' ? 'value-on' : cfg.confidence === 'low' ? 'value-off' : 'value-partial'}`;
@@ -400,7 +504,7 @@
         document.getElementById('content').style.display = 'block';
         loadTevChart(pid);
         if (['bnb', 'hype', 'uniswap'].includes(pid)) loadBurnsChart(pid);
-        if (['aster','hype'].includes(pid)) loadBuybackData(pid);
+        if (['aster','hype','fluid'].includes(pid)) loadBuybackData(pid);
       } catch (e) {
         console.error('Failed:', e);
         document.getElementById('loading').innerHTML = `<div style="color:var(--danger);">Failed to load protocol</div><div style="margin-top:8px;font-size:12px;">${e.message}</div><div style="margin-top:16px;"><a href="index.html" style="color:var(--blue);">← Back</a></div>`;
