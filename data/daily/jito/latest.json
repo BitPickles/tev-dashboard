@@ -1,38 +1,38 @@
 {
   "protocol": "jito",
-  "updated_at": "2026-02-22T01:06:06.979968+00:00",
+  "updated_at": "2026-02-24T18:49:01.946289+00:00",
   "data_sources": {
     "tvl": "DefiLlama",
     "fees": "DefiLlama",
     "market": "CoinGecko"
   },
   "latest_record": {
-    "date": "2026-02-22",
-    "price_usd": 0.307026,
-    "market_cap_usd": 134263564,
-    "fdv_usd": 305495913,
-    "circulating_supply": 439493813.8,
-    "total_supply": 1000000000.0,
-    "tvl_usd": 1082299972.44058,
-    "daily_fees_usd": 173658,
+    "date": "2026-02-24",
+    "price_usd": null,
+    "market_cap_usd": null,
+    "fdv_usd": null,
+    "circulating_supply": null,
+    "total_supply": null,
+    "tvl_usd": 993573612.70653,
+    "daily_fees_usd": 484673,
     "daily_tev_usd": 0,
     "tev_ratio_used": 0
   },
   "metrics": {
-    "trailing_30d_fees_usd": 14420624,
+    "trailing_30d_fees_usd": 14369705,
     "trailing_30d_tev_usd": 0,
-    "annualized_fees_usd": 173047488,
+    "annualized_fees_usd": 172436460,
     "annualized_tev_usd": 0,
-    "current_market_cap_usd": 134263564,
-    "tev_yield": "0.00%",
-    "tev_yield_decimal": 0.0,
-    "tvl_usd": 1082299972.44058,
-    "mcap_tvl_ratio": 0.1241,
-    "calculated_at": "2026-02-22T01:06:06.979968+00:00"
+    "current_market_cap_usd": 0,
+    "tev_yield": "N/A",
+    "tev_yield_decimal": 0,
+    "tvl_usd": 993573612.70653,
+    "mcap_tvl_ratio": 0.0,
+    "calculated_at": "2026-02-24T18:49:01.946289+00:00"
   },
   "fees_breakdown": {
-    "jito-liquid-staking": 5921550,
-    "jito-mev-tips": 8422579,
-    "jito-dao": 76495
+    "jito-liquid-staking": 5990509,
+    "jito-mev-tips": 8306628,
+    "jito-dao": 72568
   }
 }
