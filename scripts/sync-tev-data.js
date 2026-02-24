@@ -16,6 +16,11 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
+
+// CMC 数据更新脚本路径
+const CMC_UPDATE_SCRIPT = '/Users/aibot/.openclaw/workspace-researcher/scripts/update_cmc_daily.py';
+const BTCD_SYNC_SCRIPT = path.join(__dirname, 'sync-btcd.py');
 
 // 协议配置：DefiLlama slug, CoinGecko id, CMC slug, tevRatio
 const PROTOCOL_CONFIG = {
@@ -228,6 +233,44 @@ async function getMarketCap(coingeckoId, cmcSlug) {
   return null;
 }
 
+// 更新 CMC 数据并同步 BTC.D
+function updateCmcAndBtcd() {
+  console.log('📈 更新 CMC 市值数据...');
+  try {
+    // 更新 CMC CSV
+    if (fs.existsSync(CMC_UPDATE_SCRIPT)) {
+      const output = execSync(`python3 "${CMC_UPDATE_SCRIPT}"`, {
+        encoding: 'utf8',
+        timeout: 60000
+      });
+      const match = output.match(/Added (\d+) new records/);
+      if (match && match[1] !== '0') {
+        console.log(`  ✅ CMC: +${match[1]} 条数据`);
+      } else {
+        console.log(`  ✅ CMC: 已是最新`);
+      }
+    }
+    
+    // 同步 BTC.D
+    if (fs.existsSync(BTCD_SYNC_SCRIPT)) {
+      const output = execSync(`python3 "${BTCD_SYNC_SCRIPT}"`, {
+        encoding: 'utf8',
+        timeout: 30000,
+        cwd: __dirname
+      });
+      const match = output.match(/最新: ([\d-]+), BTC\.D: ([\d.]+)%/);
+      if (match) {
+        console.log(`  ✅ BTC.D: ${match[1]} ${match[2]}%`);
+      } else if (output.includes('没有新数据')) {
+        console.log(`  ✅ BTC.D: 已是最新`);
+      }
+    }
+  } catch (e) {
+    console.log(`  ⚠️ CMC/BTC.D 更新失败: ${e.message}`);
+  }
+  console.log('');
+}
+
 // 主函数
 async function main() {
   const args = process.argv.slice(2);
@@ -236,6 +279,11 @@ async function main() {
   
   console.log('=== TEV 数据同步 ===\n');
   if (dryRun) console.log('🔍 预览模式（不写入）\n');
+  
+  // 先更新 CMC/BTC.D（如果是完整同步）
+  if (!dryRun && targetProtocols.length === 0) {
+    updateCmcAndBtcd();
+  }
   
   // 读取现有数据
   const allData = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
