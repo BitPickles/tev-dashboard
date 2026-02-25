@@ -42,7 +42,7 @@ const PROTOCOL_CONFIG = {
   dydx: { 
     defillamaSlug: 'dydx', 
     coingeckoId: 'dydx-chain',
-    cmcSlug: 'dydx',
+    cmcSlug: 'dydx-chain',
     tevRatio: 0.90,
     note: '90% TEV (75% 回购 + 15% 质押)'
   },
@@ -70,7 +70,7 @@ const PROTOCOL_CONFIG = {
   maple: { 
     defillamaSlug: 'maple', 
     coingeckoId: 'maple',
-    cmcSlug: 'syrup',
+    cmcSlug: 'maple-finance',
     tevRatio: 0.25,
     note: '25% 协议收入回购 SYRUP (MIP-018)'
   },
