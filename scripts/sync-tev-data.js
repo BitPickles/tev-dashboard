@@ -4,7 +4,7 @@
  * 
  * 功能：
  * 1. 从 DefiLlama 获取 Revenue 数据
- * 2. 从 CoinGecko 获取市值数据
+ * 2. 从 CMC 获取市值数据（CoinGecko 备用）
  * 3. 根据 tevRatio 计算 TEV
  * 4. 更新 all-protocols.json
  * 
@@ -42,7 +42,7 @@ const PROTOCOL_CONFIG = {
   dydx: { 
     defillamaSlug: 'dydx', 
     coingeckoId: 'dydx-chain',
-    cmcSlug: 'dydx',
+    cmcSlug: 'dydx-chain',
     tevRatio: 0.90,
     note: '90% TEV (75% 回购 + 15% 质押)'
   },
@@ -70,7 +70,7 @@ const PROTOCOL_CONFIG = {
   maple: { 
     defillamaSlug: 'maple', 
     coingeckoId: 'maple',
-    cmcSlug: 'syrup',
+    cmcSlug: 'maple-finance',
     tevRatio: 0.25,
     note: '25% 协议收入回购 SYRUP (MIP-018)'
   },
@@ -201,14 +201,13 @@ async function getCoingeckoMarketCap(id, retries = 2) {
   return null;
 }
 
-// 获取 CMC 市值（备用源）
+// 获取 CMC 市值（主数据源）
 async function getCmcMarketCap(slug) {
   try {
     // 使用 CMC 公开 API
     const data = await fetchJson(`https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail?slug=${slug}`);
     const mcap = data?.data?.statistics?.marketCap || 0;
     if (mcap > 0) {
-      console.log(`  ✓ CMC 备用成功`);
       return mcap;
     }
   } catch (e) {
@@ -217,18 +216,18 @@ async function getCmcMarketCap(slug) {
   return null;
 }
 
-// 获取市值（CoinGecko 优先，CMC 备用）
+// 获取市值（CMC 优先，CoinGecko 备用）
 async function getMarketCap(coingeckoId, cmcSlug) {
-  // 先尝试 CoinGecko
-  let mcap = await getCoingeckoMarketCap(coingeckoId);
-  if (mcap && mcap > 0) return mcap;
-  
-  // CoinGecko 失败，尝试 CMC
+  // 先尝试 CMC
   if (cmcSlug) {
-    console.log(`  → 切换到 CMC...`);
-    mcap = await getCmcMarketCap(cmcSlug);
+    let mcap = await getCmcMarketCap(cmcSlug);
     if (mcap && mcap > 0) return mcap;
   }
+  
+  // CMC 失败，尝试 CoinGecko
+  console.log(`  → 切换到 CoinGecko...`);
+  let mcap = await getCoingeckoMarketCap(coingeckoId);
+  if (mcap && mcap > 0) return mcap;
   
   return null;
 }
