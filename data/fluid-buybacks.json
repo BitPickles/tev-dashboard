@@ -2,13 +2,13 @@
   "protocol": "fluid",
   "ticker": "FLUID",
   "total_supply": 100000000,
-  "updated_at": "2026-02-27T01:01:54.857805Z",
+  "updated_at": "2026-02-27T13:01:47.965921Z",
   "summary": {
-    "total_buyback_fluid": 4221297,
-    "total_buyback_usd": 4221297,
-    "tev_30d_usd": 3360271,
-    "total_days": 33,
-    "avg_daily": 112009.03,
+    "total_buyback_fluid": 4241247,
+    "total_buyback_usd": 4241247,
+    "tev_30d_usd": 3272171,
+    "total_days": 34,
+    "avg_daily": 109072.37,
     "note": "Holders Revenue from DefiLlama (Treasury buybacks)"
   },
   "daily_buybacks": [
@@ -272,6 +272,14 @@
       "date": "2026-02-21",
       "fluid": 39652,
       "usd": 39652,
+      "stage": "defillama",
+      "data_type": "estimated",
+      "source": "DefiLlama Holders Revenue"
+    },
+    {
+      "date": "2026-02-26",
+      "fluid": 19950,
+      "usd": 19950,
       "stage": "defillama",
       "data_type": "estimated",
       "source": "DefiLlama Holders Revenue"
