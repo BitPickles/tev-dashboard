@@ -8532,7 +8532,8 @@
       ],
       "snapshot_date": "2026-03-02",
       "data_source": "CoinGecko + DefiLlama"
-    }
+    },
+    "tevStatus": "active"
   },
   {
     "id": "aster",
@@ -8737,7 +8738,8 @@
       "需要更精确的年化收入数据吗？",
       "是否需要深入分析链上回购记录？"
     ],
-    "last_updated": "2026-02-07"
+    "last_updated": "2026-02-07",
+    "tevStatus": "active"
   },
   {
     "id": "bgb",
@@ -8840,7 +8842,8 @@
       "BGB 销毁比例是多少？",
       "是否有其他 TEV 机制（如 Launchpad 参与权）？"
     ],
-    "last_updated": "2026-02-05"
+    "last_updated": "2026-02-05",
+    "tevStatus": "partial"
   },
   {
     "id": "bnb",
@@ -9025,7 +9028,8 @@
       "price_change_24h": 2.25599,
       "snapshot_date": "2026-03-02",
       "data_source": "CoinGecko + DefiLlama"
-    }
+    },
+    "tevStatus": "none"
   },
   {
     "id": "curve",
@@ -17959,7 +17963,8 @@
       }
     ],
     "analyst_notes": "【2026-02-05 调研更新】\n\n## Curve 双重激励模式说明\n\nCurve 采用特殊的双重激励模式，需区分 TEV 和 LP 激励：\n\n### 1. TEV 部分（计入 TEV yield）\n- **50% 交易手续费** 分配给 **veCRV 持有者**\n- 以 3CRV（稳定币 LP token）形式每周分发\n- 分发合约: 0xA464e6DCda8AC41e03616F95f4BC98a13b8922Dc\n- 过去30天分红: ~$97万，年化约 $1165万\n\n### 2. LP 激励部分（不计入 TEV）\n- **CRV 代币奖励** 分配给 **LP 提供者**\n- 通过 Gauge 系统分发\n- 这是代币通胀/增发激励，不是协议收入分配\n- veCRV 持有者投票决定各池子的 CRV 奖励权重\n\n### TEV Yield 计算\n- 年化 holders revenue: ~$11.65M\n- CRV 流通市值: ~$355M\n- **TEV Yield ≈ 3.28%**\n\n### 为什么显示 0% 需排查\n前端显示 TEV yield 为 0% 是错误的，实际数据显示约 3.28%。\n可能原因：\n1. 前端未正确读取 calculated_tev 字段\n2. 数据管道问题\n3. 计算逻辑缺失\n\n建议检查前端 TEV yield 计算逻辑。",
-    "last_updated": "2026-02-05"
+    "last_updated": "2026-02-05",
+    "tevStatus": "active"
   },
   {
     "id": "dydx",
@@ -25803,7 +25808,8 @@
       }
     ],
     "analyst_notes": "【2026-02-05 调研修正 - 重要】\n\n## 数据错误修正\n\n### 问题 1：流通供应量错误\n- ❌ 旧数据：29.6M DYDX (以太坊上的旧代币)\n- ✅ 正确：大部分代币已迁移到 dYdX Chain\n- ✅ 正确市值：~$90M（从 CoinGecko dydx-chain 获取）\n\n### 问题 2：TEV 机制已变更\n- ❌ 旧机制：100% 交易费用分配给 stakers\n- ✅ 新机制：**75% 协议净收入用于 DYDX 回购**\n- 来源：DefiLlama tokenRights 数据\n\n### 正确 TEV Yield 计算\n- 30天 holders revenue: $381,311\n- 年化: ~$4.58M\n- 市值: ~$90M\n- **TEV Yield ≈ 5.1%**\n\n### 为什么前端可能显示夸张数值？\n如果前端使用了以太坊上的 circulating supply ($3.3M 市值)，则：\n- 错误计算: $4.58M / $3.3M = **139%** ❌\n- 正确计算: $4.58M / $90M = **5.1%** ✅\n\n### 建议\n1. 前端需要使用 CoinGecko 的 dydx-chain ID 获取正确市值\n2. 更新 TEV 机制描述为 buyback\n3. 置信度降为 medium，因为需要进一步验证回购执行情况",
-    "last_updated": "2026-02-05"
+    "last_updated": "2026-02-05",
+    "tevStatus": "active"
   },
   {
     "id": "eigenlayer",
@@ -29826,7 +29832,8 @@
       ],
       "snapshot_date": "2026-03-02",
       "data_source": "CoinGecko + DefiLlama"
-    }
+    },
+    "tevStatus": "none"
   },
   {
     "id": "ethena",
@@ -33155,7 +33162,8 @@
       ],
       "snapshot_date": "2026-03-02",
       "data_source": "CoinGecko + DefiLlama"
-    }
+    },
+    "tevStatus": "none"
   },
   {
     "id": "etherfi",
@@ -37650,7 +37658,8 @@
       ],
       "snapshot_date": "2026-03-02",
       "data_source": "CoinGecko + DefiLlama"
-    }
+    },
+    "tevStatus": "active"
   },
   {
     "id": "gmx",
@@ -44312,7 +44321,8 @@
       }
     ],
     "analyst_notes": "【2026-02-05 调研核对】\n\n## TEV Yield 核对结果\n\n**TEV Yield ≈ 23.5% 是正确的**\n\n### 计算过程\n- 30天 holders revenue: $1,208,117\n- 年化: ~$14.5M\n- 流通市值: ~$61.6M\n- TEV Yield = $14.5M / $61.6M = 23.5%\n\n### 为什么 GMX TEV Yield 如此高？\n\n1. **市值较小**: GMX 流通市值仅 $61.6M，远低于其他 DeFi 协议\n2. **收入较高**: 永续合约交易所收入模式成熟，年化平台收入约 $48M（GMX stakers 获得 30% = $14.5M）\n3. **分配比例高**: 30% 平台费用直接分给 GMX 质押者\n\n### 与同类对比\n| 协议 | TEV Yield | 市值 |\n|------|-----------|------|\n| GMX | ~23.5% | $61M |\n| dYdX | 待核实 | 待核实 |\n| Hyperliquid | N/A | N/A |\n\n### 结论\n**数据正确**，GMX 确实是 DeFi 中 TEV yield 最高的协议之一。高 yield 主要因为市值小但收入高。\n\n如果前端显示的数值明显高于 23%（如 50%+），则需排查：\n- 是否错用了 staking market cap 而非 token market cap\n- 是否有数据重复计算",
-    "last_updated": "2026-02-05"
+    "last_updated": "2026-02-05",
+    "tevStatus": "active"
   },
   {
     "id": "hype",
@@ -44414,7 +44424,8 @@
         "reliability": "high"
       }
     ],
-    "analyst_notes": "【2026-02-05 调研】\n\n## HYPE TEV 机制 - 非常强\n\n### 核心机制\n**99% 永续交易费用 → Assistance Fund → 回购 HYPE**\n\n这是 DeFi 中最强的 TEV 机制之一！\n\n### 费用分配\n| 来源 | 分配 |\n|------|------|\n| 永续交易费 99% | Assistance Fund（回购 HYPE） |\n| 永续交易费 1% | HLP Vault 供应者 |\n| Builder 费用 | 全部给 Builder |\n\n### 与 GMX 对比\n| 协议 | 持有者分成 | 机制 |\n|------|------------|------|\n| Hyperliquid | 99% | 回购 |\n| GMX | 30% | 质押分红 |\n| dYdX | 75% | 回购 |\n\n### TEV Yield 计算\n需要从 DefiLlama 获取 dailyHoldersRevenue 数据\n- 市值: ~$7.76B\n- 假设年化 holders revenue $X\n- TEV Yield = X / $7.76B\n\n### 特点\n1. ✅ Fee switch 已开启\n2. ✅ 99% 超高分成比例\n3. ✅ 数据透明（DefiLlama 有完整数据）\n4. ⚠️ 代币较新（2024年底发布）\n\n### 数据置信度：HIGH"
+    "analyst_notes": "【2026-02-05 调研】\n\n## HYPE TEV 机制 - 非常强\n\n### 核心机制\n**99% 永续交易费用 → Assistance Fund → 回购 HYPE**\n\n这是 DeFi 中最强的 TEV 机制之一！\n\n### 费用分配\n| 来源 | 分配 |\n|------|------|\n| 永续交易费 99% | Assistance Fund（回购 HYPE） |\n| 永续交易费 1% | HLP Vault 供应者 |\n| Builder 费用 | 全部给 Builder |\n\n### 与 GMX 对比\n| 协议 | 持有者分成 | 机制 |\n|------|------------|------|\n| Hyperliquid | 99% | 回购 |\n| GMX | 30% | 质押分红 |\n| dYdX | 75% | 回购 |\n\n### TEV Yield 计算\n需要从 DefiLlama 获取 dailyHoldersRevenue 数据\n- 市值: ~$7.76B\n- 假设年化 holders revenue $X\n- TEV Yield = X / $7.76B\n\n### 特点\n1. ✅ Fee switch 已开启\n2. ✅ 99% 超高分成比例\n3. ✅ 数据透明（DefiLlama 有完整数据）\n4. ⚠️ 代币较新（2024年底发布）\n\n### 数据置信度：HIGH",
+    "tevStatus": "active"
   },
   {
     "id": "jito",
@@ -49262,7 +49273,8 @@
       ],
       "snapshot_date": "2026-03-02",
       "data_source": "CoinGecko + DefiLlama"
-    }
+    },
+    "tevStatus": "none"
   },
   {
     "id": "justlend",
@@ -55668,7 +55680,8 @@
           "totalLiquidityUSD": 3121702428
         }
       ]
-    }
+    },
+    "tevStatus": "partial"
   },
   {
     "id": "kamino",
@@ -60840,7 +60853,8 @@
       ],
       "snapshot_date": "2026-03-02",
       "data_source": "CoinGecko + DefiLlama"
-    }
+    },
+    "tevStatus": "none"
   },
   {
     "id": "lido",
@@ -68486,7 +68500,8 @@
       ],
       "snapshot_date": "2026-03-02",
       "data_source": "CoinGecko + DefiLlama"
-    }
+    },
+    "tevStatus": "none"
   },
   {
     "id": "maple",
@@ -75539,7 +75554,8 @@
       ],
       "snapshot_date": "2026-03-02",
       "data_source": "CoinGecko + DefiLlama"
-    }
+    },
+    "tevStatus": "active"
   },
   {
     "id": "mnt",
@@ -75657,7 +75673,8 @@
       "Bybit 收入与 MNT 的具体关联？",
       "MNT 是否有明确的回购/销毁/分红机制？"
     ],
-    "last_updated": "2026-02-05"
+    "last_updated": "2026-02-05",
+    "tevStatus": "none"
   },
   {
     "id": "morpho",
@@ -80881,7 +80898,8 @@
       ],
       "snapshot_date": "2026-03-02",
       "data_source": "CoinGecko + DefiLlama"
-    }
+    },
+    "tevStatus": "none"
   },
   {
     "id": "okb",
@@ -80994,7 +81012,8 @@
       "OKB 30% 回购销毁比例是否为最新政策？",
       "是否需要整理历史季度销毁数据？"
     ],
-    "last_updated": "2026-02-05"
+    "last_updated": "2026-02-05",
+    "tevStatus": "none"
   },
   {
     "id": "pancakeswap",
@@ -88188,7 +88207,8 @@
       ],
       "snapshot_date": "2026-03-02",
       "data_source": "CoinGecko + DefiLlama"
-    }
+    },
+    "tevStatus": "active"
   },
   {
     "id": "pendle",
@@ -95038,7 +95058,8 @@
       ],
       "snapshot_date": "2026-03-02",
       "data_source": "CoinGecko + DefiLlama"
-    }
+    },
+    "tevStatus": "active"
   },
   {
     "id": "radiant",
@@ -110917,7 +110938,8 @@
       ],
       "snapshot_date": "2026-03-02",
       "data_source": "CoinGecko + DefiLlama"
-    }
+    },
+    "tevStatus": "active"
   },
   {
     "id": "spark",
@@ -115129,7 +115151,8 @@
       ],
       "snapshot_date": "2026-03-02",
       "data_source": "CoinGecko + DefiLlama"
-    }
+    },
+    "tevStatus": "none"
   },
   {
     "id": "uniswap",
@@ -122247,6 +122270,7 @@
       }
     ],
     "analyst_notes": "【2026-02-05 调研更新】\n\n1. UNIfication 提案已通过执行，fee switch 于 2025-12-28 开启\n\n2. 销毁机制：\n   - TokenJar 收集所有链上的协议费用\n   - Firepit 合约执行销毁（发送至 0xdead）\n   - Mainnet Firepit: 0x0D5Cd355e2aBEB8fb1552F56c965B867346d6721\n   - 阈值：每次 release 需 2000 UNI\n\n3. 收入来源（已启用）:\n   - v2 协议费: 0.05%（已启用）\n   - v3 协议费: 1/4~1/6 of LP fee（部分池已启用）\n   - Unichain sequencer 收入 85%\n\n4. 收入来源（规划中）:\n   - v4 协议费\n   - PFDA (MEV 内化)\n   - Aggregator hooks\n\n5. 年化协议收入规模：\n   - Uniswap 年化费用 $1B+，假设 10-15% 归协议 → 约 $100M-$150M/年\n   - Unichain 年化 sequencer 收入约 $7.5M，85% 约 $6.4M\n\n6. 市值数据：流通市值约 $2.3B，假设年化 TEV $100M，yield 约 4.3%",
-    "last_updated": "2026-02-05"
+    "last_updated": "2026-02-05",
+    "tevStatus": "active"
   }
 ]

@@ -179,7 +179,7 @@
     const updateI18n = () => document.querySelectorAll('[data-i18n]').forEach(el => el.textContent = t(el.dataset.i18n));
     const getProtocolId = () => new URLSearchParams(window.location.search).get('id') || 'aave';
     const fmtCurrency = v => v >= 1e9 ? '$' + (v/1e9).toFixed(2) + 'B' : v >= 1e6 ? '$' + (v/1e6).toFixed(2) + 'M' : v >= 1e3 ? '$' + (v/1e3).toFixed(1) + 'K' : '$' + v.toFixed(0);
-    const getTevStatus = s => (s.fee_switch === 'ON' || s.buybacks === 'ACTIVE' || s.dividends === 'ACTIVE' || s.burns === 'ACTIVE' || s.staking === 'ACTIVE') ? 'active' : (s.fee_switch === 'PARTIAL' || s.dividends === 'PARTIAL' || s.burns === 'PARTIAL' || s.staking === 'PARTIAL') ? 'partial' : 'none';
+    const getTevStatus = (s, cfg) => cfg?.tevStatus || ((s.fee_switch === 'ON' || s.buybacks === 'ACTIVE' || s.dividends === 'ACTIVE' || s.burns === 'ACTIVE' || s.staking === 'ACTIVE') ? 'active' : (s.fee_switch === 'PARTIAL' || s.dividends === 'PARTIAL') ? 'partial' : 'none');
     const getValueClass = v => { const u = (v || '').toUpperCase(); return u === 'ON' || u === 'ACTIVE' ? 'value-on' : u === 'PARTIAL' ? 'value-partial' : 'value-off'; };
 
     const TEV_COLORS = { buyback_burn: { bg: 'rgba(34,197,94,0.7)', border: '#22c55e' }, buyback: { bg: 'rgba(34,197,94,0.6)', border: '#22c55e' }, staking_reward: { bg: 'rgba(59,130,246,0.7)', border: '#3b82f6' }, direct_distribution: { bg: 'rgba(168,85,247,0.7)', border: '#a855f7' }, ve_reward: { bg: 'rgba(245,158,11,0.7)', border: '#f59e0b' }, fee_sharing: { bg: 'rgba(236,72,153,0.7)', border: '#ec4899' }, aggregate: { bg: 'rgba(99,102,241,0.7)', border: '#6366f1' }, burn: { bg: 'rgba(239,68,68,0.7)', border: '#ef4444' }, airdrop: { bg: 'rgba(168,85,247,0.7)', border: '#a855f7' }, ve_reward: { bg: 'rgba(245,158,11,0.7)', border: '#f59e0b' }, direct_distribution: { bg: 'rgba(14,165,233,0.7)', border: '#0ea5e9' } };
@@ -547,7 +547,7 @@
         document.getElementById('protocol-name').textContent = cfg.name;
         const catMap = { lending: '借贷', dex: 'DEX', liquid_staking: '流动性质押', restaking: '再质押', perpetuals: '永续合约', yield: '收益' };
         document.getElementById('protocol-ticker').textContent = `${cfg.ticker} · ${currentLang === 'zh' ? (catMap[cfg.category] || cfg.category) : cfg.category}`;
-        const tevStatus = getTevStatus(cfg.tev_summary || {});
+        const tevStatus = getTevStatus(cfg.tev_summary || {}, cfg);
         const badge = document.getElementById('tev-badge');
         badge.className = `badge badge-${tevStatus === 'active' ? 'active' : tevStatus === 'partial' ? 'partial' : 'none'}`;
         badge.textContent = tevStatus === 'active' ? 'TEV Active' : tevStatus === 'partial' ? 'TEV Partial' : 'No TEV';
