@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-01T13:01:34.564Z",
+  "generated_at": "2026-03-01T22:35:03.577085",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -11,7 +11,7 @@
       "tev_yield_percent": 4.84,
       "market_cap_usd": 1730904737.03,
       "tvl": 27886636450,
-      "tevRatioNote": "回购 - Aave DAO 每年拨出 $50M 预算用于回购 AAVE 代币",
+      "tevRatioNote": "等效比例（固定回购 $50M + 质押奖励），非固定分配",
       "metrics": {
         "current_market_cap_usd": 1730904737.03,
         "trailing_365d_tev_usd": 83797484,
@@ -20,7 +20,8 @@
         "trailing_30d_revenue_usd": 10061178,
         "trailing_365d_holders_revenue_usd": 33797484,
         "trailing_30d_holders_revenue_usd": 412287
-      }
+      },
+      "tevRatio": 0.7767
     },
     "aster": {
       "name": "Aster (AsterDEX)",
@@ -64,21 +65,25 @@
       "category": "cex_token",
       "confidence": "medium",
       "tevStatus": "active",
-      "tev_yield_percent": 6.98,
-      "market_cap_usd": 85309283181,
+      "tev_yield_percent": 11.27,
+      "market_cap_usd": 85528916981,
       "tvl": 5737562622.633954,
       "validation": {
-        "method": "slisBNB APY (Lista DAO)",
-        "apy_percent": 6.979,
-        "tvl_usd": 633780813,
-        "source": "DefiLlama Yields API",
-        "note": "通过 BNB LSD 净值增长验证综合收益率"
+        "method": "Burn APY + asBNB APY (Aster)",
+        "burn_apy_percent": 4.4,
+        "asbnb_apy_percent": 6.87,
+        "total_apy_percent": 11.27,
+        "burn_source": "Auto-Burn (近4季 5,987,794 BNB) + BEP-95 (~16,327 BNB/年)",
+        "asbnb_source": "Aster asBNB (Staking + Launchpool/HODLer/Megadrop)",
+        "asbnb_url": "https://www.asterdex.com/en/earn/astoken?token=slisBNB",
+        "burn_data_url": "https://www.bnbburn.info/",
+        "note": "Burn 通过链上黑洞地址验证，asBNB 通过 Aster 官方数据"
       },
-      "tevRatioNote": "供给收缩 + 链上质押收益（非 CEX 利润分润模式）",
+      "tevRatioNote": "Burn APY 4.40% (Auto-Burn + BEP-95) + 持有收益 6.87% (Staking + Launchpool/HODLer/Megadrop via asBNB)",
       "metrics": {
-        "current_market_cap_usd": 85309283181,
-        "trailing_365d_tev_usd": 5954587966.03,
-        "trailing_30d_tev_usd": 496215663.84
+        "current_market_cap_usd": 85528916981,
+        "trailing_365d_tev_usd": 9639108943.76,
+        "trailing_30d_tev_usd": 803259078.65
       }
     },
     "compound": {
