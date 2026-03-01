@@ -264,7 +264,11 @@
         const total = records.reduce((s, r) => s + r.amount_usd, 0);
         const avgLabel = isDaily ? (currentLang === 'zh' ? '日均 TEV' : 'Avg Daily') : t('chart.avgMonthly');
         const fmtPeriod = (d) => { const [y,m] = d.split('-'); return y + '/' + m; };
-        document.getElementById('chart-stats').innerHTML = `<div class="chart-stat"><div class="chart-stat-value">${fmtCurrency(total)}</div><div class="chart-stat-label">${t('chart.totalTev')}</div></div><div class="chart-stat"><div class="chart-stat-value">${records.length}</div><div class="chart-stat-label">${isDaily ? (currentLang === 'zh' ? '天数' : 'Days') : t('chart.records')}</div></div><div class="chart-stat"><div class="chart-stat-value">${fmtCurrency(total / records.length)}</div><div class="chart-stat-label">${avgLabel}</div></div><div class="chart-stat"><div class="chart-stat-value" style="font-size:0.85em">${fmtPeriod(records[0].date)} - ${fmtPeriod(records[records.length - 1].date)}</div><div class="chart-stat-label">${t('chart.period')}</div></div>`;
+        document.getElementById('chart-stats').innerHTML = `<div class="chart-stat"><div class="chart-stat-value">${fmtCurrency(total)}</div><div class="chart-stat-label">${t('chart.totalTev')}</div></div><div class="chart-stat"><div class="chart-stat-value">${records.length}</div><div class="chart-stat-label">${isDaily ? (currentLang === 'zh' ? '天数' : 'Days') : t('chart.records')}</div></div><div class="chart-stat"><div class="chart-stat-value">${fmtCurrency(total / records.length)}</div><div class="chart-stat-label">${avgLabel}</div></div>`;
+        // 在图表右上角显示数据周期
+        let periodEl = document.getElementById('tev-chart-period');
+        if (!periodEl) { periodEl = document.createElement('div'); periodEl.id = 'tev-chart-period'; periodEl.style.cssText = 'position:absolute;top:12px;right:16px;font-size:11px;color:#71717a;'; document.querySelector('#tev-chart-section .chart-container').style.position = 'relative'; document.querySelector('#tev-chart-section .chart-container').appendChild(periodEl); }
+        periodEl.textContent = fmtPeriod(records[0].date) + ' - ' + fmtPeriod(records[records.length - 1].date);
         document.getElementById('tev-chart-section').classList.add('has-data');
       } catch (e) { console.log('No TEV records:', e.message); }
     }
