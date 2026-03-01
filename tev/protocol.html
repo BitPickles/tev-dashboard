@@ -184,6 +184,7 @@
     const TEV_COLORS = { buyback_burn: { bg: 'rgba(34,197,94,0.7)', border: '#22c55e' }, buyback: { bg: 'rgba(34,197,94,0.6)', border: '#22c55e' }, staking_reward: { bg: 'rgba(59,130,246,0.7)', border: '#3b82f6' }, direct_distribution: { bg: 'rgba(168,85,247,0.7)', border: '#a855f7' }, ve_reward: { bg: 'rgba(245,158,11,0.7)', border: '#f59e0b' }, fee_sharing: { bg: 'rgba(236,72,153,0.7)', border: '#ec4899' }, aggregate: { bg: 'rgba(99,102,241,0.7)', border: '#6366f1' }, burn: { bg: 'rgba(239,68,68,0.7)', border: '#ef4444' }, airdrop: { bg: 'rgba(168,85,247,0.7)', border: '#a855f7' }, ve_reward: { bg: 'rgba(245,158,11,0.7)', border: '#f59e0b' }, direct_distribution: { bg: 'rgba(14,165,233,0.7)', border: '#0ea5e9' } };
     const BURN_CONFIG = { bnb: { file: 'bnb-burns.json', ticker: 'BNB', color: 'rgba(240,185,11,0.8)', borderColor: '#f0b90b', title: { zh: 'BNB 季度销毁', en: 'BNB Quarterly Burns' }, dataType: 'quarterly', initialSupply: 2e8, targetSupply: 1e8 } };
     let tevChart = null, burnAmtChart = null, burnValChart = null, buybackChart = null;
+    let protocolConfig = null;
 
     function renderMechanisms(mechanisms) {
       const c = document.getElementById('mechanisms-container');
@@ -267,35 +268,38 @@
     }
 
     async function loadBurnsChart(pid) {
-      const cfg = BURN_CONFIG[pid];
-      if (!cfg) return;
-      try {
-        const resp = await fetch(`../data/${cfg.file}`);
-        if (!resp.ok) return;
-        const data = await resp.json();
-        document.getElementById('token-burns-section').style.display = 'block';
-        document.getElementById('burns-section-title').textContent = cfg.title[currentLang];
-        const pLbl = cfg.dataType === 'quarterly' ? (currentLang === 'zh' ? '季度' : 'Quarterly') : (currentLang === 'zh' ? '月度' : 'Monthly');
-        document.getElementById('burn-amount-title').textContent = `${pLbl}销毁 (${cfg.ticker})`;
-        document.getElementById('burn-value-title').textContent = `${pLbl}价值 (USD)`;
-        const totalBurned = data.total_burned, totalSupply = data.total_supply || cfg.initialSupply || 1e9, targetSupply = cfg.targetSupply || data.target_supply;
-        let progress, progressText;
-        if (targetSupply) { const burnTarget = (cfg.initialSupply || totalSupply) - targetSupply; progress = (totalBurned / burnTarget) * 100; progressText = `${(totalBurned / 1e6).toFixed(2)}M / ${(burnTarget / 1e6).toFixed(0)}M`; } else { progress = (totalBurned / totalSupply) * 100; progressText = `${(totalBurned / 1e6).toFixed(2)}M (${progress.toFixed(2)}%)`; }
-        document.getElementById('burn-progress-fill').style.width = `${Math.min(progress, 100)}%`;
-        document.getElementById('burn-progress-fill').style.background = `linear-gradient(90deg, ${cfg.borderColor}, ${cfg.color})`;
-        document.getElementById('burn-progress-fill').textContent = `${progress.toFixed(1)}%`;
-        document.getElementById('burn-progress-text').textContent = progressText;
-        document.getElementById('burn-total').textContent = `${(totalBurned / 1e6).toFixed(2)}M`;
-        document.getElementById('burn-remaining').textContent = `${((data.current_supply || totalSupply - totalBurned) / 1e6).toFixed(2)}M`;
-        document.getElementById('burn-target').textContent = `${((targetSupply || totalSupply) / 1e6).toFixed(0)}M`;
-        const burns = cfg.dataType === 'quarterly' ? (data.quarterly_burns || []).filter(b => !b.note?.includes('估算')) : data.monthly_burns || [];
-        if (!burns.length) { document.querySelector('.burn-charts-grid').style.display = 'none'; return; }
-        const labels = burns.map(b => b.quarter || b.month), amounts = burns.map(b => b.amount), values = burns.map(b => b.value_usd);
-        if (burnAmtChart) burnAmtChart.destroy();
-        burnAmtChart = new Chart(document.getElementById('burn-amount-chart').getContext('2d'), { type: 'bar', data: { labels, datasets: [{ data: amounts, backgroundColor: cfg.color, borderColor: cfg.borderColor, borderWidth: 1, borderRadius: 4 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` ${ctx.raw.toLocaleString()} ${cfg.ticker}` } } }, scales: { x: { grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', maxRotation: 45 } }, y: { grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => (v / 1e6).toFixed(1) + 'M' } } } } });
-        if (burnValChart) burnValChart.destroy();
-        burnValChart = new Chart(document.getElementById('burn-value-chart').getContext('2d'), { type: 'line', data: { labels, datasets: [{ data: values, borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.1)', fill: true, tension: 0.3, pointRadius: 3 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` $${(ctx.raw / 1e6).toFixed(1)}M` } } }, scales: { x: { grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', maxRotation: 45 } }, y: { grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => '$' + (v / 1e6).toFixed(0) + 'M' } } } } });
-      } catch (e) { console.log(`No burns data for ${pid}:`, e.message); }
+      // Read burn_progress from config.json (already loaded as protocolConfig)
+      const bp = protocolConfig?.burn_progress;
+      if (!bp) { document.querySelector('.burn-progress-container').style.display = 'none'; document.querySelector('.burn-charts-grid').style.display = 'none'; return; }
+      const totalBurned = bp.total_burned;
+      const target = bp.target;
+      const ticker = bp.ticker || protocolConfig.ticker || '';
+      const targetLabel = bp.target_label;
+      // BNB special: target is burn target (initial - target_supply)
+      let burnTarget, progress, progressText;
+      if (bp.target_supply) {
+        burnTarget = bp.initial_supply - bp.target_supply;
+        progress = (totalBurned / burnTarget) * 100;
+        progressText = `${(totalBurned / 1e6).toFixed(2)}M / ${(burnTarget / 1e6).toFixed(0)}M ${ticker}`;
+      } else {
+        progress = (totalBurned / target) * 100;
+        progressText = `${(totalBurned / 1e6).toFixed(2)}M / ${(target / 1e6).toFixed(0)}M ${ticker} (${progress.toFixed(2)}%)`;
+      }
+      document.querySelector('.burn-progress-container').style.display = '';
+      document.getElementById('burn-progress-fill').style.width = `${Math.min(progress, 100)}%`;
+      document.getElementById('burn-progress-fill').style.background = 'linear-gradient(90deg, #ef4444, #f97316)';
+      document.getElementById('burn-progress-fill').textContent = `${progress.toFixed(1)}%`;
+      document.getElementById('burn-progress-text').textContent = progressText;
+      document.getElementById('burn-total').textContent = `${(totalBurned / 1e6).toFixed(2)}M ${ticker}`;
+      const remaining = bp.target_supply ? (bp.initial_supply - totalBurned) : (target - totalBurned);
+      document.getElementById('burn-remaining').textContent = `${(remaining / 1e6).toFixed(2)}M ${ticker}`;
+      document.getElementById('burn-target').textContent = `${((bp.target_supply || target) / 1e6).toFixed(0)}M ${ticker}`;
+      // Hide the old burn charts grid (TEV history chart handles this now)
+      document.querySelector('.burn-charts-grid').style.display = 'none';
+      // Show the section
+      document.getElementById('token-burns-section').style.display = 'block';
+      const sTitle = currentLang === 'zh' ? '销毁记录' : 'Burn Records';
+      document.getElementById('burns-section-title').textContent = sTitle;
     }
 
     async function loadBuybackData(pid) {
@@ -482,6 +486,7 @@
         const resp = await fetch(`../data/protocols/${pid}/config.json`);
         if (!resp.ok) throw new Error('Protocol not found');
         const cfg = await resp.json();
+        protocolConfig = cfg;
         document.title = `${cfg.name} — TEV Dashboard`;
         document.getElementById('breadcrumb-name').textContent = cfg.name;
         const iconEl = document.getElementById('protocol-icon');
