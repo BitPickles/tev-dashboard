@@ -18,17 +18,12 @@ function extractProtocolData(config) {
     ticker: config.ticker,
     icon: config.icon,
     category: config.category,
-    confidence: config.confidence || 'medium'
+    confidence: config.confidence || 'medium',
+    confidence_reason: config.confidence_reason || null
   };
 
-  // TEV 状态
-  if (config.tev_data?.has_tev) {
-    data.tevStatus = 'active';
-  } else if (config.tev_summary?.burns === 'ACTIVE' || config.tev_summary?.buybacks === 'ACTIVE') {
-    data.tevStatus = 'partial';
-  } else {
-    data.tevStatus = config.tev_summary?.tevStatus || 'none';
-  }
+  // TEV 状态（优先使用 config.tevStatus，由 LLM 判断写入）
+  data.tevStatus = config.tevStatus || (config.tev_data?.has_tev ? 'active' : 'none');
 
   // TEV Yield
   if (config.tev_data?.tev_yield_percent) {
