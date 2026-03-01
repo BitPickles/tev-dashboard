@@ -142,10 +142,12 @@
         "note": "63d actual → annualized, 1,444,003 UNI burned"
       }
     ],
-    "calculation": "$35.2M / $2.39B = 1.47%"
+    "calculation": "$35.2M / $2.39B = 1.47%",
+    "trailing_365d_tev_usd": 35216242.0,
+    "last_updated": "2026-03-01"
   },
   "burn_progress": {
-    "total_burned": 101493580,
+    "total_burned": 101444003.0,
     "target": 1000000000,
     "ticker": "UNI",
     "note": "含 1 亿枚一次性国库销毁 + Firepit 持续销毁。占总供应 10 亿的 10.1%。",
@@ -161,8 +163,11 @@
         "label": "Firepit 持续销毁",
         "label_en": "Firepit Burns",
         "amount": 1493580,
-        "color": "rgba(239,68,68,0.85)"
+        "color": "rgba(239,68,68,0.85)",
+        "value": 1444003.0,
+        "pct": 0.14
       }
-    ]
+    ],
+    "pct": 10.14
   }
 }
