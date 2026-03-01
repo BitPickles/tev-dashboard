@@ -1229,7 +1229,7 @@ tr:last-child { border-bottom: none; }
 /* Burn Progress */
 .burn-progress-container { background: var(--bg-tertiary); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
 .burn-progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 14px; color: var(--text-secondary); }
-.burn-progress-bar { height: 24px; background: var(--bg-hover); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+.burn-progress-bar { height: 24px; background: var(--bg-hover); border-radius: 12px; overflow: hidden; margin-bottom: 20px; display: flex; }
 .burn-progress-fill { height: 100%; border-radius: 12px; transition: width 0.5s ease; display: flex; align-items: center; justify-content: flex-end; padding-right: 12px; font-size: 12px; font-weight: 700; color: #000; }
 .burn-progress-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center; }
 .burn-stat-value { font-size: 20px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }

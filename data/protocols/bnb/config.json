@@ -518,11 +518,25 @@
   "last_updated": "2026-03-02",
   "burn_progress": {
     "total_burned": 63641621,
-    "target": 100000000,
     "initial_supply": 200000000,
     "target_supply": 100000000,
+    "target": 100000000,
     "ticker": "BNB",
     "note": "BNB 初始供应 2 亿，目标销毁至 1 亿。当前已完成 63.6%。",
-    "target_label": "burn_target"
+    "target_label": "burn_target",
+    "segments": [
+      {
+        "label": "季度 Auto-Burn",
+        "label_en": "Quarterly Auto-Burn",
+        "amount": 63365621,
+        "color": "rgba(240,185,11,0.85)"
+      },
+      {
+        "label": "BEP-95 实时销毁",
+        "label_en": "BEP-95 Real-time Burn",
+        "amount": 276000,
+        "color": "rgba(240,185,11,0.4)"
+      }
+    ]
   }
 }

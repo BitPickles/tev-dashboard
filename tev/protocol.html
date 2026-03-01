@@ -125,7 +125,7 @@
         <div class="section-title"><span class="icon">🔥</span><span id="burns-section-title">销毁记录</span></div>
         <div class="burn-progress-container">
           <div class="burn-progress-header"><span data-i18n="burn.progress">销毁进度</span><span id="burn-progress-text">—</span></div>
-          <div class="burn-progress-bar"><div class="burn-progress-fill" id="burn-progress-fill"></div></div>
+          <div class="burn-progress-bar" id="burn-progress-bar"><div class="burn-progress-fill" id="burn-progress-fill"></div></div>
           <div id="burn-progress-note" class="burn-progress-note" style="font-size:12px;color:#a1a1aa;margin-top:4px;display:none;"></div>
           <div class="burn-progress-stats">
             <div class="burn-stat"><span class="burn-stat-value" id="burn-total">—</span><span class="burn-stat-label" data-i18n="burn.totalBurned">已销毁</span></div>
@@ -287,9 +287,38 @@
         progressText = `${(totalBurned / 1e6).toFixed(2)}M / ${(target / 1e6).toFixed(0)}M ${ticker} (${progress.toFixed(2)}%)`;
       }
       document.querySelector('.burn-progress-container').style.display = '';
-      document.getElementById('burn-progress-fill').style.width = `${Math.min(progress, 100)}%`;
-      document.getElementById('burn-progress-fill').style.background = 'linear-gradient(90deg, #ef4444, #f97316)';
-      document.getElementById('burn-progress-fill').textContent = `${progress.toFixed(1)}%`;
+      const barEl = document.getElementById('burn-progress-bar');
+      // Clear existing fills
+      barEl.innerHTML = '';
+      if (bp.segments && bp.segments.length > 1) {
+        // Multi-segment mode
+        const baseTarget = bp.target_supply ? (bp.initial_supply - bp.target_supply) : bp.target;
+        bp.segments.forEach(seg => {
+          const segPct = (seg.amount / baseTarget) * 100;
+          const segEl = document.createElement('div');
+          segEl.className = 'burn-progress-fill';
+          segEl.style.width = `${Math.min(segPct, 100)}%`;
+          segEl.style.position = 'relative';
+          segEl.style.display = 'inline-block';
+          segEl.style.height = '100%';
+          segEl.style.background = seg.color;
+          segEl.style.borderRadius = '0';
+          segEl.title = `${currentLang === 'zh' ? seg.label : seg.label_en}: ${(seg.amount / 1e6).toFixed(2)}M ${ticker}`;
+          barEl.appendChild(segEl);
+        });
+        // Round corners on first and last
+        if (barEl.firstChild) barEl.firstChild.style.borderRadius = '6px 0 0 6px';
+        if (barEl.lastChild) barEl.lastChild.style.borderRadius = '0 6px 6px 0';
+      } else {
+        // Single segment mode
+        const fillEl = document.createElement('div');
+        fillEl.className = 'burn-progress-fill';
+        fillEl.id = 'burn-progress-fill';
+        fillEl.style.width = `${Math.min(progress, 100)}%`;
+        fillEl.style.background = 'linear-gradient(90deg, #ef4444, #f97316)';
+        fillEl.textContent = `${progress.toFixed(1)}%`;
+        barEl.appendChild(fillEl);
+      }
       document.getElementById('burn-progress-text').textContent = progressText;
       document.getElementById('burn-total').textContent = `${(totalBurned / 1e6).toFixed(2)}M ${ticker}`;
       const remaining = bp.target_supply ? (bp.initial_supply - totalBurned) : (target - totalBurned);
@@ -298,6 +327,19 @@
       // Show note for protocols with specific burn targets
       const noteEl = document.getElementById('burn-progress-note');
       if (bp.note) { noteEl.textContent = bp.note; noteEl.style.display = ''; } else { noteEl.style.display = 'none'; }
+      // Segment legend
+      let legendEl = document.getElementById('burn-segment-legend');
+      if (!legendEl) { legendEl = document.createElement('div'); legendEl.id = 'burn-segment-legend'; legendEl.style.cssText = 'display:flex;gap:16px;margin-top:6px;font-size:12px;color:#a1a1aa;flex-wrap:wrap;'; noteEl.parentElement.insertBefore(legendEl, noteEl.nextSibling); }
+      legendEl.innerHTML = '';
+      if (bp.segments && bp.segments.length > 1) {
+        bp.segments.forEach(seg => {
+          const item = document.createElement('span');
+          item.style.cssText = 'display:inline-flex;align-items:center;gap:4px;';
+          item.innerHTML = `<span style="width:10px;height:10px;border-radius:2px;background:${seg.color};display:inline-block;"></span>${currentLang === 'zh' ? seg.label : seg.label_en}: ${(seg.amount / 1e6).toFixed(2)}M`;
+          legendEl.appendChild(item);
+        });
+        legendEl.style.display = '';
+      } else { legendEl.style.display = 'none'; }
       // Hide the old burn charts grid (TEV history chart handles this now)
       document.querySelector('.burn-charts-grid').style.display = 'none';
       // Show the section

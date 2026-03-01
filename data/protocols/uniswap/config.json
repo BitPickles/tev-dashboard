@@ -149,6 +149,20 @@
     "target": 1000000000,
     "ticker": "UNI",
     "note": "含 1 亿枚一次性国库销毁 + Firepit 持续销毁。占总供应 10 亿的 10.1%。",
-    "target_label": "total_supply"
+    "target_label": "total_supply",
+    "segments": [
+      {
+        "label": "一次性国库销毁",
+        "label_en": "Retroactive Burn",
+        "amount": 100000000,
+        "color": "rgba(239,68,68,0.35)"
+      },
+      {
+        "label": "Firepit 持续销毁",
+        "label_en": "Firepit Burns",
+        "amount": 1493580,
+        "color": "rgba(239,68,68,0.85)"
+      }
+    ]
   }
 }
