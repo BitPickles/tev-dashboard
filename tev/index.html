@@ -20,6 +20,14 @@
     nav a:hover, nav a.active { color: var(--text-primary); }
     .header-right { display: flex; align-items: center; gap: 24px; }
     @media (max-width: 768px) { nav { display: none; } }
+  
+    /* Tooltip for table headers and badges */
+    .has-tooltip { position: relative; cursor: help; }
+    .has-tooltip .tooltip-icon { font-size: 11px; color: #71717a; margin-left: 3px; vertical-align: middle; }
+    .has-tooltip::after { content: attr(data-tip); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #18181b; color: #d4d4d8; font-size: 12px; font-weight: 400; padding: 8px 12px; border-radius: 8px; border: 1px solid #27272a; white-space: normal; width: max-content; max-width: 220px; line-height: 1.5; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+    .has-tooltip:hover::after { opacity: 1; }
+    .badge.has-tooltip::after { bottom: auto; top: 100%; margin-top: 4px; }
+
   </style>
 </head>
 <body>
@@ -51,24 +59,7 @@
       </div>
     </section>
 
-    <section class="stats-bar">
-      <div class="stat-item">
-        <div class="stat-value" id="stat-protocols">—</div>
-        <div class="stat-label" data-i18n="stats.protocols">追踪协议数</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value" id="stat-mcap">—</div>
-        <div class="stat-label" data-i18n="stats.mcap">总市值</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value" id="stat-fees">—</div>
-        <div class="stat-label" data-i18n="stats.fees">30日总费用</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value" id="stat-tev">—</div>
-        <div class="stat-label" data-i18n="stats.tev">30日总 TEV</div>
-      </div>
-    </section>
+    
 
     <section class="table-section" id="protocols">
       <div class="container">
@@ -249,11 +240,25 @@
       document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
       document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
       document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.dataset.i18n; if (i18n[lang][k]) el.innerHTML = i18n[lang][k]; });
-      if (window.protocolData) { renderTable(window.protocolData); updateFooter(window.protocolData); }
+      if (window.protocolData) { renderTable(window.protocolData); updateFooter(window.protocolData); } setupHeaderTips();
     }
 
     // === Data & State ===
     let PROTOCOLS = {}, LOGO_URLS = {};
+
+    // Header tooltips
+    const headerTips = {
+      zh: { tvl: '协议中锁定的总资产价值', tevStatus: '协议是否将收入分配给代币持有者', tevRatio: 'TEV ÷ 协议利润，分给持有者的比例', mcap: '代币流通市值', earningYield: '协议利润 ÷ 市值，类似市盈率倒数', tevYield: 'TEV ÷ 市值，类似股息率', confidence: '数据来源的可验证程度' },
+      en: { tvl: 'Total value locked in the protocol', tevStatus: 'Whether protocol distributes revenue to holders', tevRatio: 'TEV ÷ Revenue, share to holders', mcap: 'Circulating market cap', earningYield: 'Revenue ÷ Market Cap, inverse P/E', tevYield: 'TEV ÷ Market Cap, like dividend yield', confidence: 'How verifiable the data sources are' }
+    };
+    function setupHeaderTips() {
+      document.querySelectorAll('th[data-sort], th[data-i18n="th.confidence"]').forEach(th => {
+        const key = th.dataset.sort || 'confidence';
+        const tip = (headerTips[currentLang] || headerTips.zh)[key];
+        if (tip) { th.classList.add('has-tooltip'); th.setAttribute('data-tip', tip); }
+      });
+    }
+
     let currentSort = { field: 'tevStatus', dir: 'desc' };
     let currentFilter = 'all';
     const TEV_STATUS_ORDER = { active: 3, partial: 2, none: 1 };
@@ -404,7 +409,7 @@
           <td class="text-right"><span class="value">${formatCurrency(mcap)}</span></td>
           <td class="text-right"><span class="value ${earningYield > 0.1 ? 'value-highlight' : earningYield === 0 ? 'value-zero' : ''}">${earningYield > 0 ? formatPercent(earningYield) : '—'}</span></td>
           <td class="text-right"><span class="value ${tevYield > 0.05 ? 'value-highlight' : tevYield === 0 ? 'value-zero' : ''}">${formatPercent(tevYield)}</span></td>
-          <td class="text-right"><span class="badge badge-${p.confidence === 'high' ? 'high' : p.confidence === 'medium' ? 'medium' : 'low'}">${p.confidence === 'high' ? '✓' : '!'} ${t('confidence.' + p.confidence)}</span></td>
+          <td class="text-right"><span class="badge badge-${p.confidence === 'high' ? 'high' : p.confidence === 'medium' ? 'medium' : 'low'} has-tooltip" data-tip="${(p.confidence_reason && p.confidence_reason[currentLang]) || ''}">${p.confidence === 'high' ? '✓' : '!'} ${t('confidence.' + p.confidence)}</span></td>
         `;
         tbody.appendChild(row);
       });
@@ -412,10 +417,7 @@
 
     function updateStats(protocols) {
       const valid = protocols.filter(p => !p.error);
-      document.getElementById('stat-protocols').textContent = valid.length;
-      document.getElementById('stat-mcap').textContent = formatCurrency(valid.reduce((s, p) => s + getMarketCap(p), 0));
-      document.getElementById('stat-fees').textContent = formatCurrency(valid.reduce((s, p) => s + (p.metrics?.trailing_30d_fees_usd || 0), 0));
-      document.getElementById('stat-tev').textContent = formatCurrency(valid.reduce((s, p) => s + (p.metrics?.trailing_30d_tev_usd || 0), 0));
+
     }
 
     function updateFooter(protocols) {
@@ -435,6 +437,7 @@
         document.getElementById('table-loading').style.display = 'none';
         document.getElementById('protocol-table').style.display = 'table';
         renderTable(protocols);
+        setupHeaderTips();
         updateStats(protocols);
         updateFooter(protocols);
         document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', () => {
