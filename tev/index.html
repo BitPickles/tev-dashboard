@@ -21,12 +21,12 @@
     .header-right { display: flex; align-items: center; gap: 24px; }
     @media (max-width: 768px) { nav { display: none; } }
   
-    /* Tooltip for table headers and badges */
-    .has-tooltip { position: relative; cursor: help; }
-    .has-tooltip .tooltip-icon { font-size: 11px; color: #71717a; margin-left: 3px; vertical-align: middle; }
-    .has-tooltip::after { content: attr(data-tip); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #18181b; color: #d4d4d8; font-size: 12px; font-weight: 400; padding: 8px 12px; border-radius: 8px; border: 1px solid #27272a; white-space: normal; width: max-content; max-width: 300px; line-height: 1.5; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
-    .has-tooltip:hover::after { opacity: 1; }
-    .badge.has-tooltip::after { bottom: auto; top: 100%; margin-top: 4px; }
+    /* Tooltip */
+    .tip-wrap { position: relative; display: inline; }
+    .tip-trigger { font-size: 11px; color: #52525b; cursor: help; margin-left: 2px; vertical-align: middle; }
+    .tip-box { display: none; position: fixed; background: #1c1c1e; color: #d4d4d8; font-size: 12px; font-weight: 400; line-height: 1.6; padding: 10px 14px; border-radius: 10px; border: 1px solid #2a2a2e; max-width: 320px; text-align: left; z-index: 9999; box-shadow: 0 8px 24px rgba(0,0,0,0.5); pointer-events: none; }
+    .tip-wrap:hover .tip-box, .badge-tip:hover .tip-box { display: block; }
+    .badge-tip { position: relative; cursor: help; }
 
   </style>
 </head>
@@ -271,7 +271,23 @@
       document.querySelectorAll('th[data-sort], th[data-i18n="th.confidence"]').forEach(th => {
         const key = th.dataset.sort || 'confidence';
         const tip = (headerTips[currentLang] || headerTips.zh)[key];
-        if (tip) { th.classList.add('has-tooltip'); th.setAttribute('data-tip', tip); }
+        if (!tip) return;
+        // Remove old tip
+        const old = th.querySelector('.tip-wrap');
+        if (old) old.remove();
+        th.classList.remove('has-tooltip');
+        // Create new inline tip
+        const wrap = document.createElement('span');
+        wrap.className = 'tip-wrap';
+        wrap.innerHTML = '<span class="tip-trigger">ⓘ</span><span class="tip-box">' + tip + '</span>';
+        th.appendChild(wrap);
+        // Position on hover
+        wrap.addEventListener('mouseenter', () => {
+          const box = wrap.querySelector('.tip-box');
+          const rect = wrap.getBoundingClientRect();
+          box.style.top = (rect.bottom + 6) + 'px';
+          box.style.left = Math.min(rect.left, window.innerWidth - 340) + 'px';
+        });
       });
     }
 
@@ -425,7 +441,7 @@
           <td class="text-right"><span class="value">${formatCurrency(mcap)}</span></td>
           <td class="text-right"><span class="value ${earningYield > 0.1 ? 'value-highlight' : earningYield === 0 ? 'value-zero' : ''}">${earningYield > 0 ? formatPercent(earningYield) : '—'}</span></td>
           <td class="text-right"><span class="value ${tevYield > 0.05 ? 'value-highlight' : tevYield === 0 ? 'value-zero' : ''}">${formatPercent(tevYield)}</span></td>
-          <td class="text-right"><span class="badge badge-${p.confidence === 'high' ? 'high' : p.confidence === 'medium' ? 'medium' : 'low'} has-tooltip" data-tip="${(p.confidence_reason && p.confidence_reason[currentLang]) || ''}">${p.confidence === 'high' ? '✓' : '!'} ${t('confidence.' + p.confidence)}</span></td>
+          <td class="text-right"><span class="badge badge-${p.confidence === 'high' ? 'high' : p.confidence === 'medium' ? 'medium' : 'low'} badge-tip">${p.confidence === 'high' ? '✓' : '!'} ${t('confidence.' + p.confidence)}${(p.confidence_reason && p.confidence_reason[currentLang]) ? '<span class="tip-box">' + p.confidence_reason[currentLang] + '</span>' : ''}</span></td>
         `;
         tbody.appendChild(row);
       });
