@@ -126,6 +126,7 @@
         <div class="burn-progress-container">
           <div class="burn-progress-header"><span data-i18n="burn.progress">销毁进度</span><span id="burn-progress-text">—</span></div>
           <div class="burn-progress-bar"><div class="burn-progress-fill" id="burn-progress-fill"></div></div>
+          <div id="burn-progress-note" class="burn-progress-note" style="font-size:12px;color:#a1a1aa;margin-top:4px;display:none;"></div>
           <div class="burn-progress-stats">
             <div class="burn-stat"><span class="burn-stat-value" id="burn-total">—</span><span class="burn-stat-label" data-i18n="burn.totalBurned">已销毁</span></div>
             <div class="burn-stat"><span class="burn-stat-value" id="burn-remaining">—</span><span class="burn-stat-label" data-i18n="burn.remaining">剩余供应</span></div>
@@ -294,6 +295,9 @@
       const remaining = bp.target_supply ? (bp.initial_supply - totalBurned) : (target - totalBurned);
       document.getElementById('burn-remaining').textContent = `${(remaining / 1e6).toFixed(2)}M ${ticker}`;
       document.getElementById('burn-target').textContent = `${((bp.target_supply || target) / 1e6).toFixed(0)}M ${ticker}`;
+      // Show note for protocols with specific burn targets
+      const noteEl = document.getElementById('burn-progress-note');
+      if (bp.note) { noteEl.textContent = bp.note; noteEl.style.display = ''; } else { noteEl.style.display = 'none'; }
       // Hide the old burn charts grid (TEV history chart handles this now)
       document.querySelector('.burn-charts-grid').style.display = 'none';
       // Show the section
