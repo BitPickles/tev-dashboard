@@ -213,9 +213,10 @@
         if (!records?.length) return;
         records.sort((a, b) => new Date(a.date) - new Date(b.date));
         const types = [...new Set(records.map(r => r.type))];
-        const labels = records.map(r => r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }));
-        const barDs = types.map(type => { const c = TEV_COLORS[type] || { bg: 'rgba(161,161,170,0.5)', border: '#a1a1aa' }; return { label: t('mechanism.type.' + type) || type, data: records.map(r => r.type === type ? r.amount_usd : 0), backgroundColor: c.bg, borderColor: c.border, borderWidth: 1, borderRadius: 4, type: 'bar', yAxisID: 'y', stack: 'tev', order: 2 }; });
-        let cum = 0; const cumData = records.map(r => { cum += r.amount_usd; return cum; });
+        const allLabels = records.map(r => r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }));
+        const labels = [...new Set(allLabels)];
+        const barDs = types.map(type => { const c = TEV_COLORS[type] || { bg: 'rgba(161,161,170,0.5)', border: '#a1a1aa' }; const dataByLabel = {}; records.filter(r => r.type === type).forEach(r => { const lbl = r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }); dataByLabel[lbl] = (dataByLabel[lbl] || 0) + r.amount_usd; }); return { label: t('mechanism.type.' + type) || type, data: labels.map(l => dataByLabel[l] || 0), backgroundColor: c.bg, borderColor: c.border, borderWidth: 1, borderRadius: 4, type: 'bar', yAxisID: 'y', stack: 'tev', order: 2 }; });
+        let cum = 0; const cumByLabel = {}; records.forEach(r => { const lbl = r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }); cumByLabel[lbl] = (cumByLabel[lbl] || 0) + r.amount_usd; }); const cumData = labels.map(l => { cum += (cumByLabel[l] || 0); return cum; });
         const lineDs = { label: t('chart.cumulative'), data: cumData, borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.1)', borderWidth: 2, pointRadius: 3, fill: true, type: 'line', yAxisID: 'y2', tension: 0.3, order: 1 };
         const ctx = document.getElementById('tev-history-chart').getContext('2d');
         if (tevChart) tevChart.destroy();
