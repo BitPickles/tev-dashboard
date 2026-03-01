@@ -28,9 +28,10 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'aave', 
     coingeckoId: 'aave',
     cmcSlug: 'aave',
-    tevRatio: null,  // 特殊：固定年度回购 $50M
+    tevRatio: null,  // 特殊：固定回购 + holdersRevenue
     fixedTevUsd: 50000000,
-    note: '年度回购 $50M + Safety Module'
+    addHoldersRevenue: true,  // 额外加上 DefiLlama holdersRevenue（Safety Module 质押奖励）
+    note: '年度回购 $50M + Safety Module 质押奖励'
   },
   curve: { 
     defillamaSlug: 'curve-dex', 
@@ -181,6 +182,21 @@ async function getDefillamaRevenue(slug) {
   }
 }
 
+// 获取 DefiLlama HoldersRevenue（质押奖励/分红等）
+async function getDefillamaHoldersRevenue(slug) {
+  try {
+    const data = await fetchJson(`https://api.llama.fi/summary/fees/${slug}?dataType=dailyHoldersRevenue`);
+    const chart = data.totalDataChart || [];
+    const last365 = chart.slice(-365);
+    const total365 = last365.reduce((sum, d) => sum + (d[1] || 0), 0);
+    const total30 = chart.slice(-30).reduce((sum, d) => sum + (d[1] || 0), 0);
+    return { holdersRevenue365d: total365, holdersRevenue30d: total30 };
+  } catch (e) {
+    console.warn(`  ⚠️ DefiLlama holdersRevenue ${slug}: ${e.message}`);
+    return null;
+  }
+}
+
 // 获取 CoinGecko 市值（带重试）
 async function getCoingeckoMarketCap(id, retries = 2) {
   for (let i = 0; i < retries; i++) {
@@ -324,11 +340,23 @@ async function main() {
       continue;
     }
     
+    // 获取 holdersRevenue（如需要）
+    let holdersRevenueData = null;
+    if (config.addHoldersRevenue) {
+      holdersRevenueData = await getDefillamaHoldersRevenue(config.defillamaSlug);
+      if (holdersRevenueData) {
+        console.log(`  HoldersRevenue 365d: $${(holdersRevenueData.holdersRevenue365d/1e6).toFixed(2)}M`);
+      }
+    }
+    
     // 计算 TEV
     let tev365d;
     if (config.fixedTevUsd) {
-      // 固定 TEV（如 Aave）
+      // 固定 TEV + holdersRevenue（如 Aave: $50M 回购 + 质押奖励）
       tev365d = config.fixedTevUsd;
+      if (config.addHoldersRevenue && holdersRevenueData) {
+        tev365d += holdersRevenueData.holdersRevenue365d;
+      }
     } else if (config.tevRatio) {
       // 按比例计算
       tev365d = revenueData.revenue365d * config.tevRatio;
@@ -354,6 +382,10 @@ async function main() {
     protocol.metrics.trailing_30d_revenue_usd = revenueData.revenue30d;
     protocol.metrics.trailing_365d_tev_usd = tev365d;
     protocol.metrics.trailing_30d_tev_usd = tev365d / 12;
+    if (holdersRevenueData) {
+      protocol.metrics.trailing_365d_holders_revenue_usd = holdersRevenueData.holdersRevenue365d;
+      protocol.metrics.trailing_30d_holders_revenue_usd = holdersRevenueData.holdersRevenue30d;
+    }
     protocol.tev_yield_percent = Math.round(tevYield * 100) / 100;
     
     // 输出变化
