@@ -437,6 +437,7 @@
         document.getElementById('table-loading').style.display = 'none';
         document.getElementById('protocol-table').style.display = 'table';
         renderTable(protocols);
+        setupHeaderTips();
         updateStats(protocols);
         updateFooter(protocols);
         document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', () => {
