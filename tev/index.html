@@ -21,12 +21,10 @@
     .header-right { display: flex; align-items: center; gap: 24px; }
     @media (max-width: 768px) { nav { display: none; } }
   
-    /* Tooltip */
-    .tip-wrap { position: relative; display: inline; }
-    .tip-trigger { font-size: 11px; color: #52525b; cursor: help; margin-left: 2px; vertical-align: middle; }
-    .tip-box { display: none; position: fixed; background: #1c1c1e; color: #d4d4d8; font-size: 12px; font-weight: 400; line-height: 1.6; padding: 10px 14px; border-radius: 10px; border: 1px solid #2a2a2e; max-width: 320px; text-align: left; z-index: 9999; box-shadow: 0 8px 24px rgba(0,0,0,0.5); pointer-events: none; }
-    .tip-wrap:hover .tip-box, .badge-tip:hover .tip-box { display: block; }
-    .badge-tip { position: relative; cursor: help; }
+    /* Global tooltip */
+    #g-tip { display: none; position: fixed; background: #1c1c1e; color: #e4e4e7; font-size: 12px; font-weight: 400; line-height: 1.6; padding: 10px 14px; border-radius: 10px; border: 1px solid #2a2a2e; max-width: 320px; text-align: left; z-index: 9999; box-shadow: 0 8px 24px rgba(0,0,0,0.5); pointer-events: none; }
+    [data-tip] { cursor: help; }
+    .tip-trigger { font-size: 11px; color: #52525b; margin-left: 2px; vertical-align: middle; cursor: help; }
 
   </style>
 </head>
@@ -272,24 +270,38 @@
         const key = th.dataset.sort || 'confidence';
         const tip = (headerTips[currentLang] || headerTips.zh)[key];
         if (!tip) return;
-        // Remove old tip
-        const old = th.querySelector('.tip-wrap');
-        if (old) old.remove();
-        th.classList.remove('has-tooltip');
-        // Create new inline tip
-        const wrap = document.createElement('span');
-        wrap.className = 'tip-wrap';
-        wrap.innerHTML = '<span class="tip-trigger">ⓘ</span><span class="tip-box">' + tip + '</span>';
-        th.appendChild(wrap);
-        // Position on hover
-        wrap.addEventListener('mouseenter', () => {
-          const box = wrap.querySelector('.tip-box');
-          const rect = wrap.getBoundingClientRect();
-          box.style.top = (rect.bottom + 6) + 'px';
-          box.style.left = Math.min(rect.left, window.innerWidth - 340) + 'px';
-        });
+        let trigger = th.querySelector('.tip-trigger');
+        if (!trigger) { trigger = document.createElement('span'); trigger.className = 'tip-trigger'; trigger.textContent = 'ⓘ'; th.appendChild(trigger); }
+        trigger.setAttribute('data-tip', tip);
       });
     }
+    // Global tooltip controller
+    (function() {
+      const tip = document.createElement('div'); tip.id = 'g-tip'; document.body.appendChild(tip);
+      document.addEventListener('mouseover', e => {
+        const el = e.target.closest('[data-tip]');
+        if (!el || !el.dataset.tip) { tip.style.display = 'none'; return; }
+        tip.textContent = el.dataset.tip;
+        tip.style.display = 'block';
+        const r = el.getBoundingClientRect();
+        const top = r.bottom + 8;
+        let left = r.left;
+        // 防止右侧溢出
+        if (left + 330 > window.innerWidth) left = window.innerWidth - 340;
+        if (left < 8) left = 8;
+        // 防止底部溢出，改为上方显示
+        if (top + tip.offsetHeight > window.innerHeight) {
+          tip.style.top = (r.top - tip.offsetHeight - 8) + 'px';
+        } else {
+          tip.style.top = top + 'px';
+        }
+        tip.style.left = left + 'px';
+      });
+      document.addEventListener('mouseout', e => {
+        const el = e.target.closest('[data-tip]');
+        if (el) tip.style.display = 'none';
+      });
+    })();
 
     let currentSort = { field: 'tevStatus', dir: 'desc' };
     let currentFilter = 'all';
@@ -441,7 +453,7 @@
           <td class="text-right"><span class="value">${formatCurrency(mcap)}</span></td>
           <td class="text-right"><span class="value ${earningYield > 0.1 ? 'value-highlight' : earningYield === 0 ? 'value-zero' : ''}">${earningYield > 0 ? formatPercent(earningYield) : '—'}</span></td>
           <td class="text-right"><span class="value ${tevYield > 0.05 ? 'value-highlight' : tevYield === 0 ? 'value-zero' : ''}">${formatPercent(tevYield)}</span></td>
-          <td class="text-right"><span class="badge badge-${p.confidence === 'high' ? 'high' : p.confidence === 'medium' ? 'medium' : 'low'} badge-tip">${p.confidence === 'high' ? '✓' : '!'} ${t('confidence.' + p.confidence)}${(p.confidence_reason && p.confidence_reason[currentLang]) ? '<span class="tip-box">' + p.confidence_reason[currentLang] + '</span>' : ''}</span></td>
+          <td class="text-right"><span class="badge badge-${p.confidence === 'high' ? 'high' : p.confidence === 'medium' ? 'medium' : 'low'}" data-tip="${(p.confidence_reason && p.confidence_reason[currentLang]) || ''}">${p.confidence === 'high' ? '✓' : '!'} ${t('confidence.' + p.confidence)}</span></td>
         `;
         tbody.appendChild(row);
       });
