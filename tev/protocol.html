@@ -336,72 +336,83 @@
           return 'rgba(34,197,94,1)';
         };
         
-        // 季度数据用 category 轴，每日数据用 time 轴
+        // 对 hype 使用 USD 柱状 + 累计折线（每日 HYPE 是估算值，USD 来自 DefiLlama 更准确）
+        const useUsdChart = pid === 'hype' || isUsdOnly;
+        const yField = useUsdChart ? 'usd' : amountField;
+        
         const chartPoints = isQuarterly 
           ? chartData.map(d => ({ x: d.quarter, y: d.usd || 0, ...d, dataType: d.dataType || d.data_type }))
-          : chartData.map(d => ({ x: new Date(d.date), y: d[amountField] || 0, stage: d.stage, dataType: d.dataType || d.data_type, source: d.source, usd: d.usd, avgPrice: d.avg_price }));
+          : chartData.map(d => ({ x: new Date(d.date), y: d[yField] || 0, stage: d.stage, dataType: d.dataType || d.data_type, source: d.source, usd: d.usd, hype: d.hype, avgPrice: d.avg_price }));
+        
+        const datasets = [{
+          label: useUsdChart ? 'USD / day' : ticker,
+          data: chartPoints,
+          backgroundColor: chartData.map(d => getBarColor(d)),
+          borderColor: chartData.map(d => getBorderColor(d)),
+          borderWidth: 1, borderRadius: 4,
+          barPercentage: isQuarterly ? 0.6 : 1,
+          categoryPercentage: isQuarterly ? 0.8 : 1,
+          yAxisID: 'y', order: 2
+        }];
+        const extraScales = {};
+        if (pid === 'hype' && !isQuarterly) {
+          let cumSum = 0;
+          const cumData = chartData.map(d => { cumSum += (d.usd || 0); return { x: new Date(d.date), y: cumSum }; });
+          datasets.push({
+            label: currentLang === 'zh' ? '累计回购 (USD)' : 'Cumulative (USD)',
+            data: cumData, borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.1)',
+            borderWidth: 2, pointRadius: 0, fill: true, type: 'line', yAxisID: 'y2', tension: 0.3, order: 1
+          });
+          extraScales.y2 = {
+            position: 'right', grid: { display: false },
+            ticks: { color: '#f59e0b', callback: v => '$' + (v/1e9).toFixed(2) + 'B' },
+            title: { display: true, text: currentLang === 'zh' ? '累计 USD' : 'Cumulative USD', color: '#f59e0b' }
+          };
+        }
         
         buybackChart = new Chart(ctx, {
           type: 'bar',
-          data: {
-            labels: isQuarterly ? chartData.map(d => d.quarter) : undefined,
-            datasets: [{
-              label: isUsdOnly ? 'USD' : ticker,
-              data: chartPoints,
-              backgroundColor: chartData.map(d => getBarColor(d)),
-              borderColor: chartData.map(d => getBorderColor(d)),
-              borderWidth: 1,
-              borderRadius: 4,
-              barPercentage: isQuarterly ? 0.6 : 1,
-              categoryPercentage: isQuarterly ? 0.8 : 1
-            }]
-          },
+          data: { labels: isQuarterly ? chartData.map(d => d.quarter) : undefined, datasets },
           options: {
-            responsive: true,
-            maintainAspectRatio: false,
+            responsive: true, maintainAspectRatio: false,
             interaction: { mode: 'index', intersect: false },
             plugins: {
-              legend: { display: false },
+              legend: { display: pid === 'hype', position: 'top', labels: { color: '#a1a1aa', font: { size: 11 }, boxWidth: 12, padding: 16 } },
               tooltip: {
-                backgroundColor: '#18181b',
-                titleColor: '#fafafa',
-                bodyColor: '#a1a1aa',
+                backgroundColor: '#18181b', titleColor: '#fafafa', bodyColor: '#a1a1aa',
                 callbacks: {
                   title: (items) => isQuarterly ? items[0].raw.quarter : items[0].raw.x.toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US'),
-                  label: (ctx) => isUsdOnly || isQuarterly ? ` $${(ctx.raw.y/1e6).toFixed(2)}M` : ` ${(ctx.raw.y/1e3).toFixed(1)}K ${ticker}`,
+                  label: (ctx) => {
+                    if (ctx.dataset.yAxisID === 'y2') return ` ${ctx.dataset.label}: ${fmtCurrency(ctx.raw.y)}`;
+                    return useUsdChart || isQuarterly ? ` $${(ctx.raw.y/1e6).toFixed(2)}M` : ` ${(ctx.raw.y/1e3).toFixed(1)}K ${ticker}`;
+                  },
                   afterLabel: (ctx) => {
-                    const d = ctx.raw;
-                    const lines = [];
+                    if (ctx.dataset.yAxisID === 'y2') return [];
+                    const d = ctx.raw; const lines = [];
                     if (d.source) lines.push(`来源: ${d.source}`);
                     if (!isQuarterly && d.stage) lines.push(`Stage: ${d.stage}`);
-                    if (!isQuarterly && !isUsdOnly && d.usd) lines.push(`USD: ${fmtCurrency(d.usd)}`);
+                    if (!isQuarterly && d.hype) lines.push(`HYPE: ${(d.hype/1e3).toFixed(1)}K`);
                     if (d.avgPrice) lines.push(`Avg: $${d.avgPrice.toFixed(2)}`);
-                    lines.push(d.dataType === 'estimated' ? '⚠️ 估算数据（官方报告）' : '✅ 链上数据');
+                    lines.push(d.dataType === 'estimated' ? '⚠️ DefiLlama 数据' : '✅ 链上数据');
                     return lines;
                   }
                 }
               },
-              zoom: {
-                pan: { enabled: true, mode: 'x' },
-                zoom: { wheel: { enabled: true }, pinch: { enabled: true }, mode: 'x' }
-              }
+              zoom: { pan: { enabled: true, mode: 'x' }, zoom: { wheel: { enabled: true }, pinch: { enabled: true }, mode: 'x' } }
             },
             scales: {
               x: isQuarterly ? {
-                type: 'category',
-                grid: { display: false },
-                ticks: { color: '#71717a', font: { size: 12 } }
+                type: 'category', grid: { display: false }, ticks: { color: '#71717a', font: { size: 12 } }
               } : {
-                type: 'time',
-                time: { unit: 'week', displayFormats: { week: 'MM-dd', day: 'MM-dd' } },
-                grid: { display: false },
-                ticks: { color: '#71717a', maxRotation: 0, font: { size: 10 }, maxTicksLimit: 12 }
+                type: 'time', time: { unit: 'month', displayFormats: { month: 'yyyy-MM', week: 'MM-dd' } },
+                grid: { display: false }, ticks: { color: '#71717a', maxRotation: 0, font: { size: 10 }, maxTicksLimit: 15 }
               },
               y: {
                 grid: { color: 'rgba(39,39,42,0.5)' },
-                ticks: { color: '#a1a1aa', callback: v => isQuarterly || isUsdOnly ? '$' + (v/1e6).toFixed(1) + 'M' : (v/1e6).toFixed(1) + 'M' },
-                title: { display: true, text: isQuarterly ? 'USD / quarter' : (isUsdOnly ? 'USD / day' : `${ticker} / day`), color: '#a1a1aa' }
-              }
+                ticks: { color: '#a1a1aa', callback: v => useUsdChart || isQuarterly ? '$' + (v/1e6).toFixed(1) + 'M' : (v/1e6).toFixed(1) + 'M' },
+                title: { display: true, text: isQuarterly ? 'USD / quarter' : (useUsdChart ? 'USD / day' : `${ticker} / day`), color: '#a1a1aa' }
+              },
+              ...extraScales
             }
           }
         });
@@ -415,7 +426,7 @@
           if (pid === 'aster') {
             legendEl.innerHTML = '<span style="color:#787878;">■ Stage 1-4 (历史报道)</span><span style="color:#22c55e;">■ Stage 5-6 (链上数据)</span>';
           } else if (pid === 'hype') {
-            legendEl.innerHTML = '<span style="color:#787878;">■ 估算</span><span style="color:#22c55e;">■ 链上数据</span>';
+            legendEl.innerHTML = '<span style="color:#787878;">■ DefiLlama 数据</span><span style="color:#22c55e;">■ 链上数据</span><span style="color:#f59e0b;">━ 累计回购</span>';
           } else if (pid === 'fluid') {
             legendEl.innerHTML = '<span style="color:#787878;">■ 官方博客数据 (Q4 2025)</span>';
           } else {
