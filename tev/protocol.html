@@ -606,7 +606,7 @@
         document.getElementById('content').style.display = 'block';
         loadTevChart(pid);
         if (['bnb', 'hype', 'uniswap'].includes(pid)) loadBurnsChart(pid);
-        if (['aster','fluid'].includes(pid)) loadBuybackData(pid);
+        if (['aster'].includes(pid)) loadBuybackData(pid);
       } catch (e) {
         console.error('Failed:', e);
         document.getElementById('loading').innerHTML = `<div style="color:var(--danger);">Failed to load protocol</div><div style="margin-top:8px;font-size:12px;">${e.message}</div><div style="margin-top:16px;"><a href="index.html" style="color:var(--blue);">← Back</a></div>`;
