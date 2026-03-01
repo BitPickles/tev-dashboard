@@ -74,31 +74,6 @@
     "tvl": 27886636450,
     "tvl_updated": "2026-02-13T21:13:41.880Z"
   },
-  "tev_data": {
-    "has_tev": true,
-    "tev_yield_percent": 5.28,
-    "annual_tev_usd": 91860000,
-    "market_cap_usd": 1736849395,
-    "calculation_date": "2026-02-14",
-    "sources": [
-      {
-        "name": "Safety Module Staking Rewards",
-        "type": "defillama",
-        "annual_usd": 41860000,
-        "data_date": "2026-02-14",
-        "api": "https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue",
-        "note": "DefiLlama holdersRevenue，质押奖励"
-      },
-      {
-        "name": "Annual Buyback Program",
-        "type": "governance",
-        "annual_usd": 50000000,
-        "source_url": "https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/18937",
-        "note": "Aavenomics 年度 $50M 回购预算"
-      }
-    ],
-    "calculation": "$41.86M (staking) + $50M (buyback) = $91.86M → $91.86M / $1.74B = 5.28%"
-  },
   "notes": "Aave 在 2024 年通过 Aavenomics 升级开启了代币回购机制。TEV 来源：Safety Module 质押奖励 + 年度回购。",
   "last_updated": "2026-03-01",
   "analyst_notes": "## TEV 构成\n\nAave 的 TEV 由两部分构成：\n\n### 1. 年度回购预算（Buyback Program）\n\nAave DAO 通过 [AIP-73 Aavenomics Update](https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/18937) 设立年度回购预算，每年从 DAO 财库拨出 **$50M** 用于在公开市场回购 AAVE 代币。\n\n- 回购执行由 [Aave Finance](https://aave.tokenlogic.xyz) 管理\n- 回购的 AAVE 进入 [Buy & Distribute 计划](https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/19838)，分配给生态参与者\n\n### 2. Safety Module 质押奖励（Staking Rewards）\n\n质押 AAVE 到 [Safety Module](https://app.aave.com/staking/) 可获得协议收入分成作为风险补偿。\n\n- 合约地址：`0x4da27a545c0c5B758a6BA100e3a049001de870f5`\n- 质押者承担协议清算风险（Slashing），获得收入分成\n- 奖励来源：协议借贷利差收入\n\n### TEV 计算公式\n\n```\nTEV = 年度回购预算 + Safety Module 年化质押奖励\nTEV Yield = TEV / AAVE 代币市值 × 100%\n```\n\n### TEV Ratio（等效分配比例）\n\nTEV Ratio 为 TEV 与协议总收入的比值：\n\n```\nTEV Ratio = TEV / Revenue\n          = (固定回购 $50M + holdersRevenue) / 协议总收入\n```\n\n⚠️ 注意：Aave 的 TEV Ratio 不是固定比例。$50M 回购预算为固定值，不随收入波动；holdersRevenue 与协议收入相关但非固定比例。因此 TEV Ratio 是等效计算值，会随收入变化而波动。\n\n### 数据来源\n\n| 组成部分 | 数据来源 | 说明 |\n|----------|---------|------|\n| 回购预算 | [治理提案 AIP-73](https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/18937) | 固定 $50M/年 |\n| 质押奖励 | [DefiLlama holdersRevenue](https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue) | 365 天滚动累计 |\n| 协议收入 | [DefiLlama Revenue](https://api.llama.fi/summary/fees/aave?dataType=dailyRevenue) | 365 天滚动累计 |\n| 市值 | CMC / CoinGecko | 实时市值 |\n\n### 数据说明\n\n- 2025-12 的质押奖励为估算值（取 2025-11 与 2026-01 均值），DefiLlama 该月数据缺失\n- 回购数据按 $50M 年度预算月均分配，未追踪实际执行节奏\n\n### 参考链接\n\n- [AIP-73: Aavenomics Update](https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/18937)\n- [Buy & Distribute 提案](https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/19838)\n- [Aave Safety Module](https://docs.aave.com/aavenomics/safety-module)\n- [TokenLogic Finance Reports](https://aave.tokenlogic.xyz)\n"
