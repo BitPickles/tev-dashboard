@@ -1,6 +1,6 @@
 {
   "protocol": "aave",
-  "updated_at": "2026-03-01T20:38:29.128844Z",
+  "updated_at": "2026-03-01T21:15:38.438501Z",
   "data_source": "DefiLlama holdersRevenue + Governance ($50M buyback)",
   "data_source_url": "https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue",
   "records": [
@@ -26,15 +26,14 @@
       "mechanism": "Safety Module 质押奖励",
       "amount_usd": 3030637,
       "period": "2025-04",
-      "days_with_data": 22,
+      "days_with_data": 30,
       "source": {
         "type": "api",
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "See DefiLlama methodology"
+        "data_type": "dailyHoldersRevenue"
       },
-      "notes": "DefiLlama holdersRevenue, 22 days"
+      "notes": "DefiLlama holdersRevenue, 30 days"
     },
     {
       "id": "aave-buyback-2025-05",
@@ -63,8 +62,7 @@
         "type": "api",
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "See DefiLlama methodology"
+        "data_type": "dailyHoldersRevenue"
       },
       "notes": "DefiLlama holdersRevenue, 31 days"
     },
@@ -90,15 +88,14 @@
       "mechanism": "Safety Module 质押奖励",
       "amount_usd": 4063855,
       "period": "2025-06",
-      "days_with_data": 29,
+      "days_with_data": 30,
       "source": {
         "type": "api",
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "See DefiLlama methodology"
+        "data_type": "dailyHoldersRevenue"
       },
-      "notes": "DefiLlama holdersRevenue, 29 days"
+      "notes": "DefiLlama holdersRevenue, 30 days"
     },
     {
       "id": "aave-buyback-2025-07",
@@ -122,15 +119,14 @@
       "mechanism": "Safety Module 质押奖励",
       "amount_usd": 3659464,
       "period": "2025-07",
-      "days_with_data": 27,
+      "days_with_data": 31,
       "source": {
         "type": "api",
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "See DefiLlama methodology"
+        "data_type": "dailyHoldersRevenue"
       },
-      "notes": "DefiLlama holdersRevenue, 27 days"
+      "notes": "DefiLlama holdersRevenue, 31 days"
     },
     {
       "id": "aave-buyback-2025-08",
@@ -154,15 +150,14 @@
       "mechanism": "Safety Module 质押奖励",
       "amount_usd": 3893658,
       "period": "2025-08",
-      "days_with_data": 30,
+      "days_with_data": 31,
       "source": {
         "type": "api",
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "See DefiLlama methodology"
+        "data_type": "dailyHoldersRevenue"
       },
-      "notes": "DefiLlama holdersRevenue, 30 days"
+      "notes": "DefiLlama holdersRevenue, 31 days"
     },
     {
       "id": "aave-buyback-2025-09",
@@ -186,15 +181,14 @@
       "mechanism": "Safety Module 质押奖励",
       "amount_usd": 3852695,
       "period": "2025-09",
-      "days_with_data": 29,
+      "days_with_data": 30,
       "source": {
         "type": "api",
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "See DefiLlama methodology"
+        "data_type": "dailyHoldersRevenue"
       },
-      "notes": "DefiLlama holdersRevenue, 29 days"
+      "notes": "DefiLlama holdersRevenue, 30 days"
     },
     {
       "id": "aave-buyback-2025-10",
@@ -218,15 +212,14 @@
       "mechanism": "Safety Module 质押奖励",
       "amount_usd": 3807221,
       "period": "2025-10",
-      "days_with_data": 30,
+      "days_with_data": 31,
       "source": {
         "type": "api",
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "See DefiLlama methodology"
+        "data_type": "dailyHoldersRevenue"
       },
-      "notes": "DefiLlama holdersRevenue, 30 days"
+      "notes": "DefiLlama holdersRevenue, 31 days"
     },
     {
       "id": "aave-buyback-2025-11",
@@ -250,15 +243,45 @@
       "mechanism": "Safety Module 质押奖励",
       "amount_usd": 3288105,
       "period": "2025-11",
-      "days_with_data": 23,
+      "days_with_data": 30,
       "source": {
         "type": "api",
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "See DefiLlama methodology"
+        "data_type": "dailyHoldersRevenue"
       },
-      "notes": "DefiLlama holdersRevenue, 23 days"
+      "notes": "DefiLlama holdersRevenue, 30 days"
+    },
+    {
+      "id": "aave-buyback-2025-12",
+      "date": "2025-12-01",
+      "type": "buyback",
+      "mechanism": "年度回购预算 ($50M/年)",
+      "amount_usd": 4166667.0,
+      "period": "2025-12",
+      "source": {
+        "type": "governance",
+        "title": "AIP-73 Aavenomics Update",
+        "url": "https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/18937",
+        "methodology": "$50M annual budget / 12 months"
+      },
+      "notes": "Monthly pro-rata from $50M annual buyback budget"
+    },
+    {
+      "id": "aave-staking-2025-12",
+      "date": "2025-12-01",
+      "type": "staking_reward",
+      "mechanism": "Safety Module 质押奖励",
+      "amount_usd": 3305076.0,
+      "period": "2025-12",
+      "days_with_data": 31,
+      "source": {
+        "type": "estimated",
+        "provider": "estimated",
+        "endpoint": "https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue"
+      },
+      "notes": "前后月均值估算 (Nov $3.29M + Jan $3.32M) / 2"
     },
     {
       "id": "aave-buyback-2026-01",
@@ -282,15 +305,14 @@
       "mechanism": "Safety Module 质押奖励",
       "amount_usd": 3322047,
       "period": "2026-01",
-      "days_with_data": 8,
+      "days_with_data": 31,
       "source": {
         "type": "api",
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "See DefiLlama methodology"
+        "data_type": "dailyHoldersRevenue"
       },
-      "notes": "DefiLlama holdersRevenue, 8 days"
+      "notes": "DefiLlama holdersRevenue, 31 days"
     },
     {
       "id": "aave-buyback-2026-02",
@@ -312,24 +334,23 @@
       "date": "2026-02-01",
       "type": "staking_reward",
       "mechanism": "Safety Module 质押奖励",
-      "amount_usd": 167336,
+      "amount_usd": 412287,
       "period": "2026-02",
-      "days_with_data": 1,
+      "days_with_data": 28,
       "source": {
         "type": "api",
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "See DefiLlama methodology"
+        "data_type": "dailyHoldersRevenue"
       },
-      "notes": "DefiLlama holdersRevenue, 1 days"
+      "notes": "DefiLlama holdersRevenue, 28 days"
     }
   ],
   "summary": {
-    "total_tev_usd": 75219203.0,
+    "total_tev_usd": 82935897.0,
     "by_mechanism": {
-      "buyback": 41666670.0,
-      "staking_reward": 33552533
+      "buyback": 45833337.0,
+      "staking_reward": 37102560.0
     }
   }
 }

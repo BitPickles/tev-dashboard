@@ -11,7 +11,7 @@
       "tev_yield_percent": 4.84,
       "market_cap_usd": 1730904737.03,
       "tvl": 27886636450,
-      "tevRatioNote": "回购 - Aave DAO 每年拨出 $50M 预算用于回购 AAVE 代币",
+      "tevRatioNote": "等效比例（固定回购 $50M + 质押奖励），非固定分配",
       "metrics": {
         "current_market_cap_usd": 1730904737.03,
         "trailing_365d_tev_usd": 83797484,
@@ -20,7 +20,8 @@
         "trailing_30d_revenue_usd": 10061178,
         "trailing_365d_holders_revenue_usd": 33797484,
         "trailing_30d_holders_revenue_usd": 412287
-      }
+      },
+      "tevRatio": 0.7767
     },
     "aster": {
       "name": "Aster (AsterDEX)",
