@@ -56,7 +56,7 @@
     "calculation_date": "2026-02-05",
     "note": "TEV yield = 年化 holders revenue / 流通市值"
   },
-  "confidence": "medium",
+  "confidence": "high",
   "data_sources": [
     {
       "name": "dYdX Documentation",
@@ -97,7 +97,7 @@
   },
   "tevStatus": "active",
   "confidence_reason": {
-    "zh": "链上费用分配，但质押比例需估算",
-    "en": "On-chain fee distribution, but staking ratio estimated"
+    "zh": "dYdX Chain 100% 费用分配给验证者/质押者，完全链上可查",
+    "en": "dYdX Chain distributes 100% fees to validators/stakers, fully on-chain verifiable"
   }
 }

@@ -77,7 +77,7 @@
     "tvl": 7046001911.21009,
     "tvl_updated": "2026-02-13T21:13:45.689Z"
   },
-  "confidence": "high",
+  "confidence": "medium",
   "data_sources": [
     {
       "name": "DefiLlama Ethena USDe",
@@ -153,7 +153,7 @@
   },
   "tevStatus": "none",
   "confidence_reason": {
-    "zh": "无持续 TEV，回购为资本运作非收入分配",
-    "en": "No sustained TEV, buyback is capital operation not revenue distribution"
+    "zh": "回购资金来源为 reserve fund 而非协议利润，机制不透明",
+    "en": "Buyback funded from reserve fund not protocol revenue, mechanism opaque"
   }
 }

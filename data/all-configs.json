@@ -8535,8 +8535,8 @@
     },
     "tevStatus": "active",
     "confidence_reason": {
-      "zh": "治理提案明确回购金额 + DefiLlama 链上数据",
-      "en": "Governance proposal with fixed buyback + DefiLlama on-chain data"
+      "zh": "治理提案 AIP-1 明确年回购预算，链上可追踪",
+      "en": "AIP-1 governance proposal with fixed annual buyback budget, on-chain trackable"
     }
   },
   {
@@ -8745,8 +8745,8 @@
     "last_updated": "2026-02-07",
     "tevStatus": "active",
     "confidence_reason": {
-      "zh": "链上回购钱包可追踪（Moralis API）",
-      "en": "On-chain buyback wallets trackable (Moralis API)"
+      "zh": "链上回购钱包可追踪（Moralis + BscScan）",
+      "en": "On-chain buyback wallets trackable (Moralis + BscScan)"
     }
   },
   {
@@ -8947,7 +8947,7 @@
         "note": "作为私营公司，Binance 不公开财务数据"
       }
     ],
-    "confidence": "low",
+    "confidence": "high",
     "data_sources": [
       {
         "name": "CoinGecko",
@@ -8990,8 +8990,8 @@
     "last_updated": "2026-02-05",
     "tevStatus": "active",
     "confidence_reason": {
-      "zh": "Burn 链上可验证（0xdead），asBNB APY 依赖 Aster 第三方数据",
-      "en": "Burn verifiable on-chain (0xdead), asBNB APY relies on Aster third-party data"
+      "zh": "Auto-Burn 链上完全可验证（0xdead + BEP-95），asBNB 来自链上 StakeHub 合约",
+      "en": "Auto-Burn fully verifiable on-chain (0xdead + BEP-95), asBNB from on-chain StakeHub contract"
     }
   },
   {
@@ -17986,8 +17986,8 @@
     "last_updated": "2026-02-05",
     "tevStatus": "active",
     "confidence_reason": {
-      "zh": "veCRV 分红链上可追踪 + DefiLlama 数据",
-      "en": "veCRV distributions trackable on-chain + DefiLlama data"
+      "zh": "veCRV 费用分配合约链上可查 + DefiLlama 验证",
+      "en": "veCRV fee distribution contract on-chain verifiable + DefiLlama validated"
     }
   },
   {
@@ -25810,7 +25810,7 @@
       "calculation_date": "2026-02-05",
       "note": "TEV yield = 年化 holders revenue / 流通市值"
     },
-    "confidence": "medium",
+    "confidence": "high",
     "data_sources": [
       {
         "name": "dYdX Documentation",
@@ -25835,8 +25835,8 @@
     "last_updated": "2026-02-05",
     "tevStatus": "active",
     "confidence_reason": {
-      "zh": "链上费用分配，但质押比例需估算",
-      "en": "On-chain fee distribution, but staking ratio estimated"
+      "zh": "dYdX Chain 100% 费用分配给验证者/质押者，完全链上可查",
+      "en": "dYdX Chain distributes 100% fees to validators/stakers, fully on-chain verifiable"
     }
   },
   {
@@ -29918,7 +29918,7 @@
       "burns": "NONE",
       "primary_value_accrual": "分红 + 回购 — 100% 协议收入→sENA 质押者，加 $310M 大规模 ENA 回购"
     },
-    "confidence": "high",
+    "confidence": "medium",
     "data_sources": [
       {
         "name": "DefiLlama tokenRights",
@@ -33197,8 +33197,8 @@
     },
     "tevStatus": "none",
     "confidence_reason": {
-      "zh": "无持续 TEV，回购为资本运作非收入分配",
-      "en": "No sustained TEV, buyback is capital operation not revenue distribution"
+      "zh": "回购资金来源为 reserve fund 而非协议利润，机制不透明",
+      "en": "Buyback funded from reserve fund not protocol revenue, mechanism opaque"
     }
   },
   {
@@ -37697,8 +37697,8 @@
     },
     "tevStatus": "active",
     "confidence_reason": {
-      "zh": "链上回购可追踪（Etherscan），但回购比例需估算",
-      "en": "On-chain buyback trackable (Etherscan), but ratio estimated"
+      "zh": "回购交易链上可追踪，但分配比例仅 Blog 公告，无治理提案约束",
+      "en": "Buyback transactions on-chain trackable, but ratio only from blog posts, no governance mandate"
     }
   },
   {
@@ -44364,8 +44364,8 @@
     "last_updated": "2026-02-05",
     "tevStatus": "active",
     "confidence_reason": {
-      "zh": "链上质押分红透明 + DefiLlama 数据",
-      "en": "On-chain staking rewards transparent + DefiLlama data"
+      "zh": "质押分红合约链上透明，ETH/AVAX 实时可查 + DefiLlama",
+      "en": "Staking reward contract transparent on-chain, ETH/AVAX real-time + DefiLlama"
     }
   },
   {
@@ -44513,7 +44513,7 @@
       "burns": "NONE",
       "primary_value_accrual": "治理代币 - MEV 收益流向 JitoSOL，JTO 用于治理"
     },
-    "confidence": "medium",
+    "confidence": "low",
     "data_sources": [
       {
         "name": "Jito Docs",
@@ -49324,8 +49324,8 @@
     },
     "tevStatus": "none",
     "confidence_reason": {
-      "zh": "无 TEV 机制，质押奖励数据需估算",
-      "en": "No TEV mechanism, staking reward data estimated"
+      "zh": "无 TEV 机制，JitoSOL 收益归质押者非 JTO 持有者，数据意义有限",
+      "en": "No TEV mechanism, JitoSOL yields go to stakers not JTO holders, limited data relevance"
     }
   },
   {
@@ -55735,8 +55735,8 @@
     },
     "tevStatus": "partial",
     "confidence_reason": {
-      "zh": "JST 质押奖励透明度低，无公开 API",
-      "en": "JST staking rewards low transparency, no public API"
+      "zh": "TRON 生态透明度低，JST 质押奖励无公开 API，依赖官方声明",
+      "en": "TRON ecosystem low transparency, JST staking rewards no public API, relies on official statements"
     }
   },
   {
@@ -68606,7 +68606,7 @@
       "burns": "NONE",
       "primary_value_accrual": "Staking 奖励 - 质押 SYRUP 获得协议借贷费用分成"
     },
-    "confidence": "medium",
+    "confidence": "high",
     "data_sources": [
       {
         "name": "Maple Finance Blog",
@@ -75621,8 +75621,8 @@
     },
     "tevStatus": "active",
     "confidence_reason": {
-      "zh": "MIP-018 提案明确回购比例，DefiLlama 数据",
-      "en": "MIP-018 proposal with clear ratio, DefiLlama data"
+      "zh": "MIP-018 治理提案明确 25% 利润回购 SYRUP，链上可追踪",
+      "en": "MIP-018 governance proposal mandates 25% profit buyback of SYRUP, on-chain trackable"
     }
   },
   {
@@ -75709,7 +75709,7 @@
         "note": "Mantle Treasury 的使用策略"
       }
     ],
-    "confidence": "low",
+    "confidence": "medium",
     "data_sources": [
       {
         "name": "CoinGecko",
@@ -75744,8 +75744,8 @@
     "last_updated": "2026-02-05",
     "tevStatus": "none",
     "confidence_reason": {
-      "zh": "无 TEV 机制，CEX 关联代币透明度低",
-      "en": "No TEV mechanism, CEX-linked token with low transparency"
+      "zh": "虽无 TEV，但 Mantle Treasury 链上可查，BitDAO 治理透明",
+      "en": "No TEV, but Mantle Treasury on-chain verifiable, BitDAO governance transparent"
     }
   },
   {
@@ -88290,8 +88290,8 @@
     },
     "tevStatus": "active",
     "confidence_reason": {
-      "zh": "Tokenomics 3.0 回购销毁链上可验证 + DefiLlama",
-      "en": "Tokenomics 3.0 buyback & burn verifiable on-chain + DefiLlama"
+      "zh": "Tokenomics 3.0 链上销毁可验证 + DefiLlama 数据",
+      "en": "Tokenomics 3.0 on-chain burn verifiable + DefiLlama data"
     }
   },
   {
@@ -95145,8 +95145,8 @@
     },
     "tevStatus": "active",
     "confidence_reason": {
-      "zh": "vePENDLE 分红链上可追踪 + DefiLlama 数据",
-      "en": "vePENDLE distributions trackable on-chain + DefiLlama data"
+      "zh": "vePENDLE 费用分配合约链上可查 + DefiLlama 验证",
+      "en": "vePENDLE fee distribution contract on-chain verifiable + DefiLlama validated"
     }
   },
   {
@@ -111029,8 +111029,8 @@
     },
     "tevStatus": "active",
     "confidence_reason": {
-      "zh": "Smart Burn Engine 链上可追踪 + DefiLlama 数据",
-      "en": "Smart Burn Engine trackable on-chain + DefiLlama data"
+      "zh": "Smart Burn Engine 合约链上可追踪 + DefiLlama 验证",
+      "en": "Smart Burn Engine contract on-chain trackable + DefiLlama validated"
     }
   },
   {
@@ -115246,8 +115246,8 @@
     },
     "tevStatus": "none",
     "confidence_reason": {
-      "zh": "新代币，收入归 Sky DAO，分配机制待明确",
-      "en": "New token, revenue goes to Sky DAO, distribution TBD"
+      "zh": "SPK 代币较新，收入归 Sky DAO，具体分配机制仍在治理讨论中",
+      "en": "SPK token is new, revenue goes to Sky DAO, distribution mechanism still under governance discussion"
     }
   },
   {
@@ -122369,8 +122369,8 @@
     "last_updated": "2026-02-05",
     "tevStatus": "active",
     "confidence_reason": {
-      "zh": "链上 UNI→0xdead 完全可追踪（Etherscan）",
-      "en": "On-chain UNI→0xdead fully trackable (Etherscan)"
+      "zh": "Firepit 销毁 UNI→0xdead 完全链上可追踪（Etherscan）",
+      "en": "Firepit burn UNI→0xdead fully on-chain trackable (Etherscan)"
     }
   }
 ]

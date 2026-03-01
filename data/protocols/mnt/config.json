@@ -81,7 +81,7 @@
       "note": "Mantle Treasury 的使用策略"
     }
   ],
-  "confidence": "low",
+  "confidence": "medium",
   "data_sources": [
     {
       "name": "CoinGecko",
@@ -124,7 +124,7 @@
   },
   "tevStatus": "none",
   "confidence_reason": {
-    "zh": "无 TEV 机制，CEX 关联代币透明度低",
-    "en": "No TEV mechanism, CEX-linked token with low transparency"
+    "zh": "虽无 TEV，但 Mantle Treasury 链上可查，BitDAO 治理透明",
+    "en": "No TEV, but Mantle Treasury on-chain verifiable, BitDAO governance transparent"
   }
 }
