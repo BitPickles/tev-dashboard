@@ -125,7 +125,8 @@
         <div class="section-title"><span class="icon">🔥</span><span id="burns-section-title">销毁记录</span></div>
         <div class="burn-progress-container">
           <div class="burn-progress-header"><span data-i18n="burn.progress">销毁进度</span><span id="burn-progress-text">—</span></div>
-          <div class="burn-progress-bar"><div class="burn-progress-fill" id="burn-progress-fill"></div></div>
+          <div class="burn-progress-bar" id="burn-progress-bar"><div class="burn-progress-fill" id="burn-progress-fill"></div></div>
+          <div id="burn-progress-note" class="burn-progress-note" style="font-size:12px;color:#a1a1aa;margin-top:4px;display:none;"></div>
           <div class="burn-progress-stats">
             <div class="burn-stat"><span class="burn-stat-value" id="burn-total">—</span><span class="burn-stat-label" data-i18n="burn.totalBurned">已销毁</span></div>
             <div class="burn-stat"><span class="burn-stat-value" id="burn-remaining">—</span><span class="burn-stat-label" data-i18n="burn.remaining">剩余供应</span></div>
@@ -170,8 +171,8 @@
 
   <script>
     const i18n = {
-      zh: { 'nav.dashboard': '仪表盘', 'loading': '加载中...', 'section.tevSummary': 'TEV 概览', 'section.tevHistory': 'TEV 历史记录', 'section.buybackAddresses': '回购地址', 'section.tevMechanisms': 'TEV 机制详情', 'section.dataSources': '数据来源', 'section.notes': '分析师备注', 'section.references': '参考资料', 'buyback.current': '当前阶段', 'buyback.historical': '历史阶段', 'buyback.legacy': '历史钱包', 'buyback.disposal': '处置地址', 'buyback.autoDailyBuyback': '自动每日回购', 'buyback.strategicReserve': '战略回购储备', 'buyback.burnAddress': '销毁地址', 'buyback.airdropLock': '空投锁仓', 'buyback.progress': '回购进度', 'buyback.totalBought': '已回购', 'buyback.totalUsd': '回购价值', 'buyback.totalSupply': '代币总量', 'section.buybackData': '回购数据', 'chart.totalTev': '累计 TEV', 'chart.records': '记录数', 'chart.avgMonthly': '月均 TEV', 'chart.period': '数据周期', 'chart.cumulative': '累计 TEV', 'chart.zoomHint': '🖱️ 滚轮缩放 · 拖动平移 · 双击重置', 'tev.feeSwitch': '费用开关', 'tev.buybacks': '回购', 'tev.dividends': '分红', 'tev.burns': '销毁', 'tev.confidence': '可信度', 'footer.lastUpdated': '最后更新', 'status.active': '活跃', 'status.planned': '计划中', 'status.inactive': '未激活', 'status.ON': '已开启', 'status.OFF': '未开启', 'status.PARTIAL': '部分', 'status.NONE': '无', 'status.ACTIVE': '活跃', 'noTev.title': '该协议目前没有 TEV 机制', 'noTev.desc': '代币仅用于治理，协议收入未分配给代币持有者', 'mechanism.type.buyback': '回购', 'mechanism.type.buyback_burn': '回购销毁', 'mechanism.type.staking_reward': '质押奖励', 'mechanism.type.fee_sharing': '费用分成', 'mechanism.type.ve_distribution': 've 分配', 'mechanism.type.airdrop': '空投', 'source.governance': '治理', 'source.documentation': '文档', 'source.report': '报告', 'source.api': 'API', 'source.onchain': '链上', 'confidence.high': '高', 'confidence.medium': '中', 'confidence.low': '低', 'burn.progress': '销毁进度', 'burn.totalBurned': '已销毁', 'burn.remaining': '剩余供应', 'burn.target': '目标供应' },
-      en: { 'nav.dashboard': 'Dashboard', 'loading': 'Loading...', 'section.tevSummary': 'TEV Summary', 'section.tevHistory': 'TEV History', 'section.buybackAddresses': 'Buyback Addresses', 'section.tevMechanisms': 'TEV Mechanisms', 'section.dataSources': 'Data Sources', 'section.notes': 'Analyst Notes', 'section.references': 'References', 'buyback.current': 'Current Stage', 'buyback.historical': 'Historical Stage', 'buyback.legacy': 'Legacy Wallets', 'buyback.disposal': 'Disposal Addresses', 'buyback.autoDailyBuyback': 'Auto Daily Buyback', 'buyback.strategicReserve': 'Strategic Reserve', 'buyback.burnAddress': 'Burn Address', 'buyback.airdropLock': 'Airdrop Lock', 'buyback.progress': 'Buyback Progress', 'buyback.totalBought': 'Total Bought', 'buyback.totalUsd': 'Total Value', 'buyback.totalSupply': 'Total Supply', 'section.buybackData': 'Buyback Data', 'chart.totalTev': 'Total TEV', 'chart.records': 'Records', 'chart.avgMonthly': 'Avg Monthly', 'chart.period': 'Period', 'chart.cumulative': 'Cumulative TEV', 'chart.zoomHint': '🖱️ Scroll to zoom · Drag to pan · Double-click to reset', 'tev.feeSwitch': 'Fee Switch', 'tev.buybacks': 'Buybacks', 'tev.dividends': 'Dividends', 'tev.burns': 'Burns', 'tev.confidence': 'Confidence', 'footer.lastUpdated': 'Last Updated', 'status.active': 'Active', 'status.planned': 'Planned', 'status.inactive': 'Inactive', 'status.ON': 'ON', 'status.OFF': 'OFF', 'status.PARTIAL': 'Partial', 'status.NONE': 'None', 'status.ACTIVE': 'Active', 'noTev.title': 'No TEV Mechanisms', 'noTev.desc': 'Token is governance-only, protocol revenue not distributed to holders', 'mechanism.type.buyback': 'Buyback', 'mechanism.type.buyback_burn': 'Buyback & Burn', 'mechanism.type.staking_reward': 'Staking Reward', 'mechanism.type.fee_sharing': 'Fee Sharing', 'mechanism.type.ve_distribution': 've Distribution', 'mechanism.type.airdrop': 'Airdrop', 'source.governance': 'Governance', 'source.documentation': 'Docs', 'source.report': 'Report', 'source.api': 'API', 'source.onchain': 'On-chain', 'confidence.high': 'High', 'confidence.medium': 'Medium', 'confidence.low': 'Low', 'burn.progress': 'Burn Progress', 'burn.totalBurned': 'Total Burned', 'burn.remaining': 'Remaining Supply', 'burn.target': 'Target Supply' }
+      zh: { 'nav.dashboard': '仪表盘', 'loading': '加载中...', 'section.tevSummary': 'TEV 概览', 'section.tevHistory': 'TEV 历史记录', 'section.buybackAddresses': '回购地址', 'section.tevMechanisms': 'TEV 机制详情', 'section.dataSources': '数据来源', 'section.notes': '分析师备注', 'section.references': '参考资料', 'buyback.current': '当前阶段', 'buyback.historical': '历史阶段', 'buyback.legacy': '历史钱包', 'buyback.disposal': '处置地址', 'buyback.autoDailyBuyback': '自动每日回购', 'buyback.strategicReserve': '战略回购储备', 'buyback.burnAddress': '销毁地址', 'buyback.airdropLock': '空投锁仓', 'buyback.progress': '回购进度', 'buyback.totalBought': '已回购', 'buyback.totalUsd': '回购价值', 'buyback.totalSupply': '代币总量', 'section.buybackData': '回购数据', 'chart.totalTev': '累计 TEV', 'chart.records': '记录数', 'chart.avgMonthly': '月均 TEV', 'chart.period': '数据周期', 'chart.cumulative': '累计 TEV', 'chart.zoomHint': '🖱️ 滚轮缩放 · 拖动平移 · 双击重置', 'tev.feeSwitch': '费用开关', 'tev.buybacks': '回购', 'tev.dividends': '分红', 'tev.burns': '销毁', 'tev.confidence': '可信度', 'footer.lastUpdated': '最后更新', 'status.active': '活跃', 'status.planned': '计划中', 'status.inactive': '未激活', 'status.ON': '已开启', 'status.OFF': '未开启', 'status.PARTIAL': '部分', 'status.NONE': '无', 'status.ACTIVE': '活跃', 'noTev.title': '该协议目前没有 TEV 机制', 'noTev.desc': '代币仅用于治理，协议收入未分配给代币持有者', 'mechanism.type.buyback': '回购', 'mechanism.type.buyback_burn': '回购销毁', 'mechanism.type.staking_reward': '质押奖励', 'mechanism.type.fee_sharing': '费用分成', 'mechanism.type.ve_distribution': 've 分配', 'mechanism.type.airdrop': '空投', 'mechanism.type.aggregate': '综合 TEV', 'mechanism.type.burn': '销毁', 'mechanism.type.direct_distribution': '直接分配', 'mechanism.type.ve_reward': 've 奖励', 'source.governance': '治理', 'source.documentation': '文档', 'source.report': '报告', 'source.api': 'API', 'source.onchain': '链上', 'confidence.high': '高', 'confidence.medium': '中', 'confidence.low': '低', 'burn.progress': '销毁进度', 'burn.totalBurned': '已销毁', 'burn.remaining': '剩余供应', 'burn.target': '目标供应' },
+      en: { 'nav.dashboard': 'Dashboard', 'loading': 'Loading...', 'section.tevSummary': 'TEV Summary', 'section.tevHistory': 'TEV History', 'section.buybackAddresses': 'Buyback Addresses', 'section.tevMechanisms': 'TEV Mechanisms', 'section.dataSources': 'Data Sources', 'section.notes': 'Analyst Notes', 'section.references': 'References', 'buyback.current': 'Current Stage', 'buyback.historical': 'Historical Stage', 'buyback.legacy': 'Legacy Wallets', 'buyback.disposal': 'Disposal Addresses', 'buyback.autoDailyBuyback': 'Auto Daily Buyback', 'buyback.strategicReserve': 'Strategic Reserve', 'buyback.burnAddress': 'Burn Address', 'buyback.airdropLock': 'Airdrop Lock', 'buyback.progress': 'Buyback Progress', 'buyback.totalBought': 'Total Bought', 'buyback.totalUsd': 'Total Value', 'buyback.totalSupply': 'Total Supply', 'section.buybackData': 'Buyback Data', 'chart.totalTev': 'Total TEV', 'chart.records': 'Records', 'chart.avgMonthly': 'Avg Monthly', 'chart.period': 'Period', 'chart.cumulative': 'Cumulative TEV', 'chart.zoomHint': '🖱️ Scroll to zoom · Drag to pan · Double-click to reset', 'tev.feeSwitch': 'Fee Switch', 'tev.buybacks': 'Buybacks', 'tev.dividends': 'Dividends', 'tev.burns': 'Burns', 'tev.confidence': 'Confidence', 'footer.lastUpdated': 'Last Updated', 'status.active': 'Active', 'status.planned': 'Planned', 'status.inactive': 'Inactive', 'status.ON': 'ON', 'status.OFF': 'OFF', 'status.PARTIAL': 'Partial', 'status.NONE': 'None', 'status.ACTIVE': 'Active', 'noTev.title': 'No TEV Mechanisms', 'noTev.desc': 'Token is governance-only, protocol revenue not distributed to holders', 'mechanism.type.buyback': 'Buyback', 'mechanism.type.buyback_burn': 'Buyback & Burn', 'mechanism.type.staking_reward': 'Staking Reward', 'mechanism.type.fee_sharing': 'Fee Sharing', 'mechanism.type.ve_distribution': 've Distribution', 'mechanism.type.airdrop': 'Airdrop', 'mechanism.type.aggregate': 'Total TEV', 'mechanism.type.burn': 'Burn', 'mechanism.type.direct_distribution': 'Direct Distribution', 'mechanism.type.ve_reward': 've Reward', 'source.governance': 'Governance', 'source.documentation': 'Docs', 'source.report': 'Report', 'source.api': 'API', 'source.onchain': 'On-chain', 'confidence.high': 'High', 'confidence.medium': 'Medium', 'confidence.low': 'Low', 'burn.progress': 'Burn Progress', 'burn.totalBurned': 'Total Burned', 'burn.remaining': 'Remaining Supply', 'burn.target': 'Target Supply' }
     };
     let currentLang = 'zh';
     const t = k => i18n[currentLang][k] || k;
@@ -181,9 +182,10 @@
     const getTevStatus = s => (s.fee_switch === 'ON' || s.buybacks === 'ACTIVE' || s.dividends === 'ACTIVE') ? 'active' : (s.fee_switch === 'PARTIAL' || s.dividends === 'PARTIAL') ? 'partial' : 'none';
     const getValueClass = v => { const u = (v || '').toUpperCase(); return u === 'ON' || u === 'ACTIVE' ? 'value-on' : u === 'PARTIAL' ? 'value-partial' : 'value-off'; };
 
-    const TEV_COLORS = { buyback_burn: { bg: 'rgba(34,197,94,0.7)', border: '#22c55e' }, buyback: { bg: 'rgba(34,197,94,0.6)', border: '#22c55e' }, staking_reward: { bg: 'rgba(59,130,246,0.7)', border: '#3b82f6' }, direct_distribution: { bg: 'rgba(168,85,247,0.7)', border: '#a855f7' }, ve_reward: { bg: 'rgba(245,158,11,0.7)', border: '#f59e0b' }, fee_sharing: { bg: 'rgba(236,72,153,0.7)', border: '#ec4899' }, aggregate: { bg: 'rgba(99,102,241,0.7)', border: '#6366f1' } };
-    const BURN_CONFIG = { bnb: { file: 'bnb-burns.json', ticker: 'BNB', color: 'rgba(240,185,11,0.8)', borderColor: '#f0b90b', title: { zh: 'BNB 季度销毁', en: 'BNB Quarterly Burns' }, dataType: 'quarterly', initialSupply: 2e8, targetSupply: 1e8 }, uniswap: { file: 'uni-burns.json', ticker: 'UNI', color: 'rgba(255,0,122,0.8)', borderColor: '#ff007a', title: { zh: 'UNI 月度销毁', en: 'UNI Monthly Burns' }, dataType: 'monthly' } };
+    const TEV_COLORS = { buyback_burn: { bg: 'rgba(34,197,94,0.7)', border: '#22c55e' }, buyback: { bg: 'rgba(34,197,94,0.6)', border: '#22c55e' }, staking_reward: { bg: 'rgba(59,130,246,0.7)', border: '#3b82f6' }, direct_distribution: { bg: 'rgba(168,85,247,0.7)', border: '#a855f7' }, ve_reward: { bg: 'rgba(245,158,11,0.7)', border: '#f59e0b' }, fee_sharing: { bg: 'rgba(236,72,153,0.7)', border: '#ec4899' }, aggregate: { bg: 'rgba(99,102,241,0.7)', border: '#6366f1' }, burn: { bg: 'rgba(239,68,68,0.7)', border: '#ef4444' }, airdrop: { bg: 'rgba(168,85,247,0.7)', border: '#a855f7' }, ve_reward: { bg: 'rgba(245,158,11,0.7)', border: '#f59e0b' }, direct_distribution: { bg: 'rgba(14,165,233,0.7)', border: '#0ea5e9' } };
+    const BURN_CONFIG = { bnb: { file: 'bnb-burns.json', ticker: 'BNB', color: 'rgba(240,185,11,0.8)', borderColor: '#f0b90b', title: { zh: 'BNB 季度销毁', en: 'BNB Quarterly Burns' }, dataType: 'quarterly', initialSupply: 2e8, targetSupply: 1e8 } };
     let tevChart = null, burnAmtChart = null, burnValChart = null, buybackChart = null;
+    let protocolConfig = null;
 
     function renderMechanisms(mechanisms) {
       const c = document.getElementById('mechanisms-container');
@@ -213,49 +215,142 @@
         if (!records?.length) return;
         records.sort((a, b) => new Date(a.date) - new Date(b.date));
         const types = [...new Set(records.map(r => r.type))];
-        const labels = records.map(r => r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }));
-        const barDs = types.map(type => { const c = TEV_COLORS[type] || { bg: 'rgba(161,161,170,0.5)', border: '#a1a1aa' }; return { label: t('mechanism.type.' + type) || type, data: records.map(r => r.type === type ? r.amount_usd : 0), backgroundColor: c.bg, borderColor: c.border, borderWidth: 1, borderRadius: 4, type: 'bar', yAxisID: 'y', order: 2 }; });
-        let cum = 0; const cumData = records.map(r => { cum += r.amount_usd; return cum; });
-        const lineDs = { label: t('chart.cumulative'), data: cumData, borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.1)', borderWidth: 2, pointRadius: 3, fill: true, type: 'line', yAxisID: 'y2', tension: 0.3, order: 1 };
+        const isDaily = records.length > 60;
+        
         const ctx = document.getElementById('tev-history-chart').getContext('2d');
         if (tevChart) tevChart.destroy();
-        tevChart = new Chart(ctx, { data: { labels, datasets: [...barDs, lineDs] }, options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { position: 'top', labels: { color: '#a1a1aa', font: { size: 11 }, boxWidth: 12, padding: 16 } }, tooltip: { backgroundColor: '#18181b', titleColor: '#fafafa', bodyColor: '#a1a1aa', borderColor: '#27272a', borderWidth: 1, callbacks: { label: ctx => ctx.raw === 0 ? null : ` ${ctx.dataset.label}: ${fmtCurrency(ctx.raw)}` }, filter: i => i.raw !== 0 } }, scales: { x: { grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', font: { size: 11 } } }, y: { position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => fmtCurrency(v) }, title: { display: true, text: currentLang === 'zh' ? '单期 TEV' : 'Period TEV', color: '#71717a' } }, y2: { position: 'right', grid: { display: false }, ticks: { color: '#f59e0b', callback: v => fmtCurrency(v) }, title: { display: true, text: t('chart.cumulative'), color: '#f59e0b' } } } } });
+        
+        if (isDaily) {
+          // Daily mode: time axis, bar + cumulative line
+          const barDs = types.map(type => {
+            const c = TEV_COLORS[type] || { bg: 'rgba(161,161,170,0.5)', border: '#a1a1aa' };
+            return {
+              label: t('mechanism.type.' + type) || type,
+              data: records.filter(r => r.type === type).map(r => ({ x: r.date, y: r.amount_usd })),
+              backgroundColor: c.bg, borderColor: c.border, borderWidth: 1, borderRadius: 4,
+              type: 'bar', yAxisID: 'y', order: 2
+            };
+          });
+          let cum = 0;
+          const cumData = records.map(r => { cum += r.amount_usd; return { x: r.date, y: cum }; });
+          const lineDs = { label: t('chart.cumulative'), data: cumData, borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.1)', borderWidth: 2, pointRadius: 0, fill: true, type: 'line', yAxisID: 'y2', tension: 0.3, order: 1 };
+          tevChart = new Chart(ctx, {
+            data: { datasets: [...barDs, lineDs] },
+            options: {
+              responsive: true, maintainAspectRatio: false,
+              interaction: { mode: 'index', intersect: false },
+              plugins: {
+                legend: { position: 'top', labels: { color: '#a1a1aa', font: { size: 11 }, boxWidth: 12, padding: 16 } },
+                tooltip: { backgroundColor: '#18181b', titleColor: '#fafafa', bodyColor: '#a1a1aa', borderColor: '#27272a', borderWidth: 1, callbacks: { label: ctx => ctx.raw.y === 0 ? null : ` ${ctx.dataset.label}: ${fmtCurrency(ctx.raw.y)}` }, filter: i => i.raw.y !== 0 },
+                zoom: { pan: { enabled: true, mode: 'x' }, zoom: { wheel: { enabled: true }, pinch: { enabled: true }, mode: 'x' } }
+              },
+              scales: {
+                x: { type: 'time', time: { unit: records.length > 180 ? 'month' : 'day', displayFormats: { day: 'MM-dd', month: 'yyyy-MM' }, tooltipFormat: 'yyyy-MM-dd' }, grid: { display: false }, ticks: { color: '#71717a', font: { size: 10 }, maxRotation: 0, maxTicksLimit: 15 } },
+                y: { position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => fmtCurrency(v) }, title: { display: true, text: currentLang === 'zh' ? '每日 TEV (USD)' : 'Daily TEV (USD)', color: '#71717a' } },
+                y2: { position: 'right', grid: { display: false }, ticks: { color: '#f59e0b', callback: v => fmtCurrency(v) }, title: { display: true, text: t('chart.cumulative'), color: '#f59e0b' } }
+              }
+            }
+          });
+        } else {
+          // Monthly/category mode (original logic for aave etc.)
+          const allLabels = records.map(r => r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }));
+          const labels = [...new Set(allLabels)];
+          const barDs = types.map(type => { const c = TEV_COLORS[type] || { bg: 'rgba(161,161,170,0.5)', border: '#a1a1aa' }; const dataByLabel = {}; records.filter(r => r.type === type).forEach(r => { const lbl = r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }); dataByLabel[lbl] = (dataByLabel[lbl] || 0) + r.amount_usd; }); return { label: t('mechanism.type.' + type) || type, data: labels.map(l => dataByLabel[l] || 0), backgroundColor: c.bg, borderColor: c.border, borderWidth: 1, borderRadius: 4, type: 'bar', yAxisID: 'y', stack: 'tev', order: 2 }; });
+          let cum = 0; const cumByLabel = {}; records.forEach(r => { const lbl = r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }); cumByLabel[lbl] = (cumByLabel[lbl] || 0) + r.amount_usd; }); const cumData = labels.map(l => { cum += (cumByLabel[l] || 0); return cum; });
+          const lineDs = { label: t('chart.cumulative'), data: cumData, borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.1)', borderWidth: 2, pointRadius: 3, fill: true, type: 'line', yAxisID: 'y2', tension: 0.3, order: 1 };
+          tevChart = new Chart(ctx, { data: { labels, datasets: [...barDs, lineDs] }, options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { position: 'top', labels: { color: '#a1a1aa', font: { size: 11 }, boxWidth: 12, padding: 16 } }, tooltip: { backgroundColor: '#18181b', titleColor: '#fafafa', bodyColor: '#a1a1aa', borderColor: '#27272a', borderWidth: 1, callbacks: { label: ctx => ctx.raw === 0 ? null : ` ${ctx.dataset.label}: ${fmtCurrency(ctx.raw)}` }, filter: i => i.raw !== 0 } }, scales: { x: { stacked: true, grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', font: { size: 11 } } }, y: { stacked: true, position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => fmtCurrency(v) }, title: { display: true, text: currentLang === 'zh' ? '单期 TEV' : 'Period TEV', color: '#71717a' } }, y2: { position: 'right', grid: { display: false }, ticks: { color: '#f59e0b', callback: v => fmtCurrency(v) }, title: { display: true, text: t('chart.cumulative'), color: '#f59e0b' } } } } });
+        }
+        
         const total = records.reduce((s, r) => s + r.amount_usd, 0);
-        document.getElementById('chart-stats').innerHTML = `<div class="chart-stat"><div class="chart-stat-value">${fmtCurrency(total)}</div><div class="chart-stat-label">${t('chart.totalTev')}</div></div><div class="chart-stat"><div class="chart-stat-value">${records.length}</div><div class="chart-stat-label">${t('chart.records')}</div></div><div class="chart-stat"><div class="chart-stat-value">${fmtCurrency(total / records.length)}</div><div class="chart-stat-label">${t('chart.avgMonthly')}</div></div><div class="chart-stat"><div class="chart-stat-value">${records[0].period || records[0].date} → ${records[records.length - 1].period || records[records.length - 1].date}</div><div class="chart-stat-label">${t('chart.period')}</div></div>`;
+        const avgLabel = isDaily ? (currentLang === 'zh' ? '日均 TEV' : 'Avg Daily') : t('chart.avgMonthly');
+        const fmtPeriod = (d) => { const [y,m] = d.split('-'); return y + '/' + m; };
+        document.getElementById('chart-stats').innerHTML = `<div class="chart-stat"><div class="chart-stat-value">${fmtCurrency(total)}</div><div class="chart-stat-label">${t('chart.totalTev')}</div></div><div class="chart-stat"><div class="chart-stat-value">${records.length}</div><div class="chart-stat-label">${isDaily ? (currentLang === 'zh' ? '天数' : 'Days') : t('chart.records')}</div></div><div class="chart-stat"><div class="chart-stat-value">${fmtCurrency(total / records.length)}</div><div class="chart-stat-label">${avgLabel}</div></div>`;
+        // 在图表右上角显示数据周期
+        let periodEl = document.getElementById('tev-chart-period');
+        if (!periodEl) { periodEl = document.createElement('div'); periodEl.id = 'tev-chart-period'; periodEl.style.cssText = 'position:absolute;top:12px;right:16px;font-size:11px;color:#71717a;'; document.querySelector('#tev-chart-section .chart-container').style.position = 'relative'; document.querySelector('#tev-chart-section .chart-container').appendChild(periodEl); }
+        periodEl.textContent = fmtPeriod(records[0].date) + ' - ' + fmtPeriod(records[records.length - 1].date);
         document.getElementById('tev-chart-section').classList.add('has-data');
       } catch (e) { console.log('No TEV records:', e.message); }
     }
 
     async function loadBurnsChart(pid) {
-      const cfg = BURN_CONFIG[pid];
-      if (!cfg) return;
-      try {
-        const resp = await fetch(`../data/${cfg.file}`);
-        if (!resp.ok) return;
-        const data = await resp.json();
-        document.getElementById('token-burns-section').style.display = 'block';
-        document.getElementById('burns-section-title').textContent = cfg.title[currentLang];
-        const pLbl = cfg.dataType === 'quarterly' ? (currentLang === 'zh' ? '季度' : 'Quarterly') : (currentLang === 'zh' ? '月度' : 'Monthly');
-        document.getElementById('burn-amount-title').textContent = `${pLbl}销毁 (${cfg.ticker})`;
-        document.getElementById('burn-value-title').textContent = `${pLbl}价值 (USD)`;
-        const totalBurned = data.total_burned, totalSupply = data.total_supply || cfg.initialSupply || 1e9, targetSupply = cfg.targetSupply || data.target_supply;
-        let progress, progressText;
-        if (targetSupply) { const burnTarget = (cfg.initialSupply || totalSupply) - targetSupply; progress = (totalBurned / burnTarget) * 100; progressText = `${(totalBurned / 1e6).toFixed(2)}M / ${(burnTarget / 1e6).toFixed(0)}M`; } else { progress = (totalBurned / totalSupply) * 100; progressText = `${(totalBurned / 1e6).toFixed(2)}M (${progress.toFixed(2)}%)`; }
-        document.getElementById('burn-progress-fill').style.width = `${Math.min(progress, 100)}%`;
-        document.getElementById('burn-progress-fill').style.background = `linear-gradient(90deg, ${cfg.borderColor}, ${cfg.color})`;
-        document.getElementById('burn-progress-fill').textContent = `${progress.toFixed(1)}%`;
-        document.getElementById('burn-progress-text').textContent = progressText;
-        document.getElementById('burn-total').textContent = `${(totalBurned / 1e6).toFixed(2)}M`;
-        document.getElementById('burn-remaining').textContent = `${((data.current_supply || totalSupply - totalBurned) / 1e6).toFixed(2)}M`;
-        document.getElementById('burn-target').textContent = `${((targetSupply || totalSupply) / 1e6).toFixed(0)}M`;
-        const burns = cfg.dataType === 'quarterly' ? (data.quarterly_burns || []).filter(b => !b.note?.includes('估算')) : data.monthly_burns || [];
-        if (!burns.length) { document.querySelector('.burn-charts-grid').style.display = 'none'; return; }
-        const labels = burns.map(b => b.quarter || b.month), amounts = burns.map(b => b.amount), values = burns.map(b => b.value_usd);
-        if (burnAmtChart) burnAmtChart.destroy();
-        burnAmtChart = new Chart(document.getElementById('burn-amount-chart').getContext('2d'), { type: 'bar', data: { labels, datasets: [{ data: amounts, backgroundColor: cfg.color, borderColor: cfg.borderColor, borderWidth: 1, borderRadius: 4 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` ${ctx.raw.toLocaleString()} ${cfg.ticker}` } } }, scales: { x: { grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', maxRotation: 45 } }, y: { grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => (v / 1e6).toFixed(1) + 'M' } } } } });
-        if (burnValChart) burnValChart.destroy();
-        burnValChart = new Chart(document.getElementById('burn-value-chart').getContext('2d'), { type: 'line', data: { labels, datasets: [{ data: values, borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.1)', fill: true, tension: 0.3, pointRadius: 3 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ` $${(ctx.raw / 1e6).toFixed(1)}M` } } }, scales: { x: { grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', maxRotation: 45 } }, y: { grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => '$' + (v / 1e6).toFixed(0) + 'M' } } } } });
-      } catch (e) { console.log(`No burns data for ${pid}:`, e.message); }
+      // Read burn_progress from config.json (already loaded as protocolConfig)
+      const bp = protocolConfig?.burn_progress;
+      if (!bp) { document.querySelector('.burn-progress-container').style.display = 'none'; document.querySelector('.burn-charts-grid').style.display = 'none'; return; }
+      const totalBurned = bp.total_burned;
+      const target = bp.target;
+      const ticker = bp.ticker || protocolConfig.ticker || '';
+      const targetLabel = bp.target_label;
+      // BNB special: target is burn target (initial - target_supply)
+      let burnTarget, progress, progressText;
+      if (bp.target_supply) {
+        burnTarget = bp.initial_supply - bp.target_supply;
+        progress = (totalBurned / burnTarget) * 100;
+        progressText = `${(totalBurned / 1e6).toFixed(2)}M / ${(burnTarget / 1e6).toFixed(0)}M ${ticker}`;
+      } else {
+        progress = (totalBurned / target) * 100;
+        progressText = `${(totalBurned / 1e6).toFixed(2)}M / ${(target / 1e6).toFixed(0)}M ${ticker} (${progress.toFixed(2)}%)`;
+      }
+      document.querySelector('.burn-progress-container').style.display = '';
+      const barEl = document.getElementById('burn-progress-bar');
+      // Clear existing fills
+      barEl.innerHTML = '';
+      if (bp.segments && bp.segments.length > 1) {
+        // Multi-segment mode
+        const baseTarget = bp.target_supply ? (bp.initial_supply - bp.target_supply) : bp.target;
+        bp.segments.forEach(seg => {
+          const segPct = (seg.amount / baseTarget) * 100;
+          const segEl = document.createElement('div');
+          segEl.className = 'burn-progress-fill';
+          segEl.style.width = `${Math.min(segPct, 100)}%`;
+          segEl.style.position = 'relative';
+          segEl.style.display = 'inline-block';
+          segEl.style.height = '100%';
+          segEl.style.background = seg.color;
+          segEl.style.borderRadius = '0';
+          segEl.title = `${currentLang === 'zh' ? seg.label : seg.label_en}: ${(seg.amount / 1e6).toFixed(2)}M ${ticker}`;
+          barEl.appendChild(segEl);
+        });
+        // Round corners on first and last
+        if (barEl.firstChild) barEl.firstChild.style.borderRadius = '6px 0 0 6px';
+        if (barEl.lastChild) barEl.lastChild.style.borderRadius = '0 6px 6px 0';
+      } else {
+        // Single segment mode
+        const fillEl = document.createElement('div');
+        fillEl.className = 'burn-progress-fill';
+        fillEl.id = 'burn-progress-fill';
+        fillEl.style.width = `${Math.min(progress, 100)}%`;
+        fillEl.style.background = 'linear-gradient(90deg, #ef4444, #f97316)';
+        fillEl.textContent = `${progress.toFixed(1)}%`;
+        barEl.appendChild(fillEl);
+      }
+      document.getElementById('burn-progress-text').textContent = progressText;
+      document.getElementById('burn-total').textContent = `${(totalBurned / 1e6).toFixed(2)}M ${ticker}`;
+      const remaining = bp.target_supply ? (bp.initial_supply - totalBurned) : (target - totalBurned);
+      document.getElementById('burn-remaining').textContent = `${(remaining / 1e6).toFixed(2)}M ${ticker}`;
+      document.getElementById('burn-target').textContent = `${((bp.target_supply || target) / 1e6).toFixed(0)}M ${ticker}`;
+      // Show note for protocols with specific burn targets
+      const noteEl = document.getElementById('burn-progress-note');
+      if (bp.note) { noteEl.textContent = bp.note; noteEl.style.display = ''; } else { noteEl.style.display = 'none'; }
+      // Segment legend
+      let legendEl = document.getElementById('burn-segment-legend');
+      if (!legendEl) { legendEl = document.createElement('div'); legendEl.id = 'burn-segment-legend'; legendEl.style.cssText = 'display:flex;gap:16px;margin-top:6px;font-size:12px;color:#a1a1aa;flex-wrap:wrap;'; noteEl.parentElement.insertBefore(legendEl, noteEl.nextSibling); }
+      legendEl.innerHTML = '';
+      if (bp.segments && bp.segments.length > 1) {
+        bp.segments.forEach(seg => {
+          const item = document.createElement('span');
+          item.style.cssText = 'display:inline-flex;align-items:center;gap:4px;';
+          item.innerHTML = `<span style="width:10px;height:10px;border-radius:2px;background:${seg.color};display:inline-block;"></span>${currentLang === 'zh' ? seg.label : seg.label_en}: ${(seg.amount / 1e6).toFixed(2)}M`;
+          legendEl.appendChild(item);
+        });
+        legendEl.style.display = '';
+      } else { legendEl.style.display = 'none'; }
+      // Hide the old burn charts grid (TEV history chart handles this now)
+      document.querySelector('.burn-charts-grid').style.display = 'none';
+      // Show the section
+      document.getElementById('token-burns-section').style.display = 'block';
+      const sTitle = currentLang === 'zh' ? '销毁记录' : 'Burn Records';
+      document.getElementById('burns-section-title').textContent = sTitle;
     }
 
     async function loadBuybackData(pid) {
@@ -335,72 +430,83 @@
           return 'rgba(34,197,94,1)';
         };
         
-        // 季度数据用 category 轴，每日数据用 time 轴
+        // 对 hype 使用 USD 柱状 + 累计折线（每日 HYPE 是估算值，USD 来自 DefiLlama 更准确）
+        const useUsdChart = pid === 'hype' || isUsdOnly;
+        const yField = useUsdChart ? 'usd' : amountField;
+        
         const chartPoints = isQuarterly 
           ? chartData.map(d => ({ x: d.quarter, y: d.usd || 0, ...d, dataType: d.dataType || d.data_type }))
-          : chartData.map(d => ({ x: new Date(d.date), y: d[amountField] || 0, stage: d.stage, dataType: d.dataType || d.data_type, source: d.source, usd: d.usd, avgPrice: d.avg_price }));
+          : chartData.map(d => ({ x: new Date(d.date), y: d[yField] || 0, stage: d.stage, dataType: d.dataType || d.data_type, source: d.source, usd: d.usd, hype: d.hype, avgPrice: d.avg_price }));
+        
+        const datasets = [{
+          label: useUsdChart ? 'USD / day' : ticker,
+          data: chartPoints,
+          backgroundColor: chartData.map(d => getBarColor(d)),
+          borderColor: chartData.map(d => getBorderColor(d)),
+          borderWidth: 1, borderRadius: 4,
+          barPercentage: isQuarterly ? 0.6 : 1,
+          categoryPercentage: isQuarterly ? 0.8 : 1,
+          yAxisID: 'y', order: 2
+        }];
+        const extraScales = {};
+        if (pid === 'hype' && !isQuarterly) {
+          let cumSum = 0;
+          const cumData = chartData.map(d => { cumSum += (d.usd || 0); return { x: new Date(d.date), y: cumSum }; });
+          datasets.push({
+            label: currentLang === 'zh' ? '累计回购 (USD)' : 'Cumulative (USD)',
+            data: cumData, borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.1)',
+            borderWidth: 2, pointRadius: 0, fill: true, type: 'line', yAxisID: 'y2', tension: 0.3, order: 1
+          });
+          extraScales.y2 = {
+            position: 'right', grid: { display: false },
+            ticks: { color: '#f59e0b', callback: v => '$' + (v/1e9).toFixed(2) + 'B' },
+            title: { display: true, text: currentLang === 'zh' ? '累计 USD' : 'Cumulative USD', color: '#f59e0b' }
+          };
+        }
         
         buybackChart = new Chart(ctx, {
           type: 'bar',
-          data: {
-            labels: isQuarterly ? chartData.map(d => d.quarter) : undefined,
-            datasets: [{
-              label: isUsdOnly ? 'USD' : ticker,
-              data: chartPoints,
-              backgroundColor: chartData.map(d => getBarColor(d)),
-              borderColor: chartData.map(d => getBorderColor(d)),
-              borderWidth: 1,
-              borderRadius: 4,
-              barPercentage: isQuarterly ? 0.6 : 1,
-              categoryPercentage: isQuarterly ? 0.8 : 1
-            }]
-          },
+          data: { labels: isQuarterly ? chartData.map(d => d.quarter) : undefined, datasets },
           options: {
-            responsive: true,
-            maintainAspectRatio: false,
+            responsive: true, maintainAspectRatio: false,
             interaction: { mode: 'index', intersect: false },
             plugins: {
-              legend: { display: false },
+              legend: { display: pid === 'hype', position: 'top', labels: { color: '#a1a1aa', font: { size: 11 }, boxWidth: 12, padding: 16 } },
               tooltip: {
-                backgroundColor: '#18181b',
-                titleColor: '#fafafa',
-                bodyColor: '#a1a1aa',
+                backgroundColor: '#18181b', titleColor: '#fafafa', bodyColor: '#a1a1aa',
                 callbacks: {
                   title: (items) => isQuarterly ? items[0].raw.quarter : items[0].raw.x.toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US'),
-                  label: (ctx) => isUsdOnly || isQuarterly ? ` $${(ctx.raw.y/1e6).toFixed(2)}M` : ` ${(ctx.raw.y/1e3).toFixed(1)}K ${ticker}`,
+                  label: (ctx) => {
+                    if (ctx.dataset.yAxisID === 'y2') return ` ${ctx.dataset.label}: ${fmtCurrency(ctx.raw.y)}`;
+                    return useUsdChart || isQuarterly ? ` $${(ctx.raw.y/1e6).toFixed(2)}M` : ` ${(ctx.raw.y/1e3).toFixed(1)}K ${ticker}`;
+                  },
                   afterLabel: (ctx) => {
-                    const d = ctx.raw;
-                    const lines = [];
+                    if (ctx.dataset.yAxisID === 'y2') return [];
+                    const d = ctx.raw; const lines = [];
                     if (d.source) lines.push(`来源: ${d.source}`);
                     if (!isQuarterly && d.stage) lines.push(`Stage: ${d.stage}`);
-                    if (!isQuarterly && !isUsdOnly && d.usd) lines.push(`USD: ${fmtCurrency(d.usd)}`);
+                    if (!isQuarterly && d.hype) lines.push(`HYPE: ${(d.hype/1e3).toFixed(1)}K`);
                     if (d.avgPrice) lines.push(`Avg: $${d.avgPrice.toFixed(2)}`);
-                    lines.push(d.dataType === 'estimated' ? '⚠️ 估算数据（官方报告）' : '✅ 链上数据');
+                    lines.push(d.dataType === 'estimated' ? '⚠️ DefiLlama 数据' : '✅ 链上数据');
                     return lines;
                   }
                 }
               },
-              zoom: {
-                pan: { enabled: true, mode: 'x' },
-                zoom: { wheel: { enabled: true }, pinch: { enabled: true }, mode: 'x' }
-              }
+              zoom: { pan: { enabled: true, mode: 'x' }, zoom: { wheel: { enabled: true }, pinch: { enabled: true }, mode: 'x' } }
             },
             scales: {
               x: isQuarterly ? {
-                type: 'category',
-                grid: { display: false },
-                ticks: { color: '#71717a', font: { size: 12 } }
+                type: 'category', grid: { display: false }, ticks: { color: '#71717a', font: { size: 12 } }
               } : {
-                type: 'time',
-                time: { unit: 'week', displayFormats: { week: 'MM-dd', day: 'MM-dd' } },
-                grid: { display: false },
-                ticks: { color: '#71717a', maxRotation: 0, font: { size: 10 }, maxTicksLimit: 12 }
+                type: 'time', time: { unit: 'month', displayFormats: { month: 'yyyy-MM', week: 'MM-dd' } },
+                grid: { display: false }, ticks: { color: '#71717a', maxRotation: 0, font: { size: 10 }, maxTicksLimit: 15 }
               },
               y: {
                 grid: { color: 'rgba(39,39,42,0.5)' },
-                ticks: { color: '#a1a1aa', callback: v => isQuarterly || isUsdOnly ? '$' + (v/1e6).toFixed(1) + 'M' : (v/1e6).toFixed(1) + 'M' },
-                title: { display: true, text: isQuarterly ? 'USD / quarter' : (isUsdOnly ? 'USD / day' : `${ticker} / day`), color: '#a1a1aa' }
-              }
+                ticks: { color: '#a1a1aa', callback: v => useUsdChart || isQuarterly ? '$' + (v/1e6).toFixed(1) + 'M' : (v/1e6).toFixed(1) + 'M' },
+                title: { display: true, text: isQuarterly ? 'USD / quarter' : (useUsdChart ? 'USD / day' : `${ticker} / day`), color: '#a1a1aa' }
+              },
+              ...extraScales
             }
           }
         });
@@ -414,9 +520,9 @@
           if (pid === 'aster') {
             legendEl.innerHTML = '<span style="color:#787878;">■ Stage 1-4 (历史报道)</span><span style="color:#22c55e;">■ Stage 5-6 (链上数据)</span>';
           } else if (pid === 'hype') {
-            legendEl.innerHTML = '<span style="color:#787878;">■ 估算</span><span style="color:#22c55e;">■ 链上数据</span>';
+            legendEl.innerHTML = '<span style="color:#787878;">■ DefiLlama 数据</span><span style="color:#22c55e;">■ 链上数据</span><span style="color:#f59e0b;">━ 累计回购</span>';
           } else if (pid === 'fluid') {
-            legendEl.innerHTML = '<span style="color:#787878;">■ 官方博客数据 (Q4 2025)</span>';
+            legendEl.innerHTML = '<span style="color:#22c55e;">■ 链上回购数据 (Etherscan)</span>';
           } else {
             legendEl.innerHTML = '';
           }
@@ -431,6 +537,7 @@
         const resp = await fetch(`../data/protocols/${pid}/config.json`);
         if (!resp.ok) throw new Error('Protocol not found');
         const cfg = await resp.json();
+        protocolConfig = cfg;
         document.title = `${cfg.name} — TEV Dashboard`;
         document.getElementById('breadcrumb-name').textContent = cfg.name;
         const iconEl = document.getElementById('protocol-icon');
@@ -504,7 +611,7 @@
         document.getElementById('content').style.display = 'block';
         loadTevChart(pid);
         if (['bnb', 'hype', 'uniswap'].includes(pid)) loadBurnsChart(pid);
-        if (['aster','hype','fluid'].includes(pid)) loadBuybackData(pid);
+        if (['aster'].includes(pid)) loadBuybackData(pid);
       } catch (e) {
         console.error('Failed:', e);
         document.getElementById('loading').innerHTML = `<div style="color:var(--danger);">Failed to load protocol</div><div style="margin-top:8px;font-size:12px;">${e.message}</div><div style="margin-top:16px;"><a href="index.html" style="color:var(--blue);">← Back</a></div>`;

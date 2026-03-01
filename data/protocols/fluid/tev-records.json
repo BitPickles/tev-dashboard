@@ -1,0 +1,490 @@
+{
+  "protocol": "fluid",
+  "updated_at": "2026-03-01T18:10:09Z",
+  "data_source": "Etherscan on-chain (FLUID transfers to reserve wallets)",
+  "data_source_url": "https://api.llama.fi/summary/fees/fluid?dataType=dailyHoldersRevenue",
+  "note": "Fluid 批量回购模式，非每日连续",
+  "summary": {
+    "total_fluid": 1094933.92,
+    "total_usd": 4264765.0,
+    "days_with_buyback": 36,
+    "trailing_365d_usd": 4264765.0,
+    "trailing_365d_fluid": 1094933.92,
+    "avg_daily_fluid": 30414.83
+  },
+  "records": [
+    {
+      "date": "2025-10-03",
+      "type": "buyback",
+      "amount_fluid": 30896.49,
+      "amount_usd": 189891.21,
+      "avg_price": 6.146,
+      "tx_count": 5,
+      "block": 23499465,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-10-04",
+      "type": "buyback",
+      "amount_fluid": 67566.1,
+      "amount_usd": 435810.82,
+      "avg_price": 6.4501,
+      "tx_count": 7,
+      "block": 23506498,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-10-05",
+      "type": "buyback",
+      "amount_fluid": 35613.41,
+      "amount_usd": 229976.98,
+      "avg_price": 6.4576,
+      "tx_count": 2,
+      "block": 23513068,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-10-06",
+      "type": "buyback",
+      "amount_fluid": 16340.69,
+      "amount_usd": 105636.32,
+      "avg_price": 6.4646,
+      "tx_count": 1,
+      "block": 23517510,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-10-07",
+      "type": "buyback",
+      "amount_fluid": 43769.83,
+      "amount_usd": 300532.86,
+      "avg_price": 6.8662,
+      "tx_count": 10,
+      "block": 23527155,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-10-08",
+      "type": "buyback",
+      "amount_fluid": 16512.31,
+      "amount_usd": 109110.07,
+      "avg_price": 6.6078,
+      "tx_count": 6,
+      "block": 23532162,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-10-10",
+      "type": "buyback",
+      "amount_fluid": 39674.67,
+      "amount_usd": 245177.91,
+      "avg_price": 6.1797,
+      "tx_count": 6,
+      "block": 23550514,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-10-11",
+      "type": "buyback",
+      "amount_fluid": 14710.17,
+      "amount_usd": 74346.24,
+      "avg_price": 5.0541,
+      "tx_count": 1,
+      "block": 23553690,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-11-02",
+      "type": "buyback",
+      "amount_fluid": 0.09,
+      "amount_usd": 0.39,
+      "avg_price": 4.3114,
+      "tx_count": 1,
+      "block": 23711621,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-11-04",
+      "type": "buyback",
+      "amount_fluid": 20104.67,
+      "amount_usd": 74328.1,
+      "avg_price": 3.6971,
+      "tx_count": 1,
+      "block": 23729195,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-11-05",
+      "type": "buyback",
+      "amount_fluid": 73372.56,
+      "amount_usd": 258145.98,
+      "avg_price": 3.5183,
+      "tx_count": 4,
+      "block": 23735769,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-11-06",
+      "type": "buyback",
+      "amount_fluid": 36268.15,
+      "amount_usd": 134635.11,
+      "avg_price": 3.7122,
+      "tx_count": 2,
+      "block": 23741349,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-11-07",
+      "type": "buyback",
+      "amount_fluid": 52537.29,
+      "amount_usd": 189339.17,
+      "avg_price": 3.6039,
+      "tx_count": 3,
+      "block": 23750365,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-11-08",
+      "type": "buyback",
+      "amount_fluid": 18561.1,
+      "amount_usd": 72120.48,
+      "avg_price": 3.8856,
+      "tx_count": 1,
+      "block": 23757019,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-11-09",
+      "type": "buyback",
+      "amount_fluid": 37537.84,
+      "amount_usd": 144014.03,
+      "avg_price": 3.8365,
+      "tx_count": 2,
+      "block": 23762337,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-12-01",
+      "type": "buyback",
+      "amount_fluid": 64845.76,
+      "amount_usd": 196794.08,
+      "avg_price": 3.0348,
+      "tx_count": 6,
+      "block": 23922006,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-12-02",
+      "type": "buyback",
+      "amount_fluid": 48837.06,
+      "amount_usd": 139462.7,
+      "avg_price": 2.8557,
+      "tx_count": 5,
+      "block": 23927301,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-12-03",
+      "type": "buyback",
+      "amount_fluid": 18037.97,
+      "amount_usd": 54424.82,
+      "avg_price": 3.0172,
+      "tx_count": 2,
+      "block": 23932217,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-12-06",
+      "type": "buyback",
+      "amount_fluid": 28596.35,
+      "amount_usd": 90246.52,
+      "avg_price": 3.1559,
+      "tx_count": 3,
+      "block": 23954985,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-12-07",
+      "type": "buyback",
+      "amount_fluid": 19017.29,
+      "amount_usd": 60262.27,
+      "avg_price": 3.1688,
+      "tx_count": 2,
+      "block": 23963232,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2025-12-09",
+      "type": "buyback",
+      "amount_fluid": 37948.91,
+      "amount_usd": 122338.58,
+      "avg_price": 3.2238,
+      "tx_count": 3,
+      "block": 23971798,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2026-01-07",
+      "type": "buyback",
+      "amount_fluid": 30704.3,
+      "amount_usd": 95483.7,
+      "avg_price": 3.1098,
+      "tx_count": 1,
+      "block": 24181078,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2026-01-08",
+      "type": "buyback",
+      "amount_fluid": 30208.92,
+      "amount_usd": 91119.42,
+      "avg_price": 3.0163,
+      "tx_count": 1,
+      "block": 24188314,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2026-01-10",
+      "type": "buyback",
+      "amount_fluid": 29773.16,
+      "amount_usd": 90798.54,
+      "avg_price": 3.0497,
+      "tx_count": 1,
+      "block": 24204911,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2026-01-11",
+      "type": "buyback",
+      "amount_fluid": 30492.36,
+      "amount_usd": 91860.29,
+      "avg_price": 3.0126,
+      "tx_count": 1,
+      "block": 24213438,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2026-01-12",
+      "type": "buyback",
+      "amount_fluid": 27455.19,
+      "amount_usd": 83490.04,
+      "avg_price": 3.041,
+      "tx_count": 3,
+      "block": 24218359,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2026-01-14",
+      "type": "buyback",
+      "amount_fluid": 30434.71,
+      "amount_usd": 96607.94,
+      "avg_price": 3.1743,
+      "tx_count": 3,
+      "block": 24235312,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2026-01-15",
+      "type": "buyback",
+      "amount_fluid": 50697.64,
+      "amount_usd": 164835.31,
+      "avg_price": 3.2513,
+      "tx_count": 5,
+      "block": 24242429,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2026-02-05",
+      "type": "buyback",
+      "amount_fluid": 8669.15,
+      "amount_usd": 21625.73,
+      "avg_price": 2.4946,
+      "tx_count": 1,
+      "block": 24392617,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2026-02-07",
+      "type": "buyback",
+      "amount_fluid": 25797.83,
+      "amount_usd": 61171.95,
+      "avg_price": 2.3712,
+      "tx_count": 3,
+      "block": 24406215,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2026-02-09",
+      "type": "buyback",
+      "amount_fluid": 26728.11,
+      "amount_usd": 61899.31,
+      "avg_price": 2.3159,
+      "tx_count": 3,
+      "block": 24417866,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2026-02-11",
+      "type": "buyback",
+      "amount_fluid": 26883.4,
+      "amount_usd": 59974.7,
+      "avg_price": 2.2309,
+      "tx_count": 3,
+      "block": 24436318,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2026-02-20",
+      "type": "buyback",
+      "amount_fluid": 18598.65,
+      "amount_usd": 39351.54,
+      "avg_price": 2.1158,
+      "tx_count": 2,
+      "block": 24498656,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2026-02-21",
+      "type": "buyback",
+      "amount_fluid": 18718.9,
+      "amount_usd": 39639.93,
+      "avg_price": 2.1176,
+      "tx_count": 2,
+      "block": 24505790,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2026-02-26",
+      "type": "buyback",
+      "amount_fluid": 9616.1,
+      "amount_usd": 20533.2,
+      "avg_price": 2.1353,
+      "tx_count": 1,
+      "block": 24542995,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    },
+    {
+      "date": "2026-02-27",
+      "type": "buyback",
+      "amount_fluid": 9406.79,
+      "amount_usd": 19778.87,
+      "avg_price": 2.1026,
+      "tx_count": 1,
+      "block": 24546863,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
+    }
+  ],
+  "last_block": 24546863,
+  "reserve_wallets": [
+    "0x3e6FeBd2b195e1Ef3e8e3F4AABB6772aada32353",
+    "0x9Afb8C1798B93a8E04a18553eE65bAFa41a012F1"
+  ]
+}

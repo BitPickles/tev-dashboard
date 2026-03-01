@@ -96,38 +96,270 @@
         "url": "https://www.bnbchain.org/en/blog/introducing-bnb-chains-airdrop-alliance-program"
       }
     ],
-    "note": "这些激励增强持币需求，但发放的是其他代币，不计入 TEV"
+    "note": "这些激励通过 asBNB APY（6.87%）间接计入 TEV，asBNB 净值增长反映了 Staking + Launchpool/HODLer/Megadrop 的综合收益"
   },
   "burn_history": [
     {
-      "quarter": "Q1 2025 (31st)",
+      "quarter": "Q4 2017 (1st)",
+      "date": "2017-10-18",
+      "amount_bnb": 986000,
+      "avg_price_usd": 1.52,
+      "value_usd": 1500000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q1 2018 (2nd)",
+      "date": "2018-01-15",
+      "amount_bnb": 1821586,
+      "avg_price_usd": 16.47,
+      "value_usd": 30000000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q2 2018 (3rd)",
+      "date": "2018-04-15",
+      "amount_bnb": 2220314,
+      "avg_price_usd": 13.51,
+      "value_usd": 30000000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q3 2018 (4th)",
+      "date": "2018-07-18",
+      "amount_bnb": 2528767,
+      "avg_price_usd": 12.02,
+      "value_usd": 30400000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q4 2018 (5th)",
+      "date": "2018-10-17",
+      "amount_bnb": 1643986,
+      "avg_price_usd": 7.73,
+      "value_usd": 12700000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q1 2019 (6th)",
+      "date": "2019-01-16",
+      "amount_bnb": 1623818,
+      "avg_price_usd": 5.79,
+      "value_usd": 9400000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q2 2019 (7th)",
+      "date": "2019-04-16",
+      "amount_bnb": 829888,
+      "avg_price_usd": 18.8,
+      "value_usd": 15600000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q3 2019 (8th)",
+      "date": "2019-07-12",
+      "amount_bnb": 808888,
+      "avg_price_usd": 29.42,
+      "value_usd": 23800000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q4 2019 (9th)",
+      "date": "2019-10-17",
+      "amount_bnb": 2061888,
+      "avg_price_usd": 17.8,
+      "value_usd": 36700000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q1 2020 (10th)",
+      "date": "2020-01-19",
+      "amount_bnb": 2216888,
+      "avg_price_usd": 17.5,
+      "value_usd": 38800000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q2 2020 (11th)",
+      "date": "2020-04-17",
+      "amount_bnb": 3373988,
+      "avg_price_usd": 15.53,
+      "value_usd": 52400000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q3 2020 (12th)",
+      "date": "2020-07-18",
+      "amount_bnb": 3477388,
+      "avg_price_usd": 17.4,
+      "value_usd": 60500000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q4 2020 (13th)",
+      "date": "2020-10-17",
+      "amount_bnb": 2253888,
+      "avg_price_usd": 30.17,
+      "value_usd": 68000000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q1 2021 (14th)",
+      "date": "2021-01-19",
+      "amount_bnb": 3619888,
+      "avg_price_usd": 45.8,
+      "value_usd": 165800000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q2 2021 (15th)",
+      "date": "2021-04-16",
+      "amount_bnb": 1099888,
+      "avg_price_usd": 541.25,
+      "value_usd": 595314380,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q3 2021 (16th)",
+      "date": "2021-07-18",
+      "amount_bnb": 1296728,
+      "avg_price_usd": 303.84,
+      "value_usd": 394000000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q4 2021 (17th)",
+      "date": "2021-10-18",
+      "amount_bnb": 1335888,
+      "avg_price_usd": 478.33,
+      "value_usd": 639000000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q1 2022 (18th)",
+      "date": "2022-01-18",
+      "amount_bnb": 1684387,
+      "avg_price_usd": 515.32,
+      "value_usd": 868000000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q2 2022 (19th)",
+      "date": "2022-04-14",
+      "amount_bnb": 1839786,
+      "avg_price_usd": 419.61,
+      "value_usd": 772000000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q3 2022 (20th)",
+      "date": "2022-07-21",
+      "amount_bnb": 1959595,
+      "avg_price_usd": 230.66,
+      "value_usd": 452000000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q4 2022 (21th)",
+      "date": "2022-10-13",
+      "amount_bnb": 2065152,
+      "avg_price_usd": 265.84,
+      "value_usd": 549000000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q1 2023 (22th)",
+      "date": "2023-01-17",
+      "amount_bnb": 2064494,
+      "avg_price_usd": 300.32,
+      "value_usd": 620000000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q2 2023 (23th)",
+      "date": "2023-04-14",
+      "amount_bnb": 2020132,
+      "avg_price_usd": 331.66,
+      "value_usd": 670000000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q3 2023 (24th)",
+      "date": "2023-07-14",
+      "amount_bnb": 1991854,
+      "avg_price_usd": 242.99,
+      "value_usd": 484000000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q4 2023 (25th)",
+      "date": "2023-10-20",
+      "amount_bnb": 2135181,
+      "avg_price_usd": 212.16,
+      "value_usd": 453000000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q1 2024 (26th)",
+      "date": "2024-01-19",
+      "amount_bnb": 2134068,
+      "avg_price_usd": 304.11,
+      "value_usd": 649000000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q2 2024 (27th)",
+      "date": "2024-04-24",
+      "amount_bnb": 1944452,
+      "avg_price_usd": 570.85,
+      "value_usd": 1110000000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q3 2024 (28th)",
+      "date": "2024-07-19",
+      "amount_bnb": 1643698,
+      "avg_price_usd": 590.74,
+      "value_usd": 971000000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q4 2024 (29th)",
+      "date": "2024-10-22",
+      "amount_bnb": 1772712,
+      "avg_price_usd": 603.59,
+      "value_usd": 1070000000,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q1 2025 (30th)",
       "date": "2025-01-22",
-      "amount_bnb": 1579108.64,
-      "avg_price_usd": 641.3,
+      "amount_bnb": 1579109,
+      "avg_price_usd": 641.45,
       "value_usd": 1012925751,
       "source": "https://www.bnbburn.info/"
     },
     {
-      "quarter": "Q2 2025 (32nd)",
+      "quarter": "Q2 2025 (31th)",
       "date": "2025-04-16",
-      "amount_bnb": 1595599.78,
-      "avg_price_usd": 641.93,
+      "amount_bnb": 1595600,
+      "avg_price_usd": 641.91,
       "value_usd": 1024224671,
       "source": "https://www.bnbburn.info/"
     },
     {
-      "quarter": "Q3 2025 (33rd)",
+      "quarter": "Q3 2025 (32th)",
       "date": "2025-07-18",
-      "amount_bnb": 1441281.41,
-      "avg_price_usd": 838.07,
+      "amount_bnb": 1441281,
+      "avg_price_usd": 838.04,
       "value_usd": 1207856696,
       "source": "https://www.bnbburn.info/"
     },
     {
-      "quarter": "Q4 2025 (34th)",
+      "quarter": "Q4 2025 (33th)",
       "date": "2025-10-18",
-      "amount_bnb": 1371803.77,
-      "avg_price_usd": 930.7,
+      "amount_bnb": 1371804,
+      "avg_price_usd": 930.71,
       "value_usd": 1276747228,
       "source": "https://www.bnbburn.info/"
     }
@@ -174,7 +406,7 @@
   "tev_data": {
     "has_tev": true,
     "tev_yield_percent": 11.27,
-    "annual_tev_usd": 9639108944,
+    "annual_tev_usd": 9543897759,
     "calculation_date": "2026-03-01",
     "methodology": "Burn APY (链上销毁) + asBNB APY (Aster 综合持有收益)",
     "validation": {
@@ -186,9 +418,14 @@
       "asbnb_source": "Aster asBNB (Staking + Launchpool/HODLer/Megadrop)",
       "asbnb_url": "https://www.asterdex.com/en/earn/astoken?token=slisBNB",
       "burn_data_url": "https://www.bnbburn.info/",
-      "dead_address_balance_bnb": 13299471.41,
+      "dead_address_balance_bnb": 13299477.48,
       "dead_address": "0x000000000000000000000000000000000000dEaD",
-      "note": "Burn 通过链上黑洞地址余额验证；asBNB 通过 Aster 官方数据（含 Staking + Launchpool/HODLer/Megadrop，不含 Burn）"
+      "note": "Burn 通过链上黑洞地址余额验证；asBNB 通过 Aster 官方数据（含 Staking + Launchpool/HODLer/Megadrop，不含 Burn）",
+      "total_annual_burn_bnb": 6004121,
+      "bep95_annual_bnb": 16327,
+      "bnb_price_usd": 620.68,
+      "market_cap_usd": 84684097241,
+      "circulating_supply": 136358718.89
     },
     "sources": [
       {
@@ -282,6 +519,29 @@
       ]
     }
   ],
-  "analyst_notes": "【2026-03-01 更新 - Burn + asBNB 双源验证】\n\n## BNB TEV 计算方法\n\n采用 **Burn APY + asBNB APY** 双源独立计算，替代之前的 slisBNB 单一 proxy。\n\n### 为什么不再用 slisBNB？\n- slisBNB 仅反映 **Staking 收益**，不含 Launchpool/HODLer/Megadrop\n- 会**低估** BNB 的综合持有收益\n\n### 数据源拆分\n\n| 来源 | APY | 年化 USD | 说明 |\n|------|-----|---------|------|\n| Auto-Burn | 4.390000000000001% | $3.75B | 季度销毁，公式 B=N×1000/P |\n| BEP-95 | ~0.01% | $10.2M | 实时 gas fee 销毁 |\n| asBNB 持有收益 | 6.87% | $5.88B | Staking + Launchpool/HODLer/Megadrop |\n| **合计** | **11.27%** | **$9.64B** | |\n\n### 关键结论\n- **TEV Yield: 11.27%**（Burn 4.4% + 持有收益 6.87%）\n- Burn 与 asBNB 无重叠（Burn = 供给收缩，asBNB = 收益分配）\n- 链上黑洞地址累计余额：13,299,471 BNB（可验证）\n- 数据来源：bnbburn.info + Aster 官方",
-  "last_updated": "2026-03-01"
+  "analyst_notes": "【2026-03-01 更新 - Burn + asBNB 双源验证】\n\n## BNB TEV 计算方法\n\n采用 **Burn APY + asBNB APY** 双源独立计算，替代之前的 slisBNB 单一 proxy。\n\n### 为什么不再用 slisBNB？\n- slisBNB 仅反映 **Staking 收益**，不含 Launchpool/HODLer/Megadrop\n- 会**低估** BNB 的综合持有收益\n\n### 数据源拆分\n\n| 来源 | APY | 年化 USD | 说明 |\n|------|-----|---------|------|\n| Auto-Burn | 4.40% | $3.75B | 季度销毁，公式 B=N×1000/P |\n| BEP-95 | ~0.01% | $10.2M | 实时 gas fee 销毁 |\n| asBNB 持有收益 | 6.87% | $5.88B | Staking + Launchpool/HODLer/Megadrop |\n| **合计** | **11.27%** | **$9.64B** | |\n\n### 关键结论\n- **TEV Yield: 11.27%**（Burn 4.4% + 持有收益 6.87%）\n- Burn 与 asBNB 无重叠（Burn = 供给收缩，asBNB = 收益分配）\n- 链上黑洞地址累计余额：13,299,471 BNB（可验证）\n- 数据来源：bnbburn.info + Aster 官方",
+  "last_updated": "2026-03-02",
+  "burn_progress": {
+    "total_burned": 13299477.0,
+    "initial_supply": 200000000,
+    "target_supply": 100000000,
+    "target": 100000000,
+    "ticker": "BNB",
+    "note": "BNB 初始供应 2 亿，目标销毁至 1 亿。当前已完成 63.6%。",
+    "target_label": "burn_target",
+    "segments": [
+      {
+        "label": "季度 Auto-Burn",
+        "label_en": "Quarterly Auto-Burn",
+        "amount": 62442984,
+        "color": "rgba(240,185,11,0.85)"
+      },
+      {
+        "label": "BEP-95 实时销毁",
+        "label_en": "BEP-95 Real-time Burn",
+        "amount": -49143507.0,
+        "color": "rgba(240,185,11,0.4)"
+      }
+    ]
+  }
 }
