@@ -86,7 +86,7 @@
     "dividends": "NONE",
     "burns": "ACTIVE",
     "burn_mechanism": "Firepit 合约 → 0xdead 地址",
-    "primary_value_accrual": "多源 UNI 销毁 - 协议费 + Sequencer 收入 + PFDA + Aggregator hooks"
+    "primary_value_accrual": "协议费 + Unichain Sequencer 收入 → Firepit 销毁 UNI"
   },
   "market_data": {
     "price_usd": 3.78,
@@ -117,15 +117,22 @@
       "type": "explorer",
       "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
       "reliability": "high"
+    },
+    {
+      "name": "Etherscan V2 API",
+      "type": "api",
+      "url": "https://api.etherscan.io/v2/api?chainid=1",
+      "reliability": "high",
+      "note": "UNI → 0xdead 转账记录，TEV 主数据源"
     }
   ],
-  "analyst_notes": "【2026-03-02 链上数据更新】\n\n1. Fee Switch 于 2025-12-28 通过 UNIfication 提案开启\n\n2. 一次性国库销毁（不计入 TEV）：\n   - 2025-12-27 销毁 100,000,000 UNI（约 $6.2 亿）\n   - 模拟若 fee switch 从代币发行起就开启的效果\n   - tx: 0x091f00...2c1e\n   - 此笔为追溯性一次性操作，不代表持续收入能力，故不计入 TEV\n\n3. 持续销毁（计入 TEV）：\n   - 数据源：Etherscan 链上 UNI → 0xdead 转账记录\n   - 统计范围：2025-12-29 至 2026-03-01（63 天）\n   - 累计销毁：1,444,003 UNI（$6.08M）\n   - 年化销毁：8,366,051 UNI（$35.2M）\n   - TEV Yield：1.47%（市值 $2.39B）\n\n4. 销毁机制：\n   - 协议费用 → TokenJar → Firepit 合约 → 0xdead\n   - 每次 release 阈值 2000 UNI\n   - Mainnet Firepit: 0x0D5Cd355e2aBEB8fb1552F56c965B867346d6721\n\n5. 收入来源（已启用）：\n   - v2 协议费: 0.05%\n   - v3 协议费: 1/4~1/6 of LP fee\n   - Unichain sequencer 收入 85%\n\n6. 收入来源（规划中）：\n   - v4 协议费\n   - PFDA (MEV 内化)\n   - Aggregator hooks\n\n7. 注意事项：\n   - fee switch 仅运行 63 天，年化数据有限，需持续跟踪\n   - 当前日均 ~22,921 UNI 销毁，趋势在增加（1月初 4-16K → 2月 20-40K）",
+  "analyst_notes": "【2026-03-02 链上数据更新】\n\n1. Fee Switch：2025-12-28 通过 UNIfication 提案开启\n\n2. 一次性国库销毁（不计入 TEV）：\n   - 2025-12-27 销毁 100,000,000 UNI（约 $6.2 亿）\n   - 目的：模拟若 fee switch 从代币发行起就开启的效果\n   - tx: 0x091f0083242a777d55821c1189e568d6d033d9da501b75087dc736fa143d2c1e\n   - 属于追溯性一次性操作，不代表持续收入能力，故不计入 TEV\n\n3. 持续 Firepit 销毁（计入 TEV）：\n   - 数据源：Etherscan 链上 UNI → 0xdead 转账\n   - 统计范围：2025-12-29 至 2026-03-01（63 天）\n   - 累计销毁：1,444,003 UNI / $6.08M\n   - 年化：8,366,051 UNI / $35.2M\n   - TEV Yield：1.47%（流通市值 $2.39B）\n\n4. 销毁趋势（增长中）：\n   - 1月初：日均 4,000-16,000 UNI\n   - 1月底：日均 24,000-68,000 UNI\n   - 2月：日均 16,000-44,000 UNI（稳定在 20K+）\n   - fee switch 仅运行 63 天，数据有限，需持续跟踪\n\n5. 销毁机制：\n   - 协议费用 → TokenJar → Firepit 合约 → 0xdead\n   - 每次 release 阈值 2,000 UNI\n   - 部署在 Ethereum 和 Unichain 两条链上\n\n6. 当前活跃收入来源：\n   - v2 协议费 0.05%（全池统一）\n   - v3 协议费 1/4~1/6 of LP fee（按池费率不同）\n   - Unichain sequencer 收入 85%\n\n7. 规划中（暂无数据）：\n   - v4 协议费\n   - PFDA（Protocol Fee Discount Auctions，MEV 内化）\n   - Aggregator Hooks",
   "last_updated": "2026-03-02",
   "tev_data": {
     "has_tev": true,
     "tev_yield_percent": 1.47,
     "annual_tev_usd": 35217943,
-    "market_cap_usd": 2234088105,
+    "market_cap_usd": 2393472958,
     "calculation_date": "2026-03-02",
     "sources": [
       {
