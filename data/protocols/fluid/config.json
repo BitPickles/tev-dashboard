@@ -128,5 +128,9 @@
       }
     ]
   },
-  "tevStatus": "active"
+  "tevStatus": "active",
+  "confidence_reason": {
+    "zh": "链上回购钱包可追踪（Etherscan），与 DefiLlama 交叉验证差异 0.1%",
+    "en": "On-chain buyback wallets trackable (Etherscan), cross-validated with DefiLlama (0.1% diff)"
+  }
 }
