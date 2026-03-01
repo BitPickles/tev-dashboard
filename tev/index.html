@@ -24,7 +24,7 @@
     /* Tooltip for table headers and badges */
     .has-tooltip { position: relative; cursor: help; }
     .has-tooltip .tooltip-icon { font-size: 11px; color: #71717a; margin-left: 3px; vertical-align: middle; }
-    .has-tooltip::after { content: attr(data-tip); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #18181b; color: #d4d4d8; font-size: 12px; font-weight: 400; padding: 8px 12px; border-radius: 8px; border: 1px solid #27272a; white-space: normal; width: max-content; max-width: 220px; line-height: 1.5; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+    .has-tooltip::after { content: attr(data-tip); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #18181b; color: #d4d4d8; font-size: 12px; font-weight: 400; padding: 8px 12px; border-radius: 8px; border: 1px solid #27272a; white-space: normal; width: max-content; max-width: 300px; line-height: 1.5; opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
     .has-tooltip:hover::after { opacity: 1; }
     .badge.has-tooltip::after { bottom: auto; top: 100%; margin-top: 4px; }
 
@@ -248,8 +248,24 @@
 
     // Header tooltips
     const headerTips = {
-      zh: { tvl: '协议中锁定的总资产价值', tevStatus: '协议是否将收入分配给代币持有者', tevRatio: 'TEV ÷ 协议利润，分给持有者的比例', mcap: '代币流通市值', earningYield: '协议利润 ÷ 市值，类似市盈率倒数', tevYield: 'TEV ÷ 市值，类似股息率', confidence: '数据来源的可验证程度' },
-      en: { tvl: 'Total value locked in the protocol', tevStatus: 'Whether protocol distributes revenue to holders', tevRatio: 'TEV ÷ Revenue, share to holders', mcap: 'Circulating market cap', earningYield: 'Revenue ÷ Market Cap, inverse P/E', tevYield: 'TEV ÷ Market Cap, like dividend yield', confidence: 'How verifiable the data sources are' }
+      zh: {
+        tvl: 'Total Value Locked — 用户存入协议的总资产价值，反映协议的资金规模和信任度',
+        tevStatus: '该协议是否有将收入分配给代币持有者的机制，如回购、销毁、质押分红等',
+        tevRatio: '分配比例 = TEV ÷ 协议利润。衡量协议把多少比例的利润回馈给代币持有者，越高代表持有者获得的价值越多',
+        mcap: '代币的流通市值 = 当前价格 × 流通量，是计算 TEV Yield 的分母',
+        earningYield: '收益率 = 协议年化利润 ÷ 市值。类似传统金融的市盈率倒数（1/PE），反映协议的盈利能力',
+        tevYield: 'TEV Yield = 年化 TEV ÷ 市值。TEV（Token Enabled Value）是协议实际分配给代币持有者的价值（回购/销毁/分红），类似股票的股息率',
+        confidence: '数据可信度 — 基于数据来源是否可在链上验证、是否有公开 API、是否依赖第三方等因素综合判断'
+      },
+      en: {
+        tvl: 'Total Value Locked — total assets deposited in the protocol, reflecting its scale and trust',
+        tevStatus: 'Whether the protocol has mechanisms to distribute revenue to token holders (buybacks, burns, staking rewards, etc.)',
+        tevRatio: 'Distribution Ratio = TEV ÷ Protocol Revenue. Measures what share of profits goes back to token holders',
+        mcap: 'Circulating market cap = current price × circulating supply, used as denominator for TEV Yield',
+        earningYield: 'Earning Yield = Annualized Revenue ÷ Market Cap. Similar to inverse P/E ratio in traditional finance',
+        tevYield: 'TEV Yield = Annualized TEV ÷ Market Cap. TEV (Token Enabled Value) is the actual value distributed to holders (buybacks/burns/dividends), similar to dividend yield in stocks',
+        confidence: 'Data confidence — based on whether data is verifiable on-chain, has public APIs, or relies on third-party sources'
+      }
     };
     function setupHeaderTips() {
       document.querySelectorAll('th[data-sort], th[data-i18n="th.confidence"]').forEach(th => {
