@@ -1,116 +1,204 @@
 {
   "protocol": "bnb",
-  "updated_at": "2026-02-14",
-  "data_source": "BNB Chain Blog (Auto-Burn) + On-chain data (BEP-95/Staking) + slisBNB validation",
-  "note": "BNB TEV 由三部分构成：Auto-Burn (公式计算) + BEP-95/Staking (链上) + Holder Perks (Launchpool等)",
+  "updated_at": "2026-03-02T00:00:00Z",
+  "data_source": "bnbburn.info + Aster asBNB + BEP-95 链上",
+  "note": "Auto-Burn 用实际销毁数据；asBNB 收益按 6.87% APY 季均分配；BEP-95 按年化估算",
   "records": [
     {
-      "id": "bnb-auto-burn-2025-Q2",
+      "id": "bnb-asbnb-2025-Q1",
+      "date": "2025-01-15",
+      "type": "staking_reward",
+      "mechanism": "asBNB 综合收益 (Staking + Launchpool/HODLer/Megadrop)",
+      "amount_usd": 1468959149,
+      "period": "2025-Q1",
+      "source": {
+        "type": "proxy",
+        "provider": "Aster asBNB",
+        "url": "https://www.asterdex.com/en/earn/astoken?token=slisBNB"
+      },
+      "notes": "基于 asBNB 6.87% APY 按季均分（估算）"
+    },
+    {
+      "id": "bnb-bep95-2025-Q1",
+      "date": "2025-01-15",
+      "type": "burn",
+      "mechanism": "BEP-95 实时销毁",
+      "amount_usd": 2559012,
+      "period": "2025-Q1",
+      "source": {
+        "type": "onchain",
+        "provider": "BNB Chain",
+        "url": "https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP95.md"
+      },
+      "notes": "年化 ~$10.2M 按季均分（估算）"
+    },
+    {
+      "id": "bnb-auto-burn-2025-Q1",
+      "date": "2025-01-22",
+      "type": "burn",
+      "mechanism": "Auto-Burn (1,579,109 BNB × $641)",
+      "amount_usd": 1012925751,
+      "amount_bnb": 1579108.64,
+      "period": "2025-Q1",
+      "source": {
+        "type": "onchain",
+        "provider": "bnbburn.info",
+        "url": "https://www.bnbburn.info/"
+      }
+    },
+    {
+      "id": "bnb-asbnb-2025-Q2",
+      "date": "2025-04-15",
+      "type": "staking_reward",
+      "mechanism": "asBNB 综合收益 (Staking + Launchpool/HODLer/Megadrop)",
+      "amount_usd": 1468959149,
+      "period": "2025-Q2",
+      "source": {
+        "type": "proxy",
+        "provider": "Aster asBNB",
+        "url": "https://www.asterdex.com/en/earn/astoken?token=slisBNB"
+      },
+      "notes": "基于 asBNB 6.87% APY 按季均分（估算）"
+    },
+    {
+      "id": "bnb-bep95-2025-Q2",
       "date": "2025-04-15",
       "type": "burn",
-      "mechanism": "Auto-Burn (公式计算)",
-      "amount_usd": 274000000,
+      "mechanism": "BEP-95 实时销毁",
+      "amount_usd": 2559012,
       "period": "2025-Q2",
-      "source": { "type": "official", "provider": "BNB Chain", "url": "https://www.bnbchain.org/en/blog/31st-bnb-burn" }
+      "source": {
+        "type": "onchain",
+        "provider": "BNB Chain",
+        "url": "https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP95.md"
+      },
+      "notes": "年化 ~$10.2M 按季均分（估算）"
+    },
+    {
+      "id": "bnb-auto-burn-2025-Q2",
+      "date": "2025-04-16",
+      "type": "burn",
+      "mechanism": "Auto-Burn (1,595,600 BNB × $642)",
+      "amount_usd": 1024224671,
+      "amount_bnb": 1595599.78,
+      "period": "2025-Q2",
+      "source": {
+        "type": "onchain",
+        "provider": "bnbburn.info",
+        "url": "https://www.bnbburn.info/"
+      }
+    },
+    {
+      "id": "bnb-asbnb-2025-Q3",
+      "date": "2025-07-15",
+      "type": "staking_reward",
+      "mechanism": "asBNB 综合收益 (Staking + Launchpool/HODLer/Megadrop)",
+      "amount_usd": 1468959149,
+      "period": "2025-Q3",
+      "source": {
+        "type": "proxy",
+        "provider": "Aster asBNB",
+        "url": "https://www.asterdex.com/en/earn/astoken?token=slisBNB"
+      },
+      "notes": "基于 asBNB 6.87% APY 按季均分（估算）"
+    },
+    {
+      "id": "bnb-bep95-2025-Q3",
+      "date": "2025-07-15",
+      "type": "burn",
+      "mechanism": "BEP-95 实时销毁",
+      "amount_usd": 2559012,
+      "period": "2025-Q3",
+      "source": {
+        "type": "onchain",
+        "provider": "BNB Chain",
+        "url": "https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP95.md"
+      },
+      "notes": "年化 ~$10.2M 按季均分（估算）"
     },
     {
       "id": "bnb-auto-burn-2025-Q3",
-      "date": "2025-07-15",
+      "date": "2025-07-18",
       "type": "burn",
-      "mechanism": "Auto-Burn (公式计算)",
-      "amount_usd": 305000000,
+      "mechanism": "Auto-Burn (1,441,281 BNB × $838)",
+      "amount_usd": 1207856696,
+      "amount_bnb": 1441281.41,
       "period": "2025-Q3",
-      "source": { "type": "official", "provider": "BNB Chain", "url": "https://www.bnbchain.org/en/blog/32nd-bnb-burn" }
+      "source": {
+        "type": "onchain",
+        "provider": "bnbburn.info",
+        "url": "https://www.bnbburn.info/"
+      }
+    },
+    {
+      "id": "bnb-asbnb-2025-Q4",
+      "date": "2025-10-15",
+      "type": "staking_reward",
+      "mechanism": "asBNB 综合收益 (Staking + Launchpool/HODLer/Megadrop)",
+      "amount_usd": 1468959149,
+      "period": "2025-Q4",
+      "source": {
+        "type": "proxy",
+        "provider": "Aster asBNB",
+        "url": "https://www.asterdex.com/en/earn/astoken?token=slisBNB"
+      },
+      "notes": "基于 asBNB 6.87% APY 按季均分（估算）"
+    },
+    {
+      "id": "bnb-bep95-2025-Q4",
+      "date": "2025-10-15",
+      "type": "burn",
+      "mechanism": "BEP-95 实时销毁",
+      "amount_usd": 2559012,
+      "period": "2025-Q4",
+      "source": {
+        "type": "onchain",
+        "provider": "BNB Chain",
+        "url": "https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP95.md"
+      },
+      "notes": "年化 ~$10.2M 按季均分（估算）"
     },
     {
       "id": "bnb-auto-burn-2025-Q4",
-      "date": "2025-10-15",
+      "date": "2025-10-18",
       "type": "burn",
-      "mechanism": "Auto-Burn (公式计算)",
-      "amount_usd": 300000000,
+      "mechanism": "Auto-Burn (1,371,804 BNB × $931)",
+      "amount_usd": 1276747228,
+      "amount_bnb": 1371803.77,
       "period": "2025-Q4",
-      "source": { "type": "official", "provider": "BNB Chain", "url": "https://www.bnbchain.org/en/blog/33rd-bnb-burn" }
+      "source": {
+        "type": "onchain",
+        "provider": "bnbburn.info",
+        "url": "https://www.bnbburn.info/"
+      }
     },
     {
-      "id": "bnb-auto-burn-2026-Q1",
+      "id": "bnb-asbnb-2026-Q1",
+      "date": "2026-01-15",
+      "type": "staking_reward",
+      "mechanism": "asBNB 综合收益 (Staking + Launchpool/HODLer/Megadrop)",
+      "amount_usd": 1468959149,
+      "period": "2026-Q1",
+      "source": {
+        "type": "proxy",
+        "provider": "Aster asBNB",
+        "url": "https://www.asterdex.com/en/earn/astoken?token=slisBNB"
+      },
+      "notes": "基于 asBNB 6.87% APY 按季均分（估算）"
+    },
+    {
+      "id": "bnb-bep95-2026-Q1",
       "date": "2026-01-15",
       "type": "burn",
-      "mechanism": "Auto-Burn (公式计算)",
-      "amount_usd": 335000000,
+      "mechanism": "BEP-95 实时销毁",
+      "amount_usd": 2559012,
       "period": "2026-Q1",
-      "source": { "type": "official", "provider": "BNB Chain", "url": "https://www.bnbchain.org/en/blog/33rd-bnb-burn", "tx_hash": "0x8c85b7c3be353083ba5994eceb15da64cb0bf0618e70bb4932e6ef6b3de10f07" }
-    },
-    {
-      "id": "bnb-bep95-staking-2025-Q2",
-      "date": "2025-04-15",
-      "type": "staking",
-      "mechanism": "BEP-95 Real-Time Burn + Staking Rewards",
-      "amount_usd": 98000000,
-      "period": "2025-Q2",
-      "source": { "type": "onchain", "provider": "BSC Chain", "url": "https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP95.md" }
-    },
-    {
-      "id": "bnb-bep95-staking-2025-Q3",
-      "date": "2025-07-15",
-      "type": "staking",
-      "mechanism": "BEP-95 Real-Time Burn + Staking Rewards",
-      "amount_usd": 100000000,
-      "period": "2025-Q3",
-      "source": { "type": "onchain", "provider": "BSC Chain", "url": "https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP95.md" }
-    },
-    {
-      "id": "bnb-bep95-staking-2025-Q4",
-      "date": "2025-10-15",
-      "type": "staking",
-      "mechanism": "BEP-95 Real-Time Burn + Staking Rewards",
-      "amount_usd": 105000000,
-      "period": "2025-Q4",
-      "source": { "type": "onchain", "provider": "BSC Chain", "url": "https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP95.md" }
-    },
-    {
-      "id": "bnb-bep95-staking-2026-Q1",
-      "date": "2026-01-15",
-      "type": "staking",
-      "mechanism": "BEP-95 Real-Time Burn + Staking Rewards",
-      "amount_usd": 120000000,
-      "period": "2026-Q1",
-      "source": { "type": "onchain", "provider": "BSC Chain", "url": "https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP95.md" }
-    },
-    {
-      "id": "bnb-holder-perks-2025-Q2",
-      "date": "2025-04-15",
-      "type": "airdrop",
-      "mechanism": "Holder Perks (Launchpool/HODLer/Megadrop)",
-      "amount_usd": 115000000,
-      "period": "2025-Q2",
-      "source": { "type": "estimated", "provider": "Binance", "url": "https://www.binance.com/en/launchpool" }
-    },
-    {
-      "id": "bnb-holder-perks-2025-Q3",
-      "date": "2025-07-15",
-      "type": "airdrop",
-      "mechanism": "Holder Perks (Launchpool/HODLer/Megadrop)",
-      "amount_usd": 118000000,
-      "period": "2025-Q3",
-      "source": { "type": "estimated", "provider": "Binance", "url": "https://www.binance.com/en/launchpool" }
-    },
-    {
-      "id": "bnb-holder-perks-2025-Q4",
-      "date": "2025-10-15",
-      "type": "airdrop",
-      "mechanism": "Holder Perks (Launchpool/HODLer/Megadrop)",
-      "amount_usd": 122000000,
-      "period": "2025-Q4",
-      "source": { "type": "estimated", "provider": "Binance", "url": "https://www.binance.com/en/launchpool" }
-    },
-    {
-      "id": "bnb-holder-perks-2026-Q1",
-      "date": "2026-01-15",
-      "type": "airdrop",
-      "mechanism": "Holder Perks (Launchpool/HODLer/Megadrop)",
-      "amount_usd": 140000000,
-      "period": "2026-Q1",
-      "source": { "type": "estimated", "provider": "Binance", "url": "https://www.binance.com/en/launchpool" }
+      "source": {
+        "type": "onchain",
+        "provider": "BNB Chain",
+        "url": "https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP95.md"
+      },
+      "notes": "年化 ~$10.2M 按季均分（估算）"
     }
   ]
 }
