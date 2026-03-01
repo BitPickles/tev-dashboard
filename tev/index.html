@@ -51,24 +51,7 @@
       </div>
     </section>
 
-    <section class="stats-bar">
-      <div class="stat-item">
-        <div class="stat-value" id="stat-protocols">—</div>
-        <div class="stat-label" data-i18n="stats.protocols">追踪协议数</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value" id="stat-mcap">—</div>
-        <div class="stat-label" data-i18n="stats.mcap">总市值</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value" id="stat-fees">—</div>
-        <div class="stat-label" data-i18n="stats.fees">30日总费用</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value" id="stat-tev">—</div>
-        <div class="stat-label" data-i18n="stats.tev">30日总 TEV</div>
-      </div>
-    </section>
+    
 
     <section class="table-section" id="protocols">
       <div class="container">
@@ -412,10 +395,7 @@
 
     function updateStats(protocols) {
       const valid = protocols.filter(p => !p.error);
-      document.getElementById('stat-protocols').textContent = valid.length;
-      document.getElementById('stat-mcap').textContent = formatCurrency(valid.reduce((s, p) => s + getMarketCap(p), 0));
-      document.getElementById('stat-fees').textContent = formatCurrency(valid.reduce((s, p) => s + (p.metrics?.trailing_30d_fees_usd || 0), 0));
-      document.getElementById('stat-tev').textContent = formatCurrency(valid.reduce((s, p) => s + (p.metrics?.trailing_30d_tev_usd || 0), 0));
+
     }
 
     function updateFooter(protocols) {
