@@ -36,7 +36,7 @@
     "burns": "NONE",
     "primary_value_accrual": "治理代币 - MEV 收益流向 JitoSOL，JTO 用于治理"
   },
-  "confidence": "medium",
+  "confidence": "low",
   "data_sources": [
     {
       "name": "Jito Docs",
@@ -65,7 +65,7 @@
   },
   "tevStatus": "none",
   "confidence_reason": {
-    "zh": "无 TEV 机制，质押奖励数据需估算",
-    "en": "No TEV mechanism, staking reward data estimated"
+    "zh": "无 TEV 机制，JitoSOL 收益归质押者非 JTO 持有者，数据意义有限",
+    "en": "No TEV mechanism, JitoSOL yields go to stakers not JTO holders, limited data relevance"
   }
 }
