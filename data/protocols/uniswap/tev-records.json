@@ -1,0 +1,1032 @@
+{
+  "protocol": "uniswap",
+  "updated_at": "2026-03-01T17:12:52Z",
+  "data_source": "Etherscan on-chain (UNI transfers to 0xdead)",
+  "fee_switch_date": "2025-12-28",
+  "last_block": 24563598,
+  "note": "仅统计 fee switch 开启后的 Firepit 持续销毁，不含 100M 一次性国库销毁",
+  "retroactive_burn": {
+    "tx": "0x091f0083242a777d55821c1189e568d6d033d9da501b75087dc736fa143d2c1e",
+    "date": "2025-12-27",
+    "amount_uni": 100000000,
+    "note": "一次性国库销毁，不计入持续 TEV"
+  },
+  "summary": {
+    "total_uni_burned": 1444003.34,
+    "total_usd_burned": 6078713.43,
+    "days": 63,
+    "avg_daily_uni": 22920.69,
+    "annualized_uni": 8366051.0,
+    "annualized_usd": 35217943.0
+  },
+  "records": [
+    {
+      "id": "uni-burn-2025-12-29",
+      "date": "2025-12-29",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 12000.0,
+      "amount_usd": 74479.13,
+      "avg_price": 6.2066,
+      "tx_count": 3,
+      "period": "2025-12-29",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2025-12-30",
+      "date": "2025-12-30",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 8003.34,
+      "amount_usd": 47908.62,
+      "avg_price": 5.9861,
+      "tx_count": 4,
+      "period": "2025-12-30",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2025-12-31",
+      "date": "2025-12-31",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 8000.0,
+      "amount_usd": 47347.46,
+      "avg_price": 5.9184,
+      "tx_count": 2,
+      "period": "2025-12-31",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-01",
+      "date": "2026-01-01",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 4000.0,
+      "amount_usd": 22488.95,
+      "avg_price": 5.6222,
+      "tx_count": 1,
+      "period": "2026-01-01",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-02",
+      "date": "2026-01-02",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 20000.0,
+      "amount_usd": 115991.88,
+      "avg_price": 5.7996,
+      "tx_count": 6,
+      "period": "2026-01-02",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-03",
+      "date": "2026-01-03",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 8000.0,
+      "amount_usd": 48292.59,
+      "avg_price": 6.0366,
+      "tx_count": 2,
+      "period": "2026-01-03",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-04",
+      "date": "2026-01-04",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 12000.0,
+      "amount_usd": 71055.51,
+      "avg_price": 5.9213,
+      "tx_count": 3,
+      "period": "2026-01-04",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-05",
+      "date": "2026-01-05",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 16000.0,
+      "amount_usd": 93355.56,
+      "avg_price": 5.8347,
+      "tx_count": 4,
+      "period": "2026-01-05",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-06",
+      "date": "2026-01-06",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 20000.0,
+      "amount_usd": 123558.24,
+      "avg_price": 6.1779,
+      "tx_count": 5,
+      "period": "2026-01-06",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-07",
+      "date": "2026-01-07",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 16000.0,
+      "amount_usd": 97081.9,
+      "avg_price": 6.0676,
+      "tx_count": 4,
+      "period": "2026-01-07",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-08",
+      "date": "2026-01-08",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 16000.0,
+      "amount_usd": 91547.49,
+      "avg_price": 5.7217,
+      "tx_count": 4,
+      "period": "2026-01-08",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-09",
+      "date": "2026-01-09",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 16000.0,
+      "amount_usd": 87761.17,
+      "avg_price": 5.4851,
+      "tx_count": 4,
+      "period": "2026-01-09",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-10",
+      "date": "2026-01-10",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 4000.0,
+      "amount_usd": 21845.79,
+      "avg_price": 5.4614,
+      "tx_count": 1,
+      "period": "2026-01-10",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-11",
+      "date": "2026-01-11",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 12000.0,
+      "amount_usd": 65744.44,
+      "avg_price": 5.4787,
+      "tx_count": 3,
+      "period": "2026-01-11",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-12",
+      "date": "2026-01-12",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 16000.0,
+      "amount_usd": 86977.98,
+      "avg_price": 5.4361,
+      "tx_count": 4,
+      "period": "2026-01-12",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-13",
+      "date": "2026-01-13",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 16000.0,
+      "amount_usd": 85737.4,
+      "avg_price": 5.3586,
+      "tx_count": 4,
+      "period": "2026-01-13",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-14",
+      "date": "2026-01-14",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 20000.0,
+      "amount_usd": 114255.96,
+      "avg_price": 5.7128,
+      "tx_count": 5,
+      "period": "2026-01-14",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-15",
+      "date": "2026-01-15",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 20000.0,
+      "amount_usd": 113676.44,
+      "avg_price": 5.6838,
+      "tx_count": 5,
+      "period": "2026-01-15",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-16",
+      "date": "2026-01-16",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 12000.0,
+      "amount_usd": 64196.41,
+      "avg_price": 5.3497,
+      "tx_count": 3,
+      "period": "2026-01-16",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-17",
+      "date": "2026-01-17",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 4000.0,
+      "amount_usd": 21249.8,
+      "avg_price": 5.3124,
+      "tx_count": 1,
+      "period": "2026-01-17",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-18",
+      "date": "2026-01-18",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 8000.0,
+      "amount_usd": 42821.05,
+      "avg_price": 5.3526,
+      "tx_count": 2,
+      "period": "2026-01-18",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-19",
+      "date": "2026-01-19",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 16000.0,
+      "amount_usd": 82131.6,
+      "avg_price": 5.1332,
+      "tx_count": 4,
+      "period": "2026-01-19",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-20",
+      "date": "2026-01-20",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 24000.0,
+      "amount_usd": 120630.22,
+      "avg_price": 5.0263,
+      "tx_count": 6,
+      "period": "2026-01-20",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-21",
+      "date": "2026-01-21",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 26000.0,
+      "amount_usd": 124842.4,
+      "avg_price": 4.8016,
+      "tx_count": 7,
+      "period": "2026-01-21",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-22",
+      "date": "2026-01-22",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 16000.0,
+      "amount_usd": 78910.64,
+      "avg_price": 4.9319,
+      "tx_count": 4,
+      "period": "2026-01-22",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-23",
+      "date": "2026-01-23",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 12000.0,
+      "amount_usd": 58007.25,
+      "avg_price": 4.8339,
+      "tx_count": 3,
+      "period": "2026-01-23",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-24",
+      "date": "2026-01-24",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 4000.0,
+      "amount_usd": 19492.08,
+      "avg_price": 4.873,
+      "tx_count": 1,
+      "period": "2026-01-24",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-25",
+      "date": "2026-01-25",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 20000.0,
+      "amount_usd": 96989.76,
+      "avg_price": 4.8495,
+      "tx_count": 5,
+      "period": "2026-01-25",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-26",
+      "date": "2026-01-26",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 20000.0,
+      "amount_usd": 92591.99,
+      "avg_price": 4.6296,
+      "tx_count": 5,
+      "period": "2026-01-26",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-27",
+      "date": "2026-01-27",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 12000.0,
+      "amount_usd": 56547.87,
+      "avg_price": 4.7123,
+      "tx_count": 3,
+      "period": "2026-01-27",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-28",
+      "date": "2026-01-28",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 16000.0,
+      "amount_usd": 76817.63,
+      "avg_price": 4.8011,
+      "tx_count": 4,
+      "period": "2026-01-28",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-29",
+      "date": "2026-01-29",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 24000.0,
+      "amount_usd": 115762.27,
+      "avg_price": 4.8234,
+      "tx_count": 6,
+      "period": "2026-01-29",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-30",
+      "date": "2026-01-30",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 34000.0,
+      "amount_usd": 149372.28,
+      "avg_price": 4.3933,
+      "tx_count": 9,
+      "period": "2026-01-30",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-01-31",
+      "date": "2026-01-31",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 68000.0,
+      "amount_usd": 290475.92,
+      "avg_price": 4.2717,
+      "tx_count": 17,
+      "period": "2026-01-31",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-01",
+      "date": "2026-02-01",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 36000.0,
+      "amount_usd": 142044.92,
+      "avg_price": 3.9457,
+      "tx_count": 9,
+      "period": "2026-02-01",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-02",
+      "date": "2026-02-02",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 40000.0,
+      "amount_usd": 153959.59,
+      "avg_price": 3.849,
+      "tx_count": 10,
+      "period": "2026-02-02",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-03",
+      "date": "2026-02-03",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 36000.0,
+      "amount_usd": 141315.4,
+      "avg_price": 3.9254,
+      "tx_count": 9,
+      "period": "2026-02-03",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-04",
+      "date": "2026-02-04",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 44000.0,
+      "amount_usd": 169174.6,
+      "avg_price": 3.8449,
+      "tx_count": 11,
+      "period": "2026-02-04",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-05",
+      "date": "2026-02-05",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 126000.0,
+      "amount_usd": 479458.31,
+      "avg_price": 3.8052,
+      "tx_count": 32,
+      "period": "2026-02-05",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-06",
+      "date": "2026-02-06",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 80000.0,
+      "amount_usd": 254157.27,
+      "avg_price": 3.177,
+      "tx_count": 20,
+      "period": "2026-02-06",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-07",
+      "date": "2026-02-07",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 40000.0,
+      "amount_usd": 142112.06,
+      "avg_price": 3.5528,
+      "tx_count": 10,
+      "period": "2026-02-07",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-08",
+      "date": "2026-02-08",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 24000.0,
+      "amount_usd": 85080.46,
+      "avg_price": 3.545,
+      "tx_count": 7,
+      "period": "2026-02-08",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-09",
+      "date": "2026-02-09",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 28000.0,
+      "amount_usd": 97332.75,
+      "avg_price": 3.4762,
+      "tx_count": 7,
+      "period": "2026-02-09",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-10",
+      "date": "2026-02-10",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 24000.0,
+      "amount_usd": 83886.38,
+      "avg_price": 3.4953,
+      "tx_count": 6,
+      "period": "2026-02-10",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-11",
+      "date": "2026-02-11",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 32000.0,
+      "amount_usd": 107590.92,
+      "avg_price": 3.3622,
+      "tx_count": 8,
+      "period": "2026-02-11",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-12",
+      "date": "2026-02-12",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 28000.0,
+      "amount_usd": 94476.77,
+      "avg_price": 3.3742,
+      "tx_count": 7,
+      "period": "2026-02-12",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-13",
+      "date": "2026-02-13",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 20000.0,
+      "amount_usd": 64905.97,
+      "avg_price": 3.2453,
+      "tx_count": 5,
+      "period": "2026-02-13",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-14",
+      "date": "2026-02-14",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 16000.0,
+      "amount_usd": 54337.28,
+      "avg_price": 3.3961,
+      "tx_count": 4,
+      "period": "2026-02-14",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-15",
+      "date": "2026-02-15",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 24000.0,
+      "amount_usd": 86990.38,
+      "avg_price": 3.6246,
+      "tx_count": 6,
+      "period": "2026-02-15",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-16",
+      "date": "2026-02-16",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 20000.0,
+      "amount_usd": 69428.98,
+      "avg_price": 3.4714,
+      "tx_count": 5,
+      "period": "2026-02-16",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-17",
+      "date": "2026-02-17",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 20000.0,
+      "amount_usd": 72126.79,
+      "avg_price": 3.6063,
+      "tx_count": 5,
+      "period": "2026-02-17",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-18",
+      "date": "2026-02-18",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 26000.0,
+      "amount_usd": 91657.89,
+      "avg_price": 3.5253,
+      "tx_count": 8,
+      "period": "2026-02-18",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-19",
+      "date": "2026-02-19",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 20000.0,
+      "amount_usd": 67983.1,
+      "avg_price": 3.3992,
+      "tx_count": 5,
+      "period": "2026-02-19",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-20",
+      "date": "2026-02-20",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 24000.0,
+      "amount_usd": 81292.75,
+      "avg_price": 3.3872,
+      "tx_count": 6,
+      "period": "2026-02-20",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-21",
+      "date": "2026-02-21",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 4000.0,
+      "amount_usd": 13953.89,
+      "avg_price": 3.4885,
+      "tx_count": 1,
+      "period": "2026-02-21",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-22",
+      "date": "2026-02-22",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 12000.0,
+      "amount_usd": 43318.08,
+      "avg_price": 3.6098,
+      "tx_count": 3,
+      "period": "2026-02-22",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-23",
+      "date": "2026-02-23",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 24000.0,
+      "amount_usd": 83522.48,
+      "avg_price": 3.4801,
+      "tx_count": 6,
+      "period": "2026-02-23",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-24",
+      "date": "2026-02-24",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 16000.0,
+      "amount_usd": 53461.22,
+      "avg_price": 3.3413,
+      "tx_count": 4,
+      "period": "2026-02-24",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-25",
+      "date": "2026-02-25",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 32000.0,
+      "amount_usd": 106791.91,
+      "avg_price": 3.3372,
+      "tx_count": 8,
+      "period": "2026-02-25",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-26",
+      "date": "2026-02-26",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 20000.0,
+      "amount_usd": 80193.57,
+      "avg_price": 4.0097,
+      "tx_count": 5,
+      "period": "2026-02-26",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-27",
+      "date": "2026-02-27",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 24000.0,
+      "amount_usd": 92985.42,
+      "avg_price": 3.8744,
+      "tx_count": 6,
+      "period": "2026-02-27",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-02-28",
+      "date": "2026-02-28",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 24000.0,
+      "amount_usd": 89845.68,
+      "avg_price": 3.7436,
+      "tx_count": 6,
+      "period": "2026-02-28",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    },
+    {
+      "id": "uni-burn-2026-03-01",
+      "date": "2026-03-01",
+      "type": "buyback_burn",
+      "mechanism": "Firepit burn",
+      "amount_uni": 20000.0,
+      "amount_usd": 75382.93,
+      "avg_price": 3.7691,
+      "tx_count": 5,
+      "period": "2026-03-01",
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan",
+        "url": "https://etherscan.io/token/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984?a=0x000000000000000000000000000000000000dead"
+      }
+    }
+  ]
+}
