@@ -222,7 +222,7 @@
         const resp = await fetch(`../data/protocols/${pid}/tev-records.json`);
         if (!resp.ok) return;
         const { records } = await resp.json();
-        if (!records?.length) return;
+        if (!records?.length) { const sec=document.getElementById('tev-chart-section'); if (sec) sec.style.display='none'; return; }
         records.sort((a, b) => new Date(a.date) - new Date(b.date));
         const types = [...new Set(records.map(r => r.type))];
         const isDaily = records.length > 60;
@@ -280,7 +280,12 @@
         if (!periodEl) { periodEl = document.createElement('div'); periodEl.id = 'tev-chart-period'; periodEl.style.cssText = 'position:absolute;top:12px;right:16px;font-size:11px;color:#71717a;'; document.querySelector('#tev-chart-section .chart-container').style.position = 'relative'; document.querySelector('#tev-chart-section .chart-container').appendChild(periodEl); }
         periodEl.textContent = fmtPeriod(records[0].date) + ' - ' + fmtPeriod(records[records.length - 1].date);
         document.getElementById('tev-chart-section').classList.add('has-data');
-      } catch (e) { console.log('No TEV records:', e.message); }
+      } catch (e) {
+        console.log('No TEV records:', e.message);
+        // 无数据时隐藏图表区块，避免空白
+        const sec = document.getElementById('tev-chart-section');
+        if (sec) sec.style.display = 'none';
+      }
     }
 
     async function loadBurnsChart(pid) {
@@ -619,7 +624,8 @@
         document.getElementById('content').style.display = 'block';
         loadTevChart(pid);
         if (['bnb', 'hype', 'uniswap', 'sky'].includes(pid)) loadBurnsChart(pid);
-        if (['aster'].includes(pid)) loadBuybackData(pid);
+        // Aster 已有 tev-records，优先展示 TEV 历史图
+        // if (['aster'].includes(pid)) loadBuybackData(pid);
       } catch (e) {
         console.error('Failed:', e);
         document.getElementById('loading').innerHTML = `<div style="color:var(--danger);">Failed to load protocol</div><div style="margin-top:8px;font-size:12px;">${e.message}</div><div style="margin-top:16px;"><a href="index.html" style="color:var(--blue);">← Back</a></div>`;
