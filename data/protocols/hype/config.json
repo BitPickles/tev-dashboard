@@ -64,7 +64,9 @@
     "circulating_market_cap": 7368065201,
     "snapshot_date": "2026-03-01",
     "data_source": "CoinGecko",
-    "circulating_supply": 238385316
+    "circulating_supply": 238385316,
+    "tvl": 4260689401,
+    "tvl_updated": "2026-03-02T13:02:28.302Z"
   },
   "calculated_tev": {
     "tev_yield_percent": 12.42,
@@ -167,14 +169,17 @@
         "note": "Assistance Fund 回购销毁（已与链上 AF 余额交叉验证）"
       }
     ],
-    "calculation": "$915.2M / $7368M = 12.42%"
+    "calculation": "$915.2M / $7368M = 12.42%",
+    "trailing_365d_tev_usd": 915555603,
+    "last_updated": "2026-03-02"
   },
   "burn_progress": {
-    "total_burned": 41533533,
+    "total_burned": 41576948.0,
     "target": 1000000000,
     "ticker": "HYPE",
     "note": "Assistance Fund 累计回购销毁，占总供应 10 亿的 4.2%。",
-    "target_label": "total_supply"
+    "target_label": "total_supply",
+    "pct": 4.16
   },
   "tevStatus": "active",
   "confidence_reason": {

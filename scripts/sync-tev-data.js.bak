@@ -28,17 +28,16 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'aave', 
     coingeckoId: 'aave',
     cmcSlug: 'aave',
-    tevRatio: null,  // 特殊：固定回购 + holdersRevenue
+    tevRatio: null,  // 特殊：固定年度回购 $50M
     fixedTevUsd: 50000000,
-    addHoldersRevenue: true,  // 额外加上 DefiLlama holdersRevenue（Safety Module 质押奖励）
-    note: '年度回购 $50M + Safety Module 质押奖励'
+    note: '年度回购 $50M + Safety Module'
   },
   curve: { 
     defillamaSlug: 'curve-dex', 
     coingeckoId: 'curve-dao-token',
     cmcSlug: 'curve-dao-token',
-    tevRatio: 1.0,
-    note: 'DL Revenue = admin fee (已扣LP), 几乎全部分给 veCRV'
+    tevRatio: 0.5,
+    note: 'veCRV 分红 50%'
   },
   dydx: { 
     defillamaSlug: 'dydx', 
@@ -65,8 +64,8 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'gmx', 
     coingeckoId: 'gmx',
     cmcSlug: 'gmx',
-    tevRatio: 0.9,
-    note: 'DL Revenue = Fees×30%(staker), DAO投票后实际27%, TEV = Revenue×(27/30)=0.9'
+    tevRatio: 0.27,
+    note: '27% 费用分红 (docs.gmx.io)'
   },
   maple: { 
     defillamaSlug: 'maple', 
@@ -80,7 +79,7 @@ const PROTOCOL_CONFIG = {
     coingeckoId: 'pancakeswap-token',
     cmcSlug: 'pancakeswap',
     tevRatio: 0.58,
-    note: '58% 协议留存(Revenue)用于回购销毁 CAKE'
+    note: '58% 回购销毁 (44-72% 按费率取中间值)'
   },
   pendle: { 
     defillamaSlug: 'pendle', 
@@ -178,21 +177,6 @@ async function getDefillamaRevenue(slug) {
     return { revenue365d: total365, revenue30d: total30 };
   } catch (e) {
     console.warn(`  ⚠️ DefiLlama ${slug}: ${e.message}`);
-    return null;
-  }
-}
-
-// 获取 DefiLlama HoldersRevenue（质押奖励/分红等）
-async function getDefillamaHoldersRevenue(slug) {
-  try {
-    const data = await fetchJson(`https://api.llama.fi/summary/fees/${slug}?dataType=dailyHoldersRevenue`);
-    const chart = data.totalDataChart || [];
-    const last365 = chart.slice(-365);
-    const total365 = last365.reduce((sum, d) => sum + (d[1] || 0), 0);
-    const total30 = chart.slice(-30).reduce((sum, d) => sum + (d[1] || 0), 0);
-    return { holdersRevenue365d: total365, holdersRevenue30d: total30 };
-  } catch (e) {
-    console.warn(`  ⚠️ DefiLlama holdersRevenue ${slug}: ${e.message}`);
     return null;
   }
 }
@@ -340,27 +324,11 @@ async function main() {
       continue;
     }
     
-    // 获取 holdersRevenue（如需要）
-    let holdersRevenueData = null;
-    if (config.addHoldersRevenue || config.useHoldersRevenue) {
-      holdersRevenueData = await getDefillamaHoldersRevenue(config.defillamaSlug);
-      if (holdersRevenueData) {
-        console.log(`  HoldersRevenue 365d: $${(holdersRevenueData.holdersRevenue365d/1e6).toFixed(2)}M`);
-      }
-    }
-    
     // 计算 TEV
     let tev365d;
     if (config.fixedTevUsd) {
-      // 固定 TEV + holdersRevenue（如 Aave: $50M 回购 + 质押奖励）
+      // 固定 TEV（如 Aave）
       tev365d = config.fixedTevUsd;
-      if (config.addHoldersRevenue && holdersRevenueData) {
-        tev365d += holdersRevenueData.holdersRevenue365d;
-      }
-    } else if (config.useHoldersRevenue && holdersRevenueData) {
-      // 直接使用 DefiLlama holdersRevenue 作为 TEV
-      tev365d = holdersRevenueData.holdersRevenue365d;
-      console.log(`  TEV = holdersRevenue: ${(tev365d/1e6).toFixed(2)}M`);
     } else if (config.tevRatio) {
       // 按比例计算
       tev365d = revenueData.revenue365d * config.tevRatio;
@@ -386,10 +354,6 @@ async function main() {
     protocol.metrics.trailing_30d_revenue_usd = revenueData.revenue30d;
     protocol.metrics.trailing_365d_tev_usd = tev365d;
     protocol.metrics.trailing_30d_tev_usd = tev365d / 12;
-    if (holdersRevenueData) {
-      protocol.metrics.trailing_365d_holders_revenue_usd = holdersRevenueData.holdersRevenue365d;
-      protocol.metrics.trailing_30d_holders_revenue_usd = holdersRevenueData.holdersRevenue30d;
-    }
     protocol.tev_yield_percent = Math.round(tevYield * 100) / 100;
     
     // 输出变化

@@ -12,7 +12,7 @@ const PROTOCOLS_DIR = path.join(__dirname, '../data/protocols');
 // 协议 ID 映射 (本地目录名 -> DefiLlama protocol slug)
 const DEFILLAMA_MAPPING = {
   'aave': 'aave',
-  'aster': 'asterdex',
+  'aster': ['aster-bridge', 'aster-asbnb', 'aster-usdf', 'aster-asbtc', 'aster-perps', 'aster-spot'],
   'compound': 'compound-finance',
   'curve': 'curve-dex',
   'dydx': 'dydx',
@@ -33,6 +33,7 @@ const DEFILLAMA_MAPPING = {
   'sky': 'makerdao',
   'spark': 'spark',
   'uniswap': 'uniswap',
+  'fluid': ['fluid-lending', 'fluid-dex', 'fluid-lite', 'fluid-dex-lite'],
   // CEX tokens - 部分有特殊 TVL 来源
   'bgb': null,        // Bitget - 无 TVL
   'bnb': 'chain:BSC', // BNB - 使用 BNB Chain 整条链的 TVL
@@ -77,8 +78,12 @@ async function fetchTVL(defillamaId) {
     console.error(`  ✗ Failed to fetch TVL for ${defillamaId}: HTTP ${res.status}`);
     return null;
   }
-  const tvl = await res.json();
-  return typeof tvl === 'number' ? tvl : null;
+  try {
+    const tvl = await res.json();
+    return typeof tvl === 'number' ? tvl : null;
+  } catch {
+    return null;
+  }
 }
 
 async function main() {
@@ -111,7 +116,20 @@ async function main() {
       continue;
     }
 
-    const tvl = await fetchTVL(defillamaId);
+    // Support array of slugs (sum TVL across products)
+    let tvl = null;
+    if (Array.isArray(defillamaId)) {
+      let total = 0;
+      let fetched = 0;
+      for (const slug of defillamaId) {
+        const v = await fetchTVL(slug);
+        if (v !== null) { total += v; fetched++; }
+        await sleep(300);
+      }
+      tvl = fetched > 0 ? total : null;
+    } else {
+      tvl = await fetchTVL(defillamaId);
+    }
     
     if (tvl !== null) {
       // 更新 config.json
