@@ -430,7 +430,7 @@
           <td class="text-right"><span class="value ${tevRatio >= 0.5 ? 'value-highlight' : tevRatio > 0 ? '' : 'value-zero'}">${tevRatioDisplay}</span></td>
           <td class="text-right"><span class="value">${formatCurrency(mcap)}</span></td>
           <td class="text-right"><span class="value ${earningYield > 0.1 ? 'value-highlight' : earningYield === 0 ? 'value-zero' : ''}">${earningYield > 0 ? formatPercent(earningYield) : '—'}</span></td>
-          <td class="text-right"><span class="value ${tevYield > 0.05 ? 'value-highlight' : tevYield === 0 ? 'value-zero' : ''}">${formatPercent(tevYield)}</span></td>
+          <td class="text-right"><span class="value ${tevYield > 5 ? 'value-highlight' : tevYield === 0 ? 'value-zero' : ''}">${formatPercent(tevYield)}</span></td>
           <td class="text-right"><span class="badge badge-${p.confidence === 'high' ? 'high' : p.confidence === 'medium' ? 'medium' : 'low'}" data-tip="${(p.confidence_reason && p.confidence_reason[currentLang]) || ''}">${p.confidence === 'high' ? '✓' : '!'} ${t('confidence.' + p.confidence)}</span></td>
         `;
         tbody.appendChild(row);
