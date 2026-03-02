@@ -37,9 +37,8 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'curve-dex', 
     coingeckoId: 'curve-dao-token',
     cmcSlug: 'curve-dao-token',
-    tevRatio: null,
-    useHoldersRevenue: true,
-    note: 'veCRV 分红，直接用 DefiLlama holdersRevenue'
+    tevRatio: 0.5,
+    note: 'veCRV 分红 50%'
   },
   dydx: { 
     defillamaSlug: 'dydx', 
@@ -66,9 +65,8 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'gmx', 
     coingeckoId: 'gmx',
     cmcSlug: 'gmx',
-    tevRatio: null,
-    useHoldersRevenue: true,
-    note: '27% 平台总费用分红，直接用 DefiLlama holdersRevenue'
+    tevRatio: 0.27,
+    note: '27% 费用分红 (docs.gmx.io)'
   },
   maple: { 
     defillamaSlug: 'maple', 
@@ -81,9 +79,8 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'pancakeswap', 
     coingeckoId: 'pancakeswap-token',
     cmcSlug: 'pancakeswap',
-    tevRatio: null,
-    useHoldersRevenue: true,
-    note: 'Tokenomics 3.0 回购销毁，直接用 DefiLlama holdersRevenue'
+    tevRatio: 0.58,
+    note: '58% 回购销毁 (44-72% 按费率取中间值)'
   },
   pendle: { 
     defillamaSlug: 'pendle', 
