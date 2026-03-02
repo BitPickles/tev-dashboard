@@ -576,7 +576,7 @@
         document.getElementById('loading').style.display = 'none';
         document.getElementById('content').style.display = 'block';
         loadTevChart(pid);
-        if (['bnb', 'hype', 'uniswap'].includes(pid)) loadBurnsChart(pid);
+        if (['bnb', 'hype', 'uniswap', 'sky'].includes(pid)) loadBurnsChart(pid);
         if (['aster'].includes(pid)) loadBuybackData(pid);
       } catch (e) {
         console.error('Failed:', e);
