@@ -17,6 +17,12 @@
   },
   "tev_mechanisms": [
     {
+      "type": "staking_reward",
+      "name": "GMX 质押奖励",
+      "description": "GMX 质押者获得 30% 平台费用（ETH/AVAX）",
+      "status": "active"
+    },
+    {
       "type": "fee_sharing",
       "name": "GMX Staking Rewards",
       "description": "27% 平台费用分配给质押的 GMX（通过回购机制分配）",

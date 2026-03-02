@@ -18,6 +18,12 @@
   },
   "tev_mechanisms": [
     {
+      "type": "fee_sharing",
+      "name": "DYDX 质押分红",
+      "description": "100% 协议费用分配给 DYDX 质押者",
+      "status": "active"
+    },
+    {
       "type": "buyback",
       "name": "Protocol Revenue Buyback",
       "description": "75% 净协议费用用于 DYDX 回购",

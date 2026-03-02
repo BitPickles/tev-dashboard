@@ -15,6 +15,12 @@
   },
   "tev_mechanisms": [
     {
+      "type": "ve_distribution",
+      "name": "veCRV 分红",
+      "description": "veCRV 持有者获得 3CRV 管理费分红",
+      "status": "active"
+    },
+    {
       "type": "fee_sharing",
       "name": "veCRV Fee Distribution",
       "description": "50% 交易手续费分配给 veCRV 持有者（以 crvUSD 形式）",

@@ -15,6 +15,12 @@
   },
   "tev_mechanisms": [
     {
+      "type": "holders_revenue",
+      "name": "Smart Burn + 质押收益",
+      "description": "DSR 收入通过 Splitter 分配：burn 部分回购销毁 MKR，farm 部分分配给 SKY stakers",
+      "status": "active"
+    },
+    {
       "type": "buyback_burn",
       "name": "Smart Burn Engine (SBE)",
       "description": "协议盈余用于回购 MKR 并添加流动性（Smart Burn Engine）",
@@ -83,5 +89,57 @@
   "confidence_reason": {
     "zh": "Smart Burn Engine 合约链上可追踪 + DefiLlama 验证",
     "en": "Smart Burn Engine contract on-chain trackable + DefiLlama validated"
+  },
+  "analyst_notes": {
+    "overview": {
+      "tev_12m": "$128.96M",
+      "latest_month": "$275.5K (2026-03)",
+      "mechanism": "Smart Burn Engine",
+      "yield_source": "Dai Savings Rate (DSR) revenue"
+    },
+    "burn_ratio": {
+      "dynamic": true,
+      "current": 1.0,
+      "governance": "Executive Vote"
+    },
+    "historical_changes": [
+      {
+        "date": "2024-10-17",
+        "from": 1.0,
+        "to": 0.7,
+        "vote": "Reduce Splitter Burn Rate"
+      },
+      {
+        "date": "2025-05-29",
+        "from": 1.0,
+        "to": 0.5,
+        "vote": "Reduce Splitter Burn Rate"
+      },
+      {
+        "date": "2025-08-21",
+        "from": 0.5,
+        "to": 0.25,
+        "vote": "Decrease Splitter Burn Rate"
+      },
+      {
+        "date": "2025-10-30",
+        "from": 0.25,
+        "to": 1.0,
+        "vote": "Increase Splitter Burn Rate"
+      }
+    ],
+    "contracts": {
+      "Splitter": "0xBF7111F13386d23cb2Fba5A538107A73f6872bCF",
+      "Flapper": "0x374D9c3d5134052Bc558F432Afa1df6575f07407",
+      "Vow": "0xa950524441892a31ebddf91d3ceefa04bf454466",
+      "Farm": "0x38E4254bD82ED5Ee97CD1C4278FAae748d998865"
+    },
+    "data_source": "DefiLlama HoldersRevenue",
+    "mechanism_note": "Dai Savings Rate (DSR) 收入通过 Splitter 分配：burn 部分用于回购销毁 MKR，farm 部分分配给 SKY stakers。DefiLlama HoldersRevenue = buyback + stakers_reward，自动反映治理投票后的分配比例变化。",
+    "links": {
+      "governance": "https://vote.skydao.eth/",
+      "burn_engine": "https://info-sky.blockanalitica.com/buyback/",
+      "api": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue"
+    }
   }
 }

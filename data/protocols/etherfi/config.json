@@ -31,17 +31,10 @@
       }
     },
     {
-      "type": "buyback_accumulate",
-      "name": "$50M Treasury Buyback Program",
-      "description": "Foundation 授权使用国库最高 $50M 在 ETHFI < $3 时执行回购，逐步扩大协议收入中回购占比",
-      "status": "active",
-      "start_date": "2025-10-30",
-      "source": {
-        "type": "governance",
-        "title": "Ether.Fi DAO Proposal: Treasury Deployment for ETHFI Buy-Back Program",
-        "url": "https://governance.ether.fi/t/ether-fi-dao-proposal-treasury-deployment-for-ethfi-buy-back-program/3178",
-        "proposal_id": "0xe5b64c773d23c92e62092a713b14cc72a98a46c923e36cf885455118854337b0"
-      }
+      "type": "buyback",
+      "name": "ETHFI 回购",
+      "description": "提现收入用于回购 ETHFI",
+      "status": "active"
     }
   ],
   "tev_summary": {

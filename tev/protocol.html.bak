@@ -59,7 +59,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="../indicators/js/chart-utils.js"></script>
-<script src="notes-helper.js"></script></head>
+</head>
 <body>
   <header>
     <div class="container">
@@ -171,8 +171,8 @@
 
   <script>
     const i18n = {
-      zh: { 'nav.dashboard': '仪表盘', 'loading': '加载中...', 'section.tevSummary': 'TEV 概览', 'section.tevHistory': 'TEV 历史记录', 'section.buybackAddresses': '回购地址', 'section.tevMechanisms': 'TEV 机制详情', 'section.dataSources': '数据来源', 'section.notes': '分析师备注', 'section.references': '参考资料', 'buyback.current': '当前阶段', 'buyback.historical': '历史阶段', 'buyback.legacy': '历史钱包', 'buyback.disposal': '处置地址', 'buyback.autoDailyBuyback': '自动每日回购', 'buyback.strategicReserve': '战略回购储备', 'buyback.burnAddress': '销毁地址', 'buyback.airdropLock': '空投锁仓', 'buyback.progress': '回购进度', 'buyback.totalBought': '已回购', 'buyback.totalUsd': '回购价值', 'buyback.totalSupply': '代币总量', 'section.buybackData': '回购数据', 'chart.totalTev': '累计 TEV', 'chart.records': '记录数', 'chart.avgMonthly': '月均 TEV', 'chart.period': '数据周期', 'chart.cumulative': '累计 TEV', 'chart.zoomHint': '🖱️ 滚轮缩放 · 拖动平移 · 双击重置', 'tev.feeSwitch': '费用开关', 'tev.buybacks': '回购', 'tev.dividends': '分红', 'tev.burns': '销毁', 'tev.confidence': '可信度', 'footer.lastUpdated': '最后更新', 'status.active': '活跃', 'status.planned': '计划中', 'status.inactive': '未激活', 'status.ON': '已开启', 'status.OFF': '未开启', 'status.PARTIAL': '部分', 'status.NONE': '无', 'status.ACTIVE': '活跃', 'noTev.title': '该协议目前没有 TEV 机制', 'noTev.desc': '代币仅用于治理，协议收入未分配给代币持有者', 'mechanism.type.buyback': '回购', 'mechanism.type.buyback_burn': '回购销毁', 'mechanism.type.staking_reward': '质押奖励', 'mechanism.type.fee_sharing': '费用分成', 'mechanism.type.ve_distribution': 've 分配', 'mechanism.type.airdrop': '空投', 'mechanism.type.aggregate': '综合 TEV', 'mechanism.type.burn': '销毁', 'mechanism.type.direct_distribution': '直接分配', 'mechanism.type.ve_reward': 've 奖励', 'mechanism.type.holders_revenue': '持有者收入', 'source.governance': '治理', 'source.documentation': '文档', 'source.report': '报告', 'source.api': 'API', 'source.onchain': '链上', 'confidence.high': '高', 'confidence.medium': '中', 'confidence.low': '低', 'burn.progress': '销毁进度', 'burn.totalBurned': '已销毁', 'burn.remaining': '剩余供应', 'burn.target': '目标供应' },
-      en: { 'nav.dashboard': 'Dashboard', 'loading': 'Loading...', 'section.tevSummary': 'TEV Summary', 'section.tevHistory': 'TEV History', 'section.buybackAddresses': 'Buyback Addresses', 'section.tevMechanisms': 'TEV Mechanisms', 'section.dataSources': 'Data Sources', 'section.notes': 'Analyst Notes', 'section.references': 'References', 'buyback.current': 'Current Stage', 'buyback.historical': 'Historical Stage', 'buyback.legacy': 'Legacy Wallets', 'buyback.disposal': 'Disposal Addresses', 'buyback.autoDailyBuyback': 'Auto Daily Buyback', 'buyback.strategicReserve': 'Strategic Reserve', 'buyback.burnAddress': 'Burn Address', 'buyback.airdropLock': 'Airdrop Lock', 'buyback.progress': 'Buyback Progress', 'buyback.totalBought': 'Total Bought', 'buyback.totalUsd': 'Total Value', 'buyback.totalSupply': 'Total Supply', 'section.buybackData': 'Buyback Data', 'chart.totalTev': 'Total TEV', 'chart.records': 'Records', 'chart.avgMonthly': 'Avg Monthly', 'chart.period': 'Period', 'chart.cumulative': 'Cumulative TEV', 'chart.zoomHint': '🖱️ Scroll to zoom · Drag to pan · Double-click to reset', 'tev.feeSwitch': 'Fee Switch', 'tev.buybacks': 'Buybacks', 'tev.dividends': 'Dividends', 'tev.burns': 'Burns', 'tev.confidence': 'Confidence', 'footer.lastUpdated': 'Last Updated', 'status.active': 'Active', 'status.planned': 'Planned', 'status.inactive': 'Inactive', 'status.ON': 'ON', 'status.OFF': 'OFF', 'status.PARTIAL': 'Partial', 'status.NONE': 'None', 'status.ACTIVE': 'Active', 'noTev.title': 'No TEV Mechanisms', 'noTev.desc': 'Token is governance-only, protocol revenue not distributed to holders', 'mechanism.type.buyback': 'Buyback', 'mechanism.type.buyback_burn': 'Buyback & Burn', 'mechanism.type.staking_reward': 'Staking Reward', 'mechanism.type.fee_sharing': 'Fee Sharing', 'mechanism.type.ve_distribution': 've Distribution', 'mechanism.type.airdrop': 'Airdrop', 'mechanism.type.aggregate': 'Total TEV', 'mechanism.type.burn': 'Burn', 'mechanism.type.direct_distribution': 'Direct Distribution', 'mechanism.type.ve_reward': 've Reward', 'mechanism.type.holders_revenue': 'Holders Revenue', 'source.governance': 'Governance', 'source.documentation': 'Docs', 'source.report': 'Report', 'source.api': 'API', 'source.onchain': 'On-chain', 'confidence.high': 'High', 'confidence.medium': 'Medium', 'confidence.low': 'Low', 'burn.progress': 'Burn Progress', 'burn.totalBurned': 'Total Burned', 'burn.remaining': 'Remaining Supply', 'burn.target': 'Target Supply' }
+      zh: { 'nav.dashboard': '仪表盘', 'loading': '加载中...', 'section.tevSummary': 'TEV 概览', 'section.tevHistory': 'TEV 历史记录', 'section.buybackAddresses': '回购地址', 'section.tevMechanisms': 'TEV 机制详情', 'section.dataSources': '数据来源', 'section.notes': '分析师备注', 'section.references': '参考资料', 'buyback.current': '当前阶段', 'buyback.historical': '历史阶段', 'buyback.legacy': '历史钱包', 'buyback.disposal': '处置地址', 'buyback.autoDailyBuyback': '自动每日回购', 'buyback.strategicReserve': '战略回购储备', 'buyback.burnAddress': '销毁地址', 'buyback.airdropLock': '空投锁仓', 'buyback.progress': '回购进度', 'buyback.totalBought': '已回购', 'buyback.totalUsd': '回购价值', 'buyback.totalSupply': '代币总量', 'section.buybackData': '回购数据', 'chart.totalTev': '累计 TEV', 'chart.records': '记录数', 'chart.avgMonthly': '月均 TEV', 'chart.period': '数据周期', 'chart.cumulative': '累计 TEV', 'chart.zoomHint': '🖱️ 滚轮缩放 · 拖动平移 · 双击重置', 'tev.feeSwitch': '费用开关', 'tev.buybacks': '回购', 'tev.dividends': '分红', 'tev.burns': '销毁', 'tev.confidence': '可信度', 'footer.lastUpdated': '最后更新', 'status.active': '活跃', 'status.planned': '计划中', 'status.inactive': '未激活', 'status.ON': '已开启', 'status.OFF': '未开启', 'status.PARTIAL': '部分', 'status.NONE': '无', 'status.ACTIVE': '活跃', 'noTev.title': '该协议目前没有 TEV 机制', 'noTev.desc': '代币仅用于治理，协议收入未分配给代币持有者', 'mechanism.type.buyback': '回购', 'mechanism.type.buyback_burn': '回购销毁', 'mechanism.type.staking_reward': '质押奖励', 'mechanism.type.fee_sharing': '费用分成', 'mechanism.type.ve_distribution': 've 分配', 'mechanism.type.airdrop': '空投', 'mechanism.type.aggregate': '综合 TEV', 'mechanism.type.burn': '销毁', 'mechanism.type.direct_distribution': '直接分配', 'mechanism.type.ve_reward': 've 奖励', 'source.governance': '治理', 'source.documentation': '文档', 'source.report': '报告', 'source.api': 'API', 'source.onchain': '链上', 'confidence.high': '高', 'confidence.medium': '中', 'confidence.low': '低', 'burn.progress': '销毁进度', 'burn.totalBurned': '已销毁', 'burn.remaining': '剩余供应', 'burn.target': '目标供应' },
+      en: { 'nav.dashboard': 'Dashboard', 'loading': 'Loading...', 'section.tevSummary': 'TEV Summary', 'section.tevHistory': 'TEV History', 'section.buybackAddresses': 'Buyback Addresses', 'section.tevMechanisms': 'TEV Mechanisms', 'section.dataSources': 'Data Sources', 'section.notes': 'Analyst Notes', 'section.references': 'References', 'buyback.current': 'Current Stage', 'buyback.historical': 'Historical Stage', 'buyback.legacy': 'Legacy Wallets', 'buyback.disposal': 'Disposal Addresses', 'buyback.autoDailyBuyback': 'Auto Daily Buyback', 'buyback.strategicReserve': 'Strategic Reserve', 'buyback.burnAddress': 'Burn Address', 'buyback.airdropLock': 'Airdrop Lock', 'buyback.progress': 'Buyback Progress', 'buyback.totalBought': 'Total Bought', 'buyback.totalUsd': 'Total Value', 'buyback.totalSupply': 'Total Supply', 'section.buybackData': 'Buyback Data', 'chart.totalTev': 'Total TEV', 'chart.records': 'Records', 'chart.avgMonthly': 'Avg Monthly', 'chart.period': 'Period', 'chart.cumulative': 'Cumulative TEV', 'chart.zoomHint': '🖱️ Scroll to zoom · Drag to pan · Double-click to reset', 'tev.feeSwitch': 'Fee Switch', 'tev.buybacks': 'Buybacks', 'tev.dividends': 'Dividends', 'tev.burns': 'Burns', 'tev.confidence': 'Confidence', 'footer.lastUpdated': 'Last Updated', 'status.active': 'Active', 'status.planned': 'Planned', 'status.inactive': 'Inactive', 'status.ON': 'ON', 'status.OFF': 'OFF', 'status.PARTIAL': 'Partial', 'status.NONE': 'None', 'status.ACTIVE': 'Active', 'noTev.title': 'No TEV Mechanisms', 'noTev.desc': 'Token is governance-only, protocol revenue not distributed to holders', 'mechanism.type.buyback': 'Buyback', 'mechanism.type.buyback_burn': 'Buyback & Burn', 'mechanism.type.staking_reward': 'Staking Reward', 'mechanism.type.fee_sharing': 'Fee Sharing', 'mechanism.type.ve_distribution': 've Distribution', 'mechanism.type.airdrop': 'Airdrop', 'mechanism.type.aggregate': 'Total TEV', 'mechanism.type.burn': 'Burn', 'mechanism.type.direct_distribution': 'Direct Distribution', 'mechanism.type.ve_reward': 've Reward', 'source.governance': 'Governance', 'source.documentation': 'Docs', 'source.report': 'Report', 'source.api': 'API', 'source.onchain': 'On-chain', 'confidence.high': 'High', 'confidence.medium': 'Medium', 'confidence.low': 'Low', 'burn.progress': 'Burn Progress', 'burn.totalBurned': 'Total Burned', 'burn.remaining': 'Remaining Supply', 'burn.target': 'Target Supply' }
     };
     let currentLang = 'zh';
     const t = k => i18n[currentLang][k] || k;
@@ -182,18 +182,8 @@
     const getTevStatus = (s, cfg) => cfg?.tevStatus || ((s.fee_switch === 'ON' || s.buybacks === 'ACTIVE' || s.dividends === 'ACTIVE' || s.burns === 'ACTIVE' || s.staking === 'ACTIVE') ? 'active' : (s.fee_switch === 'PARTIAL' || s.dividends === 'PARTIAL') ? 'partial' : 'none');
     const getValueClass = v => { const u = (v || '').toUpperCase(); return u === 'ON' || u === 'ACTIVE' ? 'value-on' : u === 'PARTIAL' ? 'value-partial' : 'value-off'; };
 
-    const TEV_COLORS = { buyback_burn: { bg: 'rgba(34,197,94,0.7)', border: '#22c55e' }, buyback: { bg: 'rgba(34,197,94,0.6)', border: '#22c55e' }, staking_reward: { bg: 'rgba(59,130,246,0.7)', border: '#3b82f6' }, direct_distribution: { bg: 'rgba(168,85,247,0.7)', border: '#a855f7' }, ve_reward: { bg: 'rgba(245,158,11,0.7)', border: '#f59e0b' }, fee_sharing: { bg: 'rgba(236,72,153,0.7)', border: '#ec4899' }, aggregate: { bg: 'rgba(99,102,241,0.7)', border: '#6366f1' }, burn: { bg: 'rgba(239,68,68,0.7)', border: '#ef4444' }, airdrop: { bg: 'rgba(168,85,247,0.7)', border: '#a855f7' }, ve_reward: { bg: 'rgba(245,158,11,0.7)', border: '#f59e0b' }, direct_distribution: { bg: 'rgba(14,165,233,0.7)', border: '#0ea5e9' }, holders_revenue: { bg: 'rgba(16,185,129,0.7)', border: '#10b981' } };
+    const TEV_COLORS = { buyback_burn: { bg: 'rgba(34,197,94,0.7)', border: '#22c55e' }, buyback: { bg: 'rgba(34,197,94,0.6)', border: '#22c55e' }, staking_reward: { bg: 'rgba(59,130,246,0.7)', border: '#3b82f6' }, direct_distribution: { bg: 'rgba(168,85,247,0.7)', border: '#a855f7' }, ve_reward: { bg: 'rgba(245,158,11,0.7)', border: '#f59e0b' }, fee_sharing: { bg: 'rgba(236,72,153,0.7)', border: '#ec4899' }, aggregate: { bg: 'rgba(99,102,241,0.7)', border: '#6366f1' }, burn: { bg: 'rgba(239,68,68,0.7)', border: '#ef4444' }, airdrop: { bg: 'rgba(168,85,247,0.7)', border: '#a855f7' }, ve_reward: { bg: 'rgba(245,158,11,0.7)', border: '#f59e0b' }, direct_distribution: { bg: 'rgba(14,165,233,0.7)', border: '#0ea5e9' } };
     const BURN_CONFIG = { bnb: { file: 'bnb-burns.json', ticker: 'BNB', color: 'rgba(240,185,11,0.8)', borderColor: '#f0b90b', title: { zh: 'BNB 季度销毁', en: 'BNB Quarterly Burns' }, dataType: 'quarterly', initialSupply: 2e8, targetSupply: 1e8 } };
-
-    // 获取机制名称：config name > i18n > raw type
-    function getMechLabel(type) {
-      if (protocolConfig?.tev_mechanisms) {
-        const m = protocolConfig.tev_mechanisms.find(m => m.type === type);
-        if (m?.name) return m.name;
-      }
-      return t('mechanism.type.' + type) || type;
-    }
-
     let tevChart = null, burnAmtChart = null, burnValChart = null, buybackChart = null;
     let protocolConfig = null;
 
@@ -235,7 +225,7 @@
           const barDs = types.map(type => {
             const c = TEV_COLORS[type] || { bg: 'rgba(161,161,170,0.5)', border: '#a1a1aa' };
             return {
-              label: getMechLabel(type),
+              label: t('mechanism.type.' + type) || type,
               data: records.filter(r => r.type === type).map(r => ({ x: r.date, y: r.amount_usd })),
               backgroundColor: c.bg, borderColor: c.border, borderWidth: 1, borderRadius: 4,
               type: 'bar', yAxisID: 'y', order: 2
@@ -265,7 +255,7 @@
           // Monthly/category mode (original logic for aave etc.)
           const allLabels = records.map(r => r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }));
           const labels = [...new Set(allLabels)];
-          const barDs = types.map(type => { const c = TEV_COLORS[type] || { bg: 'rgba(161,161,170,0.5)', border: '#a1a1aa' }; const dataByLabel = {}; records.filter(r => r.type === type).forEach(r => { const lbl = r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }); dataByLabel[lbl] = (dataByLabel[lbl] || 0) + r.amount_usd; }); return { label: getMechLabel(type), data: labels.map(l => dataByLabel[l] || 0), backgroundColor: c.bg, borderColor: c.border, borderWidth: 1, borderRadius: 4, type: 'bar', yAxisID: 'y', stack: 'tev', order: 2 }; });
+          const barDs = types.map(type => { const c = TEV_COLORS[type] || { bg: 'rgba(161,161,170,0.5)', border: '#a1a1aa' }; const dataByLabel = {}; records.filter(r => r.type === type).forEach(r => { const lbl = r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }); dataByLabel[lbl] = (dataByLabel[lbl] || 0) + r.amount_usd; }); return { label: t('mechanism.type.' + type) || type, data: labels.map(l => dataByLabel[l] || 0), backgroundColor: c.bg, borderColor: c.border, borderWidth: 1, borderRadius: 4, type: 'bar', yAxisID: 'y', stack: 'tev', order: 2 }; });
           let cum = 0; const cumByLabel = {}; records.forEach(r => { const lbl = r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }); cumByLabel[lbl] = (cumByLabel[lbl] || 0) + r.amount_usd; }); const cumData = labels.map(l => { cum += (cumByLabel[l] || 0); return cum; });
           const lineDs = { label: t('chart.cumulative'), data: cumData, borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.1)', borderWidth: 2, pointRadius: 3, fill: true, type: 'line', yAxisID: 'y2', tension: 0.3, order: 1 };
           tevChart = new Chart(ctx, { data: { labels, datasets: [...barDs, lineDs] }, options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { position: 'top', labels: { color: '#a1a1aa', font: { size: 11 }, boxWidth: 12, padding: 16 } }, tooltip: { backgroundColor: '#18181b', titleColor: '#fafafa', bodyColor: '#a1a1aa', borderColor: '#27272a', borderWidth: 1, callbacks: { label: ctx => ctx.raw === 0 ? null : ` ${ctx.dataset.label}: ${fmtCurrency(ctx.raw)}` }, filter: i => i.raw !== 0 } }, scales: { x: { stacked: true, grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', font: { size: 11 } } }, y: { stacked: true, position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => fmtCurrency(v) }, title: { display: true, text: currentLang === 'zh' ? '单期 TEV' : 'Period TEV', color: '#71717a' } }, y2: { position: 'right', grid: { display: false }, ticks: { color: '#f59e0b', callback: v => fmtCurrency(v) }, title: { display: true, text: t('chart.cumulative'), color: '#f59e0b' } } } } });
@@ -541,6 +531,33 @@
     }
 
     async function init() {
+function notesToMarkdown(notes) {
+  if (typeof notes === "string") return notes;
+  let md = "";
+  for (const [key, value] of Object.entries(notes)) {
+    const label = key.replace(/_/g, " ");
+    if (key === "historical_changes" && Array.isArray(value)) {
+      md += "\n### " + label + "\n";
+      value.forEach(change => {
+        md += "- **" + change.date + "**: " + change.change + " (ratio = " + change.ratio + ") - " + change.exec_vote + "\n";
+      });
+    } else if (key === "tevlama_urls" && Array.isArray(value)) {
+      md += "\n### Data Sources\n";
+      value.forEach(url => md += "'" + url + "'\n");
+    } else if (key === "contracts" && typeof value === "object") {
+      md += "\n### Contracts\n";
+      for (const [cName, cAddr] of Object.entries(value)) {
+        md += "- **" + cName + "**: '" + cAddr + "'\n";
+      }
+    } else if (key === "note" && typeof value === "string") {
+      md += "\n> " + value + "\n";
+    } else {
+      md += "- **" + label + "**: '" + value + "'\n";
+    }
+  }
+  return md;
+};
+
       const pid = getProtocolId();
       try {
         let logoUrls = {}; try { const lr = await fetch('../data/logo_urls.json'); if (lr.ok) logoUrls = await lr.json(); } catch {}
@@ -620,7 +637,7 @@
         document.getElementById('loading').style.display = 'none';
         document.getElementById('content').style.display = 'block';
         loadTevChart(pid);
-        if (['bnb', 'hype', 'uniswap', 'sky'].includes(pid)) loadBurnsChart(pid);
+        if (['bnb', 'hype', 'uniswap'].includes(pid)) loadBurnsChart(pid);
         if (['aster'].includes(pid)) loadBuybackData(pid);
       } catch (e) {
         console.error('Failed:', e);
