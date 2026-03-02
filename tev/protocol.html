@@ -590,7 +590,13 @@
         if (protoData) {
           // 分配比例 - 使用预计算值
           const tevRatio = protoData.tevRatio;
-          tevRatioEl.textContent = tevRatio ? `${(tevRatio * 100).toFixed(0)}%` : '—';
+          if (typeof tevRatio === 'string') {
+            tevRatioEl.textContent = tevRatio;
+          } else if (tevRatio > 0) {
+            tevRatioEl.textContent = `${(tevRatio * 100).toFixed(0)}%`;
+          } else {
+            tevRatioEl.textContent = '—';
+          }
 
           // 市值
           const marketCap = protoData.market_cap_usd;

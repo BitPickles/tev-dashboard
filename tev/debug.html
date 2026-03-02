@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Debug</title></head>
+<body>
+<h1>TEV Debug</h1>
+<div id="pid"></div>
+<div id="result"></div>
+<script>
+const pid = new URLSearchParams(window.location.search).get('id') || 'aave';
+document.getElementById('pid').textContent = 'PID: ' + pid;
+
+fetch('../data/all-protocols.json')
+  .then(r => {
+    console.log('Response status:', r.status);
+    return r.json();
+  })
+  .then(d => {
+    console.log('All data keys:', Object.keys(d.protocols));
+    console.log('Looking for:', pid);
+    const p = d.protocols[pid];
+    console.log('Found:', p);
+    if (p) {
+      document.getElementById('result').innerHTML = `
+        <p>✅ Found protocol: ${p.name}</p>
+        <p>tevRatio: <strong>${p.tevRatio}</strong></p>
+        <p>tevRatio type: ${typeof p.tevRatio}</p>
+        <p>earning_yield_percent: ${p.earning_yield_percent}</p>
+        <p>tev_yield_percent: ${p.tev_yield_percent}</p>
+        <p>market_cap_usd: ${p.market_cap_usd}</p>
+      `;
+    } else {
+      document.getElementById('result').innerHTML = `
+        <p>❌ Protocol not found: ${pid}</p>
+        <p>Available: ${Object.keys(d.protocols).join(', ')}</p>
+      `;
+    }
+  })
+  .catch(e => {
+    console.error('Error:', e);
+    document.getElementById('result').textContent = 'Error: ' + e;
+  });
+</script>
+</body>
+</html>
