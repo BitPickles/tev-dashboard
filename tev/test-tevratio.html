@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>TEV Ratio Test</title></head>
+<body>
+<h1>TEV Ratio Debug</h1>
+<div>
+  <p><strong>Sky:</strong></p>
+  <p>TEV Ratio: <span id="sky-tevratio">Loading...</span></p>
+  <p>Earning Yield: <span id="sky-earning">Loading...</span></p>
+</div>
+<hr>
+<div>
+  <p><strong>Hype:</strong></p>
+  <p>TEV Ratio: <span id="hype-tevratio">Loading...</span></p>
+  <p>Earning Yield: <span id="hype-earning">Loading...</span></p>
+</div>
+<hr>
+<p>Console: <pre id="console"></pre></p>
+
+<script>
+const log = (msg) => {
+  document.getElementById('console').textContent += msg + '\n';
+  console.log(msg);
+};
+
+const testProtocol = async (pid) => {
+  try {
+    const resp = await fetch(`data/protocols/${pid}/config.json`);
+    const cfg = await resp.json();
+    log(`${pid} config loaded:`, JSON.stringify({ tevRatio: cfg.tevRatio, earning_yield_percent: cfg.earning_yield_percent }));
+    
+    const tevRatio = cfg.tevRatio;
+    let display = '—';
+    if (typeof tevRatio === 'string') {
+      display = tevRatio;
+    } else if (tevRatio > 0) {
+      display = (tevRatio * 100).toFixed(0) + '%';
+    }
+    
+    document.getElementById(`${pid}-tevratio`).textContent = display;
+    document.getElementById(`${pid}-earning`).textContent = cfg.earning_yield_percent ? cfg.earning_yield_percent + '%' : '—';
+  } catch (e) {
+    log(`Error loading ${pid}:`, e.message);
+  }
+};
+
+testProtocol('sky');
+testProtocol('hype');
+</script>
+</body>
+</html>
