@@ -83,5 +83,48 @@
   "confidence_reason": {
     "zh": "Smart Burn Engine 合约链上可追踪 + DefiLlama 验证",
     "en": "Smart Burn Engine contract on-chain trackable + DefiLlama validated"
+  },
+  "analyst_notes": {
+    "burn_ratio_dynamic": true,
+    "current_burn_ratio": 1.0,
+    "historical_changes": [
+      {
+        "date": "2024-10-17",
+        "ratio": 0.7,
+        "change": "100% → 70%",
+        "exec_vote": "Reduce Splitter Burn Rate"
+      },
+      {
+        "date": "2025-05-29",
+        "ratio": 0.5,
+        "change": "100% → 50%",
+        "exec_vote": "Reduce Splitter Burn Rate"
+      },
+      {
+        "date": "2025-08-21",
+        "ratio": 0.25,
+        "change": "50% → 25%",
+        "exec_vote": "Decrease Splitter Burn Rate"
+      },
+      {
+        "date": "2025-10-30",
+        "ratio": 1.0,
+        "change": "25% → 100%",
+        "exec_vote": "Increase Splitter Burn Rate"
+      }
+    ],
+    "data_source": "DefiLlama HoldersRevenue (自动适配 burn 比例变化)",
+    "tevlama_urls": [
+      "https://info-sky.blockanalitica.com/buyback/historic/?days_ago=9999&format=json",
+      "https://info-sky.blockanalitica.com/farms/historic/?days_ago=9999&format=json",
+      "https://info-sky.blockanalitica.com/revenue/historic/?days_ago=9999&format=json"
+    ],
+    "contracts": {
+      "splitter": "0xBF7111F13386d23cb2Fba5A538107A73f6872bCF",
+      "flapper": "0x374D9c3d5134052Bc558F432Afa1df6575f07407",
+      "vow": "0xa950524441892a31ebddf91d3ceefa04bf454466",
+      "farm": "0x38E4254bD82ED5Ee97CD1C4278FAae748d998865"
+    },
+    "note": "Splitter.burn 是链上可配置参数，通过 Executive Vote 动态调整。DefiLlama HoldersRevenue = dailyBuybackUSD + dailyStakersRevenueUSD，自动反映 burn/farm 分配结构变化。"
   }
 }

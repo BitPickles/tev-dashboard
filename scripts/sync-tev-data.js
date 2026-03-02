@@ -93,8 +93,9 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'sky', 
     coingeckoId: 'maker',
     cmcSlug: 'sky',
-    tevRatio: 0.7,
-    note: '70% Smart Burn Engine 回购销毁 (from config)'
+    tevRatio: null,
+    addHoldersRevenue: true,
+    note: 'Splitter.burn 动态参数(2025-10-30 为 100%)，使用 DL HoldersRevenue 自动适配'
   },
   // 以下协议无 TEV (tevStatus=none)，仅获取市值
   compound: {
