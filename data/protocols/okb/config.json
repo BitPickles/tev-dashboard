@@ -18,28 +18,28 @@
   "tev_mechanisms": [
     {
       "type": "buyback_burn",
-      "name": "Quarterly Buy-Back & Burn",
-      "description": "OKX \u7528\u5e73\u53f0\u6536\u5165\u7684 30% \u56de\u8d2d\u5e76\u9500\u6bc1 OKB",
-      "status": "active",
-      "ratio": 0.3,
-      "frequency": "quarterly",
+      "name": "Buyback & Burn (terminated)",
+      "description": "2025-08 \u8d77\u505c\u6b62\u56de\u8d2d\u4e0e\u9500\u6bc1\uff0c\u4f9b\u5e94\u5df2\u9501\u5b9a\uff1b\u6b64\u524d\u5386\u53f2\u56de\u8d2d\u4e0e\u50a8\u5907\u4e8e 2025-08-13 \u5b8c\u6210\u4e00\u6b21\u6027\u9500\u6bc1 65,256,712.097 OKB",
+      "status": "inactive",
+      "ratio": 0,
+      "frequency": "none",
       "source": {
         "type": "official",
-        "title": "OKB Buy-Back & Burn",
-        "url": "https://www.okx.com/support/hc/articles/360102503411",
-        "note": "\u9700\u8981\u9a8c\u8bc1\u6700\u65b0\u653f\u7b56"
+        "title": "OKX 2025-08-13 Announcement",
+        "url": "TBD",
+        "note": "One-time burn + supply locked to 21,000,000"
       }
     }
   ],
   "tev_summary": {
-    "fee_switch": "N/A",
-    "fee_switch_details": "CEX \u6536\u5165\u4e0d\u76f4\u63a5\u94fe\u4e0a\u5206\u914d",
-    "buybacks": "ACTIVE",
+    "fee_switch": "OFF",
+    "fee_switch_details": "2025-08 \u540e\u505c\u6b62\u56de\u8d2d/\u9500\u6bc1\uff0c\u4f9b\u5e94\u5df2\u9501\u5b9a",
+    "buybacks": "NONE",
     "dividends": "NONE",
-    "burns": "ACTIVE",
-    "burn_details": "30% \u5e73\u53f0\u6536\u5165\u7528\u4e8e\u5b63\u5ea6\u56de\u8d2d\u9500\u6bc1",
-    "primary_value_accrual": "\u56de\u8d2d\u9500\u6bc1 - \u5b63\u5ea6\u7528 30% \u6536\u5165\u56de\u8d2d\u9500\u6bc1 OKB",
-    "tevRatio": 0.3
+    "burns": "NONE",
+    "burn_details": "2025-08-13 \u4e00\u6b21\u6027\u9500\u6bc1 65,256,712.097 OKB\uff0c\u4e4b\u540e\u4e0d\u518d\u6709\u56de\u8d2d/\u9500\u6bc1",
+    "primary_value_accrual": "\u65e0\u6301\u7eed TEV \u56de\u6d41\uff08\u4f9b\u5e94\u5df2\u9501\u5b9a\uff0c\u4e0d\u518d\u56de\u8d2d\u6216\u9500\u6bc1\uff09",
+    "tevRatio": 0.0
   },
   "market_data": {
     "price_usd": 71.07,
@@ -71,7 +71,7 @@
       "note": "\u4f5c\u4e3a L2 gas token \u7684\u989d\u5916\u4ef7\u503c\u6355\u83b7"
     }
   ],
-  "confidence": "low",
+  "confidence": "high",
   "data_sources": [
     {
       "name": "CoinGecko",
@@ -104,26 +104,39 @@
       ]
     }
   ],
-  "analyst_notes": "\u30102026-02-05 \u521d\u6b65\u8c03\u7814\u3011\n\n## OKB TEV \u8bc4\u4f30\n\n### \u5df2\u77e5\u673a\u5236\n1. **\u5b63\u5ea6\u56de\u8d2d\u9500\u6bc1**\uff1aOKX \u7528 30% \u5e73\u53f0\u6536\u5165\u56de\u8d2d\u9500\u6bc1 OKB\n2. **X Layer Gas**\uff1a\u4f5c\u4e3a L2 \u539f\u751f token\uff0cgas \u8d39\u7528\u521b\u9020\u989d\u5916\u9700\u6c42\n\n### \u6570\u636e\u9650\u5236\n1. \u274c OKX \u4e0d\u516c\u5f00\u8d22\u52a1\u6570\u636e\n2. \u274c \u5b63\u5ea6\u9500\u6bc1\u91d1\u989d\u9700\u8981\u4ece\u516c\u544a\u6574\u7406\n3. \u26a0\ufe0f \u65e0\u6cd5\u7cbe\u786e\u8ba1\u7b97 TEV yield\n\n### \u4f9b\u5e94\u91cf\u7279\u70b9\n- \u6d41\u901a\u4f9b\u5e94\u91cf\u56fa\u5b9a\u5728 ~21M OKB\n- \u603b\u4f9b\u5e94\u91cf ~300M\uff0c\u5927\u90e8\u5206\u9501\u5b9a/\u672a\u6d41\u901a\n\n### \u4e0e BNB \u7684\u533a\u522b\n- BNB \u76ee\u6807\u51cf\u5c11\u5230 100M\uff08\u6301\u7eed\u9500\u6bc1\uff09\n- OKB \u6d41\u901a\u91cf\u76f8\u5bf9\u56fa\u5b9a\uff0c\u9500\u6bc1\u4e3b\u8981\u5f71\u54cd\u603b\u4f9b\u5e94\n\n### \u9700\u8981\u8865\u5145\n1. \u5386\u53f2\u5b63\u5ea6\u9500\u6bc1\u6570\u636e\n2. X Layer \u7684 gas \u6d88\u8017\u6570\u636e",
+  "analyst_notes": "\u30102026-03-03 \u66f4\u65b0\u3011\n\n## OKB \u673a\u5236\u53d8\u66f4\u6458\u8981\n\n- **2025-08-13 \u4e00\u6b21\u6027\u9500\u6bc1** 65,256,712.097 OKB\uff08\u6765\u81ea\u5386\u53f2\u56de\u8d2d+\u50a8\u5907\uff09\n- **\u603b\u4f9b\u5e94\u9501\u5b9a** 21,000,000 OKB\n- **\u540e\u7eed\u4e0d\u518d\u56de\u8d2d / \u589e\u53d1 / \u9500\u6bc1**\uff08no more buybacks, mints, or burns\uff09\n- **\u5408\u7ea6\u5347\u7ea7** \u79fb\u9664 mint/burn\uff0cEthereum L1 \u7248\u672c\u9010\u6b65\u505c\u6b62\u652f\u6301\uff0c\u5f15\u5bfc\u5230 X Layer\n\n## \u7ed3\u8bba\n\n**2025-08 \u4e4b\u540e\u65e0\u6301\u7eed TEV**\uff0c\u5e73\u53f0\u5229\u6da6\u4e0d\u518d\u901a\u8fc7\u56de\u8d2d/\u9500\u6bc1\u56de\u6d41\u81f3 OKB \u6301\u6709\u8005\u3002",
   "questions_for_boss": [
     "OKB 30% \u56de\u8d2d\u9500\u6bc1\u6bd4\u4f8b\u662f\u5426\u4e3a\u6700\u65b0\u653f\u7b56\uff1f",
     "\u662f\u5426\u9700\u8981\u6574\u7406\u5386\u53f2\u5b63\u5ea6\u9500\u6bc1\u6570\u636e\uff1f"
   ],
-  "last_updated": "2026-02-14",
+  "last_updated": "2026-03-03",
   "tev_data": {
-    "has_tev": true,
+    "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "calculation_date": "2026-02-14",
-    "note": "\u58f0\u79f030%\u6536\u5165\u56de\u8d2d\u9500\u6bc1\uff0c\u900f\u660e\u5ea6\u4f4e",
-    "sources": []
+    "calculation_date": "2026-03-03",
+    "note": "2025-08 \u540e\u4e0d\u518d\u56de\u8d2d/\u9500\u6bc1\uff0c\u4f9b\u5e94\u9501\u5b9a",
+    "sources": [
+      {
+        "name": "OKX 2025-08-13 Announcement",
+        "type": "official",
+        "url": "TBD",
+        "note": "One-time burn 65,256,712.097 OKB + supply locked to 21,000,000"
+      },
+      {
+        "name": "OKX Learn",
+        "type": "documentation",
+        "url": "TBD",
+        "note": "No more buybacks, mints, or burns"
+      }
+    ]
   },
   "tevStatus": "none",
   "confidence_reason": {
     "zh": "\u5df2\u505c\u6b62\u56de\u8d2d\u9500\u6bc1\uff0c\u5386\u53f2\u6570\u636e\u4ec5\u5b98\u65b9\u516c\u544a",
     "en": "Buyback & burn stopped, historical data from announcements only"
   },
-  "tevRatio": 0.3,
+  "tevRatio": 0.0,
   "earning_yield_percent": 0.0,
   "market_cap_usd": 1503276222
 }
