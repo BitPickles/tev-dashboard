@@ -225,7 +225,7 @@
         if (!records?.length) { const sec=document.getElementById('tev-chart-section'); if (sec) sec.style.display='none'; return; }
         records.sort((a, b) => new Date(a.date) - new Date(b.date));
         const types = [...new Set(records.map(r => r.type))];
-        const isDaily = records.length > 60;
+        const isDaily = records.every(r => /^\d{4}-\d{2}-\d{2}$/.test(r.date));
         
         const ctx = document.getElementById('tev-history-chart').getContext('2d');
         if (tevChart) tevChart.destroy();
