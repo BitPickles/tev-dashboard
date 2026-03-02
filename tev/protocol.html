@@ -258,7 +258,19 @@
               interaction: { mode: 'index', intersect: false },
               plugins: {
                 legend: { position: 'top', labels: { color: '#a1a1aa', font: { size: 11 }, boxWidth: 12, padding: 16 } },
-                tooltip: { backgroundColor: '#18181b', titleColor: '#fafafa', bodyColor: '#a1a1aa', borderColor: '#27272a', borderWidth: 1, callbacks: { label: ctx => ctx.raw.y === 0 ? null : ` ${ctx.dataset.label}: ${fmtCurrency(ctx.raw.y)}` }, filter: i => i.raw.y !== 0 },
+                tooltip: { backgroundColor: '#18181b', titleColor: '#fafafa', bodyColor: '#a1a1aa', borderColor: '#27272a', borderWidth: 1,
+                  callbacks: {
+                    label: ctx => ctx.raw.y === 0 ? null : ` ${ctx.dataset.label}: ${fmtCurrency(ctx.raw.y)}`,
+                    afterBody: ctxs => {
+                      const x = ctxs?.[0]?.raw?.x;
+                      if (isAsterEstimated(x)) {
+                        return currentLang === 'zh' ? '公告总量均摊到每日（非链上）' : 'Estimated: official total averaged per day (non-onchain)';
+                      }
+                      return null;
+                    }
+                  },
+                  filter: i => i.raw.y !== 0
+                },
                 zoom: { pan: { enabled: true, mode: 'x' }, zoom: { wheel: { enabled: true }, pinch: { enabled: true }, mode: 'x' } }
               },
               scales: {
