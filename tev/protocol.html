@@ -577,8 +577,9 @@
           if (allResp.ok) {
             const allData = await allResp.json();
             protoData = allData.protocols?.[pid];
+            console.log('Loaded protoData:', pid, protoData?.tevRatio, protoData?.market_cap_usd);
           }
-        } catch (e) { console.log('Failed to load all-protocols.json'); }
+        } catch (e) { console.log('Failed to load all-protocols.json:', e); }
         
         // TEV 概览 - 新增字段
         const tevRatioEl = document.getElementById('summary-tevratio');
