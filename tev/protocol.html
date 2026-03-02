@@ -232,12 +232,19 @@
         
         if (isDaily) {
           // Daily mode: time axis, bar + cumulative line
+          const isAster = pid === 'aster';
+          const asterEstStart = '2025-10-28';
+          const asterEstEnd = '2025-12-22';
+          const isAsterEstimated = (d) => isAster && d >= asterEstStart && d <= asterEstEnd;
           const barDs = types.map(type => {
             const c = TEV_COLORS[type] || { bg: 'rgba(161,161,170,0.5)', border: '#a1a1aa' };
+            const dataForType = records.filter(r => r.type === type);
+            const bgColors = dataForType.map(r => isAsterEstimated(r.date) ? 'rgba(168,85,247,0.55)' : c.bg);
+            const borderColors = dataForType.map(r => isAsterEstimated(r.date) ? 'rgba(168,85,247,1)' : c.border);
             return {
               label: getMechLabel(type),
-              data: records.filter(r => r.type === type).map(r => ({ x: r.date, y: r.amount_usd })),
-              backgroundColor: c.bg, borderColor: c.border, borderWidth: 1, borderRadius: 4,
+              data: dataForType.map(r => ({ x: r.date, y: r.amount_usd })),
+              backgroundColor: bgColors, borderColor: borderColors, borderWidth: 1, borderRadius: 4,
               type: 'bar', yAxisID: 'y', order: 2
             };
           });
