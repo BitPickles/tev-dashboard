@@ -3,7 +3,7 @@
 function notesToMarkdown(notes) {
   if (typeof notes === "string") return notes;
   
-  // Sky enhanced formatting
+  // Sky special formatting
   if (notes && notes.overview && notes.burn_ratio) {
     const ov = notes.overview;
     const br = notes.burn_ratio;
@@ -39,8 +39,60 @@ function notesToMarkdown(notes) {
     md += `\n### 💡 机制说明\n\n`;
     md += notes.mechanism_note + `\n`;
     
+    return md;
+  }
+  
+  // Maple special formatting
+  if (notes && notes.overview && notes.ratio_timeline) {
+    const ov = notes.overview;
+    
+    let md = `### 📊 概览\n\n`;
+    md += `| 指标 | 值 |\n`;
+    md += `|------|-----|\n`;
+    md += `| 当前回购比例 | **${ov.current_ratio}** |\n`;
+    md += `| 机制 | ${ov.mechanism} |\n`;
+    md += `| 执行频率 | ${ov.frequency} |\n`;
+    md += `| 收益来源 | ${ov.yield_source} |\n`;
+    
+    md += `\n### 📈 比例时间线 (20% → 25%)\n\n`;
+    md += `| 时段 | 比例 | MIP | 详情 |\n`;
+    md += `|------|------|-----|------|\n`;
+    notes.ratio_timeline.forEach(t => {
+      md += `| ${t.period} | ${(t.ratio * 100).toFixed(0)}% | [${t.mip}](https://maple.finance/governance/proposals) | ${t.details} |\n`;
+    });
+    
+    md += `\n### 💰 历史回购数据\n\n`;
+    md += `| 时期 | 回购花费 (USD) | 回购数量 (SYRUP) |\n`;
+    md += `|------|-----------------|-------------------|\n`;
+    if (notes.buyback_data.q1_2025) {
+      const d = notes.buyback_data.q1_2025;
+      md += `| Q1 2025 | $${d.usd.toLocaleString()} | ${d.syrup.toLocaleString()} |\n`;
+    }
+    if (notes.buyback_data.h1_2025) {
+      const d = notes.buyback_data.h1_2025;
+      md += `| H1 2025 | $${d.usd.toLocaleString()} | ${d.syrup.toLocaleString()} |\n`;
+    }
+    if (notes.buyback_data.q4_2025) {
+      const d = notes.buyback_data.q4_2025;
+      md += `| Q4 2025 | — | ${d.syrup.toLocaleString()} (${d.note}) |\n`;
+    }
+    
+    md += `\n### 📜 MIP 提案\n\n`;
+    Object.entries(notes.mip_proposals).forEach(([mip, desc]) => {
+      md += `- **${mip}**: ${desc}\n`;
+    });
+    
+    md += `\n### 🔗 相关链接\n\n`;
+    md += `- [治理投票](${notes.links.governance}) - Maple Governance\n`;
+    md += `- [文档](${notes.links.docs}) - Maple Docs\n`;
+    md += `- [Transparency](${notes.links.transparency}) - Maple Transparency\n`;
+    
+    md += `\n### 💡 机制说明\n\n`;
+    md += notes.mechanism_note + `\n`;
+    
     md += `\n### 📊 数据源\n\n`;
-    md += `DefiLlama **HoldersRevenue** = buyback + stakers_reward，自动反映治理投票后的分配比例变化。\n`;
+    md += `DefiLlama **Revenue** × **25%** (当前官方口径)\n`;
+    md += `> Protocol Revenue ≈ DeFiLlama Revenue（管理费/服务费/策略费/起始费）`;
     
     return md;
   }

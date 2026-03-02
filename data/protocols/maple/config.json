@@ -18,26 +18,26 @@
   "tev_mechanisms": [
     {
       "type": "buyback",
-      "name": "SYRUP Buyback Program",
-      "description": "20% 协议收入用于回购 SYRUP 并分配给质押者",
+      "name": "Syrup Strategic Fund (SSF) Buyback",
+      "description": "25% 协议收入通过 SSF 回购 SYRUP，按月执行",
       "status": "active",
-      "ratio": 0.2,
-      "start_date": "2024-05-01",
+      "ratio": 0.25,
+      "start_date": "2025-10-01",
       "source": {
         "type": "governance",
-        "title": "MIP-019 SYRUP Buyback",
-        "url": "https://maple.finance/news/introducing-syrup"
+        "title": "MIP-019: Activate SSF and Sunset Staking",
+        "url": "https://maple.finance/governance"
       }
     }
   ],
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "20% 协议收入用于回购 SYRUP 并分配给质押者",
+    "fee_switch_details": "25% 协议收入通过 SSF 回购 SYRUP，按月执行",
     "buybacks": "ACTIVE",
     "dividends": "NONE",
     "burns": "NONE",
-    "primary_value_accrual": "回购分配 - 20% 协议收入回购 SYRUP 并分配给质押者",
-    "tevRatio": 0.2
+    "primary_value_accrual": "回购分配 - 25% 协议收入回购 SYRUP",
+    "tevRatio": 0.25
   },
   "confidence": "high",
   "data_sources": [
@@ -80,5 +80,81 @@
   "confidence_reason": {
     "zh": "MIP-018 治理提案明确 25% 利润回购 SYRUP，链上可追踪",
     "en": "MIP-018 governance proposal mandates 25% profit buyback of SYRUP, on-chain trackable"
+  },
+  "analyst_notes": {
+    "overview": {
+      "current_ratio": "25%",
+      "mechanism": "Syrup Strategic Fund (SSF)",
+      "frequency": "按月执行",
+      "yield_source": "Protocol Fee Revenue (管理费/服务费/策略费/起始费)"
+    },
+    "ratio_timeline": [
+      {
+        "period": "Q1 2025",
+        "ratio": 0.2,
+        "mip": "MIP-013",
+        "details": "20% 月度回购 → stream 给 stSYRUP"
+      },
+      {
+        "period": "Q2 2025",
+        "ratio": 0.2,
+        "mip": "MIP-016",
+        "details": "延续 20% 月度回购"
+      },
+      {
+        "period": "Q3 2025",
+        "ratio": 0.25,
+        "mip": "MIP-018",
+        "details": "提升至 25% 月度回购"
+      },
+      {
+        "period": "Q4 2025 起",
+        "ratio": 0.25,
+        "mip": "MIP-019",
+        "details": "25% → SSF，sunset staking"
+      },
+      {
+        "period": "Q1-Q2 2026",
+        "ratio": 0.25,
+        "mip": "MIP-020",
+        "details": "延长 25% → SSF"
+      }
+    ],
+    "buyback_data": {
+      "q1_2025": {
+        "usd": 235000,
+        "syrup": 1960000,
+        "ratio": 0.2
+      },
+      "h1_2025": {
+        "usd": 830000,
+        "syrup": 3500000,
+        "ratio": 0.2
+      },
+      "q4_2025": {
+        "syrup": 2000000,
+        "note": "SSF 模式，美元花费未披露"
+      }
+    },
+    "mip_proposals": {
+      "MIP-013": "Fee Buyback Mechanism (Q1 2025, 20%)",
+      "MIP-016": "Q2 Fee Buyback Continuation (Q2 2025, 20%)",
+      "MIP-018": "Q3 Fee Buyback Increase (Q3 2025, 25%)",
+      "MIP-019": "Activate SSF and Sunset Staking (Q4 2025 起)",
+      "MIP-020": "H1 2026 SSF Allocation (2026 上半年延长)"
+    },
+    "market_data": {
+      "market_cap": "$280M",
+      "circulating_supply": "1.16B SYRUP",
+      "total_supply": "1.22B SYRUP"
+    },
+    "mechanism_note": "Maple 的 Protocol Revenue ≈ DeFiLlama Revenue（管理费/服务费/策略费/起始费），不包含借款人支付的利息。MIP-019 前回购后 stream 给 stSYRUP，MIP-019 后改为 SSF 持有回购 + DAO 资产负债表建设。",
+    "data_source": "DefiLlama Revenue × 25%",
+    "links": {
+      "governance": "https://maple.finance/governance",
+      "docs": "https://docs.maple.finance",
+      "mip_hub": "https://maple.finance/governance/proposals",
+      "transparency": "https://maple.finance/transparency"
+    }
   }
 }

@@ -431,7 +431,7 @@
       "tev_yield_percent": 1.18,
       "market_cap_usd": 332824153,
       "tvl": 2001318635.111343,
-      "tevRatio": 0.2,
+      "tevRatio": 0.25,
       "tevRatioNote": "回购分配 - 20% 协议收入回购 SYRUP 并分配给质押者",
       "metrics": {
         "current_market_cap_usd": 281408565.35,
@@ -439,7 +439,16 @@
         "trailing_30d_tev_usd": 162241.91666666666,
         "trailing_365d_revenue_usd": 9734515,
         "trailing_30d_revenue_usd": 1397984
-      }
+      },
+      "tev_mechanisms": [
+        {
+          "type": "buyback",
+          "name": "Syrup Strategic Fund (SSF) Buyback",
+          "description": "25% 协议收入通过 SSF 回购 SYRUP",
+          "status": "active",
+          "ratio": 0.25
+        }
+      ]
     },
     "mnt": {
       "name": "Mantle",
