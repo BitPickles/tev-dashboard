@@ -590,6 +590,7 @@
         const tevYieldEl = document.getElementById('summary-tevyield');
 
         // 使用 config.json 中的值（直接读取，无需 fetch）
+        // FIX 2026-03-03: 不再从 all-protocols.json fetch，直接使用 cfg
         const tevRatio = cfg.tevRatio;
         const marketCap = cfg.market_cap_usd || cfg.tev_data?.market_cap_usd || 0;
         const earningsYield = cfg.earning_yield_percent || 0;
