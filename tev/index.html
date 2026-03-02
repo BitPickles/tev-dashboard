@@ -315,8 +315,13 @@
     // === Data Loading ===
     async function loadProtocolData() {
       try {
-        const baseUrl = window.location.href.split('/tev/')[0];
-        const baseRes = await fetch(`${baseUrl}/data/all-protocols.json`);
+        const path = window.location.pathname;
+        const depth = path.split('/').filter(p => p).length;
+        let baseUrl = '';
+        for (let i = 0; i < depth - 1; i++) {
+          baseUrl += '../';
+        }
+        const baseRes = await fetch(`${baseUrl}data/all-protocols.json`);
         if (baseRes.ok) {
           const baseData = await baseRes.json();
           PROTOCOLS = baseData.protocols || {};

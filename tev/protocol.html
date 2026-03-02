@@ -573,8 +573,13 @@
         // 从 all-protocols.json 获取汇总数据
         let protoData = null;
         try {
-          const baseUrl = window.location.href.split('/tev/')[0];
-          const allResp = await fetch(`${baseUrl}/data/all-protocols.json`);
+          const path = window.location.pathname;
+          const depth = path.split('/').filter(p => p).length;
+          let baseUrl = '';
+          for (let i = 0; i < depth - 1; i++) {
+            baseUrl += '../';
+          }
+          const allResp = await fetch(`${baseUrl}data/all-protocols.json`);
           if (allResp.ok) {
             const allData = await allResp.json();
             protoData = allData.protocols?.[pid];
