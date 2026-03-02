@@ -59,7 +59,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="../indicators/js/chart-utils.js"></script>
-<script src="notes-helper.js"></script></head>
+</head>
 <body>
   <header>
     <div class="container">
@@ -531,6 +531,67 @@
     }
 
     async function init() {
+function notesToMarkdown(notes) {
+  if (typeof notes === "string") return notes;
+  let md = "";
+  for (const [key, value] of Object.entries(notes)) {
+    const label = key.replace(/_/g, " ");
+    if (key === "historical_changes" && Array.isArray(value)) {
+      md += "\n### " + label + "\n";
+      value.forEach(change => {
+        md += "- **" + change.date + "**: " + change.change + " (ratio = " + change.ratio + ") - " + change.exec_vote + "\n";
+      });
+    } else if (key === "tevlama_urls" && Array.isArray(value)) {
+      md += "\n### Data Sources\n";
+      value.forEach(url => md += "'" + url + "'\n");
+    } else if (key === "contracts" && typeof value === "object") {
+      md += "\n### Contracts\n";
+      for (const [cName, cAddr] of Object.entries(value)) {
+        md += "- **" + cName + "**: '" + cAddr + "'\n";
+      }
+    } else if (key === "note" && typeof value === "string") {
+      md += "\n> " + value + "\n";
+    } else {
+      md += "- **" + label + "**: '" + value + "'\n";
+    }
+  }
+  return md;
+};
+
+      const pid = getProtocolId();
+      try {
+        let logoUrls = {}; try { const lr = await fetch('../data/logo_urls.json'); if (lr.ok) logoUrls = await lr.json(); } catch {}
+        const resp = await fetch(`../data/protocols/${pid}/config.json`);
+        if (!resp.ok) throw new Error('Protocol not found');
+        const cfg = await resp.json();
+        protocolConfig = cfg;
+        document.title = `${cfg.name} — TEV Dashboard`;
+        document.getElementById('breadcrumb-name').textContent = cfg.name;
+        const iconEl = document.getElementById('protocol-icon');
+        const logoUrl = logoUrls[pid] || (cfg.icon?.startsWith('http') ? cfg.icon : null);
+        if (logoUrl) iconEl.innerHTML = `<img src="${logoUrl}" alt="${cfg.ticker}" loading="lazy" onerror="this.style.display='none';this.parentElement.textContent='${cfg.name.charAt(0)}'">`;
+        else iconEl.textContent = cfg.name.charAt(0);
+        document.getElementById('protocol-name').textContent = cfg.name;
+        const catMap = { lending: '借贷', dex: 'DEX', liquid_staking: '流动性质押', restaking: '再质押', perpetuals: '永续合约', yield: '收益' };
+        document.getElementById('protocol-ticker').textContent = `${cfg.ticker} · ${currentLang === 'zh' ? (catMap[cfg.category] || cfg.category) : cfg.category}`;
+        const tevStatus = getTevStatus(cfg.tev_summary || {}, cfg);
+        const badge = document.getElementById('tev-badge');
+        badge.className = `badge badge-${tevStatus === 'active' ? 'active' : tevStatus === 'partial' ? 'partial' : 'none'}`;
+        badge.textContent = tevStatus === 'active' ? 'TEV Active' : tevStatus === 'partial' ? 'TEV Partial' : 'No TEV';
+        document.getElementById('link-website').href = cfg.website || '#';
+        document.getElementById('link-docs').href = cfg.docs || '#';
+        document.getElementById('link-coingecko').href = cfg.token?.coingecko_id ? `https://www.coingecko.com/en/coins/${cfg.token.coingecko_id}` : '#';
+        const statusText = document.getElementById('tev-status-text');
+        statusText.textContent = tevStatus === 'active' ? 'TEV ACTIVE' : tevStatus === 'partial' ? 'TEV PARTIAL' : 'NO TEV';
+        statusText.className = `tev-status ${tevStatus}`;
+        document.getElementById('primary-value').textContent = cfg.tev_summary?.fee_switch === 'ON' ? '✓ ON' : cfg.tev_summary?.fee_switch === 'PARTIAL' ? '~ PARTIAL' : '✗ OFF';
+        document.getElementById('primary-label').textContent = cfg.tev_summary?.primary_value_accrual || '—';
+        
+        // 从 all-protocols.json 获取汇总数据
+        let protoData = null;
+        try {
+          const allResp = await fetch('../data/all-protocols.json');
+          if (allResp.ok) {
             const allData = await allResp.json();
             protoData = allData.protocols?.[pid];
           }
