@@ -72,8 +72,8 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'maple', 
     coingeckoId: 'maple',
     cmcSlug: 'maple-finance',
-    tevRatio: 0.25,
-    note: '25% 协议收入回购 SYRUP (MIP-018)'
+    tevRatio: 0.2,
+    note: '20% 协议收入回购 SYRUP (from config)'
   },
   pancakeswap: { 
     defillamaSlug: 'pancakeswap', 
@@ -93,8 +93,8 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'sky', 
     coingeckoId: 'maker',
     cmcSlug: 'sky',
-    tevRatio: 0.5,
-    note: '50% Smart Burn Engine 回购销毁'
+    tevRatio: 0.7,
+    note: '70% Smart Burn Engine 回购销毁 (from config)'
   },
   // 以下协议无 TEV (tevStatus=none)，仅获取市值
   compound: {
