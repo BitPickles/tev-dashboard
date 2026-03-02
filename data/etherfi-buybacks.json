@@ -2,8 +2,8 @@
   "protocol": "etherfi",
   "ticker": "ETHFI",
   "total_supply": 1000000000,
-  "updated_at": "2026-02-21T03:10:30.433695+00:00",
-  "last_block": 24499603,
+  "updated_at": "2026-03-02T01:02:05.692569+00:00",
+  "last_block": 24559893,
   "data_type": "daily",
   "data_source": "onchain",
   "data_source_note": "追踪 ETHFI 流入回购地址 (Etherscan API)",
@@ -12,12 +12,12 @@
     "0x2f5301a3D59388c509C65f8698f521377D41Fd0F"
   ],
   "summary": {
-    "total_buyback_ethfi": 16378902.07,
-    "total_buyback_usd": 14433661.29,
-    "total_days": 101,
+    "total_buyback_ethfi": 17316483.14,
+    "total_buyback_usd": 14883171.91,
+    "total_days": 107,
     "first_date": "2025-05-09",
-    "last_date": "2026-02-20",
-    "avg_daily_ethfi": 162167.35
+    "last_date": "2026-03-01",
+    "avg_daily_ethfi": 161836.29
   },
   "daily_buybacks": [
     {
@@ -925,6 +925,60 @@
       "ethfi": 211434.45,
       "usd": 96878.61,
       "price": 0.4582,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-22",
+      "ethfi": 372324.71,
+      "usd": 170528.1,
+      "price": 0.458,
+      "txs": 17,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-23",
+      "ethfi": 109442.46,
+      "usd": 48636.37,
+      "price": 0.4444,
+      "txs": 5,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-25",
+      "ethfi": 189138.08,
+      "usd": 94272.99,
+      "price": 0.4984,
+      "txs": 10,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-26",
+      "ethfi": 58149.4,
+      "usd": 29990.81,
+      "price": 0.5158,
+      "txs": 3,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-02-27",
+      "ethfi": 20135.49,
+      "usd": 10220.55,
+      "price": 0.5076,
+      "txs": 1,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-03-01",
+      "ethfi": 188390.93,
+      "usd": 95861.8,
+      "price": 0.5088,
       "txs": 10,
       "dataType": "onchain",
       "source": "Etherscan"
