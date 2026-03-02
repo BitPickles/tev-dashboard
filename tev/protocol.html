@@ -587,20 +587,19 @@
         const tevYieldEl = document.getElementById('summary-tevyield');
         
         if (protoData) {
-          // 分配比例
+          // 分配比例 - 使用预计算值
           const tevRatio = protoData.tevRatio;
           tevRatioEl.textContent = tevRatio ? `${(tevRatio * 100).toFixed(0)}%` : '—';
-          
+
           // 市值
           const marketCap = protoData.market_cap_usd;
           marketCapEl.textContent = marketCap ? `$${(marketCap / 1e9).toFixed(2)}B` : '—';
-          
-          // 收益率 = 年化收入 / 市值
-          const revenue = protoData.metrics?.trailing_365d_revenue_usd;
-          const earningsYield = (revenue && marketCap) ? (revenue / marketCap * 100) : null;
+
+          // 收益率 - 使用预计算值
+          const earningsYield = protoData.earning_yield_percent;
           earningsYieldEl.textContent = earningsYield ? `${earningsYield.toFixed(2)}%` : '—';
-          
-          // TEV Yield
+
+          // TEV Yield - 使用预计算值
           const tevYield = protoData.tev_yield_percent;
           tevYieldEl.textContent = tevYield ? `${tevYield.toFixed(2)}%` : '—';
           tevYieldEl.className = `tev-summary-value ${tevYield > 5 ? 'value-on' : tevYield > 0 ? 'value-partial' : ''}`;
