@@ -338,7 +338,7 @@
       "tev_yield_percent": 12.42,
       "market_cap_usd": 7368065201,
       "tvl": 4260689401,
-      "tevRatio": "dynamic",
+      "tevRatio": 0.90,
       "tevRatioNote": "回购销毁 - Assistance Fund 自动将费用换成 HYPE 并永久移除",
       "metrics": {
         "tev_yield_decimal": 0.1229,
@@ -665,14 +665,14 @@
       "tev_yield_percent": 1.47,
       "market_cap_usd": 2393472958,
       "tvl": 3067536789,
-      "tevRatioNote": "协议费 + Unichain Sequencer 收入 → Firepit 销毁 UNI",
+      "tevRatio": 1.0,
+      "tevRatioNote": "回购销毁 - 协议费 + Unichain Sequencer 收入 100% 用于回购销毁 UNI",
       "metrics": {
         "current_market_cap_usd": 2292835462,
         "trailing_365d_tev_usd": 25909040.72,
         "trailing_30d_tev_usd": 2159086.73
       },
-      "earning_yield_percent": 0.0,
-      "tevRatio": 0.0
+      "earning_yield_percent": 0.0
     }
   }
 }
