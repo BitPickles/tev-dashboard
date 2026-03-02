@@ -37,6 +37,10 @@ function extractProtocolData(config) {
   // 市值
   if (config.market_data?.circulating_market_cap) {
     data.market_cap_usd = config.market_data.circulating_market_cap;
+  } else if (config.market_data?.market_cap_usd) {
+    data.market_cap_usd = config.market_data.market_cap_usd;
+  } else if (config.market_cap_usd) {
+    data.market_cap_usd = config.market_cap_usd;
   } else if (config.tev_data?.market_cap_usd) {
     data.market_cap_usd = config.tev_data.market_cap_usd;
   } else {
