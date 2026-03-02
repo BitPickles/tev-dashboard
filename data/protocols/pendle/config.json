@@ -15,6 +15,12 @@
   },
   "tev_mechanisms": [
     {
+      "type": "ve_distribution",
+      "name": "vePENDLE 分红",
+      "description": "vePENDLE 持有者获得协议收入分红",
+      "status": "active"
+    },
+    {
       "type": "buyback_distribution",
       "name": "vePENDLE Revenue Share",
       "description": "80% 协议收入用于回购 PENDLE 并分配给 vePENDLE 持有者",

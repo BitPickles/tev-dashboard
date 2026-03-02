@@ -15,6 +15,12 @@
   },
   "tev_mechanisms": [
     {
+      "type": "holders_revenue",
+      "name": "Smart Burn + 质押收益",
+      "description": "DSR 收入通过 Splitter 分配：burn 部分回购销毁 MKR，farm 部分分配给 SKY stakers",
+      "status": "active"
+    },
+    {
       "type": "buyback_burn",
       "name": "Smart Burn Engine (SBE)",
       "description": "协议盈余用于回购 MKR 并添加流动性（Smart Burn Engine）",
