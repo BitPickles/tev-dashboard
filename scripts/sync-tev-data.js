@@ -37,8 +37,9 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'curve-dex', 
     coingeckoId: 'curve-dao-token',
     cmcSlug: 'curve-dao-token',
-    tevRatio: 0.5,
-    note: 'veCRV 分红 50%'
+    tevRatio: null,
+    useHoldersRevenue: true,
+    note: 'veCRV 分红，直接用 DefiLlama holdersRevenue'
   },
   dydx: { 
     defillamaSlug: 'dydx', 
@@ -65,8 +66,9 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'gmx', 
     coingeckoId: 'gmx',
     cmcSlug: 'gmx',
-    tevRatio: 0.27,
-    note: '27% 费用分红 (docs.gmx.io)'
+    tevRatio: null,
+    useHoldersRevenue: true,
+    note: '27% 平台总费用分红，直接用 DefiLlama holdersRevenue'
   },
   maple: { 
     defillamaSlug: 'maple', 
@@ -79,8 +81,9 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'pancakeswap', 
     coingeckoId: 'pancakeswap-token',
     cmcSlug: 'pancakeswap',
-    tevRatio: 0.58,
-    note: '58% 回购销毁 (44-72% 按费率取中间值)'
+    tevRatio: null,
+    useHoldersRevenue: true,
+    note: 'Tokenomics 3.0 回购销毁，直接用 DefiLlama holdersRevenue'
   },
   pendle: { 
     defillamaSlug: 'pendle', 
@@ -342,7 +345,7 @@ async function main() {
     
     // 获取 holdersRevenue（如需要）
     let holdersRevenueData = null;
-    if (config.addHoldersRevenue) {
+    if (config.addHoldersRevenue || config.useHoldersRevenue) {
       holdersRevenueData = await getDefillamaHoldersRevenue(config.defillamaSlug);
       if (holdersRevenueData) {
         console.log(`  HoldersRevenue 365d: $${(holdersRevenueData.holdersRevenue365d/1e6).toFixed(2)}M`);
@@ -357,6 +360,10 @@ async function main() {
       if (config.addHoldersRevenue && holdersRevenueData) {
         tev365d += holdersRevenueData.holdersRevenue365d;
       }
+    } else if (config.useHoldersRevenue && holdersRevenueData) {
+      // 直接使用 DefiLlama holdersRevenue 作为 TEV
+      tev365d = holdersRevenueData.holdersRevenue365d;
+      console.log(`  TEV = holdersRevenue: ${(tev365d/1e6).toFixed(2)}M`);
     } else if (config.tevRatio) {
       // 按比例计算
       tev365d = revenueData.revenue365d * config.tevRatio;
