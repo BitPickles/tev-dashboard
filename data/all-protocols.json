@@ -8,7 +8,7 @@
       "category": "lending",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "\u6cbb\u7406\u63d0\u6848 AIP-1 \u660e\u786e\u5e74\u56de\u8d2d\u9884\u7b97\uff0c\u94fe\u4e0a\u53ef\u8ffd\u8e2a",
+        "zh": "治理提案 AIP-1 明确年回购预算，链上可追踪",
         "en": "AIP-1 governance proposal with fixed annual buyback budget, on-chain trackable"
       },
       "tevStatus": "active",
@@ -17,7 +17,7 @@
       "tvl": 26517778890,
       "tevRatio": 0.7766,
       "earning_yield_percent": 5.62,
-      "tevRatioNote": "\u56de\u8d2d ($50M/\u5e74) + Safety Module \u8d28\u62bc\u5956\u52b1"
+      "tevRatioNote": "回购 ($50M/年) + Safety Module 质押奖励"
     },
     "aster": {
       "name": "Aster (AsterDEX)",
@@ -26,7 +26,7 @@
       "category": "perpetual_dex",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "\u94fe\u4e0a\u56de\u8d2d\u94b1\u5305\u53ef\u8ffd\u8e2a\uff08Moralis + BscScan\uff09",
+        "zh": "链上回购钱包可追踪（Moralis + BscScan）",
         "en": "On-chain buyback wallets trackable (Moralis + BscScan)"
       },
       "tevStatus": "active",
@@ -35,7 +35,7 @@
       "tvl": 949749547.4159752,
       "tevRatio": 0.7,
       "earning_yield_percent": 13.64,
-      "tevRatioNote": "\u624b\u7eed\u8d39\u56de\u8d2d (60-80%)"
+      "tevRatioNote": "手续费回购 (60-80%)"
     },
     "bgb": {
       "name": "Bitget Token",
@@ -44,7 +44,7 @@
       "category": "cex_token",
       "confidence": "low",
       "confidence_reason": {
-        "zh": "CEX \u5185\u90e8\u9500\u6bc1\uff0c\u65e0\u94fe\u4e0a\u8bc1\u636e\uff0c\u4ec5\u5b98\u65b9\u516c\u544a",
+        "zh": "CEX 内部销毁，无链上证据，仅官方公告",
         "en": "CEX internal burn, no on-chain proof, announcement only"
       },
       "tevStatus": "partial",
@@ -53,7 +53,7 @@
       "tvl": 0,
       "tevRatio": 0,
       "earning_yield_percent": 0,
-      "tevRatioNote": "\u56de\u8d2d\u9500\u6bc1 - \u5b63\u5ea6\u7528\u5e73\u53f0\u6536\u5165\u56de\u8d2d\u9500\u6bc1 BGB"
+      "tevRatioNote": "回购销毁 - 季度用平台收入回购销毁 BGB"
     },
     "bnb": {
       "name": "BNB",
@@ -62,7 +62,7 @@
       "category": "cex_token",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "Auto-Burn \u94fe\u4e0a\u5b8c\u5168\u53ef\u9a8c\u8bc1\uff080xdead + BEP-95\uff09\uff0casBNB \u6765\u81ea\u94fe\u4e0a StakeHub \u5408\u7ea6",
+        "zh": "Auto-Burn 链上完全可验证（0xdead + BEP-95），asBNB 来自链上 StakeHub 合约",
         "en": "Auto-Burn fully verifiable on-chain (0xdead + BEP-95), asBNB from on-chain StakeHub contract"
       },
       "tevStatus": "active",
@@ -76,20 +76,20 @@
         "burn_apy_percent": 4.4,
         "asbnb_apy_percent": 6.87,
         "total_apy_percent": 11.27,
-        "burn_source": "Auto-Burn (\u8fd14\u5b63 5,987,793.6 BNB, $3.75B) + BEP-95 (~16,327 BNB/\u5e74, $10.2M)",
+        "burn_source": "Auto-Burn (近4季 5,987,793.6 BNB, $3.75B) + BEP-95 (~16,327 BNB/年, $10.2M)",
         "asbnb_source": "Aster asBNB (Staking + Launchpool/HODLer/Megadrop)",
         "asbnb_url": "https://www.asterdex.com/en/earn/astoken?token=slisBNB",
         "burn_data_url": "https://www.bnbburn.info/",
         "dead_address_balance_bnb": 13299514.6,
         "dead_address": "0x000000000000000000000000000000000000dEaD",
-        "note": "Burn \u901a\u8fc7\u94fe\u4e0a\u9ed1\u6d1e\u5730\u5740\u4f59\u989d\u9a8c\u8bc1\uff1basBNB \u901a\u8fc7 Aster \u5b98\u65b9\u6570\u636e\uff08\u542b Staking + Launchpool/HODLer/Megadrop\uff0c\u4e0d\u542b Burn\uff09",
+        "note": "Burn 通过链上黑洞地址余额验证；asBNB 通过 Aster 官方数据（含 Staking + Launchpool/HODLer/Megadrop，不含 Burn）",
         "total_annual_burn_bnb": 6004121,
         "bep95_annual_bnb": 16327,
         "bnb_price_usd": 621.64,
         "market_cap_usd": 84805971769,
         "circulating_supply": 136358682.55
       },
-      "tevRatioNote": "\u4f9b\u7ed9\u6536\u7f29 + \u94fe\u4e0a\u8d28\u62bc\u6536\u76ca\uff08\u975e CEX \u5229\u6da6\u5206\u6da6\u6a21\u5f0f\uff09"
+      "tevRatioNote": "供给收缩 + 链上质押收益（非 CEX 利润分润模式）"
     },
     "compound": {
       "name": "Compound",
@@ -98,7 +98,7 @@
       "category": "lending",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "\u65e0 TEV \u673a\u5236\uff0c\u7eaf\u6cbb\u7406\u4ee3\u5e01\uff0c\u6570\u636e\u6e90\u900f\u660e",
+        "zh": "无 TEV 机制，纯治理代币，数据源透明",
         "en": "No TEV mechanism, governance-only, transparent data"
       },
       "tevStatus": "none",
@@ -107,7 +107,7 @@
       "tvl": 1393171495,
       "tevRatio": 0,
       "earning_yield_percent": 1.39,
-      "tevRatioNote": "\u7eaf\u6cbb\u7406\u4ee3\u5e01 - COMP \u4ec5\u7528\u4e8e\u6cbb\u7406\u6295\u7968\uff0c\u65e0\u6536\u5165\u5206\u914d",
+      "tevRatioNote": "纯治理代币 - COMP 仅用于治理投票，无收入分配",
       "metrics": {
         "current_market_cap_usd": 177068457.2,
         "trailing_365d_revenue_usd": 2456820,
@@ -123,16 +123,22 @@
       "category": "dex",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "veCRV \u8d39\u7528\u5206\u914d\u5408\u7ea6\u94fe\u4e0a\u53ef\u67e5 + DefiLlama \u9a8c\u8bc1",
+        "zh": "veCRV 费用分配合约链上可查 + DefiLlama 验证",
         "en": "veCRV fee distribution contract on-chain verifiable + DefiLlama validated"
       },
       "tevStatus": "active",
-      "tev_yield_percent": 3.28,
+      "tev_yield_percent": 3.74,
       "market_cap_usd": 355558659,
       "tvl": 1851819793.9481907,
-      "tevRatio": 0.5,
-      "earning_yield_percent": 2.93,
-      "tevRatioNote": "\u5206\u7ea2 - veCRV \u6301\u6709\u8005\u6bcf\u5468\u83b7\u5f97 crvUSD \u5206\u7ea2"
+      "tevRatio": 0.9731,
+      "earning_yield_percent": 3.85,
+      "tevRatioNote": "分红 - veCRV 持有者每周获得 crvUSD 分红",
+      "metrics": {
+        "trailing_365d_revenue_usd": 13672308,
+        "trailing_365d_holders_revenue_usd": 13304425,
+        "trailing_30d_revenue_usd": 768059,
+        "trailing_30d_holders_revenue_usd": 691740
+      }
     },
     "dydx": {
       "name": "dYdX",
@@ -141,7 +147,7 @@
       "category": "perpetuals",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "dYdX Chain 100% \u8d39\u7528\u5206\u914d\u7ed9\u9a8c\u8bc1\u8005/\u8d28\u62bc\u8005\uff0c\u5b8c\u5168\u94fe\u4e0a\u53ef\u67e5",
+        "zh": "dYdX Chain 100% 费用分配给验证者/质押者，完全链上可查",
         "en": "dYdX Chain distributes 100% fees to validators/stakers, fully on-chain verifiable"
       },
       "tevStatus": "active",
@@ -150,7 +156,7 @@
       "tvl": 169180364,
       "tevRatio": 0.75,
       "earning_yield_percent": 14.86,
-      "tevRatioNote": "\u56de\u8d2d - 75% \u51c0\u534f\u8bae\u8d39\u7528\u7528\u4e8e DYDX \u56de\u8d2d"
+      "tevRatioNote": "回购 - 75% 净协议费用用于 DYDX 回购"
     },
     "eigenlayer": {
       "name": "EigenLayer",
@@ -159,7 +165,7 @@
       "category": "restaking",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "\u65e0 TEV \u673a\u5236\uff0c\u7eaf\u6cbb\u7406\u4ee3\u5e01\uff0c\u6570\u636e\u6e90\u900f\u660e",
+        "zh": "无 TEV 机制，纯治理代币，数据源透明",
         "en": "No TEV mechanism, governance-only, transparent data"
       },
       "tevStatus": "none",
@@ -168,7 +174,7 @@
       "tvl": 8737734297.308693,
       "tevRatio": 0,
       "earning_yield_percent": 0,
-      "tevRatioNote": "\u7eaf\u6cbb\u7406\u4ee3\u5e01 - EIGEN \u76ee\u524d\u4ec5\u7528\u4e8e\u6cbb\u7406\uff0c\u65e0\u6536\u5165\u5206\u914d\u673a\u5236"
+      "tevRatioNote": "纯治理代币 - EIGEN 目前仅用于治理，无收入分配机制"
     },
     "ethena": {
       "name": "Ethena",
@@ -177,7 +183,7 @@
       "category": "basis_trading",
       "confidence": "medium",
       "confidence_reason": {
-        "zh": "\u56de\u8d2d\u8d44\u91d1\u6765\u6e90\u4e3a reserve fund \u800c\u975e\u534f\u8bae\u5229\u6da6\uff0c\u673a\u5236\u4e0d\u900f\u660e",
+        "zh": "回购资金来源为 reserve fund 而非协议利润，机制不透明",
         "en": "Buyback funded from reserve fund not protocol revenue, mechanism opaque"
       },
       "tevStatus": "none",
@@ -186,7 +192,7 @@
       "tvl": 6761741140.7542,
       "tevRatio": 0,
       "earning_yield_percent": 1.35,
-      "tevRatioNote": "\u65e0\u6301\u7eed TEV \u2014 \u56de\u8d2d\u662f\u4e00\u6b21\u6027\u8d44\u672c\u8fd0\u4f5c\uff0c\u975e\u7ecf\u8425\u5229\u6da6\u5206\u7ea2"
+      "tevRatioNote": "无持续 TEV — 回购是一次性资本运作，非经营利润分红"
     },
     "etherfi": {
       "name": "ether.fi",
@@ -195,7 +201,7 @@
       "category": "liquid_staking",
       "confidence": "medium",
       "confidence_reason": {
-        "zh": "\u56de\u8d2d\u4ea4\u6613\u94fe\u4e0a\u53ef\u8ffd\u8e2a\uff0c\u4f46\u5206\u914d\u6bd4\u4f8b\u4ec5 Blog \u516c\u544a\uff0c\u65e0\u6cbb\u7406\u63d0\u6848\u7ea6\u675f",
+        "zh": "回购交易链上可追踪，但分配比例仅 Blog 公告，无治理提案约束",
         "en": "Buyback transactions on-chain trackable, but ratio only from blog posts, no governance mandate"
       },
       "tevStatus": "active",
@@ -204,7 +210,7 @@
       "tvl": 5485839733.28305,
       "tevRatio": 0.302,
       "earning_yield_percent": 15.28,
-      "tevRatioNote": "\u56de\u8d2d\u5206\u914d \u2014 \u63d0\u73b0\u6536\u5165\u56de\u8d2d ETHFI\uff0c\u5e74\u5316\u7ea6 $15M / \u5e02\u503c\u7ea6 $600M \u2248 2.5%"
+      "tevRatioNote": "回购分配 — 提现收入回购 ETHFI，年化约 $15M / 市值约 $600M ≈ 2.5%"
     },
     "fluid": {
       "name": "Fluid",
@@ -213,7 +219,7 @@
       "category": "lending",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "\u53cc\u94b1\u5305\u94fe\u4e0a\u5b8c\u5168\u53ef\u8ffd\u8e2a\uff08Etherscan\uff09\uff0c\u4e0e DefiLlama \u4ea4\u53c9\u9a8c\u8bc1\u5dee\u5f02 <0.1%",
+        "zh": "双钱包链上完全可追踪（Etherscan），与 DefiLlama 交叉验证差异 <0.1%",
         "en": "Dual wallets fully on-chain trackable (Etherscan), cross-validated with DefiLlama <0.1% diff"
       },
       "tevStatus": "active",
@@ -227,7 +233,7 @@
         "defillama_total_usd": 4261283,
         "diff_pct": 0.1
       },
-      "tevRatioNote": "\u56de\u8d2d - Treasury \u7528 35% Revenue \u56de\u8d2d FLUID\uff0cQ4 2025 \u542f\u52a8"
+      "tevRatioNote": "回购 - Treasury 用 35% Revenue 回购 FLUID，Q4 2025 启动"
     },
     "gmx": {
       "name": "GMX",
@@ -236,7 +242,7 @@
       "category": "perp_dex",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "\u8d28\u62bc\u5206\u7ea2\u5408\u7ea6\u94fe\u4e0a\u900f\u660e\uff0cETH/AVAX \u5b9e\u65f6\u53ef\u67e5 + DefiLlama",
+        "zh": "质押分红合约链上透明，ETH/AVAX 实时可查 + DefiLlama",
         "en": "Staking reward contract transparent on-chain, ETH/AVAX real-time + DefiLlama"
       },
       "tevStatus": "active",
@@ -245,7 +251,7 @@
       "tvl": 254630528,
       "tevRatio": 0.27,
       "earning_yield_percent": 35.84,
-      "tevRatioNote": "\u56de\u8d2d\u5206\u7ea2 - \u8d28\u62bc GMX \u83b7\u5f97\u56de\u8d2d\u5206\u914d\u7684 GMX"
+      "tevRatioNote": "回购分红 - 质押 GMX 获得回购分配的 GMX"
     },
     "hype": {
       "name": "Hyperliquid",
@@ -254,7 +260,7 @@
       "category": "perpetuals",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "\u94fe\u4e0a AF \u4f59\u989d\u53ef\u9a8c\u8bc1 + DefiLlama holdersRevenue \u4ea4\u53c9\u9a8c\u8bc1",
+        "zh": "链上 AF 余额可验证 + DefiLlama holdersRevenue 交叉验证",
         "en": "On-chain AF balance verifiable + DefiLlama holdersRevenue cross-validated"
       },
       "tevStatus": "active",
@@ -263,7 +269,7 @@
       "tvl": 4260689401,
       "tevRatio": 1,
       "earning_yield_percent": 14.35,
-      "tevRatioNote": "\u56de\u8d2d\u9500\u6bc1 - Assistance Fund \u81ea\u52a8\u5c06\u8d39\u7528\u6362\u6210 HYPE \u5e76\u6c38\u4e45\u79fb\u9664"
+      "tevRatioNote": "回购销毁 - Assistance Fund 自动将费用换成 HYPE 并永久移除"
     },
     "jito": {
       "name": "Jito",
@@ -272,7 +278,7 @@
       "category": "liquid_staking",
       "confidence": "low",
       "confidence_reason": {
-        "zh": "\u65e0 TEV \u673a\u5236\uff0cJitoSOL \u6536\u76ca\u5f52\u8d28\u62bc\u8005\u975e JTO \u6301\u6709\u8005\uff0c\u6570\u636e\u610f\u4e49\u6709\u9650",
+        "zh": "无 TEV 机制，JitoSOL 收益归质押者非 JTO 持有者，数据意义有限",
         "en": "No TEV mechanism, JitoSOL yields go to stakers not JTO holders, limited data relevance"
       },
       "tevStatus": "none",
@@ -281,7 +287,7 @@
       "tvl": 1066115109.33555,
       "tevRatio": 0,
       "earning_yield_percent": 20.3,
-      "tevRatioNote": "\u6cbb\u7406\u4ee3\u5e01 - MEV \u6536\u76ca\u6d41\u5411 JitoSOL\uff0cJTO \u7528\u4e8e\u6cbb\u7406",
+      "tevRatioNote": "治理代币 - MEV 收益流向 JitoSOL，JTO 用于治理",
       "metrics": {
         "trailing_365d_revenue_usd": 25517397,
         "trailing_30d_revenue_usd": 170315
@@ -294,7 +300,7 @@
       "category": "lending",
       "confidence": "low",
       "confidence_reason": {
-        "zh": "TRON \u751f\u6001\u900f\u660e\u5ea6\u4f4e\uff0cJST \u8d28\u62bc\u5956\u52b1\u65e0\u516c\u5f00 API\uff0c\u4f9d\u8d56\u5b98\u65b9\u58f0\u660e",
+        "zh": "TRON 生态透明度低，JST 质押奖励无公开 API，依赖官方声明",
         "en": "TRON ecosystem low transparency, JST staking rewards no public API, relies on official statements"
       },
       "tevStatus": "partial",
@@ -303,7 +309,7 @@
       "tvl": 3079178069.700091,
       "tevRatio": 0,
       "earning_yield_percent": 0,
-      "tevRatioNote": "\u672a\u786e\u8ba4 \u2014 \u58f0\u79f0\u6709 staking \u5206\u7ea2\u4f46\u900f\u660e\u5ea6\u6781\u4f4e"
+      "tevRatioNote": "未确认 — 声称有 staking 分红但透明度极低"
     },
     "kamino": {
       "name": "Kamino Finance",
@@ -312,7 +318,7 @@
       "category": "lending",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "\u65e0 TEV \u673a\u5236\uff0c\u7eaf\u6cbb\u7406\u4ee3\u5e01\uff0c\u6570\u636e\u6e90\u900f\u660e",
+        "zh": "无 TEV 机制，纯治理代币，数据源透明",
         "en": "No TEV mechanism, governance-only, transparent data"
       },
       "tevStatus": "none",
@@ -321,7 +327,7 @@
       "tvl": 2015531299,
       "tevRatio": 0,
       "earning_yield_percent": 21.54,
-      "tevRatioNote": "\u65e0 TEV \u2014 KMNO staking \u4ec5\u63d0\u4f9b farming \u5956\u52b1\u52a0\u6210\uff08boost\uff09\uff0c\u975e\u534f\u8bae\u6536\u5165\u5206\u914d\u3002Season \u5956\u52b1\u6765\u81ea\u4ee3\u5e01\u56fd\u5e93\u6392\u653e\uff08\u6fc0\u52b1\uff09\uff0c\u4e0d\u662f fee distribution",
+      "tevRatioNote": "无 TEV — KMNO staking 仅提供 farming 奖励加成（boost），非协议收入分配。Season 奖励来自代币国库排放（激励），不是 fee distribution",
       "metrics": {
         "trailing_365d_revenue_usd": 20185377,
         "trailing_30d_revenue_usd": 994778
@@ -334,7 +340,7 @@
       "category": "liquid_staking",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "\u65e0 TEV \u673a\u5236\uff0c\u7eaf\u6cbb\u7406\u4ee3\u5e01\uff0c\u6570\u636e\u6e90\u900f\u660e",
+        "zh": "无 TEV 机制，纯治理代币，数据源透明",
         "en": "No TEV mechanism, governance-only, transparent data"
       },
       "tevStatus": "none",
@@ -343,7 +349,7 @@
       "tvl": 18341624945.97916,
       "tevRatio": 0,
       "earning_yield_percent": 29.49,
-      "tevRatioNote": "\u65e0 - LDO \u4ec5\u4e3a\u6cbb\u7406\u4ee3\u5e01\uff0c\u4e0d\u5206\u4eab\u534f\u8bae\u6536\u5165",
+      "tevRatioNote": "无 - LDO 仅为治理代币，不分享协议收入",
       "metrics": {
         "trailing_365d_revenue_usd": 79197765,
         "trailing_30d_revenue_usd": 4371143
@@ -356,7 +362,7 @@
       "category": "lending",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "MIP-018 \u6cbb\u7406\u63d0\u6848\u660e\u786e 25% \u5229\u6da6\u56de\u8d2d SYRUP\uff0c\u94fe\u4e0a\u53ef\u8ffd\u8e2a",
+        "zh": "MIP-018 治理提案明确 25% 利润回购 SYRUP，链上可追踪",
         "en": "MIP-018 governance proposal mandates 25% profit buyback of SYRUP, on-chain trackable"
       },
       "tevStatus": "active",
@@ -365,7 +371,7 @@
       "tvl": 2001318635.111343,
       "tevRatio": 0.25,
       "earning_yield_percent": 2.92,
-      "tevRatioNote": "\u56de\u8d2d\u5206\u914d - 25% \u534f\u8bae\u6536\u5165\u56de\u8d2d SYRUP"
+      "tevRatioNote": "回购分配 - 25% 协议收入回购 SYRUP"
     },
     "mnt": {
       "name": "Mantle",
@@ -374,7 +380,7 @@
       "category": "l2_token",
       "confidence": "medium",
       "confidence_reason": {
-        "zh": "\u867d\u65e0 TEV\uff0c\u4f46 Mantle Treasury \u94fe\u4e0a\u53ef\u67e5\uff0cBitDAO \u6cbb\u7406\u900f\u660e",
+        "zh": "虽无 TEV，但 Mantle Treasury 链上可查，BitDAO 治理透明",
         "en": "No TEV, but Mantle Treasury on-chain verifiable, BitDAO governance transparent"
       },
       "tevStatus": "none",
@@ -383,7 +389,7 @@
       "tvl": 0,
       "tevRatio": 0,
       "earning_yield_percent": 0,
-      "tevRatioNote": "\u5f85\u786e\u8ba4 - Gas \u6d88\u8017 + \u6f5c\u5728\u7684\u8d28\u62bc\u5956\u52b1"
+      "tevRatioNote": "待确认 - Gas 消耗 + 潜在的质押奖励"
     },
     "morpho": {
       "name": "Morpho",
@@ -392,7 +398,7 @@
       "category": "lending",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "\u65e0 TEV \u673a\u5236\uff0c\u7eaf\u6cbb\u7406\u4ee3\u5e01\uff0c\u6570\u636e\u6e90\u900f\u660e",
+        "zh": "无 TEV 机制，纯治理代币，数据源透明",
         "en": "No TEV mechanism, governance-only, transparent data"
       },
       "tevStatus": "none",
@@ -401,7 +407,7 @@
       "tvl": 5811338741,
       "tevRatio": 0,
       "earning_yield_percent": 0,
-      "tevRatioNote": "\u7eaf\u6cbb\u7406\u4ee3\u5e01 - MORPHO \u76ee\u524d\u4ec5\u7528\u4e8e\u6cbb\u7406\u6295\u7968"
+      "tevRatioNote": "纯治理代币 - MORPHO 目前仅用于治理投票"
     },
     "okb": {
       "name": "OKB",
@@ -410,7 +416,7 @@
       "category": "cex_token",
       "confidence": "low",
       "confidence_reason": {
-        "zh": "\u5df2\u505c\u6b62\u56de\u8d2d\u9500\u6bc1\uff0c\u5386\u53f2\u6570\u636e\u4ec5\u5b98\u65b9\u516c\u544a",
+        "zh": "已停止回购销毁，历史数据仅官方公告",
         "en": "Buyback & burn stopped, historical data from announcements only"
       },
       "tevStatus": "none",
@@ -419,7 +425,7 @@
       "tvl": 0,
       "tevRatio": 0.3,
       "earning_yield_percent": 0,
-      "tevRatioNote": "\u56de\u8d2d\u9500\u6bc1 - \u5b63\u5ea6\u7528 30% \u6536\u5165\u56de\u8d2d\u9500\u6bc1 OKB"
+      "tevRatioNote": "回购销毁 - 季度用 30% 收入回购销毁 OKB"
     },
     "pancakeswap": {
       "name": "PancakeSwap",
@@ -428,7 +434,7 @@
       "category": "dex",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "Tokenomics 3.0 \u94fe\u4e0a\u9500\u6bc1\u53ef\u9a8c\u8bc1 + DefiLlama \u6570\u636e",
+        "zh": "Tokenomics 3.0 链上销毁可验证 + DefiLlama 数据",
         "en": "Tokenomics 3.0 on-chain burn verifiable + DefiLlama data"
       },
       "tevStatus": "active",
@@ -437,7 +443,7 @@
       "tvl": 1986394126,
       "tevRatio": 0.15,
       "earning_yield_percent": 22.01,
-      "tevRatioNote": "\u56de\u8d2d\u9500\u6bc1 - \u534f\u8bae\u6536\u5165 15% \u7528\u4e8e CAKE \u56de\u8d2d\u9500\u6bc1\uff08veCAKE \u5206\u7ea2\u5df2\u7ed3\u675f\uff09"
+      "tevRatioNote": "回购销毁 - 协议收入 15% 用于 CAKE 回购销毁（veCAKE 分红已结束）"
     },
     "pendle": {
       "name": "Pendle",
@@ -446,7 +452,7 @@
       "category": "yield",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "vePENDLE \u8d39\u7528\u5206\u914d\u5408\u7ea6\u94fe\u4e0a\u53ef\u67e5 + DefiLlama \u9a8c\u8bc1",
+        "zh": "vePENDLE 费用分配合约链上可查 + DefiLlama 验证",
         "en": "vePENDLE fee distribution contract on-chain verifiable + DefiLlama validated"
       },
       "tevStatus": "active",
@@ -455,7 +461,7 @@
       "tvl": 2219130333.8867607,
       "tevRatio": 0.8,
       "earning_yield_percent": 18.15,
-      "tevRatioNote": "\u56de\u8d2d+\u5206\u7ea2 - 80% \u534f\u8bae\u6536\u5165\u8f6c\u5316\u4e3a PENDLE \u56de\u8d2d\uff0c\u5206\u914d\u7ed9 sPENDLE \u6301\u6709\u8005"
+      "tevRatioNote": "回购+分红 - 80% 协议收入转化为 PENDLE 回购，分配给 sPENDLE 持有者"
     },
     "sky": {
       "name": "Sky (MakerDAO)",
@@ -464,7 +470,7 @@
       "category": "cdp",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "Smart Burn Engine \u5408\u7ea6\u94fe\u4e0a\u53ef\u8ffd\u8e2a + DefiLlama \u9a8c\u8bc1",
+        "zh": "Smart Burn Engine 合约链上可追踪 + DefiLlama 验证",
         "en": "Smart Burn Engine contract on-chain trackable + DefiLlama validated"
       },
       "tevStatus": "active",
@@ -473,7 +479,7 @@
       "tvl": 5659321744.22077,
       "tevRatio": 0.7,
       "earning_yield_percent": 15.62,
-      "tevRatioNote": "\u56de\u8d2d - Smart Burn Engine \u4f7f\u7528\u534f\u8bae\u76c8\u4f59\u56de\u8d2d MKR \u5e76\u6dfb\u52a0\u6d41\u52a8\u6027"
+      "tevRatioNote": "回购 - Smart Burn Engine 使用协议盈余回购 MKR 并添加流动性"
     },
     "spark": {
       "name": "Spark",
@@ -482,7 +488,7 @@
       "category": "lending",
       "confidence": "medium",
       "confidence_reason": {
-        "zh": "SPK \u4ee3\u5e01\u8f83\u65b0\uff0c\u6536\u5165\u5f52 Sky DAO\uff0c\u5177\u4f53\u5206\u914d\u673a\u5236\u4ecd\u5728\u6cbb\u7406\u8ba8\u8bba\u4e2d",
+        "zh": "SPK 代币较新，收入归 Sky DAO，具体分配机制仍在治理讨论中",
         "en": "SPK token is new, revenue goes to Sky DAO, distribution mechanism still under governance discussion"
       },
       "tevStatus": "none",
@@ -491,7 +497,7 @@
       "tvl": 5334776155.36674,
       "tevRatio": 0,
       "earning_yield_percent": 46.77,
-      "tevRatioNote": "\u6cbb\u7406\u4ee3\u5e01 - SPK \u7528\u4e8e Spark SubDAO \u6cbb\u7406\uff0c\u6536\u5165\u76ee\u524d\u6d41\u5411 Sky \u4e3b DAO",
+      "tevRatioNote": "治理代币 - SPK 用于 Spark SubDAO 治理，收入目前流向 Sky 主 DAO",
       "metrics": {
         "trailing_365d_revenue_usd": 22924743,
         "trailing_30d_revenue_usd": 1402217
@@ -504,8 +510,8 @@
       "category": "dex",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "Firepit \u9500\u6bc1 UNI\u21920xdead \u5b8c\u5168\u94fe\u4e0a\u53ef\u8ffd\u8e2a\uff08Etherscan\uff09",
-        "en": "Firepit burn UNI\u21920xdead fully on-chain trackable (Etherscan)"
+        "zh": "Firepit 销毁 UNI→0xdead 完全链上可追踪（Etherscan）",
+        "en": "Firepit burn UNI→0xdead fully on-chain trackable (Etherscan)"
       },
       "tevStatus": "active",
       "tev_yield_percent": 1.47,
@@ -513,7 +519,7 @@
       "tvl": 3067536789,
       "tevRatio": 1,
       "earning_yield_percent": 1.47,
-      "tevRatioNote": "\u534f\u8bae\u8d39 + Unichain Sequencer \u6536\u5165 \u2192 Firepit \u9500\u6bc1 UNI"
+      "tevRatioNote": "协议费 + Unichain Sequencer 收入 → Firepit 销毁 UNI"
     }
   }
 }
