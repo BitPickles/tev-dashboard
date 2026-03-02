@@ -177,7 +177,7 @@
     let currentLang = 'zh';
     const t = k => i18n[currentLang][k] || k;
     const updateI18n = () => document.querySelectorAll('[data-i18n]').forEach(el => el.textContent = t(el.dataset.i18n));
-    const getProtocolId = () => new URLSearchParams(window.location.search).get('id') || 'aave';
+    const getProtocolId = () => new URLSearchParams(window.location.search).get('id') || new URLSearchParams(window.location.search).get('protocol') || 'aave';
     const fmtCurrency = v => v >= 1e9 ? '$' + (v/1e9).toFixed(2) + 'B' : v >= 1e6 ? '$' + (v/1e6).toFixed(2) + 'M' : v >= 1e3 ? '$' + (v/1e3).toFixed(1) + 'K' : '$' + v.toFixed(0);
     const getTevStatus = (s, cfg) => cfg?.tevStatus || ((s.fee_switch === 'ON' || s.buybacks === 'ACTIVE' || s.dividends === 'ACTIVE' || s.burns === 'ACTIVE' || s.staking === 'ACTIVE') ? 'active' : (s.fee_switch === 'PARTIAL' || s.dividends === 'PARTIAL') ? 'partial' : 'none');
     const getValueClass = v => { const u = (v || '').toUpperCase(); return u === 'ON' || u === 'ACTIVE' ? 'value-on' : u === 'PARTIAL' ? 'value-partial' : 'value-off'; };
