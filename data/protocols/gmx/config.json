@@ -4,7 +4,7 @@
   "ticker": "GMX",
   "icon": "https://coin-images.coingecko.com/coins/images/18323/large/arbit.png",
   "category": "perp_dex",
-  "description": "去中心化永续合约交易所",
+  "description": "\u53bb\u4e2d\u5fc3\u5316\u6c38\u7eed\u5408\u7ea6\u4ea4\u6613\u6240",
   "website": "https://gmx.io",
   "docs": "https://docs.gmx.io",
   "token": {
@@ -18,14 +18,14 @@
   "tev_mechanisms": [
     {
       "type": "staking_reward",
-      "name": "GMX 质押奖励",
-      "description": "GMX 质押者获得 30% 平台费用（ETH/AVAX）",
+      "name": "GMX \u8d28\u62bc\u5956\u52b1",
+      "description": "GMX \u8d28\u62bc\u8005\u83b7\u5f97 30% \u5e73\u53f0\u8d39\u7528\uff08ETH/AVAX\uff09",
       "status": "active"
     },
     {
       "type": "fee_sharing",
       "name": "GMX Staking Rewards",
-      "description": "27% 平台费用分配给质押的 GMX（通过回购机制分配）",
+      "description": "27% \u5e73\u53f0\u8d39\u7528\u5206\u914d\u7ed9\u8d28\u62bc\u7684 GMX\uff08\u901a\u8fc7\u56de\u8d2d\u673a\u5236\u5206\u914d\uff09",
       "status": "active",
       "ratio": 0.27,
       "staking_contract": "0x908C4D94D34924765f1eDc22A1DD098397c59dD4",
@@ -38,11 +38,11 @@
   ],
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "27% 平台费用分配给质押 GMX 持有者（通过回购机制）",
+    "fee_switch_details": "27% \u5e73\u53f0\u8d39\u7528\u5206\u914d\u7ed9\u8d28\u62bc GMX \u6301\u6709\u8005\uff08\u901a\u8fc7\u56de\u8d2d\u673a\u5236\uff09",
     "buybacks": "ACTIVE",
     "dividends": "ACTIVE",
     "burns": "NONE",
-    "primary_value_accrual": "回购分红 - 质押 GMX 获得回购分配的 GMX",
+    "primary_value_accrual": "\u56de\u8d2d\u5206\u7ea2 - \u8d28\u62bc GMX \u83b7\u5f97\u56de\u8d2d\u5206\u914d\u7684 GMX",
     "tevRatio": 0.27
   },
   "market_data": {
@@ -61,7 +61,7 @@
     "market_cap_usd": 61633069,
     "tev_yield_percent": 23.5,
     "calculation_date": "2026-02-05",
-    "note": "TEV yield = 年化 holders revenue / 流通市值"
+    "note": "TEV yield = \u5e74\u5316 holders revenue / \u6d41\u901a\u5e02\u503c"
   },
   "confidence": "high",
   "data_sources": [
@@ -84,7 +84,7 @@
       "reliability": "high"
     }
   ],
-  "analyst_notes": "## GMX TEV 机制\n\n### 核心机制\nGMX 质押者获得 **27%** 平台交易费用（通过回购机制转换为 GMX 后分配）。\n\n### 费用分配\n| 来源 | 分配 |\n|------|------|\n| 平台交易费 27% | GMX 质押者（回购分配） |\n| 平台交易费 63% | GM/GLP 持有者 |\n| 平台交易费 10% | DAO Treasury |\n\n### 机制变更\n- 原机制：ETH/AVAX 直接分红\n- 新机制：回购 GMX 后分配（DAO 投票通过）\n\n### 数据来源\n| 数据 | 来源 |\n|------|------|\n| 每日分红 | DefiLlama `holdersRevenue` |\n| 价格/市值 | CoinGecko |\n\n### 官方依据\n- 文档：https://docs.gmx.io/docs/tokenomics/gmx-token/\n- 原文：\"earning 27% of the fees from leverage trading, liquidations, borrowing fees, and swaps\"\n- DAO投票：https://www.tally.xyz/gov/gmx/proposal/81921330482579592877925554009800798217173652653143694483196169672340561914053\n\n### 参考链接\n- [GMX 质押文档](https://docs.gmx.io/docs/tokenomics/rewards)\n- [GMX Token 文档](https://docs.gmx.io/docs/tokenomics/gmx-token/)",
+  "analyst_notes": "## GMX TEV \u673a\u5236\n\n### \u6838\u5fc3\u673a\u5236\nGMX \u8d28\u62bc\u8005\u83b7\u5f97 **27%** \u5e73\u53f0\u4ea4\u6613\u8d39\u7528\uff08\u901a\u8fc7\u56de\u8d2d\u673a\u5236\u8f6c\u6362\u4e3a GMX \u540e\u5206\u914d\uff09\u3002\n\n### \u8d39\u7528\u5206\u914d\n| \u6765\u6e90 | \u5206\u914d |\n|------|------|\n| \u5e73\u53f0\u4ea4\u6613\u8d39 27% | GMX \u8d28\u62bc\u8005\uff08\u56de\u8d2d\u5206\u914d\uff09 |\n| \u5e73\u53f0\u4ea4\u6613\u8d39 63% | GM/GLP \u6301\u6709\u8005 |\n| \u5e73\u53f0\u4ea4\u6613\u8d39 10% | DAO Treasury |\n\n### \u673a\u5236\u53d8\u66f4\n- \u539f\u673a\u5236\uff1aETH/AVAX \u76f4\u63a5\u5206\u7ea2\n- \u65b0\u673a\u5236\uff1a\u56de\u8d2d GMX \u540e\u5206\u914d\uff08DAO \u6295\u7968\u901a\u8fc7\uff09\n\n### \u6570\u636e\u6765\u6e90\n| \u6570\u636e | \u6765\u6e90 |\n|------|------|\n| \u6bcf\u65e5\u5206\u7ea2 | DefiLlama `holdersRevenue` |\n| \u4ef7\u683c/\u5e02\u503c | CoinGecko |\n\n### \u5b98\u65b9\u4f9d\u636e\n- \u6587\u6863\uff1ahttps://docs.gmx.io/docs/tokenomics/gmx-token/\n- \u539f\u6587\uff1a\"earning 27% of the fees from leverage trading, liquidations, borrowing fees, and swaps\"\n- DAO\u6295\u7968\uff1ahttps://www.tally.xyz/gov/gmx/proposal/81921330482579592877925554009800798217173652653143694483196169672340561914053\n\n### \u53c2\u8003\u94fe\u63a5\n- [GMX \u8d28\u62bc\u6587\u6863](https://docs.gmx.io/docs/tokenomics/rewards)\n- [GMX Token \u6587\u6863](https://docs.gmx.io/docs/tokenomics/gmx-token/)",
   "last_updated": "2026-02-22",
   "tev_data": {
     "has_tev": true,
@@ -97,14 +97,16 @@
         "name": "DefiLlama holdersRevenue",
         "type": "defillama",
         "annual_usd": 15622476,
-        "note": "GMX 质押分红"
+        "note": "GMX \u8d28\u62bc\u5206\u7ea2"
       }
     ],
     "calculation": "$15.62M / $64.74M = 24.13%"
   },
   "tevStatus": "active",
   "confidence_reason": {
-    "zh": "质押分红合约链上透明，ETH/AVAX 实时可查 + DefiLlama",
+    "zh": "\u8d28\u62bc\u5206\u7ea2\u5408\u7ea6\u94fe\u4e0a\u900f\u660e\uff0cETH/AVAX \u5b9e\u65f6\u53ef\u67e5 + DefiLlama",
     "en": "Staking reward contract transparent on-chain, ETH/AVAX real-time + DefiLlama"
-  }
+  },
+  "tevRatio": 0.27,
+  "earning_yield_percent": 35.84
 }

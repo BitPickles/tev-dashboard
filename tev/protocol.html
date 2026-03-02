@@ -588,31 +588,31 @@
         const marketCapEl = document.getElementById('summary-marketcap');
         const earningsYieldEl = document.getElementById('summary-earningsyield');
         const tevYieldEl = document.getElementById('summary-tevyield');
-        
-        if (protoData) {
-          // 分配比例 - 使用预计算值
-          const tevRatio = protoData.tevRatio;
-          if (typeof tevRatio === 'string') {
-            tevRatioEl.textContent = tevRatio;
-          } else if (tevRatio > 0) {
-            tevRatioEl.textContent = `${(tevRatio * 100).toFixed(0)}%`;
-          } else {
-            tevRatioEl.textContent = '—';
-          }
 
-          // 市值
-          const marketCap = protoData.market_cap_usd;
-          marketCapEl.textContent = marketCap ? `$${(marketCap / 1e9).toFixed(2)}B` : '—';
+        // 使用 config.json 中的值（直接读取，无需 fetch）
+        const tevRatio = cfg.tevRatio;
+        const marketCap = cfg.market_cap_usd || 0;
+        const earningsYield = cfg.earning_yield_percent || 0;
+        const tevYield = cfg.tev_data?.tev_yield_percent || 0;
 
-          // 收益率 - 使用预计算值
-          const earningsYield = protoData.earning_yield_percent;
-          earningsYieldEl.textContent = earningsYield ? `${earningsYield.toFixed(2)}%` : '—';
-
-          // TEV Yield - 使用预计算值
-          const tevYield = protoData.tev_yield_percent;
-          tevYieldEl.textContent = tevYield ? `${tevYield.toFixed(2)}%` : '—';
-          tevYieldEl.className = `tev-summary-value ${tevYield > 5 ? 'value-on' : tevYield > 0 ? 'value-partial' : ''}`;
+        // 分配比例
+        if (typeof tevRatio === 'string') {
+          tevRatioEl.textContent = tevRatio;
+        } else if (tevRatio > 0) {
+          tevRatioEl.textContent = `${(tevRatio * 100).toFixed(0)}%`;
+        } else {
+          tevRatioEl.textContent = '—';
         }
+
+        // 市值
+        marketCapEl.textContent = marketCap ? `$${(marketCap / 1e9).toFixed(2)}B` : '—';
+
+        // 收益率
+        earningsYieldEl.textContent = earningsYield ? `${earningsYield.toFixed(2)}%` : '—';
+
+        // TEV Yield
+        tevYieldEl.textContent = tevYield ? `${tevYield.toFixed(2)}%` : '—';
+        tevYieldEl.className = `tev-summary-value ${tevYield > 5 ? 'value-on' : tevYield > 0 ? 'value-partial' : ''}`;
         
         const s = cfg.tev_summary || {};
         ['buybacks', 'dividends', 'burns'].forEach(k => { const el = document.getElementById(`summary-${k}`); const v = s[k] || 'NONE'; el.textContent = t('status.' + v); el.className = `tev-summary-value ${getValueClass(v)}`; });

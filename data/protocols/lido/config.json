@@ -4,7 +4,7 @@
   "ticker": "LDO",
   "icon": "https://coin-images.coingecko.com/coins/images/13573/large/Lido_DAO.png",
   "category": "liquid_staking",
-  "description": "以太坊流动性质押协议",
+  "description": "\u4ee5\u592a\u574a\u6d41\u52a8\u6027\u8d28\u62bc\u534f\u8bae",
   "website": "https://lido.fi",
   "docs": "https://docs.lido.fi",
   "token": {
@@ -18,11 +18,11 @@
   "tev_mechanisms": [],
   "tev_summary": {
     "fee_switch": "OFF",
-    "fee_switch_details": "所有收入归 DAO 国库，无分配给 LDO 持有者",
+    "fee_switch_details": "\u6240\u6709\u6536\u5165\u5f52 DAO \u56fd\u5e93\uff0c\u65e0\u5206\u914d\u7ed9 LDO \u6301\u6709\u8005",
     "buybacks": "NONE",
     "dividends": "NONE",
     "burns": "NONE",
-    "primary_value_accrual": "无 - LDO 仅为治理代币，不分享协议收入"
+    "primary_value_accrual": "\u65e0 - LDO \u4ec5\u4e3a\u6cbb\u7406\u4ee3\u5e01\uff0c\u4e0d\u5206\u4eab\u534f\u8bae\u6536\u5165"
   },
   "confidence": "high",
   "data_sources": [
@@ -33,13 +33,13 @@
       "reliability": "high"
     }
   ],
-  "notes": "【收入规模】年化协议费用约 $677M，DAO 分成（10%费率的50%）约 $34M/年。尽管 Lido 是最大的 DeFi 协议之一（TVL $22B+），但 LDO 代币不分享任何协议收入（fee switch OFF）。协议收入完全归 DAO 国库控制。若未来开启 fee switch，潜在 TEV 基数较大。",
+  "notes": "\u3010\u6536\u5165\u89c4\u6a21\u3011\u5e74\u5316\u534f\u8bae\u8d39\u7528\u7ea6 $677M\uff0cDAO \u5206\u6210\uff0810%\u8d39\u7387\u768450%\uff09\u7ea6 $34M/\u5e74\u3002\u5c3d\u7ba1 Lido \u662f\u6700\u5927\u7684 DeFi \u534f\u8bae\u4e4b\u4e00\uff08TVL $22B+\uff09\uff0c\u4f46 LDO \u4ee3\u5e01\u4e0d\u5206\u4eab\u4efb\u4f55\u534f\u8bae\u6536\u5165\uff08fee switch OFF\uff09\u3002\u534f\u8bae\u6536\u5165\u5b8c\u5168\u5f52 DAO \u56fd\u5e93\u63a7\u5236\u3002\u82e5\u672a\u6765\u5f00\u542f fee switch\uff0c\u6f5c\u5728 TEV \u57fa\u6570\u8f83\u5927\u3002",
   "last_updated": "2026-02-14",
   "tev_data": {
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "note": "无持续 TEV"
+    "note": "\u65e0\u6301\u7eed TEV"
   },
   "market_data": {
     "tvl": 18341624945.97916,
@@ -47,7 +47,9 @@
   },
   "tevStatus": "none",
   "confidence_reason": {
-    "zh": "无 TEV 机制，纯治理代币，数据源透明",
+    "zh": "\u65e0 TEV \u673a\u5236\uff0c\u7eaf\u6cbb\u7406\u4ee3\u5e01\uff0c\u6570\u636e\u6e90\u900f\u660e",
     "en": "No TEV mechanism, governance-only, transparent data"
-  }
+  },
+  "tevRatio": 0.0,
+  "earning_yield_percent": 29.49
 }

@@ -4,7 +4,7 @@
   "ticker": "FLUID",
   "icon": "https://coin-images.coingecko.com/coins/images/33382/large/fluid.png",
   "category": "lending",
-  "description": "Lending + DEX 一体化协议，由 Instadapp 团队推出，建立在统一的 Liquidity Layer 上",
+  "description": "Lending + DEX \u4e00\u4f53\u5316\u534f\u8bae\uff0c\u7531 Instadapp \u56e2\u961f\u63a8\u51fa\uff0c\u5efa\u7acb\u5728\u7edf\u4e00\u7684 Liquidity Layer \u4e0a",
   "website": "https://fluid.io",
   "docs": "https://docs.fluid.instadapp.io",
   "token": {
@@ -17,7 +17,7 @@
     {
       "type": "buyback",
       "name": "Fluid Reserve Buyback",
-      "description": "Treasury 用协议收入回购 FLUID 代币，建立链上储备",
+      "description": "Treasury \u7528\u534f\u8bae\u6536\u5165\u56de\u8d2d FLUID \u4ee3\u5e01\uff0c\u5efa\u7acb\u94fe\u4e0a\u50a8\u5907",
       "status": "active",
       "start_date": "2025-10-01",
       "tev_ratio": 0.35,
@@ -30,11 +30,11 @@
   ],
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "35% Revenue 用于回购",
+    "fee_switch_details": "35% Revenue \u7528\u4e8e\u56de\u8d2d",
     "buybacks": "ACTIVE",
     "dividends": "NONE",
     "burns": "NONE",
-    "primary_value_accrual": "回购 - Treasury 用 35% Revenue 回购 FLUID，Q4 2025 启动"
+    "primary_value_accrual": "\u56de\u8d2d - Treasury \u7528 35% Revenue \u56de\u8d2d FLUID\uff0cQ4 2025 \u542f\u52a8"
   },
   "confidence": "high",
   "data_sources": [
@@ -81,10 +81,10 @@
       "type": "media"
     }
   ],
-  "analyst_notes": "## 链上数据追踪\n\n**追踪方法**: 监控 FLUID 代币流入储备钱包\n\n**储备钱包地址**:\n- `0x3e6FeBd2b195e1Ef3e8e3F4AABB6772aada32353`\n- `0x9Afb8C1798B93a8E04a18553eE65bAFa41a012F1`\n\n**原理**:\n回购 = 在市场买入 FLUID → 转入储备钱包\n追踪所有转入这两个地址的 FLUID = 回购量\n\n**数据来源**:\n- Etherscan (ERC20 Transfer 事件)\n- 价格: CoinGecko\n- 参考: [Dune Dashboard](https://dune.com/murathan/fluid-buybacks)",
+  "analyst_notes": "## \u94fe\u4e0a\u6570\u636e\u8ffd\u8e2a\n\n**\u8ffd\u8e2a\u65b9\u6cd5**: \u76d1\u63a7 FLUID \u4ee3\u5e01\u6d41\u5165\u50a8\u5907\u94b1\u5305\n\n**\u50a8\u5907\u94b1\u5305\u5730\u5740**:\n- `0x3e6FeBd2b195e1Ef3e8e3F4AABB6772aada32353`\n- `0x9Afb8C1798B93a8E04a18553eE65bAFa41a012F1`\n\n**\u539f\u7406**:\n\u56de\u8d2d = \u5728\u5e02\u573a\u4e70\u5165 FLUID \u2192 \u8f6c\u5165\u50a8\u5907\u94b1\u5305\n\u8ffd\u8e2a\u6240\u6709\u8f6c\u5165\u8fd9\u4e24\u4e2a\u5730\u5740\u7684 FLUID = \u56de\u8d2d\u91cf\n\n**\u6570\u636e\u6765\u6e90**:\n- Etherscan (ERC20 Transfer \u4e8b\u4ef6)\n- \u4ef7\u683c: CoinGecko\n- \u53c2\u8003: [Dune Dashboard](https://dune.com/murathan/fluid-buybacks)",
   "last_updated": "2026-02-21",
   "data_confidence": "high",
-  "data_source_note": "链上追踪 (FLUID 流入储备钱包)",
+  "data_source_note": "\u94fe\u4e0a\u8ffd\u8e2a (FLUID \u6d41\u5165\u50a8\u5907\u94b1\u5305)",
   "tev_data": {
     "has_tev": true,
     "trailing_365d_tev_usd": 4264765,
@@ -92,13 +92,13 @@
     "market_cap_usd": 167507396,
     "price_usd": 2.14,
     "calculation_date": "2026-03-01",
-    "methodology": "链上回购追踪（Etherscan FLUID→储备钱包），DefiLlama 交叉验证",
+    "methodology": "\u94fe\u4e0a\u56de\u8d2d\u8ffd\u8e2a\uff08Etherscan FLUID\u2192\u50a8\u5907\u94b1\u5305\uff09\uff0cDefiLlama \u4ea4\u53c9\u9a8c\u8bc1",
     "sources": [
       {
         "name": "DefiLlama holdersRevenue",
         "type": "defillama",
         "annual_usd": 4261283,
-        "note": "Treasury 回购 FLUID，批量执行"
+        "note": "Treasury \u56de\u8d2d FLUID\uff0c\u6279\u91cf\u6267\u884c"
       }
     ],
     "validation": {
@@ -130,11 +130,13 @@
   },
   "tevStatus": "active",
   "confidence_reason": {
-    "zh": "双钱包链上完全可追踪（Etherscan），与 DefiLlama 交叉验证差异 <0.1%",
+    "zh": "\u53cc\u94b1\u5305\u94fe\u4e0a\u5b8c\u5168\u53ef\u8ffd\u8e2a\uff08Etherscan\uff09\uff0c\u4e0e DefiLlama \u4ea4\u53c9\u9a8c\u8bc1\u5dee\u5f02 <0.1%",
     "en": "Dual wallets fully on-chain trackable (Etherscan), cross-validated with DefiLlama <0.1% diff"
   },
   "market_data": {
     "tvl": 1195675700.970949,
     "tvl_updated": "2026-03-02T13:02:27.604Z"
-  }
+  },
+  "tevRatio": 0.35,
+  "earning_yield_percent": 6.73
 }

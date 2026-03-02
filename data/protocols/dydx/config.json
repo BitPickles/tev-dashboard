@@ -4,7 +4,7 @@
   "ticker": "DYDX",
   "icon": "https://coin-images.coingecko.com/coins/images/32594/large/dydx.png",
   "category": "perpetuals",
-  "description": "去中心化永续合约交易平台，V4 版本迁移到独立的 dYdX Chain (Cosmos appchain)",
+  "description": "\u53bb\u4e2d\u5fc3\u5316\u6c38\u7eed\u5408\u7ea6\u4ea4\u6613\u5e73\u53f0\uff0cV4 \u7248\u672c\u8fc1\u79fb\u5230\u72ec\u7acb\u7684 dYdX Chain (Cosmos appchain)",
   "website": "https://dydx.exchange",
   "docs": "https://docs.dydx.exchange",
   "token": {
@@ -12,21 +12,21 @@
     "chain": "dydx-chain",
     "coingecko_id": "dydx-chain",
     "defillama_id": "dydx",
-    "note": "大部分代币已从以太坊迁移到 dYdX Chain",
+    "note": "\u5927\u90e8\u5206\u4ee3\u5e01\u5df2\u4ece\u4ee5\u592a\u574a\u8fc1\u79fb\u5230 dYdX Chain",
     "circulating_supply": 29630256.481182758,
     "total_supply": 824145891.8983325
   },
   "tev_mechanisms": [
     {
       "type": "fee_sharing",
-      "name": "DYDX 质押分红",
-      "description": "100% 协议费用分配给 DYDX 质押者",
+      "name": "DYDX \u8d28\u62bc\u5206\u7ea2",
+      "description": "100% \u534f\u8bae\u8d39\u7528\u5206\u914d\u7ed9 DYDX \u8d28\u62bc\u8005",
       "status": "active"
     },
     {
       "type": "buyback",
       "name": "Protocol Revenue Buyback",
-      "description": "75% 净协议费用用于 DYDX 回购",
+      "description": "75% \u51c0\u534f\u8bae\u8d39\u7528\u7528\u4e8e DYDX \u56de\u8d2d",
       "status": "active",
       "ratio": 0.75,
       "source": {
@@ -38,11 +38,11 @@
   ],
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "75% 净协议费用用于 DYDX 回购",
+    "fee_switch_details": "75% \u51c0\u534f\u8bae\u8d39\u7528\u7528\u4e8e DYDX \u56de\u8d2d",
     "buybacks": "ACTIVE",
     "dividends": "NONE",
     "burns": "NONE",
-    "primary_value_accrual": "回购 - 75% 净协议费用用于 DYDX 回购",
+    "primary_value_accrual": "\u56de\u8d2d - 75% \u51c0\u534f\u8bae\u8d39\u7528\u7528\u4e8e DYDX \u56de\u8d2d",
     "tevRatio": 0.75
   },
   "market_data": {
@@ -60,7 +60,7 @@
     "market_cap_usd": 90016535,
     "tev_yield_percent": 5.1,
     "calculation_date": "2026-02-05",
-    "note": "TEV yield = 年化 holders revenue / 流通市值"
+    "note": "TEV yield = \u5e74\u5316 holders revenue / \u6d41\u901a\u5e02\u503c"
   },
   "confidence": "high",
   "data_sources": [
@@ -83,7 +83,7 @@
       "reliability": "high"
     }
   ],
-  "analyst_notes": "## dYdX TEV 机制\n\n### 核心机制\ndYdX Chain 将 **100%** 协议费用分配给验证者和质押者。\n\n### 费用分配\n| 来源 | 分配 |\n|------|------|\n| 交易费 100% | 验证者 + 质押者 |\n\n### 质押方式\n- 质押 DYDX 到验证者 → 获得费用分红\n- 分红以 USDC 形式发放\n\n### 数据来源\n| 数据 | 来源 |\n|------|------|\n| 每日分红 | DefiLlama `holdersRevenue` |\n| 价格/市值 | CoinGecko |\n\n### 参考链接\n- [dYdX Chain 文档](https://docs.dydx.exchange/)\n- [质押教程](https://docs.dydx.exchange/users/staking)",
+  "analyst_notes": "## dYdX TEV \u673a\u5236\n\n### \u6838\u5fc3\u673a\u5236\ndYdX Chain \u5c06 **100%** \u534f\u8bae\u8d39\u7528\u5206\u914d\u7ed9\u9a8c\u8bc1\u8005\u548c\u8d28\u62bc\u8005\u3002\n\n### \u8d39\u7528\u5206\u914d\n| \u6765\u6e90 | \u5206\u914d |\n|------|------|\n| \u4ea4\u6613\u8d39 100% | \u9a8c\u8bc1\u8005 + \u8d28\u62bc\u8005 |\n\n### \u8d28\u62bc\u65b9\u5f0f\n- \u8d28\u62bc DYDX \u5230\u9a8c\u8bc1\u8005 \u2192 \u83b7\u5f97\u8d39\u7528\u5206\u7ea2\n- \u5206\u7ea2\u4ee5 USDC \u5f62\u5f0f\u53d1\u653e\n\n### \u6570\u636e\u6765\u6e90\n| \u6570\u636e | \u6765\u6e90 |\n|------|------|\n| \u6bcf\u65e5\u5206\u7ea2 | DefiLlama `holdersRevenue` |\n| \u4ef7\u683c/\u5e02\u503c | CoinGecko |\n\n### \u53c2\u8003\u94fe\u63a5\n- [dYdX Chain \u6587\u6863](https://docs.dydx.exchange/)\n- [\u8d28\u62bc\u6559\u7a0b](https://docs.dydx.exchange/users/staking)",
   "last_updated": "2026-02-22",
   "tev_data": {
     "has_tev": true,
@@ -96,14 +96,16 @@
         "name": "DefiLlama holdersRevenue",
         "type": "defillama",
         "annual_usd": 4793064,
-        "note": "100% 费用分配给质押者"
+        "note": "100% \u8d39\u7528\u5206\u914d\u7ed9\u8d28\u62bc\u8005"
       }
     ],
     "calculation": "$4.79M / $89.86M = 5.33%"
   },
   "tevStatus": "active",
   "confidence_reason": {
-    "zh": "dYdX Chain 100% 费用分配给验证者/质押者，完全链上可查",
+    "zh": "dYdX Chain 100% \u8d39\u7528\u5206\u914d\u7ed9\u9a8c\u8bc1\u8005/\u8d28\u62bc\u8005\uff0c\u5b8c\u5168\u94fe\u4e0a\u53ef\u67e5",
     "en": "dYdX Chain distributes 100% fees to validators/stakers, fully on-chain verifiable"
-  }
+  },
+  "tevRatio": 0.75,
+  "earning_yield_percent": 14.86
 }

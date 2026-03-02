@@ -4,14 +4,14 @@
   "ticker": "BNB",
   "icon": "https://coin-images.coingecko.com/coins/images/825/large/bnb-icon2_2x.png",
   "category": "cex_token",
-  "description": "Binance 交易所平台币，同时是 BNB Chain 原生代币",
+  "description": "Binance \u4ea4\u6613\u6240\u5e73\u53f0\u5e01\uff0c\u540c\u65f6\u662f BNB Chain \u539f\u751f\u4ee3\u5e01",
   "website": "https://www.binance.com",
   "docs": "https://www.bnbchain.org/en",
   "token": {
     "address_bsc": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
     "chain": "BNB Chain",
     "coingecko_id": "binancecoin",
-    "note": "BNB 是 BNB Chain 原生代币，WBNB 是包装版本"
+    "note": "BNB \u662f BNB Chain \u539f\u751f\u4ee3\u5e01\uff0cWBNB \u662f\u5305\u88c5\u7248\u672c"
   },
   "onchain_addresses": {
     "burn_address": "0x000000000000000000000000000000000000dEaD",
@@ -24,12 +24,12 @@
     {
       "type": "burn",
       "name": "Quarterly Auto-Burn",
-      "description": "每季度根据 BNB 价格和区块数量自动销毁，目标将总供应量降至 100M BNB。与 Binance CEX 收入无关，公式透明可审计",
+      "description": "\u6bcf\u5b63\u5ea6\u6839\u636e BNB \u4ef7\u683c\u548c\u533a\u5757\u6570\u91cf\u81ea\u52a8\u9500\u6bc1\uff0c\u76ee\u6807\u5c06\u603b\u4f9b\u5e94\u91cf\u964d\u81f3 100M BNB\u3002\u4e0e Binance CEX \u6536\u5165\u65e0\u5173\uff0c\u516c\u5f0f\u900f\u660e\u53ef\u5ba1\u8ba1",
       "status": "active",
       "frequency": "quarterly",
-      "formula": "B = N × 1000 / P (B=销毁量, N=季度区块数, P=平均价格)",
+      "formula": "B = N \u00d7 1000 / P (B=\u9500\u6bc1\u91cf, N=\u5b63\u5ea6\u533a\u5757\u6570, P=\u5e73\u5747\u4ef7\u683c)",
       "is_profit_based": false,
-      "note": "官方明确声明独立于 Binance CEX 收入",
+      "note": "\u5b98\u65b9\u660e\u786e\u58f0\u660e\u72ec\u7acb\u4e8e Binance CEX \u6536\u5165",
       "source": {
         "type": "official",
         "title": "33rd BNB Burn",
@@ -39,11 +39,11 @@
     {
       "type": "burn",
       "name": "Real-Time Burn (BEP-95)",
-      "description": "每个区块按验证人设定比例销毁部分 gas fee",
+      "description": "\u6bcf\u4e2a\u533a\u5757\u6309\u9a8c\u8bc1\u4eba\u8bbe\u5b9a\u6bd4\u4f8b\u9500\u6bc1\u90e8\u5206 gas fee",
       "status": "active",
       "frequency": "per_block",
       "is_profit_based": false,
-      "note": "链上可验证，类似 ETH EIP-1559",
+      "note": "\u94fe\u4e0a\u53ef\u9a8c\u8bc1\uff0c\u7c7b\u4f3c ETH EIP-1559",
       "source": {
         "type": "bep",
         "title": "BEP-95",
@@ -53,7 +53,7 @@
     {
       "type": "staking",
       "name": "BNB Staking Rewards",
-      "description": "通过 StakeHub 合约质押/委托获取 BNB 收益，来源于链上手续费分配",
+      "description": "\u901a\u8fc7 StakeHub \u5408\u7ea6\u8d28\u62bc/\u59d4\u6258\u83b7\u53d6 BNB \u6536\u76ca\uff0c\u6765\u6e90\u4e8e\u94fe\u4e0a\u624b\u7eed\u8d39\u5206\u914d",
       "status": "active",
       "frequency": "continuous",
       "contract": "0x0000000000000000000000000000000000002002",
@@ -65,38 +65,38 @@
     }
   ],
   "holder_perks": {
-    "description": "持币激励（发放其他代币，非 BNB 本身回流）",
+    "description": "\u6301\u5e01\u6fc0\u52b1\uff08\u53d1\u653e\u5176\u4ed6\u4ee3\u5e01\uff0c\u975e BNB \u672c\u8eab\u56de\u6d41\uff09",
     "programs": [
       {
         "name": "HODLer Airdrops",
         "type": "airdrop",
-        "reward": "其他代币",
-        "requirement": "BNB Simple Earn 持仓快照",
+        "reward": "\u5176\u4ed6\u4ee3\u5e01",
+        "requirement": "BNB Simple Earn \u6301\u4ed3\u5feb\u7167",
         "url": "https://www.binance.com/en/support/announcement"
       },
       {
         "name": "Launchpool",
         "type": "farming",
-        "reward": "新项目代币",
-        "requirement": "锁定 BNB",
+        "reward": "\u65b0\u9879\u76ee\u4ee3\u5e01",
+        "requirement": "\u9501\u5b9a BNB",
         "url": "https://www.binance.com/en/launchpool"
       },
       {
         "name": "Megadrop",
         "type": "airdrop",
-        "reward": "新项目代币",
-        "requirement": "锁定 BNB + Web3 任务",
+        "reward": "\u65b0\u9879\u76ee\u4ee3\u5e01",
+        "requirement": "\u9501\u5b9a BNB + Web3 \u4efb\u52a1",
         "url": "https://www.binance.com/en/support/faq/detail/fb007363c6db4d15976fcdd09f6161da"
       },
       {
         "name": "Airdrop Alliance",
         "type": "ecosystem_airdrop",
-        "reward": "生态项目代币",
-        "requirement": "BNB 余额 ≥ 0.05",
+        "reward": "\u751f\u6001\u9879\u76ee\u4ee3\u5e01",
+        "requirement": "BNB \u4f59\u989d \u2265 0.05",
         "url": "https://www.bnbchain.org/en/blog/introducing-bnb-chains-airdrop-alliance-program"
       }
     ],
-    "note": "这些激励通过 asBNB APY（6.87%）间接计入 TEV，asBNB 净值增长反映了 Staking + Launchpool/HODLer/Megadrop 的综合收益"
+    "note": "\u8fd9\u4e9b\u6fc0\u52b1\u901a\u8fc7 asBNB APY\uff086.87%\uff09\u95f4\u63a5\u8ba1\u5165 TEV\uff0casBNB \u51c0\u503c\u589e\u957f\u53cd\u6620\u4e86 Staking + Launchpool/HODLer/Megadrop \u7684\u7efc\u5408\u6536\u76ca"
   },
   "burn_history": [
     {
@@ -367,31 +367,31 @@
   "example_transactions": {
     "auto_burn": {
       "tx": "0xb9df58e7faa7fec91abfb834384a54394619be5cb124b50fa931a12f738ff6c8",
-      "description": "Q1 2026 季度销毁 1,371,703 BNB",
+      "description": "Q1 2026 \u5b63\u5ea6\u9500\u6bc1 1,371,703 BNB",
       "url": "https://bscscan.com/tx/0xb9df58e7faa7fec91abfb834384a54394619be5cb124b50fa931a12f738ff6c8"
     },
     "bep95_burn": {
       "tx": "0x5c20a7b49686957f35f4b634423597300968d446cceab4e09c9cf1dc658adc7f",
-      "description": "BEP-95 实时销毁 + 系统奖励分配示例",
+      "description": "BEP-95 \u5b9e\u65f6\u9500\u6bc1 + \u7cfb\u7edf\u5956\u52b1\u5206\u914d\u793a\u4f8b",
       "url": "https://bscscan.com/tx/0x5c20a7b49686957f35f4b634423597300968d446cceab4e09c9cf1dc658adc7f"
     },
     "staking_claim": {
       "tx": "0x23f423a3701e3df3f20db6a9289fe3ae721a2819f3a4eca917d23d666e5eb0f7",
-      "description": "StakeHub 质押收益领取示例",
+      "description": "StakeHub \u8d28\u62bc\u6536\u76ca\u9886\u53d6\u793a\u4f8b",
       "url": "https://bscscan.com/tx/0x23f423a3701e3df3f20db6a9289fe3ae721a2819f3a4eca917d23d666e5eb0f7"
     }
   },
   "tev_summary": {
     "fee_switch": "N/A",
-    "fee_switch_details": "CEX 收入不直接链上分配",
+    "fee_switch_details": "CEX \u6536\u5165\u4e0d\u76f4\u63a5\u94fe\u4e0a\u5206\u914d",
     "buybacks": "NONE",
-    "buyback_details": "Auto-Burn 不是利润回购，是公式计算的供给收缩",
+    "buyback_details": "Auto-Burn \u4e0d\u662f\u5229\u6da6\u56de\u8d2d\uff0c\u662f\u516c\u5f0f\u8ba1\u7b97\u7684\u4f9b\u7ed9\u6536\u7f29",
     "dividends": "NONE",
     "burns": "ACTIVE",
-    "burn_details": "季度 Auto-Burn（公式计算）+ 实时 BEP-95（gas fee）",
+    "burn_details": "\u5b63\u5ea6 Auto-Burn\uff08\u516c\u5f0f\u8ba1\u7b97\uff09+ \u5b9e\u65f6 BEP-95\uff08gas fee\uff09",
     "staking": "ACTIVE",
-    "staking_details": "StakeHub 质押收益（BNB 计价，来自链上手续费）",
-    "primary_value_accrual": "供给收缩 + 链上质押收益（非 CEX 利润分润模式）"
+    "staking_details": "StakeHub \u8d28\u62bc\u6536\u76ca\uff08BNB \u8ba1\u4ef7\uff0c\u6765\u81ea\u94fe\u4e0a\u624b\u7eed\u8d39\uff09",
+    "primary_value_accrual": "\u4f9b\u7ed9\u6536\u7f29 + \u94fe\u4e0a\u8d28\u62bc\u6536\u76ca\uff08\u975e CEX \u5229\u6da6\u5206\u6da6\u6a21\u5f0f\uff09"
   },
   "market_data": {
     "price_usd": 626.94,
@@ -408,19 +408,19 @@
     "tev_yield_percent": 11.27,
     "annual_tev_usd": 9557633018,
     "calculation_date": "2026-03-02",
-    "methodology": "Burn APY (链上销毁) + asBNB APY (Aster 综合持有收益)",
+    "methodology": "Burn APY (\u94fe\u4e0a\u9500\u6bc1) + asBNB APY (Aster \u7efc\u5408\u6301\u6709\u6536\u76ca)",
     "validation": {
       "method": "Burn APY + asBNB APY (Aster)",
       "burn_apy_percent": 4.4,
       "asbnb_apy_percent": 6.87,
       "total_apy_percent": 11.27,
-      "burn_source": "Auto-Burn (近4季 5,987,793.6 BNB, $3.75B) + BEP-95 (~16,327 BNB/年, $10.2M)",
+      "burn_source": "Auto-Burn (\u8fd14\u5b63 5,987,793.6 BNB, $3.75B) + BEP-95 (~16,327 BNB/\u5e74, $10.2M)",
       "asbnb_source": "Aster asBNB (Staking + Launchpool/HODLer/Megadrop)",
       "asbnb_url": "https://www.asterdex.com/en/earn/astoken?token=slisBNB",
       "burn_data_url": "https://www.bnbburn.info/",
       "dead_address_balance_bnb": 13299514.6,
       "dead_address": "0x000000000000000000000000000000000000dEaD",
-      "note": "Burn 通过链上黑洞地址余额验证；asBNB 通过 Aster 官方数据（含 Staking + Launchpool/HODLer/Megadrop，不含 Burn）",
+      "note": "Burn \u901a\u8fc7\u94fe\u4e0a\u9ed1\u6d1e\u5730\u5740\u4f59\u989d\u9a8c\u8bc1\uff1basBNB \u901a\u8fc7 Aster \u5b98\u65b9\u6570\u636e\uff08\u542b Staking + Launchpool/HODLer/Megadrop\uff0c\u4e0d\u542b Burn\uff09",
       "total_annual_burn_bnb": 6004121,
       "bep95_annual_bnb": 16327,
       "bnb_price_usd": 621.64,
@@ -433,8 +433,8 @@
         "name": "Quarterly Auto-Burn",
         "annual_bnb": 5987793.6,
         "annual_usd": 3753987320,
-        "calculation": "近4季合计 5,987,793.6 BNB × $626.94 = $3.75B",
-        "note": "公式计算 B = N × 1000 / P，非利润回购",
+        "calculation": "\u8fd14\u5b63\u5408\u8ba1 5,987,793.6 BNB \u00d7 $626.94 = $3.75B",
+        "note": "\u516c\u5f0f\u8ba1\u7b97 B = N \u00d7 1000 / P\uff0c\u975e\u5229\u6da6\u56de\u8d2d",
         "url": "https://www.bnbburn.info/"
       },
       {
@@ -442,13 +442,13 @@
         "name": "BEP-95 Real-Time Burn",
         "annual_bnb": 16327,
         "annual_usd": 10236049,
-        "calculation": "周均 ~314 BNB × 52 = ~16,327 BNB/年",
-        "note": "每区块销毁部分 gas fee，类似 EIP-1559",
+        "calculation": "\u5468\u5747 ~314 BNB \u00d7 52 = ~16,327 BNB/\u5e74",
+        "note": "\u6bcf\u533a\u5757\u9500\u6bc1\u90e8\u5206 gas fee\uff0c\u7c7b\u4f3c EIP-1559",
         "url": "https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP95.md"
       },
       {
         "type": "proxy",
-        "name": "asBNB 综合持有收益 (Aster)",
+        "name": "asBNB \u7efc\u5408\u6301\u6709\u6536\u76ca (Aster)",
         "apy_percent": 6.87,
         "annual_usd": 5875836597,
         "includes": [
@@ -461,17 +461,17 @@
           "Auto-Burn",
           "BEP-95"
         ],
-        "note": "基于过去一年 Launchpool/HODLer/Megadrop 的预计 APY，不含 Burn",
+        "note": "\u57fa\u4e8e\u8fc7\u53bb\u4e00\u5e74 Launchpool/HODLer/Megadrop \u7684\u9884\u8ba1 APY\uff0c\u4e0d\u542b Burn",
         "url": "https://www.asterdex.com/en/earn/astoken?token=slisBNB"
       }
     ],
-    "calculation": "Burn APY 4.4% + asBNB APY 6.87% = 11.27% → 11.27% × $85.5B = $9.64B",
+    "calculation": "Burn APY 4.4% + asBNB APY 6.87% = 11.27% \u2192 11.27% \u00d7 $85.5B = $9.64B",
     "caveats": [
-      "Auto-Burn 基于公式 B=N×1000/P，不是利润回购",
-      "asBNB 6.87% 基于 Aster 官方数据，含 Staking + Launchpool/HODLer/Megadrop",
-      "asBNB 不包含 Burn 的供给收缩价值（与 Burn APY 无重叠）",
-      "slisBNB 仅含 Staking 收益，不适合作为 BNB 全部 TEV 的 proxy",
-      "CEX 财务不公开，Holder Perks 部分依赖 Aster 聚合数据"
+      "Auto-Burn \u57fa\u4e8e\u516c\u5f0f B=N\u00d71000/P\uff0c\u4e0d\u662f\u5229\u6da6\u56de\u8d2d",
+      "asBNB 6.87% \u57fa\u4e8e Aster \u5b98\u65b9\u6570\u636e\uff0c\u542b Staking + Launchpool/HODLer/Megadrop",
+      "asBNB \u4e0d\u5305\u542b Burn \u7684\u4f9b\u7ed9\u6536\u7f29\u4ef7\u503c\uff08\u4e0e Burn APY \u65e0\u91cd\u53e0\uff09",
+      "slisBNB \u4ec5\u542b Staking \u6536\u76ca\uff0c\u4e0d\u9002\u5408\u4f5c\u4e3a BNB \u5168\u90e8 TEV \u7684 proxy",
+      "CEX \u8d22\u52a1\u4e0d\u516c\u5f00\uff0cHolder Perks \u90e8\u5206\u4f9d\u8d56 Aster \u805a\u5408\u6570\u636e"
     ]
   },
   "confidence": "high",
@@ -519,7 +519,7 @@
       ]
     }
   ],
-  "analyst_notes": "【2026-03-01 更新 - Burn + asBNB 双源验证】\n\n## BNB TEV 计算方法\n\n采用 **Burn APY + asBNB APY** 双源独立计算，替代之前的 slisBNB 单一 proxy。\n\n### 为什么不再用 slisBNB？\n- slisBNB 仅反映 **Staking 收益**，不含 Launchpool/HODLer/Megadrop\n- 会**低估** BNB 的综合持有收益\n\n### 数据源拆分\n\n| 来源 | APY | 年化 USD | 说明 |\n|------|-----|---------|------|\n| Auto-Burn | 4.40% | $3.75B | 季度销毁，公式 B=N×1000/P |\n| BEP-95 | ~0.01% | $10.2M | 实时 gas fee 销毁 |\n| asBNB 持有收益 | 6.87% | $5.88B | Staking + Launchpool/HODLer/Megadrop |\n| **合计** | **11.27%** | **$9.64B** | |\n\n### 关键结论\n- **TEV Yield: 11.27%**（Burn 4.4% + 持有收益 6.87%）\n- Burn 与 asBNB 无重叠（Burn = 供给收缩，asBNB = 收益分配）\n- 链上黑洞地址累计余额：13,299,471 BNB（可验证）\n- 数据来源：bnbburn.info + Aster 官方",
+  "analyst_notes": "\u30102026-03-01 \u66f4\u65b0 - Burn + asBNB \u53cc\u6e90\u9a8c\u8bc1\u3011\n\n## BNB TEV \u8ba1\u7b97\u65b9\u6cd5\n\n\u91c7\u7528 **Burn APY + asBNB APY** \u53cc\u6e90\u72ec\u7acb\u8ba1\u7b97\uff0c\u66ff\u4ee3\u4e4b\u524d\u7684 slisBNB \u5355\u4e00 proxy\u3002\n\n### \u4e3a\u4ec0\u4e48\u4e0d\u518d\u7528 slisBNB\uff1f\n- slisBNB \u4ec5\u53cd\u6620 **Staking \u6536\u76ca**\uff0c\u4e0d\u542b Launchpool/HODLer/Megadrop\n- \u4f1a**\u4f4e\u4f30** BNB \u7684\u7efc\u5408\u6301\u6709\u6536\u76ca\n\n### \u6570\u636e\u6e90\u62c6\u5206\n\n| \u6765\u6e90 | APY | \u5e74\u5316 USD | \u8bf4\u660e |\n|------|-----|---------|------|\n| Auto-Burn | 4.40% | $3.75B | \u5b63\u5ea6\u9500\u6bc1\uff0c\u516c\u5f0f B=N\u00d71000/P |\n| BEP-95 | ~0.01% | $10.2M | \u5b9e\u65f6 gas fee \u9500\u6bc1 |\n| asBNB \u6301\u6709\u6536\u76ca | 6.87% | $5.88B | Staking + Launchpool/HODLer/Megadrop |\n| **\u5408\u8ba1** | **11.27%** | **$9.64B** | |\n\n### \u5173\u952e\u7ed3\u8bba\n- **TEV Yield: 11.27%**\uff08Burn 4.4% + \u6301\u6709\u6536\u76ca 6.87%\uff09\n- Burn \u4e0e asBNB \u65e0\u91cd\u53e0\uff08Burn = \u4f9b\u7ed9\u6536\u7f29\uff0casBNB = \u6536\u76ca\u5206\u914d\uff09\n- \u94fe\u4e0a\u9ed1\u6d1e\u5730\u5740\u7d2f\u8ba1\u4f59\u989d\uff1a13,299,471 BNB\uff08\u53ef\u9a8c\u8bc1\uff09\n- \u6570\u636e\u6765\u6e90\uff1abnbburn.info + Aster \u5b98\u65b9",
   "last_updated": "2026-03-02",
   "burn_progress": {
     "total_burned": 13299515.0,
@@ -527,17 +527,17 @@
     "target_supply": 100000000,
     "target": 100000000,
     "ticker": "BNB",
-    "note": "BNB 初始供应 2 亿，目标销毁至 1 亿。当前已完成 63.6%。",
+    "note": "BNB \u521d\u59cb\u4f9b\u5e94 2 \u4ebf\uff0c\u76ee\u6807\u9500\u6bc1\u81f3 1 \u4ebf\u3002\u5f53\u524d\u5df2\u5b8c\u6210 63.6%\u3002",
     "target_label": "burn_target",
     "segments": [
       {
-        "label": "季度 Auto-Burn",
+        "label": "\u5b63\u5ea6 Auto-Burn",
         "label_en": "Quarterly Auto-Burn",
         "amount": 62442984,
         "color": "rgba(240,185,11,0.85)"
       },
       {
-        "label": "BEP-95 实时销毁",
+        "label": "BEP-95 \u5b9e\u65f6\u9500\u6bc1",
         "label_en": "BEP-95 Real-time Burn",
         "amount": -49143469.0,
         "color": "rgba(240,185,11,0.4)"
@@ -546,7 +546,9 @@
   },
   "tevStatus": "active",
   "confidence_reason": {
-    "zh": "Auto-Burn 链上完全可验证（0xdead + BEP-95），asBNB 来自链上 StakeHub 合约",
+    "zh": "Auto-Burn \u94fe\u4e0a\u5b8c\u5168\u53ef\u9a8c\u8bc1\uff080xdead + BEP-95\uff09\uff0casBNB \u6765\u81ea\u94fe\u4e0a StakeHub \u5408\u7ea6",
     "en": "Auto-Burn fully verifiable on-chain (0xdead + BEP-95), asBNB from on-chain StakeHub contract"
-  }
+  },
+  "tevRatio": 0.0,
+  "earning_yield_percent": 0.0
 }

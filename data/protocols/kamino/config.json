@@ -4,7 +4,7 @@
   "ticker": "KMNO",
   "icon": "https://coin-images.coingecko.com/coins/images/35801/large/Kamino_200x200.png",
   "category": "lending",
-  "description": "Solana 上的一站式 DeFi 协议，提供借贷、流动性管理和杠杆策略",
+  "description": "Solana \u4e0a\u7684\u4e00\u7ad9\u5f0f DeFi \u534f\u8bae\uff0c\u63d0\u4f9b\u501f\u8d37\u3001\u6d41\u52a8\u6027\u7ba1\u7406\u548c\u6760\u6746\u7b56\u7565",
   "website": "https://kamino.finance",
   "docs": "https://docs.kamino.finance",
   "token": {
@@ -18,50 +18,50 @@
   "tev_mechanisms": [],
   "tev_summary": {
     "fee_switch": "NONE",
-    "fee_switch_details": "无协议收入直接分配给 KMNO 持有者。所谓 'staking' 实为 farming 奖励加成机制",
+    "fee_switch_details": "\u65e0\u534f\u8bae\u6536\u5165\u76f4\u63a5\u5206\u914d\u7ed9 KMNO \u6301\u6709\u8005\u3002\u6240\u8c13 'staking' \u5b9e\u4e3a farming \u5956\u52b1\u52a0\u6210\u673a\u5236",
     "buybacks": "NONE",
     "dividends": "NONE",
     "burns": "NONE",
-    "primary_value_accrual": "无 TEV — KMNO staking 仅提供 farming 奖励加成（boost），非协议收入分配。Season 奖励来自代币国库排放（激励），不是 fee distribution"
+    "primary_value_accrual": "\u65e0 TEV \u2014 KMNO staking \u4ec5\u63d0\u4f9b farming \u5956\u52b1\u52a0\u6210\uff08boost\uff09\uff0c\u975e\u534f\u8bae\u6536\u5165\u5206\u914d\u3002Season \u5956\u52b1\u6765\u81ea\u4ee3\u5e01\u56fd\u5e93\u6392\u653e\uff08\u6fc0\u52b1\uff09\uff0c\u4e0d\u662f fee distribution"
   },
   "confidence": "high",
   "data_sources": [
     {
-      "name": "Kamino Season 5 公告",
+      "name": "Kamino Season 5 \u516c\u544a",
       "type": "governance",
       "url": "https://gov.kamino.finance/t/introducing-kamino-season-5/854",
-      "description": "详细说明了 KMNO staking boost 机制：起始 3% 加成，每天 +0.1%，每 1 KMNO 质押对 $1 仓位施加加成",
+      "description": "\u8be6\u7ec6\u8bf4\u660e\u4e86 KMNO staking boost \u673a\u5236\uff1a\u8d77\u59cb 3% \u52a0\u6210\uff0c\u6bcf\u5929 +0.1%\uff0c\u6bcf 1 KMNO \u8d28\u62bc\u5bf9 $1 \u4ed3\u4f4d\u65bd\u52a0\u52a0\u6210",
       "reliability": "verified"
     },
     {
-      "name": "Kamino 2025 年度回顾",
+      "name": "Kamino 2025 \u5e74\u5ea6\u56de\u987e",
       "type": "governance",
       "url": "https://gov.kamino.finance/t/kamino-lend-2025-year-in-review/866",
-      "description": "协议年度数据总结，供应量 $2.95B→$3.34B",
+      "description": "\u534f\u8bae\u5e74\u5ea6\u6570\u636e\u603b\u7ed3\uff0c\u4f9b\u5e94\u91cf $2.95B\u2192$3.34B",
       "reliability": "verified"
     },
     {
       "name": "Kamino The Next Chapter",
       "type": "governance",
       "url": "https://gov.kamino.finance/t/kamino-the-next-chapter/864",
-      "description": "2026 路线图：固定利率借贷、链下抵押品、私人信贷等",
+      "description": "2026 \u8def\u7ebf\u56fe\uff1a\u56fa\u5b9a\u5229\u7387\u501f\u8d37\u3001\u94fe\u4e0b\u62b5\u62bc\u54c1\u3001\u79c1\u4eba\u4fe1\u8d37\u7b49",
       "reliability": "verified"
     },
     {
       "name": "DefiLlama",
       "type": "api",
       "url": "https://api.llama.fi/protocol/kamino-lend",
-      "description": "TVL 和费用数据",
+      "description": "TVL \u548c\u8d39\u7528\u6570\u636e",
       "reliability": "high"
     }
   ],
-  "notes": "⚠️ 从 PARTIAL 降级为 NONE。经深入调研确认：KMNO staking 不是协议收入分配，而是 farming 奖励加成（boost）机制。具体：(1) 新质押者起始 3% boost，每天 +0.1%；(2) 每 1 KMNO 质押对 $1 仓位施加 boost；(3) Season 奖励每 3 月最多 100M KMNO，来自代币国库（inflation），非协议费用；(4) 有 6 个月 vesting 期。Kamino 是优秀的 Solana 借贷协议（$3.34B AUM，零坏账），但 KMNO 代币目前无真正的 fee distribution 机制。2026 路线图专注机构产品（固定利率、链下抵押品），未来可能引入真正的 TEV。",
+  "notes": "\u26a0\ufe0f \u4ece PARTIAL \u964d\u7ea7\u4e3a NONE\u3002\u7ecf\u6df1\u5165\u8c03\u7814\u786e\u8ba4\uff1aKMNO staking \u4e0d\u662f\u534f\u8bae\u6536\u5165\u5206\u914d\uff0c\u800c\u662f farming \u5956\u52b1\u52a0\u6210\uff08boost\uff09\u673a\u5236\u3002\u5177\u4f53\uff1a(1) \u65b0\u8d28\u62bc\u8005\u8d77\u59cb 3% boost\uff0c\u6bcf\u5929 +0.1%\uff1b(2) \u6bcf 1 KMNO \u8d28\u62bc\u5bf9 $1 \u4ed3\u4f4d\u65bd\u52a0 boost\uff1b(3) Season \u5956\u52b1\u6bcf 3 \u6708\u6700\u591a 100M KMNO\uff0c\u6765\u81ea\u4ee3\u5e01\u56fd\u5e93\uff08inflation\uff09\uff0c\u975e\u534f\u8bae\u8d39\u7528\uff1b(4) \u6709 6 \u4e2a\u6708 vesting \u671f\u3002Kamino \u662f\u4f18\u79c0\u7684 Solana \u501f\u8d37\u534f\u8bae\uff08$3.34B AUM\uff0c\u96f6\u574f\u8d26\uff09\uff0c\u4f46 KMNO \u4ee3\u5e01\u76ee\u524d\u65e0\u771f\u6b63\u7684 fee distribution \u673a\u5236\u30022026 \u8def\u7ebf\u56fe\u4e13\u6ce8\u673a\u6784\u4ea7\u54c1\uff08\u56fa\u5b9a\u5229\u7387\u3001\u94fe\u4e0b\u62b5\u62bc\u54c1\uff09\uff0c\u672a\u6765\u53ef\u80fd\u5f15\u5165\u771f\u6b63\u7684 TEV\u3002",
   "last_updated": "2026-02-14",
   "tev_data": {
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "note": "无持续 TEV"
+    "note": "\u65e0\u6301\u7eed TEV"
   },
   "market_data": {
     "tvl": 2015531299,
@@ -69,7 +69,9 @@
   },
   "tevStatus": "none",
   "confidence_reason": {
-    "zh": "无 TEV 机制，纯治理代币，数据源透明",
+    "zh": "\u65e0 TEV \u673a\u5236\uff0c\u7eaf\u6cbb\u7406\u4ee3\u5e01\uff0c\u6570\u636e\u6e90\u900f\u660e",
     "en": "No TEV mechanism, governance-only, transparent data"
-  }
+  },
+  "tevRatio": 0.0,
+  "earning_yield_percent": 21.54
 }

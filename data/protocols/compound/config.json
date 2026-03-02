@@ -4,7 +4,7 @@
   "ticker": "COMP",
   "icon": "https://coin-images.coingecko.com/coins/images/10775/large/COMP.png",
   "category": "lending",
-  "description": "以太坊上最早的 DeFi 借贷协议之一，开创了流动性挖矿模式",
+  "description": "\u4ee5\u592a\u574a\u4e0a\u6700\u65e9\u7684 DeFi \u501f\u8d37\u534f\u8bae\u4e4b\u4e00\uff0c\u5f00\u521b\u4e86\u6d41\u52a8\u6027\u6316\u77ff\u6a21\u5f0f",
   "website": "https://compound.finance",
   "docs": "https://docs.compound.finance",
   "token": {
@@ -18,11 +18,11 @@
   "tev_mechanisms": [],
   "tev_summary": {
     "fee_switch": "OFF",
-    "fee_switch_details": "Compound 协议费用开关未开启，收入保留在协议储备",
+    "fee_switch_details": "Compound \u534f\u8bae\u8d39\u7528\u5f00\u5173\u672a\u5f00\u542f\uff0c\u6536\u5165\u4fdd\u7559\u5728\u534f\u8bae\u50a8\u5907",
     "buybacks": "NONE",
     "dividends": "NONE",
     "burns": "NONE",
-    "primary_value_accrual": "纯治理代币 - COMP 仅用于治理投票，无收入分配"
+    "primary_value_accrual": "\u7eaf\u6cbb\u7406\u4ee3\u5e01 - COMP \u4ec5\u7528\u4e8e\u6cbb\u7406\u6295\u7968\uff0c\u65e0\u6536\u5165\u5206\u914d"
   },
   "confidence": "high",
   "data_sources": [
@@ -39,13 +39,13 @@
       "reliability": "high"
     }
   ],
-  "notes": "Compound 作为 DeFi 借贷的先驱，COMP 代币开创了治理代币模式。尽管协议收入可观，但 COMP 始终是纯治理代币，费用开关从未开启。社区多次讨论过开启费用分配但未通过。",
+  "notes": "Compound \u4f5c\u4e3a DeFi \u501f\u8d37\u7684\u5148\u9a71\uff0cCOMP \u4ee3\u5e01\u5f00\u521b\u4e86\u6cbb\u7406\u4ee3\u5e01\u6a21\u5f0f\u3002\u5c3d\u7ba1\u534f\u8bae\u6536\u5165\u53ef\u89c2\uff0c\u4f46 COMP \u59cb\u7ec8\u662f\u7eaf\u6cbb\u7406\u4ee3\u5e01\uff0c\u8d39\u7528\u5f00\u5173\u4ece\u672a\u5f00\u542f\u3002\u793e\u533a\u591a\u6b21\u8ba8\u8bba\u8fc7\u5f00\u542f\u8d39\u7528\u5206\u914d\u4f46\u672a\u901a\u8fc7\u3002",
   "last_updated": "2026-02-14",
   "tev_data": {
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "note": "无持续 TEV"
+    "note": "\u65e0\u6301\u7eed TEV"
   },
   "market_data": {
     "tvl": 1393171495,
@@ -53,7 +53,9 @@
   },
   "tevStatus": "none",
   "confidence_reason": {
-    "zh": "无 TEV 机制，纯治理代币，数据源透明",
+    "zh": "\u65e0 TEV \u673a\u5236\uff0c\u7eaf\u6cbb\u7406\u4ee3\u5e01\uff0c\u6570\u636e\u6e90\u900f\u660e",
     "en": "No TEV mechanism, governance-only, transparent data"
-  }
+  },
+  "tevRatio": 0.0,
+  "earning_yield_percent": 0.0
 }

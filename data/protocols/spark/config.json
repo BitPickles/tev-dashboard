@@ -4,7 +4,7 @@
   "ticker": "SPK",
   "icon": "https://coin-images.coingecko.com/coins/images/38637/large/Spark-Logomark-RGB.png",
   "category": "lending",
-  "description": "Sky (原 MakerDAO) 生态的借贷协议，提供 DAI 储蓄利率",
+  "description": "Sky (\u539f MakerDAO) \u751f\u6001\u7684\u501f\u8d37\u534f\u8bae\uff0c\u63d0\u4f9b DAI \u50a8\u84c4\u5229\u7387",
   "website": "https://spark.fi",
   "docs": "https://docs.spark.fi",
   "token": {
@@ -19,18 +19,18 @@
     {
       "type": "airdrop",
       "name": "SPK Airdrop",
-      "description": "SPK 代币通过空投分发给 Spark 用户",
+      "description": "SPK \u4ee3\u5e01\u901a\u8fc7\u7a7a\u6295\u5206\u53d1\u7ed9 Spark \u7528\u6237",
       "status": "active",
       "start_date": "2024-09-01"
     }
   ],
   "tev_summary": {
     "fee_switch": "OFF",
-    "fee_switch_details": "SPK 代币刚启动，收入流向 Sky DAO",
+    "fee_switch_details": "SPK \u4ee3\u5e01\u521a\u542f\u52a8\uff0c\u6536\u5165\u6d41\u5411 Sky DAO",
     "buybacks": "NONE",
     "dividends": "NONE",
     "burns": "NONE",
-    "primary_value_accrual": "治理代币 - SPK 用于 Spark SubDAO 治理，收入目前流向 Sky 主 DAO"
+    "primary_value_accrual": "\u6cbb\u7406\u4ee3\u5e01 - SPK \u7528\u4e8e Spark SubDAO \u6cbb\u7406\uff0c\u6536\u5165\u76ee\u524d\u6d41\u5411 Sky \u4e3b DAO"
   },
   "confidence": "medium",
   "data_sources": [
@@ -47,13 +47,13 @@
       "reliability": "high"
     }
   ],
-  "notes": "Spark 是 Sky 生态的 SubDAO，SPK 代币于 2024 年 Q3 启动。作为新代币，TEV 机制仍在发展中。协议收入主要流向 Sky 主 DAO，通过 Smart Burn Engine 回购 MKR。",
+  "notes": "Spark \u662f Sky \u751f\u6001\u7684 SubDAO\uff0cSPK \u4ee3\u5e01\u4e8e 2024 \u5e74 Q3 \u542f\u52a8\u3002\u4f5c\u4e3a\u65b0\u4ee3\u5e01\uff0cTEV \u673a\u5236\u4ecd\u5728\u53d1\u5c55\u4e2d\u3002\u534f\u8bae\u6536\u5165\u4e3b\u8981\u6d41\u5411 Sky \u4e3b DAO\uff0c\u901a\u8fc7 Smart Burn Engine \u56de\u8d2d MKR\u3002",
   "last_updated": "2026-02-14",
   "tev_data": {
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "note": "无持续 TEV"
+    "note": "\u65e0\u6301\u7eed TEV"
   },
   "market_data": {
     "tvl": 5334776155.36674,
@@ -61,7 +61,9 @@
   },
   "tevStatus": "none",
   "confidence_reason": {
-    "zh": "SPK 代币较新，收入归 Sky DAO，具体分配机制仍在治理讨论中",
+    "zh": "SPK \u4ee3\u5e01\u8f83\u65b0\uff0c\u6536\u5165\u5f52 Sky DAO\uff0c\u5177\u4f53\u5206\u914d\u673a\u5236\u4ecd\u5728\u6cbb\u7406\u8ba8\u8bba\u4e2d",
     "en": "SPK token is new, revenue goes to Sky DAO, distribution mechanism still under governance discussion"
-  }
+  },
+  "tevRatio": 0.0,
+  "earning_yield_percent": 46.77
 }
