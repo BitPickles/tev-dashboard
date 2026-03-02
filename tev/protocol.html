@@ -595,6 +595,8 @@
         const earningsYield = cfg.earning_yield_percent || 0;
         const tevYield = cfg.tev_data?.tev_yield_percent || 0;
 
+        console.log('TEV Summary values:', { tevRatio, marketCap, earningsYield, tevYield });
+
         // 分配比例
         if (typeof tevRatio === 'string') {
           tevRatioEl.textContent = tevRatio;
