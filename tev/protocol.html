@@ -531,6 +531,33 @@
     }
 
     async function init() {
+function notesToMarkdown(notes) {
+  if (typeof notes === "string") return notes;
+  let md = "";
+  for (const [key, value] of Object.entries(notes)) {
+    const label = key.replace(/_/g, " ");
+    if (key === "historical_changes" && Array.isArray(value)) {
+      md += "\n### " + label + "\n";
+      value.forEach(change => {
+        md += "- **" + change.date + "**: " + change.change + " (ratio = " + change.ratio + ") - " + change.exec_vote + "\n";
+      });
+    } else if (key === "tevlama_urls" && Array.isArray(value)) {
+      md += "\n### Data Sources\n";
+      value.forEach(url => md += "'" + url + "'\n");
+    } else if (key === "contracts" && typeof value === "object") {
+      md += "\n### Contracts\n";
+      for (const [cName, cAddr] of Object.entries(value)) {
+        md += "- **" + cName + "**: '" + cAddr + "'\n";
+      }
+    } else if (key === "note" && typeof value === "string") {
+      md += "\n> " + value + "\n";
+    } else {
+      md += "- **" + label + "**: '" + value + "'\n";
+    }
+  }
+  return md;
+};
+
       const pid = getProtocolId();
       try {
         let logoUrls = {}; try { const lr = await fetch('../data/logo_urls.json'); if (lr.ok) logoUrls = await lr.json(); } catch {}
@@ -605,7 +632,7 @@
         renderSources(cfg.data_sources);
         renderReferences(cfg.references);
         const notes = cfg.analyst_notes || cfg.notes;
-        if (notes) { document.getElementById('notes-section').style.display = 'block'; document.getElementById('protocol-notes').innerHTML = marked.parse ? marked.parse(notes) : notes.replace(/\n/g, '<br>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\|(.+)\|/g, '<span style="font-family:monospace">$1</span>'); }
+        if (notes) { document.getElementById('notes-section').style.display = 'block'; document.getElementById('protocol-notes').innerHTML = marked.parse ? marked.parse(notesToMarkdown(notes)) : notes.replace(/\n/g, '<br>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\|(.+)\|/g, '<span style="font-family:monospace">$1</span>'); }
         document.getElementById('last-updated').textContent = cfg.last_updated || '—';
         document.getElementById('loading').style.display = 'none';
         document.getElementById('content').style.display = 'block';
