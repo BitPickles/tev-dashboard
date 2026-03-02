@@ -4,7 +4,7 @@
   "ticker": "HYPE",
   "icon": "https://coin-images.coingecko.com/coins/images/50882/large/hyperliquid.jpg",
   "category": "perpetuals",
-  "description": "\u53bb\u4e2d\u5fc3\u5316\u6c38\u7eed\u5408\u7ea6\u4ea4\u6613\u6240\uff0c\u4ee5\u9ad8\u6027\u80fd\u548c\u5f3a TEV \u673a\u5236\u8457\u79f0",
+  "description": "去中心化永续合约交易所，以高性能和强 TEV 机制著称",
   "website": "https://hyperliquid.xyz",
   "docs": "https://hyperfoundation.org",
   "token": {
@@ -15,7 +15,7 @@
     {
       "type": "buyback_burn",
       "name": "Assistance Fund Buyback & Burn",
-      "description": "\u4ea4\u6613\u8d39\u7528\uff08\u6263\u9664 deployer/builder/HLP/referral \u540e\uff09\u6d41\u5165 Assistance Fund\uff0c\u81ea\u52a8\u56de\u8d2d HYPE \u5e76\u4ece circulating + total supply \u6c38\u4e45\u79fb\u9664",
+      "description": "交易费用（扣除 deployer/builder/HLP/referral 后）流入 Assistance Fund，自动回购 HYPE 并从 circulating + total supply 永久移除",
       "status": "active",
       "ratio": "dynamic",
       "fee_source": "trading_fees",
@@ -28,17 +28,17 @@
   ],
   "fee_distribution": {
     "trading_fees": {
-      "assistance_fund": "\u52a8\u6001\uff08\u6838\u5fc3 perp \u5e02\u573a\u5360\u5927\u90e8\u5206\uff0c\u89c2\u6d4b\u503c 54%~92%\uff09",
-      "hlp_vault": "\u52a8\u6001\uff08\u505a\u5e02+\u6e05\u7b97+\u90e8\u5206\u4ea4\u6613\u8d39\uff09",
-      "deployer_hip3": "50%\uff08HIP-3 perp \u5e02\u573a\uff0c\u53ef\u914d\u7f6e\u989d\u5916 0-300% share\uff09",
-      "deployer_hip1_spot": "\u975e USDC \u8ba1\u4ef7\u8d39\u7528\u9ed8\u8ba4 100% \u7ed9 deployer\uff08\u53ea\u964d\u4e0d\u5347\uff09",
-      "builder_fee": "\u5168\u989d\u5f52 builder\uff08perp \u22640.1%, spot \u22641%\uff0c\u72ec\u7acb\u4e8e\u534f\u8bae\u8d39\uff09",
-      "referral_rebate": "maker rebate \u5b9e\u65f6\u8fd4\u8fd8 + \u63a8\u8350\u5956\u52b1",
-      "note": "\u5b98\u65b9\u672a\u516c\u5e03\u56fa\u5b9a\u7684 AF/HLP \u6bd4\u4f8b\uff0c\u4f1a\u968f\u5e02\u573a\u7c7b\u578b\u548c\u7248\u672c\u53d8\u5316"
+      "assistance_fund": "动态（核心 perp 市场占大部分，观测值 54%~92%）",
+      "hlp_vault": "动态（做市+清算+部分交易费）",
+      "deployer_hip3": "50%（HIP-3 perp 市场，可配置额外 0-300% share）",
+      "deployer_hip1_spot": "非 USDC 计价费用默认 100% 给 deployer（只降不升）",
+      "builder_fee": "全额归 builder（perp ≤0.1%, spot ≤1%，独立于协议费）",
+      "referral_rebate": "maker rebate 实时返还 + 推荐奖励",
+      "note": "官方未公布固定的 AF/HLP 比例，会随市场类型和版本变化"
     },
-    "funding": "\u591a\u7a7a\u70b9\u5bf9\u70b9\u652f\u4ed8\uff0c\u5e73\u53f0\u4e0d\u6536\u53d6",
-    "liquidation": "\u65e0\u6e05\u7b97\u624b\u7eed\u8d39\uff1bbackstop \u6e05\u7b97\u4e2d maintenance margin \u4e0d\u8fd4\u8fd8\uff0c\u6c89\u6dc0\u5728 HLP PnL",
-    "hyperevm_gas": "EIP-1559 base fee + priority fee \u5168\u90e8 burned\uff08\u4f9b\u7ed9\u6536\u7f29\uff0c\u975e\u534f\u8bae\u6536\u5165\uff09",
+    "funding": "多空点对点支付，平台不收取",
+    "liquidation": "无清算手续费；backstop 清算中 maintenance margin 不返还，沉淀在 HLP PnL",
+    "hyperevm_gas": "EIP-1559 base fee + priority fee 全部 burned（供给收缩，非协议收入）",
     "sources": [
       "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees",
       "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/funding",
@@ -51,13 +51,13 @@
   },
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "\u4ea4\u6613\u8d39\u7528\u6263\u9664 deployer/builder/HLP/referral \u540e\uff0c\u8fdb\u5165 AF \u56de\u8d2d\u9500\u6bc1 HYPE",
+    "fee_switch_details": "交易费用扣除 deployer/builder/HLP/referral 后，进入 AF 回购销毁 HYPE",
     "buybacks": "ACTIVE",
     "dividends": "NONE",
     "burns": "ACTIVE",
-    "primary_value_accrual": "\u56de\u8d2d\u9500\u6bc1 - Assistance Fund \u81ea\u52a8\u5c06\u8d39\u7528\u6362\u6210 HYPE \u5e76\u6c38\u4e45\u79fb\u9664",
-    "tevRatio": "dynamic",
-    "tevRatio_note": "\u975e\u56fa\u5b9a\u6bd4\u4f8b\uff0cDefiLlama holdersRevenue \u5df2\u9a8c\u8bc1\u7b49\u4e8e AF \u5b9e\u9645\u56de\u8d2d\u91d1\u989d"
+    "primary_value_accrual": "回购销毁 - Assistance Fund 自动将费用换成 HYPE 并永久移除",
+    "tevRatio": "100%",
+    "tevRatio_note": "净利润（Token Holder Net Income）= 进入 AF 回购金额；逐期相等，因此净利润 100% 用于回购销毁"
   },
   "market_data": {
     "price_usd": 30.92,
@@ -76,45 +76,45 @@
       "365d_holders_revenue": 915161309,
       "market_cap": 7368065201
     },
-    "note": "TEV Yield = (365d holdersRevenue $915.2M) / (\u5e02\u503c $7.37B) = 12.42%",
-    "verification": "DefiLlama holdersRevenue \u4e0e\u94fe\u4e0a AF entryNtl \u4ea4\u53c9\u9a8c\u8bc1\uff0c\u53e3\u5f84\u4e00\u81f4"
+    "note": "TEV Yield = (365d holdersRevenue $915.2M) / (市值 $7.37B) = 12.42%",
+    "verification": "DefiLlama holdersRevenue 与链上 AF entryNtl 交叉验证，口径一致"
   },
   "data_gaps": [],
   "verified_data": [
     {
-      "item": "\u56de\u8d2d\u9500\u6bc1\u673a\u5236",
-      "status": "\u2705 \u5df2\u786e\u8ba4",
-      "note": "AF \u56de\u8d2d\u540e\u9500\u6bc1 HYPE\uff0c\u4ece circulating + total supply \u6c38\u4e45\u79fb\u9664",
+      "item": "回购销毁机制",
+      "status": "✅ 已确认",
+      "note": "AF 回购后销毁 HYPE，从 circulating + total supply 永久移除",
       "verified_date": "2026-03-01"
     },
     {
-      "item": "\u8d39\u7528\u5206\u914d",
-      "status": "\u2705 \u5df2\u9a8c\u8bc1",
-      "note": "\u5b98\u65b9\u672a\u516c\u5e03\u56fa\u5b9a AF/HLP \u6bd4\u4f8b\uff1bDefiLlama holdersRevenue = AF \u5b9e\u9645\u6d41\u5165\uff08\u94fe\u4e0a\u9a8c\u8bc1\uff09",
+      "item": "费用分配",
+      "status": "✅ 已验证",
+      "note": "官方未公布固定 AF/HLP 比例；DefiLlama holdersRevenue = AF 实际流入（链上验证）",
       "verified_date": "2026-03-01"
     },
     {
       "item": "TEV Yield",
-      "status": "\u2705 \u5df2\u8ba1\u7b97",
-      "note": "365d holdersRevenue $915M / \u5e02\u503c $7.4B = 12.42%",
+      "status": "✅ 已计算",
+      "note": "365d holdersRevenue $915M / 市值 $7.4B = 12.42%",
       "verified_date": "2026-03-01"
     },
     {
-      "item": "Funding \u53e3\u5f84",
-      "status": "\u2705 \u5df2\u786e\u8ba4",
-      "note": "Funding \u662f\u591a\u7a7a\u70b9\u5bf9\u70b9\u652f\u4ed8\uff0c\u5e73\u53f0\u4e0d\u6536\u53d6\uff0c\u4e0d\u8ba1\u5165 TEV",
+      "item": "Funding 口径",
+      "status": "✅ 已确认",
+      "note": "Funding 是多空点对点支付，平台不收取，不计入 TEV",
       "verified_date": "2026-03-01"
     },
     {
-      "item": "\u6e05\u7b97\u53e3\u5f84",
-      "status": "\u2705 \u5df2\u786e\u8ba4",
-      "note": "\u65e0\u6e05\u7b97\u624b\u7eed\u8d39\uff0cbackstop \u6e05\u7b97\u6536\u76ca\u6c89\u6dc0\u5728 HLP PnL\uff0c\u4e0d\u8ba1\u5165 TEV",
+      "item": "清算口径",
+      "status": "✅ 已确认",
+      "note": "无清算手续费，backstop 清算收益沉淀在 HLP PnL，不计入 TEV",
       "verified_date": "2026-03-01"
     },
     {
       "item": "HyperEVM gas",
-      "status": "\u2705 \u5df2\u786e\u8ba4",
-      "note": "base fee + priority fee \u5168\u90e8 burned\uff0c\u5c5e\u4e8e\u4f9b\u7ed9\u6536\u7f29\u975e\u5229\u6da6\u5206\u914d\uff0c\u4e0d\u8ba1\u5165 TEV",
+      "status": "✅ 已确认",
+      "note": "base fee + priority fee 全部 burned，属于供给收缩非利润分配，不计入 TEV",
       "verified_date": "2026-03-01"
     }
   ],
@@ -143,17 +143,17 @@
       "type": "api",
       "url": "https://api.hyperliquid.xyz/info",
       "reliability": "high",
-      "note": "spotClearinghouseState \u83b7\u53d6 AF \u4f59\u989d\uff0cuserFills \u83b7\u53d6\u6210\u4ea4\u8bb0\u5f55"
+      "note": "spotClearinghouseState 获取 AF 余额，userFills 获取成交记录"
     }
   ],
-  "analyst_notes": "## HYPE TEV \u673a\u5236\n\n### \u6838\u5fc3\u673a\u5236\n**Assistance Fund**: \u4ea4\u6613\u8d39\u7528\uff08\u6263\u9664 deployer/builder/HLP/referral \u540e\uff09\u2192 \u81ea\u52a8\u56de\u8d2d HYPE \u2192 **\u6c38\u4e45\u9500\u6bc1**\n\n\u9500\u6bc1\u7684 HYPE \u4ece circulating + total supply \u6c38\u4e45\u79fb\u9664\u3002\n\n### \u8d39\u7528\u5206\u914d\uff08\u6309\u89d2\u8272\uff0c\u6bd4\u4f8b\u52a8\u6001\uff09\n\n| \u89d2\u8272 | \u673a\u5236 | \u662f\u5426\u7b97 TEV |\n|------|------|-----------|\n| Assistance Fund | \u81ea\u52a8\u5c06\u8d39\u7528\u6362\u6210 HYPE \u5e76 burn | \u2705 |\n| HLP Vault | \u505a\u5e02+\u6e05\u7b97+\u90e8\u5206\u4ea4\u6613\u8d39 | \u274c\uff08\u7ed9 LP\uff09 |\n| Deployer (HIP-3) | \u56fa\u5b9a 50% fee share | \u274c |\n| Deployer (HIP-1 spot) | \u975e USDC \u8d39\u7528\u9ed8\u8ba4 100% \u7ed9 deployer | \u274c |\n| Builder | builder code \u989d\u5916\u6536\u53d6 | \u274c |\n| Referral/Rebate | maker rebate + \u63a8\u8350\u5956\u52b1 | \u274c |\n\n**\u6ce8\u610f**\uff1a\u5b98\u65b9\u672a\u516c\u5e03\u56fa\u5b9a AF/HLP \u6bd4\u4f8b\uff0c\u89c2\u6d4b\u503c\u4ece 54% \u5230 92% \u4e0d\u7b49\u3002\n\n### \u4e0d\u8ba1\u5165 TEV \u7684\u6536\u5165\n- **Funding**: \u591a\u7a7a\u70b9\u5bf9\u70b9\u652f\u4ed8\uff0c\u5e73\u53f0\u4e0d\u6536\u53d6\n- **\u6e05\u7b97\u6536\u76ca**: \u65e0\u6e05\u7b97\u624b\u7eed\u8d39\uff0cmaintenance margin \u6c89\u6dc0\u5728 HLP PnL\n- **HyperEVM gas**: base fee + priority fee \u5168\u90e8 burned\uff08\u4f9b\u7ed9\u6536\u7f29\uff09\n\n### \u6570\u636e\u6765\u6e90\n| \u6570\u636e | \u6765\u6e90 |\n|------|------|\n| \u7d2f\u8ba1\u56de\u8d2d | Hyperliquid API `spotClearinghouseState` |\n| \u6bcf\u65e5\u660e\u7ec6 | DefiLlama `holdersRevenue`\uff08\u5df2\u4e0e\u94fe\u4e0a\u9a8c\u8bc1\u4e00\u81f4\uff09 |\n| \u4ef7\u683c/\u5e02\u503c | CoinGecko |\n\n### \u5173\u952e\u5730\u5740\n**Assistance Fund**: `0xfefefefefefefefefefefefefefefefefefefefe`\n**HLP Vault**: `0xdfc24b077bc1425ad1dea75bcb6f8158e10df303`\n\n### \u53c2\u8003\u94fe\u63a5\n- [Fees](https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees)\n- [Funding](https://hyperliquid.gitbook.io/hyperliquid-docs/trading/funding)\n- [Liquidations](https://hyperliquid.gitbook.io/hyperliquid-docs/trading/liquidations)\n- [Builder Codes](https://hyperliquid.gitbook.io/hyperliquid-docs/trading/builder-codes)\n- [HIP-1](https://hyperliquid.gitbook.io/hyperliquid-docs/hyperliquid-improvement-proposals-hips/hip-1-native-token-standard)\n- [HIP-3](https://hyperliquid.gitbook.io/hyperliquid-docs/hyperliquid-improvement-proposals-hips/hip-3-builder-deployed-perpetuals)\n- [HyperEVM](https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/hyperevm)",
+  "analyst_notes": "## HYPE TEV 机制\n\n### 核心机制\n**Assistance Fund**: 交易费用（扣除 deployer/builder/HLP/referral 后）→ 自动回购 HYPE → **永久销毁**\n\n销毁的 HYPE 从 circulating + total supply 永久移除。\n\n### 费用分配（按角色，比例动态）\n\n| 角色 | 机制 | 是否算 TEV |\n|------|------|-----------|\n| Assistance Fund | 自动将费用换成 HYPE 并 burn | ✅ |\n| HLP Vault | 做市+清算+部分交易费 | ❌（给 LP） |\n| Deployer (HIP-3) | 固定 50% fee share | ❌ |\n| Deployer (HIP-1 spot) | 非 USDC 费用默认 100% 给 deployer | ❌ |\n| Builder | builder code 额外收取 | ❌ |\n| Referral/Rebate | maker rebate + 推荐奖励 | ❌ |\n\n**注意**：官方未公布固定 AF/HLP 比例，观测值从 54% 到 92% 不等。\n\n### 不计入 TEV 的收入\n- **Funding**: 多空点对点支付，平台不收取\n- **清算收益**: 无清算手续费，maintenance margin 沉淀在 HLP PnL\n- **HyperEVM gas**: base fee + priority fee 全部 burned（供给收缩）\n\n### 数据来源\n| 数据 | 来源 |\n|------|------|\n| 累计回购 | Hyperliquid API `spotClearinghouseState` |\n| 每日明细 | DefiLlama `holdersRevenue`（已与链上验证一致） |\n| 价格/市值 | CoinGecko |\n\n### 关键地址\n**Assistance Fund**: `0xfefefefefefefefefefefefefefefefefefefefe`\n**HLP Vault**: `0xdfc24b077bc1425ad1dea75bcb6f8158e10df303`\n\n### 参考链接\n- [Fees](https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees)\n- [Funding](https://hyperliquid.gitbook.io/hyperliquid-docs/trading/funding)\n- [Liquidations](https://hyperliquid.gitbook.io/hyperliquid-docs/trading/liquidations)\n- [Builder Codes](https://hyperliquid.gitbook.io/hyperliquid-docs/trading/builder-codes)\n- [HIP-1](https://hyperliquid.gitbook.io/hyperliquid-docs/hyperliquid-improvement-proposals-hips/hip-1-native-token-standard)\n- [HIP-3](https://hyperliquid.gitbook.io/hyperliquid-docs/hyperliquid-improvement-proposals-hips/hip-3-builder-deployed-perpetuals)\n- [HyperEVM](https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/hyperevm)",
   "last_updated": "2026-03-01",
   "buyback_data": {
     "enabled": true,
     "data_file": "hype-buybacks.json",
     "af_address": "0xfefefefefefefefefefefefefefefefefefefefe",
     "api_endpoint": "https://api.hyperliquid.xyz/info",
-    "note": "Assistance Fund \u56de\u8d2d\u6570\u636e\uff0cHYPE \u76f4\u63a5\u4ece circulating + total supply \u79fb\u9664"
+    "note": "Assistance Fund 回购数据，HYPE 直接从 circulating + total supply 移除"
   },
   "tev_data": {
     "has_tev": true,
@@ -166,7 +166,7 @@
         "name": "DefiLlama holdersRevenue",
         "type": "defillama",
         "annual_usd": 915161309,
-        "note": "Assistance Fund \u56de\u8d2d\u9500\u6bc1\uff08\u5df2\u4e0e\u94fe\u4e0a AF \u4f59\u989d\u4ea4\u53c9\u9a8c\u8bc1\uff09"
+        "note": "Assistance Fund 回购销毁（已与链上 AF 余额交叉验证）"
       }
     ],
     "calculation": "$915.2M / $7368M = 12.42%",
@@ -177,16 +177,16 @@
     "total_burned": 41576948.0,
     "target": 1000000000,
     "ticker": "HYPE",
-    "note": "Assistance Fund \u7d2f\u8ba1\u56de\u8d2d\u9500\u6bc1\uff0c\u5360\u603b\u4f9b\u5e94 10 \u4ebf\u7684 4.2%\u3002",
+    "note": "Assistance Fund 累计回购销毁，占总供应 10 亿的 4.2%。",
     "target_label": "total_supply",
     "pct": 4.16
   },
   "tevStatus": "active",
   "confidence_reason": {
-    "zh": "\u94fe\u4e0a AF \u4f59\u989d\u53ef\u9a8c\u8bc1 + DefiLlama holdersRevenue \u4ea4\u53c9\u9a8c\u8bc1",
+    "zh": "链上 AF 余额可验证 + DefiLlama holdersRevenue 交叉验证",
     "en": "On-chain AF balance verifiable + DefiLlama holdersRevenue cross-validated"
   },
-  "tevRatio": "dynamic",
+  "tevRatio": 1.0,
   "earning_yield_percent": 14.35,
   "market_cap_usd": 7368065201
 }
