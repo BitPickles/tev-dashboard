@@ -569,20 +569,7 @@
         statusText.className = `tev-status ${tevStatus}`;
         document.getElementById('primary-value').textContent = cfg.tev_summary?.fee_switch === 'ON' ? '✓ ON' : cfg.tev_summary?.fee_switch === 'PARTIAL' ? '~ PARTIAL' : '✗ OFF';
         document.getElementById('primary-label').textContent = cfg.tev_summary?.primary_value_accrual || '—';
-        
-        // 从 all-protocols.json 获取汇总数据
-        let protoData = null;
-        try {
-          const allResp = await fetch('data/all-protocols.json');
-          if (allResp.ok) {
-            const allData = await allResp.json();
-            protoData = allData.protocols?.[pid];
-            console.log('Loaded protoData:', pid, protoData?.tevRatio, protoData?.market_cap_usd);
-          } else {
-            console.log('Fetch failed:', allResp.status);
-          }
-        } catch (e) { console.log('Failed to load all-protocols.json:', e); }
-        
+
         // TEV 概览 - 新增字段
         const tevRatioEl = document.getElementById('summary-tevratio');
         const marketCapEl = document.getElementById('summary-marketcap');
