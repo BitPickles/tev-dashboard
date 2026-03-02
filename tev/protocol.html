@@ -584,6 +584,9 @@
             const allData = await allResp.json();
             protoData = allData.protocols?.[pid];
             console.log('Loaded protoData:', pid, protoData?.tevRatio, protoData?.market_cap_usd);
+            console.log('baseUrl:', baseUrl);
+          } else {
+            console.log('Fetch failed:', allResp.status);
           }
         } catch (e) { console.log('Failed to load all-protocols.json:', e); }
         
