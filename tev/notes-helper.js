@@ -3,26 +3,45 @@
 function notesToMarkdown(notes) {
   if (typeof notes === "string") return notes;
   
-  // Sky special formatting
-  if (notes && notes.historical_changes && notes.current_burn_ratio) {
-    let md = "### 🔥 Burn 比例历史\\n\\n";
-    md += "| 日期 | 变更 | Burn 比例 |\\n";
-    md += "|------|-------|----------|\\n";
-    notes.historical_changes.forEach(function(change) {
-      md += "| " + change.date + " | " + change.change + " | " + change.ratio + " |\\n";
+  // Sky enhanced formatting
+  if (notes && notes.overview && notes.burn_ratio) {
+    const ov = notes.overview;
+    const br = notes.burn_ratio;
+    
+    let md = `### 📊 概览\n\n`;
+    md += `| 指标 | 值 |\n`;
+    md += `|------|-----|\n`;
+    md += `| 最近 12 个月 TEV | ${ov.tev_12m} |\n`;
+    md += `| 最新月度 TEV | ${ov.latest_month} |\n`;
+    md += `| 机制 | ${ov.mechanism} |\n`;
+    md += `| 收益来源 | ${ov.yield_source} |\n`;
+    
+    md += `\n### 🔥 Burn 比例\n\n`;
+    md += `> 当前比例: **${br.current}** (${br.current * 100}%) · 通过 **${br.governance}** 调整\n\n`;
+    md += `| 日期 | 变更 | Burn 比例 |\n`;
+    md += `|------|-------|----------|\n`;
+    notes.historical_changes.forEach(c => {
+      md += `| ${c.date} | ${(c.from * 100).toFixed(0)}% → ${(c.to * 100).toFixed(0)}% | ${c.to} |\n`;
     });
-    md += "\\n> 📌 当前比例: **" + notes.current_burn_ratio + "** (截至 2025-10-30 执行投票)\\n\\n";
-    md += "### 📊 数据源\\n\\n";
-    md += "- **DefiLlama HoldersRevenue**: `buyback` | `farms` | `revenue`\\n\\n";
-    md += "### 📜 合约\\n\\n";
-    md += "| 合约 | 地址 |\\n";
-    md += "|------|------|\\n";
-    Object.keys(notes.contracts || {}).forEach(function(cName) {
-      var cAddr = notes.contracts[cName];
-      md += "| " + cName + " | `" + cAddr + "`|\\n";
+    
+    md += `\n### 📜 合约\n\n`;
+    md += `| 合约 | 地址 |\n`;
+    md += `|------|------|\n`;
+    Object.entries(notes.contracts).forEach(([name, addr]) => {
+      md += `| ${name} | \`${addr}\` |\n`;
     });
-    md += "\\n### 💡 说明\\n\\n";
-    md += "Splitter.burn 是链上可配置参数，通过 Executive Vote 动态调整。DefiLlama HoldersRevenue = dailyBuybackUSD + dailyStakersRevenueUSD，自动反映 burn/farm 分配结构变化。\\n";
+    
+    md += `\n### 🔗 相关链接\n\n`;
+    md += `- [治理投票](${notes.links.governance}) - Sky Executive Vote\n`;
+    md += `- [Burn Engine](${notes.links.burn_engine}) - BlockAnalitica\n`;
+    md += `- [API](${notes.links.api}) - DefiLlama HoldersRevenue\n`;
+    
+    md += `\n### 💡 机制说明\n\n`;
+    md += notes.mechanism_note + `\n`;
+    
+    md += `\n### 📊 数据源\n\n`;
+    md += `DefiLlama **HoldersRevenue** = buyback + stakers_reward，自动反映治理投票后的分配比例变化。\n`;
+    
     return md;
   }
   
