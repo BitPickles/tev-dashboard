@@ -95,8 +95,8 @@
     "total_supply": 1000000000,
     "holders": 387973,
     "snapshot_date": "2026-03-02",
-    "tvl": 3076435947,
-    "tvl_updated": "2026-03-02T06:18:37.277Z"
+    "tvl": 3067536789,
+    "tvl_updated": "2026-03-02T13:02:32.270Z"
   },
   "confidence": "high",
   "data_sources": [
@@ -143,11 +143,11 @@
       }
     ],
     "calculation": "$35.2M / $2.39B = 1.47%",
-    "trailing_365d_tev_usd": 35216242,
-    "last_updated": "2026-03-01"
+    "trailing_365d_tev_usd": 34923621.0,
+    "last_updated": "2026-03-02"
   },
   "burn_progress": {
-    "total_burned": 101444003,
+    "total_burned": 101456003.0,
     "target": 1000000000,
     "ticker": "UNI",
     "note": "含 1 亿枚一次性国库销毁 + Firepit 持续销毁。占总供应 10 亿的 10.1%。",
@@ -164,11 +164,11 @@
         "label_en": "Firepit Burns",
         "amount": 1493580,
         "color": "rgba(239,68,68,0.85)",
-        "value": 1444003,
-        "pct": 0.14
+        "value": 1456003.0,
+        "pct": 0.15
       }
     ],
-    "pct": 10.14
+    "pct": 10.15
   },
   "tevStatus": "active",
   "confidence_reason": {
