@@ -37,8 +37,8 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'curve-dex', 
     coingeckoId: 'curve-dao-token',
     cmcSlug: 'curve-dao-token',
-    tevRatio: 0.5,
-    note: 'veCRV 分红 50%'
+    tevRatio: 1.0,
+    note: 'DL Revenue = admin fee (已扣LP), 几乎全部分给 veCRV'
   },
   dydx: { 
     defillamaSlug: 'dydx', 
@@ -65,8 +65,8 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'gmx', 
     coingeckoId: 'gmx',
     cmcSlug: 'gmx',
-    tevRatio: 0.27,
-    note: '27% 费用分红 (docs.gmx.io)'
+    tevRatio: 0.9,
+    note: 'DL Revenue = Fees×30%(staker), DAO投票后实际27%, TEV = Revenue×(27/30)=0.9'
   },
   maple: { 
     defillamaSlug: 'maple', 
@@ -80,7 +80,7 @@ const PROTOCOL_CONFIG = {
     coingeckoId: 'pancakeswap-token',
     cmcSlug: 'pancakeswap',
     tevRatio: 0.58,
-    note: '58% 回购销毁 (44-72% 按费率取中间值)'
+    note: '58% 协议留存(Revenue)用于回购销毁 CAKE'
   },
   pendle: { 
     defillamaSlug: 'pendle', 
