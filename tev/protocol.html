@@ -209,7 +209,7 @@
 
     async function loadTevChart(pid) {
       try {
-        const resp = await fetch(`../data/protocols/${pid}/tev-records.json`);
+        const resp = await fetch(`../data/protocols/${pid}/config.json`);
         if (!resp.ok) return;
         const { records } = await resp.json();
         if (!records?.length) return;
