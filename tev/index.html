@@ -315,7 +315,7 @@
     // === Data Loading ===
     async function loadProtocolData() {
       try {
-        const baseRes = await fetch('data/all-protocols.json');
+        const baseRes = await fetch('../data/all-protocols.json');
         if (baseRes.ok) {
           const baseData = await baseRes.json();
           PROTOCOLS = baseData.protocols || {};
