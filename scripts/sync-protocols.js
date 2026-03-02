@@ -12,6 +12,7 @@ const PROTOCOLS_DIR = path.join(DATA_DIR, 'protocols');
 const OUTPUT_FILE = path.join(DATA_DIR, 'all-protocols.json');
 
 // 从 config.json 提取 all-protocols.json 需要的字段
+let existing = { protocols: {} };
 function extractProtocolData(config) {
   const data = {
     name: config.name,
@@ -34,8 +35,10 @@ function extractProtocolData(config) {
     data.tev_yield_percent = 0;
   }
 
-  // 市值
-  if (config.market_data?.circulating_market_cap) {
+  // 市值：优先使用 all-protocols.json 里已有的动态结果（sync-tev-data.js 生成）
+  if (existing?.protocols?.[config.id]?.market_cap_usd) {
+    data.market_cap_usd = existing.protocols[config.id].market_cap_usd;
+  } else if (config.market_data?.circulating_market_cap) {
     data.market_cap_usd = config.market_data.circulating_market_cap;
   } else if (config.market_data?.market_cap_usd) {
     data.market_cap_usd = config.market_data.market_cap_usd;
@@ -92,7 +95,7 @@ function main() {
   console.log('Syncing protocol data...\n');
 
   // 读取现有的 all-protocols.json
-  let existing = { protocols: {} };
+  existing = { protocols: {} };
   if (fs.existsSync(OUTPUT_FILE)) {
     existing = JSON.parse(fs.readFileSync(OUTPUT_FILE, 'utf8'));
   }
