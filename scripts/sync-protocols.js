@@ -53,8 +53,24 @@ function extractProtocolData(config) {
   }
 
   // TEV Ratio
-  if (config.tev_summary?.tevRatio !== undefined) {
+  // 优先使用顶层 tevRatio（部分协议写在这里），否则回退到 tev_summary.tevRatio
+  if (config.tevRatio !== undefined) {
+    data.tevRatio = config.tevRatio;
+  } else if (config.tev_summary?.tevRatio !== undefined) {
     data.tevRatio = config.tev_summary.tevRatio;
+  }
+
+  // 收益率（Earnings Yield）
+  // 优先使用 config.earning_yield_percent，缺失则尝试用已有 metrics 计算
+  if (config.earning_yield_percent !== undefined) {
+    data.earning_yield_percent = config.earning_yield_percent;
+  } else if (existing?.protocols?.[config.id]?.metrics) {
+    const m = existing.protocols[config.id].metrics;
+    const marketCap = data.market_cap_usd || m.current_market_cap_usd || 0;
+    const revenue365 = m.trailing_365d_revenue_usd || 0;
+    data.earning_yield_percent = marketCap > 0 ? (revenue365 / marketCap) * 100 : 0;
+  } else {
+    data.earning_yield_percent = 0;
   }
 
   // 备注
@@ -90,7 +106,9 @@ function main() {
     const configPath = path.join(PROTOCOLS_DIR, dir, 'config.json');
     try {
       const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-      const data = extractProtocolData(config);
+      // 透传 id 方便 extractProtocolData 使用 existing.metrics
+    config.id = dir;
+    const data = extractProtocolData(config);
       
       // 保留现有数据中的某些字段（如 metrics）
       if (existing.protocols[dir]?.metrics) {
