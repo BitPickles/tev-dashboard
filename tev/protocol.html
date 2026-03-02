@@ -255,7 +255,7 @@
                 zoom: { pan: { enabled: true, mode: 'x' }, zoom: { wheel: { enabled: true }, pinch: { enabled: true }, mode: 'x' } }
               },
               scales: {
-                x: { type: 'time', time: { unit: records.length > 180 ? 'month' : 'day', displayFormats: { day: 'MM-dd', month: 'yyyy-MM' }, tooltipFormat: 'yyyy-MM-dd' }, grid: { display: false }, ticks: { color: '#71717a', font: { size: 10 }, maxRotation: 0, maxTicksLimit: 15 } },
+                x: { type: 'time', time: { unit: records.length > 180 ? 'month' : 'day', displayFormats: { day: 'MM-dd', month: 'yyyy-MM' }, tooltipFormat: 'yyyy-MM-dd' }, min: records.length > 180 ? records[Math.max(0, records.length - 90)].date : undefined, grid: { display: false }, ticks: { color: '#71717a', font: { size: 10 }, maxRotation: 0, maxTicksLimit: 15 } },
                 y: { position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => fmtCurrency(v) }, title: { display: true, text: currentLang === 'zh' ? '每日 TEV (USD)' : 'Daily TEV (USD)', color: '#71717a' } },
                 y2: { position: 'right', grid: { display: false }, ticks: { color: '#f59e0b', callback: v => fmtCurrency(v) }, title: { display: true, text: t('chart.cumulative'), color: '#f59e0b' } }
               }
