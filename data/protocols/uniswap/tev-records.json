@@ -1,9 +1,9 @@
 {
   "protocol": "uniswap",
-  "updated_at": "2026-03-02T13:04:10Z",
+  "updated_at": "2026-03-03T13:03:39Z",
   "data_source": "Etherscan on-chain (UNI transfers to 0xdead)",
   "fee_switch_date": "2025-12-28",
-  "last_block": 24569805,
+  "last_block": 24576807,
   "note": "仅统计 fee switch 开启后的 Firepit 持续销毁，不含 100M 一次性国库销毁",
   "retroactive_burn": {
     "tx": "0x091f0083242a777d55821c1189e568d6d033d9da501b75087dc736fa143d2c1e",
@@ -12,12 +12,12 @@
     "note": "一次性国库销毁，不计入持续 TEV"
   },
   "summary": {
-    "total_uni_burned": 1456003.34,
-    "total_usd_burned": 6123593.78,
-    "days": 64,
-    "avg_daily_uni": 22750.05,
-    "annualized_uni": 8303769.0,
-    "annualized_usd": 34923621.0
+    "total_uni_burned": 1468003.34,
+    "total_usd_burned": 6169459.15,
+    "days": 65,
+    "avg_daily_uni": 22584.67,
+    "annualized_uni": 8243403.0,
+    "annualized_usd": 34643886.0
   },
   "records": [
     {
@@ -659,6 +659,16 @@
       "avg_price": 3.7645,
       "tx_count": 3,
       "block": 24569805
+    },
+    {
+      "id": "uni-burn-2026-03-03",
+      "date": "2026-03-03",
+      "type": "buyback_burn",
+      "amount_uni": 12000.0,
+      "amount_usd": 45865.37,
+      "avg_price": 3.8221,
+      "tx_count": 3,
+      "block": 24576807
     }
   ]
 }
