@@ -4,7 +4,7 @@
   "ticker": "AAVE",
   "icon": "https://coin-images.coingecko.com/coins/images/12645/large/aave-token-round.png",
   "category": "lending",
-  "description": "\u53bb\u4e2d\u5fc3\u5316\u501f\u8d37\u534f\u8bae\uff0c\u5141\u8bb8\u7528\u6237\u5b58\u6b3e\u8d5a\u53d6\u5229\u606f\u6216\u501f\u5165\u8d44\u4ea7",
+  "description": "去中心化借贷协议，允许用户存款赚取利息或借入资产",
   "website": "https://aave.com",
   "docs": "https://docs.aave.com",
   "token": {
@@ -17,7 +17,7 @@
     {
       "type": "buyback",
       "name": "AAVE Buyback Program",
-      "description": "Aave DAO \u6bcf\u5e74\u62e8\u51fa $50M \u9884\u7b97\u7528\u4e8e\u56de\u8d2d AAVE",
+      "description": "Aave DAO 每年拨出 $50M 预算用于回购 AAVE",
       "status": "active",
       "start_date": "2024-07-25",
       "annual_budget_usd": 50000000,
@@ -31,7 +31,7 @@
     {
       "type": "staking_reward",
       "name": "Safety Module (Umbrella)",
-      "description": "\u8d28\u62bc AAVE \u5230 Safety Module \u83b7\u5f97\u534f\u8bae\u6536\u5165\u5206\u6210\u4f5c\u4e3a\u98ce\u9669\u8865\u507f",
+      "description": "质押 AAVE 到 Safety Module 获得协议收入分成作为风险补偿",
       "status": "active",
       "contract": "0x4da27a545c0c5B758a6BA100e3a049001de870f5",
       "start_date": "2020-09-01"
@@ -39,11 +39,11 @@
   ],
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "$50M \u5e74\u5ea6\u56de\u8d2d\u9884\u7b97",
+    "fee_switch_details": "$50M 年度回购预算",
     "buybacks": "ACTIVE",
     "dividends": "NONE",
     "burns": "NONE",
-    "primary_value_accrual": "\u56de\u8d2d ($50M/\u5e74) + Safety Module \u8d28\u62bc\u5956\u52b1"
+    "primary_value_accrual": "回购 ($50M/年) + Safety Module 质押奖励"
   },
   "confidence": "high",
   "data_sources": [
@@ -71,10 +71,10 @@
     "market_cap_usd": 1736849395,
     "snapshot_date": "2026-02-14",
     "data_source": "CoinGecko",
-    "tvl": 26517778890,
-    "tvl_updated": "2026-03-02T13:02:20.823Z"
+    "tvl": 27158073548,
+    "tvl_updated": "2026-03-03T01:00:06.980Z"
   },
-  "notes": "Aave \u5728 2024 \u5e74\u901a\u8fc7 Aavenomics \u5347\u7ea7\u5f00\u542f\u4e86\u4ee3\u5e01\u56de\u8d2d\u673a\u5236\u3002TEV \u6765\u6e90\uff1aSafety Module \u8d28\u62bc\u5956\u52b1 + \u5e74\u5ea6\u56de\u8d2d\u3002",
+  "notes": "Aave 在 2024 年通过 Aavenomics 升级开启了代币回购机制。TEV 来源：Safety Module 质押奖励 + 年度回购。",
   "last_updated": "2026-03-03",
   "tev_data": {
     "has_tev": true,
@@ -98,10 +98,10 @@
     ],
     "calculation": "$83.80M / $1868.00M = 4.49%"
   },
-  "analyst_notes": "## TEV \u6784\u6210\n\nAave \u7684 TEV \u7531\u4e24\u90e8\u5206\u6784\u6210\uff1a\n\n### 1. \u5e74\u5ea6\u56de\u8d2d\u9884\u7b97\uff08Buyback Program\uff09\n\nAave DAO \u901a\u8fc7 [AIP-73 Aavenomics Update](https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/18937) \u8bbe\u7acb\u5e74\u5ea6\u56de\u8d2d\u9884\u7b97\uff0c\u6bcf\u5e74\u4ece DAO \u8d22\u5e93\u62e8\u51fa **$50M** \u7528\u4e8e\u5728\u516c\u5f00\u5e02\u573a\u56de\u8d2d AAVE \u4ee3\u5e01\u3002\n\n- \u56de\u8d2d\u6267\u884c\u7531 [Aave Finance](https://aave.tokenlogic.xyz) \u7ba1\u7406\n- \u56de\u8d2d\u7684 AAVE \u8fdb\u5165 [Buy & Distribute \u8ba1\u5212](https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/19838)\uff0c\u5206\u914d\u7ed9\u751f\u6001\u53c2\u4e0e\u8005\n\n### 2. Safety Module \u8d28\u62bc\u5956\u52b1\uff08Staking Rewards\uff09\n\n\u8d28\u62bc AAVE \u5230 [Safety Module](https://app.aave.com/staking/) \u53ef\u83b7\u5f97\u534f\u8bae\u6536\u5165\u5206\u6210\u4f5c\u4e3a\u98ce\u9669\u8865\u507f\u3002\n\n- \u5408\u7ea6\u5730\u5740\uff1a`0x4da27a545c0c5B758a6BA100e3a049001de870f5`\n- \u8d28\u62bc\u8005\u627f\u62c5\u534f\u8bae\u6e05\u7b97\u98ce\u9669\uff08Slashing\uff09\uff0c\u83b7\u5f97\u6536\u5165\u5206\u6210\n- \u5956\u52b1\u6765\u6e90\uff1a\u534f\u8bae\u501f\u8d37\u5229\u5dee\u6536\u5165\n\n### TEV \u8ba1\u7b97\u516c\u5f0f\n\n```\nTEV = \u5e74\u5ea6\u56de\u8d2d\u9884\u7b97 + Safety Module \u5e74\u5316\u8d28\u62bc\u5956\u52b1\nTEV Yield = TEV / AAVE \u4ee3\u5e01\u5e02\u503c \u00d7 100%\n```\n\n### TEV Ratio\uff08\u7b49\u6548\u5206\u914d\u6bd4\u4f8b\uff09\n\nTEV Ratio \u4e3a TEV \u4e0e\u534f\u8bae\u603b\u6536\u5165\u7684\u6bd4\u503c\uff1a\n\n```\nTEV Ratio = TEV / Revenue\n          = (\u56fa\u5b9a\u56de\u8d2d $50M + holdersRevenue) / \u534f\u8bae\u603b\u6536\u5165\n```\n\n\u26a0\ufe0f \u6ce8\u610f\uff1aAave \u7684 TEV Ratio \u4e0d\u662f\u56fa\u5b9a\u6bd4\u4f8b\u3002$50M \u56de\u8d2d\u9884\u7b97\u4e3a\u56fa\u5b9a\u503c\uff0c\u4e0d\u968f\u6536\u5165\u6ce2\u52a8\uff1bholdersRevenue \u4e0e\u534f\u8bae\u6536\u5165\u76f8\u5173\u4f46\u975e\u56fa\u5b9a\u6bd4\u4f8b\u3002\u56e0\u6b64 TEV Ratio \u662f\u7b49\u6548\u8ba1\u7b97\u503c\uff0c\u4f1a\u968f\u6536\u5165\u53d8\u5316\u800c\u6ce2\u52a8\u3002\n\n### \u6570\u636e\u6765\u6e90\n\n| \u7ec4\u6210\u90e8\u5206 | \u6570\u636e\u6765\u6e90 | \u8bf4\u660e |\n|----------|---------|------|\n| \u56de\u8d2d\u9884\u7b97 | [\u6cbb\u7406\u63d0\u6848 AIP-73](https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/18937) | \u56fa\u5b9a $50M/\u5e74 |\n| \u8d28\u62bc\u5956\u52b1 | [DefiLlama holdersRevenue](https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue) | 365 \u5929\u6eda\u52a8\u7d2f\u8ba1 |\n| \u534f\u8bae\u6536\u5165 | [DefiLlama Revenue](https://api.llama.fi/summary/fees/aave?dataType=dailyRevenue) | 365 \u5929\u6eda\u52a8\u7d2f\u8ba1 |\n| \u5e02\u503c | CMC / CoinGecko | \u5b9e\u65f6\u5e02\u503c |\n\n### \u6570\u636e\u8bf4\u660e\n\n- 2025-12 \u7684\u8d28\u62bc\u5956\u52b1\u4e3a\u4f30\u7b97\u503c\uff08\u53d6 2025-11 \u4e0e 2026-01 \u5747\u503c\uff09\uff0cDefiLlama \u8be5\u6708\u6570\u636e\u7f3a\u5931\n- \u56de\u8d2d\u6570\u636e\u6309 $50M \u5e74\u5ea6\u9884\u7b97\u6708\u5747\u5206\u914d\uff0c\u672a\u8ffd\u8e2a\u5b9e\u9645\u6267\u884c\u8282\u594f\n\n### \u53c2\u8003\u94fe\u63a5\n\n- [AIP-73: Aavenomics Update](https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/18937)\n- [Buy & Distribute \u63d0\u6848](https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/19838)\n- [Aave Safety Module](https://docs.aave.com/aavenomics/safety-module)\n- [TokenLogic Finance Reports](https://aave.tokenlogic.xyz)\n",
+  "analyst_notes": "## TEV 构成\n\nAave 的 TEV 由两部分构成：\n\n### 1. 年度回购预算（Buyback Program）\n\nAave DAO 通过 [AIP-73 Aavenomics Update](https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/18937) 设立年度回购预算，每年从 DAO 财库拨出 **$50M** 用于在公开市场回购 AAVE 代币。\n\n- 回购执行由 [Aave Finance](https://aave.tokenlogic.xyz) 管理\n- 回购的 AAVE 进入 [Buy & Distribute 计划](https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/19838)，分配给生态参与者\n\n### 2. Safety Module 质押奖励（Staking Rewards）\n\n质押 AAVE 到 [Safety Module](https://app.aave.com/staking/) 可获得协议收入分成作为风险补偿。\n\n- 合约地址：`0x4da27a545c0c5B758a6BA100e3a049001de870f5`\n- 质押者承担协议清算风险（Slashing），获得收入分成\n- 奖励来源：协议借贷利差收入\n\n### TEV 计算公式\n\n```\nTEV = 年度回购预算 + Safety Module 年化质押奖励\nTEV Yield = TEV / AAVE 代币市值 × 100%\n```\n\n### TEV Ratio（等效分配比例）\n\nTEV Ratio 为 TEV 与协议总收入的比值：\n\n```\nTEV Ratio = TEV / Revenue\n          = (固定回购 $50M + holdersRevenue) / 协议总收入\n```\n\n⚠️ 注意：Aave 的 TEV Ratio 不是固定比例。$50M 回购预算为固定值，不随收入波动；holdersRevenue 与协议收入相关但非固定比例。因此 TEV Ratio 是等效计算值，会随收入变化而波动。\n\n### 数据来源\n\n| 组成部分 | 数据来源 | 说明 |\n|----------|---------|------|\n| 回购预算 | [治理提案 AIP-73](https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/18937) | 固定 $50M/年 |\n| 质押奖励 | [DefiLlama holdersRevenue](https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue) | 365 天滚动累计 |\n| 协议收入 | [DefiLlama Revenue](https://api.llama.fi/summary/fees/aave?dataType=dailyRevenue) | 365 天滚动累计 |\n| 市值 | CMC / CoinGecko | 实时市值 |\n\n### 数据说明\n\n- 2025-12 的质押奖励为估算值（取 2025-11 与 2026-01 均值），DefiLlama 该月数据缺失\n- 回购数据按 $50M 年度预算月均分配，未追踪实际执行节奏\n\n### 参考链接\n\n- [AIP-73: Aavenomics Update](https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/18937)\n- [Buy & Distribute 提案](https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/19838)\n- [Aave Safety Module](https://docs.aave.com/aavenomics/safety-module)\n- [TokenLogic Finance Reports](https://aave.tokenlogic.xyz)\n",
   "tevStatus": "active",
   "confidence_reason": {
-    "zh": "\u6cbb\u7406\u63d0\u6848 AIP-1 \u660e\u786e\u5e74\u56de\u8d2d\u9884\u7b97\uff0c\u94fe\u4e0a\u53ef\u8ffd\u8e2a",
+    "zh": "治理提案 AIP-1 明确年回购预算，链上可追踪",
     "en": "AIP-1 governance proposal with fixed annual buyback budget, on-chain trackable"
   },
   "tevRatio": 0.7766,

@@ -4,7 +4,7 @@
   "ticker": "ETHFI",
   "icon": "https://coin-images.coingecko.com/coins/images/35958/large/etherfi.jpeg",
   "category": "liquid_staking",
-  "description": "\u53bb\u4e2d\u5fc3\u5316\u975e\u6258\u7ba1\u6d41\u52a8\u6027\u8d28\u62bc\u534f\u8bae\uff0c\u7528\u6237\u53ef\u4fdd\u7559\u5bf9\u9a8c\u8bc1\u8005\u5bc6\u94a5\u7684\u63a7\u5236",
+  "description": "去中心化非托管流动性质押协议，用户可保留对验证者密钥的控制",
   "website": "https://ether.fi",
   "docs": "https://etherfi.gitbook.io/etherfi",
   "token": {
@@ -19,7 +19,7 @@
     {
       "type": "buyback_accumulate",
       "name": "Withdrawal Revenue Buyback",
-      "description": "\u90e8\u5206\u534f\u8bae\u6536\u5165\u7528\u4e8e\u6bcf\u5468\u56de\u8d2d ETHFI\uff0c\u5206\u914d\u7ed9 sETHFI \u8d28\u62bc\u8005",
+      "description": "部分协议收入用于每周回购 ETHFI，分配给 sETHFI 质押者",
       "status": "active",
       "start_date": "2025-04-25",
       "contract": "0x7A6A41F353B3002751d94118aA7f4935dA39bB53",
@@ -32,18 +32,18 @@
     },
     {
       "type": "buyback",
-      "name": "ETHFI \u56de\u8d2d",
-      "description": "\u63d0\u73b0\u6536\u5165\u7528\u4e8e\u56de\u8d2d ETHFI",
+      "name": "ETHFI 回购",
+      "description": "提现收入用于回购 ETHFI",
       "status": "active"
     }
   ],
   "tev_summary": {
     "fee_switch": "PARTIAL",
-    "fee_switch_details": "100% \u63d0\u73b0\u6536\u5165\uff08\u975e\u5168\u90e8\u534f\u8bae\u6536\u5165\uff09\u7528\u4e8e ETHFI \u56de\u8d2d\uff0c\u5206\u914d\u7ed9 sETHFI \u8d28\u62bc\u8005",
+    "fee_switch_details": "100% 提现收入（非全部协议收入）用于 ETHFI 回购，分配给 sETHFI 质押者",
     "buybacks": "ACTIVE",
     "dividends": "NONE",
     "burns": "NONE",
-    "primary_value_accrual": "\u56de\u8d2d\u5206\u914d \u2014 \u63d0\u73b0\u6536\u5165\u56de\u8d2d ETHFI\uff0c\u5e74\u5316\u7ea6 $15M / \u5e02\u503c\u7ea6 $600M \u2248 2.5%"
+    "primary_value_accrual": "回购分配 — 提现收入回购 ETHFI，年化约 $15M / 市值约 $600M ≈ 2.5%"
   },
   "confidence": "medium",
   "data_sources": [
@@ -51,39 +51,39 @@
       "name": "ether.fi Governance Forum",
       "type": "governance",
       "url": "https://governance.ether.fi",
-      "description": "DAO \u6cbb\u7406\u8bba\u575b\uff0c\u542b\u56de\u8d2d\u63d0\u6848\u539f\u6587",
+      "description": "DAO 治理论坛，含回购提案原文",
       "reliability": "verified"
     },
     {
       "name": "Dune - ETHFI Buybacks & Revenue",
       "type": "dune",
       "url": "https://dune.com/ether_fi/ethfi-buybacks-and-protocol-revenue-sources",
-      "description": "\u56de\u8d2d\u4ea4\u6613\u548c\u534f\u8bae\u6536\u5165\u6765\u6e90\u94fe\u4e0a\u6570\u636e",
+      "description": "回购交易和协议收入来源链上数据",
       "reliability": "verified"
     },
     {
       "name": "Dune - ETHFI DAO",
       "type": "dune",
       "url": "https://dune.com/ether_fi/ethfi-dao",
-      "description": "DAO \u56fd\u5e93\u548c\u4ee3\u5e01\u6570\u636e",
+      "description": "DAO 国库和代币数据",
       "reliability": "high"
     },
     {
       "name": "Snapshot Voting",
       "type": "governance",
       "url": "https://snapshot.box/#/s:etherfi-dao.eth",
-      "description": "\u94fe\u4e0a\u6295\u7968\u8bb0\u5f55",
+      "description": "链上投票记录",
       "reliability": "verified"
     },
     {
       "name": "DefiLlama",
       "type": "api",
       "url": "https://api.llama.fi/protocol/ether.fi",
-      "description": "TVL\u3001tokenRights \u6570\u636e",
+      "description": "TVL、tokenRights 数据",
       "reliability": "high"
     }
   ],
-  "notes": "ether.fi \u62e5\u6709\u5b8c\u5584\u7684 TEV \u4f53\u7cfb\uff1a(1) \u90e8\u5206\u63d0\u73b0\u6536\u5165\u56de\u8d2d ETHFI \u5206\u914d\u7ed9\u8d28\u62bc\u8005\uff1b(2) $50M \u56fd\u5e93\u56de\u8d2d\u989d\u5ea6\u3002\u591a\u4e2a DAO \u63d0\u6848\u901a\u8fc7\uff0c\u94fe\u4e0a\u5b8c\u5168\u900f\u660e\u3002\u26a0\ufe0f TEV Yield \u8ba1\u7b97\u8bf4\u660e\uff1a\u5e74\u5316\u56de\u8d2d\u7ea6 $15M / \u4ee3\u5e01\u5e02\u503c\u7ea6 $6\u4ebf \u2248 2.5%\uff08\u975e67.48%\uff0c\u539f\u6570\u636e\u8ba1\u7b97\u9519\u8bef\uff09\u3002Foundation Multisig: 0x7A6A41F353B3002751d94118aA7f4935dA39bB53\u3002",
+  "notes": "ether.fi 拥有完善的 TEV 体系：(1) 部分提现收入回购 ETHFI 分配给质押者；(2) $50M 国库回购额度。多个 DAO 提案通过，链上完全透明。⚠️ TEV Yield 计算说明：年化回购约 $15M / 代币市值约 $6亿 ≈ 2.5%（非67.48%，原数据计算错误）。Foundation Multisig: 0x7A6A41F353B3002751d94118aA7f4935dA39bB53。",
   "last_updated": "2026-02-14",
   "tev_data": {
     "has_tev": true,
@@ -96,18 +96,18 @@
         "name": "DefiLlama holdersRevenue",
         "type": "defillama",
         "annual_usd": 15000000,
-        "note": "\u63d0\u73b0\u6536\u5165\u56de\u8d2d"
+        "note": "提现收入回购"
       }
     ],
     "calculation": "$15.00M / $343.51M = 4.37%"
   },
   "market_data": {
-    "tvl": 5485839733.28305,
-    "tvl_updated": "2026-03-02T13:02:25.906Z"
+    "tvl": 5743167828.94042,
+    "tvl_updated": "2026-03-03T01:00:35.412Z"
   },
   "tevStatus": "active",
   "confidence_reason": {
-    "zh": "\u56de\u8d2d\u4ea4\u6613\u94fe\u4e0a\u53ef\u8ffd\u8e2a\uff0c\u4f46\u5206\u914d\u6bd4\u4f8b\u4ec5 Blog \u516c\u544a\uff0c\u65e0\u6cbb\u7406\u63d0\u6848\u7ea6\u675f",
+    "zh": "回购交易链上可追踪，但分配比例仅 Blog 公告，无治理提案约束",
     "en": "Buyback transactions on-chain trackable, but ratio only from blog posts, no governance mandate"
   },
   "tevRatio": 0.302,

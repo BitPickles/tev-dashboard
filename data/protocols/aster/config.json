@@ -4,7 +4,7 @@
   "ticker": "ASTER",
   "icon": "https://coin-images.coingecko.com/coins/images/69040/large/_ASTER.png",
   "category": "perpetual_dex",
-  "description": "\u53bb\u4e2d\u5fc3\u5316\u6c38\u7eed\u5408\u7ea6\u4ea4\u6613\u6240",
+  "description": "去中心化永续合约交易所",
   "website": "https://www.asterdex.com/en",
   "docs": "https://docs.asterdex.com",
   "token": {
@@ -16,8 +16,8 @@
   "tev_mechanisms": [
     {
       "type": "buyback",
-      "name": "\u534f\u8bae\u56de\u8d2d",
-      "description": "\u5e73\u53f0\u624b\u7eed\u8d39\u7684\u5927\u90e8\u5206\uff08\u7ea660-80%\uff09\u7528\u4e8e\u56de\u8d2d ASTER\uff0c\u5305\u62ec\u6bcf\u65e5\u81ea\u52a8\u56de\u8d2d\u548c\u6218\u7565\u50a8\u5907\u56de\u8d2d\uff0c\u56de\u8d2d\u540e\u7684\u4ee3\u5e01\u8fdb\u5165\u534f\u8bae\u50a8\u5907\u6216\u9500\u6bc1",
+      "name": "协议回购",
+      "description": "平台手续费的大部分（约60-80%）用于回购 ASTER，包括每日自动回购和战略储备回购，回购后的代币进入协议储备或销毁",
       "status": "active",
       "fee_share_percentage": 70,
       "source": {
@@ -27,8 +27,8 @@
     },
     {
       "type": "buyback_burn",
-      "name": "\u9500\u6bc1\u673a\u5236",
-      "description": "\u90e8\u5206\u56de\u8d2d\u7684 ASTER \u4f1a\u88ab\u9500\u6bc1\u81f3 0xdead \u5730\u5740\uff0c\u51cf\u5c11\u6d41\u901a\u4f9b\u5e94",
+      "name": "销毁机制",
+      "description": "部分回购的 ASTER 会被销毁至 0xdead 地址，减少流通供应",
       "status": "active",
       "source": {
         "title": "BscScan Burn Address",
@@ -41,11 +41,11 @@
     "buybacks": "ACTIVE",
     "dividends": "NONE",
     "burns": "ACTIVE",
-    "primary_value_accrual": "\u624b\u7eed\u8d39\u56de\u8d2d (60-80%)",
+    "primary_value_accrual": "手续费回购 (60-80%)",
     "tevRatio": 0.7
   },
   "confidence": "high",
-  "notes": "**\u5f53\u524d TEV \u60c5\u51b5**\n\nAster \u5c06\u8f83\u5927\u6bd4\u4f8b\u7684\u534f\u8bae\u6536\u5165\uff08\u7ea660-80%\uff09\u7528\u4e8e\u56de\u8d2d ASTER\uff0c\u5305\u542b\u6bcf\u65e5\u81ea\u52a8\u56de\u8d2d\u4e0e\u6218\u7565\u56de\u8d2d\u50a8\u5907\u3002\n\n**\u5386\u53f2\u6570\u636e\uff1a**\n- Stage 1-4 (2025.10-12): \u4f9d\u636e\u516c\u5f00\u62a5\u9053\u7684\u56de\u8d2d\u603b\u91cf\uff0c\u6309\u5929\u5747\u6469\u6458\u5f62\u6210\u65e5\u5ea6\u6570\u636e\n- Stage 5-6 (2025.12\u81f3\u4eca): \u94fe\u4e0a\u56de\u8d2d\u8bb0\u5f55\uff0c\u53ef\u6309\u65e5\u8ffd\u8e2a\n\n**\u900f\u660e\u5ea6**\uff1a\u56de\u8d2d\u94b1\u5305\u5730\u5740\u516c\u5f00\uff0c\u53ef\u901a\u8fc7 BscScan \u5b9e\u65f6\u9a8c\u8bc1\u3002\n\n**\u6ce8\u610f**\uff1a\u5b98\u65b9\u6587\u6863\u672a\u62ab\u9732\u7cbe\u786e\u56de\u8d2d\u6bd4\u4f8b\u5206\u914d\uff0c60-80% \u4e3a\u516c\u5f00\u6750\u6599\u4e2d\u7684\u4f30\u7b97\u8303\u56f4\u3002",
+  "notes": "**当前 TEV 情况**\n\nAster 将较大比例的协议收入（约60-80%）用于回购 ASTER，包含每日自动回购与战略回购储备。\n\n**历史数据：**\n- Stage 1-4 (2025.10-12): 依据公开报道的回购总量，按天均摩摘形成日度数据\n- Stage 5-6 (2025.12至今): 链上回购记录，可按日追踪\n\n**透明度**：回购钱包地址公开，可通过 BscScan 实时验证。\n\n**注意**：官方文档未披露精确回购比例分配，60-80% 为公开材料中的估算范围。",
   "data_sources": [
     {
       "name": "Aster Tokenomics",
@@ -63,14 +63,14 @@
       "url": "https://www.coingecko.com/en/coins/aster-2"
     },
     {
-      "name": "BscScan \u56de\u8d2d\u94b1\u5305",
+      "name": "BscScan 回购钱包",
       "type": "onchain",
       "url": "https://bscscan.com/address/0x664827c71193018D7843f0D0F41A5D0D6dcEBE0F"
     }
   ],
   "references": [
     {
-      "title": "Aster $214M \u56de\u8d2d\u6570\u636e\u62a5\u9053 (Cryptopolitan)",
+      "title": "Aster $214M 回购数据报道 (Cryptopolitan)",
       "url": "https://www.cryptopolitan.com/aster-dex-completes-214-m-buybacks/",
       "date": "2025-11-14"
     }
@@ -87,19 +87,19 @@
         "name": "DefiLlama holdersRevenue",
         "type": "defillama",
         "annual_usd": 143398020,
-        "note": "60-80% \u624b\u7eed\u8d39\u56de\u8d2d"
+        "note": "60-80% 手续费回购"
       }
     ],
     "calculation": "$143.40M / $1501.56M = 9.55%"
   },
   "tevStatus": "active",
   "confidence_reason": {
-    "zh": "\u94fe\u4e0a\u56de\u8d2d\u94b1\u5305\u53ef\u8ffd\u8e2a\uff08Moralis + BscScan\uff09",
+    "zh": "链上回购钱包可追踪（Moralis + BscScan）",
     "en": "On-chain buyback wallets trackable (Moralis + BscScan)"
   },
   "market_data": {
-    "tvl": 949749547.4159752,
-    "tvl_updated": "2026-03-02T13:02:23.271Z"
+    "tvl": 961198208.6222767,
+    "tvl_updated": "2026-03-03T01:00:16.826Z"
   },
   "tevRatio": 0.7,
   "earning_yield_percent": 13.64,

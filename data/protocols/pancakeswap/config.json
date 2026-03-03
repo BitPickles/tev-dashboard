@@ -4,7 +4,7 @@
   "ticker": "CAKE",
   "icon": "https://coin-images.coingecko.com/coins/images/12632/large/pancakeswap-cake-logo_%281%29.png",
   "category": "dex",
-  "description": "BNB Chain \u6700\u5927\u7684 DEX\uff0c\u63d0\u4f9b\u4ea4\u6613\u3001\u6d41\u52a8\u6027\u6316\u77ff\u3001NFT \u7b49\u591a\u79cd\u529f\u80fd",
+  "description": "BNB Chain 最大的 DEX，提供交易、流动性挖矿、NFT 等多种功能",
   "website": "https://pancakeswap.finance",
   "docs": "https://docs.pancakeswap.finance",
   "token": {
@@ -19,7 +19,7 @@
     {
       "type": "buyback_burn",
       "name": "CAKE Burns",
-      "description": "\u534f\u8bae\u6536\u5165\u7684\u4e00\u90e8\u5206\u7528\u4e8e\u56de\u8d2d\u5e76\u9500\u6bc1 CAKE",
+      "description": "协议收入的一部分用于回购并销毁 CAKE",
       "status": "active",
       "start_date": "2021-01-01",
       "burn_frequency": "weekly",
@@ -31,12 +31,12 @@
     },
     {
       "type": "staking_reward",
-      "name": "veCAKE Revenue Share [\u5df2\u7ed3\u675f]",
-      "description": "\u9501\u4ed3 CAKE \u83b7\u5f97 veCAKE\uff0c\u53c2\u4e0e\u534f\u8bae\u6536\u5165\u5206\u6210\u548c\u6cbb\u7406",
+      "name": "veCAKE Revenue Share [已结束]",
+      "description": "锁仓 CAKE 获得 veCAKE，参与协议收入分成和治理",
       "status": "inactive",
       "start_date": "2023-07-01",
       "end_date": "2025-04-23",
-      "sunset_note": "Tokenomics 3.0 \u5347\u7ea7\uff0cveCAKE \u4e8e 2025-04-23 \u7ed3\u675f\uff0c\u6536\u5165\u8f6c\u4e3a\u5168\u989d\u56de\u8d2d\u9500\u6bc1",
+      "sunset_note": "Tokenomics 3.0 升级，veCAKE 于 2025-04-23 结束，收入转为全额回购销毁",
       "source": {
         "type": "documentation",
         "title": "veCAKE Sunset",
@@ -46,11 +46,11 @@
   ],
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "veCAKE \u5df2\u4e8e 2025-04-23 \u7ed3\u675f\uff0c\u73b0\u5168\u90e8\u56de\u8d2d\u9500\u6bc1",
+    "fee_switch_details": "veCAKE 已于 2025-04-23 结束，现全部回购销毁",
     "buybacks": "ACTIVE",
     "dividends": "NONE",
     "burns": "ACTIVE",
-    "primary_value_accrual": "\u56de\u8d2d\u9500\u6bc1 - \u534f\u8bae\u6536\u5165 15% \u7528\u4e8e CAKE \u56de\u8d2d\u9500\u6bc1\uff08veCAKE \u5206\u7ea2\u5df2\u7ed3\u675f\uff09",
+    "primary_value_accrual": "回购销毁 - 协议收入 15% 用于 CAKE 回购销毁（veCAKE 分红已结束）",
     "tevRatio": 0.15
   },
   "confidence": "high",
@@ -74,7 +74,7 @@
       "reliability": "high"
     }
   ],
-  "notes": "\u3010\u91cd\u8981\u66f4\u65b0\u3011veCAKE \u4e8e 2025\u5e744\u670823\u65e5 (UTC) \u6b63\u5f0f\u7ed3\u675f\uff08Tokenomics 3.0\uff09\u3002Revenue Sharing (5%) \u4e8e 2025\u5e745\u67087\u65e5\u7ed3\u675f\uff0c\u539f\u5206\u6210\u6536\u5165\u73b0\u5168\u90e8\u8f6c\u4e3a\u56de\u8d2d\u9500\u6bc1\uff0cburn rate \u4ece 10% \u63d0\u5347\u81f3 15%\u3002\u5f53\u524d TEV \u673a\u5236\uff1a\u5168\u989d\u56de\u8d2d\u9500\u6bc1\uff0c\u65e0 ve \u5206\u7ea2\u3002",
+  "notes": "【重要更新】veCAKE 于 2025年4月23日 (UTC) 正式结束（Tokenomics 3.0）。Revenue Sharing (5%) 于 2025年5月7日结束，原分成收入现全部转为回购销毁，burn rate 从 10% 提升至 15%。当前 TEV 机制：全额回购销毁，无 ve 分红。",
   "last_updated": "2026-02-14",
   "tev_data": {
     "has_tev": true,
@@ -87,25 +87,25 @@
         "name": "DefiLlama holdersRevenue",
         "type": "defillama",
         "annual_usd": 32093402,
-        "note": "Tokenomics 3.0 \u56de\u8d2d\u9500\u6bc1"
+        "note": "Tokenomics 3.0 回购销毁"
       }
     ],
     "calculation": "$32.09M / $507.01M = 6.33%"
   },
   "market_data": {
-    "tvl": 1986394126,
-    "tvl_updated": "2026-03-02T13:02:30.758Z"
+    "tvl": 2015370253,
+    "tvl_updated": "2026-03-03T01:01:17.439Z"
   },
   "burn_progress": {
     "total_burned": 403751572,
     "target": 750000000,
     "ticker": "CAKE",
-    "note": "CAKE \u521d\u59cb\u4f9b\u5e94 7.5 \u4ebf\uff0c\u901a\u8fc7 Tokenomics 3.0 \u6301\u7eed\u56de\u8d2d\u9500\u6bc1\u3002",
+    "note": "CAKE 初始供应 7.5 亿，通过 Tokenomics 3.0 持续回购销毁。",
     "target_label": "initial_supply"
   },
   "tevStatus": "active",
   "confidence_reason": {
-    "zh": "Tokenomics 3.0 \u94fe\u4e0a\u9500\u6bc1\u53ef\u9a8c\u8bc1 + DefiLlama \u6570\u636e",
+    "zh": "Tokenomics 3.0 链上销毁可验证 + DefiLlama 数据",
     "en": "Tokenomics 3.0 on-chain burn verifiable + DefiLlama data"
   },
   "tevRatio": 0.15,

@@ -4,7 +4,7 @@
   "ticker": "ENA",
   "icon": "https://coin-images.coingecko.com/coins/images/36530/large/ethena.png",
   "category": "basis_trading",
-  "description": "\u5408\u6210\u7f8e\u5143\u534f\u8bae\uff0c\u901a\u8fc7\u671f\u8d27\u5957\u5229\u751f\u6210\u6536\u76ca",
+  "description": "合成美元协议，通过期货套利生成收益",
   "website": "https://ethena.fi",
   "docs": "https://docs.ethena.fi",
   "token": {
@@ -18,11 +18,11 @@
   "tev_mechanisms": [
     {
       "type": "staking_reward",
-      "name": "sUSDe Yield (\u975e ENA \u6536\u76ca)",
-      "description": "\u534f\u8bae\u6536\u76ca\u4e3b\u8981\u5206\u914d\u7ed9 sUSDe \u6301\u6709\u8005\uff0cENA/sENA \u6301\u6709\u4eba\u4e0d\u76f4\u63a5\u53d7\u76ca",
+      "name": "sUSDe Yield (非 ENA 收益)",
+      "description": "协议收益主要分配给 sUSDe 持有者，ENA/sENA 持有人不直接受益",
       "status": "active",
       "tev_eligible": false,
-      "note": "sUSDe APY ~7.83%\uff0c\u4f46\u8fd9\u4e0d\u662f ENA \u7684 TEV",
+      "note": "sUSDe APY ~7.83%，但这不是 ENA 的 TEV",
       "source": {
         "type": "documentation",
         "title": "DefiLlama Ethena USDe",
@@ -31,12 +31,12 @@
     },
     {
       "type": "buyback_accumulate",
-      "name": "ENA Buyback Program\uff08\u8d44\u672c\u8fd0\u4f5c\uff09",
-      "description": "\u603b\u8ba1 $570M \u56de\u8d2d\uff08$260M + $310M\uff09\u3002\u26a0\ufe0f \u8fd9\u662f\u8d44\u672c\u8fd0\u4f5c/\u878d\u8d44\u9a71\u52a8\u7684\u56de\u8d2d\uff0c\u4e0d\u662f\u7ecf\u8425\u5229\u6da6\u5206\u7ea2\uff0c\u4e0d\u7b97\u6301\u7eed TEV\u3002\u8d44\u91d1\u6765\u6e90\u662f StablecoinX PIPE \u878d\u8d44\uff0c\u975e\u534f\u8bae\u65e5\u5e38\u6536\u5165",
+      "name": "ENA Buyback Program（资本运作）",
+      "description": "总计 $570M 回购（$260M + $310M）。⚠️ 这是资本运作/融资驱动的回购，不是经营利润分红，不算持续 TEV。资金来源是 StablecoinX PIPE 融资，非协议日常收入",
       "status": "active",
       "tev_eligible": false,
       "amount_usd": 570000000,
-      "note": "StablecoinX \u5b50\u516c\u53f8\u6267\u884c\uff0c6-8\u5468\u5468\u671f\uff0c\u7b2c\u4e09\u65b9\u505a\u5e02\u5546\u64cd\u4f5c\u3002\u53ef\u6301\u7eed\u6027\u53d6\u51b3\u4e8e\u540e\u7eed\u878d\u8d44\u5b89\u6392",
+      "note": "StablecoinX 子公司执行，6-8周周期，第三方做市商操作。可持续性取决于后续融资安排",
       "source": {
         "type": "governance",
         "title": "Ethena Governance Updates",
@@ -48,12 +48,12 @@
     "fees_30d_usd": 22330000,
     "revenue_30d_usd": 437221,
     "retention_rate": 0.0196,
-    "note": "Fees \u5305\u542b staking rewards + yield distribution\uff0c\u534f\u8bae\u7559\u5b58\u4ec5\u7ea6 2%",
+    "note": "Fees 包含 staking rewards + yield distribution，协议留存仅约 2%",
     "breakdown": {
-      "sUSDe_staking_rewards": "\u5927\u90e8\u5206 Fees \u5206\u914d\u7ed9 sUSDe \u6301\u6709\u8005",
-      "reserve_fund": "\u90e8\u5206\u8fdb\u5165 Reserve Fund",
-      "mint_fees": "\u534f\u8bae\u76f4\u63a5\u7559\u5b58\u90e8\u5206",
-      "token_holder_income": "$0 (DefiLlama \u53e3\u5f84)"
+      "sUSDe_staking_rewards": "大部分 Fees 分配给 sUSDe 持有者",
+      "reserve_fund": "部分进入 Reserve Fund",
+      "mint_fees": "协议直接留存部分",
+      "token_holder_income": "$0 (DefiLlama 口径)"
     },
     "source": {
       "title": "DefiLlama Income Statement",
@@ -62,20 +62,20 @@
   },
   "tev_summary": {
     "fee_switch": "OFF",
-    "fee_switch_details": "Token Holder Net Income = $0\uff0cFee switch \u672a\u843d\u5730",
+    "fee_switch_details": "Token Holder Net Income = $0，Fee switch 未落地",
     "buybacks": "NONE",
-    "buybacks_details": "$570M \u56de\u8d2d\u662f\u8d44\u672c\u8fd0\u4f5c\uff0c\u975e\u7ecf\u8425\u5229\u6da6\u5206\u7ea2\uff0c\u4e0d\u8ba1\u5165\u6301\u7eed TEV",
+    "buybacks_details": "$570M 回购是资本运作，非经营利润分红，不计入持续 TEV",
     "dividends": "NONE",
-    "dividends_details": "sENA \u5206\u914d\u662f discretional\uff0c\u622a\u81f3 2025-09 \u65e0\u6301\u7eed\u5206\u914d",
+    "dividends_details": "sENA 分配是 discretional，截至 2025-09 无持续分配",
     "burns": "NONE",
-    "primary_value_accrual": "\u65e0\u6301\u7eed TEV \u2014 \u56de\u8d2d\u662f\u4e00\u6b21\u6027\u8d44\u672c\u8fd0\u4f5c\uff0c\u975e\u7ecf\u8425\u5229\u6da6\u5206\u7ea2"
+    "primary_value_accrual": "无持续 TEV — 回购是一次性资本运作，非经营利润分红"
   },
   "market_data": {
     "tvl_usd": 6429000000,
     "snapshot_date": "2026-02-09",
     "data_source": "DefiLlama",
-    "tvl": 6761741140.7542,
-    "tvl_updated": "2026-03-02T13:02:25.542Z"
+    "tvl": 6754689188.15414,
+    "tvl_updated": "2026-03-03T01:00:31.555Z"
   },
   "confidence": "medium",
   "data_sources": [
@@ -83,21 +83,21 @@
       "name": "DefiLlama Ethena USDe",
       "type": "api",
       "url": "https://defillama.com/protocol/ethena-usde",
-      "description": "Fees/Revenue/Income Statement \u6570\u636e",
+      "description": "Fees/Revenue/Income Statement 数据",
       "reliability": "high"
     },
     {
       "name": "Ethena Governance Forum",
       "type": "governance",
       "url": "https://gov.ethenafoundation.com",
-      "description": "\u56de\u8d2d\u8ba1\u5212\u3001sENA \u5206\u914d\u653f\u7b56",
+      "description": "回购计划、sENA 分配政策",
       "reliability": "high"
     },
     {
       "name": "Ethena Documentation",
       "type": "documentation",
       "url": "https://docs.ethena.fi",
-      "description": "sENA \u5206\u914d\u8bf4\u660e",
+      "description": "sENA 分配说明",
       "reliability": "high"
     }
   ],
@@ -105,58 +105,58 @@
     {
       "title": "DefiLlama Fees Methodology",
       "url": "https://docs.llama.fi/list-your-project/how-to-write-a-fetch-function/fees-and-revenue",
-      "note": "Fees/Revenue/Token Holder Revenue \u5b9a\u4e49"
+      "note": "Fees/Revenue/Token Holder Revenue 定义"
     },
     {
       "title": "ENA Fee Switch Parameters",
       "url": "https://gov.ethenafoundation.com/t/ena-fee-switch-parameters/396",
-      "note": "2024-11 \u63d0\u51fa\uff0c\u5206\u914d\u6bd4\u4f8b\u5f85\u5b9a\uff0c\u9700\u6ee1\u8db3\u6210\u529f\u6307\u6807"
+      "note": "2024-11 提出，分配比例待定，需满足成功指标"
     },
     {
       "title": "Ethena July 2025 Governance Update",
       "url": "https://gov.ethenafoundation.com/t/ethena-s-july-2025-governance-update/670",
-      "note": "$260M \u56de\u8d2d\uff0c\u90e8\u5206\u6307\u6807\u5df2\u6ee1\u8db3\uff0cCEX adoption \u672a\u6ee1\u8db3"
+      "note": "$260M 回购，部分指标已满足，CEX adoption 未满足"
     },
     {
       "title": "Ethena September 2025 Governance Update",
       "url": "https://gov.ethenafoundation.com/t/ethena-s-september-2025-governance-update/704",
-      "note": "$310M \u56de\u8d2d\u8ba1\u5212\uff0cStablecoinX \u6301\u4ed3\u7ea6\u675f"
+      "note": "$310M 回购计划，StablecoinX 持仓约束"
     },
     {
       "title": "Protocol Revenue Explanation",
       "url": "https://docs.ethena.fi/solution-overview/protocol-revenue-explanation",
-      "note": "\u6536\u5165\u6765\u6e90\u7ed3\u6784\u8bf4\u660e"
+      "note": "收入来源结构说明"
     },
     {
       "title": "How to Stake ENA",
       "url": "https://docs.ethena.fi/video-guides/how-to-stake-ena",
-      "note": "sENA \u5206\u914d\u662f discretional"
+      "note": "sENA 分配是 discretional"
     },
     {
       "title": "Nasdaq Press Release",
       "url": "https://www.nasdaq.com/press-release/tlgy-acquisition-corp-and-stablecoinx-assets-inc-announce-additional-530-million-pipe",
-      "note": "\u603b\u8ba1 $570M \u56de\u8d2d\u62ab\u9732"
+      "note": "总计 $570M 回购披露"
     },
     {
       "title": "SEC Filing - StablecoinX",
       "url": "https://www.sec.gov/Archives/edgar/data/1879814/000121390025065921/ea024961801ex99-1_tlgyacq.htm",
-      "note": "\u56de\u8d2d\u5b89\u6392\u3001ENA \u5904\u7f6e\u9650\u5236"
+      "note": "回购安排、ENA 处置限制"
     }
   ],
-  "analyst_notes": "## Ethena TEV \u5206\u6790\n\n### \u7ed3\u8bba\uff1a\u65e0\u6301\u7eed TEV\n\nEthena \u7684\u7ecf\u8425\u6027\u6536\u76ca\u4e3b\u8981\u670d\u52a1\u4e8e **USDe/sUSDe \u4ea7\u54c1\u7ade\u4e89\u529b** \u4e0e **\u7cfb\u7edf\u5b89\u5168\u57ab\uff08Reserve Fund\uff09**\u3002\n\n**ENA/sENA \u76ee\u524d\u6ca1\u6709\u6301\u7eed\u7684\u5229\u6da6\u5206\u914d\u3002**\n\n### Token Holder Income = $0\n\n\u6309 DefiLlama \u53e3\u5f84\uff0c\u534f\u8bae\u6536\u76ca\u4e0d\u5206\u914d\u7ed9 ENA/sENA \u6301\u6709\u4eba\u3002\n\n### \u56de\u8d2d\uff1a\u8d44\u672c\u8fd0\u4f5c\uff0c\u4e0d\u7b97 TEV\n\n\u26a0\ufe0f \u56de\u8d2d\u8d44\u91d1\u6765\u6e90\u662f **PIPE \u878d\u8d44**\uff0c\u4e0d\u662f\u534f\u8bae\u7ecf\u8425\u5229\u6da6\uff1a\n- \u8d44\u672c\u8fd0\u4f5c\u9a71\u52a8\uff0c\u975e\u7ecf\u8425\u5206\u7ea2\n- \u53ef\u6301\u7eed\u6027\u53d6\u51b3\u4e8e\u540e\u7eed\u878d\u8d44\u5b89\u6392\n- \u4e0d\u7b97\u6301\u7eed TEV\n\n### Fee Switch \u72b6\u6001\n\nFee switch \u8bbe\u8ba1\u7ed9 sENA\uff0c\u4f46\u5c1a\u672a\u843d\u5730\uff1a\n- \u5206\u914d\u6bd4\u4f8b\u5f85\u5b9a\n- CEX adoption \u6761\u4ef6\u672a\u6ee1\u8db3\n- \u9700\u8981 legal engineering\n\n\u5e94\u89c6\u4e3a**\u672a\u6765\u671f\u6743**\uff0c\u975e\u5f53\u524d\u73b0\u91d1\u6d41\u3002\n\n### \u6536\u5165\u53bb\u5411\n\n| \u53bb\u5411 | \u8bf4\u660e |\n|------|------|\n| sUSDe Staking | \u5927\u90e8\u5206\u6536\u76ca |\n| Reserve Fund | \u7cfb\u7edf\u5b89\u5168\u57ab |\n| ENA/sENA | **$0** |\n\n### \u6570\u636e\u6765\u6e90\n\n- [DefiLlama](https://defillama.com/protocol/ethena-usde)\n- [Fee Switch Parameters](https://gov.ethenafoundation.com/t/ena-fee-switch-parameters/396)\n- [Governance Updates](https://gov.ethenafoundation.com)",
+  "analyst_notes": "## Ethena TEV 分析\n\n### 结论：无持续 TEV\n\nEthena 的经营性收益主要服务于 **USDe/sUSDe 产品竞争力** 与 **系统安全垫（Reserve Fund）**。\n\n**ENA/sENA 目前没有持续的利润分配。**\n\n### Token Holder Income = $0\n\n按 DefiLlama 口径，协议收益不分配给 ENA/sENA 持有人。\n\n### 回购：资本运作，不算 TEV\n\n⚠️ 回购资金来源是 **PIPE 融资**，不是协议经营利润：\n- 资本运作驱动，非经营分红\n- 可持续性取决于后续融资安排\n- 不算持续 TEV\n\n### Fee Switch 状态\n\nFee switch 设计给 sENA，但尚未落地：\n- 分配比例待定\n- CEX adoption 条件未满足\n- 需要 legal engineering\n\n应视为**未来期权**，非当前现金流。\n\n### 收入去向\n\n| 去向 | 说明 |\n|------|------|\n| sUSDe Staking | 大部分收益 |\n| Reserve Fund | 系统安全垫 |\n| ENA/sENA | **$0** |\n\n### 数据来源\n\n- [DefiLlama](https://defillama.com/protocol/ethena-usde)\n- [Fee Switch Parameters](https://gov.ethenafoundation.com/t/ena-fee-switch-parameters/396)\n- [Governance Updates](https://gov.ethenafoundation.com)",
   "last_updated": "2026-02-14",
   "tev_data": {
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "note": "\u65e0\u6301\u7eed TEV"
+    "note": "无持续 TEV"
   },
   "tevStatus": "none",
   "confidence_reason": {
-    "zh": "\u56de\u8d2d\u8d44\u91d1\u6765\u6e90\u4e3a reserve fund \u800c\u975e\u534f\u8bae\u5229\u6da6\uff0c\u673a\u5236\u4e0d\u900f\u660e",
+    "zh": "回购资金来源为 reserve fund 而非协议利润，机制不透明",
     "en": "Buyback funded from reserve fund not protocol revenue, mechanism opaque"
   },
-  "tevRatio": 0.0,
+  "tevRatio": 0,
   "earning_yield_percent": 1.35,
   "market_cap_usd": 940091116.6
 }

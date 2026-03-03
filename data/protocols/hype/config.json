@@ -65,8 +65,8 @@
     "snapshot_date": "2026-03-01",
     "data_source": "CoinGecko",
     "circulating_supply": 238385316,
-    "tvl": 4260689401,
-    "tvl_updated": "2026-03-02T13:02:28.302Z"
+    "tvl": 4282769852,
+    "tvl_updated": "2026-03-03T01:00:48.321Z"
   },
   "calculated_tev": {
     "tev_yield_percent": 12.42,
@@ -170,11 +170,11 @@
       }
     ],
     "calculation": "$915.2M / $7368M = 12.42%",
-    "trailing_365d_tev_usd": 915555603,
-    "last_updated": "2026-03-02"
+    "trailing_365d_tev_usd": 915593835,
+    "last_updated": "2026-03-03"
   },
   "burn_progress": {
-    "total_burned": 41576948.0,
+    "total_burned": 41618791.0,
     "target": 1000000000,
     "ticker": "HYPE",
     "note": "Assistance Fund 累计回购销毁，占总供应 10 亿的 4.2%。",
@@ -186,7 +186,7 @@
     "zh": "链上 AF 余额可验证 + DefiLlama holdersRevenue 交叉验证",
     "en": "On-chain AF balance verifiable + DefiLlama holdersRevenue cross-validated"
   },
-  "tevRatio": 1.0,
+  "tevRatio": 1,
   "earning_yield_percent": 14.35,
   "market_cap_usd": 7368065201
 }

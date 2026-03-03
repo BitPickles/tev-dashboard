@@ -4,7 +4,7 @@
   "ticker": "PENDLE",
   "icon": "https://coin-images.coingecko.com/coins/images/15069/large/Pendle_Logo_Normal-03.png",
   "category": "yield",
-  "description": "\u6536\u76ca\u4ee3\u5e01\u5316\u534f\u8bae\uff0c\u5141\u8bb8\u7528\u6237\u4ea4\u6613\u672a\u6765\u6536\u76ca",
+  "description": "收益代币化协议，允许用户交易未来收益",
   "website": "https://pendle.finance",
   "docs": "https://docs.pendle.finance",
   "token": {
@@ -16,14 +16,14 @@
   "tev_mechanisms": [
     {
       "type": "ve_distribution",
-      "name": "vePENDLE \u5206\u7ea2",
-      "description": "vePENDLE \u6301\u6709\u8005\u83b7\u5f97\u534f\u8bae\u6536\u5165\u5206\u7ea2",
+      "name": "vePENDLE 分红",
+      "description": "vePENDLE 持有者获得协议收入分红",
       "status": "active"
     },
     {
       "type": "buyback_distribution",
       "name": "vePENDLE Revenue Share",
-      "description": "80% \u534f\u8bae\u6536\u5165\u7528\u4e8e\u56de\u8d2d PENDLE \u5e76\u5206\u914d\u7ed9 vePENDLE \u6301\u6709\u8005",
+      "description": "80% 协议收入用于回购 PENDLE 并分配给 vePENDLE 持有者",
       "status": "active",
       "ratio": 0.8,
       "distribution_contract": "0x07282F2CEEbD7a65451Fcd268b364300D9e6D7f5",
@@ -36,11 +36,11 @@
   ],
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "80% \u534f\u8bae\u6536\u5165\u56de\u8d2d\u5e76\u5206\u914d\u7ed9 sPENDLE \u6301\u6709\u8005\uff08\u539f vePENDLE \u5347\u7ea7\uff09",
+    "fee_switch_details": "80% 协议收入回购并分配给 sPENDLE 持有者（原 vePENDLE 升级）",
     "buybacks": "ACTIVE",
     "dividends": "ACTIVE",
     "burns": "NONE",
-    "primary_value_accrual": "\u56de\u8d2d+\u5206\u7ea2 - 80% \u534f\u8bae\u6536\u5165\u8f6c\u5316\u4e3a PENDLE \u56de\u8d2d\uff0c\u5206\u914d\u7ed9 sPENDLE \u6301\u6709\u8005",
+    "primary_value_accrual": "回购+分红 - 80% 协议收入转化为 PENDLE 回购，分配给 sPENDLE 持有者",
     "tevRatio": 0.8
   },
   "ve_token": {
@@ -48,9 +48,9 @@
     "lock_contract": "0x4f30A9D41B80ecC5B94306AB4364951AE3170210",
     "max_lock_period": "2 years",
     "benefits": [
-      "\u534f\u8bae\u6536\u5165\u5206\u6210",
-      "\u6295\u7968\u6743",
-      "LP \u52a0\u901f"
+      "协议收入分成",
+      "投票权",
+      "LP 加速"
     ]
   },
   "confidence": "high",
@@ -68,7 +68,7 @@
       "reliability": "high"
     }
   ],
-  "notes": "\u3010\u673a\u5236\u8bf4\u660e\u3011Pendle \u4e8e 2026-01-29 \u4ece vePENDLE \u5207\u6362\u81f3 sPENDLE \u6a21\u5f0f\uff0c80% \u534f\u8bae\u6536\u5165\u56de\u8d2d PENDLE \u5e76\u5206\u914d\u7ed9 sPENDLE \u6301\u6709\u8005\u3002sPENDLE \u6709 14\u5929\u89e3\u9501\u51b7\u5374\u671f\uff0c\u6216\u652f\u4ed8 5% \u8d39\u7528\u5373\u65f6\u8d4e\u56de\u3002",
+  "notes": "【机制说明】Pendle 于 2026-01-29 从 vePENDLE 切换至 sPENDLE 模式，80% 协议收入回购 PENDLE 并分配给 sPENDLE 持有者。sPENDLE 有 14天解锁冷却期，或支付 5% 费用即时赎回。",
   "last_updated": "2026-02-14",
   "tev_data": {
     "has_tev": true,
@@ -81,18 +81,18 @@
         "name": "DefiLlama holdersRevenue",
         "type": "defillama",
         "annual_usd": 9924180,
-        "note": "vePENDLE/sPENDLE \u5206\u7ea2"
+        "note": "vePENDLE/sPENDLE 分红"
       }
     ],
     "calculation": "$9.92M / $190.97M = 5.20%"
   },
   "market_data": {
-    "tvl": 2219130333.8867607,
-    "tvl_updated": "2026-03-02T13:02:31.197Z"
+    "tvl": 2216123169.827532,
+    "tvl_updated": "2026-03-03T01:01:18.740Z"
   },
   "tevStatus": "active",
   "confidence_reason": {
-    "zh": "vePENDLE \u8d39\u7528\u5206\u914d\u5408\u7ea6\u94fe\u4e0a\u53ef\u67e5 + DefiLlama \u9a8c\u8bc1",
+    "zh": "vePENDLE 费用分配合约链上可查 + DefiLlama 验证",
     "en": "vePENDLE fee distribution contract on-chain verifiable + DefiLlama validated"
   },
   "tevRatio": 0.8,

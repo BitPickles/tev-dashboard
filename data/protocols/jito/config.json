@@ -4,7 +4,7 @@
   "ticker": "JTO",
   "icon": "https://coin-images.coingecko.com/coins/images/33228/large/jto.png",
   "category": "liquid_staking",
-  "description": "Solana \u4e0a\u7684 MEV \u9a71\u52a8\u6d41\u52a8\u6027\u8d28\u62bc\u534f\u8bae\uff0c\u63d0\u4f9b JitoSOL",
+  "description": "Solana 上的 MEV 驱动流动性质押协议，提供 JitoSOL",
   "website": "https://jito.network",
   "docs": "https://docs.jito.network",
   "token": {
@@ -19,7 +19,7 @@
     {
       "type": "staking_reward",
       "name": "JTO Staking",
-      "description": "\u8d28\u62bc JTO \u53c2\u4e0e\u534f\u8bae\u6cbb\u7406\u548c\u53ef\u80fd\u7684\u6536\u5165\u5206\u6210",
+      "description": "质押 JTO 参与协议治理和可能的收入分成",
       "status": "planned",
       "source": {
         "type": "documentation",
@@ -30,11 +30,11 @@
   ],
   "tev_summary": {
     "fee_switch": "OFF",
-    "fee_switch_details": "JTO \u76ee\u524d\u4e3b\u8981\u7528\u4e8e\u6cbb\u7406\uff0cMEV \u6536\u76ca\u6d41\u5411 JitoSOL \u6301\u6709\u8005",
+    "fee_switch_details": "JTO 目前主要用于治理，MEV 收益流向 JitoSOL 持有者",
     "buybacks": "NONE",
     "dividends": "NONE",
     "burns": "NONE",
-    "primary_value_accrual": "\u6cbb\u7406\u4ee3\u5e01 - MEV \u6536\u76ca\u6d41\u5411 JitoSOL\uff0cJTO \u7528\u4e8e\u6cbb\u7406"
+    "primary_value_accrual": "治理代币 - MEV 收益流向 JitoSOL，JTO 用于治理"
   },
   "confidence": "low",
   "data_sources": [
@@ -51,24 +51,24 @@
       "reliability": "high"
     }
   ],
-  "notes": "Jito \u662f Solana MEV \u57fa\u7840\u8bbe\u65bd\u7684\u9886\u5bfc\u8005\u3002JTO \u4ee3\u5e01\u76ee\u524d\u4e3b\u8981\u7528\u4e8e\u6cbb\u7406\uff0c\u534f\u8bae\u7684 MEV \u6536\u76ca\u76f4\u63a5\u6d41\u5411 JitoSOL \u6301\u6709\u8005\uff08\u66f4\u9ad8\u7684 APY\uff09\uff0c\u800c\u975e JTO \u6301\u6709\u8005\u3002\u672a\u6765\u53ef\u80fd\u5f15\u5165 JTO staking \u6536\u5165\u5206\u6210\u3002",
+  "notes": "Jito 是 Solana MEV 基础设施的领导者。JTO 代币目前主要用于治理，协议的 MEV 收益直接流向 JitoSOL 持有者（更高的 APY），而非 JTO 持有者。未来可能引入 JTO staking 收入分成。",
   "last_updated": "2026-02-14",
   "tev_data": {
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "note": "\u65e0\u6301\u7eed TEV"
+    "note": "无持续 TEV"
   },
   "market_data": {
-    "tvl": 1066115109.33555,
-    "tvl_updated": "2026-03-02T13:02:28.652Z"
+    "tvl": 1104428333.57603,
+    "tvl_updated": "2026-03-03T01:00:50.252Z"
   },
   "tevStatus": "none",
   "confidence_reason": {
-    "zh": "\u65e0 TEV \u673a\u5236\uff0cJitoSOL \u6536\u76ca\u5f52\u8d28\u62bc\u8005\u975e JTO \u6301\u6709\u8005\uff0c\u6570\u636e\u610f\u4e49\u6709\u9650",
+    "zh": "无 TEV 机制，JitoSOL 收益归质押者非 JTO 持有者，数据意义有限",
     "en": "No TEV mechanism, JitoSOL yields go to stakers not JTO holders, limited data relevance"
   },
-  "tevRatio": 0.0,
+  "tevRatio": 0,
   "earning_yield_percent": 20.3,
   "market_cap_usd": 125726633.69
 }
