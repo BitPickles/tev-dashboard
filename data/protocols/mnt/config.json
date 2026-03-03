@@ -1,49 +1,49 @@
 {
   "id": "mnt",
   "hidden": true,
-  "hidden_reason": "CEX 数据不透明",
+  "hidden_reason": "CEX \u6570\u636e\u4e0d\u900f\u660e",
   "name": "Mantle",
   "ticker": "MNT",
   "icon": "https://coin-images.coingecko.com/coins/images/30980/large/MNT_Token_Logo.png",
   "category": "l2_token",
-  "description": "Mantle Network (L2) 原生代币，前身为 BitDAO，与 Bybit 有关联",
+  "description": "Mantle Network (L2) \u539f\u751f\u4ee3\u5e01\uff0c\u524d\u8eab\u4e3a BitDAO\uff0c\u4e0e Bybit \u6709\u5173\u8054",
   "website": "https://www.mantle.xyz",
   "docs": "https://docs.mantle.xyz",
   "token": {
     "address_ethereum": "0x3c3a81e81dc49a522a592e7622a7e711c06bf354",
     "chain": "Ethereum / Mantle",
     "coingecko_id": "mantle",
-    "note": "MNT 是 Mantle L2 原生 gas token，同时在 Ethereum 上存在"
+    "note": "MNT \u662f Mantle L2 \u539f\u751f gas token\uff0c\u540c\u65f6\u5728 Ethereum \u4e0a\u5b58\u5728"
   },
   "background": {
     "origin": "BitDAO",
     "transformation_date": "2023-07",
-    "bybit_relation": "BitDAO 由 Bybit 支持创立，转型为 Mantle 后关系延续",
-    "treasury": "Mantle 拥有 DeFi 领域最大的 DAO 国库之一"
+    "bybit_relation": "BitDAO \u7531 Bybit \u652f\u6301\u521b\u7acb\uff0c\u8f6c\u578b\u4e3a Mantle \u540e\u5173\u7cfb\u5ef6\u7eed",
+    "treasury": "Mantle \u62e5\u6709 DeFi \u9886\u57df\u6700\u5927\u7684 DAO \u56fd\u5e93\u4e4b\u4e00"
   },
   "tev_mechanisms": [
     {
       "type": "gas_token",
       "name": "Mantle Network Gas",
-      "description": "MNT 作为 Mantle L2 原生 gas token",
+      "description": "MNT \u4f5c\u4e3a Mantle L2 \u539f\u751f gas token",
       "status": "active",
-      "note": "Gas 消耗创造代币需求，但不直接分配给持有者"
+      "note": "Gas \u6d88\u8017\u521b\u9020\u4ee3\u5e01\u9700\u6c42\uff0c\u4f46\u4e0d\u76f4\u63a5\u5206\u914d\u7ed9\u6301\u6709\u8005"
     },
     {
       "type": "staking",
       "name": "MNT Staking",
-      "description": "质押 MNT 参与网络安全和治理",
+      "description": "\u8d28\u62bc MNT \u53c2\u4e0e\u7f51\u7edc\u5b89\u5168\u548c\u6cbb\u7406",
       "status": "planned",
-      "note": "需要确认质押奖励机制"
+      "note": "\u9700\u8981\u786e\u8ba4\u8d28\u62bc\u5956\u52b1\u673a\u5236"
     }
   ],
   "tev_summary": {
     "fee_switch": "N/A",
-    "fee_switch_details": "L2 gas 费用机制，非传统 fee switch",
+    "fee_switch_details": "L2 gas \u8d39\u7528\u673a\u5236\uff0c\u975e\u4f20\u7edf fee switch",
     "buybacks": "UNKNOWN",
     "dividends": "UNKNOWN",
     "burns": "UNKNOWN",
-    "primary_value_accrual": "待确认 - Gas 消耗 + 潜在的质押奖励"
+    "primary_value_accrual": "\u5f85\u786e\u8ba4 - Gas \u6d88\u8017 + \u6f5c\u5728\u7684\u8d28\u62bc\u5956\u52b1"
   },
   "market_data": {
     "price_usd": 0.61,
@@ -56,29 +56,29 @@
   "calculated_tev": {
     "tev_yield_percent": null,
     "calculation_status": "UNABLE_TO_CALCULATE",
-    "reason": "MNT 的 TEV 机制不明确，与传统 CEX 平台币不同",
-    "note": "需要进一步调研 Mantle 的收入分配机制"
+    "reason": "MNT \u7684 TEV \u673a\u5236\u4e0d\u660e\u786e\uff0c\u4e0e\u4f20\u7edf CEX \u5e73\u53f0\u5e01\u4e0d\u540c",
+    "note": "\u9700\u8981\u8fdb\u4e00\u6b65\u8c03\u7814 Mantle \u7684\u6536\u5165\u5206\u914d\u673a\u5236"
   },
   "data_gaps": [
     {
-      "item": "TEV 机制",
-      "status": "需要调研",
-      "note": "MNT 是否有回购/销毁/分红机制？"
+      "item": "TEV \u673a\u5236",
+      "status": "\u9700\u8981\u8c03\u7814",
+      "note": "MNT \u662f\u5426\u6709\u56de\u8d2d/\u9500\u6bc1/\u5206\u7ea2\u673a\u5236\uff1f"
     },
     {
-      "item": "Bybit 关联",
-      "status": "需要澄清",
-      "note": "Bybit 收入是否有部分流向 MNT 持有者？"
+      "item": "Bybit \u5173\u8054",
+      "status": "\u9700\u8981\u6f84\u6e05",
+      "note": "Bybit \u6536\u5165\u662f\u5426\u6709\u90e8\u5206\u6d41\u5411 MNT \u6301\u6709\u8005\uff1f"
     },
     {
-      "item": "质押奖励",
-      "status": "需要确认",
-      "note": "MNT staking 的收益来源和比例"
+      "item": "\u8d28\u62bc\u5956\u52b1",
+      "status": "\u9700\u8981\u786e\u8ba4",
+      "note": "MNT staking \u7684\u6536\u76ca\u6765\u6e90\u548c\u6bd4\u4f8b"
     },
     {
-      "item": "DAO 国库使用",
-      "status": "需要调研",
-      "note": "Mantle Treasury 的使用策略"
+      "item": "DAO \u56fd\u5e93\u4f7f\u7528",
+      "status": "\u9700\u8981\u8c03\u7814",
+      "note": "Mantle Treasury \u7684\u4f7f\u7528\u7b56\u7565"
     }
   ],
   "confidence": "medium",
@@ -107,11 +107,11 @@
       "reliability": "high"
     }
   ],
-  "analyst_notes": "【2026-02-05 初步调研】\n\n## MNT 特殊情况说明\n\nMNT 与 BNB/OKB 不同，它不是传统意义上的 CEX 平台币：\n\n### 背景\n1. **前身 BitDAO**：由 Bybit 支持创立\n2. **2023 年转型**：BitDAO → Mantle\n3. **定位变化**：从 DAO 治理代币 → L2 原生代币\n\n### TEV 评估挑战\n1. ⚠️ 不是直接的 Bybit 平台币\n2. ⚠️ TEV 机制不如 BNB/OKB 明确\n3. ⚠️ 主要价值来自 L2 生态而非交易所收入\n\n### 需要向 Boss 确认\n1. MNT 是否应该按「L2 代币」而非「平台币」评估？\n2. Bybit 收入与 MNT 的具体关联是什么？\n3. 是否有官方的 TEV 机制文档？",
+  "analyst_notes": "\u30102026-02-05 \u521d\u6b65\u8c03\u7814\u3011\n\n## MNT \u7279\u6b8a\u60c5\u51b5\u8bf4\u660e\n\nMNT \u4e0e BNB/OKB \u4e0d\u540c\uff0c\u5b83\u4e0d\u662f\u4f20\u7edf\u610f\u4e49\u4e0a\u7684 CEX \u5e73\u53f0\u5e01\uff1a\n\n### \u80cc\u666f\n1. **\u524d\u8eab BitDAO**\uff1a\u7531 Bybit \u652f\u6301\u521b\u7acb\n2. **2023 \u5e74\u8f6c\u578b**\uff1aBitDAO \u2192 Mantle\n3. **\u5b9a\u4f4d\u53d8\u5316**\uff1a\u4ece DAO \u6cbb\u7406\u4ee3\u5e01 \u2192 L2 \u539f\u751f\u4ee3\u5e01\n\n### TEV \u8bc4\u4f30\u6311\u6218\n1. \u26a0\ufe0f \u4e0d\u662f\u76f4\u63a5\u7684 Bybit \u5e73\u53f0\u5e01\n2. \u26a0\ufe0f TEV \u673a\u5236\u4e0d\u5982 BNB/OKB \u660e\u786e\n3. \u26a0\ufe0f \u4e3b\u8981\u4ef7\u503c\u6765\u81ea L2 \u751f\u6001\u800c\u975e\u4ea4\u6613\u6240\u6536\u5165\n\n### \u9700\u8981\u5411 Boss \u786e\u8ba4\n1. MNT \u662f\u5426\u5e94\u8be5\u6309\u300cL2 \u4ee3\u5e01\u300d\u800c\u975e\u300c\u5e73\u53f0\u5e01\u300d\u8bc4\u4f30\uff1f\n2. Bybit \u6536\u5165\u4e0e MNT \u7684\u5177\u4f53\u5173\u8054\u662f\u4ec0\u4e48\uff1f\n3. \u662f\u5426\u6709\u5b98\u65b9\u7684 TEV \u673a\u5236\u6587\u6863\uff1f",
   "questions_for_boss": [
-    "MNT 是否应按 L2 代币而非平台币评估？",
-    "Bybit 收入与 MNT 的具体关联？",
-    "MNT 是否有明确的回购/销毁/分红机制？"
+    "MNT \u662f\u5426\u5e94\u6309 L2 \u4ee3\u5e01\u800c\u975e\u5e73\u53f0\u5e01\u8bc4\u4f30\uff1f",
+    "Bybit \u6536\u5165\u4e0e MNT \u7684\u5177\u4f53\u5173\u8054\uff1f",
+    "MNT \u662f\u5426\u6709\u660e\u786e\u7684\u56de\u8d2d/\u9500\u6bc1/\u5206\u7ea2\u673a\u5236\uff1f"
   ],
   "last_updated": "2026-02-14",
   "tev_data": {
@@ -119,12 +119,15 @@
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
     "calculation_date": "2026-02-14",
-    "note": "纯治理代币",
+    "note": "\u7eaf\u6cbb\u7406\u4ee3\u5e01",
     "sources": []
   },
   "tevStatus": "none",
   "confidence_reason": {
-    "zh": "虽无 TEV，但 Mantle Treasury 链上可查，BitDAO 治理透明",
+    "zh": "\u867d\u65e0 TEV\uff0c\u4f46 Mantle Treasury \u94fe\u4e0a\u53ef\u67e5\uff0cBitDAO \u6cbb\u7406\u900f\u660e",
     "en": "No TEV, but Mantle Treasury on-chain verifiable, BitDAO governance transparent"
-  }
+  },
+  "tevRatio": 0.0,
+  "earning_yield_percent": 0.0,
+  "market_cap_usd": 1981231322
 }

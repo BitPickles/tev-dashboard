@@ -1,45 +1,45 @@
 {
   "id": "okb",
   "hidden": true,
-  "hidden_reason": "CEX 数据不透明",
+  "hidden_reason": "CEX \u6570\u636e\u4e0d\u900f\u660e",
   "name": "OKB",
   "ticker": "OKB",
   "icon": "https://coin-images.coingecko.com/coins/images/4463/large/WeChat_Image_20220118095654.png",
   "category": "cex_token",
-  "description": "OKX 交易所平台币，同时是 X Layer (L2) 原生 gas token",
+  "description": "OKX \u4ea4\u6613\u6240\u5e73\u53f0\u5e01\uff0c\u540c\u65f6\u662f X Layer (L2) \u539f\u751f gas token",
   "website": "https://www.okx.com",
   "docs": "https://www.okx.com/web3",
   "token": {
     "address_ethereum": "0x75231f58b43240c9718dd58b4967c5114342a86c",
     "chain": "X Layer / Ethereum",
     "coingecko_id": "okb",
-    "note": "OKB 同时存在于 Ethereum 和 X Layer"
+    "note": "OKB \u540c\u65f6\u5b58\u5728\u4e8e Ethereum \u548c X Layer"
   },
   "tev_mechanisms": [
     {
       "type": "buyback_burn",
-      "name": "Quarterly Buy-Back & Burn",
-      "description": "OKX 用平台收入的 30% 回购并销毁 OKB",
-      "status": "active",
-      "ratio": 0.3,
-      "frequency": "quarterly",
+      "name": "Buyback & Burn (terminated)",
+      "description": "2025-08 \u8d77\u505c\u6b62\u56de\u8d2d\u4e0e\u9500\u6bc1\uff0c\u4f9b\u5e94\u5df2\u9501\u5b9a\uff1b\u6b64\u524d\u5386\u53f2\u56de\u8d2d\u4e0e\u50a8\u5907\u4e8e 2025-08-13 \u5b8c\u6210\u4e00\u6b21\u6027\u9500\u6bc1 65,256,712.097 OKB",
+      "status": "inactive",
+      "ratio": 0,
+      "frequency": "none",
       "source": {
         "type": "official",
-        "title": "OKB Buy-Back & Burn",
-        "url": "https://www.okx.com/support/hc/articles/360102503411",
-        "note": "需要验证最新政策"
+        "title": "OKX 2025-08-13 Announcement",
+        "url": "TBD",
+        "note": "One-time burn + supply locked to 21,000,000"
       }
     }
   ],
   "tev_summary": {
-    "fee_switch": "N/A",
-    "fee_switch_details": "CEX 收入不直接链上分配",
-    "buybacks": "ACTIVE",
+    "fee_switch": "OFF",
+    "fee_switch_details": "2025-08 \u540e\u505c\u6b62\u56de\u8d2d/\u9500\u6bc1\uff0c\u4f9b\u5e94\u5df2\u9501\u5b9a",
+    "buybacks": "NONE",
     "dividends": "NONE",
-    "burns": "ACTIVE",
-    "burn_details": "30% 平台收入用于季度回购销毁",
-    "primary_value_accrual": "回购销毁 - 季度用 30% 收入回购销毁 OKB",
-    "tevRatio": 0.3
+    "burns": "NONE",
+    "burn_details": "2025-08-13 \u4e00\u6b21\u6027\u9500\u6bc1 65,256,712.097 OKB\uff0c\u4e4b\u540e\u4e0d\u518d\u6709\u56de\u8d2d/\u9500\u6bc1",
+    "primary_value_accrual": "\u65e0\u6301\u7eed TEV \u56de\u6d41\uff08\u4f9b\u5e94\u5df2\u9501\u5b9a\uff0c\u4e0d\u518d\u56de\u8d2d\u6216\u9500\u6bc1\uff09",
+    "tevRatio": 0.0
   },
   "market_data": {
     "price_usd": 71.07,
@@ -51,27 +51,27 @@
   "calculated_tev": {
     "tev_yield_percent": null,
     "calculation_status": "UNABLE_TO_CALCULATE",
-    "reason": "OKX 作为私营公司不公开财务数据，无法获取准确的销毁金额",
-    "note": "需要整理历史季度销毁公告来估算"
+    "reason": "OKX \u4f5c\u4e3a\u79c1\u8425\u516c\u53f8\u4e0d\u516c\u5f00\u8d22\u52a1\u6570\u636e\uff0c\u65e0\u6cd5\u83b7\u53d6\u51c6\u786e\u7684\u9500\u6bc1\u91d1\u989d",
+    "note": "\u9700\u8981\u6574\u7406\u5386\u53f2\u5b63\u5ea6\u9500\u6bc1\u516c\u544a\u6765\u4f30\u7b97"
   },
   "data_gaps": [
     {
-      "item": "季度销毁金额",
-      "status": "需要补充",
-      "note": "OKX 会发布季度销毁公告，需要整理历史数据"
+      "item": "\u5b63\u5ea6\u9500\u6bc1\u91d1\u989d",
+      "status": "\u9700\u8981\u8865\u5145",
+      "note": "OKX \u4f1a\u53d1\u5e03\u5b63\u5ea6\u9500\u6bc1\u516c\u544a\uff0c\u9700\u8981\u6574\u7406\u5386\u53f2\u6570\u636e"
     },
     {
-      "item": "OKX 平台收入",
-      "status": "不公开",
-      "note": "私营公司不披露财务数据"
+      "item": "OKX \u5e73\u53f0\u6536\u5165",
+      "status": "\u4e0d\u516c\u5f00",
+      "note": "\u79c1\u8425\u516c\u53f8\u4e0d\u62ab\u9732\u8d22\u52a1\u6570\u636e"
     },
     {
-      "item": "X Layer gas 消耗",
-      "status": "可链上查询",
-      "note": "作为 L2 gas token 的额外价值捕获"
+      "item": "X Layer gas \u6d88\u8017",
+      "status": "\u53ef\u94fe\u4e0a\u67e5\u8be2",
+      "note": "\u4f5c\u4e3a L2 gas token \u7684\u989d\u5916\u4ef7\u503c\u6355\u83b7"
     }
   ],
-  "confidence": "low",
+  "confidence": "high",
   "data_sources": [
     {
       "name": "CoinGecko",
@@ -104,23 +104,38 @@
       ]
     }
   ],
-  "analyst_notes": "【2026-02-05 初步调研】\n\n## OKB TEV 评估\n\n### 已知机制\n1. **季度回购销毁**：OKX 用 30% 平台收入回购销毁 OKB\n2. **X Layer Gas**：作为 L2 原生 token，gas 费用创造额外需求\n\n### 数据限制\n1. ❌ OKX 不公开财务数据\n2. ❌ 季度销毁金额需要从公告整理\n3. ⚠️ 无法精确计算 TEV yield\n\n### 供应量特点\n- 流通供应量固定在 ~21M OKB\n- 总供应量 ~300M，大部分锁定/未流通\n\n### 与 BNB 的区别\n- BNB 目标减少到 100M（持续销毁）\n- OKB 流通量相对固定，销毁主要影响总供应\n\n### 需要补充\n1. 历史季度销毁数据\n2. X Layer 的 gas 消耗数据",
+  "analyst_notes": "\u30102026-03-03 \u66f4\u65b0\u3011\n\n## OKB \u673a\u5236\u53d8\u66f4\u6458\u8981\n\n- **2025-08-13 \u4e00\u6b21\u6027\u9500\u6bc1** 65,256,712.097 OKB\uff08\u6765\u81ea\u5386\u53f2\u56de\u8d2d+\u50a8\u5907\uff09\n- **\u603b\u4f9b\u5e94\u9501\u5b9a** 21,000,000 OKB\n- **\u540e\u7eed\u4e0d\u518d\u56de\u8d2d / \u589e\u53d1 / \u9500\u6bc1**\uff08no more buybacks, mints, or burns\uff09\n- **\u5408\u7ea6\u5347\u7ea7** \u79fb\u9664 mint/burn\uff0cEthereum L1 \u7248\u672c\u9010\u6b65\u505c\u6b62\u652f\u6301\uff0c\u5f15\u5bfc\u5230 X Layer\n\n## \u7ed3\u8bba\n\n**2025-08 \u4e4b\u540e\u65e0\u6301\u7eed TEV**\uff0c\u5e73\u53f0\u5229\u6da6\u4e0d\u518d\u901a\u8fc7\u56de\u8d2d/\u9500\u6bc1\u56de\u6d41\u81f3 OKB \u6301\u6709\u8005\u3002",
   "questions_for_boss": [
-    "OKB 30% 回购销毁比例是否为最新政策？",
-    "是否需要整理历史季度销毁数据？"
+    "OKB 30% \u56de\u8d2d\u9500\u6bc1\u6bd4\u4f8b\u662f\u5426\u4e3a\u6700\u65b0\u653f\u7b56\uff1f",
+    "\u662f\u5426\u9700\u8981\u6574\u7406\u5386\u53f2\u5b63\u5ea6\u9500\u6bc1\u6570\u636e\uff1f"
   ],
-  "last_updated": "2026-02-14",
+  "last_updated": "2026-03-03",
   "tev_data": {
-    "has_tev": true,
+    "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "calculation_date": "2026-02-14",
-    "note": "声称30%收入回购销毁，透明度低",
-    "sources": []
+    "calculation_date": "2026-03-03",
+    "note": "2025-08 \u540e\u4e0d\u518d\u56de\u8d2d/\u9500\u6bc1\uff0c\u4f9b\u5e94\u9501\u5b9a",
+    "sources": [
+      {
+        "name": "OKX Learn Burn Announcement (2025-08-13)",
+        "type": "official",
+        "url": "https://www.okx.com/zh-hans/learn/why-did-okb-burn",
+        "note": "One-time burn 65,256,712.097 OKB + supply locked to 21,000,000"
+      },
+      {
+        "name": "OKX Learn",
+        "type": "documentation",
+        "url": "https://www.okx.com/zh-hans/learn/why-did-okb-burn",
+        "note": "No more buybacks, mints, or burns"
+      }
+    ]
   },
   "tevStatus": "none",
   "confidence_reason": {
-    "zh": "已停止回购销毁，历史数据仅官方公告",
+    "zh": "\u5df2\u505c\u6b62\u56de\u8d2d\u9500\u6bc1\uff0c\u5386\u53f2\u6570\u636e\u4ec5\u5b98\u65b9\u516c\u544a",
     "en": "Buyback & burn stopped, historical data from announcements only"
-  }
+  },
+  "earning_yield_percent": 0.0,
+  "market_cap_usd": 1503276222
 }

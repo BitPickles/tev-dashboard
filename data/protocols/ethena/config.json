@@ -74,8 +74,8 @@
     "tvl_usd": 6429000000,
     "snapshot_date": "2026-02-09",
     "data_source": "DefiLlama",
-    "tvl": 6761741140.7542,
-    "tvl_updated": "2026-03-02T13:02:25.542Z"
+    "tvl": 6754689188.15414,
+    "tvl_updated": "2026-03-03T01:00:31.555Z"
   },
   "confidence": "medium",
   "data_sources": [
@@ -155,5 +155,8 @@
   "confidence_reason": {
     "zh": "回购资金来源为 reserve fund 而非协议利润，机制不透明",
     "en": "Buyback funded from reserve fund not protocol revenue, mechanism opaque"
-  }
+  },
+  "tevRatio": 0,
+  "earning_yield_percent": 1.35,
+  "market_cap_usd": 940091116.6
 }

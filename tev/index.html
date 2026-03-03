@@ -309,7 +309,8 @@
 
     // === Formatting ===
     const formatCurrency = (v, d = 0) => { if (v == null) return '—'; if (v >= 1e9) return '$' + (v / 1e9).toFixed(2) + 'B'; if (v >= 1e6) return '$' + (v / 1e6).toFixed(2) + 'M'; if (v >= 1e3) return '$' + (v / 1e3).toFixed(1) + 'K'; return '$' + v.toFixed(d); };
-    const formatPercent = v => v == null ? '—' : (v * 100).toFixed(2) + '%';
+    // formatPercent: v 已经是百分比（如 6.21 表示 6.21%），直接格式化即可
+    const formatPercent = v => v == null ? '—' : v.toFixed(2) + '%';
 
     // === Data Loading ===
     async function loadProtocolData() {
@@ -332,13 +333,8 @@
           const data = await res.json();
           // 合并 metrics：优先用 daily 数据，回退到 all-protocols.json
           const mergedMetrics = { ...config.metrics, ...data.metrics };
-          // 计算 tevRatio = TEV / 协议利润(revenue)，优先用365天数据
-          const tev365d = mergedMetrics.trailing_365d_tev_usd || 0;
-          const revenue365d = mergedMetrics.trailing_365d_revenue_usd || 0;
-          const tev30d = mergedMetrics.trailing_30d_tev_usd || 0;
-          const revenue30d = mergedMetrics.trailing_30d_revenue_usd || 0;
-          const tevRatio = revenue365d > 0 ? tev365d / revenue365d : (revenue30d > 0 ? tev30d / revenue30d : 0);
-          return { key, ...config, ...data, metrics: mergedMetrics, tevRatio };
+          // tevRatio 直接使用 all-protocols.json 中的预计算值，不再动态计算
+          return { key, ...config, ...data, metrics: mergedMetrics, tevRatio: config.tevRatio };
         } catch { return { key, ...config, error: true }; }
       }));
     }
@@ -349,55 +345,32 @@
         case 'tvl': return p.tvl || 0;
         case 'tevStatus': return TEV_STATUS_ORDER[p.tevStatus] || 0;
         case 'tevRatio': return p.tevRatio || 0;
-        case 'mcap': return p.latest_record?.market_cap_usd || 0;
-        case 'earningYield': { const mc = p.latest_record?.market_cap_usd || p.metrics?.current_market_cap_usd || 0; const ar = p.metrics?.trailing_365d_revenue_usd || (p.metrics?.trailing_30d_revenue_usd || 0) * 12; return mc > 0 ? ar / mc : 0; }
-        case 'tevYield': return p.metrics?.tev_yield_decimal || 0;
+        case 'mcap': return p.market_cap_usd || 0;
+        case 'earningYield': return p.earning_yield_percent || 0;
+        case 'tevYield': return p.tev_yield_percent || 0;
         default: return 0;
       }
-    }
-    // 获取 TEV Yield：优先用我们计算的 tev_yield_percent，兼容旧的 metrics.tev_yield_decimal
-    function getTevYield(p) {
-      // 优先使用 all-protocols.json 中的 tev_yield_percent
-      if (p.tev_yield_percent !== undefined && p.tev_yield_percent > 0) return p.tev_yield_percent / 100;
-      // 回退到实时计算：trailing_365d_tev_usd / market_cap_usd
-      const tev365 = p.metrics?.trailing_365d_tev_usd;
-      const mcap = p.market_cap_usd || p.metrics?.current_market_cap_usd || p.latest_record?.market_cap_usd || 0;
-      if (tev365 && mcap > 0) return tev365 / mcap;
-      // 再回退到 metrics.tev_yield_decimal
-      if (p.metrics?.tev_yield_decimal) return p.metrics.tev_yield_decimal;
-      return 0;
-    }
-    // 获取市值：优先用 market_cap_usd，兼容旧字段
-    function getMarketCap(p) {
-      return p.market_cap_usd || p.metrics?.current_market_cap_usd || p.latest_record?.market_cap_usd || 0;
     }
     function sortProtocols(arr, f, d) {
       return [...arr].sort((a, b) => {
         // 默认排序（tevStatus）：有 tev_yield > 0 的排前面，然后按市值
         if (f === 'tevStatus') {
-          const aYield = getTevYield(a);
-          const bYield = getTevYield(b);
+          const aYield = a.tev_yield_percent || 0;
+          const bYield = b.tev_yield_percent || 0;
           const aHasYield = aYield > 0 ? 1 : 0;
           const bHasYield = bYield > 0 ? 1 : 0;
           if (bHasYield !== aHasYield) return bHasYield - aHasYield;
-          return getMarketCap(b) - getMarketCap(a);
+          return (b.market_cap_usd || 0) - (a.market_cap_usd || 0);
         }
-        // 其他字段：按点击的字段排序
+        // 其他字段：按点击的字段排序，使用预计算值
         let aVal, bVal;
         switch (f) {
           case 'tvl': aVal = a.tvl || 0; bVal = b.tvl || 0; break;
           case 'tevRatio': aVal = a.tevRatio || 0; bVal = b.tevRatio || 0; break;
-          case 'mcap': aVal = getMarketCap(a); bVal = getMarketCap(b); break;
-          case 'earningYield': {
-            const mcA = getMarketCap(a), mcB = getMarketCap(b);
-            const arA = a.metrics?.trailing_365d_revenue_usd || (a.metrics?.trailing_30d_revenue_usd || 0) * 12;
-            const arB = b.metrics?.trailing_365d_revenue_usd || (b.metrics?.trailing_30d_revenue_usd || 0) * 12;
-            aVal = mcA > 0 ? arA / mcA : 0;
-            bVal = mcB > 0 ? arB / mcB : 0;
-            break;
-          }
-          case 'tevYield': aVal = getTevYield(a); bVal = getTevYield(b); break;
-          default: aVal = getMarketCap(a); bVal = getMarketCap(b);
+          case 'mcap': aVal = a.market_cap_usd || 0; bVal = b.market_cap_usd || 0; break;
+          case 'earningYield': aVal = a.earning_yield_percent || 0; bVal = b.earning_yield_percent || 0; break;
+          case 'tevYield': aVal = a.tev_yield_percent || 0; bVal = b.tev_yield_percent || 0; break;
+          default: aVal = a.market_cap_usd || 0; bVal = b.market_cap_usd || 0;
         }
         // 根据方向排序
         const diff = bVal - aVal;  // 默认降序
@@ -429,15 +402,20 @@
       updateSortIndicators();
 
       filtered.forEach((p, i) => {
-        // 优先使用 all-protocols.json 中的 tev_yield_percent
-        const tevYield = getTevYield(p);
+        // 直接使用 all-protocols.json 中的预计算值
+        const tevYield = p.tev_yield_percent || 0;
+        const earningYield = p.earning_yield_percent || 0;
         const tevStatus = p.tevStatus || 'none';
         const tevRatio = p.tevRatio || 0;
-        // 使用 getMarketCap 函数获取市值，优先使用 all-protocols.json 中的值
-        const mcap = getMarketCap(p);
-        // 收益率 = 协议利润(revenue) / 市值，使用365天数据
-        const annualRevenue = p.metrics?.trailing_365d_revenue_usd || (p.metrics?.trailing_30d_revenue_usd || 0) * 12;
-        const earningYield = mcap > 0 ? annualRevenue / mcap : 0;
+        const mcap = p.market_cap_usd || 0;
+
+        // tevRatio 显示：处理 'dynamic' 字符串和数字
+        let tevRatioDisplay = '—';
+        if (typeof tevRatio === 'string') {
+          tevRatioDisplay = tevRatio;
+        } else if (tevRatio > 0) {
+          tevRatioDisplay = (tevRatio * 100).toFixed(0) + '%';
+        }
 
         const row = document.createElement('tr');
         row.onclick = () => window.location.href = `protocol.html?id=${p.key}`;
@@ -449,10 +427,10 @@
           </div></td>
           <td class="text-right"><span class="value">${formatCurrency(p.tvl)}</span></td>
           <td class="text-right"><span class="badge badge-${tevStatus === 'active' ? 'active' : tevStatus === 'partial' ? 'partial' : 'none'}">${tevStatus === 'active' ? '✓' : tevStatus === 'partial' ? '~' : '✗'} ${t('tevStatus.' + tevStatus)}</span></td>
-          <td class="text-right"><span class="value ${tevRatio >= 0.5 ? 'value-highlight' : tevRatio > 0 ? '' : 'value-zero'}">${tevRatio > 0 ? (tevRatio * 100).toFixed(0) + '%' : '—'}</span></td>
+          <td class="text-right"><span class="value ${tevRatio >= 0.5 ? 'value-highlight' : tevRatio > 0 ? '' : 'value-zero'}">${tevRatioDisplay}</span></td>
           <td class="text-right"><span class="value">${formatCurrency(mcap)}</span></td>
           <td class="text-right"><span class="value ${earningYield > 0.1 ? 'value-highlight' : earningYield === 0 ? 'value-zero' : ''}">${earningYield > 0 ? formatPercent(earningYield) : '—'}</span></td>
-          <td class="text-right"><span class="value ${tevYield > 0.05 ? 'value-highlight' : tevYield === 0 ? 'value-zero' : ''}">${formatPercent(tevYield)}</span></td>
+          <td class="text-right"><span class="value ${tevYield > 10 ? 'value-highlight' : tevYield === 0 ? 'value-zero' : ''}">${formatPercent(tevYield)}</span></td>
           <td class="text-right"><span class="badge badge-${p.confidence === 'high' ? 'high' : p.confidence === 'medium' ? 'medium' : 'low'}" data-tip="${(p.confidence_reason && p.confidence_reason[currentLang]) || ''}">${p.confidence === 'high' ? '✓' : '!'} ${t('confidence.' + p.confidence)}</span></td>
         `;
         tbody.appendChild(row);

@@ -95,8 +95,8 @@
     "total_supply": 1000000000,
     "holders": 387973,
     "snapshot_date": "2026-03-02",
-    "tvl": 3067536789,
-    "tvl_updated": "2026-03-02T13:02:32.270Z"
+    "tvl": 3123660071,
+    "tvl_updated": "2026-03-03T01:02:09.300Z"
   },
   "confidence": "high",
   "data_sources": [
@@ -143,11 +143,11 @@
       }
     ],
     "calculation": "$35.2M / $2.39B = 1.47%",
-    "trailing_365d_tev_usd": 34923621.0,
+    "trailing_365d_tev_usd": 34923621,
     "last_updated": "2026-03-02"
   },
   "burn_progress": {
-    "total_burned": 101456003.0,
+    "total_burned": 101456003,
     "target": 1000000000,
     "ticker": "UNI",
     "note": "含 1 亿枚一次性国库销毁 + Firepit 持续销毁。占总供应 10 亿的 10.1%。",
@@ -164,7 +164,7 @@
         "label_en": "Firepit Burns",
         "amount": 1493580,
         "color": "rgba(239,68,68,0.85)",
-        "value": 1456003.0,
+        "value": 1456003,
         "pct": 0.15
       }
     ],
@@ -174,5 +174,8 @@
   "confidence_reason": {
     "zh": "Firepit 销毁 UNI→0xdead 完全链上可追踪（Etherscan）",
     "en": "Firepit burn UNI→0xdead fully on-chain trackable (Etherscan)"
-  }
+  },
+  "tevRatio": 1,
+  "earning_yield_percent": 1.47,
+  "market_cap_usd": 2393472958
 }

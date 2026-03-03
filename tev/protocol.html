@@ -222,22 +222,29 @@
         const resp = await fetch(`../data/protocols/${pid}/tev-records.json`);
         if (!resp.ok) return;
         const { records } = await resp.json();
-        if (!records?.length) return;
+        if (!records?.length) { const sec=document.getElementById('tev-chart-section'); if (sec) sec.style.display='none'; return; }
         records.sort((a, b) => new Date(a.date) - new Date(b.date));
         const types = [...new Set(records.map(r => r.type))];
-        const isDaily = records.length > 60;
+        const isDaily = records.every(r => /^\d{4}-\d{2}-\d{2}$/.test(r.date));
         
         const ctx = document.getElementById('tev-history-chart').getContext('2d');
         if (tevChart) tevChart.destroy();
         
         if (isDaily) {
           // Daily mode: time axis, bar + cumulative line
+          const isAster = pid === 'aster';
+          const asterEstStart = '2025-10-28';
+          const asterEstEnd = '2025-12-22';
+          const isAsterEstimated = (d) => isAster && d >= asterEstStart && d <= asterEstEnd;
           const barDs = types.map(type => {
             const c = TEV_COLORS[type] || { bg: 'rgba(161,161,170,0.5)', border: '#a1a1aa' };
+            const dataForType = records.filter(r => r.type === type);
+            const bgColors = dataForType.map(r => isAsterEstimated(r.date) ? 'rgba(168,85,247,0.55)' : c.bg);
+            const borderColors = dataForType.map(r => isAsterEstimated(r.date) ? 'rgba(168,85,247,1)' : c.border);
             return {
               label: getMechLabel(type),
-              data: records.filter(r => r.type === type).map(r => ({ x: r.date, y: r.amount_usd })),
-              backgroundColor: c.bg, borderColor: c.border, borderWidth: 1, borderRadius: 4,
+              data: dataForType.map(r => ({ x: r.date, y: r.amount_usd })),
+              backgroundColor: bgColors, borderColor: borderColors, borderWidth: 1, borderRadius: 4,
               type: 'bar', yAxisID: 'y', order: 2
             };
           });
@@ -251,11 +258,23 @@
               interaction: { mode: 'index', intersect: false },
               plugins: {
                 legend: { position: 'top', labels: { color: '#a1a1aa', font: { size: 11 }, boxWidth: 12, padding: 16 } },
-                tooltip: { backgroundColor: '#18181b', titleColor: '#fafafa', bodyColor: '#a1a1aa', borderColor: '#27272a', borderWidth: 1, callbacks: { label: ctx => ctx.raw.y === 0 ? null : ` ${ctx.dataset.label}: ${fmtCurrency(ctx.raw.y)}` }, filter: i => i.raw.y !== 0 },
+                tooltip: { backgroundColor: '#18181b', titleColor: '#fafafa', bodyColor: '#a1a1aa', borderColor: '#27272a', borderWidth: 1,
+                  callbacks: {
+                    label: ctx => ctx.raw.y === 0 ? null : ` ${ctx.dataset.label}: ${fmtCurrency(ctx.raw.y)}`,
+                    afterBody: ctxs => {
+                      const x = ctxs?.[0]?.raw?.x;
+                      if (isAsterEstimated(x)) {
+                        return currentLang === 'zh' ? '公告总量均摊到每日（非链上）' : 'Estimated: official total averaged per day (non-onchain)';
+                      }
+                      return null;
+                    }
+                  },
+                  filter: i => i.raw.y !== 0
+                },
                 zoom: { pan: { enabled: true, mode: 'x' }, zoom: { wheel: { enabled: true }, pinch: { enabled: true }, mode: 'x' } }
               },
               scales: {
-                x: { type: 'time', time: { unit: records.length > 180 ? 'month' : 'day', displayFormats: { day: 'MM-dd', month: 'yyyy-MM' }, tooltipFormat: 'yyyy-MM-dd' }, grid: { display: false }, ticks: { color: '#71717a', font: { size: 10 }, maxRotation: 0, maxTicksLimit: 15 } },
+                x: { type: 'time', time: { unit: records.length > 180 ? 'month' : 'day', displayFormats: { day: 'MM-dd', month: 'yyyy-MM' }, tooltipFormat: 'yyyy-MM-dd' }, min: records.length > 180 ? records[Math.max(0, records.length - 90)].date : undefined, grid: { display: false }, ticks: { color: '#71717a', font: { size: 10 }, maxRotation: 0, maxTicksLimit: 15 } },
                 y: { position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => fmtCurrency(v) }, title: { display: true, text: currentLang === 'zh' ? '每日 TEV (USD)' : 'Daily TEV (USD)', color: '#71717a' } },
                 y2: { position: 'right', grid: { display: false }, ticks: { color: '#f59e0b', callback: v => fmtCurrency(v) }, title: { display: true, text: t('chart.cumulative'), color: '#f59e0b' } }
               }
@@ -280,7 +299,12 @@
         if (!periodEl) { periodEl = document.createElement('div'); periodEl.id = 'tev-chart-period'; periodEl.style.cssText = 'position:absolute;top:12px;right:16px;font-size:11px;color:#71717a;'; document.querySelector('#tev-chart-section .chart-container').style.position = 'relative'; document.querySelector('#tev-chart-section .chart-container').appendChild(periodEl); }
         periodEl.textContent = fmtPeriod(records[0].date) + ' - ' + fmtPeriod(records[records.length - 1].date);
         document.getElementById('tev-chart-section').classList.add('has-data');
-      } catch (e) { console.log('No TEV records:', e.message); }
+      } catch (e) {
+        console.log('No TEV records:', e.message);
+        // 无数据时隐藏图表区块，避免空白
+        const sec = document.getElementById('tev-chart-section');
+        if (sec) sec.style.display = 'none';
+      }
     }
 
     async function loadBurnsChart(pid) {
@@ -422,20 +446,21 @@
         if (buybackChart) buybackChart.destroy();
         
         // 每日数据图表 - 用颜色区分阶段和数据类型
-        // estimated / 1-4 / defillama / official: 灰色半透明
+        // estimated / 1-4 / defillama / official: 灰色半透明（Aster 用紫色标注公告均摊估算）
         // onchain / 5 / 6: 绿色
         const getBarColor = (d) => {
-          // 估算数据 - 灰色
-          if (d.dataType === 'estimated' || d.data_type === 'estimated' || 
-              d.stage === '1-4' || d.stage === 'defillama' || d.stage === 'official') {
-            return 'rgba(120,120,120,0.5)';
+          const isEstimated = d.dataType === 'estimated' || d.data_type === 'estimated' || 
+              d.stage === '1-4' || d.stage === 'defillama' || d.stage === 'official';
+          if (isEstimated) {
+            return pid === 'aster' ? 'rgba(168,85,247,0.55)' : 'rgba(120,120,120,0.5)';
           }
           return 'rgba(34,197,94,0.8)';  // 绿色 - 链上
         };
         const getBorderColor = (d) => {
-          if (d.dataType === 'estimated' || d.data_type === 'estimated' || 
-              d.stage === '1-4' || d.stage === 'defillama' || d.stage === 'official') {
-            return 'rgba(120,120,120,0.8)';
+          const isEstimated = d.dataType === 'estimated' || d.data_type === 'estimated' || 
+              d.stage === '1-4' || d.stage === 'defillama' || d.stage === 'official';
+          if (isEstimated) {
+            return pid === 'aster' ? 'rgba(168,85,247,1)' : 'rgba(120,120,120,0.8)';
           }
           return 'rgba(34,197,94,1)';
         };
@@ -528,7 +553,7 @@
         const legendEl = document.getElementById('buyback-legend');
         if (legendEl) {
           if (pid === 'aster') {
-            legendEl.innerHTML = '<span style="color:#787878;">■ Stage 1-4 (历史报道)</span><span style="color:#22c55e;">■ Stage 5-6 (链上数据)</span>';
+            legendEl.innerHTML = '<span style="color:#a855f7;">■ Stage 1-4 (公告均摊估算)</span><span style="color:#22c55e;">■ Stage 5-6 (链上数据)</span>';
           } else if (pid === 'hype') {
             legendEl.innerHTML = '<span style="color:#787878;">■ DefiLlama 数据</span><span style="color:#22c55e;">■ 链上数据</span><span style="color:#f59e0b;">━ 累计回购</span>';
           } else if (pid === 'fluid') {
@@ -569,42 +594,40 @@
         statusText.className = `tev-status ${tevStatus}`;
         document.getElementById('primary-value').textContent = cfg.tev_summary?.fee_switch === 'ON' ? '✓ ON' : cfg.tev_summary?.fee_switch === 'PARTIAL' ? '~ PARTIAL' : '✗ OFF';
         document.getElementById('primary-label').textContent = cfg.tev_summary?.primary_value_accrual || '—';
-        
-        // 从 all-protocols.json 获取汇总数据
-        let protoData = null;
-        try {
-          const allResp = await fetch('../data/all-protocols.json');
-          if (allResp.ok) {
-            const allData = await allResp.json();
-            protoData = allData.protocols?.[pid];
-          }
-        } catch (e) { console.log('Failed to load all-protocols.json'); }
-        
+
         // TEV 概览 - 新增字段
         const tevRatioEl = document.getElementById('summary-tevratio');
         const marketCapEl = document.getElementById('summary-marketcap');
         const earningsYieldEl = document.getElementById('summary-earningsyield');
         const tevYieldEl = document.getElementById('summary-tevyield');
-        
-        if (protoData) {
-          // 分配比例
-          const tevRatio = protoData.tevRatio;
-          tevRatioEl.textContent = tevRatio ? `${(tevRatio * 100).toFixed(0)}%` : '—';
-          
-          // 市值
-          const marketCap = protoData.market_cap_usd;
-          marketCapEl.textContent = marketCap ? `$${(marketCap / 1e9).toFixed(2)}B` : '—';
-          
-          // 收益率 = 年化收入 / 市值
-          const revenue = protoData.metrics?.trailing_365d_revenue_usd;
-          const earningsYield = (revenue && marketCap) ? (revenue / marketCap * 100) : null;
-          earningsYieldEl.textContent = earningsYield ? `${earningsYield.toFixed(2)}%` : '—';
-          
-          // TEV Yield
-          const tevYield = protoData.tev_yield_percent;
-          tevYieldEl.textContent = tevYield ? `${tevYield.toFixed(2)}%` : '—';
-          tevYieldEl.className = `tev-summary-value ${tevYield > 5 ? 'value-on' : tevYield > 0 ? 'value-partial' : ''}`;
+
+        // 使用 config.json 中的值（直接读取，无需 fetch）
+        // FIX 2026-03-03: 不再从 all-protocols.json fetch，直接使用 cfg
+        const tevRatio = cfg.tevRatio;
+        const marketCap = cfg.market_cap_usd || cfg.tev_data?.market_cap_usd || 0;
+        const earningsYield = cfg.earning_yield_percent || 0;
+        const tevYield = cfg.tev_data?.tev_yield_percent || 0;
+
+        console.log('TEV Summary values:', { tevRatio, marketCap, earningsYield, tevYield });
+
+        // 分配比例
+        if (typeof tevRatio === 'string') {
+          tevRatioEl.textContent = tevRatio;
+        } else if (tevRatio > 0) {
+          tevRatioEl.textContent = `${(tevRatio * 100).toFixed(0)}%`;
+        } else {
+          tevRatioEl.textContent = '—';
         }
+
+        // 市值
+        marketCapEl.textContent = marketCap ? `$${(marketCap / 1e9).toFixed(2)}B` : '—';
+
+        // 收益率
+        earningsYieldEl.textContent = earningsYield ? `${earningsYield.toFixed(2)}%` : '—';
+
+        // TEV Yield
+        tevYieldEl.textContent = tevYield ? `${tevYield.toFixed(2)}%` : '—';
+        tevYieldEl.className = `tev-summary-value ${tevYield > 5 ? 'value-on' : tevYield > 0 ? 'value-partial' : ''}`;
         
         const s = cfg.tev_summary || {};
         ['buybacks', 'dividends', 'burns'].forEach(k => { const el = document.getElementById(`summary-${k}`); const v = s[k] || 'NONE'; el.textContent = t('status.' + v); el.className = `tev-summary-value ${getValueClass(v)}`; });
@@ -621,7 +644,8 @@
         document.getElementById('content').style.display = 'block';
         loadTevChart(pid);
         if (['bnb', 'hype', 'uniswap', 'sky'].includes(pid)) loadBurnsChart(pid);
-        if (['aster'].includes(pid)) loadBuybackData(pid);
+        // Aster 已有 tev-records，优先展示 TEV 历史图
+        // if (['aster'].includes(pid)) loadBuybackData(pid);
       } catch (e) {
         console.error('Failed:', e);
         document.getElementById('loading').innerHTML = `<div style="color:var(--danger);">Failed to load protocol</div><div style="margin-top:8px;font-size:12px;">${e.message}</div><div style="margin-top:16px;"><a href="index.html" style="color:var(--blue);">← Back</a></div>`;

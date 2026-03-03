@@ -45,11 +45,11 @@
   },
   "tev_summary": {
     "fee_switch": "ON",
-    "fee_switch_details": "50% 交易手续费分配给 veCRV 持有者（以 crvUSD 形式），每周分发",
+    "fee_switch_details": "admin fees 统一兑换为 crvUSD 按周分发，交易手续费典型 50% 进 LP / 50% 进 DAO",
     "buybacks": "NONE",
     "dividends": "ACTIVE",
     "burns": "NONE",
-    "primary_value_accrual": "分红 - veCRV 持有者每周获得 crvUSD 分红",
+    "primary_value_accrual": "DAO 收入分配：约 90% -> veCRV, 10% -> Treasury（FeeAllocator），scrvUSD 流向比例动态 5%-50%（FeeSplitter）",
     "tevRatio": 0.5
   },
   "ve_token": {
@@ -70,8 +70,8 @@
     "total_supply": 2349219713,
     "holders": 97359,
     "snapshot_date": "2026-02-05",
-    "tvl": 1851819793.9481907,
-    "tvl_updated": "2026-03-02T13:02:24.480Z"
+    "tvl": 1875267185.035639,
+    "tvl_updated": "2026-03-03T01:00:27.078Z"
   },
   "calculated_tev": {
     "holders_revenue_30d_usd": 970876,
@@ -84,15 +84,57 @@
   "confidence": "high",
   "data_sources": [
     {
-      "name": "Curve Fee Burner",
+      "name": "Curve Fee Distributor",
       "type": "onchain",
       "url": "https://etherscan.io/address/0xA464e6DCda8AC41e03616F95f4BC98a13b8922Dc",
       "reliability": "verified"
     },
     {
-      "name": "DefiLlama",
+      "name": "DefiLlama Fees",
+      "type": "api",
+      "url": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyFees",
+      "reliability": "high"
+    },
+    {
+      "name": "DefiLlama Revenue",
+      "type": "api",
+      "url": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyRevenue",
+      "reliability": "high"
+    },
+    {
+      "name": "DefiLlama HoldersRevenue",
       "type": "api",
       "url": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
+      "reliability": "high"
+    },
+    {
+      "name": "Curve Fee Collection & Distribution",
+      "type": "documentation",
+      "url": "https://resources.curve.finance/vecrv/fee-collection-distribution/",
+      "reliability": "high"
+    },
+    {
+      "name": "Curve Community Fund & Treasury",
+      "type": "documentation",
+      "url": "https://resources.curve.finance/governance/community-fund/",
+      "reliability": "high"
+    },
+    {
+      "name": "Curve FeeAllocator Proposal",
+      "type": "governance",
+      "url": "https://gov.curve.finance/t/activate-the-fee-allocator-and-redirect-10-of-revenue-to-community-fund/10676",
+      "reliability": "high"
+    },
+    {
+      "name": "Curve FeeSplitter (scrvUSD)",
+      "type": "documentation",
+      "url": "https://docs.curve.finance/fees/FeeSplitter/",
+      "reliability": "high"
+    },
+    {
+      "name": "scrvUSD Docs",
+      "type": "documentation",
+      "url": "https://resources.curve.finance/crvusd/scrvusd/",
       "reliability": "high"
     },
     {
@@ -102,14 +144,14 @@
       "reliability": "high"
     }
   ],
-  "analyst_notes": "【2026-02-05 调研更新】\n\n## Curve 双重激励模式说明\n\nCurve 采用特殊的双重激励模式，需区分 TEV 和 LP 激励：\n\n### 1. TEV 部分（计入 TEV yield）\n- **50% 交易手续费** 分配给 **veCRV 持有者**\n- 以 crvUSD（稳定币 LP token）形式每周分发\n- 分发合约: 0xA464e6DCda8AC41e03616F95f4BC98a13b8922Dc\n- 过去30天分红: ~$97万，年化约 $1165万\n\n### 2. LP 激励部分（不计入 TEV）\n- **CRV 代币奖励** 分配给 **LP 提供者**\n- 通过 Gauge 系统分发\n- 这是代币通胀/增发激励，不是协议收入分配\n- veCRV 持有者投票决定各池子的 CRV 奖励权重\n\n### TEV Yield 计算\n- 年化 holders revenue: ~$11.65M\n- CRV 流通市值: ~$355M\n- **TEV Yield ≈ 3.28%**\n\n### 为什么显示 0% 需排查\n前端显示 TEV yield 为 0% 是错误的，实际数据显示约 3.28%。\n可能原因：\n1. 前端未正确读取 calculated_tev 字段\n2. 数据管道问题\n3. 计算逻辑缺失\n\n建议检查前端 TEV yield 计算逻辑。",
-  "last_updated": "2026-02-14",
+  "analyst_notes": "【2026-03-03 更新】\n\n## Curve 收入口径与分配路径\n\n### 收入口径\n- **Fees**: 用户支付的总手续费\n- **Revenue**: 协议抽成（admin fees + crvUSD borrow interest）\n- **Holders Revenue**: 实际分给持币者的部分\n\n### 分配路径\n1) 用户手续费：典型 50% 给 LP / 50% 给 DAO (admin fee)\n2) DAO 收入周度收集、兑换为 crvUSD、转入分发\n3) crvUSD 再切分：\n   - **FeeAllocator**：初始设定 **90% -> veCRV**，**10% -> Treasury**（2025-06-27，Treasury 地址 0x6508ef65b0bd57eabd0f1d52685a70433b2d290b）\n   - **FeeSplitter**：其中来自 crvUSD 的费用会分流到 **scrvUSD**，比例动态 5%–50%（DAO 可调整）\n\n### 为什么 Holders Revenue ≈ 90% * Revenue\n- FeeAllocator 按初始权重拆分，导致 DefiLlama 观测的 HoldersRevenue 与 Revenue 接近 90% 比例\n",
+  "last_updated": "2026-03-03",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 3.28,
-    "annual_tev_usd": 11650512,
+    "tev_yield_percent": 3.74,
+    "annual_tev_usd": 13304425,
     "market_cap_usd": 355558659,
-    "calculation_date": "2026-02-14",
+    "calculation_date": "2026-03-03",
     "sources": [
       {
         "name": "DefiLlama holdersRevenue",
@@ -118,11 +160,22 @@
         "note": "veCRV 分红"
       }
     ],
-    "calculation": "$11.65M / $355.56M = 3.28%"
+    "calculation": "$13.30M / $355.56M = 3.74%"
   },
   "tevStatus": "active",
   "confidence_reason": {
     "zh": "veCRV 费用分配合约链上可查 + DefiLlama 验证",
     "en": "veCRV fee distribution contract on-chain verifiable + DefiLlama validated"
+  },
+  "tevRatio": 0.9,
+  "earning_yield_percent": 3.85,
+  "market_cap_usd": 355558659,
+  "metrics": {
+    "trailing_365d_fees_usd": 55189562,
+    "trailing_365d_revenue_usd": 13672308,
+    "trailing_365d_holders_revenue_usd": 13304425,
+    "trailing_30d_fees_usd": 4978284,
+    "trailing_30d_revenue_usd": 768059,
+    "trailing_30d_holders_revenue_usd": 691740
   }
 }

@@ -99,7 +99,7 @@ const PROTOCOL_CONFIG = {
   },
   // 以下协议无 TEV (tevStatus=none)，仅获取市值
   compound: {
-    defillamaSlug: 'compound-v3',
+    defillamaSlug: 'compound-finance',
     coingeckoId: 'compound-governance-token',
     cmcSlug: 'compound',
     tevRatio: 0,

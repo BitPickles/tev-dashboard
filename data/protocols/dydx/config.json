@@ -51,8 +51,8 @@
     "total_supply": 1000000000,
     "snapshot_date": "2026-02-05",
     "data_source": "CoinGecko (dydx-chain)",
-    "tvl": 169180364,
-    "tvl_updated": "2026-03-02T13:02:24.827Z"
+    "tvl": 169248865,
+    "tvl_updated": "2026-03-03T01:00:28.818Z"
   },
   "calculated_tev": {
     "holders_revenue_30d_usd": 381311,
@@ -105,5 +105,8 @@
   "confidence_reason": {
     "zh": "dYdX Chain 100% 费用分配给验证者/质押者，完全链上可查",
     "en": "dYdX Chain distributes 100% fees to validators/stakers, fully on-chain verifiable"
-  }
+  },
+  "tevRatio": 0.75,
+  "earning_yield_percent": 14.86,
+  "market_cap_usd": 90016535
 }

@@ -56,8 +56,8 @@
     "dividends": "NONE",
     "burns": "ACTIVE",
     "primary_value_accrual": "回购销毁 - Assistance Fund 自动将费用换成 HYPE 并永久移除",
-    "tevRatio": "dynamic",
-    "tevRatio_note": "非固定比例，DefiLlama holdersRevenue 已验证等于 AF 实际回购金额"
+    "tevRatio": "100%",
+    "tevRatio_note": "净利润（Token Holder Net Income）= 进入 AF 回购金额；逐期相等，因此净利润 100% 用于回购销毁"
   },
   "market_data": {
     "price_usd": 30.92,
@@ -65,8 +65,8 @@
     "snapshot_date": "2026-03-01",
     "data_source": "CoinGecko",
     "circulating_supply": 238385316,
-    "tvl": 4260689401,
-    "tvl_updated": "2026-03-02T13:02:28.302Z"
+    "tvl": 4282769852,
+    "tvl_updated": "2026-03-03T01:00:48.321Z"
   },
   "calculated_tev": {
     "tev_yield_percent": 12.42,
@@ -146,7 +146,7 @@
       "note": "spotClearinghouseState 获取 AF 余额，userFills 获取成交记录"
     }
   ],
-  "analyst_notes": "## HYPE TEV 机制\n\n### 核心机制\n**Assistance Fund**: 交易费用（扣除 deployer/builder/HLP/referral 后）→ 自动回购 HYPE → **永久销毁**\n\n销毁的 HYPE 从 circulating + total supply 永久移除。\n\n### 费用分配（按角色，比例动态）\n\n| 角色 | 机制 | 是否算 TEV |\n|------|------|-----------|\n| Assistance Fund | 自动将费用换成 HYPE 并 burn | ✅ |\n| HLP Vault | 做市+清算+部分交易费 | ❌（给 LP） |\n| Deployer (HIP-3) | 固定 50% fee share | ❌ |\n| Deployer (HIP-1 spot) | 非 USDC 费用默认 100% 给 deployer | ❌ |\n| Builder | builder code 额外收取 | ❌ |\n| Referral/Rebate | maker rebate + 推荐奖励 | ❌ |\n\n**注意**：官方未公布固定 AF/HLP 比例，观测值从 54% 到 92% 不等。\n\n### 不计入 TEV 的收入\n- **Funding**: 多空点对点支付，平台不收取\n- **清算收益**: 无清算手续费，maintenance margin 沉淀在 HLP PnL\n- **HyperEVM gas**: base fee + priority fee 全部 burned（供给收缩）\n\n### 数据来源\n| 数据 | 来源 |\n|------|------|\n| 累计回购 | Hyperliquid API `spotClearinghouseState` |\n| 每日明细 | DefiLlama `holdersRevenue`（已与链上验证一致） |\n| 价格/市值 | CoinGecko |\n\n### 关键地址\n**Assistance Fund**: `0xfefefefefefefefefefefefefefefefefefefefe`\n**HLP Vault**: `0xdfc24b077bc1425ad1dea75bcb6f8158e10df303`\n\n### 参考链接\n- [Fees](https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees)\n- [Funding](https://hyperliquid.gitbook.io/hyperliquid-docs/trading/funding)\n- [Liquidations](https://hyperliquid.gitbook.io/hyperliquid-docs/trading/liquidations)\n- [Builder Codes](https://hyperliquid.gitbook.io/hyperliquid-docs/trading/builder-codes)\n- [HIP-1](https://hyperliquid.gitbook.io/hyperliquid-docs/hyperliquid-improvement-proposals-hips/hip-1-native-token-standard)\n- [HIP-3](https://hyperliquid.gitbook.io/hyperliquid-docs/hyperliquid-improvement-proposals-hips/hip-3-builder-deployed-perpetuals)\n- [HyperEVM](https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/hyperevm)",
+  "analyst_notes": "## Hyperliquid TEV 机制（更新：2026-03-02）\n\n### 1. 核心结论\n- **净利润 100% 回购销毁**：若以 DeFiLlama 的 **Token Holder Net Income** 为“净利润”，则其与 **Token Buy Back** 逐期相等 → **净利润全部进入回购**。\n- 该回购通过 **Assistance Fund (AF)** 自动完成：手续费进入 AF → 自动换成 HYPE → 直接销毁（从 circulating + total supply 移除）。\n\n### 2. 机制路径（手续费 → 回购）\n用户手续费产生后分配给多个角色：\n- **Assistance Fund**（核心回购+销毁）\n- **HLP Vault**（做市/清算等）\n- **Deployer / Builder / Referral**（不同市场与代码分成）\n\n> **注意**：\n> “净利润 100% 回购”指 **Token Holder Net Income** 层面；\n> **不是** “总手续费 100% 进入回购”。总手续费中仍有部分分给 HLP 与 deployer/builder。\n\n### 3. DefiLlama 口径与比例\n- DefiLlama 方法学：Perps + Spot 的 **Revenue 中约 99% 进入 AF 回购**，HLP 约 1%。\n- 这一口径对应 holdersRevenue，可与链上 AF 数据交叉验证。\n\n### 4. 累计规模（口径提示）\n- 若看 **累计净利润回购**：参考 DeFiLlama 的 **Cumulative Holders Revenue**。\n- 截至 2026-03-02（台北时间）：约 **$1.017B** 的“归属于持有者净利润”已用于回购并销毁。\n\n### 5. 不计入 TEV 的部分\n- **Funding**：多空点对点支付，平台不收取\n- **清算收益**：maintenance margin 沉淀在 HLP PnL\n- **HyperEVM gas burn**：供给收缩，不属于利润分配\n",
   "last_updated": "2026-03-01",
   "buyback_data": {
     "enabled": true,
@@ -170,11 +170,11 @@
       }
     ],
     "calculation": "$915.2M / $7368M = 12.42%",
-    "trailing_365d_tev_usd": 915555603,
-    "last_updated": "2026-03-02"
+    "trailing_365d_tev_usd": 915593835,
+    "last_updated": "2026-03-03"
   },
   "burn_progress": {
-    "total_burned": 41576948.0,
+    "total_burned": 41618791.0,
     "target": 1000000000,
     "ticker": "HYPE",
     "note": "Assistance Fund 累计回购销毁，占总供应 10 亿的 4.2%。",
@@ -185,5 +185,8 @@
   "confidence_reason": {
     "zh": "链上 AF 余额可验证 + DefiLlama holdersRevenue 交叉验证",
     "en": "On-chain AF balance verifiable + DefiLlama holdersRevenue cross-validated"
-  }
+  },
+  "tevRatio": 1,
+  "earning_yield_percent": 14.35,
+  "market_cap_usd": 7368065201
 }
