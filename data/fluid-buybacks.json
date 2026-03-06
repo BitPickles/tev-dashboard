@@ -2,7 +2,7 @@
   "protocol": "fluid",
   "ticker": "FLUID",
   "total_supply": 1000000000,
-  "updated_at": "2026-03-01T18:10:09Z",
+  "updated_at": "2026-03-06T13:04:40Z",
   "data_type": "daily",
   "data_source": "onchain",
   "data_source_note": "链上追踪 FLUID 流入储备钱包 (Etherscan API)",
@@ -11,13 +11,13 @@
     "0x9Afb8C1798B93a8E04a18553eE65bAFa41a012F1"
   ],
   "summary": {
-    "total_buyback_fluid": 1094933.92,
-    "total_buyback_usd": 4264765.11,
-    "total_days": 36,
+    "total_buyback_fluid": 1103997.3,
+    "total_buyback_usd": 4285006.52,
+    "total_days": 37,
     "first_date": "2025-10-03",
-    "last_date": "2026-02-27",
-    "avg_daily_fluid": 30414.83,
-    "avg_price": 3.895
+    "last_date": "2026-03-06",
+    "avg_daily_fluid": 29837.76,
+    "avg_price": 3.8814
   },
   "daily_buybacks": [
     {
@@ -340,6 +340,15 @@
       "fluid": 9406.79,
       "usd": 19778.87,
       "price": 2.1026,
+      "txs": 1,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-03-06",
+      "fluid": 9063.38,
+      "usd": 20241.41,
+      "price": 2.2333,
       "txs": 1,
       "dataType": "onchain",
       "source": "Etherscan"
