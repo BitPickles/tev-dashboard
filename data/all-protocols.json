@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-10T13:05:21.578Z",
+  "generated_at": "2026-03-11T01:04:24.383Z",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -13,15 +13,15 @@
       },
       "tevStatus": "active",
       "tev_yield_percent": 4.49,
-      "market_cap_usd": 1718047159.9,
-      "tvl": 27464273551,
+      "market_cap_usd": 1717175666.48,
+      "tvl": 27165731605,
       "tevRatio": 0.7766,
       "earning_yield_percent": 5.62,
       "tevRatioNote": "回购 ($50M/年) + Safety Module 质押奖励",
       "metrics": {
-        "current_market_cap_usd": 1718047159.9,
-        "trailing_365d_revenue_usd": 121918884,
-        "trailing_30d_revenue_usd": 6670720,
+        "current_market_cap_usd": 1717175666.48,
+        "trailing_365d_revenue_usd": 122073710,
+        "trailing_30d_revenue_usd": 6825546,
         "trailing_365d_tev_usd": 92212267,
         "trailing_30d_tev_usd": 7684355.583333333,
         "trailing_365d_holders_revenue_usd": 42212267,
@@ -41,7 +41,7 @@
       "tevStatus": "active",
       "tev_yield_percent": 9.55,
       "market_cap_usd": 1501563922,
-      "tvl": 901591899.4067668,
+      "tvl": 869030173.5569259,
       "tevRatio": 0.7,
       "earning_yield_percent": 13.64,
       "tevRatioNote": "手续费回购 (60-80%)"
@@ -77,7 +77,7 @@
       "tevStatus": "active",
       "tev_yield_percent": 11.27,
       "market_cap_usd": 85528916981,
-      "tvl": 5912908862.502207,
+      "tvl": 5906223160.291263,
       "tevRatio": 0,
       "earning_yield_percent": 0,
       "validation": {
@@ -89,14 +89,14 @@
         "asbnb_source": "Aster asBNB (Staking + Launchpool/HODLer/Megadrop)",
         "asbnb_url": "https://www.asterdex.com/en/earn/astoken?token=slisBNB",
         "burn_data_url": "https://www.bnbburn.info/",
-        "dead_address_balance_bnb": 13299872.8,
+        "dead_address_balance_bnb": 13299893,
         "dead_address": "0x000000000000000000000000000000000000dEaD",
         "note": "Burn 通过链上黑洞地址余额验证；asBNB 通过 Aster 官方数据（含 Staking + Launchpool/HODLer/Megadrop，不含 Burn）",
         "total_annual_burn_bnb": 6004121,
         "bep95_annual_bnb": 16327,
-        "bnb_price_usd": 646.74,
-        "market_cap_usd": 88183475238,
-        "circulating_supply": 136358324.54
+        "bnb_price_usd": 643.64,
+        "market_cap_usd": 87723947318,
+        "circulating_supply": 136358303.48
       },
       "tevRatioNote": "供给收缩 + 链上质押收益（非 CEX 利润分润模式）"
     },
@@ -112,13 +112,13 @@
       },
       "tevStatus": "none",
       "tev_yield_percent": 0,
-      "market_cap_usd": 168116563.31,
-      "tvl": 1431869157,
+      "market_cap_usd": 166941096.84,
+      "tvl": 1431500332,
       "tevRatio": 0,
       "earning_yield_percent": 0,
       "tevRatioNote": "纯治理代币 - COMP 仅用于治理投票，无收入分配",
       "metrics": {
-        "current_market_cap_usd": 168116563.31,
+        "current_market_cap_usd": 166941096.84,
         "trailing_365d_revenue_usd": 2437923,
         "trailing_30d_revenue_usd": 44786,
         "trailing_365d_tev_usd": 0,
@@ -137,19 +137,19 @@
       },
       "tevStatus": "active",
       "tev_yield_percent": 3.74,
-      "market_cap_usd": 369140285.8,
+      "market_cap_usd": 353524046.71,
       "tvl": 1833943613.0661533,
       "tevRatio": 0.9,
       "earning_yield_percent": 3.85,
       "tevRatioNote": "DAO 收入分配：约 90% -> veCRV, 10% -> Treasury（FeeAllocator），scrvUSD 流向比例动态 5%-50%（FeeSplitter）",
       "metrics": {
-        "trailing_365d_revenue_usd": 9971853,
+        "trailing_365d_revenue_usd": 9979063,
         "trailing_365d_holders_revenue_usd": 13304425,
-        "trailing_30d_revenue_usd": 398644,
+        "trailing_30d_revenue_usd": 405854,
         "trailing_30d_holders_revenue_usd": 691740,
-        "current_market_cap_usd": 369140285.8,
-        "trailing_365d_tev_usd": 9971853,
-        "trailing_30d_tev_usd": 830987.75
+        "current_market_cap_usd": 353524046.71,
+        "trailing_365d_tev_usd": 9979063,
+        "trailing_30d_tev_usd": 831588.5833333334
       }
     },
     "dydx": {
@@ -164,17 +164,17 @@
       },
       "tevStatus": "active",
       "tev_yield_percent": 5.33,
-      "market_cap_usd": 71694108.03,
-      "tvl": 165595820,
+      "market_cap_usd": 71312736.91,
+      "tvl": 165194028,
       "tevRatio": 0.75,
       "earning_yield_percent": 14.86,
       "tevRatioNote": "回购 - 75% 净协议费用用于 DYDX 回购",
       "metrics": {
-        "current_market_cap_usd": 71694108.03,
-        "trailing_365d_revenue_usd": 12927566,
-        "trailing_30d_revenue_usd": 282415,
-        "trailing_365d_tev_usd": 11634809.4,
-        "trailing_30d_tev_usd": 969567.4500000001
+        "current_market_cap_usd": 71312736.91,
+        "trailing_365d_revenue_usd": 12823871,
+        "trailing_30d_revenue_usd": 282279,
+        "trailing_365d_tev_usd": 11541483.9,
+        "trailing_30d_tev_usd": 961790.3250000001
       }
     },
     "eigenlayer": {
@@ -189,13 +189,13 @@
       },
       "tevStatus": "none",
       "tev_yield_percent": 0,
-      "market_cap_usd": 119780853.12,
-      "tvl": 8992983699.09869,
+      "market_cap_usd": 119535536.71,
+      "tvl": 8678883783.41727,
       "tevRatio": 0,
       "earning_yield_percent": 0,
       "tevRatioNote": "纯治理代币 - EIGEN 目前仅用于治理，无收入分配机制",
       "metrics": {
-        "current_market_cap_usd": 119780853.12,
+        "current_market_cap_usd": 119535536.71,
         "trailing_365d_revenue_usd": 0,
         "trailing_30d_revenue_usd": 0,
         "trailing_365d_tev_usd": 0,
@@ -214,15 +214,15 @@
       },
       "tevStatus": "none",
       "tev_yield_percent": 0,
-      "market_cap_usd": 880393071.57,
-      "tvl": 6663607725.45959,
+      "market_cap_usd": 875964138.59,
+      "tvl": 6664734098.00717,
       "tevRatio": 0,
       "earning_yield_percent": 1.35,
       "tevRatioNote": "无持续 TEV — 回购是一次性资本运作，非经营利润分红",
       "metrics": {
-        "current_market_cap_usd": 880393071.57,
-        "trailing_365d_revenue_usd": 12663724,
-        "trailing_30d_revenue_usd": 99488,
+        "current_market_cap_usd": 875964138.59,
+        "trailing_365d_revenue_usd": 12663685,
+        "trailing_30d_revenue_usd": 99449,
         "trailing_365d_tev_usd": 0,
         "trailing_30d_tev_usd": 0
       }
@@ -239,17 +239,17 @@
       },
       "tevStatus": "active",
       "tev_yield_percent": 4.37,
-      "market_cap_usd": 410459455.87,
-      "tvl": 5824679346.95062,
+      "market_cap_usd": 414875544.01,
+      "tvl": 5738801210.22458,
       "tevRatio": 0.302,
       "earning_yield_percent": 15.28,
       "tevRatioNote": "回购分配 — 提现收入回购 ETHFI，年化约 $15M / 市值约 $600M ≈ 2.5%",
       "metrics": {
-        "current_market_cap_usd": 410459455.87,
-        "trailing_365d_revenue_usd": 56822079,
-        "trailing_30d_revenue_usd": 3178630,
-        "trailing_365d_tev_usd": 17937078.221519,
-        "trailing_30d_tev_usd": 1494756.5184599168
+        "current_market_cap_usd": 414875544.01,
+        "trailing_365d_revenue_usd": 56882337,
+        "trailing_30d_revenue_usd": 3238888,
+        "trailing_365d_tev_usd": 18130061.273237,
+        "trailing_30d_tev_usd": 1510838.4394364168
       }
     },
     "fluid": {
@@ -263,23 +263,23 @@
         "en": "Dual wallets fully on-chain trackable (Etherscan), cross-validated with DefiLlama <0.1% diff"
       },
       "tevStatus": "active",
-      "tev_yield_percent": 2.44,
-      "market_cap_usd": 172934242.46,
-      "tvl": 1154734430.9904451,
+      "tev_yield_percent": 2.51,
+      "market_cap_usd": 171126960.38,
+      "tvl": 1144403334.5344288,
       "tevRatio": 0.35,
       "earning_yield_percent": 6.73,
       "validation": {
-        "onchain_total_usd": 4285007,
-        "defillama_total_usd": 4261283,
-        "diff_pct": 0.6
+        "onchain_total_usd": 4304943,
+        "defillama_total_usd": 4281990,
+        "diff_pct": 0.5
       },
       "tevRatioNote": "回购 - Treasury 用 35% Revenue 回购 FLUID，Q4 2025 启动",
       "metrics": {
-        "current_market_cap_usd": 172934242.46,
-        "trailing_365d_revenue_usd": 12254533,
-        "trailing_30d_revenue_usd": 643336,
-        "trailing_365d_tev_usd": 4289086.55,
-        "trailing_30d_tev_usd": 357423.87916666665
+        "current_market_cap_usd": 171126960.38,
+        "trailing_365d_revenue_usd": 12256237,
+        "trailing_30d_revenue_usd": 645040,
+        "trailing_365d_tev_usd": 4289682.95,
+        "trailing_30d_tev_usd": 357473.57916666666
       }
     },
     "gmx": {
@@ -294,17 +294,17 @@
       },
       "tevStatus": "active",
       "tev_yield_percent": 24.13,
-      "market_cap_usd": 67755298.91,
-      "tvl": 266055126,
+      "market_cap_usd": 67742461.19,
+      "tvl": 266212993,
       "tevRatio": 0.27,
       "earning_yield_percent": 35.84,
       "tevRatioNote": "回购分红 - 质押 GMX 获得回购分配的 GMX",
       "metrics": {
-        "current_market_cap_usd": 67755298.91,
-        "trailing_365d_revenue_usd": 22054491,
-        "trailing_30d_revenue_usd": 1262941,
-        "trailing_365d_tev_usd": 19849041.900000002,
-        "trailing_30d_tev_usd": 1654086.8250000002
+        "current_market_cap_usd": 67742461.19,
+        "trailing_365d_revenue_usd": 22027950,
+        "trailing_30d_revenue_usd": 1277371,
+        "trailing_365d_tev_usd": 19825155,
+        "trailing_30d_tev_usd": 1652096.25
       }
     },
     "hype": {
@@ -320,7 +320,7 @@
       "tevStatus": "active",
       "tev_yield_percent": 12.42,
       "market_cap_usd": 7368065201,
-      "tvl": 4472101407,
+      "tvl": 4496687732,
       "tevRatio": 1,
       "earning_yield_percent": 14.35,
       "tevRatioNote": "回购销毁 - Assistance Fund 自动将费用换成 HYPE 并永久移除"
@@ -337,15 +337,15 @@
       },
       "tevStatus": "none",
       "tev_yield_percent": 0,
-      "market_cap_usd": 116563391.51,
-      "tvl": 1114037185.33715,
+      "market_cap_usd": 115636298.26,
+      "tvl": 1099942269.57524,
       "tevRatio": 0,
       "earning_yield_percent": 20.3,
       "tevRatioNote": "治理代币 - MEV 收益流向 JitoSOL，JTO 用于治理",
       "metrics": {
-        "trailing_365d_revenue_usd": 37696445,
-        "trailing_30d_revenue_usd": 389539,
-        "current_market_cap_usd": 116563391.51,
+        "trailing_365d_revenue_usd": 37702930,
+        "trailing_30d_revenue_usd": 396024,
+        "current_market_cap_usd": 115636298.26,
         "trailing_365d_tev_usd": 0,
         "trailing_30d_tev_usd": 0
       }
@@ -363,7 +363,7 @@
       "tevStatus": "partial",
       "tev_yield_percent": 0,
       "market_cap_usd": 374372624,
-      "tvl": 3126197201.921207,
+      "tvl": 3117678037.6912746,
       "tevRatio": 0,
       "earning_yield_percent": 0,
       "tevRatioNote": "未确认 — 声称有 staking 分红但透明度极低"
@@ -380,15 +380,15 @@
       },
       "tevStatus": "none",
       "tev_yield_percent": 0,
-      "market_cap_usd": 78958001.82,
-      "tvl": 2087743444,
+      "market_cap_usd": 77083933.33,
+      "tvl": 2081855460,
       "tevRatio": 0,
       "earning_yield_percent": 21.54,
       "tevRatioNote": "无 TEV — KMNO staking 仅提供 farming 奖励加成（boost），非协议收入分配。Season 奖励来自代币国库排放（激励），不是 fee distribution",
       "metrics": {
-        "trailing_365d_revenue_usd": 19648293,
-        "trailing_30d_revenue_usd": 780090,
-        "current_market_cap_usd": 78958001.82,
+        "trailing_365d_revenue_usd": 19571123,
+        "trailing_30d_revenue_usd": 775730,
+        "current_market_cap_usd": 77083933.33,
         "trailing_365d_tev_usd": 0,
         "trailing_30d_tev_usd": 0
       }
@@ -405,15 +405,15 @@
       },
       "tevStatus": "none",
       "tev_yield_percent": 0,
-      "market_cap_usd": 243134307.43,
-      "tvl": 19080954445.12248,
+      "market_cap_usd": 248245378.58,
+      "tvl": 18719259031.585644,
       "tevRatio": 0,
       "earning_yield_percent": 29.49,
       "tevRatioNote": "无 - LDO 仅为治理代币，不分享协议收入",
       "metrics": {
         "trailing_365d_revenue_usd": 78738936,
         "trailing_30d_revenue_usd": 4000747,
-        "current_market_cap_usd": 243134307.43,
+        "current_market_cap_usd": 248245378.58,
         "trailing_365d_tev_usd": 0,
         "trailing_30d_tev_usd": 0
       }
@@ -430,13 +430,13 @@
       },
       "tevStatus": "active",
       "tev_yield_percent": 1.18,
-      "market_cap_usd": 263472389.13,
-      "tvl": 2191592372.4440255,
+      "market_cap_usd": 261325863.01,
+      "tvl": 2155330354.5381885,
       "tevRatio": 0.25,
       "earning_yield_percent": 2.92,
       "tevRatioNote": "回购分配 - 25% 协议收入回购 SYRUP",
       "metrics": {
-        "current_market_cap_usd": 263472389.13,
+        "current_market_cap_usd": 261325863.01,
         "trailing_365d_revenue_usd": 10252044,
         "trailing_30d_revenue_usd": 1110304,
         "trailing_365d_tev_usd": 2050408.8,
@@ -473,13 +473,13 @@
       },
       "tevStatus": "none",
       "tev_yield_percent": 0,
-      "market_cap_usd": 795345571.06,
-      "tvl": 6718254455,
+      "market_cap_usd": 787682738.93,
+      "tvl": 6673076707,
       "tevRatio": 0,
       "earning_yield_percent": 0,
       "tevRatioNote": "纯治理代币 - MORPHO 目前仅用于治理投票",
       "metrics": {
-        "current_market_cap_usd": 795345571.06,
+        "current_market_cap_usd": 787682738.93,
         "trailing_365d_revenue_usd": 0,
         "trailing_30d_revenue_usd": 0,
         "trailing_365d_tev_usd": 0,
@@ -516,17 +516,17 @@
       },
       "tevStatus": "active",
       "tev_yield_percent": 6.33,
-      "market_cap_usd": 457849338.92,
-      "tvl": 2021050531,
+      "market_cap_usd": 452678630.93,
+      "tvl": 2021041942,
       "tevRatio": 0.15,
       "earning_yield_percent": 22.01,
       "tevRatioNote": "回购销毁 - 协议收入 15% 用于 CAKE 回购销毁（veCAKE 分红已结束）",
       "metrics": {
-        "current_market_cap_usd": 457849338.92,
-        "trailing_365d_revenue_usd": 110980542,
-        "trailing_30d_revenue_usd": 3364870,
-        "trailing_365d_tev_usd": 64368714.35999999,
-        "trailing_30d_tev_usd": 5364059.529999999
+        "current_market_cap_usd": 452678630.93,
+        "trailing_365d_revenue_usd": 110982270,
+        "trailing_30d_revenue_usd": 3366598,
+        "trailing_365d_tev_usd": 64369716.599999994,
+        "trailing_30d_tev_usd": 5364143.05
       }
     },
     "pendle": {
@@ -541,17 +541,17 @@
       },
       "tevStatus": "active",
       "tev_yield_percent": 5.2,
-      "market_cap_usd": 212049696.99,
-      "tvl": 2120647045.5793169,
+      "market_cap_usd": 210625251.54,
+      "tvl": 2101422448.9938843,
       "tevRatio": 0.8,
       "earning_yield_percent": 18.15,
       "tevRatioNote": "回购+分红 - 80% 协议收入转化为 PENDLE 回购，分配给 sPENDLE 持有者",
       "metrics": {
-        "current_market_cap_usd": 212049696.99,
-        "trailing_365d_revenue_usd": 34498792,
-        "trailing_30d_revenue_usd": 1014000,
-        "trailing_365d_tev_usd": 27599033.6,
-        "trailing_30d_tev_usd": 2299919.466666667
+        "current_market_cap_usd": 210625251.54,
+        "trailing_365d_revenue_usd": 34500921,
+        "trailing_30d_revenue_usd": 1016129,
+        "trailing_365d_tev_usd": 27600736.8,
+        "trailing_30d_tev_usd": 2300061.4
       }
     },
     "sky": {
@@ -566,17 +566,17 @@
       },
       "tevStatus": "active",
       "tev_yield_percent": 6.21,
-      "market_cap_usd": 1786488438.97,
-      "tvl": 7104993883.4457035,
+      "market_cap_usd": 1826971855.46,
+      "tvl": 6736748820.512234,
       "tevRatio": 0.7,
       "earning_yield_percent": 15.62,
       "tevRatioNote": "回购 - Smart Burn Engine 使用协议盈余回购 MKR 并添加流动性",
       "metrics": {
-        "current_market_cap_usd": 1786488438.97,
+        "current_market_cap_usd": 1826971855.46,
         "trailing_365d_revenue_usd": 249851733,
         "trailing_30d_revenue_usd": 17360753,
-        "trailing_365d_tev_usd": 110940932.060037,
-        "trailing_30d_tev_usd": 9245077.67166975,
+        "trailing_365d_tev_usd": 113454952.224066,
+        "trailing_30d_tev_usd": 9454579.3520055,
         "trailing_365d_holders_revenue_usd": 140791474,
         "trailing_30d_holders_revenue_usd": 8264570
       }
@@ -593,15 +593,15 @@
       },
       "tevStatus": "none",
       "tev_yield_percent": 0,
-      "market_cap_usd": 53161594.91,
-      "tvl": 4737007782.1897,
+      "market_cap_usd": 53325514.73,
+      "tvl": 4676800949.9427395,
       "tevRatio": 0,
       "earning_yield_percent": 46.77,
       "tevRatioNote": "治理代币 - SPK 用于 Spark SubDAO 治理，收入目前流向 Sky 主 DAO",
       "metrics": {
-        "trailing_365d_revenue_usd": 23342925,
-        "trailing_30d_revenue_usd": 1434961,
-        "current_market_cap_usd": 53161594.91,
+        "trailing_365d_revenue_usd": 23343830,
+        "trailing_30d_revenue_usd": 1435866,
+        "current_market_cap_usd": 53325514.73,
         "trailing_365d_tev_usd": 0,
         "trailing_30d_tev_usd": 0
       }
@@ -619,7 +619,7 @@
       "tevStatus": "active",
       "tev_yield_percent": 1.47,
       "market_cap_usd": 2393472958,
-      "tvl": 3132124027,
+      "tvl": 3131321066,
       "tevRatio": 1,
       "earning_yield_percent": 1.47,
       "tevRatioNote": "协议费 + Unichain Sequencer 收入 → Firepit 销毁 UNI"
