@@ -12,46 +12,59 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../indicators/css/common.css">
   <style>
-    .filter-bar { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; align-items: center; }
-    .filter-btn { padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border); background: var(--bg-secondary); color: var(--text-secondary); font-size: 13px; cursor: pointer; transition: all 0.2s; }
-    .filter-btn:hover { border-color: var(--border-hover); color: var(--text-primary); }
-    .filter-btn.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
-    .filter-btn.tev-active { background: var(--danger-dim); border-color: var(--danger); color: var(--danger); }
-    
-    .proposal-list { display: flex; flex-direction: column; gap: 12px; }
-    
-    .proposal-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.2s; }
-    .proposal-card:hover { border-color: var(--border-hover); background: var(--bg-tertiary); }
-    .proposal-card.tev-related { border-left: 3px solid var(--danger); }
-    
-    .proposal-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
-    .proposal-protocol { font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-dim); padding: 2px 10px; border-radius: 12px; white-space: nowrap; }
-    .proposal-source { font-size: 11px; color: var(--text-tertiary); background: var(--bg-tertiary); padding: 2px 8px; border-radius: 8px; }
-    
-    .proposal-title { font-size: 15px; font-weight: 500; color: var(--text-primary); line-height: 1.5; margin-bottom: 8px; }
-    .proposal-title a { color: inherit; text-decoration: none; }
-    .proposal-title a:hover { color: var(--accent); }
-    
-    .proposal-meta { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-    .proposal-meta span { font-size: 12px; color: var(--text-tertiary); }
-    .proposal-status { padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 500; }
-    .proposal-status.active { background: var(--accent-dim); color: var(--accent); }
-    .proposal-status.open { background: var(--blue-dim); color: var(--blue); }
-    .proposal-status.discussion { background: var(--warning-dim); color: var(--warning); }
-    .proposal-status.closed { background: var(--bg-tertiary); color: var(--text-tertiary); }
-    
-    .tev-badge { background: var(--danger-dim); color: var(--danger); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 8px; }
-    .tev-keywords { font-size: 11px; color: var(--text-tertiary); }
-    
+    /* Stats */
     .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
     .mini-stat { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; }
     .mini-stat .label { font-size: 12px; color: var(--text-tertiary); margin-bottom: 4px; }
     .mini-stat .value { font-size: 24px; font-weight: 700; color: var(--text-primary); }
     .mini-stat .value.tev { color: var(--danger); }
     .mini-stat .value.green { color: var(--accent); }
-    
-    .empty-state { text-align: center; padding: 60px 20px; color: var(--text-tertiary); }
     .updated-at { font-size: 12px; color: var(--text-tertiary); text-align: right; margin-bottom: 16px; }
+
+    /* Protocol Grid */
+    .protocol-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .protocol-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.2s; position: relative; }
+    .protocol-card:hover { border-color: var(--border-hover); background: var(--bg-tertiary); transform: translateY(-2px); }
+    .protocol-card.has-tev { border-left: 3px solid var(--danger); }
+    .protocol-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .protocol-name { font-size: 18px; font-weight: 700; color: var(--text-primary); }
+    .protocol-count { font-size: 13px; color: var(--text-secondary); background: var(--bg-tertiary); padding: 2px 10px; border-radius: 12px; }
+    .protocol-sources { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+    .source-tag { font-size: 11px; color: var(--text-tertiary); background: var(--bg-primary); padding: 2px 8px; border-radius: 6px; border: 1px solid var(--border); }
+    .protocol-preview { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+    .protocol-preview .tev-hint { color: var(--danger); font-weight: 500; font-size: 12px; }
+    .protocol-no-proposals { color: var(--text-tertiary); font-size: 13px; font-style: italic; }
+
+    /* Detail View */
+    .detail-view { display: none; }
+    .detail-view.active { display: block; }
+    .grid-view.hidden { display: none; }
+    
+    .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-secondary); cursor: pointer; margin-bottom: 20px; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-secondary); transition: all 0.2s; }
+    .back-btn:hover { color: var(--text-primary); border-color: var(--border-hover); }
+    
+    .detail-header { margin-bottom: 24px; }
+    .detail-title { font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .detail-subtitle { font-size: 13px; color: var(--text-tertiary); }
+    
+    .proposal-list { display: flex; flex-direction: column; gap: 12px; }
+    .proposal-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.2s; }
+    .proposal-card:hover { border-color: var(--border-hover); background: var(--bg-tertiary); }
+    .proposal-card.tev-related { border-left: 3px solid var(--danger); }
+    .proposal-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+    .proposal-source { font-size: 11px; color: var(--text-tertiary); background: var(--bg-tertiary); padding: 2px 8px; border-radius: 8px; }
+    .proposal-title { font-size: 15px; font-weight: 500; color: var(--text-primary); line-height: 1.5; margin-bottom: 8px; }
+    .proposal-title a { color: inherit; text-decoration: none; }
+    .proposal-title a:hover { color: var(--accent); }
+    .proposal-meta { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .proposal-meta span { font-size: 12px; color: var(--text-tertiary); }
+    .proposal-status { padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 500; }
+    .proposal-status.active { background: var(--accent-dim); color: var(--accent); }
+    .proposal-status.open { background: var(--blue-dim); color: var(--blue); }
+    .proposal-status.discussion { background: var(--warning-dim); color: var(--warning); }
+    .tev-badge { background: var(--danger-dim); color: var(--danger); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 8px; }
+    .tev-keywords { font-size: 11px; color: var(--text-tertiary); }
+    .empty-state { text-align: center; padding: 60px 20px; color: var(--text-tertiary); }
   </style>
 </head>
 <body>
@@ -91,81 +104,135 @@
         </div>
         <div class="mini-stat">
           <div class="label">监控协议</div>
-          <div class="value" id="stat-protocols">19</div>
+          <div class="value" id="stat-protocols">—</div>
         </div>
         <div class="mini-stat">
           <div class="label">数据源</div>
-          <div class="value" id="stat-sources">3</div>
+          <div class="value" id="stat-sources">—</div>
         </div>
       </div>
 
-      <div class="filter-bar" id="filter-bar">
-        <button class="filter-btn active" data-filter="all">全部</button>
-        <button class="filter-btn tev-active" data-filter="tev" style="background:transparent;">⚠️ TEV 相关</button>
-        <button class="filter-btn" data-filter="snapshot">Snapshot</button>
-        <button class="filter-btn" data-filter="cosmos">dYdX</button>
-        <button class="filter-btn" data-filter="github">BNB BEP</button>
+      <!-- Protocol Grid View -->
+      <div class="grid-view" id="grid-view">
+        <div class="protocol-grid" id="protocol-grid">
+          <div class="empty-state">加载中...</div>
+        </div>
       </div>
 
-      <div class="proposal-list" id="proposal-list">
-        <div class="empty-state">加载中...</div>
+      <!-- Protocol Detail View -->
+      <div class="detail-view" id="detail-view">
+        <div class="back-btn" id="back-btn">← 返回协议列表</div>
+        <div class="detail-header">
+          <div class="detail-title" id="detail-title"></div>
+          <div class="detail-subtitle" id="detail-subtitle"></div>
+        </div>
+        <div class="proposal-list" id="proposal-list"></div>
       </div>
     </div>
   </main>
 
   <script>
-    let allProposals = [];
-    let currentFilter = 'all';
+    let allData = {};
+    let protocolMap = {};
+
+    // Protocol display config
+    const PROTOCOL_ORDER = [
+      'Aave DAO', 'Uniswap', 'Curve', 'dYdX', 'GMX', 'Sky (MakerDAO)', 
+      'PancakeSwap', 'Pendle', 'ether.fi', 'Compound', 'Lido', 'Morpho',
+      'Spark', 'Ethena', 'Maple', 'EigenLayer', 'Fluid', 'BNB Chain'
+    ];
 
     async function loadData() {
       try {
         const resp = await fetch('../data/governance.json');
-        const data = await resp.json();
+        allData = await resp.json();
         
-        document.getElementById('stat-total').textContent = data.total;
-        document.getElementById('stat-tev').textContent = data.tev_related;
+        // Stats
+        document.getElementById('stat-total').textContent = allData.total;
+        document.getElementById('stat-tev').textContent = allData.tev_related;
         
-        const protocols = new Set(data.proposals.map(p => p.protocol));
-        document.getElementById('stat-protocols').textContent = protocols.size;
-        
-        const sources = new Set(data.proposals.map(p => p.source));
-        document.getElementById('stat-sources').textContent = sources.size;
-        
-        const updated = new Date(data.updated_at);
+        const updated = new Date(allData.updated_at);
         document.getElementById('updated-at').textContent = 
           `最后更新: ${updated.toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}`;
         
-        allProposals = data.proposals;
-        renderProposals();
+        // Group by protocol
+        protocolMap = {};
+        for (const p of allData.proposals) {
+          const key = p.protocol;
+          if (!protocolMap[key]) {
+            protocolMap[key] = { name: key, proposals: [], sources: new Set(), hasTev: false };
+          }
+          protocolMap[key].proposals.push(p);
+          protocolMap[key].sources.add(p.source);
+          if (p.tev_related) protocolMap[key].hasTev = true;
+        }
+        
+        document.getElementById('stat-protocols').textContent = Object.keys(protocolMap).length;
+        const allSources = new Set(allData.proposals.map(p => p.source));
+        document.getElementById('stat-sources').textContent = allSources.size;
+        
+        renderGrid();
       } catch (e) {
-        document.getElementById('proposal-list').innerHTML = 
+        document.getElementById('protocol-grid').innerHTML = 
           '<div class="empty-state">数据加载失败，请稍后刷新</div>';
       }
     }
 
-    function renderProposals() {
+    function renderGrid() {
+      const grid = document.getElementById('protocol-grid');
+      
+      // Sort: has TEV first, then by proposal count
+      const sorted = Object.values(protocolMap).sort((a, b) => {
+        if (a.hasTev !== b.hasTev) return a.hasTev ? -1 : 1;
+        return b.proposals.length - a.proposals.length;
+      });
+      
+      grid.innerHTML = sorted.map(proto => {
+        const tevCount = proto.proposals.filter(p => p.tev_related).length;
+        const latestTitle = proto.proposals[0]?.title?.replace(/^#\s*/, '').substring(0, 60) || '';
+        
+        return `
+          <div class="protocol-card ${proto.hasTev ? 'has-tev' : ''}" onclick="showDetail('${proto.name.replace(/'/g, "\\'")}')">
+            <div class="protocol-card-header">
+              <span class="protocol-name">${proto.name}</span>
+              <span class="protocol-count">${proto.proposals.length} 个提案</span>
+            </div>
+            <div class="protocol-sources">
+              ${Array.from(proto.sources).map(s => `<span class="source-tag">${s}</span>`).join('')}
+            </div>
+            <div class="protocol-preview">
+              ${tevCount > 0 ? `<div class="tev-hint">⚠️ ${tevCount} 个 TEV 相关提案</div>` : ''}
+              ${latestTitle ? `<div style="margin-top:4px;color:var(--text-tertiary);font-size:12px;">最新: ${latestTitle}...</div>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function showDetail(protocolName) {
+      const proto = protocolMap[protocolName];
+      if (!proto) return;
+      
+      document.getElementById('grid-view').classList.add('hidden');
+      document.getElementById('detail-view').classList.add('active');
+      
+      document.getElementById('detail-title').textContent = proto.name;
+      document.getElementById('detail-subtitle').textContent = 
+        `${proto.proposals.length} 个提案 · 数据源: ${Array.from(proto.sources).join(', ')}`;
+      
       const list = document.getElementById('proposal-list');
-      let filtered = allProposals;
       
-      if (currentFilter === 'tev') {
-        filtered = allProposals.filter(p => p.tev_related);
-      } else if (currentFilter === 'snapshot') {
-        filtered = allProposals.filter(p => p.source === 'Snapshot');
-      } else if (currentFilter === 'cosmos') {
-        filtered = allProposals.filter(p => p.source === 'dYdX Cosmos');
-      } else if (currentFilter === 'github') {
-        filtered = allProposals.filter(p => p.source === 'GitHub BEP');
-      }
+      // Sort: TEV first, then by created time
+      const sorted = [...proto.proposals].sort((a, b) => {
+        if (a.tev_related !== b.tev_related) return a.tev_related ? -1 : 1;
+        const ta = typeof a.created === 'number' ? a.created : 0;
+        const tb = typeof b.created === 'number' ? b.created : 0;
+        return tb - ta;
+      });
       
-      if (filtered.length === 0) {
-        list.innerHTML = '<div class="empty-state">暂无匹配的提案</div>';
-        return;
-      }
-      
-      list.innerHTML = filtered.map(p => {
+      list.innerHTML = sorted.map(p => {
         const statusClass = p.status === 'active' ? 'active' : 
-                           p.status === 'open' ? 'open' : 
-                           p.status === 'discussion' ? 'discussion' : 'closed';
+                           p.status === 'open' ? 'open' : 'discussion';
         
         let endText = '';
         if (p.end) {
@@ -196,14 +263,13 @@
           <div class="proposal-card ${p.tev_related ? 'tev-related' : ''}">
             <div class="proposal-header">
               <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-                <span class="proposal-protocol">${p.protocol}</span>
                 <span class="proposal-source">${p.source}</span>
-                ${p.tev_related ? `<span class="tev-badge">⚠️ TEV</span>` : ''}
+                ${p.tev_related ? `<span class="tev-badge">⚠️ TEV 相关</span>` : ''}
               </div>
               <span class="proposal-status ${statusClass}">${p.status}</span>
             </div>
             <div class="proposal-title">
-              <a href="${p.link}" target="_blank" rel="noopener">${p.title.replace(/^#\s*/, '').substring(0, 120)}${p.title.length > 120 ? '...' : ''}</a>
+              <a href="${p.link}" target="_blank" rel="noopener">${p.title.replace(/^#\s*/, '').substring(0, 150)}${p.title.length > 150 ? '...' : ''}</a>
             </div>
             <div class="proposal-meta">
               ${createdText ? `<span>📅 ${createdText}</span>` : ''}
@@ -213,27 +279,19 @@
           </div>
         `;
       }).join('');
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Filter buttons
-    document.getElementById('filter-bar').addEventListener('click', (e) => {
-      const btn = e.target.closest('.filter-btn');
-      if (!btn) return;
-      
-      document.querySelectorAll('.filter-btn').forEach(b => {
-        b.classList.remove('active');
-        b.classList.remove('tev-active');
-      });
-      
-      currentFilter = btn.dataset.filter;
-      if (currentFilter === 'tev') {
-        btn.classList.add('tev-active');
-      } else {
-        btn.classList.add('active');
-      }
-      
-      renderProposals();
-    });
+    function hideDetail() {
+      document.getElementById('grid-view').classList.remove('hidden');
+      document.getElementById('detail-view').classList.remove('active');
+    }
+
+    document.getElementById('back-btn').addEventListener('click', hideDetail);
+    
+    // Handle browser back
+    window.addEventListener('popstate', hideDetail);
 
     loadData();
   </script>
