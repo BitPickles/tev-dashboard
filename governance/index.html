@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <title>治理提案监控 — Crypto3D</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../indicators/css/common.css">
+  <style>
+    .filter-bar { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; align-items: center; }
+    .filter-btn { padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border); background: var(--bg-secondary); color: var(--text-secondary); font-size: 13px; cursor: pointer; transition: all 0.2s; }
+    .filter-btn:hover { border-color: var(--border-hover); color: var(--text-primary); }
+    .filter-btn.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+    .filter-btn.tev-active { background: var(--danger-dim); border-color: var(--danger); color: var(--danger); }
+    
+    .proposal-list { display: flex; flex-direction: column; gap: 12px; }
+    
+    .proposal-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.2s; }
+    .proposal-card:hover { border-color: var(--border-hover); background: var(--bg-tertiary); }
+    .proposal-card.tev-related { border-left: 3px solid var(--danger); }
+    
+    .proposal-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+    .proposal-protocol { font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-dim); padding: 2px 10px; border-radius: 12px; white-space: nowrap; }
+    .proposal-source { font-size: 11px; color: var(--text-tertiary); background: var(--bg-tertiary); padding: 2px 8px; border-radius: 8px; }
+    
+    .proposal-title { font-size: 15px; font-weight: 500; color: var(--text-primary); line-height: 1.5; margin-bottom: 8px; }
+    .proposal-title a { color: inherit; text-decoration: none; }
+    .proposal-title a:hover { color: var(--accent); }
+    
+    .proposal-meta { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .proposal-meta span { font-size: 12px; color: var(--text-tertiary); }
+    .proposal-status { padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 500; }
+    .proposal-status.active { background: var(--accent-dim); color: var(--accent); }
+    .proposal-status.open { background: var(--blue-dim); color: var(--blue); }
+    .proposal-status.discussion { background: var(--warning-dim); color: var(--warning); }
+    .proposal-status.closed { background: var(--bg-tertiary); color: var(--text-tertiary); }
+    
+    .tev-badge { background: var(--danger-dim); color: var(--danger); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 8px; }
+    .tev-keywords { font-size: 11px; color: var(--text-tertiary); }
+    
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
+    .mini-stat { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; }
+    .mini-stat .label { font-size: 12px; color: var(--text-tertiary); margin-bottom: 4px; }
+    .mini-stat .value { font-size: 24px; font-weight: 700; color: var(--text-primary); }
+    .mini-stat .value.tev { color: var(--danger); }
+    .mini-stat .value.green { color: var(--accent); }
+    
+    .empty-state { text-align: center; padding: 60px 20px; color: var(--text-tertiary); }
+    .updated-at { font-size: 12px; color: var(--text-tertiary); text-align: right; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="../" class="logo">
+          <img src="../logo.svg" alt="3D" class="logo-icon">
+          <span class="logo-text">Crypto3D</span>
+        </a>
+        <div class="nav-links">
+          <a href="../">首页</a>
+          <a href="../tev/">TEV</a>
+          <a href="./" class="active" style="color: var(--text-primary);">治理</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="page-header">
+        <h1 class="page-title">🏛️ 治理提案监控</h1>
+        <p class="page-subtitle">TEV 协议治理提案实时追踪，每 4 小时自动更新</p>
+      </div>
+
+      <div class="updated-at" id="updated-at">加载中...</div>
+
+      <div class="stats-row" id="stats-row">
+        <div class="mini-stat">
+          <div class="label">活跃提案</div>
+          <div class="value green" id="stat-total">—</div>
+        </div>
+        <div class="mini-stat">
+          <div class="label">⚠️ TEV 相关</div>
+          <div class="value tev" id="stat-tev">—</div>
+        </div>
+        <div class="mini-stat">
+          <div class="label">监控协议</div>
+          <div class="value" id="stat-protocols">19</div>
+        </div>
+        <div class="mini-stat">
+          <div class="label">数据源</div>
+          <div class="value" id="stat-sources">3</div>
+        </div>
+      </div>
+
+      <div class="filter-bar" id="filter-bar">
+        <button class="filter-btn active" data-filter="all">全部</button>
+        <button class="filter-btn tev-active" data-filter="tev" style="background:transparent;">⚠️ TEV 相关</button>
+        <button class="filter-btn" data-filter="snapshot">Snapshot</button>
+        <button class="filter-btn" data-filter="cosmos">dYdX</button>
+        <button class="filter-btn" data-filter="github">BNB BEP</button>
+      </div>
+
+      <div class="proposal-list" id="proposal-list">
+        <div class="empty-state">加载中...</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let allProposals = [];
+    let currentFilter = 'all';
+
+    async function loadData() {
+      try {
+        const resp = await fetch('../data/governance.json');
+        const data = await resp.json();
+        
+        document.getElementById('stat-total').textContent = data.total;
+        document.getElementById('stat-tev').textContent = data.tev_related;
+        
+        const protocols = new Set(data.proposals.map(p => p.protocol));
+        document.getElementById('stat-protocols').textContent = protocols.size;
+        
+        const sources = new Set(data.proposals.map(p => p.source));
+        document.getElementById('stat-sources').textContent = sources.size;
+        
+        const updated = new Date(data.updated_at);
+        document.getElementById('updated-at').textContent = 
+          `最后更新: ${updated.toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}`;
+        
+        allProposals = data.proposals;
+        renderProposals();
+      } catch (e) {
+        document.getElementById('proposal-list').innerHTML = 
+          '<div class="empty-state">数据加载失败，请稍后刷新</div>';
+      }
+    }
+
+    function renderProposals() {
+      const list = document.getElementById('proposal-list');
+      let filtered = allProposals;
+      
+      if (currentFilter === 'tev') {
+        filtered = allProposals.filter(p => p.tev_related);
+      } else if (currentFilter === 'snapshot') {
+        filtered = allProposals.filter(p => p.source === 'Snapshot');
+      } else if (currentFilter === 'cosmos') {
+        filtered = allProposals.filter(p => p.source === 'dYdX Cosmos');
+      } else if (currentFilter === 'github') {
+        filtered = allProposals.filter(p => p.source === 'GitHub BEP');
+      }
+      
+      if (filtered.length === 0) {
+        list.innerHTML = '<div class="empty-state">暂无匹配的提案</div>';
+        return;
+      }
+      
+      list.innerHTML = filtered.map(p => {
+        const statusClass = p.status === 'active' ? 'active' : 
+                           p.status === 'open' ? 'open' : 
+                           p.status === 'discussion' ? 'discussion' : 'closed';
+        
+        let endText = '';
+        if (p.end) {
+          if (typeof p.end === 'number' && p.end > 0) {
+            const endDate = new Date(p.end * 1000);
+            const now = new Date();
+            const hoursLeft = Math.round((endDate - now) / 3600000);
+            if (hoursLeft > 0 && hoursLeft < 168) {
+              endText = `⏰ ${hoursLeft}h 后截止`;
+            } else if (hoursLeft > 0) {
+              endText = `截止: ${endDate.toLocaleDateString('zh-CN')}`;
+            }
+          } else if (typeof p.end === 'string' && p.end.length > 0) {
+            endText = `截止: ${p.end.substring(0, 10)}`;
+          }
+        }
+        
+        let createdText = '';
+        if (p.created) {
+          if (typeof p.created === 'number' && p.created > 0) {
+            createdText = new Date(p.created * 1000).toLocaleDateString('zh-CN');
+          } else if (typeof p.created === 'string') {
+            createdText = p.created.substring(0, 10);
+          }
+        }
+        
+        return `
+          <div class="proposal-card ${p.tev_related ? 'tev-related' : ''}">
+            <div class="proposal-header">
+              <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+                <span class="proposal-protocol">${p.protocol}</span>
+                <span class="proposal-source">${p.source}</span>
+                ${p.tev_related ? `<span class="tev-badge">⚠️ TEV</span>` : ''}
+              </div>
+              <span class="proposal-status ${statusClass}">${p.status}</span>
+            </div>
+            <div class="proposal-title">
+              <a href="${p.link}" target="_blank" rel="noopener">${p.title.replace(/^#\s*/, '').substring(0, 120)}${p.title.length > 120 ? '...' : ''}</a>
+            </div>
+            <div class="proposal-meta">
+              ${createdText ? `<span>📅 ${createdText}</span>` : ''}
+              ${endText ? `<span>${endText}</span>` : ''}
+              ${p.tev_keywords && p.tev_keywords.length > 0 ? `<span class="tev-keywords">关键词: ${p.tev_keywords.join(', ')}</span>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Filter buttons
+    document.getElementById('filter-bar').addEventListener('click', (e) => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('active');
+        b.classList.remove('tev-active');
+      });
+      
+      currentFilter = btn.dataset.filter;
+      if (currentFilter === 'tev') {
+        btn.classList.add('tev-active');
+      } else {
+        btn.classList.add('active');
+      }
+      
+      renderProposals();
+    });
+
+    loadData();
+  </script>
+</body>
+</html>
