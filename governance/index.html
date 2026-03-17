@@ -157,6 +157,20 @@
         
         // Group by protocol
         protocolMap = {};
+        
+        // First, init all monitored protocols from metadata
+        if (allData.protocols_meta) {
+          for (const [name, meta] of Object.entries(allData.protocols_meta)) {
+            protocolMap[name] = { 
+              name, proposals: [], 
+              sources: new Set(meta.sources || []), 
+              hasTev: false,
+              govType: meta.governance_type || 'unknown'
+            };
+          }
+        }
+        
+        // Then fill with actual proposals
         for (const p of allData.proposals) {
           const key = p.protocol;
           if (!protocolMap[key]) {
@@ -167,7 +181,7 @@
           if (p.tev_related) protocolMap[key].hasTev = true;
         }
         
-        document.getElementById('stat-protocols').textContent = Object.keys(protocolMap).length;
+        document.getElementById('stat-protocols').textContent = allData.monitored_protocols || Object.keys(protocolMap).length;
         const allSources = new Set(allData.proposals.map(p => p.source));
         document.getElementById('stat-sources').textContent = allSources.size;
         
@@ -202,7 +216,8 @@
             </div>
             <div class="protocol-preview">
               ${tevCount > 0 ? `<div class="tev-hint">⚠️ ${tevCount} 个 TEV 相关提案</div>` : ''}
-              ${latestTitle ? `<div style="margin-top:4px;color:var(--text-tertiary);font-size:12px;">最新: ${latestTitle}...</div>` : ''}
+              ${latestTitle ? `<div style="margin-top:4px;color:var(--text-tertiary);font-size:12px;">最新: ${latestTitle}...</div>` : 
+                `<div class="protocol-no-proposals">暂无活跃提案</div>`}
             </div>
           </div>
         `;

@@ -1,8 +1,768 @@
 {
-  "updated_at": "2026-03-17T16:55:50.287527+00:00",
-  "total": 16,
-  "tev_related": 7,
+  "updated_at": "2026-03-17T18:11:27.373466+00:00",
+  "total": 77,
+  "tev_related": 15,
+  "monitored_protocols": 18,
+  "protocols_meta": {
+    "Aave": {
+      "sources": [
+        "Snapshot (aavedao.eth)",
+        "论坛 (governance.aave.com)"
+      ],
+      "governance_type": "snapshot"
+    },
+    "Uniswap": {
+      "sources": [
+        "Snapshot (uniswapgovernance.eth)",
+        "论坛 (gov.uniswap.org)"
+      ],
+      "governance_type": "snapshot"
+    },
+    "Curve": {
+      "sources": [
+        "Snapshot (curve.eth)",
+        "论坛 (gov.curve.finance)"
+      ],
+      "governance_type": "snapshot"
+    },
+    "GMX": {
+      "sources": [
+        "Snapshot (gmx.eth)"
+      ],
+      "governance_type": "snapshot"
+    },
+    "PancakeSwap": {
+      "sources": [
+        "Snapshot (cakevote.eth)"
+      ],
+      "governance_type": "snapshot"
+    },
+    "Lido": {
+      "sources": [
+        "Snapshot (lido-snapshot.eth)",
+        "论坛 (research.lido.fi)"
+      ],
+      "governance_type": "snapshot"
+    },
+    "Morpho": {
+      "sources": [
+        "Snapshot (morpho.eth)",
+        "论坛 (forum.morpho.org)"
+      ],
+      "governance_type": "snapshot"
+    },
+    "Compound": {
+      "sources": [
+        "Snapshot (comp-vote.eth)"
+      ],
+      "governance_type": "snapshot"
+    },
+    "ether.fi": {
+      "sources": [
+        "Snapshot (etherfi-dao.eth)"
+      ],
+      "governance_type": "snapshot"
+    },
+    "Ethena": {
+      "sources": [
+        "Snapshot (ethenagovernance.eth)"
+      ],
+      "governance_type": "snapshot"
+    },
+    "Maple": {
+      "sources": [
+        "Snapshot (maple.eth)"
+      ],
+      "governance_type": "snapshot"
+    },
+    "Spark": {
+      "sources": [
+        "Snapshot (sparkfi.eth)"
+      ],
+      "governance_type": "snapshot"
+    },
+    "Pendle": {
+      "sources": [
+        "Snapshot (sdpendle.eth)"
+      ],
+      "governance_type": "snapshot"
+    },
+    "EigenLayer": {
+      "sources": [
+        "Snapshot (eigenlayer1.eth)"
+      ],
+      "governance_type": "snapshot"
+    },
+    "Fluid": {
+      "sources": [
+        "Snapshot (fluiddao.eth)"
+      ],
+      "governance_type": "snapshot"
+    },
+    "dYdX": {
+      "sources": [
+        "Cosmos Gov API",
+        "论坛 (dydx.forum)"
+      ],
+      "governance_type": "cosmos"
+    },
+    "BNB Chain": {
+      "sources": [
+        "GitHub BEPs"
+      ],
+      "governance_type": "github"
+    },
+    "Sky (MakerDAO)": {
+      "sources": [
+        "Discourse 论坛"
+      ],
+      "governance_type": "discourse"
+    }
+  },
   "proposals": [
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[ARFC] Aave <> Chainlink SVR. Multi-network expansion",
+      "status": "pending",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0xc230fa0a74af2a064ca8c908d0edd61a23ad99dba6c73ec06dbd819fe766269a",
+      "created": 1773755532,
+      "end": 1774101132,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[TEMP CHECK] Aave V4 Licensing",
+      "status": "active",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0xeb59bf25e0e5391e9d145e12e62a661d6256cac94e5900f4206d5f8288facb89",
+      "created": 1773585860,
+      "end": 1773931460,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[ARFC] Buyback Program - Budget Adjustment",
+      "status": "closed",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0xe1f47bd04001269432d2e74e76b79747e1458e90b0e3b2cdee7be6495d96e056",
+      "created": 1773239797,
+      "end": 1773585397,
+      "tev_related": true,
+      "tev_keywords": [
+        "buyback"
+      ]
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[TEMP CHECK] Aave V4 Bug Bounty Program on Sherlock",
+      "status": "closed",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0x44d4562d2c0800343a791d42dadc9b025a541f69cbce69e64af5de26fb35f74b",
+      "created": 1773153531,
+      "end": 1773499131,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[ARFC] Safety Module - Reduce  Emissions",
+      "status": "closed",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0xe76461b0936fc892904c1696066b9fa3688e1042078d9c9f06c1a937736a100e",
+      "created": 1772800909,
+      "end": 1773146509,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Uniswap",
+      "title": "[RFC] Governance Process Upgrade: Establishing a Statute of Limitations for Temperature Checks",
+      "status": "closed",
+      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x48e56786fd4ab27c5b089b45be1e914d4a3a0f9d067ac51eff0b26a882e49bde",
+      "created": 1772515720,
+      "end": 1772978400,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Uniswap",
+      "title": "[Temp Check] Protocol Fee Expansion: Eight More Chains and Remaining Mainnet V3 Pools",
+      "status": "closed",
+      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x0242a914c60945d25873d2a98c6abd9f69cb889c6616e27f3c0ab759f9e8d783",
+      "created": 1771446335,
+      "end": 1771878335,
+      "tev_related": true,
+      "tev_keywords": [
+        "fee"
+      ]
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Uniswap",
+      "title": "Strategic Renewal of Gnosis, Linea, and Mantle Deployments",
+      "status": "closed",
+      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x1086839122667be04c0eec25ba224fe4ac1b990383ddfe05b80ce201a06b4abf",
+      "created": 1764690474,
+      "end": 1765122474,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Uniswap",
+      "title": "UNIfication",
+      "status": "closed",
+      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x58d854c1f2468db6b67baab026cca1329c7bcaa5bf834146aa7563a5b45ad09f",
+      "created": 1763431262,
+      "end": 1763863262,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Uniswap",
+      "title": "Uniswap Community Proposal Factory",
+      "status": "closed",
+      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x3836142b24294e065fc9f26e24c70732dce53f15361f50261297bc206acda441",
+      "created": 1762459290,
+      "end": 1762891290,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Curve",
+      "title": "Proposal to add XSTUSD-3CRV to the Gauge Controller",
+      "status": "closed",
+      "link": "https://snapshot.org/#/curve.eth/proposal/0x0eb23ea0b877666ad3ddcd0d7da0114acdfe5ae6390b5628b7509f4338022db5",
+      "created": 1651258413,
+      "end": 1651862400,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Curve",
+      "title": "Add a new base pool implementation as an alternative to 3Pool (DAI/USDC/USDT)",
+      "status": "closed",
+      "link": "https://snapshot.org/#/curve.eth/proposal/0x43c689ef6b7b1772abc033cd87b7caa4159f0dc281f9a159e3930fb00b57d707",
+      "created": 1648926766,
+      "end": 1649185287,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Curve",
+      "title": "Proposal to Launch Curve on Celo",
+      "status": "closed",
+      "link": "https://snapshot.org/#/curve.eth/proposal/0xa11d4d1800b91746afe8ead922eb1d37225a32145adf30bbda0cbdba2ef97bd3",
+      "created": 1647286339,
+      "end": 1647889200,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Curve",
+      "title": "Launch RocketPool rETH pool to promote decentralization.",
+      "status": "closed",
+      "link": "https://snapshot.org/#/curve.eth/proposal/0xc22db2c066d63fb09009b7b289205cd50bb38ce5c935470def23c1a2ead616e2",
+      "created": 1646348499,
+      "end": 1644339600,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Curve",
+      "title": "Did you lock CRV for 4 years?",
+      "status": "closed",
+      "link": "https://snapshot.org/#/curve.eth/proposal/0x026a69e5c9780479332d88fa9779a3cec5a9479d05cc4ca61b1fa9eb099caa73",
+      "created": 1645028535,
+      "end": 1645287723,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "GMX",
+      "title": "GMX Security Committee Season 4",
+      "status": "active",
+      "link": "https://snapshot.org/#/gmx.eth/proposal/0x45992ed6f365cd8ba1cfee5bee26cc117cdb4a18c54d100499ae6741c4cef4ce",
+      "created": 1773671101,
+      "end": 1774276800,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "GMX",
+      "title": "GMX Labs Leadership Update",
+      "status": "closed",
+      "link": "https://snapshot.org/#/gmx.eth/proposal/0x1502634c70531215f88c2c60f3df8f7bc63633e08404493566ebaa9b3d107b8e",
+      "created": 1771917044,
+      "end": 1772440200,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "GMX",
+      "title": "A Strategic Plan to Neutralize CEX Supply Overhang and Restore GMX Price Discovery (Revised)",
+      "status": "closed",
+      "link": "https://snapshot.org/#/gmx.eth/proposal/0xfe665ac5665dd9238049be01de34ee047f8a1513e6b0e0fa25945248589d97f4",
+      "created": 1771510015,
+      "end": 1771941600,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "GMX",
+      "title": "Staker-Driven Trading Fee Discounts & Performance-Based Leaderboard Incentives",
+      "status": "closed",
+      "link": "https://snapshot.org/#/gmx.eth/proposal/0x00e0bf0f66a406eed6ece3165316d537e26562defcb638fc3fa31860d32c62b9",
+      "created": 1770757320,
+      "end": 1771793940,
+      "tev_related": true,
+      "tev_keywords": [
+        "fee"
+      ]
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "GMX",
+      "title": "Dynamic BB&D Adjustment: 5-15% APR Band with Buffer (1-Year Trial)",
+      "status": "closed",
+      "link": "https://snapshot.org/#/gmx.eth/proposal/0xeb043072230235d9762c60737fdec0632f1e1fb5e937b83d1096a1800b44bcc5",
+      "created": 1770642006,
+      "end": 1771092000,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "PancakeSwap",
+      "title": "Proposal to Retain Stablecoin Fees From Stablecoin Pools",
+      "status": "closed",
+      "link": "https://snapshot.org/#/cakevote.eth/proposal/0x05c6b47bcfb5133621c3c1082433713a6cc773255b42fed7f10721fc1d53add3",
+      "created": 1772029533,
+      "end": 1772289633,
+      "tev_related": true,
+      "tev_keywords": [
+        "fee"
+      ]
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "PancakeSwap",
+      "title": "Proposal to Reduce CAKE Token Max Supply",
+      "status": "closed",
+      "link": "https://snapshot.org/#/cakevote.eth/proposal/0xc988547f7b6c435764c840623685b0c2d13ebcc91d1672d39c51b6d14207f9a5",
+      "created": 1768545287,
+      "end": 1768805387,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "PancakeSwap",
+      "title": "test2",
+      "status": "closed",
+      "link": "https://snapshot.org/#/cakevote.eth/proposal/0xbf5d6a284ec28133e675d348215b48a40884a04939fe9c7ebffb868a4d0530da",
+      "created": 1768373756,
+      "end": 1768633856,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "PancakeSwap",
+      "title": "Test",
+      "status": "closed",
+      "link": "https://snapshot.org/#/cakevote.eth/proposal/0xb5e6789b11023a3716c628a60807cf6e48771946292de8d980c5c0d350ed7481",
+      "created": 1768371980,
+      "end": 1768632080,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "PancakeSwap",
+      "title": "🥞 Proposal: Community Syrup Pools 😍",
+      "status": "closed",
+      "link": "https://snapshot.org/#/cakevote.eth/proposal/0xedd107739d857cced16fd57b790416992c46b1c5df65ddeaa6c70c6d28ef91d1",
+      "created": 1756891462,
+      "end": 1757151562,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Lido",
+      "title": "Integrate Lido into the Galaxy Challenge Game 🚀",
+      "status": "closed",
+      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0x0b429993f28a10915f8b233293f29cef37f8b27aa158e1348ae1d0b387c493e7",
+      "created": 1773349169,
+      "end": 1773608369,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Lido",
+      "title": "Delegate Incentivization Program 2.0",
+      "status": "closed",
+      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0x7f28fddde63f492de5c9dce4f992b6e0565328f258f27aa769e50520dfd1be0b",
+      "created": 1772477876,
+      "end": 1773082800,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Lido",
+      "title": "Authorize $5M DAO Treasury Allocation to Lido Earn ETH and USD Vaults",
+      "status": "closed",
+      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0xd32eab4ce41e2754d8a51fdf89bd9f4eb43ecbeb7b60d0e93ce84bc3e4d4c8a3",
+      "created": 1772476940,
+      "end": 1773081900,
+      "tev_related": true,
+      "tev_keywords": [
+        "treasury"
+      ]
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Lido",
+      "title": "Should Stakin continue in the Curated and DVT sets following its acquisition by The Tie?",
+      "status": "closed",
+      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0x60d9126fed2a492a22ef53942a16a7a8a7ec3a576ffc2b2367ebcec8eb6baa30",
+      "created": 1772472011,
+      "end": 1773079200,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Lido",
+      "title": "Rewards Share Committee Reform",
+      "status": "closed",
+      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0xb4a35720b03f4c888c2fb41ab66ed324262d7a5b4696ffc3ee20bb35ebb0df6f",
+      "created": 1768838688,
+      "end": 1769443200,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Morpho",
+      "title": "MIP 128 - Lite App Deprecation Part 2",
+      "status": "closed",
+      "link": "https://snapshot.org/#/morpho.eth/proposal/0x5d5c7080c52fc96fc313acc64004224236f76fafc685027b0d2d021bdd029c83",
+      "created": 1768850089,
+      "end": 1769109289,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Morpho",
+      "title": "MIP 127 - External Grants Rewards Framework",
+      "status": "closed",
+      "link": "https://snapshot.org/#/morpho.eth/proposal/0x85495882d539549cf5ccca39518a74710c38e9bd6502daa96dbf72d172200fd1",
+      "created": 1768850039,
+      "end": 1769109239,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Morpho",
+      "title": "MIP 126 - List MorphoMarketV1AdapterV2 in Morpho Registry",
+      "status": "closed",
+      "link": "https://snapshot.org/#/morpho.eth/proposal/0xc58a4b5a8f24dd7768c77a62195a85d293532d61055b07d2284db3dd263b0c36",
+      "created": 1765775849,
+      "end": 1766035049,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Morpho",
+      "title": "MIP 125 - Lite App Deprecation",
+      "status": "closed",
+      "link": "https://snapshot.org/#/morpho.eth/proposal/0x26416069cb22e9b97a36965d1a4f55ce883b381792386115735e05943f2981bf",
+      "created": 1765255499,
+      "end": 1765514699,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Morpho",
+      "title": "MIP 124 - Vault V2 Specific Incentive Campaign",
+      "status": "closed",
+      "link": "https://snapshot.org/#/morpho.eth/proposal/0x97ad17b025d42665558ce4a570209bf2dfcc0946385ac4c26c0a9911de4a5414",
+      "created": 1765255452,
+      "end": 1765514652,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Compound",
+      "title": "[Temperature Check] Compound Blue Deprecation",
+      "status": "closed",
+      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0x6da835802571f46985e5a6baf59a16acb3753de6046c4c7b54796b9dcc42f56b",
+      "created": 1769805087,
+      "end": 1770408000,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Compound",
+      "title": "Adopt Optimistic Governance for Market Parameter Updates",
+      "status": "closed",
+      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0x32334a7a89b6f2f08cf6975a77270c45e197bb4a2ef68309cb2ef736809f767a",
+      "created": 1764702716,
+      "end": 1765307460,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Compound",
+      "title": "[Temperature Check] Compound V2 Deprecation",
+      "status": "closed",
+      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0x77f768e7b141f3142f242e280d2ba4451a1b9517d54892ab6b918b7061fd225d",
+      "created": 1759188031,
+      "end": 1759793400,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Compound",
+      "title": "Phase 1 of the $COMP Distribution is Live Following a Successful DAO Vote!",
+      "status": "closed",
+      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0x99886c618d8b35a9b4a6098821fcab98880805a9ee03c00e59705fa7fd26afd7",
+      "created": 1755514851,
+      "end": 1755774051,
+      "tev_related": true,
+      "tev_keywords": [
+        "distribution"
+      ]
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Compound",
+      "title": "After a Successful DAO Vote, Compound decided to Launch the 1 Phase of the $COMP Distribution",
+      "status": "closed",
+      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0x69e91b943ebdd65906cd909d196b95dd4e1be266823e76f89c13bf9050632c61",
+      "created": 1755511001,
+      "end": 1755770201,
+      "tev_related": true,
+      "tev_keywords": [
+        "distribution"
+      ]
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "ether.fi",
+      "title": "Ether.Fi DAO Proposal: Treasury Deployment for ETHFI Buy-Back Program",
+      "status": "closed",
+      "link": "https://snapshot.org/#/etherfi-dao.eth/proposal/0xe5b64c773d23c92e62092a713b14cc72a98a46c923e36cf885455118854337b0",
+      "created": 1761861440,
+      "end": 1762207040,
+      "tev_related": true,
+      "tev_keywords": [
+        "treasury"
+      ]
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "ether.fi",
+      "title": "ether.fi Member Rewards",
+      "status": "closed",
+      "link": "https://snapshot.org/#/etherfi-dao.eth/proposal/0xdfba006b3402d0835766b91daab89798f4b7c21ef566a4894858467f1351d127",
+      "created": 1748490215,
+      "end": 1748835815,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "ether.fi",
+      "title": "#11 Ether.fi DAO Proposal - Withdrawal Revenue Buyback Program",
+      "status": "closed",
+      "link": "https://snapshot.org/#/etherfi-dao.eth/proposal/0x6a9bdf1bb43b3e38f7313247464360ab3c637dd54f45c99dfaa085539c0dc693",
+      "created": 1745623036,
+      "end": 1745968636,
+      "tev_related": true,
+      "tev_keywords": [
+        "buyback",
+        "revenue"
+      ]
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "ether.fi",
+      "title": "#10 - ETHFI DAO Proposal: Season 5",
+      "status": "closed",
+      "link": "https://snapshot.org/#/etherfi-dao.eth/proposal/0xcae183807c0ff4ee6afc5c97a5d6906bd785bce83af05818c8aafd9969c16f07",
+      "created": 1738033345,
+      "end": 1738378945,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "ether.fi",
+      "title": "#9 - Proposal: Diversification of ETHFI DAO Treasury through Investment in Real-World Assets",
+      "status": "closed",
+      "link": "https://snapshot.org/#/etherfi-dao.eth/proposal/0xae430909dc1fb6d57a692de3004c331aa5c52541b5bff3bece4b92d77bde1356",
+      "created": 1734975713,
+      "end": 1735321313,
+      "tev_related": true,
+      "tev_keywords": [
+        "treasury"
+      ]
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Ethena",
+      "title": "Ethena Risk Committee Elections - Fourth Term",
+      "status": "closed",
+      "link": "https://snapshot.org/#/ethenagovernance.eth/proposal/0x8ee7d1115c3579981a68debf6d2ec393e4a30832e0a97ed79edd8e49001d658c",
+      "created": 1770125083,
+      "end": 1770643483,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Ethena",
+      "title": "Proposal: Reduction of Risk Committee members from 5 to 3",
+      "status": "closed",
+      "link": "https://snapshot.org/#/ethenagovernance.eth/proposal/0xb3d924c838c192007b4ddd8418b37b12189dcae3aee0ee4cd55d307abfad18f1",
+      "created": 1769619651,
+      "end": 1770051651,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Ethena",
+      "title": "Ethena Risk Committee Elections - Third Term",
+      "status": "closed",
+      "link": "https://snapshot.org/#/ethenagovernance.eth/proposal/0x03a3816070a6f1f355e0bb116cd936cb7dd71e12910d5c9b3585cc1ba1f8fb06",
+      "created": 1753720178,
+      "end": 1754261940,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Ethena",
+      "title": "Proposal: Ethena lending in Aave",
+      "status": "closed",
+      "link": "https://snapshot.org/#/ethenagovernance.eth/proposal/0x98421ae57d4c3d8584b32d247fb9bf92f8912de03aa517abce73f992a0ab01ec",
+      "created": 1747239710,
+      "end": 1747498910,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Ethena",
+      "title": "Updated: Ethena Risk Committee Elections - February 2025",
+      "status": "closed",
+      "link": "https://snapshot.org/#/ethenagovernance.eth/proposal/0x1b10575e5a3567e70d7b527a2f73283bbfe75b01292b9c654a6a52a4d4367c89",
+      "created": 1738608949,
+      "end": 1738954549,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Maple",
+      "title": "MIP-020: H1 2026 SSF Allocation",
+      "status": "closed",
+      "link": "https://snapshot.org/#/maple.eth/proposal/0x4f64d40ee5a2de205969b630f5ceb6e88d8b7bffc9444d58e612c9af67eaf814",
+      "created": 1769107976,
+      "end": 1769453576,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Maple",
+      "title": "MIP-019: Activate the SSF and Sunset Staking",
+      "status": "closed",
+      "link": "https://snapshot.org/#/maple.eth/proposal/0x8151eb49b56770b882e8d9b6affd4a698572fc6eec31001c74bd977f61c84374",
+      "created": 1761597546,
+      "end": 1761943146,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Maple",
+      "title": "MIP-018: Q3 Fee Buyback Increase",
+      "status": "closed",
+      "link": "https://snapshot.org/#/maple.eth/proposal/0x972ba9729fb8089d80e874595eb8f905affe744d8e80e3687bc5f4e82bc9cd61",
+      "created": 1753461777,
+      "end": 1753807377,
+      "tev_related": true,
+      "tev_keywords": [
+        "fee",
+        "buyback"
+      ]
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Maple",
+      "title": "MIP-017: Final MPL Conversion Window and Strategic Use of Unconverted Tokens",
+      "status": "closed",
+      "link": "https://snapshot.org/#/maple.eth/proposal/0x55f9b85129747b3ad984034b23f2b18a025e19adae4ea7b8d4ea0490fb885601",
+      "created": 1747252525,
+      "end": 1747598125,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Maple",
+      "title": "MIP-016: Q2 Fee Buyback Continuation",
+      "status": "closed",
+      "link": "https://snapshot.org/#/maple.eth/proposal/0x4fafeb3fa1a74451da00e2b894b8d4a3844e572fc231d9aeb5d8f8dea4e3e045",
+      "created": 1745857466,
+      "end": 1746462266,
+      "tev_related": true,
+      "tev_keywords": [
+        "fee",
+        "buyback"
+      ]
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Spark",
+      "title": "SAEP-12: Document Savings Liquidity Intent Capability in Spark Savings Artifact Section",
+      "status": "active",
+      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x2df4ef0f5ea492bebd4f741225201be11557e56a686c29227734d3f7c92fd187",
+      "created": 1773677440,
+      "end": 1773936640,
+      "tev_related": false,
+      "tev_keywords": []
+    },
     {
       "source": "Snapshot",
       "protocol": "Spark",
@@ -14,36 +774,174 @@
       "tev_related": true,
       "tev_keywords": [
         "treasury"
-      ],
-      "space_id": "sparkfi.eth"
+      ]
     },
     {
       "source": "Snapshot",
-      "protocol": "GMX",
-      "title": "GMX Security Committee Season 4",
+      "protocol": "Spark",
+      "title": "[Ethereum] Spark Liquidity Layer - Add USAT and USDT transferAsset Rate Limits to Anchorage",
       "status": "active",
-      "link": "https://snapshot.org/#/gmx.eth/proposal/0x45992ed6f365cd8ba1cfee5bee26cc117cdb4a18c54d100499ae6741c4cef4ce",
-      "created": 1773671101,
-      "end": 1774276800,
-      "tev_related": true,
-      "tev_keywords": [
-        "fee"
-      ],
-      "space_id": "gmx.eth"
+      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x71d2b7802b54a579655ca9c1aca12e6256d2ea3dd8951fdfa39cd7da4524c75e",
+      "created": 1773677173,
+      "end": 1773936373,
+      "tev_related": false,
+      "tev_keywords": []
     },
     {
       "source": "Snapshot",
-      "protocol": "Aave DAO",
-      "title": "[TEMP CHECK] Aave V4 Licensing",
+      "protocol": "Spark",
+      "title": "[Ethereum] SparkLend - Upgrade Cap Automators to v1.1",
+      "status": "closed",
+      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0xdc686a9bc77b44cb323c23dce2cc091ebd34d7876d6e1f4413786f17e0739726",
+      "created": 1772466807,
+      "end": 1772726007,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Spark",
+      "title": "[Ethereum] SparkLend - Add Assets to Kill Switch Oracle Mechanism",
+      "status": "closed",
+      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x9aebbe69e8555d03dc97b55475dac08225e157b3fd475d7a29848b8631627367",
+      "created": 1772466726,
+      "end": 1772725926,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Pendle",
+      "title": "Gauge vote PENDLE - 22/1/2026 - 28/1/2026",
+      "status": "closed",
+      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x29f45569b8c0ea45819634e01acdb78cc6c406825c1a0006f7f2ca42cd858b75",
+      "created": 1768445122,
+      "end": 1768921200,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Pendle",
+      "title": "Gauge vote PENDLE - 15/1/2026 - 21/1/2026",
+      "status": "closed",
+      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0xf5d5b2ff44ad18b8abe4942d91f5882194ef984dda07771fce78665073558ec9",
+      "created": 1767840246,
+      "end": 1768316400,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Pendle",
+      "title": "Gauge vote PENDLE - 8/1/2026 - 14/1/2026",
+      "status": "closed",
+      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x37ec9ec8ffb3d46f01adf57666831618adb4fdc8a435a801289d74402cc60199",
+      "created": 1767235900,
+      "end": 1767711600,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Pendle",
+      "title": "Gauge vote PENDLE - 1/1/2026 - 7/1/2026",
+      "status": "closed",
+      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x1fe1220a717887543c94fd850f110a676d55d5f3db75b76f7adf993d6d45ca5e",
+      "created": 1766630564,
+      "end": 1767106800,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Pendle",
+      "title": "Gauge vote PENDLE - 25/12/2025 - 31/12/2025",
+      "status": "closed",
+      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x03dd4f45d713e80e3116733dc871e19dc8b48be35a365ce8bc3c88185bcb1520",
+      "created": 1766025564,
+      "end": 1766502000,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "EigenLayer",
+      "title": "What option Bot select ?",
+      "status": "closed",
+      "link": "https://snapshot.org/#/eigenlayer1.eth/proposal/0x4379e57d0df81ffae18aacaf65ddb9fe78629928beb6d273af73ceb9e8213d0f",
+      "created": 1713787449,
+      "end": 1714219380,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "EigenLayer",
+      "title": "Can we introduce more LST on Eignelayer ?",
+      "status": "closed",
+      "link": "https://snapshot.org/#/eigenlayer1.eth/proposal/0xd9e385f45d03ea7a639b1b828aa4836cdb82b3a9c8340b59e9c15a39d45963cb",
+      "created": 1713787370,
+      "end": 1714046570,
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
+      "title": "Update Governance Parameters on dYdX Chain",
       "status": "active",
-      "link": "https://snapshot.org/#/aavedao.eth/proposal/0xeb59bf25e0e5391e9d145e12e62a661d6256cac94e5900f4206d5f8288facb89",
-      "created": 1773585860,
-      "end": 1773931460,
+      "link": "https://www.mintscan.io/dydx/proposals/367",
+      "created": "2026-03-16T08:41:55.623305094Z",
+      "end": "2026-03-18T08:41:55.623305094Z",
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
+      "title": "Pause Permissionless Market Listings",
+      "status": "closed",
+      "link": "https://www.mintscan.io/dydx/proposals/366",
+      "created": "2026-03-13T22:36:40.193188102Z",
+      "end": "2026-03-14T16:36:40.193188102Z",
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
+      "title": "dYdX Treasury SubDAO Director Change",
+      "status": "closed",
+      "link": "https://www.mintscan.io/dydx/proposals/365",
+      "created": "2026-03-12T13:20:23.591418615Z",
+      "end": "2026-03-14T13:20:23.591418615Z",
       "tev_related": true,
       "tev_keywords": [
-        "fee"
-      ],
-      "space_id": "aavedao.eth"
+        "treasury"
+      ]
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
+      "title": "Update CLOB Pair Tick Size for MANA-USD, MNRY-USD, MOVE-USD, ONDO-USD, ORDI-USD, PEOPLE-USD, POL-USD, POPCAT-USD, PYTH-USD, RAY-USD, RUNE-USD, SEI-USD, SNX-USD, STRK-USD, STX-USD, S-USD, TIA-USD and USELESS-USD markets",
+      "status": "closed",
+      "link": "https://www.mintscan.io/dydx/proposals/364",
+      "created": "2026-03-11T08:39:19.246026659Z",
+      "end": "2026-03-13T08:39:19.246026659Z",
+      "tev_related": false,
+      "tev_keywords": []
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
+      "title": "Update CLOB Pair Tick Size for ETC-USD, ETHFI-USD, FIL-USD, FLOKI-USD, FLR-USD, GRT-USD, HBAR-USD, IOTA-USD, IOTX-USD, IP-USD, JASMY-USD, JTO-USD, KAS-USD, KOMA-USD, LDO-USD and LINEA-USD markets",
+      "status": "closed",
+      "link": "https://www.mintscan.io/dydx/proposals/363",
+      "created": "2026-03-11T08:38:48.723371711Z",
+      "end": "2026-03-13T08:38:48.723371711Z",
+      "tev_related": false,
+      "tev_keywords": []
     },
     {
       "source": "GitHub BEP",
@@ -57,80 +955,6 @@
       "tev_keywords": [
         "fee"
       ]
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BEP-620: Trustless Agents",
-      "status": "open",
-      "link": "https://github.com/bnb-chain/BEPs/pull/639",
-      "created": "2025-12-03T03:58:16",
-      "end": "",
-      "tev_related": true,
-      "tev_keywords": [
-        "fee"
-      ]
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BNB Beacon Chain token recovery. I am completely stuck. Please help!",
-      "status": "open",
-      "link": "https://github.com/bnb-chain/BEPs/issues/605",
-      "created": "2025-08-17T19:40:10",
-      "end": "",
-      "tev_related": true,
-      "tev_keywords": [
-        "fee"
-      ]
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "RentGuard Protocol: Chain-level Rent & Asset Recovery for BSC",
-      "status": "open",
-      "link": "https://github.com/bnb-chain/BEPs/issues/576",
-      "created": "2025-05-20T10:04:46",
-      "end": "",
-      "tev_related": true,
-      "tev_keywords": [
-        "fee"
-      ]
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Spark",
-      "title": "SAEP-12: Document Savings Liquidity Intent Capability in Spark Savings Artifact Section",
-      "status": "active",
-      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x2df4ef0f5ea492bebd4f741225201be11557e56a686c29227734d3f7c92fd187",
-      "created": 1773677440,
-      "end": 1773936640,
-      "tev_related": false,
-      "tev_keywords": [],
-      "space_id": "sparkfi.eth"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Spark",
-      "title": "[Ethereum] Spark Liquidity Layer - Add USAT and USDT transferAsset Rate Limits to Anchorage",
-      "status": "active",
-      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x71d2b7802b54a579655ca9c1aca12e6256d2ea3dd8951fdfa39cd7da4524c75e",
-      "created": 1773677173,
-      "end": 1773936373,
-      "tev_related": false,
-      "tev_keywords": [],
-      "space_id": "sparkfi.eth"
-    },
-    {
-      "source": "dYdX Cosmos",
-      "protocol": "dYdX",
-      "title": "Update Governance Parameters on dYdX Chain",
-      "status": "active",
-      "link": "https://www.mintscan.io/dydx/proposals/367",
-      "created": "2026-03-16T08:41:55.623305094Z",
-      "end": "2026-03-18T08:41:55.623305094Z",
-      "tev_related": false,
-      "tev_keywords": []
     },
     {
       "source": "GitHub BEP",
@@ -172,28 +996,6 @@
       "status": "open",
       "link": "https://github.com/bnb-chain/BEPs/pull/647",
       "created": "2026-01-12T10:10:29",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": []
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BEP-525: fix typo",
-      "status": "open",
-      "link": "https://github.com/bnb-chain/BEPs/pull/635",
-      "created": "2025-11-05T08:41:12",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": []
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "Token Recovery Tool: `JsonRpcEngine: Response has no error or result for request` when confirming receiver (Trust Wallet extension)",
-      "status": "open",
-      "link": "https://github.com/bnb-chain/BEPs/issues/615",
-      "created": "2025-09-03T16:26:24",
       "end": "",
       "tev_related": false,
       "tev_keywords": []
