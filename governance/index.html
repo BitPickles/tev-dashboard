@@ -126,33 +126,31 @@
       const grid = document.getElementById('protocol-grid');
       let html = '';
 
-      // Map TEV names to governance names
-      const nameMap = {};
-      for (const tevP of TEV_ORDER) {
-        // Find matching governance protocol
-        for (const govName of Object.keys(byProtocol)) {
-          if (govName.toLowerCase().includes(tevP.id) || 
-              tevP.name.toLowerCase().includes(govName.toLowerCase()) ||
-              govName.toLowerCase().includes(tevP.name.toLowerCase())) {
-            nameMap[tevP.id] = govName;
-            break;
-          }
-        }
-      }
+      // Map TEV protocol IDs to governance protocol names
+      const TEV_TO_GOV = {
+        'aave': 'Aave', 'bnb': 'BNB Chain', 'compound': 'Compound', 'curve': 'Curve',
+        'dydx': 'dYdX', 'eigenlayer': 'EigenLayer', 'ethena': 'Ethena', 'etherfi': 'ether.fi',
+        'fluid': 'Fluid', 'gmx': 'GMX', 'lido': 'Lido', 'maple': 'Maple Finance',
+        'morpho': 'Morpho', 'pancakeswap': 'PancakeSwap', 'pendle': 'Pendle',
+        'sky': 'Sky (MakerDAO)', 'spark': 'Spark', 'uniswap': 'Uniswap'
+      };
 
       const rendered = new Set();
       
-      // Render in TEV order
+      // Render in TEV order, only protocols that have proposals or are monitored
       for (const tevP of TEV_ORDER) {
-        const govName = nameMap[tevP.id];
+        const govName = TEV_TO_GOV[tevP.id];
         if (!govName) continue;
+        const proposals = byProtocol[govName] || [];
+        // Only show if has proposals or is in metadata
+        if (proposals.length === 0 && !data.protocols_meta?.[govName]) continue;
         rendered.add(govName);
-        html += renderCard(govName, byProtocol[govName] || []);
+        html += renderCard(govName, proposals);
       }
       
-      // Render remaining protocols not in TEV list
+      // Render remaining governance protocols not in TEV (shouldn't happen but just in case)
       for (const [name, proposals] of Object.entries(byProtocol)) {
-        if (!rendered.has(name)) {
+        if (!rendered.has(name) && proposals.length > 0) {
           html += renderCard(name, proposals);
         }
       }
