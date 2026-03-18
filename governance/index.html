@@ -568,9 +568,20 @@
         const ticker = tevInfo?.ticker || '';
         const statusClass = p.status === 'active' ? 'active' : p.status === 'passed' ? 'passed' : 'closed';
         const statusLabel = p.status === 'active' ? '进行中' : p.status === 'passed' ? '已通过' : '已关闭';
-        const title = p.title.replace(/^#\s*/, '');
+        const rawTitle = p.title.replace(/^#\s*/, '');
         const keywords = (p.tev_keywords || []);
-        const summary = p.analysis_zh || p.summary_zh || p.summary_en || '';
+        const fullAnalysis = p.analysis_zh || '';
+
+        // Split analysis_zh: first line = TL;DR title, rest = body
+        let title, summary;
+        if (fullAnalysis) {
+          const parts = fullAnalysis.split(/\n\s*\n/);
+          title = parts[0].trim();
+          summary = parts.slice(1).join('\n\n').trim() || '';
+        } else {
+          title = rawTitle;
+          summary = p.summary_zh || p.summary_en || '';
+        }
 
         const logoHtml = icon
           ? `<img class="feed-logo" src="${icon}" alt="${p.protocol}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="feed-logo-placeholder" style="display:none">${p.protocol.charAt(0)}</div>`
@@ -593,7 +604,7 @@
             </div>
             <div class="feed-proposal-title">${title}</div>
             ${keywords.length > 0 ? `<div class="feed-keywords">${keywords.map(k => `<span class="feed-kw">${k}</span>`).join('')}</div>` : ''}
-            ${summary ? `<div class="feed-summary ${p.analysis_zh ? 'has-analysis' : ''}">${summary}</div>` : ''}
+            ${summary ? `<div class="feed-summary ${fullAnalysis ? 'has-analysis' : ''}">${summary}</div>` : ''}
             <div class="feed-time">
               <span>${timeStr}</span>
               <span class="feed-arrow">→</span>
