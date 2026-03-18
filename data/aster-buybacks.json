@@ -2,14 +2,14 @@
   "protocol": "aster",
   "ticker": "ASTER",
   "total_supply": 1000000000,
-  "updated_at": "2026-03-17T21:04:16.877307",
+  "updated_at": "2026-03-18T21:01:42.722796",
   "summary": {
-    "total_buyback_aster": 176544378,
+    "total_buyback_aster": 176703376,
     "stage14_aster": 142999976,
     "stage14_usd": 214000000,
     "stage5_aster": 19936071,
-    "stage6_aster": 13608331,
-    "total_days": 139,
+    "stage6_aster": 13767329,
+    "total_days": 140,
     "note": "Stage 1-4 为估算 (Cryptopolitan), Stage 5-6 为链上真实数据 (Moralis API)"
   },
   "daily_buybacks": [
@@ -1120,6 +1120,14 @@
     {
       "date": "2026-03-17",
       "aster": 159976.37,
+      "txs": 30,
+      "stage": "stage6",
+      "data_type": "onchain",
+      "source": "moralis"
+    },
+    {
+      "date": "2026-03-18",
+      "aster": 158998.02,
       "txs": 30,
       "stage": "stage6",
       "data_type": "onchain",
