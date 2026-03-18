@@ -75,18 +75,25 @@
   </main>
 
   <script>
-    // TEV sort order (from all-protocols.json)
+    // TEV sort order (from all-protocols.json) - same as TEV page default
     const TEV_ORDER = [];
 
     async function loadData() {
-      // Load TEV order
+      // Load TEV order: yield > 0 first sorted by market cap, then yield = 0 by market cap
       try {
         const tevResp = await fetch('../data/all-protocols.json');
         const tevData = await tevResp.json();
         const protos = tevData.protocols;
-        const sorted = Object.entries(protos).sort((a,b) => ((b[1].tev_yield_percent||0) - (a[1].tev_yield_percent||0)));
+        const sorted = Object.entries(protos).sort((a,b) => {
+          const aYield = a[1].tev_yield_percent || 0;
+          const bYield = b[1].tev_yield_percent || 0;
+          const aHas = aYield > 0 ? 1 : 0;
+          const bHas = bYield > 0 ? 1 : 0;
+          if (bHas !== aHas) return bHas - aHas;
+          return (b[1].market_cap_usd || 0) - (a[1].market_cap_usd || 0);
+        });
         for (const [id, info] of sorted) {
-          TEV_ORDER.push({ id, name: info.name, yield: info.tev_yield_percent || 0 });
+          TEV_ORDER.push({ id, name: info.name, yield: info.tev_yield_percent || 0, mcap: info.market_cap_usd || 0 });
         }
       } catch(e) { console.warn('TEV order load failed', e); }
 
@@ -140,20 +147,20 @@
         const govName = nameMap[tevP.id];
         if (!govName) continue;
         rendered.add(govName);
-        html += renderCard(govName, byProtocol[govName] || [], tevP.yield);
+        html += renderCard(govName, byProtocol[govName] || []);
       }
       
       // Render remaining protocols not in TEV list
       for (const [name, proposals] of Object.entries(byProtocol)) {
         if (!rendered.has(name)) {
-          html += renderCard(name, proposals, 0);
+          html += renderCard(name, proposals);
         }
       }
 
       grid.innerHTML = html || '<div style="text-align:center;color:var(--text-tertiary);padding:40px;">暂无数据</div>';
     }
 
-    function renderCard(name, proposals, tevYield) {
+    function renderCard(name, proposals) {
       const activeCount = proposals.filter(p => p.status === 'active').length;
       const passedCount = proposals.filter(p => p.status === 'passed').length;
       const hasTev = proposals.some(p => p.tev_related);
@@ -165,18 +172,15 @@
            href="protocol.html?name=${slug}">
           <div class="protocol-card-header">
             <span class="protocol-name">${name}</span>
-            <div class="protocol-badges">
-              ${tevYield > 0 ? `<span class="badge badge-yield">${tevYield.toFixed(1)}%</span>` : ''}
-            </div>
+            <span style="font-size:12px;color:var(--text-tertiary);">${proposals.length} 提案</span>
           </div>
           <div class="protocol-badges" style="margin-bottom:8px;">
             ${activeCount > 0 ? `<span class="badge badge-active">${activeCount} 进行中</span>` : ''}
             ${passedCount > 0 ? `<span class="badge badge-passed">${passedCount} 已通过</span>` : ''}
-            ${hasTev ? `<span class="badge badge-tev">⚠️ TEV</span>` : ''}
+            ${hasTev ? `<span class="badge badge-tev">⚠️ TEV 相关</span>` : ''}
           </div>
-          ${latestActive ? `<div class="latest-title">🔵 ${latestActive.title.replace(/^#\s*/,'').substring(0,60)}...</div>` : 
-            proposals.length === 0 ? '<div class="protocol-no-proposals">暂无提案</div>' : 
-            `<div class="latest-title" style="color:var(--text-tertiary)">最近: ${proposals[0].title.replace(/^#\s*/,'').substring(0,60)}...</div>`}
+          ${latestActive ? `<div class="latest-title">🔵 ${latestActive.title.replace(/^#\s*/,'').substring(0,55)}</div>` : 
+            proposals.length === 0 ? '<div class="protocol-no-proposals">暂无提案数据</div>' : ''}
         </a>`;
     }
 
