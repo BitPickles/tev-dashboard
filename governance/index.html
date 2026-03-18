@@ -392,9 +392,12 @@
       color: var(--text-secondary);
       line-height: 1.6;
       display: -webkit-box;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
       overflow: hidden;
+    }
+    .feed-summary.has-analysis {
+      -webkit-line-clamp: 6;
     }
     .feed-time {
       font-size: 11px;
@@ -567,7 +570,7 @@
         const statusLabel = p.status === 'active' ? '进行中' : p.status === 'passed' ? '已通过' : '已关闭';
         const title = p.title.replace(/^#\s*/, '');
         const keywords = (p.tev_keywords || []);
-        const summary = p.summary_zh || p.summary_en || '';
+        const summary = p.analysis_zh || p.summary_zh || p.summary_en || '';
 
         const logoHtml = icon
           ? `<img class="feed-logo" src="${icon}" alt="${p.protocol}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="feed-logo-placeholder" style="display:none">${p.protocol.charAt(0)}</div>`
@@ -590,7 +593,7 @@
             </div>
             <div class="feed-proposal-title">${title}</div>
             ${keywords.length > 0 ? `<div class="feed-keywords">${keywords.map(k => `<span class="feed-kw">${k}</span>`).join('')}</div>` : ''}
-            ${summary ? `<div class="feed-summary">${summary}</div>` : ''}
+            ${summary ? `<div class="feed-summary ${p.analysis_zh ? 'has-analysis' : ''}">${summary}</div>` : ''}
             <div class="feed-time">
               <span>${timeStr}</span>
               <span class="feed-arrow">→</span>
