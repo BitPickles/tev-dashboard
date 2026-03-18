@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-03-18T08:04:20.973608+00:00",
-  "total": 210,
-  "active_count": 11,
-  "passed_count": 199,
-  "tev_related": 60,
+  "updated_at": "2026-03-18T09:21:37.172117+00:00",
+  "total": 205,
+  "active_count": 7,
+  "passed_count": 198,
+  "tev_related": 62,
   "monitored_protocols": 18,
   "protocols_meta": {
     "Aave": {
@@ -116,9 +116,9 @@
     },
     "Sky (MakerDAO)": {
       "sources": [
-        "Discourse 论坛"
+        "Sky Polling Portal"
       ],
-      "governance_type": "discourse"
+      "governance_type": "sky_polling"
     }
   },
   "proposals": [
@@ -2760,7 +2760,7 @@
       "source": "dYdX Cosmos",
       "protocol": "dYdX",
       "title": "Update Governance Parameters on dYdX Chain",
-      "status": "active",
+      "status": "passed",
       "link": "https://www.mintscan.io/dydx/proposals/367",
       "created": "2026-03-16T08:41:55.623305094Z",
       "end": "2026-03-18T08:41:55.623305094Z",
@@ -2876,134 +2876,73 @@
       "summary_zh": "更新 dYdX Chain x/gov 模块的治理参数（此提案已关闭/失效）。"
     },
     {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BEP-673: Hardfork Meta-Pasteur",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/673",
-      "created": "2026-03-06T09:00:49",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "https://github.com/allformless/BEPs/blob/define-Pasteur-beps/BEPs/BEP-673.md",
-      "summary_zh": "BEP-673：Pasteur 硬分叉元提案。定义 BSC Pasteur 硬分叉包含的所有 BEP 升级清单和激活时间表。"
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "update status of mendel beps",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/672",
-      "created": "2026-03-06T07:54:22",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "update status of mendel beps",
-      "summary_zh": "更新 Mendel 硬分叉相关 BEP 的状态标记，将已实施的提案标记为已完成。"
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BAP-671: Agent Task Escrow with Outcome Token Settlement",
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
+      "title": "Atlas Edit Weekly Cycle Proposal - March 16, 2026",
       "status": "active",
-      "link": "https://github.com/bnb-chain/BEPs/pull/671",
-      "created": "2026-03-05T00:38:04",
-      "end": "",
+      "link": "https://vote.makerdao.com/polling/QmZRHXrp",
+      "created": "2026-03-16T16:00:00",
+      "end": "2026-03-19T16:00:00",
       "tev_related": false,
       "tev_keywords": [],
-      "summary_en": "BAP-671: Agent Task Escrow with Outcome Token Settlement",
-      "summary_zh": "BAP-671：AI Agent 任务托管与结果代币结算方案。定义链上 AI Agent 任务的资金托管和基于结果的代币结算机制。"
+      "summary_en": "This Atlas edit proposal 1) authorizes funding for Genesis Agents, 2) adds Allocation Vault parameters for Launch Agent 6 and Launch Agent 7, 3) authorizes investments in ACRDX on Ethereum mainnet, 4) adds Allocation System instances to the Grove Art",
+      "summary_zh": "This Atlas edit proposal 1) authorizes funding for Genesis Agents, 2) 添加s 分配 金库 参数 for Launch Agent 6 and Launch Agent 7, 3) authorizes investments in ACRDX on Ethereum mainnet, 4) 添加s 分配 System instances to the Grove Art"
     },
     {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BEP-670: Short Block Interval Phase Four: 250ms",
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
+      "title": "Atlas Edit Weekly Cycle Proposal - March 9, 2026",
       "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/670",
-      "created": "2026-03-04T07:47:08",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "https://github.com/zlacfzy/BEPs/blob/BEP-670/BEPs/BEP-670.md",
-      "summary_zh": "BEP-670：BSC 短出块时间第四阶段——将出块间隔缩短至 250 毫秒，进一步提升 BSC 链的交易确认速度。"
+      "link": "https://vote.makerdao.com/polling/QmRjnvHa",
+      "created": "2026-03-09T16:00:00",
+      "end": "2026-03-12T16:00:00",
+      "tev_related": true,
+      "tev_keywords": [
+        "buyback"
+      ],
+      "summary_en": "This Atlas Edit 1) reduces SKY buybacks, 2) removes JAAA from Sky Direct Exposure, 3) adds sanctioned locations to Full Block List, 4) updates RRC dashboard references, 5) corrects LayerZero multisig signers, 6) corrects Safe Harbor addresses and par",
+      "summary_zh": "This Atlas Edit 1) 减少s SKY 回购s, 2) 移除s JAAA from Sky Direct Exposure, 3) 添加s sanctioned locations to Full Block List, 4) 更新s RRC dashboard references, 5) corrects LayerZero multisig signers, 6) corrects Safe Harbor 添加resses and par"
     },
     {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BAP-578: Add SHLL Protocol as production reference implementation on BSC Mainnet",
-      "status": "active",
-      "link": "https://github.com/bnb-chain/BEPs/pull/669",
-      "created": "2026-03-04T01:29:23",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Add SHLL Protocol (https://github.com/kledx/shll) as a production reference implementation of BAP-578 NFA on BSC Mainnet (Chain ID 56). SHLL is the first BAP-578 implementation deployed to BSC Mainnet with live agent accounts and real transaction exe",
-      "summary_zh": "申请将 SHLL Protocol 添加为 BAP-578（NFA 非金融账户标准）在 BSC 主网上的首个生产级参考实现，已有实际 Agent 账户和交易执行。"
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BEP-668: BSC Pre-confirmation for Prop AMM",
-      "status": "active",
-      "link": "https://github.com/bnb-chain/BEPs/pull/668",
-      "created": "2026-03-03T07:15:37",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "BEP-668: BSC Pre-confirmation for Prop AMM",
-      "summary_zh": "BEP-668：BSC 预确认机制——为 Prop AMM（比例自动做市商）引入预确认功能，提升 DEX 交易的确定性和速度。"
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BEP-667: Introduce Vote Interval to Relax Fast Finality Consensus Constraint",
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
+      "title": "Atlas Edit Weekly Cycle Proposal - February 23, 2026",
       "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/667",
-      "created": "2026-03-02T07:15:54",
-      "end": "",
+      "link": "https://vote.makerdao.com/polling/QmWXGHpC",
+      "created": "2026-02-23T16:00:00",
+      "end": "2026-02-26T16:00:00",
       "tev_related": false,
       "tev_keywords": [],
-      "summary_en": "https://github.com/zlacfzy/BEPs/blob/BEP_667/BEPs/BEP-667.md",
-      "summary_zh": "BEP-667：引入投票间隔（Vote Interval）机制，放宽快速最终性共识约束，在保持安全性的同时提升验证者效率。"
+      "summary_en": "This Atlas Edit 1) updates references to Amatsu GovOps to Soter Labs, 2) adds Governance Accessibility Reward Instances to the Skybase Artifact, 3) removes references to StarkNet in Safe Harbor documentation, 4) aligns GitHub and Portal versions of t",
+      "summary_zh": "This Atlas Edit 1) 更新s references to Amatsu GovOps to Soter Labs, 2) 添加s 治理 Accessibility 奖励 Instances to the Skybase Artifact, 3) 移除s references to StarkNet in Safe Harbor documentation, 4) aligns GitHub and Portal versions of t"
     },
     {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "Tt",
-      "status": "active",
-      "link": "https://github.com/bnb-chain/BEPs/issues/666",
-      "created": "2026-02-01T11:13:51",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "_Originally posted by @renataveganoriega12-blip in 333_",
-      "summary_zh": "社区帖子转发——非正式治理内容。"
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "feat: support bep-652 analysis doc",
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
+      "title": "Atlas Edit Weekly Cycle Proposal - February 16, 2026",
       "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/665",
-      "created": "2026-01-28T08:52:11",
-      "end": "",
+      "link": "https://vote.makerdao.com/polling/QmcxUENd",
+      "created": "2026-02-16T16:00:00",
+      "end": "2026-02-19T16:00:00",
       "tev_related": false,
       "tev_keywords": [],
-      "summary_en": "feat: support bep-652 analysis doc",
-      "summary_zh": "添加 BEP-652 分析文档支持，为该提案提供详细的技术分析说明。"
+      "summary_en": "This Atlas edit 1) adds additional responsibilities for Aligned Delegates, 2) authorizes the Safe Harbor Agreement, 3) updates risk parameters for Anchorage Digital, 4) clarifies references to Ozone, 5) updates names of Obex Foundation and Developmen",
+      "summary_zh": "This Atlas edit 1) 添加s 添加itional responsibilities for Aligned Delegates, 2) authorizes the Safe Harbor Agreement, 3) 更新s 风险 参数 for Anchorage Digital, 4) clarifies references to Ozone, 5) 更新s names of Obex Foundation and Developmen"
     },
     {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "Fix broken links in BEP322 motivation section",
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
+      "title": "Atlas Edit Weekly Cycle Proposal - February 9, 2026",
       "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/664",
-      "created": "2026-01-27T13:02:21",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Corrected links in the motivation section for clarity.",
-      "summary_zh": "修复 BEP-322 动机（Motivation）章节中的失效链接，提升文档可读性。"
+      "link": "https://vote.makerdao.com/polling/QmPKRsDY",
+      "created": "2026-02-09T16:00:00",
+      "end": "2026-02-12T16:00:00",
+      "tev_related": true,
+      "tev_keywords": [
+        "distribution"
+      ],
+      "summary_en": "This Atlas edit proposal 1) updates the Ecosystem Accord between Sky, Spark, and Grove, 2) builds out basic information for Core Governance Reward Primitive, 3) removes legacy documents for Ranked Delegates, 4) updates the Distribution Reward Instanc",
+      "summary_zh": "This Atlas edit proposal 1) 更新s the Ecosystem Accord between Sky, Spark, and Grove, 2) builds out basic information for Core 治理 奖励 Primitive, 3) 移除s legacy documents for Ranked Delegates, 4) 更新s the 分配 奖励 Instanc"
     }
   ]
 }
