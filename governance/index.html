@@ -72,6 +72,13 @@
     .status-badge.rejected { background: var(--danger-dim); color: var(--danger); }
     .tev-badge { background: var(--danger-dim); color: var(--danger); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 8px; }
     .empty-state { text-align: center; padding: 60px 20px; color: var(--text-tertiary); }
+    .show-more-btn { text-align: center; padding: 12px; color: var(--accent); font-size: 14px; cursor: pointer; border: 1px dashed var(--border); border-radius: 8px; margin-top: 12px; transition: all 0.2s; }
+    .show-more-btn:hover { background: var(--accent-dim); border-color: var(--accent); }
+    .summary-lang { display: flex; gap: 0; margin-bottom: 4px; }
+    .summary-lang span { font-size: 11px; padding: 1px 8px; cursor: pointer; color: var(--text-tertiary); border: 1px solid var(--border); }
+    .summary-lang span:first-child { border-radius: 4px 0 0 4px; }
+    .summary-lang span:last-child { border-radius: 0 4px 4px 0; border-left: none; }
+    .summary-lang span.active { background: var(--bg-tertiary); color: var(--text-primary); }
   </style>
 </head>
 <body>
@@ -218,7 +225,15 @@
           <div class="proposal-title">
             <a href="${p.link}" target="_blank" rel="noopener">${p.title.replace(/^#\s*/,'').substring(0,150)}</a>
           </div>
-          ${p.summary ? `<div class="proposal-summary">${p.summary.substring(0,200)}</div>` : ''}
+          ${p.summary_zh || p.summary_en ? `
+            <div class="proposal-summary">
+              <div class="summary-lang">
+                <span class="active" onclick="switchLang(this,'zh')">中文</span>
+                <span onclick="switchLang(this,'en')">EN</span>
+              </div>
+              <div class="s-zh">${(p.summary_zh||p.summary||'').substring(0,250)}</div>
+              <div class="s-en" style="display:none">${(p.summary_en||p.summary||'').substring(0,250)}</div>
+            </div>` : ''}
           <div class="proposal-meta">
             ${fmtDate(p.created)?`<span>📅 ${fmtDate(p.created)}</span>`:''}
             ${fmtEnd(p.end)?`<span>${fmtEnd(p.end)}</span>`:''}
@@ -242,29 +257,56 @@
         const ta=typeof a.created==='number'?a.created:0, tb=typeof b.created==='number'?b.created:0;
         return tb-ta;
       });
-      const rejected = proto.proposals.filter(p=>p.status==='rejected').sort((a,b)=>{
-        const ta=typeof a.created==='number'?a.created:0, tb=typeof b.created==='number'?b.created:0;
-        return tb-ta;
-      });
 
       let html = '';
       if (active.length) {
+        const showActive = active.slice(0, 5);
+        const moreActive = active.slice(5);
         html += `<div class="section-label">🔵 进行中 <span class="count">(${active.length})</span></div>`;
-        html += '<div class="proposal-list">' + active.map(renderProposal).join('') + '</div>';
+        html += '<div class="proposal-list">' + showActive.map(renderProposal).join('');
+        if (moreActive.length) {
+          html += `<div class="more-proposals" id="more-active" style="display:none">${moreActive.map(renderProposal).join('')}</div>`;
+          html += `<div class="show-more-btn" onclick="toggleMore('active')">展开更多 (${moreActive.length})</div>`;
+        }
+        html += '</div>';
       }
       if (passed.length) {
+        const showPassed = passed.slice(0, 5);
+        const morePassed = passed.slice(5);
         html += `<div class="section-label">✅ 已通过 <span class="count">(${passed.length})</span></div>`;
-        html += '<div class="proposal-list">' + passed.map(renderProposal).join('') + '</div>';
+        html += '<div class="proposal-list">' + showPassed.map(renderProposal).join('');
+        if (morePassed.length) {
+          html += `<div class="more-proposals" id="more-passed" style="display:none">${morePassed.map(renderProposal).join('')}</div>`;
+          html += `<div class="show-more-btn" onclick="toggleMore('passed')">展开更多 (${morePassed.length})</div>`;
+        }
+        html += '</div>';
       }
-      if (rejected.length) {
-        html += `<div class="section-label">❌ 已否决 <span class="count">(${rejected.length})</span></div>`;
-        html += '<div class="proposal-list">' + rejected.map(renderProposal).join('') + '</div>';
-      }
-      if (!active.length && !passed.length && !rejected.length) {
+      if (!active.length && !passed.length) {
         html = '<div class="empty-state">暂无提案数据</div>';
       }
       document.getElementById('detail-content').innerHTML = html;
       window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    function toggleMore(type) {
+      const el = document.getElementById('more-' + type);
+      const btn = el.nextElementSibling;
+      if (el.style.display === 'none') {
+        el.style.display = 'block';
+        btn.textContent = '收起';
+      } else {
+        el.style.display = 'none';
+        const count = el.children.length;
+        btn.textContent = '展开更多 (' + count + ')';
+      }
+    }
+
+    function switchLang(el, lang) {
+      const container = el.closest('.proposal-summary');
+      container.querySelectorAll('.summary-lang span').forEach(s => s.classList.remove('active'));
+      el.classList.add('active');
+      container.querySelector('.s-zh').style.display = lang === 'zh' ? 'block' : 'none';
+      container.querySelector('.s-en').style.display = lang === 'en' ? 'block' : 'none';
     }
 
     document.getElementById('back-btn').addEventListener('click', () => {

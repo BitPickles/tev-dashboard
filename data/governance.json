@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-03-18T04:11:51.502690+00:00",
-  "total": 259,
-  "active_count": 11,
-  "passed_count": 199,
-  "tev_related": 68,
+  "updated_at": "2026-03-18T05:12:41.764787+00:00",
+  "total": 200,
+  "active_count": 7,
+  "passed_count": 193,
+  "tev_related": 60,
   "monitored_protocols": 18,
   "protocols_meta": {
     "Aave": {
@@ -132,7 +132,8 @@
       "end": 1773931460,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This proposal introduces a two-part licensing framework for the canonical Aave V4 repositories: a BUSL–based license for the core codebase, and a Contributor License Agreement (CLA) for anyone who wan"
+      "summary_en": "This proposal introduces a two-part licensing framework for the canonical Aave V4 repositories: a BUSL–based license for the core codebase, and a Contributor License Agreement (CLA) for anyone who wants to contribute to the codebase. The goal is to p",
+      "summary_zh": "本提案 introduces a two-part licensing framework for the canonical Aave V4 repositories: a BUSL–based license for the core codebase, and a Contributor License Agreement (CLA) for anyone who wants to contribute to the codebase. The goal is to p"
     },
     {
       "source": "Snapshot",
@@ -147,7 +148,8 @@
         "fee",
         "buyback"
       ],
-      "summary": "This publication proposes reducing the annual AAVE buyback budget from approximately $50M to $30M ad outlined in the Aave DAO Funding Insights forum post."
+      "summary_en": "This publication proposes reducing the annual AAVE buyback budget from approximately $50M to $30M ad outlined in the Aave DAO Funding Insights forum post.",
+      "summary_zh": "This publication proposes reducing the annual AAVE 回购 预算 from approximately $50M to $30M ad outlined in the Aave DAO Funding Insights forum post."
     },
     {
       "source": "Snapshot",
@@ -159,7 +161,8 @@
       "end": 1773499131,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Aave Labs proposes launching a dedicated Aave V4 bug bounty program on the Sherlock platform. The objective is to add an always-on security reporting channel for Aave V4, with a triage setup designed "
+      "summary_en": "Aave Labs proposes launching a dedicated Aave V4 bug bounty program on the Sherlock platform. The objective is to add an always-on security reporting channel for Aave V4, with a triage setup designed to reduce spam and route high-severity reports wit",
+      "summary_zh": "Aave Labs proposes launching a dedicated Aave V4 bug bounty program on the Sherlock platform. The objective is to 添加 an always-on 安全 reporting channel for Aave V4, with a triage setup designed to 减少 spam and route high-severity reports wit"
     },
     {
       "source": "Snapshot",
@@ -173,7 +176,8 @@
       "tev_keywords": [
         "buyback"
       ],
-      "summary": "The publication proposes implementing the AAVE Emission reduction as presented in the Aave DAO Funding Insights forum post."
+      "summary_en": "The publication proposes implementing the AAVE Emission reduction as presented in the Aave DAO Funding Insights forum post.",
+      "summary_zh": "The publication proposes implementing the AAVE 排放/释放 reduction as presented in the Aave DAO Funding Insights forum post."
     },
     {
       "source": "Snapshot",
@@ -185,7 +189,8 @@
       "end": 1772815797,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This ARFC proposes the deployment of an Aave v3 Instance on X Layer."
+      "summary_en": "This ARFC proposes the deployment of an Aave v3 Instance on X Layer.",
+      "summary_zh": "本提案 proposes the 部署 of an Aave v3 Instance on X Layer."
     },
     {
       "source": "Snapshot",
@@ -197,7 +202,8 @@
       "end": 1772797698,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This TEMP CHECK seeks the community’s input on deploying the Aave Protocol on Monad, a fully EVM-compatible, high-throughput network well-suited to supporting high-frequency DeFi applications."
+      "summary_en": "This TEMP CHECK seeks the community’s input on deploying the Aave Protocol on Monad, a fully EVM-compatible, high-throughput network well-suited to supporting high-frequency DeFi applications.",
+      "summary_zh": "This TEMP CHECK seeks the 社区’s input on 部署ing the Aave Protocol on Monad, a fully EVM-compatible, high-throughput network well-suited to supporting high-frequency DeFi applications."
     },
     {
       "source": "Snapshot",
@@ -209,7 +215,8 @@
       "end": 1772322872,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Aave began with the thesis that decentralized lending could play a major role in traditional finance. Eight years later, that thesis has been validated."
+      "summary_en": "Aave began with the thesis that decentralized lending could play a major role in traditional finance. Eight years later, that thesis has been validated.",
+      "summary_zh": "Aave began with the thesis that decentralized 借贷 could play a major role in traditional finance. Eight years later, that thesis has been validated."
     },
     {
       "source": "Snapshot",
@@ -221,7 +228,8 @@
       "end": 1772276205,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Proposal for the pre-approval of Aave v3.7, to authorise security procedures before the final on-chain AIP activation vote."
+      "summary_en": "Proposal for the pre-approval of Aave v3.7, to authorise security procedures before the final on-chain AIP activation vote.",
+      "summary_zh": "Proposal for the pre-approval of Aave v3.7, to authorise 安全 procedures before the final on-chain AIP activation vote."
     },
     {
       "source": "Snapshot",
@@ -235,19 +243,8 @@
       "tev_keywords": [
         "revenue"
       ],
-      "summary": "Umbrella makes deficit handling explicit and mechanically enforceable. Once a reserve deficit is realized on-chain, the protocol applies a senior, DAO-backed first-loss layer (the deficitOffset) befor"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Aave",
-      "title": "[ARFC ADDENDUM] Mandatory Disclosures and Conflict-of-Interest Voting",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/aavedao.eth/proposal/0xc115a21b8762ede9a4af7421cb66e23fc73982b686706e8c5d858c0b21c53470",
-      "created": 1770634339,
-      "end": 1770979939,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "This ARFC addendum proposes a governance-framework update to strengthen transparency and conflict-of-interest (COI) norms across Aave governance."
+      "summary_en": "Umbrella makes deficit handling explicit and mechanically enforceable. Once a reserve deficit is realized on-chain, the protocol applies a senior, DAO-backed first-loss layer (the deficitOffset) before any impairment is passed through to Umbrella sta",
+      "summary_zh": "Umbrella makes deficit handling explicit and mechanically enforceable. Once a reserve deficit is realized on-chain, the protocol applies a senior, DAO-backed first-loss layer (the deficitOffset) before any impairment is passed through to Umbrella sta"
     },
     {
       "source": "Snapshot",
@@ -259,19 +256,8 @@
       "end": 1770457862,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This ARFC  is the continuation of TEMP CHECK Focussing the Aave V3 Multichain Strategy , after successfully passed the TC Snapshot."
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Aave",
-      "title": "[ARFC] Deploy Aave V3 to MegaETH",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/aavedao.eth/proposal/0xf6e4ca9941805b3c89615df693c657d81eda6a4c8a24d6d2e220020f9c1c5aa7",
-      "created": 1769709142,
-      "end": 1770054742,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "We are reopening the ARFC to deploy Aave V3 on MegaETH with updated terms and parameters to be defined by Risk SPs. The original thread established that MegaETH is an EVM-compatible, real-time L2 stil"
+      "summary_en": "This ARFC  is the continuation of TEMP CHECK Focussing the Aave V3 Multichain Strategy , after successfully passed the TC Snapshot.",
+      "summary_zh": "本提案  is the continuation of TEMP CHECK Focussing the Aave V3 Multichain Strategy , after successfully passed the TC Snapshot."
     },
     {
       "source": "Snapshot",
@@ -283,7 +269,8 @@
       "end": 1769439662,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This document develops a formal framework for timely deficit realization on Aave by introducing an autonomous Risk Oracle that detects and deterministically resolves a specific liquidation failure mod"
+      "summary_en": "This document develops a formal framework for timely deficit realization on Aave by introducing an autonomous Risk Oracle that detects and deterministically resolves a specific liquidation failure mode: accounts with minimal remaining collateral (“du",
+      "summary_zh": "This document develops a formal framework for timely deficit realization on Aave by introducing an autonomous 风险 预言机 that detects and deterministically resolves a specific liquidation failure mode: accounts with minimal remaining 抵押品 (“du"
     },
     {
       "source": "Snapshot",
@@ -295,7 +282,8 @@
       "end": 1769164813,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "The current [ARFC] proposes deploying Aave V3 on Mantle Network."
+      "summary_en": "The current [ARFC] proposes deploying Aave V3 on Mantle Network.",
+      "summary_zh": "The current [ARFC] proposes 部署ing Aave V3 on Mantle Network."
     },
     {
       "source": "Snapshot",
@@ -307,7 +295,8 @@
       "end": 1768904339,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This proposal seeks to onboard the Strata srUSDe PT tokens to the Aave V3 Core Instance, after successful [[TEMP CHECK] Onboard Strata srUSDe January expiry PT tokens to V3 Core Instance](https://gove"
+      "summary_en": "This proposal seeks to onboard the Strata srUSDe PT tokens to the Aave V3 Core Instance, after successful [[TEMP CHECK] Onboard Strata srUSDe January expiry PT tokens to V3 Core Instance](https://governance.aave.com/t/temp-check-onboard-strata-srusde",
+      "summary_zh": "本提案 寻求 上线 the Strata srUSDe PT 代币s to the Aave V3 Core Instance, after successful [[TEMP CHECK] 上线 Strata srUSDe January expiry PT 代币s to V3 Core Instance](https://治理.aave.com/t/temp-check-上线-strata-srusde"
     },
     {
       "source": "Snapshot",
@@ -319,7 +308,8 @@
       "end": 1768208442,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Before a proposal is brought to a vote by a 3rd party, the proposer must indicate they wish to submit that proposal a vote."
+      "summary_en": "Before a proposal is brought to a vote by a 3rd party, the proposer must indicate they wish to submit that proposal a vote.",
+      "summary_zh": "Before a proposal is brought to a vote by a 3rd party, the proposer must indicate they wish to submit that proposal a vote."
     },
     {
       "source": "Snapshot",
@@ -331,19 +321,8 @@
       "end": 1767129939,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Proposing the latest renewal of the Orbit program for recognized delegates, compensating them with GHO, associated with their future governance activity during Q1 and Q2 2026( From 2026-01-01 new date"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Aave",
-      "title": "[ARFC] $AAVE token alignment. Phase 1 - Ownership",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/aavedao.eth/proposal/0xbc606159ddeae0184c2086055637d3f357351ec0adc4c9f4150751bc41918eba",
-      "created": 1766371238,
-      "end": 1766716838,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "This is an Aave Governance proposal for AAVE token holders to request receiving control of Aave’s brand assets (domains, social handles, naming rights, etc), on a DAO-controlled vehicle (defined at a "
+      "summary_en": "Proposing the latest renewal of the Orbit program for recognized delegates, compensating them with GHO, associated with their future governance activity during Q1 and Q2 2026( From 2026-01-01 new date when [[ARFC] Orbit Program Renewal - Q3 and Q4 20",
+      "summary_zh": "Proposing the latest renewal of the Orbit program for recognized delegates, compensating them with GHO, associated with their future 治理 activity during Q1 and Q2 2026( From 2026-01-01 new date when [[ARFC] Orbit Program Renewal - Q3 and Q4 20"
     },
     {
       "source": "Snapshot",
@@ -355,7 +334,8 @@
       "end": 1765723258,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This addendum proposes updates to the Boosters for Merit Round 41 to add OKX Wallet."
+      "summary_en": "This addendum proposes updates to the Boosters for Merit Round 41 to add OKX Wallet.",
+      "summary_zh": "This 添加endum proposes 更新s to the Boosters for Merit Round 41 to 添加 OKX Wallet."
     },
     {
       "source": "Snapshot",
@@ -367,7 +347,8 @@
       "end": 1765210100,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "We propose the onboarding of USDG, a USD-backed stablecoin issued by Paxos, on Aave V3 Core Instance. This listing would initially enable users to deposit USDG to earn yield and borrow USDG as a stabl"
+      "summary_en": "We propose the onboarding of USDG, a USD-backed stablecoin issued by Paxos, on Aave V3 Core Instance. This listing would initially enable users to deposit USDG to earn yield and borrow USDG as a stable asset.",
+      "summary_zh": "We propose the 上线ing of USDG, a USD-backed stablecoin issued by Paxos, on Aave V3 Core Instance. This 上市 would initially 启用 users to deposit USDG to earn yield and borrow USDG as a stable asset."
     },
     {
       "source": "Snapshot",
@@ -381,7 +362,8 @@
       "tev_keywords": [
         "revenue"
       ],
-      "summary": "This Temp Check proposes an updated multichain strategy for Aave V3 that:."
+      "summary_en": "This Temp Check proposes an updated multichain strategy for Aave V3 that:.",
+      "summary_zh": "This Temp Check proposes an 更新d multichain strategy for Aave V3 that:."
     },
     {
       "source": "Snapshot",
@@ -393,7 +375,8 @@
       "end": 1772978400,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This proposal seeks to establish a formal \"Statute of Limitations\" for Uniswap Governance proposals. Specifically, it mandates that any proposal which passes a \"Temperature Check\" (Snapshot vote) must"
+      "summary_en": "This proposal seeks to establish a formal \"Statute of Limitations\" for Uniswap Governance proposals. Specifically, it mandates that any proposal which passes a \"Temperature Check\" (Snapshot vote) must proceed to an on-chain vote within 90 days.",
+      "summary_zh": "本提案 寻求 establish a formal \"Statute of Limitations\" for Uniswap 治理 proposals. Specifically, it mandates that any proposal which passes a \"Temperature Check\" (Snapshot vote) must proceed to an on-chain vote within 90 days."
     },
     {
       "source": "Snapshot",
@@ -407,7 +390,8 @@
       "tev_keywords": [
         "fee"
       ],
-      "summary": "[Temp Check] Protocol Fee Expansion: Eight More Chains and Remaining Mainnet v3 Pools"
+      "summary_en": "to use the new governance process_ _approved_ _in UNIfication. The new process only applies to fee parameter updates, where proposals can bypass the RFC stage and go directly to a five-day Snapshot followed by an onchain vote.",
+      "summary_zh": "to use the new 治理 process_ _已批准_ _in UNIfication. The new process only applies to 费用 参数 更新s, where proposals can bypass the RFC stage and go directly to a five-day Snapshot followed by an onchain vote."
     },
     {
       "source": "Snapshot",
@@ -421,7 +405,8 @@
       "tev_keywords": [
         "fee"
       ],
-      "summary": "GFX Labs initially posted this proposal on the forum this summer and has been hoping that the quorum/delegation situation would improve. It seems to have improved thanks to the Unification initiative."
+      "summary_en": "on the forum this summer and has been hoping that the quorum/delegation situation would improve. It seems to have improved thanks to the Unification initiative.",
+      "summary_zh": "on the forum this summer and has been hoping that the 法定人数/delegation situation would improve. It seems to have improved thanks to the Unification initiative."
     },
     {
       "source": "Snapshot",
@@ -435,19 +420,8 @@
       "tev_keywords": [
         "fee"
       ],
-      "summary": "Uniswap Labs and the Uniswap Foundation have created a joint proposal that activates the protocol fee and aligns incentives across the Uniswap ecosystem."
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "Uniswap Community Proposal Factory",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x3836142b24294e065fc9f26e24c70732dce53f15361f50261297bc206acda441",
-      "created": 1762459290,
-      "end": 1762891290,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "& Motivation\nGFX Labs and its team have participated in protocol governance for over four years. In fact, Getty’s first governance proposal was a Compound Crowd Proposal, also known as a Compound Auto"
+      "summary_en": "Uniswap Labs and the Uniswap Foundation have created a joint proposal that activates the protocol fee and aligns incentives across the Uniswap ecosystem.",
+      "summary_zh": "Uniswap Labs and the Uniswap Foundation have created a joint proposal that activates the protocol 费用 and aligns incentives across the Uniswap ecosystem."
     },
     {
       "source": "Snapshot",
@@ -461,21 +435,8 @@
       "tev_keywords": [
         "treasury"
       ],
-      "summary": "Voting Options: Allocate $250k, Don’t Allocate, Abstain"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": " Treasury Delegation Round 2 Elections",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x9a52a7fc0213d077b11924e1d0949637bbc9b6f07cd0bebeff70b92da0cda4ff",
-      "created": 1759130878,
-      "end": 1759593600,
-      "tev_related": true,
-      "tev_keywords": [
-        "treasury"
-      ],
-      "summary": "This proposal (Link Here) represents the second of two phases of the Treasury Delegation Round 2 application process, the election. The following nominees have been validated as eligible for inclusion"
+      "summary_en": "Voting Options: Allocate $250k, Don’t Allocate, Abstain",
+      "summary_zh": "投票 Options: Allocate $250k, Don’t Allocate, Abstain"
     },
     {
       "source": "Snapshot",
@@ -487,7 +448,8 @@
       "end": 1757269421,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Incentivized Delegation Vaults: Multiple delegates recognized that it is not healthy for the governance ecosystem if the entirety of the votable supply is sustained by treasury delegations alone. As s"
+      "summary_en": "Incentivized Delegation Vaults: Multiple delegates recognized that it is not healthy for the governance ecosystem if the entirety of the votable supply is sustained by treasury delegations alone. As such, encouraging community delegations is essentia",
+      "summary_zh": "Incentivized Delegation 金库s: Multiple delegates recognized that it is not healthy for the 治理 ecosystem if the entirety of the votable 供应量 is sustained by 金库/国库 delegations alone. As such, encouraging 社区 delegations is essentia"
     },
     {
       "source": "Snapshot",
@@ -501,7 +463,8 @@
       "tev_keywords": [
         "treasury"
       ],
-      "summary": "Treasury delegations have received nearly universal support, given their direct method of addressing the votable supply shortfall and proven historical precedent and track record. In fact, today, half"
+      "summary_en": "Treasury delegations have received nearly universal support, given their direct method of addressing the votable supply shortfall and proven historical precedent and track record. In fact, today, half of the remaining votable supply is directly sourc",
+      "summary_zh": "金库/国库 delegations have received nearly universal support, given their direct method of 添加ressing the votable 供应量 shortfall and proven historical precedent and track record. In fact, today, half of the remaining votable 供应量 is directly sourc"
     },
     {
       "source": "Snapshot",
@@ -513,7 +476,8 @@
       "end": 1757167200,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This proposal advocates for an official UniswapV3 deployment on Ronin along with a co-incentivization campaign to establish UniswapV3 as a primary DEX in the Ronin Ecosystem."
+      "summary_en": "This proposal advocates for an official UniswapV3 deployment on Ronin along with a co-incentivization campaign to establish UniswapV3 as a primary DEX in the Ronin Ecosystem.",
+      "summary_zh": "本提案 advocates for an official UniswapV3 部署 on Ronin along with a co-incentivization campaign to establish UniswapV3 as a primary DEX in the Ronin Ecosystem."
     },
     {
       "source": "Snapshot",
@@ -525,7 +489,8 @@
       "end": 1756562400,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "The Uniswap Foundation (“UF”) proposes that Uniswap Governance adopt a Wyoming-registered Decentralized Unincorporated Nonprofit Association (“DUNA”) as the legal structure for the Uniswap Governance "
+      "summary_en": "The Uniswap Foundation (“UF”) proposes that Uniswap Governance adopt a Wyoming-registered Decentralized Unincorporated Nonprofit Association (“DUNA”) as the legal structure for the Uniswap Governance Protocol. This new legal entity, called “DUNI”, wi",
+      "summary_zh": "The Uniswap Foundation (“UF”) proposes that Uniswap 治理 adopt a Wyoming-registered Decentralized Unincorporated Nonprofit Association (“DUNA”) as the legal structure for the Uniswap 治理 Protocol. This new legal entity, called “DUNI”, wi"
     },
     {
       "source": "Snapshot",
@@ -537,19 +502,8 @@
       "end": 1755523100,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This proposal outlines the Uniswap Delegate Reward Initiative—Cycle 4, a compensation program designed to improve and sustain the participation quality and dedication among Uniswap delegates following"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "[TEMP CHECK] - Etherlink Co-incentives Proposal",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0xc689d74757ccf1de09c3b8656dcd2f0d678972c9715a318aa4e9b659a5ebaca1",
-      "created": 1751910571,
-      "end": 1752624000,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "Etherlink, an EVM-compatible Layer 2 blockchain secured by Tezos Smart Rollup technology, proposes a co-incentive program to bootstrap liquidity on Uniswap v3. The Tezos Foundation commits $300K to in"
+      "summary_en": "This proposal outlines the Uniswap Delegate Reward Initiative—Cycle 4, a compensation program designed to improve and sustain the participation quality and dedication among Uniswap delegates following the conclusion of Cycle 1, 2, and 3.",
+      "summary_zh": "本提案 outlines the Uniswap Delegate 奖励 Initiative—Cycle 4, a compensation program designed to improve and sustain the participation quality and dedication among Uniswap delegates following the conclusion of Cycle 1, 2, and 3."
     },
     {
       "source": "Snapshot",
@@ -561,31 +515,8 @@
       "end": 1750600677,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Unichain is currently the main focus of Uniswap’s growth strategy, presenting a significant opportunity for collaborative growth. The launch of USDS and sUSDS opens doors for close collaboration among"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "Trial run a Technical Advisory Board (TAB)",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x5915e661808f896203ff5759e737e04861bf8fa09525972d481cbccf7776f485",
-      "created": 1749642882,
-      "end": 1750154400,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "This proposal seeks to establish a Technical Advisory Board (TAB) within the Uniswap DAO for a 12-month trial to provide expert technical insights on governance proposals. The TAB will be supported by"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "Uniswap Accountability Committee S4 Elections",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0xb9a79884fab779132907835d8c6360b781ed0a17c8a33ac41594a27f6c366ce4",
-      "created": 1747871999,
-      "end": 1748304000,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "The onchain vote to renew the UAC S4 recently passed. We will commence with the election of two new committee members."
+      "summary_en": "Unichain is currently the main focus of Uniswap’s growth strategy, presenting a significant opportunity for collaborative growth. The launch of USDS and sUSDS opens doors for close collaboration among two of the premier DeFi protocols Uniswap and Sky",
+      "summary_zh": "Unichain is currently the main focus of Uniswap’s growth strategy, presenting a significant opportunity for collaborative growth. The launch of USDS and sUSDS opens doors for close collaboration among two of the premier DeFi protocols Uniswap and Sky"
     },
     {
       "source": "Snapshot",
@@ -599,7 +530,8 @@
       "tev_keywords": [
         "fee"
       ],
-      "summary": "This Proposal is for chain selection feedback for the ongoing proposal"
+      "summary_en": "is for chain selection feedback for the ongoing proposal.",
+      "summary_zh": "is for chain selection 费用dback for the ongoing proposal."
     },
     {
       "source": "Snapshot",
@@ -611,7 +543,8 @@
       "end": 1746551608,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This proposal seeks to utilize Forse to help analyze the effectiveness of the four other chains the Uniswap community chooses as part of the Uniswap Revitalization and Growth Program."
+      "summary_en": "This proposal seeks to utilize Forse to help analyze the effectiveness of the four other chains the Uniswap community chooses as part of the Uniswap Revitalization and Growth Program.",
+      "summary_zh": "本提案 寻求 utilize Forse to help analyze the effectiveness of the four other chains the Uniswap 社区 chooses as part of the Uniswap Revitalization and Growth Program."
     },
     {
       "source": "Snapshot",
@@ -623,7 +556,8 @@
       "end": 1746384062,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Scaling V4 and Supporting Unichain"
+      "summary_en": "passing. Post launch, Oku will continue to improve the V4 interface and iterate based on feedback.",
+      "summary_zh": "passing. Post launch, Oku will continue to improve the V4 interface and iterate based on 费用dback."
     },
     {
       "source": "Snapshot",
@@ -637,31 +571,8 @@
       "tev_keywords": [
         "treasury"
       ],
-      "summary": "We propose allocating up to 15 million UNI of total amount as the treasury delegation, distributing into selected delegates."
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Curve",
-      "title": "Proposal to add XSTUSD-3CRV to the Gauge Controller",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/curve.eth/proposal/0x0eb23ea0b877666ad3ddcd0d7da0114acdfe5ae6390b5628b7509f4338022db5",
-      "created": 1651258413,
-      "end": 1651862400,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "Proposal to add the XSTUSD/3CRV pool to the Gauge controller to enable users to assign a gauge weight and mint CRV."
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Curve",
-      "title": "Add a new base pool implementation as an alternative to 3Pool (DAI/USDC/USDT)",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/curve.eth/proposal/0x43c689ef6b7b1772abc033cd87b7caa4159f0dc281f9a159e3930fb00b57d707",
-      "created": 1648926766,
-      "end": 1649185287,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "Read more: https://gov.curve.fi/t/adding-a-2pool-base-implementation-of-usdc-usdt/3000"
+      "summary_en": "We propose allocating up to 15 million UNI of total amount as the treasury delegation, distributing into selected delegates.",
+      "summary_zh": "We propose allocating up to 15 million UNI of total amount as the 金库/国库 delegation, distributing into selected delegates."
     },
     {
       "source": "Snapshot",
@@ -673,19 +584,8 @@
       "end": 1647889200,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "The Celo community is proposing to deploy Curve on the Celo Blockchain. This expansion to Celo will enable Curve to broaden its reach into a new DeFi ecosystem with $7M of additional incentives for Cu"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Curve",
-      "title": "Launch RocketPool rETH pool to promote decentralization.",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/curve.eth/proposal/0xc22db2c066d63fb09009b7b289205cd50bb38ce5c935470def23c1a2ead616e2",
-      "created": 1646348499,
-      "end": 1644339600,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "https://gov.curve.fi/t/launch-rocketpool-reth-pool-to-promote-decentralization/2544"
+      "summary_en": "The Celo community is proposing to deploy Curve on the Celo Blockchain. This expansion to Celo will enable Curve to broaden its reach into a new DeFi ecosystem with $7M of additional incentives for Curve users.",
+      "summary_zh": "The Celo 社区 is proposing to 部署 Curve on the Celo Blockchain. This expansion to Celo will 启用 Curve to broaden its reach into a new DeFi ecosystem with $7M of 添加itional incentives for Curve users."
     },
     {
       "source": "Snapshot",
@@ -697,7 +597,8 @@
       "end": 1645287723,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ""
+      "summary_en": "Did you lock CRV for 4 years?",
+      "summary_zh": "Did you lock CRV for 4 years?"
     },
     {
       "source": "Snapshot",
@@ -709,31 +610,8 @@
       "end": 1644339600,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "https://gov.curve.fi/t/launch-rocketpool-reth-pool-to-promote-decentralization/2544"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Curve",
-      "title": "CRV raggiungerà l'ATL nel 2022?",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/curve.eth/proposal/0x93cf3af94da45d9a1860e0772faa413e3f234de2dcb1d2d07e5f20d2eb2bcdcf",
-      "created": 1643017429,
-      "end": 1643428800,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Curve",
-      "title": "CRV的价格会在2022年创新历史新低吗？",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/curve.eth/proposal/0xf29dd4b52b58f6a4a97bd276d2eb29be50dd66c6652edeabf1fdadc346450639",
-      "created": 1643017347,
-      "end": 1643428800,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": ""
+      "summary_en": "https://gov.curve.fi/t/launch-rocketpool-reth-pool-to-promote-decentralization/2544",
+      "summary_zh": "https://gov.curve.fi/t/launch-rocket池子-reth-池子-to-promote-decentralization/2544"
     },
     {
       "source": "Snapshot",
@@ -745,19 +623,8 @@
       "end": 1643428800,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Curve",
-      "title": "Will CRV down to hit ATL in 2022?",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/curve.eth/proposal/0x4ebcc4c4b5f662fba54bdda5c4921ab60796dd7c5bb3baa60576e13b27446815",
-      "created": 1643017166,
-      "end": 1643428800,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": ""
+      "summary_en": "CRV va-t-il atteindre ATL en 2022 ?",
+      "summary_zh": "CRV va-t-il atteindre ATL en 2022 ?"
     },
     {
       "source": "Snapshot",
@@ -769,55 +636,8 @@
       "end": 1643601600,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Can CRV do currency and foreign exchange transactions? Is it possible to introduce derivatives like foreign exchange into the blockchain market?"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Curve",
-      "title": "CRV continuera-t-il à frapper ATH en 2022 ?",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/curve.eth/proposal/0x6529d73d380add5409ccb1cab6fb61462a3bda7ac02a49494fab2b46e5ca52f4",
-      "created": 1642750595,
-      "end": 1643256000,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Curve",
-      "title": "Will CRV continue to hit ATH in 2022?",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/curve.eth/proposal/0x08a72b745723dca7a099f2f8eded681d6147155ad901c3796a276515696a7b10",
-      "created": 1642750513,
-      "end": 1643169600,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Curve",
-      "title": "CRV会在2022年继续创新高吗？",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/curve.eth/proposal/0xfa37c539a46ac27bbaaf9371681965341fb46e93d6f6263d17c677e6adb68230",
-      "created": 1642750418,
-      "end": 1643169600,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Curve",
-      "title": "2022 most potential cryptocurrency",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/curve.eth/proposal/0x3dbcf83cb344f0a44990b3552dae5389b984cb2d0615f46f4b982b5661ecd549",
-      "created": 1642261441,
-      "end": 1642651200,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": ""
+      "summary_en": "Can CRV do currency and foreign exchange transactions? Is it possible to introduce derivatives like foreign exchange into the blockchain market?",
+      "summary_zh": "Can CRV do currency and foreign exchange transactions? Is it possible to introduce derivatives like foreign exchange into the blockchain 市场?"
     },
     {
       "source": "Snapshot",
@@ -829,31 +649,8 @@
       "end": 1642478400,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Curve",
-      "title": "你认为uniswap会取代curve成为最大的稳定币去中心交易所吗？",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/curve.eth/proposal/0xd4b0b42b7f63dafac112651ebdb74d7ce4861e88d9df292838e67f3aafa6af80",
-      "created": 1642061368,
-      "end": 1642478400,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Curve",
-      "title": "Do you think uni will replace curve as the largest stablecoin DEX?",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/curve.eth/proposal/0xaec626e8d32d19eb4a2dea23b74e60be6973426be4e8220745d1db15edab874c",
-      "created": 1642061270,
-      "end": 1642478400,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": ""
+      "summary_en": "Pensez-vous que l'uniswap remplacera la courbe en tant que plus grand DEX stable?",
+      "summary_zh": "Pensez-vous que l'uniswap remplacera la courbe en tant que plus grand DEX stable?"
     },
     {
       "source": "Snapshot",
@@ -865,7 +662,8 @@
       "end": 1641628800,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "- Snapshot recently added a HAL plugin (hal.xyz)\n- The plugin allows users to receive notifications every time a new proposal is created or ends."
+      "summary_en": "- Snapshot recently added a HAL plugin (hal.xyz)\n- The plugin allows users to receive notifications every time a new proposal is created or ends.",
+      "summary_zh": "- Snapshot recently 添加ed a HAL plugin (hal.xyz)\n- The plugin allows users to receive notifications every time a new proposal is created or ends."
     },
     {
       "source": "Snapshot",
@@ -877,7 +675,8 @@
       "end": 1641787200,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ""
+      "summary_en": "你是否将你的CRV锁定4年？",
+      "summary_zh": "你是否将你的CRV锁定4年？"
     },
     {
       "source": "Snapshot",
@@ -891,7 +690,8 @@
       "tev_keywords": [
         "fee"
       ],
-      "summary": "This Snapshot is held to elect the GMX Security Council for Season 4, covering the term May 1, 2026 through October 31, 2026. The Security Council serves as the protocol's dedicated security oversight"
+      "summary_en": "This Snapshot is held to elect the GMX Security Council for Season 4, covering the term May 1, 2026 through October 31, 2026. The Security Council serves as the protocol's dedicated security oversight body, responsible for reviewing and verifying pro",
+      "summary_zh": "This Snapshot is held to elect the GMX 安全 理事会 for Season 4, covering the term May 1, 2026 through October 31, 2026. The 安全 理事会 serves as the protocol's dedicated 安全 oversight body, responsible for reviewing and verifying pro"
     },
     {
       "source": "Snapshot",
@@ -903,7 +703,8 @@
       "end": 1772440200,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This proposal outlines GMX Labs organizational evolution and lays the foundation for an upcoming DAO vote. GMX Labs has supported the development and operation of the GMX protocol over the years."
+      "summary_en": "This proposal outlines GMX Labs organizational evolution and lays the foundation for an upcoming DAO vote. GMX Labs has supported the development and operation of the GMX protocol over the years.",
+      "summary_zh": "本提案 outlines GMX Labs organizational evolution and lays the foundation for an upcoming DAO vote. GMX Labs has supported the development and operation of the GMX protocol over the years."
     },
     {
       "source": "Snapshot",
@@ -917,7 +718,8 @@
       "tev_keywords": [
         "treasury"
       ],
-      "summary": "Onchain Liquidity Withdrawal: Withdraw ~ 600,000 GMX from treasury-controlled Uniswap and Trader Joe pools. This figure is an estimate based on current data; final amounts will be determined upon exec"
+      "summary_en": "’s implementation. This limit is strictly enforced to prevent excessive exposure of Treasury capital to CEX custodial risks.",
+      "summary_zh": "’s implementation. This limit is strictly enforced to prevent excessive exposure of 金库/国库 capital to CEX custodial 风险s."
     },
     {
       "source": "Snapshot",
@@ -931,22 +733,8 @@
       "tev_keywords": [
         "fee"
       ],
-      "summary": "This proposal introduces a staker-aligned incentive system combining."
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "GMX",
-      "title": "Dynamic BB&D Adjustment: 5-15% APR Band with Buffer (1-Year Trial)",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/gmx.eth/proposal/0xeb043072230235d9762c60737fdec0632f1e1fb5e937b83d1096a1800b44bcc5",
-      "created": 1770642006,
-      "end": 1771092000,
-      "tev_related": true,
-      "tev_keywords": [
-        "fee",
-        "buyback"
-      ],
-      "summary": "This proposal introduces a 5-15% APR reward distribution band to the current Buy-Back & Distribute (BB&D) mechanism to smooth reward volatility, improve sustainability, and strengthen long-term value "
+      "summary_en": "This proposal introduces a staker-aligned incentive system combining.",
+      "summary_zh": "本提案 introduces a staker-aligned incentive system combining."
     },
     {
       "source": "Snapshot",
@@ -958,7 +746,8 @@
       "end": 1770282000,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This proposal requests approval to allocate $3,150,000 in marketing and incentive funds to a GMX-controlled multisig to execute trader-focused marketing initiatives and incentive programs across GMX d"
+      "summary_en": "This proposal requests approval to allocate $3,150,000 in marketing and incentive funds to a GMX-controlled multisig to execute trader-focused marketing initiatives and incentive programs across GMX deployments on Arbitrum, Avalanche, BNB Chain, Ethe",
+      "summary_zh": "本提案 请求 approval to allocate $3,150,000 in 市场ing and incentive funds to a GMX-controlled multisig to execute trader-focused 市场ing initiatives and incentive programs across GMX 部署s on Arbitrum, Avalanche, BNB Chain, Ethe"
     },
     {
       "source": "Snapshot",
@@ -972,24 +761,8 @@
       "tev_keywords": [
         "treasury"
       ],
-      "summary": "GMX Labs requests DAO authorization for continued funding for 2026–2027 under a two-year framework including operating funds and contributor tokens. The plan uses floor and ceiling mechanisms to ensur"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "GMX",
-      "title": "PROPOSAL of BURNING",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/gmx.eth/proposal/0xfd41555f0b09cacc25f83c2f9902ed7d5d8d2f75f7a01832883efa7aa242c226",
-      "created": 1768929212,
-      "end": 1769188412,
-      "tev_related": true,
-      "tev_keywords": [
-        "fee",
-        "burn",
-        "revenue",
-        "treasury"
-      ],
-      "summary": "Without changing the total allocation to stakers (27% on V2 / 30% on V1), we propose to burn a portion of the GMX already reacquired with fees, instead of distributing 100% of it."
+      "summary_en": "GMX Labs requests DAO authorization for continued funding for 2026–2027 under a two-year framework including operating funds and contributor tokens. The plan uses floor and ceiling mechanisms to ensure operational stability, fiscal discipline, and re",
+      "summary_zh": "GMX Labs 请求 DAO authorization for continued funding for 2026–2027 under a two-year framework including operating funds and contributor 代币s. The plan uses floor and ceiling mechanisms to ensure operational stability, fiscal discipline, and re"
     },
     {
       "source": "Snapshot",
@@ -1001,21 +774,8 @@
       "end": 1767004200,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This proposal seeks to gauge the GMX community's interest in deploying GMX V2 on MegaETH — positioned as the Ethereum Layer 2 designed to unlock ultra-low latency trading experiences. This proposal ou"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "GMX",
-      "title": "auto-compound GMX staking reward",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/gmx.eth/proposal/0xefcf5745b02e8afb8a20f10f800219c47e902c67f0f7a0c36e24233e1a111496",
-      "created": 1761829256,
-      "end": 1762088456,
-      "tev_related": true,
-      "tev_keywords": [
-        "staking reward"
-      ],
-      "summary": "Maybe it's time to enable auto-compounding for GMX staking rewards, so holders don't have to suffer with the poor GMX price every time they claim. This can help they from losing confidence before v2.3"
+      "summary_en": "This proposal seeks to gauge the GMX community's interest in deploying GMX V2 on MegaETH — positioned as the Ethereum Layer 2 designed to unlock ultra-low latency trading experiences. This proposal outlines the deployment of GMX V2 on MegaETH's innov",
+      "summary_zh": "本提案 寻求 gauge the GMX 社区's interest in 部署ing GMX V2 on MegaETH — positioned as the Ethereum Layer 2 designed to unlock ultra-low latency trading experiences. 本提案 outlines the 部署 of GMX V2 on MegaETH's innov"
     },
     {
       "source": "Snapshot",
@@ -1027,7 +787,8 @@
       "end": 1759919400,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This Snapshot is held to elect three members for the GMX Listing Committee. The committee will be responsible for evaluating and approving new asset listings on GMX protocols, ensuring that only high-"
+      "summary_en": "This Snapshot is held to elect three members for the GMX Listing Committee. The committee will be responsible for evaluating and approving new asset listings on GMX protocols, ensuring that only high-quality, relevant, and compliant assets are listed",
+      "summary_zh": "This Snapshot is held to elect three members for the GMX 上市 委员会. The 委员会 will be responsible for evaluating and approving new asset 上市s on GMX protocols, ensuring that only high-quality, relevant, and compliant assets are listed"
     },
     {
       "source": "Snapshot",
@@ -1042,7 +803,8 @@
         "fee",
         "treasury"
       ],
-      "summary": "This proposal seeks the GMX DAO’s approval for a recurring monthly treasury swap to support the ongoing expansion of GMX Solana. Under the proposed terms, the GMX DAO would purchase $110,000 worth of "
+      "summary_en": "This proposal seeks the GMX DAO’s approval for a recurring monthly treasury swap to support the ongoing expansion of GMX Solana. Under the proposed terms, the GMX DAO would purchase $110,000 worth of GT tokens from GMX Solana each month, for 12 month",
+      "summary_zh": "本提案 seeks the GMX DAO’s approval for a recurring monthly 金库/国库 swap to support the ongoing expansion of GMX Solana. Under the proposed terms, the GMX DAO would purchase $110,000 worth of GT 代币s from GMX Solana each month, for 12 month"
     },
     {
       "source": "Snapshot",
@@ -1056,7 +818,8 @@
       "tev_keywords": [
         "treasury"
       ],
-      "summary": "Following the successful deployment of GMX V2.2, this proposal recommends transferring to the GMX DAO Treasury the accumulated Price Impact Buckets from the GM pools that are in surplus to their isola"
+      "summary_en": "recommends transferring to the GMX DAO Treasury the accumulated Price Impact Buckets from the GM pools that are in surplus to their isolated risk requirements. This reallocation will allow for both better functioning of the pools and ensure that fund",
+      "summary_zh": "recommends transferring to the GMX DAO 金库/国库 the accumulated Price Impact Buckets from the GM 池子s that are in surplus to their isolated 风险 requirements. This re分配 will allow for both better functioning of the 池子s and ensure that fund"
     },
     {
       "source": "Snapshot",
@@ -1071,7 +834,8 @@
         "fee",
         "distribution"
       ],
-      "summary": "We would like to thank the community and delegates for their input into the Resolve the Distribution Plan for the Recovered Funds from Arbitrum GLP discussion."
+      "summary_en": "We would like to thank the community and delegates for their input into the Resolve the Distribution Plan for the Recovered Funds from Arbitrum GLP discussion.",
+      "summary_zh": "We would like to thank the 社区 and delegates for their input into the Resolve the 分配 Plan for the Recovered Funds from Arbitrum GLP discussion."
     },
     {
       "source": "Snapshot",
@@ -1086,7 +850,8 @@
         "fee",
         "treasury"
       ],
-      "summary": "As GMX executes its multichain strategy, starting with the native deployment on Botanix, a “one-size-fits-all” approach to fee distribution is insufficient for seeding new deployments and capturing ma"
+      "summary_en": "advocates for a revised fee structure: 50% to LPs, 25% to GMX stakers, and a 25% allocation to the Treasury. Half of this Treasury allocation (12.5% of total fees) will be actively deployed for targeted Marketing and Growth Incentives on Botanix.",
+      "summary_zh": "advocates for a revised 费用 structure: 50% to LPs, 25% to GMX stakers, and a 25% 分配 to the 金库/国库. Half of this 金库/国库 分配 (12.5% of total 费用) will be actively 部署ed for targeted 市场ing and Growth Incentives on Botanix."
     },
     {
       "source": "Snapshot",
@@ -1100,7 +865,8 @@
       "tev_keywords": [
         "fee"
       ],
-      "summary": "We are excited to launch a new multi-round trading competition program on GMXSOL, aiming to incentivize trading activity and provide a reference model for trading-based rewards on GMX."
+      "summary_en": "We are excited to launch a new multi-round trading competition program on GMXSOL, aiming to incentivize trading activity and provide a reference model for trading-based rewards on GMX.",
+      "summary_zh": "We are excited to launch a new multi-round trading competition program on GMXSOL, aiming to incentivize trading activity and provide a reference model for trading-based 奖励 on GMX."
     },
     {
       "source": "Snapshot",
@@ -1114,19 +880,8 @@
       "tev_keywords": [
         "fee"
       ],
-      "summary": "GMX as the leading multi-chain perpetual DEX with deep liquidity and a growing cross‑chain footprint.  Botanix Labs’ Spiderchain offers low fees (~$0.02/tx), ~5 s block times, and full EVM compatibili"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "GMX",
-      "title": "Bridging & Messaging Partner For GMX",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/gmx.eth/proposal/0xc0fa577853fa0d066e876a4df3cf8ae7302c60b68f1f13675821dbf5d2acac1b",
-      "created": 1743844840,
-      "end": 1744450200,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "of how each partner proposes to align with the GSR, which is a program designed to create a long term safety and security program for the protocol."
+      "summary_en": "1. Deploy GMX V2 on Spiderchain.",
+      "summary_zh": "1. 部署 GMX V2 on Spiderchain."
     },
     {
       "source": "Snapshot",
@@ -1142,7 +897,8 @@
         "distribution",
         "treasury"
       ],
-      "summary": "This proposal seeks to decentralize and automate the entire fee distribution process for the GMX ecosystem. Currently, fees are manually withdrawn from contracts, followed by a script-based distributi"
+      "summary_en": "This proposal seeks to decentralize and automate the entire fee distribution process for the GMX ecosystem. Currently, fees are manually withdrawn from contracts, followed by a script-based distribution to GLP, keepers, reward distributors, and the t",
+      "summary_zh": "本提案 寻求 decentralize and automate the entire 费用 分配 process for the GMX ecosystem. Currently, 费用 are manually withdrawn from contracts, followed by a script-based 分配 to GLP, keepers, 奖励 distributors, and the t"
     },
     {
       "source": "Snapshot",
@@ -1156,7 +912,8 @@
       "tev_keywords": [
         "fee"
       ],
-      "summary": "The GMX DAO currently holds outstanding pool fees amounting to 994.70 ETH (3.2m USD) and 69,132.83 GMX (1.6m USD) from its GMX/ETH Uniswap LP position. This proposal seeks to authorize GMX DAO to coll"
+      "summary_en": "The GMX DAO currently holds outstanding pool fees amounting to 994.70 ETH (3.2m USD) and 69,132.83 GMX (1.6m USD) from its GMX/ETH Uniswap LP position. This proposal seeks to authorize GMX DAO to collect these outstanding position fees from Uniswap a",
+      "summary_zh": "The GMX DAO currently holds outstanding 池子 费用 amounting to 994.70 ETH (3.2m USD) and 69,132.83 GMX (1.6m USD) from its GMX/ETH Uniswap LP position. 本提案 寻求 authorize GMX DAO to collect these outstanding position 费用 from Uniswap a"
     },
     {
       "source": "Snapshot",
@@ -1170,7 +927,8 @@
       "tev_keywords": [
         "fee"
       ],
-      "summary": "Proposal to allow for network fee smoothing, this would work by having higher network fees during times of regular network conditions and using the accumulated fees to subsidise network fees during ti"
+      "summary_en": "to allow for network fee smoothing, this would work by having higher network fees during times of regular network conditions and using the accumulated fees to subsidise network fees during times of network congestion.",
+      "summary_zh": "to allow for network 费用 smoothing, this would work by having higher network 费用 during times of regular network conditions and using the accumulated 费用 to subsidise network 费用 during times of network congestion."
     },
     {
       "source": "Snapshot",
@@ -1186,7 +944,8 @@
         "revenue",
         "treasury"
       ],
-      "summary": "Under PancakeSwap’s current revenue flow, protocol fees generated from trading activities across the platform are partially accrued to the Treasury as protocol revenue. Today, all Treasury-bound fees,"
+      "summary_en": "The Kitchen proposes that all Treasury-bound protocol fees arising from major stablecoin pools on PancakeSwap be retained in stablecoins, instead of being converted into CAKE.",
+      "summary_zh": "The Kitchen proposes that all 金库/国库-bound protocol 费用 arising from major stablecoin 池子s on PancakeSwap be retained in stablecoins, instead of being converted into CAKE."
     },
     {
       "source": "Snapshot",
@@ -1201,7 +960,8 @@
         "burn",
         "tokenomics"
       ],
-      "summary": "In April 2025, we passed the CAKE Tokenomics Proposal 3.0, which retired the veCAKE model and reduced CAKE emissions from ~40,000 to ~22,250 per day."
+      "summary_en": "3.0, which retired the veCAKE model and reduced CAKE emissions from ~40,000 to ~22,250 per day.",
+      "summary_zh": "3.0, which retired the veCAKE model and 减少d CAKE 排放/释放 from ~40,000 to ~22,250 per day."
     },
     {
       "source": "Snapshot",
@@ -1213,7 +973,8 @@
       "end": 1768633856,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ""
+      "summary_en": "test2",
+      "summary_zh": "test2"
     },
     {
       "source": "Snapshot",
@@ -1225,7 +986,8 @@
       "end": 1768632080,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ""
+      "summary_en": "Test",
+      "summary_zh": "Test"
     },
     {
       "source": "Snapshot",
@@ -1241,7 +1003,8 @@
         "burn",
         "tokenomics"
       ],
-      "summary": "Introducing Community Syrup Pools – a new section featuring projects launched via PancakeSwap Springboard."
+      "summary_en": "Introducing Community Syrup Pools – a new section featuring projects launched via PancakeSwap Springboard.",
+      "summary_zh": "Introducing 社区 Syrup 池子s – a new section featuring projects launched via PancakeSwap Springboard."
     },
     {
       "source": "Snapshot",
@@ -1253,7 +1016,8 @@
       "end": 1748113160,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "I propose Pancakeswap to implement dynamic decentralized trading like Hyperliquid which is working like CEX but on chain with web3 wallets."
+      "summary_en": "I propose Pancakeswap to implement dynamic decentralized trading like Hyperliquid which is working like CEX but on chain with web3 wallets.",
+      "summary_zh": "I propose Pancakeswap to implement dynamic decentralized trading like Hyperliquid which is working like CEX but on chain with web3 wallets."
     },
     {
       "source": "Snapshot",
@@ -1265,7 +1029,8 @@
       "end": 1747558294,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "update the strategy to \"erc20-balance-of strategy\""
+      "summary_en": "update the strategy to \"erc20-balance-of strategy\"",
+      "summary_zh": "更新 the strategy to \"erc20-balance-of strategy\""
     },
     {
       "source": "Snapshot",
@@ -1279,7 +1044,8 @@
       "tev_keywords": [
         "tokenomics"
       ],
-      "summary": "Key Highlights of the Tokenomics Proposal:"
+      "summary_en": "Deflationary Goal: We aim for a ~4% annual deflation rate and target a ~20% reduction in the CAKE supply by 2030.  Retirement of the veCAKE and Gauges Voting System: The veCAKE and Gauges Voting system will be phased out for a more straightforward an",
+      "summary_zh": "Deflationary Goal: We aim for a ~4% annual deflation rate and target a ~20% reduction in the CAKE 供应量 by 2030.  Retirement of the veCAKE and Gauges 投票 System: The veCAKE and Gauges 投票 system will be phased out for a more straightforward an"
     },
     {
       "source": "Snapshot",
@@ -1291,19 +1057,8 @@
       "end": 1737386336,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Many iCake holders don't spend even 10% of them on IFOs I suggest making it possible to rent them out for % commissions."
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "PancakeSwap",
-      "title": "VeCake management & Max supply adjustments",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/cakevote.eth/proposal/0x357bef9a52981c885ccbe108e908043f527f2994b294ece7a3617b0656de0e8e",
-      "created": 1735915556,
-      "end": 1736173800,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "This introduces two proposals aiming to bring more veCake related functionalities"
+      "summary_en": "Many iCake holders don't spend even 10% of them on IFOs I suggest making it possible to rent them out for % commissions.",
+      "summary_zh": "Many iCake holders don't spend even 10% of them on IFOs I suggest making it possible to rent them out for % commissions."
     },
     {
       "source": "Snapshot",
@@ -1315,33 +1070,8 @@
       "end": 1731664278,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "We propose to relabel the current Multichain Warchest allocation as Ecosystem Growth to expand its scope. This allows us to provide incentives for PancakeSwap’s upcoming products and initiatives like "
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "PancakeSwap",
-      "title": "Proposal to Redirect Emissions for Ecosystem Growth",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/cakevote.eth/proposal/0xaffca49c859c6012ad7c969fe7afd1caa8d3386636ab8ccb12a5b5e5ae922e6a",
-      "created": 1727779291,
-      "end": 1728385200,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "To enhance activity and growth across our upcoming products in the PancakeSwap Roadmap, the Kitchen proposes to redirect emissions from our Farms to a new allocation - Ecosystem Growth. Ecosystem Grow"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "PancakeSwap",
-      "title": "Create a Great Marketplace for voting Incentives",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/cakevote.eth/proposal/0x2793559438e42b3838e4734c62a10178c1889223f235dd1cdb2140f5940da283",
-      "created": 1721397220,
-      "end": 1724076000,
-      "tev_related": true,
-      "tev_keywords": [
-        "fee"
-      ],
-      "summary": "Till now veCake holders are not rewarded as they should be based on their voting power. There are 3 DAOs for veCake holders which are not very popular and they have not many projects. Also unclaimed r"
+      "summary_en": "We propose to relabel the current Multichain Warchest allocation as Ecosystem Growth to expand its scope. This allows us to provide incentives for PancakeSwap’s upcoming products and initiatives like PancakeSwap v4, for which we propose to establish ",
+      "summary_zh": "We propose to relabel the current Multichain Warchest 分配 as Ecosystem Growth to expand its scope. This allows us to provide incentives for PancakeSwap’s upcoming products and initiatives like PancakeSwap v4, for which we propose to establish "
     },
     {
       "source": "Snapshot",
@@ -1355,7 +1085,8 @@
       "tev_keywords": [
         "fee"
       ],
-      "summary": "- Lista DAO is a liquid staking and decentralized stablecoin protocol\n- Users can liquid stake their BNB to receive slisBNB, and borrow lisUSD against accepted collateral assets\n- PancakeSquad NFT hol"
+      "summary_en": "- Lista DAO is a liquid staking and decentralized stablecoin protocol\n- Users can liquid stake their BNB to receive slisBNB, and borrow lisUSD against accepted collateral assets\n- PancakeSquad NFT holders and point holders (≥ 1500 points) are eligibl",
+      "summary_zh": "- Lista DAO is a liquid 质押 and decentralized stablecoin protocol\n- Users can liquid stake their BNB to receive slisBNB, and borrow lisUSD against accepted 抵押品 assets\n- PancakeSquad NFT holders and point holders (≥ 1500 points) are eligibl"
     },
     {
       "source": "Snapshot",
@@ -1369,7 +1100,8 @@
       "tev_keywords": [
         "fee"
       ],
-      "summary": "- Lista DAO is a liquid staking and decentralized stablecoin protocol\n- Users can liquid stake their BNB to receive slisBNB, and borrow lisUSD against accepted collateral assets\n- PancakeSquad NFT hol"
+      "summary_en": "- Lista DAO is a liquid staking and decentralized stablecoin protocol\n- Users can liquid stake their BNB to receive slisBNB, and borrow lisUSD against accepted collateral assets\n- PancakeSquad NFT holders and point holders (≥ 1500 points) are eligibl",
+      "summary_zh": "- Lista DAO is a liquid 质押 and decentralized stablecoin protocol\n- Users can liquid stake their BNB to receive slisBNB, and borrow lisUSD against accepted 抵押品 assets\n- PancakeSquad NFT holders and point holders (≥ 1500 points) are eligibl"
     },
     {
       "source": "Snapshot",
@@ -1383,7 +1115,8 @@
       "tev_keywords": [
         "revenue"
       ],
-      "summary": "Redirection of CAKE Emissions to Bribes."
+      "summary_en": "Redirection of CAKE Emissions to Bribes.",
+      "summary_zh": "Redirection of CAKE 排放/释放 to Bribes."
     },
     {
       "source": "Snapshot",
@@ -1395,7 +1128,8 @@
       "end": 1712656800,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Proposal to recognize Mancake as an affiliate DEX"
+      "summary_en": "to recognize Mancake as an affiliate DEX.",
+      "summary_zh": "to recognize Mancake as an affiliate DEX."
     },
     {
       "source": "Snapshot",
@@ -1407,21 +1141,8 @@
       "end": 1712313000,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Here’s a quick recap of veCAKE’s utility:."
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "PancakeSwap",
-      "title": "The CAKE lock warehouse automatically exits the mechanism, listens to the CAKE HOLDER's opinions, and hopes the kitchen hears or sees our ideas",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/cakevote.eth/proposal/0xb046ca86c5587dffc6e948f30dec896d1260b5e2d1c9dcdd6bd45ab4de167897",
-      "created": 1709293518,
-      "end": 1709899200,
-      "tev_related": true,
-      "tev_keywords": [
-        "dividend"
-      ],
-      "summary": "Our community has been talking about VECAKE, and we hope that there will be an UNLOCK mechanism for HOLDER to unlock."
+      "summary_en": "Here’s a quick recap of veCAKE’s utility:.",
+      "summary_zh": "Here’s a quick recap of veCAKE’s utility:."
     },
     {
       "source": "Snapshot",
@@ -1433,7 +1154,8 @@
       "end": 1707406200,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Here’s a quick recap of veCAKE’s utility:."
+      "summary_en": "Here’s a quick recap of veCAKE’s utility:.",
+      "summary_zh": "Here’s a quick recap of veCAKE’s utility:."
     },
     {
       "source": "Snapshot",
@@ -1445,7 +1167,8 @@
       "end": 1773608369,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Galaxy Challenge is a skill-based Web3 arcade game where players pilot a starship, dodge crypto coins, and survive waves of increasing difficulty. We propose integrating Lido (stETH/wstETH) as a suppo"
+      "summary_en": "Galaxy Challenge is a skill-based Web3 arcade game where players pilot a starship, dodge crypto coins, and survive waves of increasing difficulty. We propose integrating Lido (stETH/wstETH) as a supported deposit & reward token.",
+      "summary_zh": "Galaxy Challenge is a skill-based Web3 arcade game where players pilot a starship, dodge crypto coins, and survive waves of increasing difficulty. We propose integrating Lido (stETH/wstETH) as a supported deposit & 奖励 代币."
     },
     {
       "source": "Snapshot",
@@ -1457,7 +1180,8 @@
       "end": 1773082800,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This proposal seeks DAO approval to make the Delegate Incentivization Program a standing governance mechanism, funded under the approved 2026 EGG request. The proposed program is designed to auto-rene"
+      "summary_en": "This proposal seeks DAO approval to make the Delegate Incentivization Program a standing governance mechanism, funded under the approved 2026 EGG request. The proposed program is designed to auto-renew annually, pay delegates in USD-denominated stabl",
+      "summary_zh": "本提案 seeks DAO approval to make the Delegate Incentivization Program a standing 治理 mechanism, funded under the 已批准 2026 EGG request. The proposed program is designed to auto-renew annually, pay delegates in USD-denominated stabl"
     },
     {
       "source": "Snapshot",
@@ -1472,7 +1196,8 @@
         "revenue",
         "treasury"
       ],
-      "summary": "This proposal requests a \"skin-in-the-game\" one-time $5M DAO Treasury allocation (requested in stETH equivalent) into the planned new Lido Earn vaults: Lido Earn ETH Vault and Lido Earn USD Vault. The"
+      "summary_en": "This proposal requests a \"skin-in-the-game\" one-time $5M DAO Treasury allocation (requested in stETH equivalent) into the planned new Lido Earn vaults: Lido Earn ETH Vault and Lido Earn USD Vault. The purpose of this allocation is to:.",
+      "summary_zh": "本提案 请求 a \"skin-in-the-game\" one-time $5M DAO 金库/国库 分配 (requested in stETH equivalent) into the planned new Lido Earn 金库s: Lido Earn ETH 金库 and Lido Earn USD 金库. The purpose of this 分配 is to:."
     },
     {
       "source": "Snapshot",
@@ -1484,7 +1209,8 @@
       "end": 1773079200,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Stakin, a Node Operator (\"NO\") participating in the Lido Curated and Simple DVT Modules, was recently acquired by The Tie, an institutional services provider for digital assets. According to informati"
+      "summary_en": "Allow Stakin by The Tie to continue Node Operations in Lido on Ethereum and approve updating the Curated NO Registry on-chain to change the NO’s name to \"Stakin by The Tie\" and update its reward address as requested.",
+      "summary_zh": "Allow Stakin by The Tie to continue Node Operations in Lido on Ethereum and 批准 updating the Curated NO Registry on-chain to change the NO’s name to \"Stakin by The Tie\" and 更新 its 奖励 添加ress as requested."
     },
     {
       "source": "Snapshot",
@@ -1496,7 +1222,8 @@
       "end": 1769443200,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Reform and relaunch the Rewards Share Committee (”Committee”) as DAO-authorized operational committee to align with GOOSE-3 goals. This proposal updates the Committee mandate and process, including ad"
+      "summary_en": "Reform and relaunch the Rewards Share Committee (”Committee”) as DAO-authorized operational committee to align with GOOSE-3 goals. This proposal updates the Committee mandate and process, including adding support of the stVaults which were introduced",
+      "summary_zh": "Reform and relaunch the 奖励 Share 委员会 (”委员会”) as DAO-authorized operational 委员会 to align with GOOSE-3 goals. 本提案 更新s the 委员会 mandate and process, including 添加ing support of the st金库s which were introduced"
     },
     {
       "source": "Snapshot",
@@ -1508,7 +1235,8 @@
       "end": 1769443200,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This proposal introduces a variable incentive allocation model for Distributed Validator Technology (DVT) incentives accrued to the Lido protocol, split between Node Operators and the Mellow Distribut"
+      "summary_en": "This proposal introduces a variable incentive allocation model for Distributed Validator Technology (DVT) incentives accrued to the Lido protocol, split between Node Operators and the Mellow Distributed Validator Vault (DVV). The proposed new mechani",
+      "summary_zh": "本提案 introduces a variable incentive 分配 model for Distributed Validator Technology (DVT) incentives accrued to the Lido protocol, split between Node Operators and the Mellow Distributed Validator 金库 (DVV). The proposed new mechani"
     },
     {
       "source": "Snapshot",
@@ -1520,7 +1248,8 @@
       "end": 1766160000,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "GOOSE (Guided Open Objective Setting Exercise) is a framework establishing the open yearly process designed for the Lido DAO to pick a set of short- and medium-term goals. During the 2025 GOOSE propos"
+      "summary_en": "GOOSE (Guided Open Objective Setting Exercise) is a framework establishing the open yearly process designed for the Lido DAO to pick a set of short- and medium-term goals. During the 2025 GOOSE proposal window, only one proposal for the upcoming 2026",
+      "summary_zh": "GOOSE (Guided Open Objective Setting Exercise) is a framework establishing the open yearly process designed for the Lido DAO to pick a set of short- and medium-term goals. During the 2025 GOOSE proposal window, only one proposal for the upcoming 2026"
     },
     {
       "source": "Snapshot",
@@ -1534,7 +1263,8 @@
       "tev_keywords": [
         "treasury"
       ],
-      "summary": "This 2026 Ecosystem Grant gRequest (“EGG”) sets out the funding required to execute GOOSE-3 strategic plan for 2026 to support the Lido DAO (the “DAO”) in furthering the Lido protocol (“Lido” or “Prot"
+      "summary_en": "This 2026 Ecosystem Grant gRequest (“EGG”) sets out the funding required to execute GOOSE-3 strategic plan for 2026 to support the Lido DAO (the “DAO”) in furthering the Lido protocol (“Lido” or “Protocol”).",
+      "summary_zh": "This 2026 Ecosystem 拨款 gRequest (“EGG”) sets out the funding required to execute GOOSE-3 strategic plan for 2026 to support the Lido DAO (the “DAO”) in furthering the Lido protocol (“Lido” or “Protocol”)."
     },
     {
       "source": "Snapshot",
@@ -1546,7 +1276,8 @@
       "end": 1766160000,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "- GOOSE-3 proposes the horizontal expansion of the Lido DAO into new products and business lines. - The current bylaws of Lido Alliance BORG are narrowly drafted and restrict its purpose to the Lido A"
+      "summary_en": "- GOOSE-3 proposes the horizontal expansion of the Lido DAO into new products and business lines. - The current bylaws of Lido Alliance BORG are narrowly drafted and restrict its purpose to the Lido Alliance Program.",
+      "summary_zh": "- GOOSE-3 proposes the horizontal expansion of the Lido DAO into new products and business lines. - The current bylaws of Lido Alliance BORG are narrowly drafted and restrict its purpose to the Lido Alliance Program."
     },
     {
       "source": "Snapshot",
@@ -1558,7 +1289,8 @@
       "end": 1766160000,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "The Lido Labs Security Operations team proposes Lido DAO adopt the SEAL (Security Alliance) Whitehat Safe Harbor Agreement (Agreement Documentation, Legal Agreement) for the Lido on Ethereum protocol."
+      "summary_en": "does not request any funds from Lido DAO and does not involve any budget allocation. It solely seeks governance approval for Lido DAO to adopt the SEAL Whitehat Safe Harbor Agreement.",
+      "summary_zh": "does not request any funds from Lido DAO and does not involve any 预算 分配. It solely seeks 治理 approval for Lido DAO to adopt the SEAL Whitehat Safe Harbor Agreement."
     },
     {
       "source": "Snapshot",
@@ -1572,7 +1304,8 @@
       "tev_keywords": [
         "fee"
       ],
-      "summary": "This proposal seeks to adjust the fee structure for Node Operators in the current Curated Module (CM or CMv1) of the protocol in light of two key factors: (1) proposed changes that will be brought by "
+      "summary_en": "This proposal seeks to adjust the fee structure for Node Operators in the current Curated Module (CM or CMv1) of the protocol in light of two key factors: (1) proposed changes that will be brought by Staking Router v3 and Curated Module v2 (see “Cont",
+      "summary_zh": "本提案 寻求 调整 the 费用 structure for Node Operators in the current Curated Module (CM or CMv1) of the protocol in light of two key factors: (1) proposed changes that will be brought by 质押 Router v3 and Curated Module v2 (see “Cont"
     },
     {
       "source": "Snapshot",
@@ -1586,7 +1319,8 @@
       "tev_keywords": [
         "treasury"
       ],
-      "summary": "This proposal requests the DAO’s approval to execute the TMC-6 strategy and handle the related operations to allow the DAO to generate returns on its stablecoin holdings. Proposal details."
+      "summary_en": "This proposal requests the DAO’s approval to execute the TMC-6 strategy and handle the related operations to allow the DAO to generate returns on its stablecoin holdings.",
+      "summary_zh": "本提案 请求 the DAO’s approval to execute the TMC-6 strategy and handle the related operations to allow the DAO to generate returns on its stablecoin holdings."
     },
     {
       "source": "Snapshot",
@@ -1598,7 +1332,8 @@
       "end": 1762531200,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "- This proposal seeks to have Lido Labs Foundation assume the Token Reward Plan (“TRP”) from the grants association and assume the TRP Committee’s responsibilities for administering any LDO-based TRP."
+      "summary_en": "- This proposal seeks to have Lido Labs Foundation assume the Token Reward Plan (“TRP”) from the grants association and assume the TRP Committee’s responsibilities for administering any LDO-based TRP. The TRP Committee’s multisig and all Easy Track i",
+      "summary_zh": "- 本提案 寻求 have Lido Labs Foundation assume the 代币 奖励 Plan (“TRP”) from the 拨款 association and assume the TRP 委员会’s responsibilities for administering any LDO-based TRP. The TRP 委员会’s multisig and all Easy Track i"
     },
     {
       "source": "Snapshot",
@@ -1610,7 +1345,8 @@
       "end": 1762531200,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This proposal introduces several updates to the Lido Ecosystem Grants Organization (LEGO) framework, reflecting operational learnings and spending patterns over the past two years."
+      "summary_en": "This proposal introduces several updates to the Lido Ecosystem Grants Organization (LEGO) framework, reflecting operational learnings and spending patterns over the past two years.",
+      "summary_zh": "本提案 introduces several 更新s to the Lido Ecosystem 拨款 Organization (LEGO) framework, reflecting operational learnings and spending patterns over the past two years."
     },
     {
       "source": "Snapshot",
@@ -1622,7 +1358,8 @@
       "end": 1761148800,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This proposal seeks DAO authorization for the Lido Ecosystem Foundation (“Lido Ecosystem”) to lead all bridge-related strategic partnerships and negotiations involving stETH and wstETH, in order to un"
+      "summary_en": "This proposal seeks DAO authorization for the Lido Ecosystem Foundation (“Lido Ecosystem”) to lead all bridge-related strategic partnerships and negotiations involving stETH and wstETH, in order to unlock opportunities to improve competitiveness and ",
+      "summary_zh": "本提案 seeks DAO authorization for the Lido Ecosystem Foundation (“Lido Ecosystem”) to lead all bridge-related strategic partnerships and negotiations involving stETH and wstETH, in order to unlock opportunities to improve competitiveness and "
     },
     {
       "source": "Snapshot",
@@ -1634,7 +1371,8 @@
       "end": 1761148800,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This proposal seeks the community’s support to update the currently in effect Standard Node Operator Protocol (SNOP) on Validator Exits v2 (Snapshot) to the proposed SNOP on Validator Exits v3."
+      "summary_en": "This proposal seeks the community’s support to update the currently in effect Standard Node Operator Protocol (SNOP) on Validator Exits v2 (Snapshot) to the proposed SNOP on Validator Exits v3.",
+      "summary_zh": "本提案 seeks the 社区’s support to 更新 the currently in effect Standard Node Operator Protocol (SNOP) on Validator Exits v2 (Snapshot) to the proposed SNOP on Validator Exits v3."
     },
     {
       "source": "Snapshot",
@@ -1646,7 +1384,8 @@
       "end": 1759161600,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "- Lido V3 is a major upgrade to the Lido protocol. The first production-ready V3 build has run through two public testnets and is undergoing audits."
+      "summary_en": "- Lido V3 is a major upgrade to the Lido protocol. The first production-ready V3 build has run through two public testnets and is undergoing audits.",
+      "summary_zh": "- Lido V3 is a major 升级 to the Lido protocol. The first production-ready V3 build has run through two public testnets and is undergoing 审计s."
     },
     {
       "source": "Snapshot",
@@ -1662,7 +1401,8 @@
         "treasury",
         "tokenomics"
       ],
-      "summary": "NEST is a modular mechanism that, when supplied with stETH, enables those stETH to be swapped for LDO via STONKS and routes the LDO back to the Lido DAO Treasury, effectively taking it out of circulat"
+      "summary_en": "NEST is a modular mechanism that, when supplied with stETH, enables those stETH to be swapped for LDO via STONKS and routes the LDO back to the Lido DAO Treasury, effectively taking it out of circulation. The net effect it has is essentially to chang",
+      "summary_zh": "NEST is a modular mechanism that, when supplied with stETH, 启用s those stETH to be swapped for LDO via STONKS and routes the LDO back to the Lido DAO 金库/国库, effectively taking it out of circulation. The net effect it has is essentially to chang"
     },
     {
       "source": "Snapshot",
@@ -1674,7 +1414,8 @@
       "end": 1759161600,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Lido contributors are preparing to launch the V3 Protocol upgrade, which is currently in testing and planned for release later this fall. You can read more about V3 and stVaults in the announcement po"
+      "summary_en": "Lido contributors are preparing to launch the V3 Protocol upgrade, which is currently in testing and planned for release later this fall. You can read more about V3 and stVaults in the announcement post or the white paper.",
+      "summary_zh": "Lido contributors are preparing to launch the V3 Protocol 升级, which is currently in testing and planned for release later this fall. You can read more about V3 and st金库s in the announcement post or the white paper."
     },
     {
       "source": "Snapshot",
@@ -1686,7 +1427,8 @@
       "end": 1757347200,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This proposal seeks the community's support on whether Nethermind’s active validators in the Lido on Ethereum Curated Set should be migrated to infrastructure operated by Twinstake."
+      "summary_en": "This proposal seeks the community's support on whether Nethermind’s active validators in the Lido on Ethereum Curated Set should be migrated to infrastructure operated by Twinstake.",
+      "summary_zh": "本提案 seeks the 社区's support on whether Nethermind’s active validators in the Lido on Ethereum Curated Set should be 迁移d to infrastructure operated by Twinstake."
     },
     {
       "source": "Snapshot",
@@ -1700,7 +1442,8 @@
       "tev_keywords": [
         "distribution"
       ],
-      "summary": "Ratify the previously authorized 2025 Morpho contributor grants distribution."
+      "summary_en": "Ratify the previously authorized 2025 Morpho contributor grants distribution.",
+      "summary_zh": "Ratify the previously authorized 2025 Morpho contributor 拨款 分配."
     },
     {
       "source": "Snapshot",
@@ -1712,7 +1455,8 @@
       "end": 1769109289,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ""
+      "summary_en": "MIP 128 - Lite App Deprecation Part 2",
+      "summary_zh": "MIP 128 - Lite App Deprecation Part 2"
     },
     {
       "source": "Snapshot",
@@ -1724,7 +1468,8 @@
       "end": 1769109239,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Amend the optimistic rewards framework to account for external tokens grants."
+      "summary_en": "Amend the optimistic rewards framework to account for external tokens grants.",
+      "summary_zh": "Amend the optimistic 奖励 framework to account for external 代币s 拨款."
     },
     {
       "source": "Snapshot",
@@ -1736,7 +1481,8 @@
       "end": 1766035049,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "List MorphoMarketV1Adapter in Morpho’s Registry."
+      "summary_en": "List MorphoMarketV1Adapter in Morpho’s Registry.",
+      "summary_zh": "List Morpho市场V1Adapter in Morpho’s Registry."
     },
     {
       "source": "Snapshot",
@@ -1748,7 +1494,8 @@
       "end": 1765514699,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ""
+      "summary_en": "MIP 125 - Lite App Deprecation",
+      "summary_zh": "MIP 125 - Lite App Deprecation"
     },
     {
       "source": "Snapshot",
@@ -1760,7 +1507,8 @@
       "end": 1765514652,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Introduce a dedicated incentive campaign to accelerate migration from Vault V1 to Vault V2, governed under the Optimistic Rewards Framework."
+      "summary_en": "Introduce a dedicated incentive campaign to accelerate migration from Vault V1 to Vault V2, governed under the Optimistic Rewards Framework.",
+      "summary_zh": "Introduce a dedicated incentive campaign to accelerate migration from 金库 V1 to 金库 V2, governed under the Optimistic 奖励 Framework."
     },
     {
       "source": "Snapshot",
@@ -1772,7 +1520,8 @@
       "end": 1764485725,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ""
+      "summary_en": "MIP 123 - Spark Olympics Adjustment",
+      "summary_zh": "MIP 123 - Spark Olympics 调整ment"
     },
     {
       "source": "Snapshot",
@@ -1784,7 +1533,8 @@
       "end": 1762272347,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ""
+      "summary_en": "MIP 122 - Validate and Execute Morpho Adaptors Migration Plan",
+      "summary_zh": "MIP 122 - Validate and Execute Morpho Adaptors Migration Plan"
     },
     {
       "source": "Snapshot",
@@ -1796,7 +1546,8 @@
       "end": 1761405316,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Fully deprecate the Aave v3 Optimizer, rendering all outstanding borrow positions (approximately $230k) liquidatable and ensuring all lenders can withdraw. Liquidation losses triggered by the deprecat"
+      "summary_en": "Fully deprecate the Aave v3 Optimizer, rendering all outstanding borrow positions (approximately $230k) liquidatable and ensuring all lenders can withdraw. Liquidation losses triggered by the deprecation to be reimbursed by the Morpho Association for",
+      "summary_zh": "Fully deprecate the Aave v3 Optimizer, rendering all outstanding borrow positions (approximately $230k) liquidatable and ensuring all lenders can withdraw. Liquidation losses triggered by the deprecation to be reimbursed by the Morpho Association for"
     },
     {
       "source": "Snapshot",
@@ -1808,7 +1559,8 @@
       "end": 1760685224,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Fully deprecate the Aave v2 and Compound v2 optimizer instances."
+      "summary_en": "Fully deprecate the Aave v2 and Compound v2 optimizer instances.",
+      "summary_zh": "Fully deprecate the Aave v2 and Compound v2 optimizer instances."
     },
     {
       "source": "Snapshot",
@@ -1820,7 +1572,8 @@
       "end": 1760685026,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Adjust AMO rules to apply the same standard MORPHO reward rate to any depositor that deposits any asset eligible under MIP 102 and MIP 109. This means that an asset like USDC will earn rewards even if"
+      "summary_en": "Adjust AMO rules to apply the same standard MORPHO reward rate to any depositor that deposits any asset eligible under MIP 102 and MIP 109. This means that an asset like USDC will earn rewards even if deposited by a DAO like Spark, while AMO exclusio",
+      "summary_zh": "调整 AMO rules to apply the same standard MORPHO 奖励 rate to any depositor that deposits any asset eligible under MIP 102 and MIP 109. This means that an asset like USDC will earn 奖励 even if deposited by a DAO like Spark, while AMO exclusio"
     },
     {
       "source": "Snapshot",
@@ -1832,7 +1585,8 @@
       "end": 1760051503,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Deploy the MORPHO token on HyperEVM using LayerZero, and authorize an initial incentives budget of 100k MORPHO."
+      "summary_en": "Deploy the MORPHO token on HyperEVM using LayerZero, and authorize an initial incentives budget of 100k MORPHO.",
+      "summary_zh": "部署 the MORPHO 代币 on HyperEVM using LayerZero, and authorize an initial incentives 预算 of 100k MORPHO."
     },
     {
       "source": "Snapshot",
@@ -1844,7 +1598,8 @@
       "end": 1759550855,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ""
+      "summary_en": "MIP 117 - Arbitrum Rewards Extension",
+      "summary_zh": "MIP 117 - Arbitrum 奖励 Extension"
     },
     {
       "source": "Snapshot",
@@ -1856,7 +1611,8 @@
       "end": 1756072420,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ""
+      "summary_en": "MIP 116 - Unichain Rewards Extension",
+      "summary_zh": "MIP 116 - Unichain 奖励 Extension"
     },
     {
       "source": "Snapshot",
@@ -1868,7 +1624,8 @@
       "end": 1755433623,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "To support lending supply growth as the Coinbase borrow integration scales, authorize 50% of the standard MORPHO reward rate for Spark USDC deposits in the markets integrated by Coinbase on total depo"
+      "summary_en": "To support lending supply growth as the Coinbase borrow integration scales, authorize 50% of the standard MORPHO reward rate for Spark USDC deposits in the markets integrated by Coinbase on total deposits up to $1B.",
+      "summary_zh": "To support 借贷 供应量 growth as the Coinbase borrow 集成 scales, authorize 50% of the standard MORPHO 奖励 rate for Spark USDC deposits in the 市场s integrated by Coinbase on total deposits up to $1B."
     },
     {
       "source": "Snapshot",
@@ -1882,7 +1639,8 @@
       "tev_keywords": [
         "distribution"
       ],
-      "summary": ""
+      "summary_en": "MIP 114 - Incentives Distribution on Arbitrum",
+      "summary_zh": "MIP 114 - Incentives 分配 on Arbitrum"
     },
     {
       "source": "Snapshot",
@@ -1896,7 +1654,8 @@
       "tev_keywords": [
         "burn"
       ],
-      "summary": "With Morpho now deployed on Arbitrum, we need to make the Morpho token available on this chain. To achieve this, we propose the following:"
+      "summary_en": "represents the first operational step in a broader multichain vision for Morpho token bridging, one that may eventually standardize LayerZero as Morpho’s cross-chain bridge infrastructure.",
+      "summary_zh": "represents the first operational step in a broader multichain vision for Morpho 代币 bridging, one that may eventually standardize LayerZero as Morpho’s cross-chain bridge infrastructure."
     },
     {
       "source": "Snapshot",
@@ -1908,7 +1667,8 @@
       "end": 1753722947,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "The Morpho Association proposes to allocate 200,000 OP tokens from the Optimism Council Grant Cycle 33 to incentivize USDC growth on Base, targeting an additional $5M TVL increase to satisfy the grant"
+      "summary_en": "The Morpho Association proposes to allocate 200,000 OP tokens from the Optimism Council Grant Cycle 33 to incentivize USDC growth on Base, targeting an additional $5M TVL increase to satisfy the grant criteria.",
+      "summary_zh": "The Morpho Association 提议 allocate 200,000 OP 代币s from the Optimism 理事会 拨款 Cycle 33 to incentivize USDC growth on Base, targeting an 添加itional $5M TVL 增加 to satisfy the 拨款 criteria."
     },
     {
       "source": "Snapshot",
@@ -1922,7 +1682,8 @@
       "tev_keywords": [
         "distribution"
       ],
-      "summary": "Switch MORPHO token rewards distribution on Ethereum and Base to use the Merkl stack in order to accomplish the following objectives:"
+      "summary_en": "Switch MORPHO token rewards distribution on Ethereum and Base to use the Merkl stack in order to accomplish the following objectives:",
+      "summary_zh": "Switch MORPHO 代币 奖励 分配 on Ethereum and Base to use the Merkl stack in order to accomplish the following objectives:"
     },
     {
       "source": "Snapshot",
@@ -1934,7 +1695,8 @@
       "end": 1753419605,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ""
+      "summary_en": "MIP 110 : Guardians v2 Funding Request for Work",
+      "summary_zh": "MIP 110 : Guardians v2 Funding Request for Work"
     },
     {
       "source": "Snapshot",
@@ -1946,7 +1708,8 @@
       "end": 1752325666,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Redefine the optimistic rewards framework as follows:"
+      "summary_en": "Redefine the optimistic rewards framework as follows:",
+      "summary_zh": "Redefine the optimistic 奖励 framework as follows:"
     },
     {
       "source": "Snapshot",
@@ -1958,7 +1721,8 @@
       "end": 1770408000,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "We are seeking to gauge community support for the proposed plan to deprecate Compound Blue."
+      "summary_en": "We are seeking to gauge community support for the proposed plan to deprecate Compound Blue.",
+      "summary_zh": "We are seeking to gauge 社区 support for the proposed plan to deprecate Compound Blue."
     },
     {
       "source": "Snapshot",
@@ -1970,7 +1734,8 @@
       "end": 1765307460,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Following Tally's successful RFP response to become Compound's Voting Service Provider, we explored visibility improvements for MarketAdmin transactions. However, consultations revealed that MarketAdm"
+      "summary_en": "Following Tally's successful RFP response to become Compound's Voting Service Provider, we explored visibility improvements for MarketAdmin transactions. However, consultations revealed that MarketAdmin represents a suboptimal operational model with ",
+      "summary_zh": "Following Tally's successful RFP response to become Compound's 投票 Service Provider, we explored visibility improvements for 市场Admin transactions. However, consultations revealed that 市场Admin represents a suboptimal operational model with "
     },
     {
       "source": "Snapshot",
@@ -1982,21 +1747,8 @@
       "end": 1759793400,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "We are seeking to gauge community support for the proposed plan to deprecate Compound V2."
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Compound",
-      "title": "Phase 1 of the $COMP Distribution is Live Following a Successful DAO Vote!",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0x99886c618d8b35a9b4a6098821fcab98880805a9ee03c00e59705fa7fd26afd7",
-      "created": 1755514851,
-      "end": 1755774051,
-      "tev_related": true,
-      "tev_keywords": [
-        "distribution"
-      ],
-      "summary": "Attention Compound community! We’re thrilled to announce the official launch of Phase 1 of the $COMP distribution — made possible by a successful DAO vote."
+      "summary_en": "We are seeking to gauge community support for the proposed plan to deprecate Compound V2.",
+      "summary_zh": "We are seeking to gauge 社区 support for the proposed plan to deprecate Compound V2."
     },
     {
       "source": "Snapshot",
@@ -2010,7 +1762,8 @@
       "tev_keywords": [
         "distribution"
       ],
-      "summary": "Calling all Compound users! We're delighted to share the exciting news that the eagerly anticipated $COMP distribution is now open for your enthusiastic participation. Dive into the specifics below to"
+      "summary_en": "Calling all Compound users! We're delighted to share the exciting news that the eagerly anticipated $COMP distribution is now open for your enthusiastic participation. Dive into the specifics below to learn about the launch date and the transformativ",
+      "summary_zh": "Calling all Compound users! We're delighted to share the exciting news that the eagerly anticipated $COMP 分配 is now open for your enthusiastic participation. Dive into the specifics below to learn about the launch date and the transformativ"
     },
     {
       "source": "Snapshot",
@@ -2024,21 +1777,8 @@
       "tev_keywords": [
         "distribution"
       ],
-      "summary": "Calling all Compound users! We're delighted to share the exciting news that the eagerly anticipated $COMP distribution is now open for your enthusiastic participation. Dive into the specifics below to"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Compound",
-      "title": "After a Successful DAO Vote, Compound decided to Launch the 1 Phase of the $COMP Distribution",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0xe1d6eb08907223b65eb410fe61b86d40c4285745084b39dfee4dde5a99b51a39",
-      "created": 1755393866,
-      "end": 1755653066,
-      "tev_related": true,
-      "tev_keywords": [
-        "distribution"
-      ],
-      "summary": "Calling all Compound users! We're delighted to share the exciting news that the eagerly anticipated $COMP distribution is now open for your enthusiastic participation. Dive into the specifics below to"
+      "summary_en": "Calling all Compound users! We're delighted to share the exciting news that the eagerly anticipated $COMP distribution is now open for your enthusiastic participation. Dive into the specifics below to learn about the launch date and the transformativ",
+      "summary_zh": "Calling all Compound users! We're delighted to share the exciting news that the eagerly anticipated $COMP 分配 is now open for your enthusiastic participation. Dive into the specifics below to learn about the launch date and the transformativ"
     },
     {
       "source": "Snapshot",
@@ -2050,31 +1790,8 @@
       "end": 1754351940,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Following the Compound Foundation’s recommendations around the DAO’s next Security Service Provider (SSP), the CGWG is coordinating next steps to facilitate the election of Compound’s new SSP."
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Compound",
-      "title": "Adopt an OEV Solution on Linea (2025 RFP)",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0xe0c4e01a80e9352339fed2a7e547ca8342ab4c5d0eca1bb54bb85db7b0b791b7",
-      "created": 1751745243,
-      "end": 1752278340,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "This Snapshot is part of the Compound DAO’s 2025 OEV (Oracle Extractable Value) RFP process. Delegates are asked to select whether to adopt an OEV solution for all 10 of the chains that Compound curre"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Compound",
-      "title": "Adopt an OEV Solution on Ronin (2025 RFP)",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0x3a40ab32704c2e4d27fbe86018a954f82b598ceda1597fe04b67293ff7aa0db0",
-      "created": 1751745050,
-      "end": 1752278340,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "This Snapshot is part of the Compound DAO’s 2025 OEV (Oracle Extractable Value) RFP process. Delegates are asked to select whether to adopt an OEV solution for all 10 of the chains that Compound curre"
+      "summary_en": "here)\n   Two of the industry’s most established formal verification and audit firms, known for deep expertise in protocol correctness and secure smart contract development.    Prior Compound V3 audit and governance proposal experience.",
+      "summary_zh": "here)\n   Two of the industry’s most established formal verification and 审计 firms, known for deep expertise in protocol correctness and secure smart contract development.    Prior Compound V3 审计 and 治理 proposal experience."
     },
     {
       "source": "Snapshot",
@@ -2086,67 +1803,8 @@
       "end": 1752278340,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This Snapshot is part of the Compound DAO’s 2025 OEV (Oracle Extractable Value) RFP process. Delegates are asked to select whether to adopt an OEV solution for all 10 of the chains that Compound curre"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Compound",
-      "title": "Adopt an OEV Solution on Scroll (2025 RFP)",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0xc2b750abc6ebdb94af46a2b4ba907e85f9b1f642e908a9a7c021a7065f73ae25",
-      "created": 1751744514,
-      "end": 1752278340,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "This Snapshot is part of the Compound DAO’s 2025 OEV (Oracle Extractable Value) RFP process. Delegates are asked to select whether to adopt an OEV solution for all 10 of the chains that Compound curre"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Compound",
-      "title": "Adopt an OEV Solution on Optimism (2025 RFP)",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0xe30fa5b9df1534a9b9558db27cfbc8543b202da9a4341ca67acfdca79c1b8c6f",
-      "created": 1751743175,
-      "end": 1752278340,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "This Snapshot is part of the Compound DAO’s 2025 OEV (Oracle Extractable Value) RFP process. Delegates are asked to select whether to adopt an OEV solution for all 10 of the chains that Compound curre"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Compound",
-      "title": "Adopt an OEV Solution on Arbitrum (2025 RFP)",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0x056f3f1ba1bd253a8d103221f9bcde970287f722b7d2535a8136c8eed4be519d",
-      "created": 1751742890,
-      "end": 1752278340,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "This Snapshot is part of the Compound DAO’s 2025 OEV (Oracle Extractable Value) RFP process. Delegates are asked to select whether to adopt an OEV solution for all 10 of the chains that Compound curre"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Compound",
-      "title": "Adopt an OEV Solution on Polygon (2025 RFP)",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0x0a898c9a26b02ebd80f9de77c29a5ff5cdaca77b39a3d1ce22c0555be40028ed",
-      "created": 1751742471,
-      "end": 1752278340,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "This Snapshot is part of the Compound DAO’s 2025 OEV (Oracle Extractable Value) RFP process. Delegates are asked to select whether to adopt an OEV solution for all 10 of the chains that Compound curre"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Compound",
-      "title": "Adopt an OEV Solution on Base (2025 RFP)",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0xffd84200f112926e8b21793ee3750f272fc40a3f90399f86d41971a44aa3edf3",
-      "created": 1751741904,
-      "end": 1752278340,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "This Snapshot is part of the Compound DAO’s 2025 OEV (Oracle Extractable Value) RFP process. Delegates are asked to select whether to adopt an OEV solution for all 10 of the chains that Compound curre"
+      "summary_en": "This Snapshot is part of the Compound DAO’s 2025 OEV (Oracle Extractable Value) RFP process. Delegates are asked to select whether to adopt an OEV solution for all 10 of the chains that Compound currently resides on, with this vote focusing on MANTLE",
+      "summary_zh": "This Snapshot is part of the Compound DAO’s 2025 OEV (预言机 Extractable Value) RFP process. Delegates are asked to select whether to adopt an OEV solution for all 10 of the chains that Compound currently resides on, with this vote focusing on MANTLE"
     },
     {
       "source": "Snapshot",
@@ -2158,31 +1816,8 @@
       "end": 1752278340,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This Snapshot is part of the Compound DAO’s 2025 OEV (Oracle Extractable Value) RFP process. Delegates are asked to select whether to adopt an OEV solution for all 10 of the chains that Compound curre"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Compound",
-      "title": "Adopt an OEV Solution on Ethereum Mainnet (2025 RFP)",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0x98a3873319cdb5a4c66b6f862752bdcfb40d443a5b9c2f9472188d7ed5f9f2e0",
-      "created": 1751740043,
-      "end": 1752278340,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "This Snapshot is part of the Compound DAO’s 2025 OEV (Oracle Extractable Value) RFP process. Delegates are asked to select whether to adopt an OEV solution for all 10 of the chains that Compound curre"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Compound",
-      "title": "Voting Service Provider RFP",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0x1d596409a8d530f17c8c7dd9d963873d02fb06cd43612cb987935666fa4bc045",
-      "created": 1751661855,
-      "end": 1752278340,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "Title: Compound DAO Voting Service Provider (VSP) Selection"
+      "summary_en": "This Snapshot is part of the Compound DAO’s 2025 OEV (Oracle Extractable Value) RFP process. Delegates are asked to select whether to adopt an OEV solution for all 10 of the chains that Compound currently resides on, with this vote focusing on UNICHA",
+      "summary_zh": "This Snapshot is part of the Compound DAO’s 2025 OEV (预言机 Extractable Value) RFP process. Delegates are asked to select whether to adopt an OEV solution for all 10 of the chains that Compound currently resides on, with this vote focusing on UNICHA"
     },
     {
       "source": "Snapshot",
@@ -2194,7 +1829,8 @@
       "end": 1750712400,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "/Background: Why the RFP is being issued and what problem we aim to solve, with context for vendors\n    Scope & Requirements: Exactly what the DAO is looking for. This section will list the deliverabl"
+      "summary_en": "(RFP) process for evaluating competing initiatives. The Compound Governance WG (CGWG) has stepped in to facilitate several such RFPs on an ad-hoc basis.",
+      "summary_zh": "(RFP) process for evaluating competing initiatives. The Compound 治理 WG (CGWG) has stepped in to facilitate several such RFPs on an ad-hoc basis."
     },
     {
       "source": "Snapshot",
@@ -2209,7 +1845,8 @@
         "revenue",
         "treasury"
       ],
-      "summary": "This proposal authorises the Foundation to utilise a portion of the treasury to conduct buy-backs of ETHFI tokens while the market price is below US $3, up to a total amount of US $50 million. The goa"
+      "summary_en": "This proposal authorises the Foundation to utilise a portion of the treasury to conduct buy-backs of ETHFI tokens while the market price is below US $3, up to a total amount of US $50 million. The goal is to continue to accumulate ETHFI and increase ",
+      "summary_zh": "本提案 authorises the Foundation to utilise a portion of the 金库/国库 to conduct buy-backs of ETHFI 代币s while the 市场 price is below US $3, up to a total amount of US $50 million. The goal is to continue to accumulate ETHFI and 增加 "
     },
     {
       "source": "Snapshot",
@@ -2221,7 +1858,8 @@
       "end": 1748835815,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "After five successful seasons that have driven substantial growth and established ether.fi as a leading protocol in the liquid staking and restaking ecosystem, we are announcing the conclusion of our "
+      "summary_en": "After five successful seasons that have driven substantial growth and established ether.fi as a leading protocol in the liquid staking and restaking ecosystem, we are announcing the conclusion of our traditional Seasonal program. Over the past season",
+      "summary_zh": "After five successful seasons that have driven substantial growth and established ether.fi as a leading protocol in the liquid 质押 and re质押 ecosystem, we are announcing the conclusion of our traditional Seasonal program. Over the past season"
     },
     {
       "source": "Snapshot",
@@ -2237,7 +1875,8 @@
         "buyback",
         "revenue"
       ],
-      "summary": "This proposal seeks approval to repurpose revenue generated by the eETH withdrawal queue towards ETHFI token buybacks. ether.fi generates revenue on the withdraw process through two different mechanis"
+      "summary_en": "This proposal seeks approval to repurpose revenue generated by the eETH withdrawal queue towards ETHFI token buybacks. ether.fi generates revenue on the withdraw process through two different mechanisms - normal withdrawals forfeit yields during the ",
+      "summary_zh": "本提案 seeks approval to repurpose 收入 generated by the eETH withdrawal queue towards ETHFI 代币 回购s. ether.fi generates 收入 on the withdraw process through two different mechanisms - normal withdrawals forfeit yields during the "
     },
     {
       "source": "Snapshot",
@@ -2249,7 +1888,8 @@
       "end": 1738378945,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Following the success of Season 4, this proposal recommends the allocation of 10 million ETHFI tokens for Season 5 (S5), designed to drive strategic growth, accelerate momentum and participation, and "
+      "summary_en": "Following the success of Season 4, this proposal recommends the allocation of 10 million ETHFI tokens for Season 5 (S5), designed to drive strategic growth, accelerate momentum and participation, and expand the ether.fi ecosystem across multiple dime",
+      "summary_zh": "Following the success of Season 4, this proposal recommends the 分配 of 10 million ETHFI 代币s for Season 5 (S5), designed to drive strategic growth, accelerate momentum and participation, and expand the ether.fi ecosystem across multiple dime"
     },
     {
       "source": "Snapshot",
@@ -2265,7 +1905,8 @@
         "revenue",
         "treasury"
       ],
-      "summary": "This proposal, following the passing of the ether.fi protocol revenue distribution to staked ETHFI holders, seeks approval to diversify the ETHFI DAO treasury by investing in a mix of real-world asset"
+      "summary_en": "This proposal, following the passing of the ether.fi protocol revenue distribution to staked ETHFI holders, seeks approval to diversify the ETHFI DAO treasury by investing in a mix of real-world assets such as tokenized treasury notes, along with ETH",
+      "summary_zh": "本提案, following the passing of the ether.fi protocol 收入 分配 to staked ETHFI holders, seeks approval to diversify the ETHFI DAO 金库/国库 by investing in a mix of real-world assets such as 代币ized 金库/国库 notes, along with ETH"
     },
     {
       "source": "Snapshot",
@@ -2280,7 +1921,8 @@
         "buyback",
         "revenue"
       ],
-      "summary": "This proposal builds upon the success of Ether.Fi’s buyback and liquidity provision (LP) program by introducing a new revenue-sharing mechanism for ETHFI stakers. We propose allocating 5% of protocol "
+      "summary_en": "This proposal builds upon the success of Ether.Fi’s buyback and liquidity provision (LP) program by introducing a new revenue-sharing mechanism for ETHFI stakers. We propose allocating 5% of protocol revenue to buy ETHFI and distribute it to ETHFI st",
+      "summary_zh": "本提案 builds upon the success of Ether.Fi’s 回购 and 流动性 provision (LP) program by introducing a new 收入-sharing mechanism for ETHFI stakers. We propose allocating 5% of protocol 收入 to buy ETHFI and distribute it to ETHFI st"
     },
     {
       "source": "Snapshot",
@@ -2294,7 +1936,8 @@
       "tev_keywords": [
         "distribution"
       ],
-      "summary": "This proposal recommends that the Ether.fi DAO allocates an additional 4,000,000 ETHFI tokens for use in Season 4 (S4). The primary purpose of this allocation is to incentivize new promotions and depo"
+      "summary_en": "This proposal recommends that the Ether.fi DAO allocates an additional 4,000,000 ETHFI tokens for use in Season 4 (S4). The primary purpose of this allocation is to incentivize new promotions and deposits during the season.",
+      "summary_zh": "本提案 recommends that the Ether.fi DAO allocates an 添加itional 4,000,000 ETHFI 代币s for use in Season 4 (S4). The primary purpose of this 分配 is to incentivize new promotions and deposits during the season."
     },
     {
       "source": "Snapshot",
@@ -2306,7 +1949,8 @@
       "end": 1729905181,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "ether.fi proposes an allocation of up to 10 million ETHFI tokens to be used specifically for listing Wrapped eETH (weETH) as collateral on centralized exchanges (CEX) for perpetual trading. This alloc"
+      "summary_en": "ether.fi proposes an allocation of up to 10 million ETHFI tokens to be used specifically for listing Wrapped eETH (weETH) as collateral on centralized exchanges (CEX) for perpetual trading. This allocation will directly support the growth and adoptio",
+      "summary_zh": "ether.fi proposes an 分配 of up to 10 million ETHFI 代币s to be used specifically for 上市 Wrapped eETH (weETH) as 抵押品 on centralized exchanges (CEX) for perpetual trading. This 分配 will directly support the growth and adoptio"
     },
     {
       "source": "Snapshot",
@@ -2318,7 +1962,8 @@
       "end": 1726722645,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Following the success of ether.fi season 1, 2 and 3, ether.fi proposes extending the seasons initiative with the introduction of season 4, targeted at fostering community engagement and support in the"
+      "summary_en": "Following the success of ether.fi season 1, 2 and 3, ether.fi proposes extending the seasons initiative with the introduction of season 4, targeted at fostering community engagement and support in the restaking space, while continuing to support the ",
+      "summary_zh": "Following the success of ether.fi season 1, 2 and 3, ether.fi proposes extending the seasons initiative with the introduction of season 4, targeted at fostering 社区 engagement and support in the re质押 space, while continuing to support the "
     },
     {
       "source": "Snapshot",
@@ -2332,7 +1977,8 @@
       "tev_keywords": [
         "buyback"
       ],
-      "summary": "This proposal aims to increase the monthly buyback of ETHFI tokens from the current maximum of 5% to 25%. Additionally, it seeks to utilize liquidity provisioning through Arrakis Finance."
+      "summary_en": "This proposal aims to increase the monthly buyback of ETHFI tokens from the current maximum of 5% to 25%. Additionally, it seeks to utilize liquidity provisioning through Arrakis Finance.",
+      "summary_zh": "本提案 旨在 增加 the monthly 回购 of ETHFI 代币s from the current maximum of 5% to 25%. 添加itionally, it 寻求 utilize 流动性 provisioning through Arrakis Finance."
     },
     {
       "source": "Snapshot",
@@ -2344,7 +1990,8 @@
       "end": 1720389034,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This proposal seeks approval for the deployment of a staking contract for ETHFI on Ethereum mainnet. The ETHFI staking mechanism aims to provide genuine utility by linking rewards to governance partic"
+      "summary_en": "This proposal seeks approval for the deployment of a staking contract for ETHFI on Ethereum mainnet. The ETHFI staking mechanism aims to provide genuine utility by linking rewards to governance participation and effective balances in the ecosystem.",
+      "summary_zh": "本提案 seeks approval for the 部署 of a 质押 contract for ETHFI on Ethereum mainnet. The ETHFI 质押 mechanism 旨在 provide genuine utility by linking 奖励 to 治理 participation and effective balances in the ecosystem."
     },
     {
       "source": "Snapshot",
@@ -2356,7 +2003,8 @@
       "end": 1719757713,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "As part of our ongoing commitment to foster community engagement and support, we are excited to propose the launch of our Season 3 initiative. Building upon the successes of Seasons 1 and 2, which saw"
+      "summary_en": "will not only reward our community members for their continued participation and support, but also incentivize future engagement and growth within the ether.fi ecosystem. We kindly request your thoughtful consideration and participation in the voting",
+      "summary_zh": "will not only 奖励 our 社区 members for their continued participation and support, but also incentivize future engagement and growth within the ether.fi ecosystem. We kindly request your thoughtful consideration and participation in the 投票"
     },
     {
       "source": "Snapshot",
@@ -2372,7 +2020,8 @@
         "revenue",
         "treasury"
       ],
-      "summary": "This proposal suggests initiating the purchase of ETHFI with up to 50% of protocol revenue. Initially 5% of monthly revenue will be used, with future increases to be put to a community vote."
+      "summary_en": "This proposal suggests initiating the purchase of ETHFI with up to 50% of protocol revenue. Initially 5% of monthly revenue will be used, with future increases to be put to a community vote.",
+      "summary_zh": "本提案 suggests initiating the purchase of ETHFI with up to 50% of protocol 收入. Initially 5% of monthly 收入 will be used, with future 增加s to be put to a 社区 vote."
     },
     {
       "source": "Snapshot",
@@ -2384,7 +2033,8 @@
       "end": 1770643483,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Following the conclusion of the application period, we are pleased to present the final list of shortlisted candidates for the Risk Committee election. As the recent vote to reduce Risk Committee memb"
+      "summary_en": "Following the conclusion of the application period, we are pleased to present the final list of shortlisted candidates for the Risk Committee election. As the recent vote to reduce Risk Committee members from 5 to 3 passed with 100% in favour, 3 succ",
+      "summary_zh": "Following the conclusion of the application period, we are pleased to present the final list of shortlisted candidates for the 风险 委员会 election. As the recent vote to 减少 风险 委员会 members from 5 to 3 passed with 100% in favour, 3 succ"
     },
     {
       "source": "Snapshot",
@@ -2396,7 +2046,8 @@
       "end": 1770051651,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "After reflecting on how to best position the Risk Committee for success going forward, Ethena Labs Research is seeking to put forward a proposal for broad ENA tokenholder vote ahead of next week’s ele"
+      "summary_en": "for broad ENA tokenholder vote ahead of next week’s elections, suggesting a reduction in Risk Committee size from 5 to 3 voting members.",
+      "summary_zh": "for broad ENA 代币holder vote ahead of next week’s elections, suggesting a reduction in 风险 委员会 size from 5 to 3 投票 members."
     },
     {
       "source": "Snapshot",
@@ -2408,7 +2059,8 @@
       "end": 1754261940,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Following the conclusion of the application period, we are pleased to present the final list of shortlisted candidates for the Risk Committee election. 6 successful candidates out of the 7 applicants "
+      "summary_en": "Following the conclusion of the application period, we are pleased to present the final list of shortlisted candidates for the Risk Committee election. 6 successful candidates out of the 7 applicants will earn a seat on the Ethena Risk Committee for ",
+      "summary_zh": "Following the conclusion of the application period, we are pleased to present the final list of shortlisted candidates for the 风险 委员会 election. 6 successful candidates out of the 7 applicants will earn a seat on the Ethena 风险 委员会 for "
     },
     {
       "source": "Snapshot",
@@ -2420,7 +2072,8 @@
       "end": 1747498910,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This proposal seeks to improve the capital efficiency of the backing assets of USDe by utilizing a portion of the idle USDtb, USDC and/or USDT in the backing as lending collateral on Aave."
+      "summary_en": "This proposal seeks to improve the capital efficiency of the backing assets of USDe by utilizing a portion of the idle USDtb, USDC and/or USDT in the backing as lending collateral on Aave.",
+      "summary_zh": "本提案 寻求 improve the capital efficiency of the backing assets of USDe by utilizing a portion of the idle USDtb, USDC and/or USDT in the backing as 借贷 抵押品 on Aave."
     },
     {
       "source": "Snapshot",
@@ -2432,7 +2085,8 @@
       "end": 1738954549,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Note: This vote has been updated to account for locked sENA"
+      "summary_en": "Note: This vote has been updated to account for locked sENA",
+      "summary_zh": "Note: This vote has been 更新d to account for locked sENA"
     },
     {
       "source": "Snapshot",
@@ -2444,7 +2098,8 @@
       "end": 1727965283,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "This proposal introduces Ethereal: an integrated spot & perpetual futures DEX built on the upcoming Ethena Network using USDe. Ethereal are requesting that the exchange be directly integrated into Eth"
+      "summary_en": "This proposal introduces Ethereal: an integrated spot & perpetual futures DEX built on the upcoming Ethena Network using USDe. Ethereal are requesting that the exchange be directly integrated into Ethena-related reserve management from launch to prov",
+      "summary_zh": "本提案 introduces Ethereal: an integrated spot & perpetual futures DEX built on the upcoming Ethena Network using USDe. Ethereal are requesting that the exchange be directly integrated into Ethena-related reserve management from launch to prov"
     },
     {
       "source": "Snapshot",
@@ -2458,7 +2113,8 @@
       "tev_keywords": [
         "revenue"
       ],
-      "summary": "MIP-020 proposes to extend the Syrup Strategic Fund (SSF) revenue allocation approved under MIP-019 for an additional six months, covering Q1 and Q2 2026."
+      "summary_en": "MIP-020 proposes to extend the Syrup Strategic Fund (SSF) revenue allocation approved under MIP-019 for an additional six months, covering Q1 and Q2 2026.",
+      "summary_zh": "MIP-020 提议 extend the Syrup Strategic Fund (SSF) 收入 分配 已批准 under MIP-019 for an 添加itional six months, covering Q1 and Q2 2026."
     },
     {
       "source": "Snapshot",
@@ -2474,7 +2130,8 @@
         "buyback",
         "revenue"
       ],
-      "summary": "Maple Finance has seen tremendous growth over the previous 12 months and established itself as the clear leader in onchain asset management. With AUM growing >10x since SYRUP’s launch and the protocol"
+      "summary_en": "Maple Finance has seen tremendous growth over the previous 12 months and established itself as the clear leader in onchain asset management. With AUM growing >10x since SYRUP’s launch and the protocol now generating ~$20M in ARR from fees, the Maple ",
+      "summary_zh": "Maple Finance has seen tremendous growth over the previous 12 months and established itself as the clear leader in onchain asset management. With AUM growing >10x since SYRUP’s launch and the protocol now generating ~$20M in ARR from 费用, the Maple "
     },
     {
       "source": "Snapshot",
@@ -2491,7 +2148,8 @@
         "distribution",
         "revenue"
       ],
-      "summary": "MIP-018 proposes to allocate 25% of protocol fee revenue from Q3 2025 to buyback $SYRUP tokens and distribute these as rewards to stakers of $SYRUP. This proposal builds on the success of Q1 and Q2 bu"
+      "summary_en": "MIP-018 proposes to allocate 25% of protocol fee revenue from Q3 2025 to buyback $SYRUP tokens and distribute these as rewards to stakers of $SYRUP. This proposal builds on the success of Q1 and Q2 buybacks, advancing a mechanism that’s fast becoming",
+      "summary_zh": "MIP-018 提议 allocate 25% of protocol 费用 收入 from Q3 2025 to 回购 $SYRUP 代币s and distribute these as 奖励 to stakers of $SYRUP. 本提案 builds on the success of Q1 and Q2 回购s, advancing a mechanism that’s fast becoming"
     },
     {
       "source": "Snapshot",
@@ -2503,7 +2161,8 @@
       "end": 1747598125,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "With the SYRUP token migration largely complete, Maple is now preparing for the next phase of strategic growth and market development. As part of this process, a small supply of unconverted MPL tokens"
+      "summary_en": "(RFP) process to engage leading market makers as preferred partners for executing the liquidity strategy.",
+      "summary_zh": "(RFP) process to engage leading 市场 makers as preferred partners for executing the 流动性 strategy."
     },
     {
       "source": "Snapshot",
@@ -2519,7 +2178,8 @@
         "buyback",
         "revenue"
       ],
-      "summary": "MIP-016 proposes to use 20% of protocol fee revenue from Q2 2025 to buyback $SYRUP tokens then distribute these as rewards to stakers of $SYRUP. This is a continuation of the monthly buybacks that wer"
+      "summary_en": "MIP-016 proposes to use 20% of protocol fee revenue from Q2 2025 to buyback $SYRUP tokens then distribute these as rewards to stakers of $SYRUP. This is a continuation of the monthly buybacks that were voted on and approved by the SYRUP community at ",
+      "summary_zh": "MIP-016 提议 use 20% of protocol 费用 收入 from Q2 2025 to 回购 $SYRUP 代币s then distribute these as 奖励 to stakers of $SYRUP. This is a continuation of the monthly 回购s that were voted on and 已批准 by the SYRUP 社区 at "
     },
     {
       "source": "Snapshot",
@@ -2531,7 +2191,8 @@
       "end": 1738859237,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "MIP-015 proposes the implementation of Aave V3 integration within the Maple Strategies framework established by MIP-014. This implementation will enable pools to deploy capital into Aave V3’s lending "
+      "summary_en": "MIP-015 proposes the implementation of Aave V3 integration within the Maple Strategies framework established by MIP-014. This implementation will enable pools to deploy capital into Aave V3’s lending markets, expanding Maple’s yield generation capabi",
+      "summary_zh": "MIP-015 proposes the implementation of Aave V3 集成 within the Maple Strategies framework established by MIP-014. This implementation will 启用 池子s to 部署 capital into Aave V3’s 借贷 市场s, expanding Maple’s yield generation capabi"
     },
     {
       "source": "Snapshot",
@@ -2543,7 +2204,8 @@
       "end": 1738259568,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "MIP-014 proposes the foundational implementation of Maple Strategies, beginning with Sky protocol integration. This proposal introduces the base strategy framework and seeks approval for Sky Savings R"
+      "summary_en": "MIP-014 proposes the foundational implementation of Maple Strategies, beginning with Sky protocol integration. This proposal introduces the base strategy framework and seeks approval for Sky Savings Rate (SSR) as the first supported protocol.",
+      "summary_zh": "MIP-014 proposes the foundational implementation of Maple Strategies, beginning with Sky protocol 集成. 本提案 introduces the base strategy framework and seeks approval for Sky Savings Rate (SSR) as the first supported protocol."
     },
     {
       "source": "Snapshot",
@@ -2559,7 +2221,8 @@
         "buyback",
         "revenue"
       ],
-      "summary": "MIP-013 proposes to use 20% of protocol fee revenue from Q1 2025 to buyback SYRUP tokens on market and then distribute these as rewards to stakers of SYRUP. A detailed summary of the proposal is provi"
+      "summary_en": "MIP-013 proposes to use 20% of protocol fee revenue from Q1 2025 to buyback SYRUP tokens on market and then distribute these as rewards to stakers of SYRUP. A detailed summary of the proposal is provided below, including the background, rationale, me",
+      "summary_zh": "MIP-013 提议 use 20% of protocol 费用 收入 from Q1 2025 to 回购 SYRUP 代币s on 市场 and then distribute these as 奖励 to stakers of SYRUP. A detailed summary of the proposal is provided below, including the background, rationale, me"
     },
     {
       "source": "Snapshot",
@@ -2571,7 +2234,8 @@
       "end": 1735585250,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "MIP-012 proposes for stSYRUP to be the governance token for the Maple ecosystem. This MIP contains the rationale behind this proposal and the implementation plan were this MIP to be approved by the co"
+      "summary_en": "MIP-012 proposes for stSYRUP to be the governance token for the Maple ecosystem. This MIP contains the rationale behind this proposal and the implementation plan were this MIP to be approved by the community.",
+      "summary_zh": "MIP-012 proposes for stSYRUP to be the 治理 代币 for the Maple ecosystem. This MIP contains the rationale behind this proposal and the implementation plan were this MIP to be 已批准 by the 社区."
     },
     {
       "source": "Snapshot",
@@ -2583,7 +2247,8 @@
       "end": 1735585108,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "MIP-011 proposes for the final MPL to SYRUP conversion date to be the 30th of April 2025. The MPL to SYRUP conversion was approved in MIP-010 (MIP-010: SYRUP Token Launch and MPL <> SYRUP Conversion)."
+      "summary_en": "MIP-011 proposes for the final MPL to SYRUP conversion date to be the 30th of April 2025. The MPL to SYRUP conversion was approved in MIP-010 (MIP-010: SYRUP Token Launch and MPL <> SYRUP Conversion).",
+      "summary_zh": "MIP-011 proposes for the final MPL to SYRUP conversion date to be the 30th of April 2025. The MPL to SYRUP conversion was 已批准 in MIP-010 (MIP-010: SYRUP 代币 Launch and MPL <> SYRUP Conversion)."
     },
     {
       "source": "Snapshot",
@@ -2598,7 +2263,8 @@
         "distribution",
         "treasury"
       ],
-      "summary": "To fuel the next wave of growth for Maple, MIP-010 proposes the launch of SYRUP token, conversion of MPL to SYRUP, and the introduction of SYRUP staking. This latest proposal follows on from MIP-009, "
+      "summary_en": "follows on from MIP-009, which recapitalised the Maple Treasury and helped the protocol launch key growth initiatives.",
+      "summary_zh": "follows on from MIP-009, which recapitalised the Maple 金库/国库 and helped the protocol launch key growth initiatives."
     },
     {
       "source": "Snapshot",
@@ -2610,7 +2276,8 @@
       "end": 1694554922,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "MIP009 proposes to upgrade the MPL token to MPLv2 in order to resource growth initiatives and add new MPL utility. This MIP contains the motivation, details on the technical transition and an evaluati"
+      "summary_en": "MIP009 proposes to upgrade the MPL token to MPLv2 in order to resource growth initiatives and add new MPL utility. This MIP contains the motivation, details on the technical transition and an evaluation of the benefits.",
+      "summary_zh": "MIP009 提议 升级 the MPL 代币 to MPLv2 in order to resource growth initiatives and 添加 new MPL utility. This MIP contains the motivation, details on the technical transition and an evaluation of the benefits."
     },
     {
       "source": "Snapshot",
@@ -2622,7 +2289,8 @@
       "end": 1773936640,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ">\n> This proposal is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 of the Spark Artifact. The proposal recommends that Spark governan"
+      "summary_en": ">\n> This proposal is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 of the Spark Artifact. The proposal recommends that Spark governance document and authorize Savings Liquidity Intent",
+      "summary_zh": ">\n> 本提案 is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 of the Spark Artifact. The proposal recommends that Spark 治理 document and authorize Savings 流动性 Intent"
     },
     {
       "source": "Snapshot",
@@ -2636,7 +2304,8 @@
       "tev_keywords": [
         "treasury"
       ],
-      "summary": ">\n> - Spark Foundation Grant\n>   - Recipient address: 0x92e4629a4510AF5819d7D1601464C233599fF5ec\n>   - Transfer amount: 1,100,000 USDS\n> - Spark Asset Foundation Grant\n>   - Recipient address: 0xEabCb"
+      "summary_en": ">\n> - Spark Foundation Grant\n>   - Recipient address: 0x92e4629a4510AF5819d7D1601464C233599fF5ec\n>   - Transfer amount: 1,100,000 USDS\n> - Spark Asset Foundation Grant\n>   - Recipient address: 0xEabCb8C0346Ac072437362f1692706BA5768A911\n>   - Transfer",
+      "summary_zh": ">\n> - Spark Foundation 拨款\n>   - Recipient 添加ress: 0x92e4629a4510AF5819d7D1601464C233599fF5ec\n>   - Transfer amount: 1,100,000 USDS\n> - Spark Asset Foundation 拨款\n>   - Recipient 添加ress: 0xEabCb8C0346Ac072437362f1692706BA5768A911\n>   - Transfer"
     },
     {
       "source": "Snapshot",
@@ -2648,7 +2317,8 @@
       "end": 1773936373,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ">\n> - transferAsset (USAT)\n>   - Address: 0x49506C3Aa028693458d6eE816b2EC28522946872\n>   - maxAmount: 5 million\n>   - slope: 250 million\n>\n> [Ethereum] Spark Liquidity Layer - Add USDT transferAsset R"
+      "summary_en": ">\n> - transferAsset (USAT)\n>   - Address: 0x49506C3Aa028693458d6eE816b2EC28522946872\n>   - maxAmount: 5 million\n>   - slope: 250 million\n>\n> [Ethereum] Spark Liquidity Layer - Add USDT transferAsset Rate Limit to Anchorage\n>\n> Similar to above, we pr",
+      "summary_zh": ">\n> - transferAsset (USAT)\n>   - 添加ress: 0x49506C3Aa028693458d6eE816b2EC28522946872\n>   - maxAmount: 5 million\n>   - slope: 250 million\n>\n> [Ethereum] Spark 流动性 Layer - 添加 USDT transferAsset Rate Limit to Anchorage\n>\n> Similar to above, we pr"
     },
     {
       "source": "Snapshot",
@@ -2660,7 +2330,8 @@
       "end": 1772726007,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ">\n> Upgrade SparkLend Cap Automators to v1.1\n> Auth: ALM Proxy Freezable (0x9Ad87668d49ab69EEa0AF091de970EF52b0D5178)."
+      "summary_en": ">\n> Upgrade SparkLend Cap Automators to v1.1\n> Auth: ALM Proxy Freezable (0x9Ad87668d49ab69EEa0AF091de970EF52b0D5178).",
+      "summary_zh": ">\n> 升级 SparkLend Cap Automators to v1.1\n> Auth: ALM Proxy Freezable (0x9Ad87668d49ab69EEa0AF091de970EF52b0D5178)."
     },
     {
       "source": "Snapshot",
@@ -2672,7 +2343,8 @@
       "end": 1772725926,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ">\n> - Add weETH, rETH, cbBTC, WBTC to killswitch oracle\n>   - Deviation threshold: 0.95 (5% price deviation vs reference price)."
+      "summary_en": ">\n> - Add weETH, rETH, cbBTC, WBTC to killswitch oracle\n>   - Deviation threshold: 0.95 (5% price deviation vs reference price).",
+      "summary_zh": ">\n> - 添加 weETH, rETH, cbBTC, WBTC to killswitch 预言机\n>   - Deviation threshold: 0.95 (5% price deviation vs reference price)."
     },
     {
       "source": "Snapshot",
@@ -2686,7 +2358,8 @@
       "tev_keywords": [
         "treasury"
       ],
-      "summary": ">\n> - Transfer all SparkLend DAI and SparkLend USDS from the SubDAO Proxy to ALM Proxy."
+      "summary_en": ">\n> - Transfer all SparkLend DAI and SparkLend USDS from the SubDAO Proxy to ALM Proxy.",
+      "summary_zh": ">\n> - Transfer all SparkLend DAI and SparkLend USDS from the SubDAO Proxy to ALM Proxy."
     },
     {
       "source": "Snapshot",
@@ -2698,7 +2371,8 @@
       "end": 1772725779,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ">\n> - Upgrade mainnet ALM controller to v1.10."
+      "summary_en": ">\n> - Upgrade mainnet ALM controller to v1.10.",
+      "summary_zh": ">\n> - 升级 mainnet ALM controller to v1.10."
     },
     {
       "source": "Snapshot",
@@ -2710,7 +2384,8 @@
       "end": 1772121390,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "> \n> This proposal is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 of the Spark Artifact. The proposal recommends that Spark governa"
+      "summary_en": "> \n> This proposal is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 of the Spark Artifact. The proposal recommends that Spark governance update certain Target Liquidity and Rewards Ra",
+      "summary_zh": "> \n> 本提案 is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 of the Spark Artifact. The proposal recommends that Spark 治理 更新 certain Target 流动性 and 奖励 Ra"
     },
     {
       "source": "Snapshot",
@@ -2722,7 +2397,8 @@
       "end": 1771516793,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ">\n> - Morpho vault configuration\n>   - Address: to be provided before executive vote\n>   - Allocator: 0x1601843c5E9bC251A3272907010AFa41Fa18347E (ALM Proxy)\n>   - Curator: 0x0f963A8A8c01042B69054e787E"
+      "summary_en": ">\n> - Morpho vault configuration\n>   - Address: to be provided before executive vote\n>   - Allocator: 0x1601843c5E9bC251A3272907010AFa41Fa18347E (ALM Proxy)\n>   - Curator: 0x0f963A8A8c01042B69054e787E5763ABbB0646A3\n>   - Sentinel (Guardian): 0xf5748b",
+      "summary_zh": ">\n> - Morpho 金库 configuration\n>   - 添加ress: to be provided before executive vote\n>   - Allocator: 0x1601843c5E9bC251A3272907010AFa41Fa18347E (ALM Proxy)\n>   - Curator: 0x0f963A8A8c01042B69054e787E5763ABbB0646A3\n>   - Sentinel (Guardian): 0xf5748b"
     },
     {
       "source": "Snapshot",
@@ -2734,7 +2410,8 @@
       "end": 1771516634,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ">\n> - SLL configuration for SparkLend USDT\n>   - Deposits\n>     - maxAmount: 250 million (from current 100 million)\n>     - slope: 2 billion per day (from current 200 million per day)\n>   - Withdrawal"
+      "summary_en": ">\n> - SLL configuration for SparkLend USDT\n>   - Deposits\n>     - maxAmount: 250 million (from current 100 million)\n>     - slope: 2 billion per day (from current 200 million per day)\n>   - Withdrawals\n>     - maxAmount: Unlimited\n>\n> [Ethereum] Spar",
+      "summary_zh": ">\n> - SLL configuration for SparkLend USDT\n>   - Deposits\n>     - maxAmount: 250 million (from current 100 million)\n>     - slope: 2 billion per day (from current 200 million per day)\n>   - Withdrawals\n>     - maxAmount: Unlimited\n>\n> [Ethereum] Spar"
     },
     {
       "source": "Snapshot",
@@ -2746,7 +2423,8 @@
       "end": 1771516469,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ">\n> This proposal is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 of the Spark Artifact. The proposal recommends that Spark governan"
+      "summary_en": ">\n> This proposal is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 of the Spark Artifact. The proposal recommends that Spark governance update certain parameters to increase the venue",
+      "summary_zh": ">\n> 本提案 is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 of the Spark Artifact. The proposal recommends that Spark 治理 更新 certain 参数 to 增加 the venue"
     },
     {
       "source": "Snapshot",
@@ -2761,7 +2439,8 @@
         "revenue",
         "treasury"
       ],
-      "summary": ">\n> - Recipient address: Grove SubProxy (0x1369f7b2b38c76B6478c0f0E66D94923421891Ba)\n> - Amount: 78,394 USDS."
+      "summary_en": ">\n> - Recipient address: Grove SubProxy (0x1369f7b2b38c76B6478c0f0E66D94923421891Ba)\n> - Amount: 78,394 USDS.",
+      "summary_zh": ">\n> - Recipient 添加ress: Grove SubProxy (0x1369f7b2b38c76B6478c0f0E66D94923421891Ba)\n> - Amount: 78,394 USDS."
     },
     {
       "source": "Snapshot",
@@ -2775,7 +2454,8 @@
       "tev_keywords": [
         "treasury"
       ],
-      "summary": ">\n> - DssVest\n>   - Recipient address(es): to be provided when available\n>   - Start date: 17 June 2025\n>   - Cliff date: 17 June 2026\n>   - End date: 17 June 2029\n>   - Vesting method: Linear per blo"
+      "summary_en": ">\n> - DssVest\n>   - Recipient address(es): to be provided when available\n>   - Start date: 17 June 2025\n>   - Cliff date: 17 June 2026\n>   - End date: 17 June 2029\n>   - Vesting method: Linear per block with cliff\n>   - Claim auth: Permissionless\n> -",
+      "summary_zh": ">\n> - DssVest\n>   - Recipient 添加ress(es): to be provided when available\n>   - Start date: 17 June 2025\n>   - Cliff date: 17 June 2026\n>   - End date: 17 June 2029\n>   - Vesting method: Linear per block with cliff\n>   - Claim auth: Permissionless\n> -"
     },
     {
       "source": "Snapshot",
@@ -2787,7 +2467,8 @@
       "end": 1769702472,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ">\n> This proposal is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 of the Spark Artifact. The proposal outlines adjustments for Spark"
+      "summary_en": ">\n> This proposal is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 of the Spark Artifact. The proposal outlines adjustments for Spark governance to consider regarding parameters assoc",
+      "summary_zh": ">\n> 本提案 is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 of the Spark Artifact. The proposal outlines 调整ments for Spark 治理 to consider regarding 参数 assoc"
     },
     {
       "source": "Snapshot",
@@ -2799,7 +2480,8 @@
       "end": 1769096536,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ">\n> - Claim SparkLend USDS, USDC, DAI, PYUSD, and USDT and send to SparkALM Proxy\n>   - Recipient address: 0x3300f198988e4C9C63F75dF86De36421f06af8c4\n> - Claim all other SparkLend reserves, and send t"
+      "summary_en": ">\n> - Claim SparkLend USDS, USDC, DAI, PYUSD, and USDT and send to SparkALM Proxy\n>   - Recipient address: 0x3300f198988e4C9C63F75dF86De36421f06af8c4\n> - Claim all other SparkLend reserves, and send to Spark Operations Multisig\n>   - Recipient addres",
+      "summary_zh": ">\n> - Claim SparkLend USDS, USDC, DAI, PYUSD, and USDT and send to SparkALM Proxy\n>   - Recipient 添加ress: 0x3300f198988e4C9C63F75dF86De36421f06af8c4\n> - Claim all other SparkLend reserves, and send to Spark Operations Multisig\n>   - Recipient 添加res"
     },
     {
       "source": "Snapshot",
@@ -2811,7 +2493,8 @@
       "end": 1769096396,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ">\n> - spUSDT supply cap: 2 billion."
+      "summary_en": ">\n> - spUSDT supply cap: 2 billion.",
+      "summary_zh": ">\n> - spUSDT 供应量 cap: 2 billion."
     },
     {
       "source": "Snapshot",
@@ -2823,7 +2506,8 @@
       "end": 1769096254,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ">\n> - Upgrade Ethereum ALM Controller to Version 1.9.0\n>\n> [Ethereum] Spark Liquidity Layer - Onboard Uniswap v4 PYUSD/USDS Pool\n>\n> Uniswap v4 offers greater control liquidity vs alternative DEXes, a"
+      "summary_en": ">\n> - Upgrade Ethereum ALM Controller to Version 1.9.0\n>\n> [Ethereum] Spark Liquidity Layer - Onboard Uniswap v4 PYUSD/USDS Pool\n>\n> Uniswap v4 offers greater control liquidity vs alternative DEXes, allowing for placing liquidity into configurable ra",
+      "summary_zh": ">\n> - 升级 Ethereum ALM Controller to Version 1.9.0\n>\n> [Ethereum] Spark 流动性 Layer - 上线 Uniswap v4 PYUSD/USDS 池子\n>\n> Uniswap v4 offers greater control 流动性 vs alternative DEXes, allowing for placing 流动性 into configurable ra"
     },
     {
       "source": "Snapshot",
@@ -2835,7 +2519,8 @@
       "end": 1769095977,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ">\n> - USDC transferAsset (purchasing PYUSD)\n>   - address: to be provided before voting\n>   - maxAmount: 5 million\n>   - slope: 50 million\n> - PYUSD transferAsset (purchasing USDC)\n>   - address: to b"
+      "summary_en": ">\n> - USDC transferAsset (purchasing PYUSD)\n>   - address: to be provided before voting\n>   - maxAmount: 5 million\n>   - slope: 50 million\n> - PYUSD transferAsset (purchasing USDC)\n>   - address: to be provided before voting\n>   - maxAmount: 5 millio",
+      "summary_zh": ">\n> - USDC transferAsset (purchasing PYUSD)\n>   - 添加ress: to be provided before 投票\n>   - maxAmount: 5 million\n>   - slope: 50 million\n> - PYUSD transferAsset (purchasing USDC)\n>   - 添加ress: to be provided before 投票\n>   - maxAmount: 5 millio"
     },
     {
       "source": "Snapshot",
@@ -2847,7 +2532,8 @@
       "end": 1767914873,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ">\n> - LBTC\n>   - Add asset to oracle kill switch mechanism\n>   - Market price oracle: Chainlink LBTC/BTC\n>   - Deviation threshold: 0.95 BTC per LBTC."
+      "summary_en": ">\n> - LBTC\n>   - Add asset to oracle kill switch mechanism\n>   - Market price oracle: Chainlink LBTC/BTC\n>   - Deviation threshold: 0.95 BTC per LBTC.",
+      "summary_zh": ">\n> - LBTC\n>   - 添加 asset to 预言机 kill switch mechanism\n>   - 市场 price 预言机: Chainlink LBTC/BTC\n>   - Deviation threshold: 0.95 BTC per LBTC."
     },
     {
       "source": "Snapshot",
@@ -2859,7 +2545,8 @@
       "end": 1767914594,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ">\n> - spUSDC\n>   - Deposit cap: 1 billion USDC\n>\n> [Ethereum] Spark Savings - Increase spETH Deposit Cap\n>\n> The Spark Savings ETH vault tracks yield generated by underlying investments, so there is n"
+      "summary_en": ">\n> - spUSDC\n>   - Deposit cap: 1 billion USDC\n>\n> [Ethereum] Spark Savings - Increase spETH Deposit Cap\n>\n> The Spark Savings ETH vault tracks yield generated by underlying investments, so there is no risk of asset vs liability yield mismatch causin",
+      "summary_zh": ">\n> - spUSDC\n>   - Deposit cap: 1 billion USDC\n>\n> [Ethereum] Spark Savings - 增加 spETH Deposit Cap\n>\n> The Spark Savings ETH 金库 tracks yield generated by underlying investments, so there is no 风险 of asset vs liability yield mismatch causin"
     },
     {
       "source": "Snapshot",
@@ -2871,7 +2558,8 @@
       "end": 1767913964,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ">\n> - Curve weETH/WETH-ng\n>   - Pool address: 0xDB74dfDD3BB46bE8Ce6C33dC9D82777BCFc3dEd50xDB74dfDD3BB46bE8Ce6C33dC9D82777BCFc3dEd5\n>   - Swaps\n>     - maxAmount: 100\n>     - slope: 1,000 per day\n>    "
+      "summary_en": ">\n> - Curve weETH/WETH-ng\n>   - Pool address: 0xDB74dfDD3BB46bE8Ce6C33dC9D82777BCFc3dEd50xDB74dfDD3BB46bE8Ce6C33dC9D82777BCFc3dEd5\n>   - Swaps\n>     - maxAmount: 100\n>     - slope: 1,000 per day\n>     - maxSlippage: 0.25%.",
+      "summary_zh": ">\n> - Curve weETH/WETH-ng\n>   - 池子 添加ress: 0xDB74dfDD3BB46bE8Ce6C33dC9D82777BCFc3dEd50xDB74dfDD3BB46bE8Ce6C33dC9D82777BCFc3dEd5\n>   - Swaps\n>     - maxAmount: 100\n>     - slope: 1,000 per day\n>     - maxSlippage: 0.25%."
     },
     {
       "source": "Snapshot",
@@ -2883,7 +2571,8 @@
       "end": 1767913783,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ">\n> - Curator role: multisig address to be provided before executive vote\n>   - Threshold: 3 of 5\n> - Guardian role: multisig address to be provided before executive vote\n>   - Threshold: 3 of 5\n> - T"
+      "summary_en": ">\n> - Curator role: multisig address to be provided before executive vote\n>   - Threshold: 3 of 5\n> - Guardian role: multisig address to be provided before executive vote\n>   - Threshold: 3 of 5\n> - Timelock: 10 days (240 hours)\n>\n> [Ethereum] Spark ",
+      "summary_zh": ">\n> - Curator role: multisig 添加ress to be provided before executive vote\n>   - Threshold: 3 of 5\n> - Guardian role: multisig 添加ress to be provided before executive vote\n>   - Threshold: 3 of 5\n> - Timelock: 10 days (240 hours)\n>\n> [Ethereum] Spark "
     },
     {
       "source": "Snapshot",
@@ -2895,7 +2584,8 @@
       "end": 1765467647,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ">\n> This proposal is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 - Root Edit Proposal Submission Requirements Exception\n> For Neste"
+      "summary_en": ">\n> This proposal is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 - Root Edit Proposal Submission Requirements Exception\n> For Nested Contributors of the Spark Artifact. The proposal",
+      "summary_zh": ">\n> 本提案 is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 - Root Edit Proposal Submission Requirements Exception\n> For Nested Contributors of the Spark Artifact. The proposal"
     },
     {
       "source": "Snapshot",
@@ -2907,67 +2597,8 @@
       "end": 1768921200,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 15/1/2026 - 21/1/2026",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0xf5d5b2ff44ad18b8abe4942d91f5882194ef984dda07771fce78665073558ec9",
-      "created": 1767840246,
-      "end": 1768316400,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 8/1/2026 - 14/1/2026",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x37ec9ec8ffb3d46f01adf57666831618adb4fdc8a435a801289d74402cc60199",
-      "created": 1767235900,
-      "end": 1767711600,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 1/1/2026 - 7/1/2026",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x1fe1220a717887543c94fd850f110a676d55d5f3db75b76f7adf993d6d45ca5e",
-      "created": 1766630564,
-      "end": 1767106800,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 25/12/2025 - 31/12/2025",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x03dd4f45d713e80e3116733dc871e19dc8b48be35a365ce8bc3c88185bcb1520",
-      "created": 1766025564,
-      "end": 1766502000,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 18/12/2025 - 24/12/2025",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x1e5baa1cf0d9ddb0e228cd3ea12bbb5b200874d298189f78491eaab007428eac",
-      "created": 1765803782,
-      "end": 1765897200,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "Gauge vote for PENDLE inflation 分配."
     },
     {
       "source": "Snapshot",
@@ -2979,7 +2610,8 @@
       "end": 1765292400,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "Gauge vote for PENDLE inflation 分配."
     },
     {
       "source": "Snapshot",
@@ -2991,31 +2623,8 @@
       "end": 1764691200,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 27/11/2025 - 3/12/2025",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x8292e26b20ad788a2943461484b56f6a1a0b18903f1f357482d32f713f29ae48",
-      "created": 1763606228,
-      "end": 1764082800,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 20/11/2025 - 26/11/2025",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0xb97a292e3cfe34ae885e8ba3fe5958b995f8a5a8e9e896fddfcef532ef8af617",
-      "created": 1763001465,
-      "end": 1763478000,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "Gauge vote for PENDLE inflation 分配."
     },
     {
       "source": "Snapshot",
@@ -3027,7 +2636,8 @@
       "end": 1762873200,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "Gauge vote for PENDLE inflation 分配."
     },
     {
       "source": "Snapshot",
@@ -3039,7 +2649,8 @@
       "end": 1762268400,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "Gauge vote for PENDLE inflation 分配."
     },
     {
       "source": "Snapshot",
@@ -3051,7 +2662,8 @@
       "end": 1761663600,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "Gauge vote for PENDLE inflation 分配."
     },
     {
       "source": "Snapshot",
@@ -3063,7 +2675,8 @@
       "end": 1761055200,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "Gauge vote for PENDLE inflation 分配."
     },
     {
       "source": "Snapshot",
@@ -3075,7 +2688,8 @@
       "end": 1760450400,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "Gauge vote for PENDLE inflation 分配."
     },
     {
       "source": "Snapshot",
@@ -3087,19 +2701,8 @@
       "end": 1759845600,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 2/10/2025 - 8/10/2025",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x9a72bc0ebef0ffe9f97d6825dd2ebc9593301de594033abd3b8e0d5bf3810c45",
-      "created": 1758767625,
-      "end": 1759240800,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "Gauge vote for PENDLE inflation 分配."
     },
     {
       "source": "Snapshot",
@@ -3111,7 +2714,8 @@
       "end": 1758636000,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "Gauge vote for PENDLE inflation 分配."
     },
     {
       "source": "Snapshot",
@@ -3123,19 +2727,8 @@
       "end": 1758031200,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 11/9/2025 - 17/9/2025",
-      "status": "rejected",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0xa3206fcc9eb34d7383086818feb6f99581381a8f56b3125298a2d473d1c74629",
-      "created": 1756953059,
-      "end": 1757426400,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "Gauge vote for PENDLE inflation allocation."
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "Gauge vote for PENDLE inflation 分配."
     },
     {
       "source": "Snapshot",
@@ -3147,7 +2740,8 @@
       "end": 1714219380,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": ""
+      "summary_en": "What option Bot select ?",
+      "summary_zh": "What option Bot select ?"
     },
     {
       "source": "Snapshot",
@@ -3159,7 +2753,8 @@
       "end": 1714046570,
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Can we introduce more LST on Eignelayer ?"
+      "summary_en": "Can we introduce more LST on Eignelayer ?",
+      "summary_zh": "Can we introduce more LST on Eignelayer ?"
     },
     {
       "source": "dYdX Cosmos",
@@ -3171,7 +2766,8 @@
       "end": "2026-03-18T08:41:55.623305094Z",
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Update Governance Parameters on the x/gov module. Forum Post"
+      "summary_en": "Update Governance Parameters on the x/gov module. Forum Post",
+      "summary_zh": "更新 治理 参数 on the x/gov module. Forum Post"
     },
     {
       "source": "dYdX Cosmos",
@@ -3183,7 +2779,8 @@
       "end": "2026-03-14T16:36:40.193188102Z",
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Set the markets hard cap to 0 to temporarily pause all permissionless listings"
+      "summary_en": "Set the markets hard cap to 0 to temporarily pause all permissionless listings",
+      "summary_zh": "Set the 市场s hard cap to 0 to temporarily pause all permissionless 上市s"
     },
     {
       "source": "dYdX Cosmos",
@@ -3197,7 +2794,8 @@
       "tev_keywords": [
         "treasury"
       ],
-      "summary": "Proposal to ratify dYdX Treasury SubDAO Articles of Association and to replace one dYdX Treasury SubDAO Foundation Class B Director. Forum Post"
+      "summary_en": "Proposal to ratify dYdX Treasury SubDAO Articles of Association and to replace one dYdX Treasury SubDAO Foundation Class B Director. Forum Post",
+      "summary_zh": "提议 ratify dYdX 金库/国库 SubDAO Articles of Association and to replace one dYdX 金库/国库 SubDAO Foundation Class B Director. Forum Post"
     },
     {
       "source": "dYdX Cosmos",
@@ -3209,7 +2807,8 @@
       "end": "2026-03-13T08:39:19.246026659Z",
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Update CLOB Pair Tick Size for MANA-USD, MNRY-USD, MOVE-USD, ONDO-USD, ORDI-USD, PEOPLE-USD, POL-USD, POPCAT-USD, PYTH-USD, RAY-USD, RUNE-USD, SEI-USD, SNX-USD, STRK-USD, STX-USD, S-USD, TIA-USD and U"
+      "summary_en": "Update CLOB Pair Tick Size for MANA-USD, MNRY-USD, MOVE-USD, ONDO-USD, ORDI-USD, PEOPLE-USD, POL-USD, POPCAT-USD, PYTH-USD, RAY-USD, RUNE-USD, SEI-USD, SNX-USD, STRK-USD, STX-USD, S-USD, TIA-USD and USELESS-USD markets",
+      "summary_zh": "更新 CLOB Pair Tick Size for MANA-USD, MNRY-USD, MOVE-USD, ONDO-USD, ORDI-USD, PEOPLE-USD, POL-USD, POPCAT-USD, PYTH-USD, RAY-USD, RUNE-USD, SEI-USD, SNX-USD, STRK-USD, STX-USD, S-USD, TIA-USD and USELESS-USD 市场s"
     },
     {
       "source": "dYdX Cosmos",
@@ -3221,7 +2820,8 @@
       "end": "2026-03-13T08:38:48.723371711Z",
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Update CLOB Pair Tick Size for ETC-USD, ETHFI-USD, FIL-USD, FLOKI-USD, FLR-USD, GRT-USD, HBAR-USD, IOTA-USD, IOTX-USD, IP-USD, JASMY-USD, JTO-USD, KAS-USD, KOMA-USD, LDO-USD and LINEA-USD markets"
+      "summary_en": "Update CLOB Pair Tick Size for ETC-USD, ETHFI-USD, FIL-USD, FLOKI-USD, FLR-USD, GRT-USD, HBAR-USD, IOTA-USD, IOTX-USD, IP-USD, JASMY-USD, JTO-USD, KAS-USD, KOMA-USD, LDO-USD and LINEA-USD markets",
+      "summary_zh": "更新 CLOB Pair Tick Size for ETC-USD, ETHFI-USD, FIL-USD, FLOKI-USD, FLR-USD, GRT-USD, HBAR-USD, IOTA-USD, IOTX-USD, IP-USD, JASMY-USD, JTO-USD, KAS-USD, KOMA-USD, LDO-USD and LINEA-USD 市场s"
     },
     {
       "source": "dYdX Cosmos",
@@ -3233,7 +2833,8 @@
       "end": "2026-03-13T08:36:14.849797262Z",
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Update CLOB Pair Tick Size for 1INCH-USD, 2Z-USD, AERO-USD, AKT-USD, ALGO-USD, APT-USD, ARB-USD, ATH-USD, AVAX-USD, AXL-USD, BANANA-USD, DEGEN-USD, DRIFT-USD, DYDX-USD, DYM-USD and ENS-USD markets"
+      "summary_en": "Update CLOB Pair Tick Size for 1INCH-USD, 2Z-USD, AERO-USD, AKT-USD, ALGO-USD, APT-USD, ARB-USD, ATH-USD, AVAX-USD, AXL-USD, BANANA-USD, DEGEN-USD, DRIFT-USD, DYDX-USD, DYM-USD and ENS-USD markets",
+      "summary_zh": "更新 CLOB Pair Tick Size for 1INCH-USD, 2Z-USD, AERO-USD, AKT-USD, ALGO-USD, APT-USD, ARB-USD, ATH-USD, AVAX-USD, AXL-USD, BANANA-USD, DEGEN-USD, DRIFT-USD, DYDX-USD, DYM-USD and ENS-USD 市场s"
     },
     {
       "source": "dYdX Cosmos",
@@ -3245,7 +2846,8 @@
       "end": "2026-03-13T06:21:22.673387027Z",
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Wind down PROVE-USD, BRETT-USD, ES-USD, PROMPT-USD, TREE-USD, AERGO-USD, ID-USD, LUNC-USD, ENJ-USD, GALA-USD, THETA-USD, AIXBT-USD, XTZ-USD, STEEM-USD, GAS-USD and NOT-USD markets"
+      "summary_en": "Wind down PROVE-USD, BRETT-USD, ES-USD, PROMPT-USD, TREE-USD, AERGO-USD, ID-USD, LUNC-USD, ENJ-USD, GALA-USD, THETA-USD, AIXBT-USD, XTZ-USD, STEEM-USD, GAS-USD and NOT-USD markets",
+      "summary_zh": "Wind down PROVE-USD, BRETT-USD, ES-USD, PROMPT-USD, TREE-USD, AERGO-USD, ID-USD, LUNC-USD, ENJ-USD, GALA-USD, THETA-USD, AIXBT-USD, XTZ-USD, STEEM-USD, GAS-USD and NOT-USD 市场s"
     },
     {
       "source": "dYdX Cosmos",
@@ -3257,19 +2859,8 @@
       "end": "2026-03-11T23:27:54.247503709Z",
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Supersedes proposal 359 (vote No on 359). Reduce max validators from 42 to 31."
-    },
-    {
-      "source": "dYdX Cosmos",
-      "protocol": "dYdX",
-      "title": "Reduce the active validator set to 31",
-      "status": "rejected",
-      "link": "https://www.mintscan.io/dydx/proposals/359",
-      "created": "2026-03-09T22:44:05.173215374Z",
-      "end": "2026-03-11T22:44:05.173215374Z",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "This proposal seeks to reduce the maximum number of validators from 42 to 31 on dYdX Chain."
+      "summary_en": "Supersedes proposal 359 (vote No on 359). Reduce max validators from 42 to 31.",
+      "summary_zh": "Supersedes proposal 359 (vote No on 359). 减少 max validators from 42 to 31."
     },
     {
       "source": "dYdX Cosmos",
@@ -3281,127 +2872,8 @@
       "end": "2026-03-11T09:07:20.372055872Z",
       "tev_related": false,
       "tev_keywords": [],
-      "summary": "Update governance parameters on the x/gov module. Forum Post"
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BEP-673: Hardfork Meta-Pasteur",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/673",
-      "created": "2026-03-06T09:00:49",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "https://github.com/allformless/BEPs/blob/define-Pasteur-beps/BEPs/BEP-673.md"
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "update status of mendel beps",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/672",
-      "created": "2026-03-06T07:54:22",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BAP-671: Agent Task Escrow with Outcome Token Settlement",
-      "status": "active",
-      "link": "https://github.com/bnb-chain/BEPs/pull/671",
-      "created": "2026-03-05T00:38:04",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "BAP-671: Agent Task Escrow with Outcome Token Settlement"
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BEP-670: Short Block Interval Phase Four: 250ms",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/670",
-      "created": "2026-03-04T07:47:08",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "https://github.com/zlacfzy/BEPs/blob/BEP-670/BEPs/BEP-670.md"
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BAP-578: Add SHLL Protocol as production reference implementation on BSC Mainnet",
-      "status": "active",
-      "link": "https://github.com/bnb-chain/BEPs/pull/669",
-      "created": "2026-03-04T01:29:23",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "Add SHLL Protocol (https://github.com/kledx/shll) as a production reference implementation of BAP-578 NFA on BSC Mainnet (Chain ID 56). SHLL is the first BAP-578 implementation deployed to BSC Mainnet"
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BEP-668: BSC Pre-confirmation for Prop AMM",
-      "status": "active",
-      "link": "https://github.com/bnb-chain/BEPs/pull/668",
-      "created": "2026-03-03T07:15:37",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BEP-667: Introduce Vote Interval to Relax Fast Finality Consensus Constraint",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/667",
-      "created": "2026-03-02T07:15:54",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "https://github.com/zlacfzy/BEPs/blob/BEP_667/BEPs/BEP-667.md"
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "Tt",
-      "status": "active",
-      "link": "https://github.com/bnb-chain/BEPs/issues/666",
-      "created": "2026-02-01T11:13:51",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "_Originally posted by @renataveganoriega12-blip in 333_"
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "feat: support bep-652 analysis doc",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/665",
-      "created": "2026-01-28T08:52:11",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "feat: support bep-652 analysis doc"
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "Fix broken links in BEP322 motivation section",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/664",
-      "created": "2026-01-27T13:02:21",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary": "Corrected links in the motivation section for clarity."
+      "summary_en": "Update governance parameters on the x/gov module. Forum Post",
+      "summary_zh": "更新 治理 参数 on the x/gov module. Forum Post"
     }
   ]
 }
