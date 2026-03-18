@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-03-18T09:21:37.172117+00:00",
-  "total": 205,
-  "active_count": 7,
-  "passed_count": 198,
-  "tev_related": 62,
+  "updated_at": "2026-03-18T10:30:00.659761+00:00",
+  "total": 213,
+  "active_count": 25,
+  "passed_count": 188,
+  "tev_related": 64,
   "monitored_protocols": 18,
   "protocols_meta": {
     "Aave": {
@@ -97,7 +97,8 @@
     },
     "Fluid": {
       "sources": [
-        "Snapshot (fluiddao.eth)"
+        "Snapshot (fluiddao.eth)",
+        "论坛 (gov.fluid.io)"
       ],
       "governance_type": "snapshot"
     },
@@ -2589,149 +2590,6 @@
     },
     {
       "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 22/1/2026 - 28/1/2026",
-      "status": "passed",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x29f45569b8c0ea45819634e01acdb78cc6c406825c1a0006f7f2ca42cd858b75",
-      "created": 1768445122,
-      "end": 1768921200,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Gauge vote for PENDLE inflation allocation.",
-      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 11/12/2025 - 17/12/2025",
-      "status": "passed",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x0069167596677265223b9eb4b1d00eb0e007b4fb148c768f7415e79426e93e00",
-      "created": 1764815940,
-      "end": 1765292400,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Gauge vote for PENDLE inflation allocation.",
-      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 4/12/2025 - 10/12/2025",
-      "status": "passed",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0xb7b7f937fc29055a43b8f86b2acf8a668bc779198fc02727d9d83058096a2be6",
-      "created": 1764690008,
-      "end": 1764691200,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Gauge vote for PENDLE inflation allocation.",
-      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 13/11/2025 - 19/11/2025",
-      "status": "passed",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x92dbd912f70c8f9cecba291c819fd92f84f73e6fe58fb54dcee786c8c28c32e1",
-      "created": 1762396648,
-      "end": 1762873200,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Gauge vote for PENDLE inflation allocation.",
-      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 6/11/2025 - 12/11/2025",
-      "status": "passed",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x3f515448e062267ae8d06f35869534fbd3842a3d0f1fa9440c75f329e9d06d27",
-      "created": 1761791825,
-      "end": 1762268400,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Gauge vote for PENDLE inflation allocation.",
-      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 30/10/2025 - 5/11/2025",
-      "status": "passed",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0xfccff4e8734dab2edceb4ec7c7fa4d75d2439d744bedfe0d149f9519c1b26a7a",
-      "created": 1761186872,
-      "end": 1761663600,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Gauge vote for PENDLE inflation allocation.",
-      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 23/10/2025 - 29/10/2025",
-      "status": "passed",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0xee2a17cad8683b2aef004e4515d5014a8db96e52768f438f8534091aa3ad6517",
-      "created": 1760582074,
-      "end": 1761055200,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Gauge vote for PENDLE inflation allocation.",
-      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 16/10/2025 - 22/10/2025",
-      "status": "passed",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0xc6bda6211e109cc4f9c37f8a245f31446fb0c1fed020e17aa15e0bf3a1248911",
-      "created": 1759977182,
-      "end": 1760450400,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Gauge vote for PENDLE inflation allocation.",
-      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 9/10/2025 - 15/10/2025",
-      "status": "passed",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x8bd3d2f331282eed4356c73ba9067535d3ee67ba077ff11adbc8ac731d77851e",
-      "created": 1759372287,
-      "end": 1759845600,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Gauge vote for PENDLE inflation allocation.",
-      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 25/9/2025 - 1/10/2025",
-      "status": "passed",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0xcd385b324a92ee20653263412fdc2ee4da089dc679f8d4f95f526d54b5109fdb",
-      "created": 1758162709,
-      "end": 1758636000,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Gauge vote for PENDLE inflation allocation.",
-      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Pendle",
-      "title": "Gauge vote PENDLE - 18/9/2025 - 24/9/2025",
-      "status": "passed",
-      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x562fdc55f143ff2fee81ec1085b9f138ec9c38c3d02905e37f9925a7636ba16e",
-      "created": 1757557980,
-      "end": 1758031200,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Gauge vote for PENDLE inflation allocation.",
-      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
-    },
-    {
-      "source": "Snapshot",
       "protocol": "EigenLayer",
       "title": "What option Bot select ?",
       "status": "passed",
@@ -2876,6 +2734,257 @@
       "summary_zh": "更新 dYdX Chain x/gov 模块的治理参数（此提案已关闭/失效）。"
     },
     {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "[Proposal] Establish Fluid Foundation",
+      "status": "active",
+      "link": "https://gov.fluid.io/t/proposal-establish-fluid-foundation/1768",
+      "created": "2026-02-23T08:55:12",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "[Proposal] Establish Fluid Foundation",
+      "summary_zh": "[Proposal] Establish Fluid Foundation"
+    },
+    {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "Current issues with ETH-USDC pool",
+      "status": "active",
+      "link": "https://gov.fluid.io/t/current-issues-with-eth-usdc-pool/1606",
+      "created": "2025-05-10T22:45:37",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Current issues with ETH-USDC pool",
+      "summary_zh": "Current issues with ETH-USDC 池子"
+    },
+    {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "Seed $FLUID DEX Liquidity on Base and Arbitrum",
+      "status": "active",
+      "link": "https://gov.fluid.io/t/seed-fluid-dex-liquidity-on-base-and-arbitrum/1636",
+      "created": "2025-06-12T11:11:19",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Seed $FLUID DEX Liquidity on Base and Arbitrum",
+      "summary_zh": "Seed $FLUID DEX 流动性 on Base and Arbitrum"
+    },
+    {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "Divest $MORPHO to buyback $FLUID",
+      "status": "active",
+      "link": "https://gov.fluid.io/t/divest-morpho-to-buyback-fluid/1105",
+      "created": "2025-01-01T17:11:54",
+      "end": "",
+      "tev_related": true,
+      "tev_keywords": [
+        "buyback"
+      ],
+      "summary_en": "Divest $MORPHO to buyback $FLUID",
+      "summary_zh": "Divest $MORPHO to 回购 $FLUID"
+    },
+    {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "Fluid <> Lido Alliance alignment proposal",
+      "status": "active",
+      "link": "https://gov.fluid.io/t/fluid-lido-alliance-alignment-proposal/1064",
+      "created": "2024-12-16T17:15:21",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Fluid <> Lido Alliance alignment proposal",
+      "summary_zh": "Fluid <> Lido Alliance alignment proposal"
+    },
+    {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "Current issues with WBTC <> cbBTC DEX pool",
+      "status": "active",
+      "link": "https://gov.fluid.io/t/current-issues-with-wbtc-cbbtc-dex-pool/1061",
+      "created": "2024-12-16T13:31:42",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Current issues with WBTC <> cbBTC DEX pool",
+      "summary_zh": "Current issues with WBTC <> cbBTC DEX 池子"
+    },
+    {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "Proposal for Partnership between StableLab and Instadapp",
+      "status": "active",
+      "link": "https://gov.fluid.io/t/proposal-for-partnership-between-stablelab-and-instadapp/760",
+      "created": "2024-05-16T12:43:49",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Proposal for Partnership between StableLab and Instadapp",
+      "summary_zh": "Proposal for Partnership between StableLab and Instadapp"
+    },
+    {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "Bug Bounty Vault Proposal by Hats Finance",
+      "status": "active",
+      "link": "https://gov.fluid.io/t/bug-bounty-vault-proposal-by-hats-finance/645",
+      "created": "2023-09-08T14:04:54",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Bug Bounty Vault Proposal by Hats Finance",
+      "summary_zh": "Bug Bounty 金库 Proposal by Hats Finance"
+    },
+    {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "Extend Instadapp with EIP-4824",
+      "status": "active",
+      "link": "https://gov.fluid.io/t/extend-instadapp-with-eip-4824/642",
+      "created": "2023-08-18T10:21:23",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Extend Instadapp with EIP-4824",
+      "summary_zh": "Extend Instadapp with EIP-4824"
+    },
+    {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "Proposal to finally create a use case for $INST",
+      "status": "active",
+      "link": "https://gov.fluid.io/t/proposal-to-finally-create-a-use-case-for-inst/637",
+      "created": "2023-07-14T02:07:22",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Proposal to finally create a use case for $INST",
+      "summary_zh": "提议 finally create a use case for $INST"
+    },
+    {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "Gov Acceptance of Admin Rights",
+      "status": "active",
+      "link": "https://gov.fluid.io/t/gov-acceptance-of-admin-rights/66",
+      "created": "2021-06-22T17:53:58",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Gov Acceptance of Admin Rights",
+      "summary_zh": "Gov Acceptance of Admin Rights"
+    },
+    {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "Proposal to grow revenue by maximizing referral payments from protocols",
+      "status": "passed",
+      "link": "https://gov.fluid.io/t/proposal-to-grow-revenue-by-maximizing-referral-payments-from-protocols/616",
+      "created": "2023-05-05T19:28:18",
+      "end": "",
+      "tev_related": true,
+      "tev_keywords": [
+        "revenue"
+      ],
+      "summary_en": "Proposal to grow revenue by maximizing referral payments from protocols",
+      "summary_zh": "提议 grow 收入 by maximizing referral payments from protocols"
+    },
+    {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "Proposal to Distribute ARB Tokens from Arbitrum Foundation",
+      "status": "active",
+      "link": "https://gov.fluid.io/t/proposal-to-distribute-arb-tokens-from-arbitrum-foundation/611",
+      "created": "2023-03-29T21:04:41",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Proposal to Distribute ARB Tokens from Arbitrum Foundation",
+      "summary_zh": "提议 Distribute ARB 代币s from Arbitrum Foundation"
+    },
+    {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "Update ETH v2 implementation and Remove Euler from Lite Protocol",
+      "status": "active",
+      "link": "https://gov.fluid.io/t/update-eth-v2-implementation-and-remove-euler-from-lite-protocol/602",
+      "created": "2023-03-14T15:45:27",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Update ETH v2 implementation and Remove Euler from Lite Protocol",
+      "summary_zh": "更新 ETH v2 implementation and 移除 Euler from Lite Protocol"
+    },
+    {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "Evolve the Growth Fund into a Grants Program",
+      "status": "active",
+      "link": "https://gov.fluid.io/t/evolve-the-growth-fund-into-a-grants-program/551",
+      "created": "2022-01-14T00:35:20",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Evolve the Growth Fund into a Grants Program",
+      "summary_zh": "Evolve the Growth Fund into a 拨款 Program"
+    },
+    {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "December 2021 Growth Fund",
+      "status": "active",
+      "link": "https://gov.fluid.io/t/december-2021-growth-fund/550",
+      "created": "2022-01-13T23:58:24",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "December 2021 Growth Fund",
+      "summary_zh": "December 2021 Growth Fund"
+    },
+    {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "November 2021 Growth Fund",
+      "status": "active",
+      "link": "https://gov.fluid.io/t/november-2021-growth-fund/527",
+      "created": "2021-12-08T03:11:45",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "November 2021 Growth Fund",
+      "summary_zh": "November 2021 Growth Fund"
+    },
+    {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "Open mStable Development Snowball",
+      "status": "active",
+      "link": "https://gov.fluid.io/t/open-mstable-development-snowball/488",
+      "created": "2021-11-05T18:45:42",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Open mStable Development Snowball",
+      "summary_zh": "Open mStable Development Snowball"
+    },
+    {
+      "source": "Fluid Forum",
+      "protocol": "Fluid",
+      "title": "Flashloan Aggregator and Instadapp Flashloan Source",
+      "status": "active",
+      "link": "https://gov.fluid.io/t/flashloan-aggregator-and-instadapp-flashloan-source/496",
+      "created": "2021-11-12T23:25:42",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Flashloan Aggregator and Instadapp Flashloan Source",
+      "summary_zh": "Flashloan Aggregator and Instadapp Flashloan Source"
+    },
+    {
       "source": "Sky Polling",
       "protocol": "Sky (MakerDAO)",
       "title": "Atlas Edit Weekly Cycle Proposal - March 16, 2026",
@@ -2886,7 +2995,7 @@
       "tev_related": false,
       "tev_keywords": [],
       "summary_en": "This Atlas edit proposal 1) authorizes funding for Genesis Agents, 2) adds Allocation Vault parameters for Launch Agent 6 and Launch Agent 7, 3) authorizes investments in ACRDX on Ethereum mainnet, 4) adds Allocation System instances to the Grove Art",
-      "summary_zh": "本提案授权 Genesis Agents 资金，添加 Launch Agent 6 和 7 的分配金库参数，授权在以太坊主网投资 ACRDX，更新 Grove Artifact 的分配系统实例，将多签操作者更新为 Soter Labs。"
+      "summary_zh": "This Atlas edit proposal 1) authorizes funding for Genesis Agents, 2) 添加s 分配 金库 参数 for Launch Agent 6 and Launch Agent 7, 3) authorizes investments in ACRDX on Ethereum mainnet, 4) 添加s 分配 System instances to the Grove Art"
     },
     {
       "source": "Sky Polling",
@@ -2901,7 +3010,7 @@
         "buyback"
       ],
       "summary_en": "This Atlas Edit 1) reduces SKY buybacks, 2) removes JAAA from Sky Direct Exposure, 3) adds sanctioned locations to Full Block List, 4) updates RRC dashboard references, 5) corrects LayerZero multisig signers, 6) corrects Safe Harbor addresses and par",
-      "summary_zh": "本提案削减 SKY 回购规模，移除 JAAA 的 Sky 直接敞口，将受制裁地点加入全面封锁名单，更新 RRC 仪表盘引用，修正 LayerZero 多签签名者和 Safe Harbor 地址参数，更新三份支持文档排序。"
+      "summary_zh": "This Atlas Edit 1) 减少s SKY 回购s, 2) 移除s JAAA from Sky Direct Exposure, 3) 添加s sanctioned locations to Full Block List, 4) 更新s RRC dashboard references, 5) corrects LayerZero multisig signers, 6) corrects Safe Harbor 添加resses and par"
     },
     {
       "source": "Sky Polling",
@@ -2914,7 +3023,7 @@
       "tev_related": false,
       "tev_keywords": [],
       "summary_en": "This Atlas Edit 1) updates references to Amatsu GovOps to Soter Labs, 2) adds Governance Accessibility Reward Instances to the Skybase Artifact, 3) removes references to StarkNet in Safe Harbor documentation, 4) aligns GitHub and Portal versions of t",
-      "summary_zh": "本提案将 Amatsu GovOps 引用更新为 Soter Labs，添加治理可访问性奖励实例到 Skybase Artifact，移除 StarkNet 相关 Safe Harbor 文档引用，对齐 GitHub 和 Portal 版本的 Atlas。"
+      "summary_zh": "This Atlas Edit 1) 更新s references to Amatsu GovOps to Soter Labs, 2) 添加s 治理 Accessibility 奖励 Instances to the Skybase Artifact, 3) 移除s references to StarkNet in Safe Harbor documentation, 4) aligns GitHub and Portal versions of t"
     },
     {
       "source": "Sky Polling",
@@ -2927,7 +3036,7 @@
       "tev_related": false,
       "tev_keywords": [],
       "summary_en": "This Atlas edit 1) adds additional responsibilities for Aligned Delegates, 2) authorizes the Safe Harbor Agreement, 3) updates risk parameters for Anchorage Digital, 4) clarifies references to Ozone, 5) updates names of Obex Foundation and Developmen",
-      "summary_zh": "本提案为对齐代表增加职责，授权 Safe Harbor 协议，更新 Anchorage Digital 风险参数，添加 Integration Boost 实例到 Skybase Artifact，更新 Grove Artifact，修正 stUSDS BEAM 文档嵌套，添加 Launch Agent 7 Artifact。"
+      "summary_zh": "This Atlas edit 1) 添加s 添加itional responsibilities for Aligned Delegates, 2) authorizes the Safe Harbor Agreement, 3) 更新s 风险 参数 for Anchorage Digital, 4) clarifies references to Ozone, 5) 更新s names of Obex Foundation and Developmen"
     },
     {
       "source": "Sky Polling",
@@ -2942,7 +3051,7 @@
         "distribution"
       ],
       "summary_en": "This Atlas edit proposal 1) updates the Ecosystem Accord between Sky, Spark, and Grove, 2) builds out basic information for Core Governance Reward Primitive, 3) removes legacy documents for Ranked Delegates, 4) updates the Distribution Reward Instanc",
-      "summary_zh": "本提案更新 Sky、Spark 和 Grove 之间的生态系统协议，构建核心治理奖励原语基础信息，移除排名代表遗留文档，更新分配奖励实例 Skybase Artifact，移除 Scope Advisor 引用，更新 Active Data Process。"
+      "summary_zh": "This Atlas edit proposal 1) 更新s the Ecosystem Accord between Sky, Spark, and Grove, 2) builds out basic information for Core 治理 奖励 Primitive, 3) 移除s legacy documents for Ranked Delegates, 4) 更新s the 分配 奖励 Instanc"
     }
   ]
 }
