@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-03-18T10:30:00.659761+00:00",
-  "total": 213,
-  "active_count": 25,
-  "passed_count": 188,
-  "tev_related": 64,
-  "monitored_protocols": 18,
+  "updated_at": "2026-03-18T13:36:41.706562+00:00",
+  "total": 253,
+  "active_count": 37,
+  "passed_count": 216,
+  "tev_related": 68,
+  "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
       "sources": [
@@ -120,6 +120,13 @@
         "Sky Polling Portal"
       ],
       "governance_type": "sky_polling"
+    },
+    "Mantle": {
+      "sources": [
+        "Discourse 论坛",
+        "论坛 (forum.mantle.xyz)"
+      ],
+      "governance_type": "discourse_forum"
     }
   },
   "proposals": [
@@ -2590,6 +2597,149 @@
     },
     {
       "source": "Snapshot",
+      "protocol": "Pendle",
+      "title": "Gauge vote PENDLE - 22/1/2026 - 28/1/2026",
+      "status": "passed",
+      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x29f45569b8c0ea45819634e01acdb78cc6c406825c1a0006f7f2ca42cd858b75",
+      "created": 1768445122,
+      "end": 1768921200,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Pendle",
+      "title": "Gauge vote PENDLE - 11/12/2025 - 17/12/2025",
+      "status": "passed",
+      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x0069167596677265223b9eb4b1d00eb0e007b4fb148c768f7415e79426e93e00",
+      "created": 1764815940,
+      "end": 1765292400,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Pendle",
+      "title": "Gauge vote PENDLE - 4/12/2025 - 10/12/2025",
+      "status": "passed",
+      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0xb7b7f937fc29055a43b8f86b2acf8a668bc779198fc02727d9d83058096a2be6",
+      "created": 1764690008,
+      "end": 1764691200,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Pendle",
+      "title": "Gauge vote PENDLE - 13/11/2025 - 19/11/2025",
+      "status": "passed",
+      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x92dbd912f70c8f9cecba291c819fd92f84f73e6fe58fb54dcee786c8c28c32e1",
+      "created": 1762396648,
+      "end": 1762873200,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Pendle",
+      "title": "Gauge vote PENDLE - 6/11/2025 - 12/11/2025",
+      "status": "passed",
+      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x3f515448e062267ae8d06f35869534fbd3842a3d0f1fa9440c75f329e9d06d27",
+      "created": 1761791825,
+      "end": 1762268400,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Pendle",
+      "title": "Gauge vote PENDLE - 30/10/2025 - 5/11/2025",
+      "status": "passed",
+      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0xfccff4e8734dab2edceb4ec7c7fa4d75d2439d744bedfe0d149f9519c1b26a7a",
+      "created": 1761186872,
+      "end": 1761663600,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Pendle",
+      "title": "Gauge vote PENDLE - 23/10/2025 - 29/10/2025",
+      "status": "passed",
+      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0xee2a17cad8683b2aef004e4515d5014a8db96e52768f438f8534091aa3ad6517",
+      "created": 1760582074,
+      "end": 1761055200,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Pendle",
+      "title": "Gauge vote PENDLE - 16/10/2025 - 22/10/2025",
+      "status": "passed",
+      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0xc6bda6211e109cc4f9c37f8a245f31446fb0c1fed020e17aa15e0bf3a1248911",
+      "created": 1759977182,
+      "end": 1760450400,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Pendle",
+      "title": "Gauge vote PENDLE - 9/10/2025 - 15/10/2025",
+      "status": "passed",
+      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x8bd3d2f331282eed4356c73ba9067535d3ee67ba077ff11adbc8ac731d77851e",
+      "created": 1759372287,
+      "end": 1759845600,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Pendle",
+      "title": "Gauge vote PENDLE - 25/9/2025 - 1/10/2025",
+      "status": "passed",
+      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0xcd385b324a92ee20653263412fdc2ee4da089dc679f8d4f95f526d54b5109fdb",
+      "created": 1758162709,
+      "end": 1758636000,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Pendle",
+      "title": "Gauge vote PENDLE - 18/9/2025 - 24/9/2025",
+      "status": "passed",
+      "link": "https://snapshot.org/#/sdpendle.eth/proposal/0x562fdc55f143ff2fee81ec1085b9f138ec9c38c3d02905e37f9925a7636ba16e",
+      "created": 1757557980,
+      "end": 1758031200,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Gauge vote for PENDLE inflation allocation.",
+      "summary_zh": "PENDLE 通胀分配 Gauge 投票，vePENDLE 持有者投票决定各流动性池的 PENDLE 排放权重分配。"
+    },
+    {
+      "source": "Snapshot",
       "protocol": "EigenLayer",
       "title": "What option Bot select ?",
       "status": "passed",
@@ -2732,6 +2882,136 @@
       "tev_keywords": [],
       "summary_en": "Update governance parameters on the x/gov module. Forum Post",
       "summary_zh": "更新 dYdX Chain x/gov 模块的治理参数（此提案已关闭/失效）。"
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
+      "title": "BEP-673: Hardfork Meta-Pasteur",
+      "status": "passed",
+      "link": "https://github.com/bnb-chain/BEPs/pull/673",
+      "created": "2026-03-06T09:00:49",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "https://github.com/allformless/BEPs/blob/define-Pasteur-beps/BEPs/BEP-673.md",
+      "summary_zh": "BEP-673：Pasteur 硬分叉元提案。定义 BSC Pasteur 硬分叉包含的所有 BEP 升级清单和激活时间表。"
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
+      "title": "update status of mendel beps",
+      "status": "passed",
+      "link": "https://github.com/bnb-chain/BEPs/pull/672",
+      "created": "2026-03-06T07:54:22",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "update status of mendel beps",
+      "summary_zh": "更新 Mendel 硬分叉相关 BEP 的状态标记，将已实施的提案标记为已完成。"
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
+      "title": "BAP-671: Agent Task Escrow with Outcome Token Settlement",
+      "status": "active",
+      "link": "https://github.com/bnb-chain/BEPs/pull/671",
+      "created": "2026-03-05T00:38:04",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "BAP-671: Agent Task Escrow with Outcome Token Settlement",
+      "summary_zh": "BAP-671：AI Agent 任务托管与结果代币结算方案。定义链上 AI Agent 任务的资金托管和基于结果的代币结算机制。"
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
+      "title": "BEP-670: Short Block Interval Phase Four: 250ms",
+      "status": "passed",
+      "link": "https://github.com/bnb-chain/BEPs/pull/670",
+      "created": "2026-03-04T07:47:08",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "https://github.com/zlacfzy/BEPs/blob/BEP-670/BEPs/BEP-670.md",
+      "summary_zh": "BEP-670：BSC 短出块时间第四阶段——将出块间隔缩短至 250 毫秒，进一步提升 BSC 链的交易确认速度。"
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
+      "title": "BAP-578: Add SHLL Protocol as production reference implementation on BSC Mainnet",
+      "status": "active",
+      "link": "https://github.com/bnb-chain/BEPs/pull/669",
+      "created": "2026-03-04T01:29:23",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Add SHLL Protocol (https://github.com/kledx/shll) as a production reference implementation of BAP-578 NFA on BSC Mainnet (Chain ID 56). SHLL is the first BAP-578 implementation deployed to BSC Mainnet with live agent accounts and real transaction exe",
+      "summary_zh": "申请将 SHLL Protocol 添加为 BAP-578（NFA 非金融账户标准）在 BSC 主网上的首个生产级参考实现，已有实际 Agent 账户和交易执行。"
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
+      "title": "BEP-668: BSC Pre-confirmation for Prop AMM",
+      "status": "active",
+      "link": "https://github.com/bnb-chain/BEPs/pull/668",
+      "created": "2026-03-03T07:15:37",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "BEP-668: BSC Pre-confirmation for Prop AMM",
+      "summary_zh": "BEP-668：BSC 预确认机制——为 Prop AMM（比例自动做市商）引入预确认功能，提升 DEX 交易的确定性和速度。"
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
+      "title": "BEP-667: Introduce Vote Interval to Relax Fast Finality Consensus Constraint",
+      "status": "passed",
+      "link": "https://github.com/bnb-chain/BEPs/pull/667",
+      "created": "2026-03-02T07:15:54",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "https://github.com/zlacfzy/BEPs/blob/BEP_667/BEPs/BEP-667.md",
+      "summary_zh": "BEP-667：引入投票间隔（Vote Interval）机制，放宽快速最终性共识约束，在保持安全性的同时提升验证者效率。"
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
+      "title": "Tt",
+      "status": "active",
+      "link": "https://github.com/bnb-chain/BEPs/issues/666",
+      "created": "2026-02-01T11:13:51",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "_Originally posted by @renataveganoriega12-blip in 333_",
+      "summary_zh": "社区帖子转发——非正式治理内容。"
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
+      "title": "feat: support bep-652 analysis doc",
+      "status": "passed",
+      "link": "https://github.com/bnb-chain/BEPs/pull/665",
+      "created": "2026-01-28T08:52:11",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "feat: support bep-652 analysis doc",
+      "summary_zh": "添加 BEP-652 分析文档支持，为该提案提供详细的技术分析说明。"
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
+      "title": "Fix broken links in BEP322 motivation section",
+      "status": "passed",
+      "link": "https://github.com/bnb-chain/BEPs/pull/664",
+      "created": "2026-01-27T13:02:21",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Corrected links in the motivation section for clarity.",
+      "summary_zh": "修复 BEP-322 动机（Motivation）章节中的失效链接，提升文档可读性。"
     },
     {
       "source": "Fluid Forum",
@@ -2995,7 +3275,7 @@
       "tev_related": false,
       "tev_keywords": [],
       "summary_en": "This Atlas edit proposal 1) authorizes funding for Genesis Agents, 2) adds Allocation Vault parameters for Launch Agent 6 and Launch Agent 7, 3) authorizes investments in ACRDX on Ethereum mainnet, 4) adds Allocation System instances to the Grove Art",
-      "summary_zh": "本提案授权 Genesis Agents 资金，添加 Launch Agent 6 和 7 的分配金库参数，授权在以太坊主网投资 ACRDX，更新 Grove Artifact 的分配系统实例，将多签操作者更新为 Soter Labs。"
+      "summary_zh": "本 Atlas 编辑提案授权 Genesis Agents 资金拨付，添加 Launch Agent 6 和 7 的分配金库参数，授权在以太坊主网投资 ACRDX，更新 Grove Artifact 的分配系统实例，将多签操作者更新为 Soter Labs。"
     },
     {
       "source": "Sky Polling",
@@ -3010,7 +3290,7 @@
         "buyback"
       ],
       "summary_en": "This Atlas Edit 1) reduces SKY buybacks, 2) removes JAAA from Sky Direct Exposure, 3) adds sanctioned locations to Full Block List, 4) updates RRC dashboard references, 5) corrects LayerZero multisig signers, 6) corrects Safe Harbor addresses and par",
-      "summary_zh": "本提案削减 SKY 回购规模，移除 JAAA 的 Sky 直接敞口，将受制裁地点加入全面封锁名单，更新 RRC 仪表盘引用，修正 LayerZero 多签签名者和 Safe Harbor 地址参数，更新三份支持文档排序。"
+      "summary_zh": "本 Atlas 编辑提案削减 SKY 回购规模，移除 JAAA 的 Sky 直接敞口，将受制裁地点加入全面封锁名单，更新 RRC 仪表盘引用，修正 LayerZero 多签签名者和 Safe Harbor 地址参数。"
     },
     {
       "source": "Sky Polling",
@@ -3023,7 +3303,7 @@
       "tev_related": false,
       "tev_keywords": [],
       "summary_en": "This Atlas Edit 1) updates references to Amatsu GovOps to Soter Labs, 2) adds Governance Accessibility Reward Instances to the Skybase Artifact, 3) removes references to StarkNet in Safe Harbor documentation, 4) aligns GitHub and Portal versions of t",
-      "summary_zh": "本提案将 Amatsu GovOps 引用更新为 Soter Labs，添加治理可访问性奖励实例到 Skybase Artifact，移除 StarkNet 相关 Safe Harbor 文档引用，对齐 GitHub 和 Portal 版本的 Atlas。"
+      "summary_zh": "本 Atlas 编辑提案将 Amatsu GovOps 引用更新为 Soter Labs，向 Skybase Artifact 添加治理可访问性奖励实例，移除 Safe Harbor 文档中的 StarkNet 引用，对齐 GitHub 和 Portal 版本的 Atlas。"
     },
     {
       "source": "Sky Polling",
@@ -3036,7 +3316,7 @@
       "tev_related": false,
       "tev_keywords": [],
       "summary_en": "This Atlas edit 1) adds additional responsibilities for Aligned Delegates, 2) authorizes the Safe Harbor Agreement, 3) updates risk parameters for Anchorage Digital, 4) clarifies references to Ozone, 5) updates names of Obex Foundation and Developmen",
-      "summary_zh": "本提案为对齐代表增加职责，授权 Safe Harbor 协议，更新 Anchorage Digital 风险参数，添加 Integration Boost 实例到 Skybase Artifact，更新 Grove Artifact，修正 stUSDS BEAM 文档嵌套，添加 Launch Agent 7 Artifact。"
+      "summary_zh": "本 Atlas 编辑提案为 Aligned Delegates 增加新职责，授权 Safe Harbor 协议，更新 Anchorage Digital 风险参数，澄清 Ozone 引用，更新 Obex Foundation 名称，添加 Launch Agent 7 Artifact。"
     },
     {
       "source": "Sky Polling",
@@ -3051,7 +3331,263 @@
         "distribution"
       ],
       "summary_en": "This Atlas edit proposal 1) updates the Ecosystem Accord between Sky, Spark, and Grove, 2) builds out basic information for Core Governance Reward Primitive, 3) removes legacy documents for Ranked Delegates, 4) updates the Distribution Reward Instanc",
-      "summary_zh": "本提案更新 Sky、Spark 和 Grove 之间的生态系统协议，构建核心治理奖励原语基础信息，移除排名代表遗留文档，更新分配奖励实例 Skybase Artifact，移除 Scope Advisor 引用，更新 Active Data Process。"
+      "summary_zh": "本 Atlas 编辑提案更新 Sky、Spark 和 Grove 之间的生态系统协议，构建核心治理奖励原语基础信息，移除排名代表遗留文档，更新分配奖励实例和 Active Data Process。"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "【Discussion】Phase-Based Treasury MNT Burn (3–8% Over 12–24 Months)",
+      "status": "active",
+      "link": "https://forum.mantle.xyz/t/discussion-phase-based-treasury-mnt-burn-3-8-over-12-24-months/9406",
+      "created": "2026-02-25T10:04:44",
+      "end": "",
+      "tev_related": true,
+      "tev_keywords": [
+        "burn",
+        "treasury"
+      ],
+      "summary_en": "【Discussion】Phase-Based Treasury MNT Burn (3–8% Over 12–24 Months)",
+      "summary_zh": "【讨论】基于阶段的MNT财政库销毁（12-24个月内分阶段进行，每次3-8%）"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "[Discussion] MIP-33: Mantle Core Budget for Third Budget Cycle",
+      "status": "active",
+      "link": "https://forum.mantle.xyz/t/discussion-mip-33-mantle-core-budget-for-third-budget-cycle/9312",
+      "created": "2025-08-28T04:14:40",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "[Discussion] MIP-33: Mantle Core Budget for Third Budget Cycle",
+      "summary_zh": "[讨论] MIP-33：Mantle 第三预算周期核心预算"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "[ARCHIVE] Gov Navigator: A Comprehensive Governance Dashboard for Mantle DAO",
+      "status": "active",
+      "link": "https://forum.mantle.xyz/t/archive-gov-navigator-a-comprehensive-governance-dashboard-for-mantle-dao/9206",
+      "created": "2025-04-14T11:21:04",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "[ARCHIVE] Gov Navigator: A Comprehensive Governance Dashboard for Mantle DAO",
+      "summary_zh": "[档案] Mantle DAO治理导航器：一个全面的治理仪表盘"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "[PASSED] MIP-32: Mantle Enhanced Index Fund Governance Proposal",
+      "status": "passed",
+      "link": "https://forum.mantle.xyz/t/passed-mip-32-mantle-enhanced-index-fund-governance-proposal/9104",
+      "created": "2025-01-22T11:52:24",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "[PASSED] MIP-32: Mantle Enhanced Index Fund Governance Proposal",
+      "summary_zh": "[MIP-32：Mantle增强指数基金治理提案通过]"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "[ARCHIVED] Diversifying and enhancing Mantle Treasury Yield through a regulated provider",
+      "status": "active",
+      "link": "https://forum.mantle.xyz/t/archived-diversifying-and-enhancing-mantle-treasury-yield-through-a-regulated-provider/8955",
+      "created": "2024-10-25T14:47:49",
+      "end": "",
+      "tev_related": true,
+      "tev_keywords": [
+        "treasury"
+      ],
+      "summary_en": "[ARCHIVED] Diversifying and enhancing Mantle Treasury Yield through a regulated provider",
+      "summary_zh": "[存档] 通过合规提供商多元化并提升Mantle金库收益"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "[PASSED] MIP-31: Mantle Core Budget for Second Budget Cycle",
+      "status": "passed",
+      "link": "https://forum.mantle.xyz/t/passed-mip-31-mantle-core-budget-for-second-budget-cycle/8841",
+      "created": "2024-08-14T06:23:00",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "[PASSED] MIP-31: Mantle Core Budget for Second Budget Cycle",
+      "summary_zh": "[PASSED] MIP-31：Mantle 第二预算周期核心预算提案通过"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "[PASSED] MIP-30: Exploring the next Phase of mETH",
+      "status": "passed",
+      "link": "https://forum.mantle.xyz/t/passed-mip-30-exploring-the-next-phase-of-meth/8728",
+      "created": "2024-04-29T07:23:00",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "[PASSED] MIP-30: Exploring the next Phase of mETH",
+      "summary_zh": "[PASSED] MIP-30：探索mETH下一阶段发展"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "[PASSED] MIP-29: [EF Proposal] Second Capital Call and Updates",
+      "status": "passed",
+      "link": "https://forum.mantle.xyz/t/passed-mip-29-ef-proposal-second-capital-call-and-updates/8653",
+      "created": "2024-02-12T13:13:40",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "[PASSED] MIP-29: [EF Proposal] Second Capital Call and Updates",
+      "summary_zh": "[PASSED] MIP-29: [EF Proposal] Second Capital Call and Updates"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "[ARCHIVED] State Committee Light Client for Mantle Network",
+      "status": "active",
+      "link": "https://forum.mantle.xyz/t/archived-state-committee-light-client-for-mantle-network/8589",
+      "created": "2024-01-15T12:46:38",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "[ARCHIVED] State Committee Light Client for Mantle Network",
+      "summary_zh": "[ARCHIVED] State Committee Light Client for Mantle Network"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "[PASSED] [EC Proposal] MIP-28: Expanded Strategies and Liquidity Programs",
+      "status": "passed",
+      "link": "https://forum.mantle.xyz/t/passed-ec-proposal-mip-28-expanded-strategies-and-liquidity-programs/8381",
+      "created": "2023-11-17T07:04:33",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "[PASSED] [EC Proposal] MIP-28: Expanded Strategies and Liquidity Programs",
+      "summary_zh": "[MIP-28 通过] Mantle 扩展策略与流动性计划提案"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "[ARCHIVED] Growth proposal: driving demand for mETH and increasing Mantle treasury security",
+      "status": "active",
+      "link": "https://forum.mantle.xyz/t/archived-growth-proposal-driving-demand-for-meth-and-increasing-mantle-treasury-security/8434",
+      "created": "2023-12-10T15:13:08",
+      "end": "",
+      "tev_related": true,
+      "tev_keywords": [
+        "treasury"
+      ],
+      "summary_en": "[ARCHIVED] Growth proposal: driving demand for mETH and increasing Mantle treasury security",
+      "summary_zh": "协议：Mantle\n标题：[存档] 增长提案：推动mETH需求并提高Mantle金库安全性\n摘要：[存档] 增长提案：推动mETH需求并提升Mantle金库安全保障"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "[PASSED] MIP-27: Clarification of $BIT to $MNT migration policy and service",
+      "status": "passed",
+      "link": "https://forum.mantle.xyz/t/passed-mip-27-clarification-of-bit-to-mnt-migration-policy-and-service/7877",
+      "created": "2023-08-17T13:48:59",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "[PASSED] MIP-27: Clarification of $BIT to $MNT migration policy and service",
+      "summary_zh": "[PASSED] MIP-27：$BIT至$MNT迁移政策和服务的澄清"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "[PASSED] MIP-26: [EC Proposal] Treasury Assets in Support of Applications",
+      "status": "passed",
+      "link": "https://forum.mantle.xyz/t/passed-mip-26-ec-proposal-treasury-assets-in-support-of-applications/7943",
+      "created": "2023-08-26T07:12:25",
+      "end": "",
+      "tev_related": true,
+      "tev_keywords": [
+        "treasury"
+      ],
+      "summary_en": "[PASSED] MIP-26: [EC Proposal] Treasury Assets in Support of Applications",
+      "summary_zh": "提案：Mantle\n标题：[已通过] MIP-26：[执行委员会提案] 支持应用的钱包资产\n摘要：[已通过] MIP-26：[执行委员会提案] 支持应用的钱包资产"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "[ARCHIVED] Mantle LSD",
+      "status": "active",
+      "link": "https://forum.mantle.xyz/t/archived-mantle-lsd/7085",
+      "created": "2023-06-14T10:12:52",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "[ARCHIVED] Mantle LSD",
+      "summary_zh": "[ARCHIVED] Mantle LSD"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "[ARCHIVED] Mantle x Lido strategic collaboration",
+      "status": "active",
+      "link": "https://forum.mantle.xyz/t/archived-mantle-x-lido-strategic-collaboration/7151",
+      "created": "2023-06-22T12:25:44",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "[ARCHIVED] Mantle x Lido strategic collaboration",
+      "summary_zh": "Mantle与Lido达成战略合作伙伴关系"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "[PASSED] MIP-25: Mantle Economics Committee, and ETH Staking Strategies",
+      "status": "passed",
+      "link": "https://forum.mantle.xyz/t/passed-mip-25-mantle-economics-committee-and-eth-staking-strategies/7548",
+      "created": "2023-07-11T12:41:14",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "[PASSED] MIP-25: Mantle Economics Committee, and ETH Staking Strategies",
+      "summary_zh": "[通过] MIP-25：Mantle 经济委员会及 ETH 债权质押策略"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "[PASSED] MIP-23: $MNT Supply Optimization in Preparation for Launch",
+      "status": "passed",
+      "link": "https://forum.mantle.xyz/t/passed-mip-23-mnt-supply-optimization-in-preparation-for-launch/7148",
+      "created": "2023-06-22T11:07:13",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "[PASSED] MIP-23: $MNT Supply Optimization in Preparation for Launch",
+      "summary_zh": "Mantle 协议提案 [已通过] MIP-23：为启动做准备，对 $MNT 供应量进行优化。"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "[PASSED] MIP-24: Mantle EcoFund",
+      "status": "passed",
+      "link": "https://forum.mantle.xyz/t/passed-mip-24-mantle-ecofund/4692",
+      "created": "2023-02-26T09:00:18",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "[PASSED] MIP-24: Mantle EcoFund",
+      "summary_zh": "[PASSED] MIP-24：Mantle EcoFund协议提案通过"
+    },
+    {
+      "source": "Mantle Forum",
+      "protocol": "Mantle",
+      "title": "[PASSED] MIP-22: Mantle Token Design, Conversion Parameters, and Asset Handling",
+      "status": "passed",
+      "link": "https://forum.mantle.xyz/t/passed-mip-22-mantle-token-design-conversion-parameters-and-asset-handling/6352",
+      "created": "2023-05-22T14:21:56",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "[PASSED] MIP-22: Mantle Token Design, Conversion Parameters, and Asset Handling",
+      "summary_zh": "[PASSED] MIP-22：Mantle代币设计、转换参数及资产管理方案通过"
     }
   ]
 }
