@@ -12,58 +12,65 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../indicators/css/common.css">
   <style>
-    /* Stats */
-    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-bottom: 24px; }
     .mini-stat { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; }
     .mini-stat .label { font-size: 12px; color: var(--text-tertiary); margin-bottom: 4px; }
     .mini-stat .value { font-size: 24px; font-weight: 700; color: var(--text-primary); }
     .mini-stat .value.tev { color: var(--danger); }
     .mini-stat .value.green { color: var(--accent); }
+    .mini-stat .value.blue { color: var(--blue); }
     .updated-at { font-size: 12px; color: var(--text-tertiary); text-align: right; margin-bottom: 16px; }
 
     /* Protocol Grid */
     .protocol-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-    .protocol-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.2s; position: relative; }
+    .protocol-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.2s; }
     .protocol-card:hover { border-color: var(--border-hover); background: var(--bg-tertiary); transform: translateY(-2px); }
     .protocol-card.has-tev { border-left: 3px solid var(--danger); }
-    .protocol-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .protocol-card.has-active { border-top: 2px solid var(--accent); }
+    .protocol-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
     .protocol-name { font-size: 18px; font-weight: 700; color: var(--text-primary); }
-    .protocol-count { font-size: 13px; color: var(--text-secondary); background: var(--bg-tertiary); padding: 2px 10px; border-radius: 12px; }
-    .protocol-sources { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+    .protocol-badges { display: flex; gap: 6px; }
+    .badge { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; }
+    .badge-active { background: var(--accent-dim); color: var(--accent); }
+    .badge-passed { background: var(--bg-tertiary); color: var(--text-tertiary); }
+    .badge-tev { background: var(--danger-dim); color: var(--danger); }
+    .protocol-sources { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
     .source-tag { font-size: 11px; color: var(--text-tertiary); background: var(--bg-primary); padding: 2px 8px; border-radius: 6px; border: 1px solid var(--border); }
     .protocol-preview { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
-    .protocol-preview .tev-hint { color: var(--danger); font-weight: 500; font-size: 12px; }
     .protocol-no-proposals { color: var(--text-tertiary); font-size: 13px; font-style: italic; }
 
     /* Detail View */
     .detail-view { display: none; }
     .detail-view.active { display: block; }
     .grid-view.hidden { display: none; }
-    
     .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-secondary); cursor: pointer; margin-bottom: 20px; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-secondary); transition: all 0.2s; }
     .back-btn:hover { color: var(--text-primary); border-color: var(--border-hover); }
-    
     .detail-header { margin-bottom: 24px; }
     .detail-title { font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
     .detail-subtitle { font-size: 13px; color: var(--text-tertiary); }
     
+    .section-label { font-size: 16px; font-weight: 600; color: var(--text-primary); margin: 24px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+    .section-label .count { font-size: 13px; font-weight: 400; color: var(--text-tertiary); }
+
+    /* Proposal Cards */
     .proposal-list { display: flex; flex-direction: column; gap: 12px; }
     .proposal-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.2s; }
     .proposal-card:hover { border-color: var(--border-hover); background: var(--bg-tertiary); }
     .proposal-card.tev-related { border-left: 3px solid var(--danger); }
-    .proposal-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+    .proposal-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 6px; }
+    .proposal-tags { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
     .proposal-source { font-size: 11px; color: var(--text-tertiary); background: var(--bg-tertiary); padding: 2px 8px; border-radius: 8px; }
-    .proposal-title { font-size: 15px; font-weight: 500; color: var(--text-primary); line-height: 1.5; margin-bottom: 8px; }
+    .proposal-title { font-size: 15px; font-weight: 500; color: var(--text-primary); line-height: 1.5; margin-bottom: 4px; }
     .proposal-title a { color: inherit; text-decoration: none; }
     .proposal-title a:hover { color: var(--accent); }
+    .proposal-summary { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 8px; padding: 8px 12px; background: var(--bg-primary); border-radius: 8px; border-left: 2px solid var(--border); }
     .proposal-meta { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
     .proposal-meta span { font-size: 12px; color: var(--text-tertiary); }
-    .proposal-status { padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 500; }
-    .proposal-status.active { background: var(--accent-dim); color: var(--accent); }
-    .proposal-status.open { background: var(--blue-dim); color: var(--blue); }
-    .proposal-status.discussion { background: var(--warning-dim); color: var(--warning); }
+    .status-badge { padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 500; }
+    .status-badge.active { background: var(--accent-dim); color: var(--accent); }
+    .status-badge.passed { background: var(--blue-dim); color: var(--blue); }
+    .status-badge.rejected { background: var(--danger-dim); color: var(--danger); }
     .tev-badge { background: var(--danger-dim); color: var(--danger); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 8px; }
-    .tev-keywords { font-size: 11px; color: var(--text-tertiary); }
     .empty-state { text-align: center; padding: 60px 20px; color: var(--text-tertiary); }
   </style>
 </head>
@@ -78,7 +85,7 @@
         <div class="nav-links">
           <a href="../">首页</a>
           <a href="../tev/">TEV</a>
-          <a href="./" class="active" style="color: var(--text-primary);">治理</a>
+          <a href="./" class="active" style="color:var(--text-primary);">治理</a>
         </div>
       </div>
     </div>
@@ -88,225 +95,182 @@
     <div class="container">
       <div class="page-header">
         <h1 class="page-title">🏛️ 治理提案监控</h1>
-        <p class="page-subtitle">TEV 协议治理提案实时追踪，每 4 小时自动更新</p>
+        <p class="page-subtitle">TEV 协议治理提案实时追踪 · 每 4 小时自动更新</p>
       </div>
-
       <div class="updated-at" id="updated-at">加载中...</div>
-
-      <div class="stats-row" id="stats-row">
-        <div class="mini-stat">
-          <div class="label">活跃提案</div>
-          <div class="value green" id="stat-total">—</div>
-        </div>
-        <div class="mini-stat">
-          <div class="label">⚠️ TEV 相关</div>
-          <div class="value tev" id="stat-tev">—</div>
-        </div>
-        <div class="mini-stat">
-          <div class="label">监控协议</div>
-          <div class="value" id="stat-protocols">—</div>
-        </div>
-        <div class="mini-stat">
-          <div class="label">数据源</div>
-          <div class="value" id="stat-sources">—</div>
-        </div>
+      <div class="stats-row">
+        <div class="mini-stat"><div class="label">监控协议</div><div class="value" id="s-protocols">—</div></div>
+        <div class="mini-stat"><div class="label">🔵 进行中</div><div class="value green" id="s-active">—</div></div>
+        <div class="mini-stat"><div class="label">✅ 已通过</div><div class="value blue" id="s-passed">—</div></div>
+        <div class="mini-stat"><div class="label">⚠️ TEV 相关</div><div class="value tev" id="s-tev">—</div></div>
       </div>
 
-      <!-- Protocol Grid View -->
       <div class="grid-view" id="grid-view">
-        <div class="protocol-grid" id="protocol-grid">
-          <div class="empty-state">加载中...</div>
-        </div>
+        <div class="protocol-grid" id="protocol-grid"><div class="empty-state">加载中...</div></div>
       </div>
 
-      <!-- Protocol Detail View -->
       <div class="detail-view" id="detail-view">
         <div class="back-btn" id="back-btn">← 返回协议列表</div>
         <div class="detail-header">
           <div class="detail-title" id="detail-title"></div>
           <div class="detail-subtitle" id="detail-subtitle"></div>
         </div>
-        <div class="proposal-list" id="proposal-list"></div>
+        <div id="detail-content"></div>
       </div>
     </div>
   </main>
 
   <script>
-    let allData = {};
-    let protocolMap = {};
-
-    // Protocol display config
-    const PROTOCOL_ORDER = [
-      'Aave DAO', 'Uniswap', 'Curve', 'dYdX', 'GMX', 'Sky (MakerDAO)', 
-      'PancakeSwap', 'Pendle', 'ether.fi', 'Compound', 'Lido', 'Morpho',
-      'Spark', 'Ethena', 'Maple', 'EigenLayer', 'Fluid', 'BNB Chain'
-    ];
+    let allData = {}, protocolMap = {};
 
     async function loadData() {
       try {
         const resp = await fetch('../data/governance.json');
         allData = await resp.json();
-        
-        // Stats
-        document.getElementById('stat-total').textContent = allData.total;
-        document.getElementById('stat-tev').textContent = allData.tev_related;
-        
-        const updated = new Date(allData.updated_at);
+        document.getElementById('s-active').textContent = allData.active_count || 0;
+        document.getElementById('s-passed').textContent = allData.passed_count || 0;
+        document.getElementById('s-tev').textContent = allData.tev_related || 0;
         document.getElementById('updated-at').textContent = 
-          `最后更新: ${updated.toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}`;
-        
+          '最后更新: ' + new Date(allData.updated_at).toLocaleString('zh-CN', {timeZone:'Asia/Shanghai'});
+
         // Group by protocol
         protocolMap = {};
-        
-        // First, init all monitored protocols from metadata
         if (allData.protocols_meta) {
           for (const [name, meta] of Object.entries(allData.protocols_meta)) {
-            protocolMap[name] = { 
-              name, proposals: [], 
-              sources: new Set(meta.sources || []), 
-              hasTev: false,
-              govType: meta.governance_type || 'unknown'
-            };
+            protocolMap[name] = { name, proposals: [], sources: new Set(meta.sources||[]), hasTev: false, activeCount: 0, passedCount: 0 };
           }
         }
-        
-        // Then fill with actual proposals
         for (const p of allData.proposals) {
-          const key = p.protocol;
-          if (!protocolMap[key]) {
-            protocolMap[key] = { name: key, proposals: [], sources: new Set(), hasTev: false };
-          }
-          protocolMap[key].proposals.push(p);
-          protocolMap[key].sources.add(p.source);
-          if (p.tev_related) protocolMap[key].hasTev = true;
+          const k = p.protocol;
+          if (!protocolMap[k]) protocolMap[k] = { name: k, proposals: [], sources: new Set(), hasTev: false, activeCount: 0, passedCount: 0 };
+          protocolMap[k].proposals.push(p);
+          protocolMap[k].sources.add(p.source);
+          if (p.tev_related) protocolMap[k].hasTev = true;
+          if (p.status === 'active') protocolMap[k].activeCount++;
+          if (p.status === 'passed') protocolMap[k].passedCount++;
         }
-        
-        document.getElementById('stat-protocols').textContent = allData.monitored_protocols || Object.keys(protocolMap).length;
-        const allSources = new Set(allData.proposals.map(p => p.source));
-        document.getElementById('stat-sources').textContent = allSources.size;
-        
+        document.getElementById('s-protocols').textContent = allData.monitored_protocols || Object.keys(protocolMap).length;
         renderGrid();
-      } catch (e) {
-        document.getElementById('protocol-grid').innerHTML = 
-          '<div class="empty-state">数据加载失败，请稍后刷新</div>';
+      } catch(e) {
+        document.getElementById('protocol-grid').innerHTML = '<div class="empty-state">数据加载失败</div>';
       }
     }
 
     function renderGrid() {
       const grid = document.getElementById('protocol-grid');
-      
-      // Sort: has TEV first, then by proposal count
-      const sorted = Object.values(protocolMap).sort((a, b) => {
+      const sorted = Object.values(protocolMap).sort((a,b) => {
+        if (a.activeCount !== b.activeCount) return b.activeCount - a.activeCount;
         if (a.hasTev !== b.hasTev) return a.hasTev ? -1 : 1;
         return b.proposals.length - a.proposals.length;
       });
-      
       grid.innerHTML = sorted.map(proto => {
-        const tevCount = proto.proposals.filter(p => p.tev_related).length;
-        const latestTitle = proto.proposals[0]?.title?.replace(/^#\s*/, '').substring(0, 60) || '';
-        
+        const tevCount = proto.proposals.filter(p=>p.tev_related).length;
         return `
-          <div class="protocol-card ${proto.hasTev ? 'has-tev' : ''}" onclick="showDetail('${proto.name.replace(/'/g, "\\'")}')">
+          <div class="protocol-card ${proto.hasTev?'has-tev':''} ${proto.activeCount>0?'has-active':''}" 
+               onclick="showDetail('${proto.name.replace(/'/g,"\\'")}')">
             <div class="protocol-card-header">
               <span class="protocol-name">${proto.name}</span>
-              <span class="protocol-count">${proto.proposals.length} 个提案</span>
+              <div class="protocol-badges">
+                ${proto.activeCount > 0 ? `<span class="badge badge-active">${proto.activeCount} 进行中</span>` : ''}
+                ${proto.passedCount > 0 ? `<span class="badge badge-passed">${proto.passedCount} 已通过</span>` : ''}
+              </div>
             </div>
             <div class="protocol-sources">
-              ${Array.from(proto.sources).map(s => `<span class="source-tag">${s}</span>`).join('')}
+              ${Array.from(proto.sources).map(s=>`<span class="source-tag">${s}</span>`).join('')}
             </div>
             <div class="protocol-preview">
-              ${tevCount > 0 ? `<div class="tev-hint">⚠️ ${tevCount} 个 TEV 相关提案</div>` : ''}
-              ${latestTitle ? `<div style="margin-top:4px;color:var(--text-tertiary);font-size:12px;">最新: ${latestTitle}...</div>` : 
-                `<div class="protocol-no-proposals">暂无活跃提案</div>`}
+              ${tevCount > 0 ? `<span class="badge badge-tev">⚠️ ${tevCount} 个 TEV 相关</span>` : ''}
+              ${proto.proposals.length === 0 ? '<div class="protocol-no-proposals">暂无提案</div>' : ''}
             </div>
-          </div>
-        `;
+          </div>`;
       }).join('');
     }
 
-    function showDetail(protocolName) {
-      const proto = protocolMap[protocolName];
+    function fmtDate(ts) {
+      if (!ts) return '';
+      if (typeof ts === 'number' && ts > 0) return new Date(ts*1000).toLocaleDateString('zh-CN');
+      if (typeof ts === 'string') return ts.substring(0,10);
+      return '';
+    }
+    function fmtEnd(end) {
+      if (!end) return '';
+      if (typeof end === 'number' && end > 0) {
+        const h = Math.round((new Date(end*1000) - new Date()) / 3600000);
+        if (h > 0 && h < 168) return '⏰ ' + h + 'h 后截止';
+        if (h > 0) return '截止: ' + new Date(end*1000).toLocaleDateString('zh-CN');
+      }
+      if (typeof end === 'string' && end.length > 0) return '截止: ' + end.substring(0,10);
+      return '';
+    }
+
+    function renderProposal(p) {
+      const sc = p.status==='active'?'active':p.status==='passed'?'passed':p.status==='rejected'?'rejected':'passed';
+      const statusText = p.status==='active'?'进行中':p.status==='passed'?'已通过':p.status==='rejected'?'已否决':'已关闭';
+      return `
+        <div class="proposal-card ${p.tev_related?'tev-related':''}">
+          <div class="proposal-header">
+            <div class="proposal-tags">
+              <span class="proposal-source">${p.source}</span>
+              ${p.tev_related?'<span class="tev-badge">⚠️ TEV</span>':''}
+            </div>
+            <span class="status-badge ${sc}">${statusText}</span>
+          </div>
+          <div class="proposal-title">
+            <a href="${p.link}" target="_blank" rel="noopener">${p.title.replace(/^#\s*/,'').substring(0,150)}</a>
+          </div>
+          ${p.summary ? `<div class="proposal-summary">${p.summary.substring(0,200)}</div>` : ''}
+          <div class="proposal-meta">
+            ${fmtDate(p.created)?`<span>📅 ${fmtDate(p.created)}</span>`:''}
+            ${fmtEnd(p.end)?`<span>${fmtEnd(p.end)}</span>`:''}
+            ${p.tev_keywords&&p.tev_keywords.length?`<span style="color:var(--danger)">关键词: ${p.tev_keywords.join(', ')}</span>`:''}
+          </div>
+        </div>`;
+    }
+
+    function showDetail(name) {
+      const proto = protocolMap[name];
       if (!proto) return;
-      
       document.getElementById('grid-view').classList.add('hidden');
       document.getElementById('detail-view').classList.add('active');
-      
       document.getElementById('detail-title').textContent = proto.name;
       document.getElementById('detail-subtitle').textContent = 
         `${proto.proposals.length} 个提案 · 数据源: ${Array.from(proto.sources).join(', ')}`;
-      
-      const list = document.getElementById('proposal-list');
-      
-      // Sort: TEV first, then by created time
-      const sorted = [...proto.proposals].sort((a, b) => {
-        if (a.tev_related !== b.tev_related) return a.tev_related ? -1 : 1;
-        const ta = typeof a.created === 'number' ? a.created : 0;
-        const tb = typeof b.created === 'number' ? b.created : 0;
-        return tb - ta;
+
+      const active = proto.proposals.filter(p=>p.status==='active').sort((a,b)=>(b.tev_related?1:0)-(a.tev_related?1:0));
+      const passed = proto.proposals.filter(p=>p.status==='passed').sort((a,b)=>{
+        if(a.tev_related!==b.tev_related) return a.tev_related?-1:1;
+        const ta=typeof a.created==='number'?a.created:0, tb=typeof b.created==='number'?b.created:0;
+        return tb-ta;
       });
-      
-      list.innerHTML = sorted.map(p => {
-        const statusClass = p.status === 'active' ? 'active' : 
-                           p.status === 'open' ? 'open' : 'discussion';
-        
-        let endText = '';
-        if (p.end) {
-          if (typeof p.end === 'number' && p.end > 0) {
-            const endDate = new Date(p.end * 1000);
-            const now = new Date();
-            const hoursLeft = Math.round((endDate - now) / 3600000);
-            if (hoursLeft > 0 && hoursLeft < 168) {
-              endText = `⏰ ${hoursLeft}h 后截止`;
-            } else if (hoursLeft > 0) {
-              endText = `截止: ${endDate.toLocaleDateString('zh-CN')}`;
-            }
-          } else if (typeof p.end === 'string' && p.end.length > 0) {
-            endText = `截止: ${p.end.substring(0, 10)}`;
-          }
-        }
-        
-        let createdText = '';
-        if (p.created) {
-          if (typeof p.created === 'number' && p.created > 0) {
-            createdText = new Date(p.created * 1000).toLocaleDateString('zh-CN');
-          } else if (typeof p.created === 'string') {
-            createdText = p.created.substring(0, 10);
-          }
-        }
-        
-        return `
-          <div class="proposal-card ${p.tev_related ? 'tev-related' : ''}">
-            <div class="proposal-header">
-              <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-                <span class="proposal-source">${p.source}</span>
-                ${p.tev_related ? `<span class="tev-badge">⚠️ TEV 相关</span>` : ''}
-              </div>
-              <span class="proposal-status ${statusClass}">${p.status}</span>
-            </div>
-            <div class="proposal-title">
-              <a href="${p.link}" target="_blank" rel="noopener">${p.title.replace(/^#\s*/, '').substring(0, 150)}${p.title.length > 150 ? '...' : ''}</a>
-            </div>
-            <div class="proposal-meta">
-              ${createdText ? `<span>📅 ${createdText}</span>` : ''}
-              ${endText ? `<span>${endText}</span>` : ''}
-              ${p.tev_keywords && p.tev_keywords.length > 0 ? `<span class="tev-keywords">关键词: ${p.tev_keywords.join(', ')}</span>` : ''}
-            </div>
-          </div>
-        `;
-      }).join('');
-      
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const rejected = proto.proposals.filter(p=>p.status==='rejected').sort((a,b)=>{
+        const ta=typeof a.created==='number'?a.created:0, tb=typeof b.created==='number'?b.created:0;
+        return tb-ta;
+      });
+
+      let html = '';
+      if (active.length) {
+        html += `<div class="section-label">🔵 进行中 <span class="count">(${active.length})</span></div>`;
+        html += '<div class="proposal-list">' + active.map(renderProposal).join('') + '</div>';
+      }
+      if (passed.length) {
+        html += `<div class="section-label">✅ 已通过 <span class="count">(${passed.length})</span></div>`;
+        html += '<div class="proposal-list">' + passed.map(renderProposal).join('') + '</div>';
+      }
+      if (rejected.length) {
+        html += `<div class="section-label">❌ 已否决 <span class="count">(${rejected.length})</span></div>`;
+        html += '<div class="proposal-list">' + rejected.map(renderProposal).join('') + '</div>';
+      }
+      if (!active.length && !passed.length && !rejected.length) {
+        html = '<div class="empty-state">暂无提案数据</div>';
+      }
+      document.getElementById('detail-content').innerHTML = html;
+      window.scrollTo({top:0,behavior:'smooth'});
     }
 
-    function hideDetail() {
+    document.getElementById('back-btn').addEventListener('click', () => {
       document.getElementById('grid-view').classList.remove('hidden');
       document.getElementById('detail-view').classList.remove('active');
-    }
-
-    document.getElementById('back-btn').addEventListener('click', hideDetail);
-    
-    // Handle browser back
-    window.addEventListener('popstate', hideDetail);
+    });
 
     loadData();
   </script>
