@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <title>治理提案监控 — Crypto3D</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../indicators/css/common.css">
+  <style>
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-bottom: 24px; }
+    .mini-stat { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; }
+    .mini-stat .label { font-size: 12px; color: var(--text-tertiary); margin-bottom: 4px; }
+    .mini-stat .value { font-size: 24px; font-weight: 700; color: var(--text-primary); }
+    .mini-stat .value.tev { color: var(--danger); }
+    .mini-stat .value.green { color: var(--accent); }
+    .mini-stat .value.blue { color: var(--blue); }
+    .updated-at { font-size: 12px; color: var(--text-tertiary); text-align: right; margin-bottom: 16px; }
+
+    .protocol-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .protocol-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.2s; text-decoration: none; display: block; }
+    .protocol-card:hover { border-color: var(--border-hover); background: var(--bg-tertiary); transform: translateY(-2px); }
+    .protocol-card.has-tev { border-left: 3px solid var(--danger); }
+    .protocol-card.has-active { border-top: 2px solid var(--accent); }
+    .protocol-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .protocol-name { font-size: 18px; font-weight: 700; color: var(--text-primary); }
+    .protocol-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+    .badge { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; }
+    .badge-active { background: var(--accent-dim); color: var(--accent); }
+    .badge-passed { background: var(--bg-tertiary); color: var(--text-tertiary); }
+    .badge-tev { background: var(--danger-dim); color: var(--danger); }
+    .badge-yield { background: var(--blue-dim); color: var(--blue); font-family: 'JetBrains Mono', monospace; }
+    .protocol-sources { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+    .source-tag { font-size: 11px; color: var(--text-tertiary); background: var(--bg-primary); padding: 2px 8px; border-radius: 6px; border: 1px solid var(--border); }
+    .protocol-preview { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+    .protocol-no-proposals { color: var(--text-tertiary); font-size: 13px; font-style: italic; }
+    .latest-title { color: var(--text-tertiary); font-size: 12px; margin-top: 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="../" class="logo">
+          <img src="../logo.svg" alt="3D" class="logo-icon">
+          <span class="logo-text">Crypto3D</span>
+        </a>
+        <div class="nav-links">
+          <a href="../">首页</a>
+          <a href="../tev/">TEV</a>
+          <a href="./" style="color:var(--text-primary);">治理</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="page-header">
+        <h1 class="page-title">🏛️ 治理提案监控</h1>
+        <p class="page-subtitle">TEV 协议治理提案实时追踪 · 每 4 小时自动更新</p>
+      </div>
+      <div class="updated-at" id="updated-at">加载中...</div>
+      <div class="stats-row">
+        <div class="mini-stat"><div class="label">监控协议</div><div class="value" id="s-protocols">—</div></div>
+        <div class="mini-stat"><div class="label">🔵 进行中</div><div class="value green" id="s-active">—</div></div>
+        <div class="mini-stat"><div class="label">✅ 已通过</div><div class="value blue" id="s-passed">—</div></div>
+        <div class="mini-stat"><div class="label">⚠️ TEV 相关</div><div class="value tev" id="s-tev">—</div></div>
+      </div>
+      <div class="protocol-grid" id="protocol-grid"><div style="text-align:center;color:var(--text-tertiary);padding:40px;">加载中...</div></div>
+    </div>
+  </main>
+
+  <script>
+    // TEV sort order (from all-protocols.json) - same as TEV page default
+    const TEV_ORDER = [];
+
+    async function loadData() {
+      // Load TEV order: yield > 0 first sorted by market cap, then yield = 0 by market cap
+      try {
+        const tevResp = await fetch('../data/all-protocols.json');
+        const tevData = await tevResp.json();
+        const protos = tevData.protocols;
+        const sorted = Object.entries(protos).sort((a,b) => {
+          const aYield = a[1].tev_yield_percent || 0;
+          const bYield = b[1].tev_yield_percent || 0;
+          const aHas = aYield > 0 ? 1 : 0;
+          const bHas = bYield > 0 ? 1 : 0;
+          if (bHas !== aHas) return bHas - aHas;
+          return (b[1].market_cap_usd || 0) - (a[1].market_cap_usd || 0);
+        });
+        for (const [id, info] of sorted) {
+          TEV_ORDER.push({ id, name: info.name, yield: info.tev_yield_percent || 0, mcap: info.market_cap_usd || 0 });
+        }
+      } catch(e) { console.warn('TEV order load failed', e); }
+
+      // Load governance data
+      const resp = await fetch('../data/governance.json');
+      const data = await resp.json();
+
+      document.getElementById('s-active').textContent = data.active_count || 0;
+      document.getElementById('s-passed').textContent = data.passed_count || 0;
+      document.getElementById('s-tev').textContent = data.tev_related || 0;
+      document.getElementById('s-protocols').textContent = data.monitored_protocols || 0;
+      document.getElementById('updated-at').textContent = 
+        '最后更新: ' + new Date(data.updated_at).toLocaleString('zh-CN', {timeZone:'Asia/Shanghai'});
+
+      // Group proposals by protocol
+      const byProtocol = {};
+      for (const p of data.proposals) {
+        if (!byProtocol[p.protocol]) byProtocol[p.protocol] = [];
+        byProtocol[p.protocol].push(p);
+      }
+
+      // Also include protocols from metadata with no proposals
+      if (data.protocols_meta) {
+        for (const name of Object.keys(data.protocols_meta)) {
+          if (!byProtocol[name]) byProtocol[name] = [];
+        }
+      }
+
+      // Build cards in TEV order
+      const grid = document.getElementById('protocol-grid');
+      let html = '';
+
+      // Map TEV protocol IDs to governance protocol names
+      const TEV_TO_GOV = {
+        'aave': 'Aave', 'bnb': 'BNB Chain', 'compound': 'Compound', 'curve': 'Curve',
+        'dydx': 'dYdX', 'eigenlayer': 'EigenLayer', 'ethena': 'Ethena', 'etherfi': 'ether.fi',
+        'fluid': 'Fluid', 'gmx': 'GMX', 'lido': 'Lido', 'maple': 'Maple Finance',
+        'morpho': 'Morpho', 'pancakeswap': 'PancakeSwap', 'pendle': 'Pendle',
+        'sky': 'Sky (MakerDAO)', 'spark': 'Spark', 'uniswap': 'Uniswap'
+      };
+
+      const rendered = new Set();
+      
+      // Render in TEV order, only protocols that have proposals or are monitored
+      for (const tevP of TEV_ORDER) {
+        const govName = TEV_TO_GOV[tevP.id];
+        if (!govName) continue;
+        const proposals = byProtocol[govName] || [];
+        // Only show if has proposals or is in metadata
+        if (proposals.length === 0 && !data.protocols_meta?.[govName]) continue;
+        rendered.add(govName);
+        html += renderCard(govName, proposals);
+      }
+      
+      // Render remaining governance protocols not in TEV (shouldn't happen but just in case)
+      for (const [name, proposals] of Object.entries(byProtocol)) {
+        if (!rendered.has(name) && proposals.length > 0) {
+          html += renderCard(name, proposals);
+        }
+      }
+
+      grid.innerHTML = html || '<div style="text-align:center;color:var(--text-tertiary);padding:40px;">暂无数据</div>';
+    }
+
+    function renderCard(name, proposals) {
+      const activeCount = proposals.filter(p => p.status === 'active').length;
+      const passedCount = proposals.filter(p => p.status === 'passed').length;
+      const hasTev = proposals.some(p => p.tev_related);
+      const latestActive = proposals.find(p => p.status === 'active');
+      const slug = encodeURIComponent(name);
+
+      return `
+        <a class="protocol-card ${hasTev ? 'has-tev' : ''} ${activeCount > 0 ? 'has-active' : ''}"
+           href="protocol.html?name=${slug}">
+          <div class="protocol-card-header">
+            <span class="protocol-name">${name}</span>
+            <span style="font-size:12px;color:var(--text-tertiary);">${proposals.length} 提案</span>
+          </div>
+          <div class="protocol-badges" style="margin-bottom:8px;">
+            ${activeCount > 0 ? `<span class="badge badge-active">${activeCount} 进行中</span>` : ''}
+            ${passedCount > 0 ? `<span class="badge badge-passed">${passedCount} 已通过</span>` : ''}
+            ${hasTev ? `<span class="badge badge-tev">⚠️ TEV 相关</span>` : ''}
+          </div>
+          ${latestActive ? `<div class="latest-title">🔵 ${latestActive.title.replace(/^#\s*/,'').substring(0,55)}</div>` : 
+            proposals.length === 0 ? '<div class="protocol-no-proposals">暂无提案数据</div>' : ''}
+        </a>`;
+    }
+
+    loadData();
+  </script>
+</body>
+</html>
