@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
   <title>治理提案监控 — Crypto3D</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,64 +20,24 @@
     .mini-stat .value.blue { color: var(--blue); }
     .updated-at { font-size: 12px; color: var(--text-tertiary); text-align: right; margin-bottom: 16px; }
 
-    /* Protocol Grid */
     .protocol-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-    .protocol-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.2s; }
+    .protocol-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.2s; text-decoration: none; display: block; }
     .protocol-card:hover { border-color: var(--border-hover); background: var(--bg-tertiary); transform: translateY(-2px); }
     .protocol-card.has-tev { border-left: 3px solid var(--danger); }
     .protocol-card.has-active { border-top: 2px solid var(--accent); }
     .protocol-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
     .protocol-name { font-size: 18px; font-weight: 700; color: var(--text-primary); }
-    .protocol-badges { display: flex; gap: 6px; }
+    .protocol-badges { display: flex; gap: 6px; flex-wrap: wrap; }
     .badge { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; }
     .badge-active { background: var(--accent-dim); color: var(--accent); }
     .badge-passed { background: var(--bg-tertiary); color: var(--text-tertiary); }
     .badge-tev { background: var(--danger-dim); color: var(--danger); }
+    .badge-yield { background: var(--blue-dim); color: var(--blue); font-family: 'JetBrains Mono', monospace; }
     .protocol-sources { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
     .source-tag { font-size: 11px; color: var(--text-tertiary); background: var(--bg-primary); padding: 2px 8px; border-radius: 6px; border: 1px solid var(--border); }
     .protocol-preview { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
     .protocol-no-proposals { color: var(--text-tertiary); font-size: 13px; font-style: italic; }
-
-    /* Detail View */
-    .detail-view { display: none; }
-    .detail-view.active { display: block; }
-    .grid-view.hidden { display: none; }
-    .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-secondary); cursor: pointer; margin-bottom: 20px; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-secondary); transition: all 0.2s; }
-    .back-btn:hover { color: var(--text-primary); border-color: var(--border-hover); }
-    .detail-header { margin-bottom: 24px; }
-    .detail-title { font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
-    .detail-subtitle { font-size: 13px; color: var(--text-tertiary); }
-    
-    .section-label { font-size: 16px; font-weight: 600; color: var(--text-primary); margin: 24px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
-    .section-label .count { font-size: 13px; font-weight: 400; color: var(--text-tertiary); }
-
-    /* Proposal Cards */
-    .proposal-list { display: flex; flex-direction: column; gap: 12px; }
-    .proposal-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.2s; }
-    .proposal-card:hover { border-color: var(--border-hover); background: var(--bg-tertiary); }
-    .proposal-card.tev-related { border-left: 3px solid var(--danger); }
-    .proposal-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 6px; }
-    .proposal-tags { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-    .proposal-source { font-size: 11px; color: var(--text-tertiary); background: var(--bg-tertiary); padding: 2px 8px; border-radius: 8px; }
-    .proposal-title { font-size: 15px; font-weight: 500; color: var(--text-primary); line-height: 1.5; margin-bottom: 4px; }
-    .proposal-title a { color: inherit; text-decoration: none; }
-    .proposal-title a:hover { color: var(--accent); }
-    .proposal-summary { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 8px; padding: 8px 12px; background: var(--bg-primary); border-radius: 8px; border-left: 2px solid var(--border); }
-    .proposal-meta { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-    .proposal-meta span { font-size: 12px; color: var(--text-tertiary); }
-    .status-badge { padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 500; }
-    .status-badge.active { background: var(--accent-dim); color: var(--accent); }
-    .status-badge.passed { background: var(--blue-dim); color: var(--blue); }
-    .status-badge.rejected { background: var(--danger-dim); color: var(--danger); }
-    .tev-badge { background: var(--danger-dim); color: var(--danger); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 8px; }
-    .empty-state { text-align: center; padding: 60px 20px; color: var(--text-tertiary); }
-    .show-more-btn { text-align: center; padding: 12px; color: var(--accent); font-size: 14px; cursor: pointer; border: 1px dashed var(--border); border-radius: 8px; margin-top: 12px; transition: all 0.2s; }
-    .show-more-btn:hover { background: var(--accent-dim); border-color: var(--accent); }
-    .summary-lang { display: flex; gap: 0; margin-bottom: 4px; }
-    .summary-lang span { font-size: 11px; padding: 1px 8px; cursor: pointer; color: var(--text-tertiary); border: 1px solid var(--border); }
-    .summary-lang span:first-child { border-radius: 4px 0 0 4px; }
-    .summary-lang span:last-child { border-radius: 0 4px 4px 0; border-left: none; }
-    .summary-lang span.active { background: var(--bg-tertiary); color: var(--text-primary); }
+    .latest-title { color: var(--text-tertiary); font-size: 12px; margin-top: 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   </style>
 </head>
 <body>
@@ -92,7 +51,7 @@
         <div class="nav-links">
           <a href="../">首页</a>
           <a href="../tev/">TEV</a>
-          <a href="./" class="active" style="color:var(--text-primary);">治理</a>
+          <a href="./" style="color:var(--text-primary);">治理</a>
         </div>
       </div>
     </div>
@@ -111,208 +70,115 @@
         <div class="mini-stat"><div class="label">✅ 已通过</div><div class="value blue" id="s-passed">—</div></div>
         <div class="mini-stat"><div class="label">⚠️ TEV 相关</div><div class="value tev" id="s-tev">—</div></div>
       </div>
-
-      <div class="grid-view" id="grid-view">
-        <div class="protocol-grid" id="protocol-grid"><div class="empty-state">加载中...</div></div>
-      </div>
-
-      <div class="detail-view" id="detail-view">
-        <div class="back-btn" id="back-btn">← 返回协议列表</div>
-        <div class="detail-header">
-          <div class="detail-title" id="detail-title"></div>
-          <div class="detail-subtitle" id="detail-subtitle"></div>
-        </div>
-        <div id="detail-content"></div>
-      </div>
+      <div class="protocol-grid" id="protocol-grid"><div style="text-align:center;color:var(--text-tertiary);padding:40px;">加载中...</div></div>
     </div>
   </main>
 
   <script>
-    let allData = {}, protocolMap = {};
+    // TEV sort order (from all-protocols.json)
+    const TEV_ORDER = [];
 
     async function loadData() {
+      // Load TEV order
       try {
-        const resp = await fetch('../data/governance.json');
-        allData = await resp.json();
-        document.getElementById('s-active').textContent = allData.active_count || 0;
-        document.getElementById('s-passed').textContent = allData.passed_count || 0;
-        document.getElementById('s-tev').textContent = allData.tev_related || 0;
-        document.getElementById('updated-at').textContent = 
-          '最后更新: ' + new Date(allData.updated_at).toLocaleString('zh-CN', {timeZone:'Asia/Shanghai'});
+        const tevResp = await fetch('../data/all-protocols.json');
+        const tevData = await tevResp.json();
+        const protos = tevData.protocols;
+        const sorted = Object.entries(protos).sort((a,b) => ((b[1].tev_yield_percent||0) - (a[1].tev_yield_percent||0)));
+        for (const [id, info] of sorted) {
+          TEV_ORDER.push({ id, name: info.name, yield: info.tev_yield_percent || 0 });
+        }
+      } catch(e) { console.warn('TEV order load failed', e); }
 
-        // Group by protocol
-        protocolMap = {};
-        if (allData.protocols_meta) {
-          for (const [name, meta] of Object.entries(allData.protocols_meta)) {
-            protocolMap[name] = { name, proposals: [], sources: new Set(meta.sources||[]), hasTev: false, activeCount: 0, passedCount: 0 };
+      // Load governance data
+      const resp = await fetch('../data/governance.json');
+      const data = await resp.json();
+
+      document.getElementById('s-active').textContent = data.active_count || 0;
+      document.getElementById('s-passed').textContent = data.passed_count || 0;
+      document.getElementById('s-tev').textContent = data.tev_related || 0;
+      document.getElementById('s-protocols').textContent = data.monitored_protocols || 0;
+      document.getElementById('updated-at').textContent = 
+        '最后更新: ' + new Date(data.updated_at).toLocaleString('zh-CN', {timeZone:'Asia/Shanghai'});
+
+      // Group proposals by protocol
+      const byProtocol = {};
+      for (const p of data.proposals) {
+        if (!byProtocol[p.protocol]) byProtocol[p.protocol] = [];
+        byProtocol[p.protocol].push(p);
+      }
+
+      // Also include protocols from metadata with no proposals
+      if (data.protocols_meta) {
+        for (const name of Object.keys(data.protocols_meta)) {
+          if (!byProtocol[name]) byProtocol[name] = [];
+        }
+      }
+
+      // Build cards in TEV order
+      const grid = document.getElementById('protocol-grid');
+      let html = '';
+
+      // Map TEV names to governance names
+      const nameMap = {};
+      for (const tevP of TEV_ORDER) {
+        // Find matching governance protocol
+        for (const govName of Object.keys(byProtocol)) {
+          if (govName.toLowerCase().includes(tevP.id) || 
+              tevP.name.toLowerCase().includes(govName.toLowerCase()) ||
+              govName.toLowerCase().includes(tevP.name.toLowerCase())) {
+            nameMap[tevP.id] = govName;
+            break;
           }
         }
-        for (const p of allData.proposals) {
-          const k = p.protocol;
-          if (!protocolMap[k]) protocolMap[k] = { name: k, proposals: [], sources: new Set(), hasTev: false, activeCount: 0, passedCount: 0 };
-          protocolMap[k].proposals.push(p);
-          protocolMap[k].sources.add(p.source);
-          if (p.tev_related) protocolMap[k].hasTev = true;
-          if (p.status === 'active') protocolMap[k].activeCount++;
-          if (p.status === 'passed') protocolMap[k].passedCount++;
+      }
+
+      const rendered = new Set();
+      
+      // Render in TEV order
+      for (const tevP of TEV_ORDER) {
+        const govName = nameMap[tevP.id];
+        if (!govName) continue;
+        rendered.add(govName);
+        html += renderCard(govName, byProtocol[govName] || [], tevP.yield);
+      }
+      
+      // Render remaining protocols not in TEV list
+      for (const [name, proposals] of Object.entries(byProtocol)) {
+        if (!rendered.has(name)) {
+          html += renderCard(name, proposals, 0);
         }
-        document.getElementById('s-protocols').textContent = allData.monitored_protocols || Object.keys(protocolMap).length;
-        renderGrid();
-      } catch(e) {
-        document.getElementById('protocol-grid').innerHTML = '<div class="empty-state">数据加载失败</div>';
       }
+
+      grid.innerHTML = html || '<div style="text-align:center;color:var(--text-tertiary);padding:40px;">暂无数据</div>';
     }
 
-    function renderGrid() {
-      const grid = document.getElementById('protocol-grid');
-      const sorted = Object.values(protocolMap).sort((a,b) => {
-        if (a.activeCount !== b.activeCount) return b.activeCount - a.activeCount;
-        if (a.hasTev !== b.hasTev) return a.hasTev ? -1 : 1;
-        return b.proposals.length - a.proposals.length;
-      });
-      grid.innerHTML = sorted.map(proto => {
-        const tevCount = proto.proposals.filter(p=>p.tev_related).length;
-        return `
-          <div class="protocol-card ${proto.hasTev?'has-tev':''} ${proto.activeCount>0?'has-active':''}" 
-               onclick="showDetail('${proto.name.replace(/'/g,"\\'")}')">
-            <div class="protocol-card-header">
-              <span class="protocol-name">${proto.name}</span>
-              <div class="protocol-badges">
-                ${proto.activeCount > 0 ? `<span class="badge badge-active">${proto.activeCount} 进行中</span>` : ''}
-                ${proto.passedCount > 0 ? `<span class="badge badge-passed">${proto.passedCount} 已通过</span>` : ''}
-              </div>
-            </div>
-            <div class="protocol-sources">
-              ${Array.from(proto.sources).map(s=>`<span class="source-tag">${s}</span>`).join('')}
-            </div>
-            <div class="protocol-preview">
-              ${tevCount > 0 ? `<span class="badge badge-tev">⚠️ ${tevCount} 个 TEV 相关</span>` : ''}
-              ${proto.proposals.length === 0 ? '<div class="protocol-no-proposals">暂无提案</div>' : ''}
-            </div>
-          </div>`;
-      }).join('');
-    }
+    function renderCard(name, proposals, tevYield) {
+      const activeCount = proposals.filter(p => p.status === 'active').length;
+      const passedCount = proposals.filter(p => p.status === 'passed').length;
+      const hasTev = proposals.some(p => p.tev_related);
+      const latestActive = proposals.find(p => p.status === 'active');
+      const slug = encodeURIComponent(name);
 
-    function fmtDate(ts) {
-      if (!ts) return '';
-      if (typeof ts === 'number' && ts > 0) return new Date(ts*1000).toLocaleDateString('zh-CN');
-      if (typeof ts === 'string') return ts.substring(0,10);
-      return '';
-    }
-    function fmtEnd(end) {
-      if (!end) return '';
-      if (typeof end === 'number' && end > 0) {
-        const h = Math.round((new Date(end*1000) - new Date()) / 3600000);
-        if (h > 0 && h < 168) return '⏰ ' + h + 'h 后截止';
-        if (h > 0) return '截止: ' + new Date(end*1000).toLocaleDateString('zh-CN');
-      }
-      if (typeof end === 'string' && end.length > 0) return '截止: ' + end.substring(0,10);
-      return '';
-    }
-
-    function renderProposal(p) {
-      const sc = p.status==='active'?'active':p.status==='passed'?'passed':p.status==='rejected'?'rejected':'passed';
-      const statusText = p.status==='active'?'进行中':p.status==='passed'?'已通过':p.status==='rejected'?'已否决':'已关闭';
       return `
-        <div class="proposal-card ${p.tev_related?'tev-related':''}">
-          <div class="proposal-header">
-            <div class="proposal-tags">
-              <span class="proposal-source">${p.source}</span>
-              ${p.tev_related?'<span class="tev-badge">⚠️ TEV</span>':''}
+        <a class="protocol-card ${hasTev ? 'has-tev' : ''} ${activeCount > 0 ? 'has-active' : ''}"
+           href="protocol.html?name=${slug}">
+          <div class="protocol-card-header">
+            <span class="protocol-name">${name}</span>
+            <div class="protocol-badges">
+              ${tevYield > 0 ? `<span class="badge badge-yield">${tevYield.toFixed(1)}%</span>` : ''}
             </div>
-            <span class="status-badge ${sc}">${statusText}</span>
           </div>
-          <div class="proposal-title">
-            <a href="${p.link}" target="_blank" rel="noopener">${p.title.replace(/^#\s*/,'').substring(0,150)}</a>
+          <div class="protocol-badges" style="margin-bottom:8px;">
+            ${activeCount > 0 ? `<span class="badge badge-active">${activeCount} 进行中</span>` : ''}
+            ${passedCount > 0 ? `<span class="badge badge-passed">${passedCount} 已通过</span>` : ''}
+            ${hasTev ? `<span class="badge badge-tev">⚠️ TEV</span>` : ''}
           </div>
-          ${p.summary_zh || p.summary_en ? `
-            <div class="proposal-summary">
-              <div class="summary-lang">
-                <span class="active" onclick="switchLang(this,'zh')">中文</span>
-                <span onclick="switchLang(this,'en')">EN</span>
-              </div>
-              <div class="s-zh">${(p.summary_zh||p.summary||'').substring(0,250)}</div>
-              <div class="s-en" style="display:none">${(p.summary_en||p.summary||'').substring(0,250)}</div>
-            </div>` : ''}
-          <div class="proposal-meta">
-            ${fmtDate(p.created)?`<span>📅 ${fmtDate(p.created)}</span>`:''}
-            ${fmtEnd(p.end)?`<span>${fmtEnd(p.end)}</span>`:''}
-            ${p.tev_keywords&&p.tev_keywords.length?`<span style="color:var(--danger)">关键词: ${p.tev_keywords.join(', ')}</span>`:''}
-          </div>
-        </div>`;
+          ${latestActive ? `<div class="latest-title">🔵 ${latestActive.title.replace(/^#\s*/,'').substring(0,60)}...</div>` : 
+            proposals.length === 0 ? '<div class="protocol-no-proposals">暂无提案</div>' : 
+            `<div class="latest-title" style="color:var(--text-tertiary)">最近: ${proposals[0].title.replace(/^#\s*/,'').substring(0,60)}...</div>`}
+        </a>`;
     }
-
-    function showDetail(name) {
-      const proto = protocolMap[name];
-      if (!proto) return;
-      document.getElementById('grid-view').classList.add('hidden');
-      document.getElementById('detail-view').classList.add('active');
-      document.getElementById('detail-title').textContent = proto.name;
-      document.getElementById('detail-subtitle').textContent = 
-        `${proto.proposals.length} 个提案 · 数据源: ${Array.from(proto.sources).join(', ')}`;
-
-      const active = proto.proposals.filter(p=>p.status==='active').sort((a,b)=>(b.tev_related?1:0)-(a.tev_related?1:0));
-      const passed = proto.proposals.filter(p=>p.status==='passed').sort((a,b)=>{
-        if(a.tev_related!==b.tev_related) return a.tev_related?-1:1;
-        const ta=typeof a.created==='number'?a.created:0, tb=typeof b.created==='number'?b.created:0;
-        return tb-ta;
-      });
-
-      let html = '';
-      if (active.length) {
-        const showActive = active.slice(0, 5);
-        const moreActive = active.slice(5);
-        html += `<div class="section-label">🔵 进行中 <span class="count">(${active.length})</span></div>`;
-        html += '<div class="proposal-list">' + showActive.map(renderProposal).join('');
-        if (moreActive.length) {
-          html += `<div class="more-proposals" id="more-active" style="display:none">${moreActive.map(renderProposal).join('')}</div>`;
-          html += `<div class="show-more-btn" onclick="toggleMore('active')">展开更多 (${moreActive.length})</div>`;
-        }
-        html += '</div>';
-      }
-      if (passed.length) {
-        const showPassed = passed.slice(0, 5);
-        const morePassed = passed.slice(5);
-        html += `<div class="section-label">✅ 已通过 <span class="count">(${passed.length})</span></div>`;
-        html += '<div class="proposal-list">' + showPassed.map(renderProposal).join('');
-        if (morePassed.length) {
-          html += `<div class="more-proposals" id="more-passed" style="display:none">${morePassed.map(renderProposal).join('')}</div>`;
-          html += `<div class="show-more-btn" onclick="toggleMore('passed')">展开更多 (${morePassed.length})</div>`;
-        }
-        html += '</div>';
-      }
-      if (!active.length && !passed.length) {
-        html = '<div class="empty-state">暂无提案数据</div>';
-      }
-      document.getElementById('detail-content').innerHTML = html;
-      window.scrollTo({top:0,behavior:'smooth'});
-    }
-
-    function toggleMore(type) {
-      const el = document.getElementById('more-' + type);
-      const btn = el.nextElementSibling;
-      if (el.style.display === 'none') {
-        el.style.display = 'block';
-        btn.textContent = '收起';
-      } else {
-        el.style.display = 'none';
-        const count = el.children.length;
-        btn.textContent = '展开更多 (' + count + ')';
-      }
-    }
-
-    function switchLang(el, lang) {
-      const container = el.closest('.proposal-summary');
-      container.querySelectorAll('.summary-lang span').forEach(s => s.classList.remove('active'));
-      el.classList.add('active');
-      container.querySelector('.s-zh').style.display = lang === 'zh' ? 'block' : 'none';
-      container.querySelector('.s-en').style.display = lang === 'en' ? 'block' : 'none';
-    }
-
-    document.getElementById('back-btn').addEventListener('click', () => {
-      document.getElementById('grid-view').classList.remove('hidden');
-      document.getElementById('detail-view').classList.remove('active');
-    });
 
     loadData();
   </script>
