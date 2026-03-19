@@ -166,7 +166,11 @@ def render_sub(card_type, data):
     week_data = data.get("week_data", [])
     chart = make_chart(week_data, color, 300, 40)
     
-    if card_type == "ahr999":
+    if card_type == "btc_price":
+        icon = "₿"
+        label = "BTC"
+        status = f"${value:,.0f}"
+    elif card_type == "ahr999":
         icon = "🔥"
         label = "AHR999"
     elif card_type == "mvrv":
@@ -192,20 +196,27 @@ def render_sub(card_type, data):
 def render_poster(focus, data):
     today = datetime.now().strftime("%b %d, %Y")
     
+    # BTC 价格作为固定副卡（从 AHR999 数据提取）
+    btc_data = {
+        "value": data.get("ahr999", {}).get("price", 0),
+        "week_data": data.get("ahr999", {}).get("week_data", [])  # 复用周数据
+    }
+    
+    # 其他副卡
     sub_map = {
         "ahr999": ["mvrv", "bmri"],
         "mvrv": ["ahr999", "btcd"],
         "bmri": ["ahr999", "mvrv"],
         "btcd": ["ahr999", "mvrv"]
     }
-    subs = sub_map.get(focus, ["mvrv", "bmri"])
+    other_subs = sub_map.get(focus, ["mvrv", "bmri"])
     
     main_html = render_main(focus, data.get(focus, {}))
     
-    sub_html = ""
-    for s in subs[:2]:
-        if s in data:
-            sub_html += render_sub(s, data[s])
+    # BTC 价格 + 1个其他指标
+    sub_html = render_sub("btc_price", btc_data)
+    if other_subs[0] in data:
+        sub_html += render_sub(other_subs[0], data[other_subs[0]])
     
     return f"""<!DOCTYPE html>
 <html>
