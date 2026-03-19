@@ -18,6 +18,71 @@
     .protocol-notes table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
     .protocol-notes th, .protocol-notes td { padding: 10px 12px; text-align: left; border: 1px solid var(--border); }
     .protocol-notes th { background: var(--bg-tertiary); color: var(--text-primary); font-weight: 600; }
+
+    /* Governance cards */
+    .gov-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.2s;
+    }
+    .gov-card:hover { border-color: var(--border-hover); background: var(--bg-tertiary); }
+    .gov-card.is-active { border-left: 3px solid #22c55e; }
+    .gov-card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.4;
+      margin-bottom: 4px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .gov-card-summary {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+    .gov-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-tertiary);
+    }
+    .gov-card-status {
+      font-size: 10px;
+      padding: 1px 7px;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+    .gov-card-status.active { background: rgba(34,197,94,0.1); color: #22c55e; }
+    .gov-card-status.passed { background: rgba(148,163,184,0.1); color: #64748b; }
+    .gov-card-kw {
+      font-size: 9px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-tertiary);
+      background: var(--bg-tertiary);
+      padding: 1px 5px;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+    .gov-more-link {
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .gov-more-link:hover { color: var(--text-primary); }
     .protocol-notes td { background: var(--bg-secondary); }
     .protocol-notes tr:hover td { background: var(--bg-hover); }
     .protocol-notes code { background: var(--bg-tertiary); padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
@@ -163,6 +228,13 @@
       <div class="section"><div class="section-title"><span class="icon">⚙️</span><span data-i18n="section.tevMechanisms">TEV 机制详情</span></div><div id="mechanisms-container"></div></div>
       <div class="section" id="references-section" style="display: none;"><div class="section-title"><span class="icon">📚</span><span data-i18n="section.references">参考资料</span></div><div class="references-list" id="references-container"></div></div>
       <div class="section" id="notes-section" style="display: none;"><div class="section-title"><span class="icon">📝</span><span data-i18n="section.notes">分析师备注</span></div><div class="protocol-notes" id="protocol-notes"></div></div>
+      <!-- Governance Section -->
+      <div class="section" id="governance-section" style="display:none;">
+        <div class="section-title"><span class="icon">🏛️</span><span>TEV 治理动态</span></div>
+        <div id="governance-list" style="display:flex;flex-direction:column;gap:8px;"></div>
+        <div id="governance-more" style="margin-top:12px;text-align:right;"></div>
+      </div>
+
       <div class="section"><div class="section-title"><span class="icon">🔗</span><span data-i18n="section.dataSources">数据来源</span></div><div class="sources-list" id="sources-container"></div></div>
     </div>
   </main>
@@ -565,6 +637,75 @@
       } catch (e) { console.log(`No buyback data for ${pid}:`, e.message); }
     }
 
+    // TEV-to-governance name mapping
+    const TEV_TO_GOV = {
+      'aave': 'Aave', 'bnb': 'BNB Chain', 'compound': 'Compound', 'curve': 'Curve',
+      'dydx': 'dYdX', 'eigenlayer': 'EigenLayer', 'ethena': 'Ethena', 'etherfi': 'ether.fi',
+      'fluid': 'Fluid', 'gmx': 'GMX', 'lido': 'Lido', 'maple': 'Maple Finance',
+      'morpho': 'Morpho', 'pancakeswap': 'PancakeSwap', 'pendle': 'Pendle',
+      'mnt': 'Mantle', 'sky': 'Sky (MakerDAO)', 'spark': 'Spark', 'uniswap': 'Uniswap'
+    };
+
+    async function loadGovernance(pid) {
+      const govName = TEV_TO_GOV[pid];
+      if (!govName) return;
+      try {
+        const resp = await fetch('../data/governance.json');
+        if (!resp.ok) return;
+        const data = await resp.json();
+        const tevProposals = data.proposals
+          .filter(p => p.protocol === govName && p.tev_related)
+          .sort((a, b) => {
+            const aA = a.status === 'active' ? 1 : 0;
+            const bA = b.status === 'active' ? 1 : 0;
+            if (bA !== aA) return bA - aA;
+            const aT = typeof a.created === 'number' ? a.created : new Date(a.created).getTime() / 1000;
+            const bT = typeof b.created === 'number' ? b.created : new Date(b.created).getTime() / 1000;
+            return bT - aT;
+          })
+          .slice(0, 5);
+
+        if (!tevProposals.length) return;
+
+        document.getElementById('governance-section').style.display = '';
+        const list = document.getElementById('governance-list');
+
+        list.innerHTML = tevProposals.map(p => {
+          const sc = p.status === 'active' ? 'active' : 'passed';
+          const sl = p.status === 'active' ? '进行中' : '已通过';
+          const analysis = p.analysis_zh || '';
+          let title, summary;
+          if (analysis) {
+            const parts = analysis.split(/\n\s*\n/);
+            title = parts[0].trim();
+            summary = parts.slice(1).join('\n\n').trim();
+          } else {
+            title = p.title.replace(/^#\s*/, '');
+            summary = p.summary_zh || '';
+          }
+          const kws = (p.tev_keywords || []).map(k => `<span class="gov-card-kw">${k}</span>`).join('');
+          const dt = p.created ? (typeof p.created === 'number' ? new Date(p.created * 1000) : new Date(p.created)) : null;
+          const dateStr = dt ? `${dt.getMonth()+1}月${dt.getDate()}日` : '';
+
+          return `<a class="gov-card ${sc === 'active' ? 'is-active' : ''}" href="${p.link}" target="_blank" rel="noopener">
+            <div class="gov-card-title">${title}</div>
+            ${summary ? `<div class="gov-card-summary">${summary}</div>` : ''}
+            <div class="gov-card-meta">
+              <span class="gov-card-status ${sc}">${sl}</span>
+              ${kws}
+              <span style="margin-left:auto">${dateStr}</span>
+            </div>
+          </a>`;
+        }).join('');
+
+        const govSlug = encodeURIComponent(govName);
+        document.getElementById('governance-more').innerHTML =
+          `<a class="gov-more-link" href="../governance/protocol.html?name=${govSlug}">查看全部治理提案 →</a>`;
+      } catch(e) {
+        console.warn('Governance load failed:', e);
+      }
+    }
+
     async function init() {
       const pid = getProtocolId();
       try {
@@ -644,6 +785,7 @@
         document.getElementById('content').style.display = 'block';
         loadTevChart(pid);
         if (['bnb', 'hype', 'uniswap', 'sky'].includes(pid)) loadBurnsChart(pid);
+        loadGovernance(pid);
         // Aster 已有 tev-records，优先展示 TEV 历史图
         // if (['aster'].includes(pid)) loadBuybackData(pid);
       } catch (e) {
