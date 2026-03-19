@@ -24,7 +24,7 @@
     /* ===== Two-Column Layout ===== */
     .main-layout {
       display: grid;
-      grid-template-columns: 420px 1fr;
+      grid-template-columns: 1fr 420px;
       gap: 24px;
       align-items: start;
     }
@@ -366,7 +366,15 @@
       </div>
 
       <div class="main-layout">
-        <!-- Left: Feed -->
+        <!-- Left: Protocol Cards -->
+        <div class="cards-panel">
+          <div class="cards-panel-header">📋 协议总览</div>
+          <div class="protocol-grid" id="protocol-grid">
+            <div style="text-align:center;color:var(--text-tertiary);padding:40px;">加载中...</div>
+          </div>
+        </div>
+
+        <!-- Right: Feed -->
         <div class="feed-panel" id="feed-section" style="display:none;">
           <div class="feed-header">
             <div class="feed-title">
@@ -375,14 +383,6 @@
             <button class="feed-toggle" id="feed-toggle" onclick="toggleFeed()">展开全部 ↓</button>
           </div>
           <div class="feed-list" id="feed-list"></div>
-        </div>
-
-        <!-- Right: Protocol Cards -->
-        <div class="cards-panel">
-          <div class="cards-panel-header">📋 协议总览</div>
-          <div class="protocol-grid" id="protocol-grid">
-            <div style="text-align:center;color:var(--text-tertiary);padding:40px;">加载中...</div>
-          </div>
         </div>
       </div>
     </div>
