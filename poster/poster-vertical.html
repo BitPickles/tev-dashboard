@@ -52,26 +52,27 @@
     /* 主内容区 */
     .main {
       flex: 1;
-      padding: 60px 50px;
+      padding: 40px 50px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
     }
     
     /* 焦点区域 */
     .focus-section {
       text-align: center;
-      margin-bottom: 50px;
+      padding: 30px 0;
+      border-bottom: 1px solid #27272a;
+      margin-bottom: 30px;
     }
     .focus-label {
-      font-size: 26px;
+      font-size: 24px;
       color: #71717a;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
     .focus-indicator {
-      font-size: 120px;
+      font-size: 100px;
       font-weight: 700;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       letter-spacing: -4px;
     }
     .focus-indicator.positive { color: #22c55e; }
@@ -81,11 +82,11 @@
     /* 状态标签 */
     .status-badge {
       display: inline-block;
-      padding: 12px 30px;
-      border-radius: 30px;
-      font-size: 28px;
+      padding: 10px 25px;
+      border-radius: 25px;
+      font-size: 24px;
       font-weight: 600;
-      margin-bottom: 40px;
+      margin-bottom: 25px;
     }
     .status-badge.positive { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
     .status-badge.negative { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
@@ -94,18 +95,18 @@
     /* 进度条 */
     .progress-container {
       width: 100%;
-      max-width: 700px;
-      margin: 0 auto 40px;
+      max-width: 600px;
+      margin: 0 auto 25px;
     }
     .progress-bar {
-      height: 24px;
+      height: 20px;
       background: #27272a;
-      border-radius: 12px;
+      border-radius: 10px;
       overflow: hidden;
     }
     .progress-fill {
       height: 100%;
-      border-radius: 12px;
+      border-radius: 10px;
     }
     .progress-fill.positive { background: linear-gradient(90deg, #22c55e, #4ade80); }
     .progress-fill.negative { background: linear-gradient(90deg, #ef4444, #f87171); }
@@ -114,8 +115,8 @@
     .progress-labels {
       display: flex;
       justify-content: space-between;
-      margin-top: 12px;
-      font-size: 18px;
+      margin-top: 10px;
+      font-size: 16px;
       color: #71717a;
     }
     
@@ -123,55 +124,65 @@
     .details {
       display: flex;
       justify-content: center;
-      gap: 60px;
-      font-size: 28px;
+      gap: 50px;
+      font-size: 22px;
       color: #a1a1aa;
-      margin-bottom: 20px;
     }
     .detail-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 5px;
     }
     .detail-label {
-      font-size: 18px;
+      font-size: 16px;
       color: #71717a;
     }
     .detail-value {
       color: #fafafa;
       font-weight: 600;
-      font-size: 32px;
+      font-size: 28px;
     }
     
     /* 其他指标 */
-    .other-indicators {
-      border-top: 1px solid #27272a;
-      padding-top: 40px;
+    .other-section {
+      flex: 1;
+    }
+    .other-title {
+      font-size: 18px;
+      color: #71717a;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .indicators-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .indicator-card {
+      background: #18181b;
+      border-radius: 16px;
+      padding: 25px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
       align-items: center;
-    }
-    .indicator-row {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      font-size: 22px;
-      color: #a1a1aa;
+      text-align: center;
     }
     .indicator-name {
-      font-weight: 600;
-      color: #fafafa;
-      min-width: 80px;
+      font-size: 18px;
+      color: #71717a;
+      margin-bottom: 10px;
     }
     .indicator-value {
-      color: #a1a1aa;
+      font-size: 36px;
+      font-weight: 700;
+      color: #fafafa;
+      margin-bottom: 10px;
     }
     .indicator-status {
-      padding: 4px 12px;
+      padding: 5px 12px;
       border-radius: 6px;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 500;
     }
     .indicator-status.positive { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
@@ -213,7 +224,7 @@
       
       <div class="progress-container">
         <div class="progress-bar">
-          <div class="progress-fill positive" style="width: 37%"></div>
+          <div class="progress-fill positive" style="width: 25%"></div>
         </div>
         <div class="progress-labels">
           <span>0 抄底</span>
@@ -235,21 +246,29 @@
     </div>
     
     <!-- 其他指标 -->
-    <div class="other-indicators">
-      <div class="indicator-row">
-        <span class="indicator-name">MVRV</span>
-        <span class="indicator-value">1.31</span>
-        <span class="indicator-status positive">合理区</span>
-      </div>
-      <div class="indicator-row">
-        <span class="indicator-name">BMRI</span>
-        <span class="indicator-value">47.43</span>
-        <span class="indicator-status neutral">NEUTRAL</span>
-      </div>
-      <div class="indicator-row">
-        <span class="indicator-name">BTC.D</span>
-        <span class="indicator-value">58.43%</span>
-        <span class="indicator-status neutral">平衡</span>
+    <div class="other-section">
+      <div class="other-title">其他市场指标</div>
+      <div class="indicators-grid">
+        <div class="indicator-card">
+          <div class="indicator-name">MVRV</div>
+          <div class="indicator-value">1.31</div>
+          <div class="indicator-status positive">合理区</div>
+        </div>
+        <div class="indicator-card">
+          <div class="indicator-name">BMRI</div>
+          <div class="indicator-value">47.4</div>
+          <div class="indicator-status neutral">NEUTRAL</div>
+        </div>
+        <div class="indicator-card">
+          <div class="indicator-name">BTC.D</div>
+          <div class="indicator-value">58.4%</div>
+          <div class="indicator-status neutral">平衡</div>
+        </div>
+        <div class="indicator-card">
+          <div class="indicator-name">市场情绪</div>
+          <div class="indicator-value">🟢</div>
+          <div class="indicator-status positive">偏多</div>
+        </div>
       </div>
     </div>
   </div>
