@@ -360,9 +360,9 @@
       <div class="updated-at" id="updated-at">加载中...</div>
       <div class="stats-row">
         <div class="mini-stat"><div class="label">监控协议</div><div class="value" id="s-protocols">—</div></div>
-        <div class="mini-stat"><div class="label">🔵 进行中</div><div class="value green" id="s-active">—</div></div>
-        <div class="mini-stat"><div class="label">✅ 已通过</div><div class="value blue" id="s-passed">—</div></div>
-        <div class="mini-stat"><div class="label">⚠️ TEV 相关</div><div class="value tev" id="s-tev">—</div></div>
+        <a class="mini-stat" href="proposals.html?filter=active" style="text-decoration:none;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor=''"><div class="label">🔵 进行中</div><div class="value green" id="s-active">—</div></a>
+        <a class="mini-stat" href="proposals.html?filter=passed" style="text-decoration:none;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor=''"><div class="label">✅ 已通过</div><div class="value blue" id="s-passed">—</div></a>
+        <a class="mini-stat" href="proposals.html?filter=tev" style="text-decoration:none;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--danger)'" onmouseout="this.style.borderColor=''"><div class="label">⚠️ TEV 相关</div><div class="value tev" id="s-tev">—</div></a>
       </div>
 
       <div class="main-layout">
