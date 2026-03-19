@@ -27,7 +27,7 @@ def load_all():
         c = ahr999.get("current", {})
         h = ahr999.get("history", [])
         data["ahr999"] = {
-            "value": c.get("value", 0),
+            "value": c.get("value", 1),
             "status": c.get("status", ""),
             "price": c.get("price", 1),
             "cost_200d": c.get("cost_200d", 1),
@@ -108,10 +108,14 @@ def make_chart(data, color, w=300, h=40):
         y = h - ((data[i] - mn) / r * (h - 10)) - 5
         pts.append(f"{x:.0f},{y:.1f}")
     
-    return f'<svg viewBox="0 0 {w} {h}"><polyline fill="none" stroke="{color}" stroke-width="2" points="{" ".join(pts)}"/><circle cx="{w}" cy="{pts[-1].split(',')[1]}" r="3" fill="{color}"/></svg>'
+    last_y = h - ((data[-1] - mn) / r * (h - 10)) - 5
+    
+    pts_str = " ".join(pts)
+    
+    return f'<svg viewBox="0 0 {w} {h}" preserveAspectRatio="none"><polyline fill="none" stroke="{color}" stroke-width="2" points="{pts_str}"/><circle cx="{w}" cy="{last_y:.1f}" r="3" fill="{color}"/></svg>'
 
 def render_main(focus, data):
-    value = data.get("value", 0)
+    value = data.get("value", 1)
     status = data.get("status", data.get("regime", ""))
     color = get_color(status)
     week_data = data.get("week_data", [])
@@ -155,34 +159,37 @@ def render_main(focus, data):
   <div class="chart">{chart}</div>
 </div>'''
 
-def render_btc(price_data):
-    """BTC 价格卡片 - 固定显示"""
-    prices = price_data.get("week_data", [])
+def render_btc(data):
+    """BTC 价格卡片"""
+    prices = data.get("week_data", [])
     if not prices or len(prices) < 2:
         return ""
     
-    price = prices[-1] if prices else 0
+    price = prices[-1]
     mn, mx = min(prices), max(prices)
     r = mx - mn if mx > mn else 1
     
-    w, h = 200, 50
+    w, h = 180, 45
     pts = []
     for i in range(len(prices)):
         x = i * (w / (len(prices) - 1))
         y = h - ((prices[i] - mn) / r * (h - 10)) - 5
         pts.append(f"{x:.0f},{y:.1f}")
     
-    svg = f'<svg viewBox="0 0 {w} {h}"><polyline fill="none" stroke="#f59e0b" stroke-width="2" points="{" ".join(pts)}"/><circle cx="{w}" cy="{pts[-1].split(',')[1]}" r="3" fill="#f59e0b"/></svg>'
+    last_y = h - ((prices[-1] - mn) / r * (h - 10)) - 5
+    pts_str = " ".join(pts)
+    
+    chart = f'<svg viewBox="0 0 {w} {h}" preserveAspectRatio="none"><polyline fill="none" stroke="#f59e0b" stroke-width="2" points="{pts_str}"/><circle cx="{w}" cy="{last_y:.1f}" r="3" fill="#f59e0b"/></svg>'
     
     return f'''
-<div class="btc-card">
+<div class="btc">
   <div class="btc-head"><span class="ic">₿</span><span class="nm">BTC/USD</span></div>
   <div class="btc-price">${price:,.0f}</div>
-  <div class="chart">{svg}</div>
+  <div class="chart">{chart}</div>
 </div>'''
 
 def render_sub(name, data):
-    value = data.get("value", 0)
+    value = data.get("value", 1)
     status = data.get("status", data.get("regime", ""))
     color = get_color(status)
     week_data = data.get("week_data", [])
@@ -214,13 +221,9 @@ def render_sub(name, data):
 def render_poster(focus, data):
     today = datetime.now().strftime("%b %d, %Y")
     
-    # 主卡片
     main_html = render_main(focus, data.get(focus, {}))
-    
-    # BTC 价格卡片（固定）
     btc_html = render_btc(data.get("ahr999", {}))
     
-    # 副卡片
     sub_names = {"ahr999": ["mvrv", "bmri"], "mvrv": ["ahr999", "btcd"], "bmri": ["ahr999", "mvrv"], "btcd": ["ahr999", "mvrv"]}
     subs = sub_names.get(focus, ["mvrv", "bmri"])
     
@@ -289,12 +292,12 @@ body {{
   gap: 12px;
   margin-bottom: 16px;
 }}
-.ic {{ font-size: 28px; }}
-.nm {{ font-size: 15px; color: #71717a; font-weight: 500; }}
+.ic {{ font-size: 26px; }}
+.nm {{ font-size: 16px; color: #71717a; font-weight: 500; }}
 .big {{
-  font-size: 56px;
+  font-size: 64px;
   font-weight: 700;
-  letter-spacing: -1px;
+  letter-spacing: -2px;
   margin-bottom: 12px;
 }}
 .tag {{
@@ -306,16 +309,16 @@ body {{
   color: #fafafa;
 }}
 .hint {{ font-size: 13px; color: #71717a; margin-top: 16px; }}
-.chart {{ margin-top: 16px; }}
+.chart {{ margin-top: 14px; }}
 .row {{
   display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 24px;
+  grid-template-columns: 180px 1fr;
+  gap: 20px;
 }}
-.btc-card {{
+.btc {{
   background: linear-gradient(145deg, #18181b, #0f0f11);
-  border-radius: 20px;
-  padding: 24px;
+  border-radius: 16px;
+  padding: 20px;
   border: 1px solid rgba(255,255,255,0.05);
   text-align: center;
 }}
@@ -324,35 +327,35 @@ body {{
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 12px;
-  font-size: 14px;
+  margin-bottom: 10px;
+  font-size: 13px;
   color: #71717a;
 }}
 .btc-price {{
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
   color: #f59e0b;
 }}
 .subs {{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 16px;
 }}
 .sub {{
   background: linear-gradient(145deg, #18181b, #0f0f11);
-  border-radius: 16px;
-  padding: 20px;
+  border-radius: 14px;
+  padding: 18px;
   border: 1px solid rgba(255,255,255,0.05);
 }}
 .sub-head {{
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 10px;
-  font-size: 14px;
+  margin-bottom: 8px;
+  font-size: 13px;
   color: #71717a;
 }}
-.sub-val {{ font-size: 28px; font-weight: 700; margin-bottom: 6px; }}
+.sub-val {{ font-size: 24px; font-weight: 700; margin-bottom: 4px; }}
 .sub-st {{ font-size: 12px; font-weight: 500; }}
 .ftr {{
   padding: 24px 50px;
