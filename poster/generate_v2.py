@@ -95,34 +95,75 @@ def select_focus(indicators: Dict) -> Dict:
     return {"focus": focus, "subs": sub_map.get(focus, ["mvrv", "bmri"])}
 
 def get_color(status: str) -> str:
-    if any(k in status for k in ["抄底", "合理", "NEUTRAL", "BALANCED", "LOW"]):
-        return "#22c55e"
-    if any(k in status for k in ["过热", "HIGH", "EXTREME"]):
-        return "#ef4444"
+    positive_keywords = ["抄底", "合理", "NEUTRAL", "BALANCED", "LOW", "FAIR", "低估"]
+    negative_keywords = ["过热", "HIGH", "EXTREME", "DANGER", "高估"]
+    
+    status_lower = status.lower()
+    for kw in positive_keywords:
+        if kw.lower() in status_lower:
+            return "#22c55e"
+    for kw in negative_keywords:
+        if kw.lower() in status_lower:
+            return "#ef4444"
     return "#3b82f6"
+
+def generate_chart_svg(week_data: List[float], color: str, width: int = 800, height: int = 50) -> str:
+    if not week_data or len(week_data) < 2:
+        return ""
+    
+    min_val = min(week_data)
+    max_val = max(week_data)
+    range_val = max_val - min_val if max_val != min_val else 1
+    
+    points = []
+    for i in range(len(week_data)):
+        x = i * (width / (len(week_data) - 1))
+        y = height - ((week_data[i] - min_val) / range_val * (height - 10)) - 5
+        points.append(f"{x:.1f},{y:.1f}")
+    
+    points_str = " ".join(points)
+    last_x = width
+    last_y = height - ((week_data[-1] - min_val) / range_val * (height - 10)) - 5
+    
+    return f'''<svg viewBox="0 0 {width} {height}" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:{color};stop-opacity:0.3" />
+          <stop offset="100%" style="stop-color:{color};stop-opacity: 0.8" />
+        </linearGradient>
+      </defs>
+      <polyline fill="url(#grad)" stroke-width="3" stroke-linecap="round" points="{points_str}" />
+      <circle cx="{last_x}" cy="{last_y:.1f}" r="5" fill="{color}"/>
+    </svg>'''
 
 def render_main(card_type: str, data: Dict) -> str:
     value = data.get("value", 0)
     status = data.get("status", data.get("regime", ""))
     color = get_color(status)
+    week_data = data.get("week_data", [])
+    chart_svg = generate_chart_svg(week_data, color)
     
     if card_type == "ahr999":
         price = data.get("price", 0)
-        cost = data.get("cost_200d", 0)
+        cost_200d = data.get("cost_200d", 0)
         return f'''
     <div class="main-card">
       <div class="card-header"><span class="icon">🔥</span><span class="title">AHR999</span></div>
       <div class="big-value" style="color:{color}">{value:.2f}</div>
       <div class="status-tag" style="background:{color}">{status}</div>
-      <div class="hint">BTC ${price:,} | 200日成本 {cost:,.0f}</div>
+      <div class="hint">BTC ${price:,} | 200日成本 {cost_200d:,.0f}</div>
+      {chart_svg}
     </div>'''
+    
     elif card_type == "mvrv":
         return f'''
     <div class="main-card">
       <div class="card-header"><span class="icon">📈</span><span class="title">MVRV</span></div>
       <div class="big-value" style="color:{color}">{value:.2f}</div>
       <div class="status-tag" style="background:{color}">{status}</div>
+      {chart_svg}
     </div>'''
+    
     elif card_type == "bmri":
         risk = "低风险" if value < 30 else "高风险" if value > 70 else "中性"
         return f'''
@@ -130,7 +171,9 @@ def render_main(card_type: str, data: Dict) -> str:
       <div class="card-header"><span class="icon">⚠️</span><span class="title">BMRI</span></div>
       <div class="big-value" style="color:{color}">{value:.1f}</div>
       <div class="status-tag" style="background:{color}">{risk}</div>
+      {chart_svg}
     </div>'''
+    
     else:  # btcd
         zone = "BTC主导" if data.get("zone") == "BTC_DOMINANT" else "山寨季" if data.get("zone") == "ALT_SEASON" else "平衡"
         return f'''
@@ -138,19 +181,30 @@ def render_main(card_type: str, data: Dict) -> str:
       <div class="card-header"><span class="icon">₿</span><span class="title">BTC.D</span></div>
       <div class="big-value" style="color:{color}">{value:.1f}%</div>
       <div class="status-tag" style="background:{color}">{zone}</div>
+      {chart_svg}
     </div>'''
 
 def render_sub(card_type: str, data: Dict) -> str:
     value = data.get("value", 0)
     status = data.get("status", data.get("regime", ""))
     color = get_color(status)
+    week_data = data.get("week_data", [])
+    chart_svg = generate_chart_svg(week_data, color, 300, 40)
     
-    labels = {"ahr999": ("🔥", "AHR999"), "mvrv": ("📈", "MVRV"), "bmri": ("⚠️", "BMRI"), "btcd": ("₿", "BTC.D")}
-    icon, label = labels.get(card_type, ("📊", card_type.upper()))
-    
-    if card_type == "bmri":
-        status = "低" if value < 30 else "高" if value > 70 else "中"
-    elif card_type == "btcd":
+    if card_type == "ahr999":
+        icon, "🔥"
+        label = "AHR999"
+    elif card_type == "mvrv":
+        icon = "📈"
+        label = "MVRV"
+    elif card_type == "bmri":
+        icon = "⚠️"
+        label = "BMRI"
+        risk = "低" if value < 30 else "高" if value > 70 else "中"
+        status = risk
+    else:  # btcd
+        icon = "₿"
+        label = "BTC.D"
         status = f"{value:.1f}%"
     
     return f'''
@@ -158,6 +212,7 @@ def render_sub(card_type: str, data: Dict) -> str:
       <div class="sub-header"><span class="icon">{icon}</span><span class="label">{label}</span></div>
       <div class="sub-value" style="color:{color}">{value:.2f}</div>
       <div class="sub-status" style="color:{color}">{status}</div>
+      {chart_svg}
     </div>'''
 
 def render_poster(focus_type: str, focus_data: Dict, sub_types: List[str], indicators: Dict) -> str:
@@ -192,6 +247,7 @@ body {{
   justify-content:space-between;
   align-items:center;
   padding:40px 60px;
+  border-bottom:1px solid #27272a;
 }}
 .logo {{
   display:flex;
@@ -221,31 +277,36 @@ body {{
 .main-card {{
   background:linear-gradient(145deg,#18181b,#0f0f11);
   border-radius:32px;
-  padding:60px;
+  padding:50px;
   border:1px solid rgba(255,255,255,0.05);
 }}
 .card-header {{
   display:flex;
   align-items:center;
   gap:16px;
-  margin-bottom:30px;
+  margin-bottom:20px;
 }}
 .card-header .icon {{ font-size:32px; }}
-.card-header .title {{ font-size:20px; color:#71717a; font-weight:500; }}
+.card-header .title {{ font-size:18px; color:#71717a; font-weight:500; }}
 .big-value {{
-  font-size:96px;
+  font-size:72px;
   font-weight:700;
-  letter-spacing:-4px;
-  margin-bottom:20px;
+  letter-spacing:-2px;
+  margin-bottom:16px;
 }}
 .status-tag {{
   display:inline-block;
   padding:10px 24px;
   border-radius:24px;
-  font-size:18px;
+  font-size:16px;
   font-weight:600;
+  color:#fafafa;
 }}
-.hint {{ font-size:16px; color:#71717a; margin-top:30px; }}
+.hint {{
+  font-size:14px;
+  color:#71717a;
+  margin-top:20px;
+}
 .sub-cards {{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -254,19 +315,19 @@ body {{
 .sub-card {{
   background:linear-gradient(145deg,#18181b,#0f0f11);
   border-radius:20px;
-  padding:32px;
+  padding:28px;
   border:1px solid rgba(255,255,255,0.05);
 }}
 .sub-header {{
   display:flex;
   align-items:center;
   gap:12px;
-  margin-bottom:16px;
+  margin-bottom:12px;
 }}
 .sub-header .icon {{ font-size:24px; }}
 .sub-header .label {{ font-size:16px; color:#71717a; font-weight:500; }}
-.sub-value {{ font-size:40px; font-weight:700; margin-bottom:8px; }}
-.sub-status {{ font-size:14px; font-weight:500; }}
+.sub-value {{ font-size:32px; font-weight:700; margin-bottom:8px; }}
+.sub-status {{ font-size:13px; font-weight:500; }}
 .footer {{
   padding:30px 60px;
   border-top:1px solid #27272a;
@@ -281,12 +342,17 @@ body {{
 </head>
 <body>
 <div class="header">
-  <div class="logo"><div class="logo-icon">📊</div>Crypto3D Daily</div>
+  <div class="logo">
+    <div class="logo-icon">📊</div>
+    Crypto3D Daily
+  </div>
   <div class="date">{today}</div>
 </div>
 <div class="content">
   {main_html}
-  <div class="sub-cards">{sub_html}</div>
+  <div class="sub-cards">
+    {sub_html}
+  </div>
 </div>
 <div class="footer">
   <span>每日加密市场晴雨表</span>
