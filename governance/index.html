@@ -253,8 +253,7 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(0,0,0,0.25);
     }
-    .protocol-card.has-active { border-top: 2px solid var(--accent); }
-    .protocol-card.has-tev-yield { border-left: 2px solid var(--danger); }
+
 
     .card-top {
       display: flex;
@@ -568,13 +567,13 @@
       const metaHtml = metaParts.join('<span class="sep">·</span>');
 
       return `
-        <a class="protocol-card ${active?'has-active':''} ${hasYield?'has-tev-yield':''}"
+        <a class="protocol-card"
            href="protocol.html?name=${slug}">
           <div class="card-top">
             ${logo}
             <div class="card-identity">
               <div class="card-name">${name} ${ticker?`<span style="font-size:11px;color:var(--text-tertiary);font-weight:400;font-family:'JetBrains Mono',monospace">${ticker}</span>`:''}</div>
-              <div class="card-meta-line">${metaHtml}${yld?`<span class="sep">·</span><span class="card-tev-yield">${yld}</span>`:''}</div>
+              <div class="card-meta-line">${metaHtml}${yld?`<span class="sep">·</span><span class="card-tev-yield">TEV ${yld}</span>`:''}</div>
             </div>
           </div>
           <div class="card-stats-row">
