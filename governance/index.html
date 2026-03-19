@@ -108,8 +108,8 @@
       display: block;
     }
     .feed-item:hover { border-color: var(--border-hover); background: var(--bg-tertiary); }
-    .feed-item.is-active { border-left: 3px solid #8b9cf7; }
-    .feed-item.is-active:hover { box-shadow: 0 4px 12px rgba(139,156,247,0.08); }
+    .feed-item.is-active { border-left: 3px solid #38bdf8; }
+    .feed-item.is-active:hover { box-shadow: 0 4px 12px rgba(56,189,248,0.1); }
 
     .feed-item::before {
       content: '';
@@ -123,12 +123,12 @@
       border: 2px solid var(--bg-primary);
       z-index: 1;
     }
-    .feed-item.is-active::before { background: #8b9cf7; box-shadow: 0 0 6px rgba(139,156,247,0.4); }
+    .feed-item.is-active::before { background: #38bdf8; box-shadow: 0 0 6px rgba(56,189,248,0.5); }
     .feed-item.is-passed::before { background: #64748b; }
 
     @keyframes pulse-dot {
-      0%, 100% { box-shadow: 0 0 4px rgba(139,156,247,0.3); }
-      50% { box-shadow: 0 0 10px rgba(139,156,247,0.6); }
+      0%, 100% { box-shadow: 0 0 4px rgba(56,189,248,0.3); }
+      50% { box-shadow: 0 0 10px rgba(56,189,248,0.6); }
     }
     .feed-item.is-active::before { animation: pulse-dot 2s ease-in-out infinite; }
 
@@ -168,8 +168,8 @@
       font-weight: 500;
       margin-left: auto;
     }
-    .feed-status.active { background: rgba(148,163,184,0.12); color: #94a3b8; }
-    .feed-status.passed { background: rgba(148,163,184,0.08); color: #64748b; }
+    .feed-status.active { background: rgba(56,189,248,0.1); color: #38bdf8; }
+    .feed-status.passed { background: rgba(148,163,184,0.1); color: #64748b; }
     .feed-status.closed { background: var(--bg-tertiary); color: var(--text-tertiary); }
 
     .feed-proposal-title {
@@ -314,7 +314,7 @@
       font-weight: 700;
       font-family: 'JetBrains Mono', monospace;
     }
-    .card-stats-row .stat-num.active { color: var(--text-primary); }
+    .card-stats-row .stat-num.active { color: #38bdf8; }
     .card-stats-row .stat-num.tev { color: #8b9cf7; }
 
     /* ===== Responsive ===== */
@@ -359,9 +359,9 @@
       <div class="updated-at" id="updated-at">加载中...</div>
       <div class="stats-row">
         <div class="mini-stat"><div class="label">监控协议</div><div class="value" id="s-protocols">—</div></div>
-        <a class="mini-stat clickable-stat" href="proposals.html?filter=active"><div class="label">进行中</div><div class="value" id="s-active">—</div></a>
+        <a class="mini-stat clickable-stat" href="proposals.html?filter=active"><div class="label">进行中</div><div class="value" style="color:#38bdf8" id="s-active">—</div></a>
         <a class="mini-stat clickable-stat" href="proposals.html?filter=passed"><div class="label">已通过</div><div class="value" id="s-passed">—</div></a>
-        <a class="mini-stat clickable-stat" href="proposals.html?filter=tev"><div class="label">TEV 相关</div><div class="value" id="s-tev">—</div></a>
+        <a class="mini-stat clickable-stat" href="proposals.html?filter=tev"><div class="label">TEV 相关</div><div class="value" style="color:#8b9cf7" id="s-tev">—</div></a>
       </div>
 
       <div class="main-layout">
