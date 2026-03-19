@@ -19,6 +19,8 @@
     .mini-stat .value.tev { color: var(--danger); }
     .mini-stat .value.green { color: var(--accent); }
     .mini-stat .value.blue { color: var(--blue); }
+    .clickable-stat { text-decoration: none; cursor: pointer; transition: all 0.2s; }
+    .clickable-stat:hover { border-color: var(--border-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
     .updated-at { font-size: 11px; color: var(--text-tertiary); text-align: right; margin-bottom: 14px; }
 
     /* ===== Two-Column Layout ===== */
@@ -360,9 +362,9 @@
       <div class="updated-at" id="updated-at">加载中...</div>
       <div class="stats-row">
         <div class="mini-stat"><div class="label">监控协议</div><div class="value" id="s-protocols">—</div></div>
-        <a class="mini-stat" href="proposals.html?filter=active" style="text-decoration:none;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor=''"><div class="label">🔵 进行中</div><div class="value green" id="s-active">—</div></a>
-        <a class="mini-stat" href="proposals.html?filter=passed" style="text-decoration:none;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor=''"><div class="label">✅ 已通过</div><div class="value blue" id="s-passed">—</div></a>
-        <a class="mini-stat" href="proposals.html?filter=tev" style="text-decoration:none;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--danger)'" onmouseout="this.style.borderColor=''"><div class="label">⚠️ TEV 相关</div><div class="value tev" id="s-tev">—</div></a>
+        <a class="mini-stat clickable-stat" href="proposals.html?filter=active"><div class="label">🔵 进行中</div><div class="value green" id="s-active">—</div></a>
+        <a class="mini-stat clickable-stat" href="proposals.html?filter=passed"><div class="label">✅ 已通过</div><div class="value blue" id="s-passed">—</div></a>
+        <a class="mini-stat clickable-stat" href="proposals.html?filter=tev"><div class="label">⚠️ TEV 相关</div><div class="value tev" id="s-tev">—</div></a>
       </div>
 
       <div class="main-layout">
@@ -380,7 +382,7 @@
             <div class="feed-title">
               <span class="fire">🔥</span> TEV 治理动态 <span class="feed-count" id="feed-count">0</span>
             </div>
-            <button class="feed-toggle" id="feed-toggle" onclick="toggleFeed()">展开全部 ↓</button>
+            <a class="feed-toggle" href="proposals.html?filter=tev">查看全部 →</a>
           </div>
           <div class="feed-list" id="feed-list"></div>
         </div>
@@ -422,20 +424,12 @@
       return `${d.getMonth()+1}月${d.getDate()}日`;
     }
 
-    let feedExpanded = false;
     let allTevProposals = [];
     const FEED_DEFAULT = 8;
 
-    function toggleFeed() {
-      feedExpanded = !feedExpanded;
-      renderFeed();
-    }
-
     function renderFeed() {
       const list = document.getElementById('feed-list');
-      const toggle = document.getElementById('feed-toggle');
-      const items = feedExpanded ? allTevProposals : allTevProposals.slice(0, FEED_DEFAULT);
-      toggle.textContent = feedExpanded ? '收起 ↑' : `展开全部 (${allTevProposals.length}) ↓`;
+      const items = allTevProposals.slice(0, FEED_DEFAULT);
 
       list.innerHTML = items.map(p => {
         const tevId = GOV_TO_TEV[p.protocol];
