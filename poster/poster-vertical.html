@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto3D Daily</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', 'Noto Sans SC', sans-serif;
+      background: #0a0a0b;
+      color: #fafafa;
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* 顶部品牌栏 */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 50px;
+      border-bottom: 1px solid #27272a;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #3b82f6, #22c55e);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .date {
+      color: #71717a;
+      font-size: 20px;
+    }
+    
+    /* 主内容区 */
+    .main {
+      flex: 1;
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    /* 焦点区域 */
+    .focus-section {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .focus-label {
+      font-size: 26px;
+      color: #71717a;
+      margin-bottom: 20px;
+    }
+    .focus-indicator {
+      font-size: 120px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      letter-spacing: -4px;
+    }
+    .focus-indicator.positive { color: #22c55e; }
+    .focus-indicator.negative { color: #ef4444; }
+    .focus-indicator.neutral { color: #3b82f6; }
+    
+    /* 状态标签 */
+    .status-badge {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+    .status-badge.positive { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+    .status-badge.negative { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+    .status-badge.neutral { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+    
+    /* 进度条 */
+    .progress-container {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+    .progress-bar {
+      height: 24px;
+      background: #27272a;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 12px;
+    }
+    .progress-fill.positive { background: linear-gradient(90deg, #22c55e, #4ade80); }
+    .progress-fill.negative { background: linear-gradient(90deg, #ef4444, #f87171); }
+    .progress-fill.neutral { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+    
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+      font-size: 18px;
+      color: #71717a;
+    }
+    
+    /* 详情行 */
+    .details {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      font-size: 28px;
+      color: #a1a1aa;
+      margin-bottom: 20px;
+    }
+    .detail-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .detail-label {
+      font-size: 18px;
+      color: #71717a;
+    }
+    .detail-value {
+      color: #fafafa;
+      font-weight: 600;
+      font-size: 32px;
+    }
+    
+    /* 其他指标 */
+    .other-indicators {
+      border-top: 1px solid #27272a;
+      padding-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+    .indicator-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 22px;
+      color: #a1a1aa;
+    }
+    .indicator-name {
+      font-weight: 600;
+      color: #fafafa;
+      min-width: 80px;
+    }
+    .indicator-value {
+      color: #a1a1aa;
+    }
+    .indicator-status {
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .indicator-status.positive { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+    .indicator-status.negative { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+    .indicator-status.neutral { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+    
+    /* 底部水印 */
+    .footer {
+      padding: 25px 50px;
+      border-top: 1px solid #27272a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 18px;
+      color: #71717a;
+    }
+    .footer-link {
+      color: #3b82f6;
+      font-weight: 600;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <div class="logo-icon">📊</div>
+      Crypto3D Daily
+    </div>
+    <div class="date">Mar 19, 2026</div>
+  </div>
+  
+  <div class="main">
+    <!-- AHR999 焦点 -->
+    <div class="focus-section">
+      <div class="focus-label">🔥 AHR999 指数</div>
+      <div class="focus-indicator positive">0.37</div>
+      <div class="status-badge positive">抄底区</div>
+      
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-fill positive" style="width: 37%"></div>
+        </div>
+        <div class="progress-labels">
+          <span>0 抄底</span>
+          <span>0.75 合理</span>
+          <span>1.5 过热</span>
+        </div>
+      </div>
+      
+      <div class="details">
+        <div class="detail-item">
+          <span class="detail-label">BTC 价格</span>
+          <span class="detail-value">$71,225</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">200日成本</span>
+          <span class="detail-value">$93,199</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 其他指标 -->
+    <div class="other-indicators">
+      <div class="indicator-row">
+        <span class="indicator-name">MVRV</span>
+        <span class="indicator-value">1.31</span>
+        <span class="indicator-status positive">合理区</span>
+      </div>
+      <div class="indicator-row">
+        <span class="indicator-name">BMRI</span>
+        <span class="indicator-value">47.43</span>
+        <span class="indicator-status neutral">NEUTRAL</span>
+      </div>
+      <div class="indicator-row">
+        <span class="indicator-name">BTC.D</span>
+        <span class="indicator-value">58.43%</span>
+        <span class="indicator-status neutral">平衡</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <span>每日加密市场晴雨表</span>
+    <span class="footer-link">crypto3d.pro</span>
+  </div>
+</body>
+</html>
