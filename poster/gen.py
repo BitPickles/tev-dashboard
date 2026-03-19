@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Crypto3D Daily Poster Generator"""
+"""Crypto3D Daily Poster - 信息密集型设计"""
 import json
 import asyncio
 from datetime import datetime
@@ -27,11 +27,12 @@ def load_all():
         c = ahr999.get("current", {})
         h = ahr999.get("history", [])
         data["ahr999"] = {
-            "value": c.get("value", 1),
+            "value": c.get("value", 0),
             "status": c.get("status", ""),
-            "price": c.get("price", 1),
-            "cost_200d": c.get("cost_200d", 1),
-            "week_data": [x.get("close", x.get("price", 1)) for x in h[-7:]] if h else []
+            "price": c.get("price", 0),
+            "cost_200d": c.get("cost_200d", 0),
+            "week_data": [x.get("close", 0) for x in h[-7:]] if h else [],
+            "week_ahr999": [x.get("ahr999", 0) for x in h[-7:]] if h else []
         }
     
     # MVRV
@@ -40,9 +41,9 @@ def load_all():
         c = mvrv.get("current", {})
         h = mvrv.get("history", [])
         data["mvrv"] = {
-            "value": c.get("value", 1),
+            "value": c.get("value", 0),
             "status": c.get("status", ""),
-            "week_data": [x.get("mvrv", 1) for x in h[-7:]] if h else []
+            "week_data": [x.get("mvrv", 0) for x in h[-7:]] if h else []
         }
     
     # BMRI
@@ -95,7 +96,7 @@ def get_color(status):
         return "#ef4444"
     return "#3b82f6"
 
-def make_chart(data, color, w=300, h=40):
+def make_chart(data, color, w=200, h=30):
     if not data or len(data) < 2:
         return ""
     
@@ -105,132 +106,213 @@ def make_chart(data, color, w=300, h=40):
     pts = []
     for i in range(len(data)):
         x = i * (w / (len(data) - 1))
-        y = h - ((data[i] - mn) / r * (h - 10)) - 5
+        y = h - ((data[i] - mn) / r * (h - 6)) - 3
         pts.append(f"{x:.0f},{y:.1f}")
     
-    last_y = h - ((data[-1] - mn) / r * (h - 10)) - 5
-    
+    last_y = h - ((data[-1] - mn) / r * (h - 6)) - 3
     pts_str = " ".join(pts)
     
-    return f'<svg viewBox="0 0 {w} {h}" preserveAspectRatio="none"><polyline fill="none" stroke="{color}" stroke-width="2" points="{pts_str}"/><circle cx="{w}" cy="{last_y:.1f}" r="3" fill="{color}"/></svg>'
+    return f'<svg viewBox="0 0 {w} {h}" preserveAspectRatio="none"><polyline fill="none" stroke="{color}" stroke-width="2" stroke-linecap="round" points="{pts_str}"/><circle cx="{w}" cy="{last_y:.1f}" r="2.5" fill="{color}"/></svg>'
 
-def render_main(focus, data):
-    value = data.get("value", 1)
+def render_btc_bar(data):
+    """BTC 价格条 - 顶部"""
+    prices = data.get("week_data", [])
+    price = prices[-1] if prices else 0
+    
+    # 计算涨跌
+    if len(prices) >= 2:
+        change = ((prices[-1] - prices[0]) / prices[0]) * 100
+        change_str = f"+{change:.1f}%" if change > 0 else f"{change:.1f}%"
+        change_color = "#22c55e" if change > 0 else "#ef4444"
+    else:
+        change_str = "+0.0%"
+        change_color = "#71717a"
+    
+    chart = make_chart(prices, "#f59e0b", 150, 20)
+    
+    return f'''
+<div class="btc-bar">
+  <div class="btc-left">
+    <span class="btc-icon">₿</span>
+    <span class="btc-label">BTC/USD</span>
+    <span class="btc-price">${price:,.0f}</span>
+  </div>
+  <div class="btc-right">
+    <div class="btc-chart">{chart}</div>
+    <span class="btc-change" style="color:{change_color}">{change_str}</span>
+  </div>
+</div>'''
+
+def render_main_card(focus, data):
+    """主卡片 - 带解读"""
+    value = data.get("value", 0)
     status = data.get("status", data.get("regime", ""))
     color = get_color(status)
-    week_data = data.get("week_data", [])
-    chart = make_chart(week_data, color, 700, 60)
     
     if focus == "ahr999":
-        price = data.get("price", 1)
-        cost_200d = data.get("cost_200d", 1)
+        price = data.get("price", 0)
+        cost_200d = data.get("cost_200d", 0)
+        week_data = data.get("week_ahr999", [])
+        chart = make_chart(week_data, color, 300, 40)
+        
+        # 计算进度条 (0-1.5 范围)
+        progress = min(value / 1.5 * 100, 100)
+        
+        # 解读
+        if value < 0.45:
+            interpretation = "BTC 价格低于 200 日成本线，历史上定投收益显著"
+        elif value < 0.75:
+            interpretation = "价格接近合理区间，可继续持有"
+        else:
+            interpretation = "价格高于历史成本线，注意风险"
+        
         return f'''
-<div class="main">
-  <div class="card-head"><span class="ic">🔥</span><span class="nm">AHR999</span></div>
-  <div class="big" style="color:{color}">{value:.2f}</div>
-  <div class="tag" style="background:{color}">{status}</div>
-  <div class="hint">BTC ${price:,} | 200日成本 {cost_200d:,.0f}</div>
-  <div class="chart">{chart}</div>
+<div class="main-card">
+  <div class="main-header">
+    <span class="main-icon">🔥</span>
+    <span class="main-title">AHR999</span>
+    <span class="main-value" style="color:{color}">{value:.2f}</span>
+  </div>
+  <div class="progress-row">
+    <div class="progress-bar"><div class="progress-fill" style="width:{progress}%;background:{color}"></div></div>
+    <span class="progress-status" style="color:{color}">{status}</span>
+  </div>
+  <div class="main-detail">
+    <span>BTC ${price:,}</span>
+    <span>200日成本 ${cost_200d:,.0f}</span>
+  </div>
+  <div class="main-chart">{chart}</div>
+  <div class="main-hint">{interpretation}</div>
 </div>'''
+    
     elif focus == "mvrv":
+        week_data = data.get("week_data", [])
+        chart = make_chart(week_data, color, 300, 40)
+        progress = min(value / 4 * 100, 100)
+        
+        if value < 1.5:
+            interpretation = "持币者整体亏损，历史底部信号"
+        elif value < 2.5:
+            interpretation = "市场处于合理估值区间"
+        else:
+            interpretation = "市场过热，注意回调风险"
+        
         return f'''
-<div class="main">
-  <div class="card-head"><span class="ic">📈</span><span class="nm">MVRV</span></div>
-  <div class="big" style="color:{color}">{value:.2f}</div>
-  <div class="tag" style="background:{color}">{status}</div>
-  <div class="chart">{chart}</div>
+<div class="main-card">
+  <div class="main-header">
+    <span class="main-icon">📈</span>
+    <span class="main-title">MVRV</span>
+    <span class="main-value" style="color:{color}">{value:.2f}</span>
+  </div>
+  <div class="progress-row">
+    <div class="progress-bar"><div class="progress-fill" style="width:{progress}%;background:{color}"></div></div>
+    <span class="progress-status" style="color:{color}">{status}</span>
+  </div>
+  <div class="main-chart">{chart}</div>
+  <div class="main-hint">{interpretation}</div>
 </div>'''
+    
     elif focus == "bmri":
-        risk = "低风险" if value < 30 else "高风险" if value > 70 else "中性"
+        week_data = data.get("week_data", [])
+        chart = make_chart(week_data, color, 300, 40)
+        risk_text = "低风险" if value < 30 else "高风险" if value > 70 else "中性"
+        progress = value
+        
+        if value < 30:
+            interpretation = "市场风险较低，适合增加仓位"
+        elif value > 70:
+            interpretation = "市场风险较高，注意止损"
+        else:
+            interpretation = "市场风险中性，保持观望"
+        
         return f'''
-<div class="main">
-  <div class="card-head"><span class="ic">⚠️</span><span class="nm">BMRI</span></div>
-  <div class="big" style="color:{color}">{value:.1f}</div>
-  <div class="tag" style="background:{color}">{risk}</div>
-  <div class="chart">{chart}</div>
+<div class="main-card">
+  <div class="main-header">
+    <span class="main-icon">⚠️</span>
+    <span class="main-title">BMRI</span>
+    <span class="main-value" style="color:{color}">{value:.1f}</span>
+  </div>
+  <div class="progress-row">
+    <div class="progress-bar"><div class="progress-fill" style="width:{progress}%;background:{color}"></div></div>
+    <span class="progress-status" style="color:{color}">{risk_text}</span>
+  </div>
+  <div class="main-chart">{chart}</div>
+  <div class="main-hint">{interpretation}</div>
 </div>'''
+    
     else:  # btcd
-        zone_text = "BTC主导" if data.get("zone") == "BTC_DOMINANT" else "山寨季" if data.get("zone") == "ALT_SEASON" else "平衡"
+        week_data = data.get("week_data", [])
+        chart = make_chart(week_data, color, 300, 40)
+        zone = data.get("zone", "BALANCED")
+        zone_text = "BTC主导" if zone == "BTC_DOMINANT" else "山寨季" if zone == "ALT_SEASON" else "平衡"
+        
+        if zone == "BTC_DOMINANT":
+            interpretation = "资金集中在 BTC，山寨币表现疲软"
+        elif zone == "ALT_SEASON":
+            interpretation = "山寨季信号，可关注山寨币机会"
+        else:
+            interpretation = "市场资金分布均衡"
+        
         return f'''
-<div class="main">
-  <div class="card-head"><span class="ic">₿</span><span class="nm">BTC.D</span></div>
-  <div class="big" style="color:{color}">{value:.1f}%</div>
-  <div class="tag" style="background:{color}">{zone_text}</div>
-  <div class="chart">{chart}</div>
+<div class="main-card">
+  <div class="main-header">
+    <span class="main-icon">₿</span>
+    <span class="main-title">BTC.D</span>
+    <span class="main-value" style="color:{color}">{value:.1f}%</span>
+  </div>
+  <div class="progress-row">
+    <div class="progress-bar"><div class="progress-fill" style="width:{value}%;background:{color}"></div></div>
+    <span class="progress-status" style="color:{color}">{zone_text}</span>
+  </div>
+  <div class="main-chart">{chart}</div>
+  <div class="main-hint">{interpretation}</div>
 </div>'''
 
-def render_btc(data):
-    """BTC 价格卡片"""
-    prices = data.get("week_data", [])
-    if not prices or len(prices) < 2:
-        return ""
+def render_sub_row(data):
+    """副卡片行 - MVRV + BMRI"""
+    mvrv = data.get("mvrv", {})
+    bmri = data.get("bmri", {})
     
-    price = prices[-1]
-    mn, mx = min(prices), max(prices)
-    r = mx - mn if mx > mn else 1
+    # MVRV
+    mvrv_val = mvrv.get("value", 0)
+    mvrv_status = mvrv.get("status", "")
+    mvrv_color = get_color(mvrv_status)
+    mvrv_chart = make_chart(mvrv.get("week_data", []), mvrv_color, 140, 24)
     
-    w, h = 180, 45
-    pts = []
-    for i in range(len(prices)):
-        x = i * (w / (len(prices) - 1))
-        y = h - ((prices[i] - mn) / r * (h - 10)) - 5
-        pts.append(f"{x:.0f},{y:.1f}")
-    
-    last_y = h - ((prices[-1] - mn) / r * (h - 10)) - 5
-    pts_str = " ".join(pts)
-    
-    chart = f'<svg viewBox="0 0 {w} {h}" preserveAspectRatio="none"><polyline fill="none" stroke="#f59e0b" stroke-width="2" points="{pts_str}"/><circle cx="{w}" cy="{last_y:.1f}" r="3" fill="#f59e0b"/></svg>'
+    # BMRI
+    bmri_val = bmri.get("value", 50)
+    bmri_status = "低" if bmri_val < 30 else "高" if bmri_val > 70 else "中"
+    bmri_color = "#22c55e" if bmri_val < 30 else "#ef4444" if bmri_val > 70 else "#3b82f6"
+    bmri_chart = make_chart(bmri.get("week_data", []), bmri_color, 140, 24)
     
     return f'''
-<div class="btc">
-  <div class="btc-head"><span class="ic">₿</span><span class="nm">BTC/USD</span></div>
-  <div class="btc-price">${price:,.0f}</div>
-  <div class="chart">{chart}</div>
-</div>'''
-
-def render_sub(name, data):
-    value = data.get("value", 1)
-    status = data.get("status", data.get("regime", ""))
-    color = get_color(status)
-    week_data = data.get("week_data", [])
-    chart = make_chart(week_data, color, 200, 30)
-    
-    if name == "ahr999":
-        icon, "🔥"
-        label = "AHR999"
-    elif name == "mvrv":
-        icon = "📈"
-        label = "MVRV"
-    elif name == "bmri":
-        icon = "⚠️"
-        label = "BMRI"
-        status = "低" if value < 30 else "高" if value > 70 else "中"
-    else:
-        icon = "₿"
-        label = "BTC.D"
-        status = f"{value:.1f}%"
-    
-    return f'''
-<div class="sub">
-  <div class="sub-head"><span class="ic">{icon}</span><span class="nm">{label}</span></div>
-  <div class="sub-val" style="color:{color}">{value:.2f}</div>
-  <div class="sub-st" style="color:{color}">{status}</div>
-  <div class="chart">{chart}</div>
+<div class="sub-row">
+  <div class="sub-card">
+    <div class="sub-head">
+      <span class="sub-icon">📈</span>
+      <span class="sub-title">MVRV</span>
+      <span class="sub-val" style="color:{mvrv_color}">{mvrv_val:.2f}</span>
+    </div>
+    <div class="sub-chart">{mvrv_chart}</div>
+    <div class="sub-status" style="color:{mvrv_color}">{mvrv_status}</div>
+  </div>
+  <div class="sub-card">
+    <div class="sub-head">
+      <span class="sub-icon">⚠️</span>
+      <span class="sub-title">BMRI</span>
+      <span class="sub-val" style="color:{bmri_color}">{bmri_val:.1f}</span>
+    </div>
+    <div class="sub-chart">{bmri_chart}</div>
+    <div class="sub-status" style="color:{bmri_color}">{bmri_status}风险</div>
+  </div>
 </div>'''
 
 def render_poster(focus, data):
     today = datetime.now().strftime("%b %d, %Y")
     
-    main_html = render_main(focus, data.get(focus, {}))
-    btc_html = render_btc(data.get("ahr999", {}))
-    
-    sub_names = {"ahr999": ["mvrv", "bmri"], "mvrv": ["ahr999", "btcd"], "bmri": ["ahr999", "mvrv"], "btcd": ["ahr999", "mvrv"]}
-    subs = sub_names.get(focus, ["mvrv", "bmri"])
-    
-    sub_html = ""
-    for s in subs[:2]:
-        if s in data:
-            sub_html += render_sub(s, data[s])
+    btc_bar = render_btc_bar(data.get("ahr999", {}))
+    main_card = render_main_card(focus, data.get(focus, {}))
+    sub_row = render_sub_row(data)
     
     return f"""<!DOCTYPE html>
 <html>
@@ -249,11 +331,13 @@ body {{
   display: flex;
   flex-direction: column;
 }}
+
+/* Header */
 .hdr {{
+  padding: 30px 50px 20px;
   display: flex;
   justify-content: space-between;
-  padding: 36px 50px;
-  border-bottom: 1px solid #27272a;
+  align-items: center;
 }}
 .logo {{
   display: flex;
@@ -263,100 +347,185 @@ body {{
   font-weight: 700;
 }}
 .logo-ic {{
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   background: linear-gradient(135deg, #3b82f6, #22c55e);
-  border-radius: 10px;
+  border-radius: 11px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  font-size: 22px;
 }}
 .date {{ color: #71717a; font-size: 16px; }}
+
+/* BTC Bar */
+.btc-bar {{
+  margin: 0 50px;
+  padding: 16px 24px;
+  background: linear-gradient(145deg, #1a1a1d, #141416);
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}}
+.btc-left {{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}}
+.btc-icon {{
+  font-size: 28px;
+}}
+.btc-label {{
+  font-size: 14px;
+  color: #71717a;
+  font-weight: 500;
+}}
+.btc-price {{
+  font-size: 28px;
+  font-weight: 700;
+  color: #f59e0b;
+}}
+.btc-right {{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}}
+.btc-chart {{
+  width: 150px;
+  height: 20px;
+}}
+.btc-change {{
+  font-size: 16px;
+  font-weight: 600;
+  min-width: 60px;
+  text-align: right;
+}}
+
+/* Content */
 .cnt {{
   flex: 1;
-  padding: 40px 50px;
+  padding: 30px 50px;
   display: flex;
   flex-direction: column;
   gap: 24px;
 }}
-.main {{
+
+/* Main Card */
+.main-card {{
   background: linear-gradient(145deg, #18181b, #0f0f11);
   border-radius: 24px;
-  padding: 36px;
+  padding: 32px;
   border: 1px solid rgba(255,255,255,0.05);
 }}
-.card-head {{
+.main-header {{
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+  margin-bottom: 20px;
+}}
+.main-icon {{
+  font-size: 32px;
+}}
+.main-title {{
+  font-size: 16px;
+  color: #71717a;
+  font-weight: 500;
+}}
+.main-value {{
+  margin-left: auto;
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}}
+
+/* Progress */
+.progress-row {{
+  display: flex;
+  align-items: center;
+  gap: 16px;
   margin-bottom: 16px;
 }}
-.ic {{ font-size: 26px; }}
-.nm {{ font-size: 16px; color: #71717a; font-weight: 500; }}
-.big {{
-  font-size: 64px;
-  font-weight: 700;
-  letter-spacing: -2px;
-  margin-bottom: 12px;
+.progress-bar {{
+  flex: 1;
+  height: 8px;
+  background: #27272a;
+  border-radius: 4px;
+  overflow: hidden;
 }}
-.tag {{
-  display: inline-block;
-  padding: 8px 18px;
-  border-radius: 20px;
+.progress-fill {{
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s;
+}}
+.progress-status {{
   font-size: 14px;
   font-weight: 600;
-  color: #fafafa;
+  min-width: 60px;
 }}
-.hint {{ font-size: 13px; color: #71717a; margin-top: 16px; }}
-.chart {{ margin-top: 14px; }}
-.row {{
+
+.main-detail {{
+  display: flex;
+  gap: 32px;
+  font-size: 14px;
+  color: #a1a1aa;
+  margin-bottom: 16px;
+}}
+
+.main-chart {{
+  height: 40px;
+  margin-bottom: 16px;
+}}
+
+.main-hint {{
+  font-size: 14px;
+  color: #71717a;
+  line-height: 1.5;
+  padding-top: 12px;
+  border-top: 1px solid #27272a;
+}}
+
+/* Sub Row */
+.sub-row {{
   display: grid;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
 }}
-.btc {{
+.sub-card {{
   background: linear-gradient(145deg, #18181b, #0f0f11);
   border-radius: 16px;
   padding: 20px;
-  border: 1px solid rgba(255,255,255,0.05);
-  text-align: center;
-}}
-.btc-head {{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 10px;
-  font-size: 13px;
-  color: #71717a;
-}}
-.btc-price {{
-  font-size: 24px;
-  font-weight: 700;
-  color: #f59e0b;
-}}
-.subs {{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}}
-.sub {{
-  background: linear-gradient(145deg, #18181b, #0f0f11);
-  border-radius: 14px;
-  padding: 18px;
   border: 1px solid rgba(255,255,255,0.05);
 }}
 .sub-head {{
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+}}
+.sub-icon {{
+  font-size: 22px;
+}}
+.sub-title {{
   font-size: 13px;
   color: #71717a;
+  font-weight: 500;
 }}
-.sub-val {{ font-size: 24px; font-weight: 700; margin-bottom: 4px; }}
-.sub-st {{ font-size: 12px; font-weight: 500; }}
+.sub-val {{
+  margin-left: auto;
+  font-size: 26px;
+  font-weight: 700;
+}}
+.sub-chart {{
+  height: 24px;
+  margin-bottom: 8px;
+}}
+.sub-status {{
+  font-size: 12px;
+  font-weight: 500;
+}}
+
+/* Footer */
 .ftr {{
   padding: 24px 50px;
   border-top: 1px solid #27272a;
@@ -365,25 +534,32 @@ body {{
   font-size: 14px;
   color: #71717a;
 }}
-.link {{ color: #3b82f6; font-weight: 600; font-size: 16px; }}
+.link {{
+  color: #3b82f6;
+  font-weight: 600;
+  font-size: 16px;
+}}
 </style>
 </head>
 <body>
+
 <div class="hdr">
   <div class="logo"><div class="logo-ic">📊</div>Crypto3D Daily</div>
   <div class="date">{today}</div>
 </div>
+
+{btc_bar}
+
 <div class="cnt">
-{main_html}
-<div class="row">
-{btc_html}
-<div class="subs">{sub_html}</div>
+{main_card}
+{sub_row}
 </div>
-</div>
+
 <div class="ftr">
   <span>每日加密市场晴雨表</span>
   <span class="link">crypto3d.pro</span>
 </div>
+
 </body>
 </html>"""
 
