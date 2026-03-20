@@ -230,7 +230,7 @@ def render(focus, data):
         st = d.get("status", d.get("regime", d.get("zone", "")))
         c = color_for(st)
         wk = d.get("week", [])
-        sp = svg_spark(wk, c, 100, 32)
+        sp = svg_spark(wk, c, 200, 36)
         if nm == "ahr999": lb,vs,sx = "AHR999",f"{v:.2f}",d.get("status","")
         elif nm == "mvrv": lb,vs,sx = "MVRV",f"{v:.2f}",d.get("status","")
         elif nm == "bmri":
@@ -298,7 +298,7 @@ body {{
   display: flex;
   align-items: baseline;
   gap: 16px;
-  margin-bottom: 8px;
+  margin-bottom: 0;
 }}
 .btc-label {{
   font-size: 15px;
@@ -318,15 +318,15 @@ body {{
   font-weight: 700;
 }}
 .btc-chart {{
-  height: 160px;
-  margin: 0 -56px;
+  height: 140px;
+  margin: -8px -56px 0;
   padding: 0 56px;
   overflow: hidden;
 }}
 
 /* === MAIN CARD === */
 .card {{
-  margin: 24px 56px;
+  margin: 16px 56px;
   padding: 36px 40px 32px;
   background: linear-gradient(145deg, #111115 0%, #0a0a0e 100%);
   border: 1px solid #1c1c22;
@@ -387,7 +387,11 @@ body {{
 
 /* === SUB INDICATORS === */
 .subs {{
-  padding: 0 56px;
+  margin: 0 56px;
+  padding: 24px 40px;
+  background: linear-gradient(145deg, #111115 0%, #0a0a0e 100%);
+  border: 1px solid #1c1c22;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -400,7 +404,7 @@ body {{
 }}
 .s-item:last-child {{ border-bottom: none; }}
 .s-left {{
-  width: 160px;
+  width: 140px;
 }}
 .s-name {{
   font-size: 14px;
@@ -410,25 +414,24 @@ body {{
   margin-bottom: 4px;
 }}
 .s-num {{
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 800;
   letter-spacing: -0.5px;
 }}
 .s-chart {{
   flex: 1;
-  height: 32px;
-  padding: 0 24px;
+  height: 36px;
+  padding: 0 16px;
 }}
 .s-status {{
-  width: 80px;
+  width: 90px;
   text-align: right;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
 }}
 
 /* === FOOTER === */
 .footer {{
-  margin-top: auto;
   padding: 28px 56px;
   display: flex;
   justify-content: space-between;
@@ -472,7 +475,7 @@ body {{
 </div>
 
 <div class="subs">
-  {sub_rows}
+{sub_rows}
 </div>
 
 <div class="footer">

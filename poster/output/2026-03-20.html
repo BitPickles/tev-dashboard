@@ -46,7 +46,7 @@ body {
   display: flex;
   align-items: baseline;
   gap: 16px;
-  margin-bottom: 8px;
+  margin-bottom: 0;
 }
 .btc-label {
   font-size: 15px;
@@ -66,15 +66,15 @@ body {
   font-weight: 700;
 }
 .btc-chart {
-  height: 160px;
-  margin: 0 -56px;
+  height: 140px;
+  margin: -8px -56px 0;
   padding: 0 56px;
   overflow: hidden;
 }
 
 /* === MAIN CARD === */
 .card {
-  margin: 24px 56px;
+  margin: 16px 56px;
   padding: 36px 40px 32px;
   background: linear-gradient(145deg, #111115 0%, #0a0a0e 100%);
   border: 1px solid #1c1c22;
@@ -135,7 +135,11 @@ body {
 
 /* === SUB INDICATORS === */
 .subs {
-  padding: 0 56px;
+  margin: 0 56px;
+  padding: 24px 40px;
+  background: linear-gradient(145deg, #111115 0%, #0a0a0e 100%);
+  border: 1px solid #1c1c22;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -148,7 +152,7 @@ body {
 }
 .s-item:last-child { border-bottom: none; }
 .s-left {
-  width: 160px;
+  width: 140px;
 }
 .s-name {
   font-size: 14px;
@@ -158,25 +162,24 @@ body {
   margin-bottom: 4px;
 }
 .s-num {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 800;
   letter-spacing: -0.5px;
 }
 .s-chart {
   flex: 1;
-  height: 32px;
-  padding: 0 24px;
+  height: 36px;
+  padding: 0 16px;
 }
 .s-status {
-  width: 80px;
+  width: 90px;
   text-align: right;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 /* === FOOTER === */
 .footer {
-  margin-top: auto;
   padding: 28px 56px;
   display: flex;
   justify-content: space-between;
@@ -229,13 +232,13 @@ body {
 </div>
 
 <div class="subs">
-  
+
         <div class="s-item">
           <div class="s-left">
             <div class="s-name">MVRV</div>
             <div class="s-num" style="color:#34d399">1.29</div>
           </div>
-          <div class="s-chart"><svg viewBox="0 0 100 32" style="display:block;width:100%;height:100%"><polyline fill="none" stroke="#34d399" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="0,23 17,22 33,14 50,5 67,8 83,21 100,27"/><circle cx="100" cy="27" r="4" fill="#34d399"/></svg></div>
+          <div class="s-chart"><svg viewBox="0 0 200 36" style="display:block;width:100%;height:100%"><polyline fill="none" stroke="#34d399" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="0,26 33,24 67,16 100,5 133,9 167,24 200,31"/><circle cx="200" cy="31" r="4" fill="#34d399"/></svg></div>
           <div class="s-status" style="color:#34d399">合理区</div>
         </div>
         <div class="s-item">
@@ -243,7 +246,7 @@ body {
             <div class="s-name">BMRI</div>
             <div class="s-num" style="color:#34d399">45.2</div>
           </div>
-          <div class="s-chart"><svg viewBox="0 0 100 32" style="display:block;width:100%;height:100%"><polyline fill="none" stroke="#34d399" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="0,26 17,27 33,9 50,5 67,20 83,23 100,25"/><circle cx="100" cy="25" r="4" fill="#34d399"/></svg></div>
+          <div class="s-chart"><svg viewBox="0 0 200 36" style="display:block;width:100%;height:100%"><polyline fill="none" stroke="#34d399" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="0,29 33,31 67,10 100,5 133,23 167,26 200,29"/><circle cx="200" cy="29" r="4" fill="#34d399"/></svg></div>
           <div class="s-status" style="color:#34d399">中性</div>
         </div>
         <div class="s-item">
@@ -251,7 +254,7 @@ body {
             <div class="s-name">BTC.D</div>
             <div class="s-num" style="color:#34d399">58.2%</div>
           </div>
-          <div class="s-chart"><svg viewBox="0 0 100 32" style="display:block;width:100%;height:100%"><polyline fill="none" stroke="#34d399" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="0,5 17,9 33,7 50,8 67,16 83,19 100,27"/><circle cx="100" cy="27" r="4" fill="#34d399"/></svg></div>
+          <div class="s-chart"><svg viewBox="0 0 200 36" style="display:block;width:100%;height:100%"><polyline fill="none" stroke="#34d399" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="0,5 33,11 67,8 100,9 133,18 167,22 200,31"/><circle cx="200" cy="31" r="4" fill="#34d399"/></svg></div>
           <div class="s-status" style="color:#34d399">平衡</div>
         </div>
 </div>
