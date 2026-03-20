@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Crypto3D Daily Poster - Final Design"""
+"""Crypto3D Daily Poster - v7 精修版"""
 import json
 import asyncio
 from datetime import datetime
@@ -11,12 +11,10 @@ INDICATORS_DIR = TEV_DIR / "indicators" / "data"
 OUTPUT_DIR = SCRIPT_DIR / "output"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
-
 def load_json(path):
     try:
         with open(path) as f: return json.load(f)
     except: return None
-
 
 def load_all():
     data = {}
@@ -24,8 +22,7 @@ def load_all():
     if ahr:
         c, h = ahr["current"], ahr.get("history", [])
         data["ahr999"] = dict(value=c["value"], status=c["status"], price=c["price"],
-            cost_200d=c["cost_200d"], fitted=c.get("fitted_price",0),
-            prices=[x["close"] for x in h[-7:]])
+            cost_200d=c["cost_200d"], prices=[x["close"] for x in h[-7:]])
     mvrv = load_json(INDICATORS_DIR / "mvrv.json")
     if mvrv:
         c, h = mvrv["current"], mvrv.get("history", [])
@@ -40,7 +37,6 @@ def load_all():
         data["btcd"] = dict(value=c["value"], zone=c["zone"], week=[x["value"] for x in h[-7:]])
     return data
 
-
 def select_focus(data):
     a = data.get("ahr999",{}).get("value",1)
     m = data.get("mvrv",{}).get("value",1)
@@ -50,109 +46,94 @@ def select_focus(data):
     if b < 30 or b > 70: return "bmri"
     return ["ahr999","btcd","mvrv","bmri","ahr999","ahr999","ahr999"][datetime.now().weekday()]
 
-
-def color_for(status):
-    s = str(status).lower()
+def color_for(st):
+    s = str(st).lower()
     if any(k in s for k in ["抄底","合理","neutral","balanced","low","fair"]): return "#34d399"
     if any(k in s for k in ["过热","high","extreme","danger"]): return "#fb7185"
     return "#60a5fa"
 
-
-def svg_area(vals, color, w, h):
-    """面积图"""
+def mk_area(vals, color, w, h):
     if not vals or len(vals) < 2: return ""
     mn, mx = min(vals), max(vals)
     rng = mx - mn if mx != mn else 1
     pts = []
     for i, v in enumerate(vals):
         x = i * w / (len(vals) - 1)
-        y = h - ((v - mn) / rng * (h * 0.7)) - h * 0.15
+        y = h - ((v - mn) / rng * h * 0.75) - h * 0.1
         pts.append((x, y))
-    line = " ".join(f"{x:.0f},{y:.0f}" for x, y in pts)
+    line = " ".join(f"{x:.0f},{y:.0f}" for x,y in pts)
     fill = line + f" {w},{h} 0,{h}"
     return (
-        f'<svg viewBox="0 0 {w} {h}" preserveAspectRatio="none" style="display:block;width:100%;height:100%">'
+        f'<svg viewBox="0 0 {w} {h}" preserveAspectRatio="none" '
+        f'style="display:block;width:100%;height:100%">'
         f'<defs><linearGradient id="af" x1="0" y1="0" x2="0" y2="1">'
         f'<stop offset="0%" stop-color="{color}" stop-opacity="0.4"/>'
         f'<stop offset="100%" stop-color="{color}" stop-opacity="0"/>'
         f'</linearGradient></defs>'
         f'<polygon fill="url(#af)" points="{fill}"/>'
-        f'<polyline fill="none" stroke="{color}" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" points="{line}"/>'
+        f'<polyline fill="none" stroke="{color}" stroke-width="3" '
+        f'stroke-linecap="round" stroke-linejoin="round" points="{line}"/>'
         f'</svg>'
     )
 
-
-def svg_spark(vals, color, w, h):
-    """迷你折线"""
+def mk_spark(vals, color, w, h):
     if not vals or len(vals) < 2: return ""
     mn, mx = min(vals), max(vals)
     rng = mx - mn if mx != mn else 1
     pts = []
     for i, v in enumerate(vals):
         x = i * w / (len(vals) - 1)
-        y = h - ((v - mn) / rng * (h * 0.7)) - h * 0.15
+        y = h - ((v - mn) / rng * h * 0.7) - h * 0.15
         pts.append((x, y))
-    line = " ".join(f"{x:.0f},{y:.0f}" for x, y in pts)
+    line = " ".join(f"{x:.0f},{y:.0f}" for x,y in pts)
     lx, ly = pts[-1]
     return (
         f'<svg viewBox="0 0 {w} {h}" style="display:block;width:100%;height:100%">'
-        f'<polyline fill="none" stroke="{color}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="{line}"/>'
+        f'<polyline fill="none" stroke="{color}" stroke-width="2.5" '
+        f'stroke-linecap="round" stroke-linejoin="round" points="{line}"/>'
         f'<circle cx="{lx:.0f}" cy="{ly:.0f}" r="4" fill="{color}"/>'
         f'</svg>'
     )
 
-
-def svg_gauge(val, lo, hi, zones):
-    """标尺"""
-    w = 100  # percent based
+def mk_gauge(val, lo, hi, zones):
     rng = hi - lo
-    pct = max(1, min((val - lo) / rng * 100, 99))
+    pct = max(2, min((val - lo) / rng * 100, 98))
+    active_c = zones[0]["c"]
+    for z in zones:
+        if z["fr"] <= val <= z["to"]: active_c = z["c"]
 
     segs = ""
     for z in zones:
         x1 = (z["fr"] - lo) / rng * 100
         x2 = (z["to"] - lo) / rng * 100
-        segs += f'<div style="position:absolute;left:{x1}%;width:{x2-x1}%;height:100%;background:{z["c"]};opacity:0.12;border-radius:5px"></div>'
-
-    # active fill
-    active_c = zones[0]["c"]
-    for z in zones:
-        if z["fr"] <= val <= z["to"]:
-            active_c = z["c"]
-    segs += f'<div style="position:absolute;left:0;width:{pct}%;height:100%;background:linear-gradient(90deg,{active_c}00,{active_c});opacity:0.35;border-radius:5px"></div>'
-
-    # pointer
-    segs += f'<div style="position:absolute;left:{pct}%;top:50%;transform:translate(-50%,-50%);width:16px;height:16px;border-radius:50%;background:{active_c};box-shadow:0 0 12px {active_c}80"></div>'
+        segs += f'<div style="position:absolute;left:{x1}%;width:{x2-x1}%;height:100%;background:{z["c"]};opacity:0.12;border-radius:6px"></div>'
+    segs += f'<div style="position:absolute;left:0;width:{pct}%;height:100%;background:linear-gradient(90deg,{active_c}00,{active_c});opacity:0.4;border-radius:6px"></div>'
+    segs += f'<div style="position:absolute;left:{pct}%;top:50%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:{active_c};box-shadow:0 0 16px {active_c}80"></div>'
     segs += f'<div style="position:absolute;left:{pct}%;top:50%;transform:translate(-50%,-50%);width:8px;height:8px;border-radius:50%;background:#fff"></div>'
 
     labels = ""
     for z in zones:
-        x = ((z["fr"] + z["to"]) / 2 - lo) / rng * 100
-        labels += f'<span style="position:absolute;left:{x}%;transform:translateX(-50%);font-size:16px;color:#52525b;font-weight:500">{z["lb"]}</span>'
+        x = ((z["fr"]+z["to"])/2 - lo) / rng * 100
+        labels += f'<span style="position:absolute;left:{x}%;transform:translateX(-50%);font-size:15px;color:#52525b;font-weight:500">{z["lb"]}</span>'
 
-    return f'''<div style="position:relative;height:10px;border-radius:5px;background:#1a1a1f">{segs}</div>
-    <div style="position:relative;height:28px;margin-top:8px">{labels}</div>'''
+    return f'<div style="position:relative;height:12px;border-radius:6px;background:#1a1a1f">{segs}</div><div style="position:relative;height:24px;margin-top:6px">{labels}</div>'
 
 
 def render(focus, data):
     now = datetime.now()
     date_str = now.strftime("%Y.%m.%d")
-    weekday = ["MON","TUE","WED","THU","FRI","SAT","SUN"][now.weekday()]
+    wd = ["周一","周二","周三","周四","周五","周六","周日"][now.weekday()]
 
     ahr = data.get("ahr999", {})
     prices = ahr.get("prices", [])
     btc_price = ahr.get("price", 0)
-
-    # BTC change
-    btc_chg_html = ""
+    btc_area = mk_area(prices, "#f59e0b", 1000, 140)
+    btc_chg = ""
     if len(prices) >= 2:
         ch = ((prices[-1] - prices[0]) / prices[0]) * 100
         cc = "#34d399" if ch > 0 else "#fb7185"
-        btc_chg_html = f'<span style="color:{cc}">{"+" if ch>0 else ""}{ch:.1f}%</span>'
+        btc_chg = f'<span class="chg" style="color:{cc}">{"+" if ch>0 else ""}{ch:.1f}%</span>'
 
-    btc_chart = svg_area(prices, "#f59e0b", 1000, 160)
-
-    # Main card
     fd = data.get(focus, {})
     fval = fd.get("value", 0)
     fst = fd.get("status", fd.get("regime", ""))
@@ -161,94 +142,92 @@ def render(focus, data):
     if focus == "ahr999":
         cost = ahr.get("cost_200d", 1)
         ratio = int(btc_price / cost * 100) if cost else 0
-        g = svg_gauge(fval, 0, 1.5, [
+        g = mk_gauge(fval, 0, 1.5, [
             {"fr":0,"to":0.45,"c":"#34d399","lb":"抄底"},
             {"fr":0.45,"to":1.2,"c":"#fbbf24","lb":"定投"},
             {"fr":1.2,"to":1.5,"c":"#fb7185","lb":"观望"},
         ])
-        card_body = f'''
-        <div class="c-val" style="color:{fc}">{fval:.2f}</div>
-        <div class="c-badge" style="background:{fc}20;color:{fc}">{fst}</div>
-        <div class="c-gauge">{g}</div>
-        <div class="c-detail">
-          <div class="c-d-item"><span class="c-d-label">BTC 价格</span><span class="c-d-val">${btc_price:,}</span></div>
-          <div class="c-d-item"><span class="c-d-label">200日成本</span><span class="c-d-val">${cost:,.0f}</span></div>
-          <div class="c-d-item"><span class="c-d-label">价格/成本</span><span class="c-d-val" style="color:{fc}">{ratio}%</span></div>
-        </div>'''
-        card_title = "🔥 AHR999"
-
+        card = f'''
+<div class="card">
+  <div class="c-row"><span class="c-lb">🔥 AHR999</span><span class="c-st" style="color:{fc}">{fst}</span></div>
+  <div class="c-num" style="color:{fc}">{fval:.2f}</div>
+  <div class="c-gauge">{g}</div>
+  <div class="c-meta">
+    <div><span class="c-ml">BTC</span><span class="c-mv">${btc_price:,}</span></div>
+    <div><span class="c-ml">200日成本</span><span class="c-mv">${cost:,.0f}</span></div>
+    <div><span class="c-ml">价格/成本</span><span class="c-mv" style="color:{fc}">{ratio}%</span></div>
+  </div>
+</div>'''
     elif focus == "mvrv":
         pnl = int((fval-1)*100)
-        g = svg_gauge(fval, 0, 4, [
+        g = mk_gauge(fval, 0, 4, [
             {"fr":0,"to":1,"c":"#34d399","lb":"低估"},
             {"fr":1,"to":3,"c":"#fbbf24","lb":"合理"},
             {"fr":3,"to":4,"c":"#fb7185","lb":"过热"},
         ])
-        card_body = f'''
-        <div class="c-val" style="color:{fc}">{fval:.2f}</div>
-        <div class="c-badge" style="background:{fc}20;color:{fc}">{fst}</div>
-        <div class="c-gauge">{g}</div>
-        <div class="c-detail">
-          <div class="c-d-item"><span class="c-d-label">持币盈利</span><span class="c-d-val" style="color:{fc}">{pnl}%</span></div>
-        </div>'''
-        card_title = "📈 MVRV"
-
+        card = f'''
+<div class="card">
+  <div class="c-row"><span class="c-lb">📈 MVRV</span><span class="c-st" style="color:{fc}">{fst}</span></div>
+  <div class="c-num" style="color:{fc}">{fval:.2f}</div>
+  <div class="c-gauge">{g}</div>
+  <div class="c-meta">
+    <div><span class="c-ml">持币盈利</span><span class="c-mv" style="color:{fc}">{pnl}%</span></div>
+  </div>
+</div>'''
     elif focus == "bmri":
         risk = "低风险" if fval<30 else "高风险" if fval>70 else "中性"
-        g = svg_gauge(fval, 0, 100, [
+        g = mk_gauge(fval, 0, 100, [
             {"fr":0,"to":30,"c":"#34d399","lb":"低风险"},
             {"fr":30,"to":70,"c":"#fbbf24","lb":"中性"},
             {"fr":70,"to":100,"c":"#fb7185","lb":"高风险"},
         ])
-        card_body = f'''
-        <div class="c-val" style="color:{fc}">{fval:.1f}</div>
-        <div class="c-badge" style="background:{fc}20;color:{fc}">{risk}</div>
-        <div class="c-gauge">{g}</div>'''
-        card_title = "⚠️ BMRI"
-
+        card = f'''
+<div class="card">
+  <div class="c-row"><span class="c-lb">⚠️ BMRI</span><span class="c-st" style="color:{fc}">{risk}</span></div>
+  <div class="c-num" style="color:{fc}">{fval:.1f}</div>
+  <div class="c-gauge">{g}</div>
+</div>'''
     else:
         z = fd.get("zone","BALANCED")
         zt = "BTC主导" if z=="BTC_DOMINANT" else "山寨季" if z=="ALT_SEASON" else "平衡"
-        g = svg_gauge(fval, 40, 70, [
+        g = mk_gauge(fval, 40, 70, [
             {"fr":40,"to":50,"c":"#34d399","lb":"山寨季"},
             {"fr":50,"to":60,"c":"#fbbf24","lb":"平衡"},
             {"fr":60,"to":70,"c":"#fb7185","lb":"BTC主导"},
         ])
-        card_body = f'''
-        <div class="c-val" style="color:{fc}">{fval:.1f}%</div>
-        <div class="c-badge" style="background:{fc}20;color:{fc}">{zt}</div>
-        <div class="c-gauge">{g}</div>'''
-        card_title = "₿ BTC Dominance"
+        card = f'''
+<div class="card">
+  <div class="c-row"><span class="c-lb">₿ BTC.D</span><span class="c-st" style="color:{fc}">{zt}</span></div>
+  <div class="c-num" style="color:{fc}">{fval:.1f}%</div>
+  <div class="c-gauge">{g}</div>
+</div>'''
 
-    # Sub indicators
-    sub_map = {"ahr999":["mvrv","bmri","btcd"],"mvrv":["ahr999","bmri","btcd"],
-               "bmri":["ahr999","mvrv","btcd"],"btcd":["ahr999","mvrv","bmri"]}
-    sub_rows = ""
-    for nm in sub_map.get(focus, ["mvrv","bmri","btcd"]):
+    # 副指标
+    sub_order = {"ahr999":["mvrv","bmri","btcd"],"mvrv":["ahr999","bmri","btcd"],
+                 "bmri":["ahr999","mvrv","btcd"],"btcd":["ahr999","mvrv","bmri"]}
+    rows = ""
+    for nm in sub_order.get(focus, ["mvrv","bmri","btcd"]):
         d = data.get(nm, {})
         v = d.get("value", 0)
         st = d.get("status", d.get("regime", d.get("zone", "")))
         c = color_for(st)
         wk = d.get("week", [])
-        sp = svg_spark(wk, c, 200, 36)
-        if nm == "ahr999": lb,vs,sx = "AHR999",f"{v:.2f}",d.get("status","")
-        elif nm == "mvrv": lb,vs,sx = "MVRV",f"{v:.2f}",d.get("status","")
-        elif nm == "bmri":
-            lb, vs = "BMRI", f"{v:.1f}"
+        sp = mk_spark(wk, c, 240, 48)
+        if nm=="ahr999": lb,vs,sx = "AHR999",f"{v:.2f}",d.get("status","")
+        elif nm=="mvrv": lb,vs,sx = "MVRV",f"{v:.2f}",d.get("status","")
+        elif nm=="bmri":
+            lb,vs = "BMRI",f"{v:.1f}"
             sx = "低风险" if v<30 else "高风险" if v>70 else "中性"
         else:
-            lb, vs = "BTC.D", f"{v:.1f}%"
+            lb,vs = "BTC.D",f"{v:.1f}%"
             zz = d.get("zone","BALANCED")
             sx = "BTC主导" if zz=="BTC_DOMINANT" else "山寨季" if zz=="ALT_SEASON" else "平衡"
-        sub_rows += f'''
-        <div class="s-item">
-          <div class="s-left">
-            <div class="s-name">{lb}</div>
-            <div class="s-num" style="color:{c}">{vs}</div>
-          </div>
-          <div class="s-chart">{sp}</div>
-          <div class="s-status" style="color:{c}">{sx}</div>
-        </div>'''
+        rows += f'''
+    <div class="s-row">
+      <div class="s-left"><span class="s-name">{lb}</span><span class="s-val" style="color:{c}">{vs}</span></div>
+      <div class="s-mid">{sp}</div>
+      <span class="s-tag" style="color:{c}">{sx}</span>
+    </div>'''
 
     return f"""<!DOCTYPE html>
 <html>
@@ -256,231 +235,106 @@ def render(focus, data):
 <meta charset="UTF-8">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-* {{ margin:0; padding:0; box-sizing:border-box; }}
-body {{
-  font-family: 'Inter', -apple-system, sans-serif;
-  width: 1080px;
-  height: 1350px;
-  overflow: hidden;
-  color: #e4e4e7;
-  background: #08080c;
-  background-image:
-    radial-gradient(ellipse 100% 50% at 50% 0%, #13131a 0%, transparent 70%),
-    radial-gradient(circle at 80% 80%, #0f0f18 0%, transparent 50%);
+*{{margin:0;padding:0;box-sizing:border-box}}
+body{{
+  font-family:'Inter',-apple-system,sans-serif;
+  width:1080px;height:1350px;overflow:hidden;
+  color:#e4e4e7;
+  display:flex;flex-direction:column;
+  background:#08080c;
+  background-image:radial-gradient(ellipse 120% 50% at 50% 20%,#111118,#08080c);
 }}
 
-/* === HEADER === */
-.header {{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 44px 56px 28px;
-  gap: 8px;
-}}
-.h-brand {{
-  font-size: 40px;
-  font-weight: 800;
-  letter-spacing: -1px;
-  color: #fafafa;
-}}
-.h-date {{
-  font-size: 18px;
-  font-weight: 600;
-  color: #3f3f46;
-  letter-spacing: 1px;
-}}
+/* HEADER */
+.hdr{{text-align:center;padding:40px 0 24px}}
+.h-title{{font-size:36px;font-weight:800;letter-spacing:-0.5px;color:#fafafa}}
+.h-date{{font-size:14px;font-weight:500;color:#3f3f46;letter-spacing:2px;margin-top:6px;text-transform:uppercase}}
 
-/* === BTC SECTION === */
-.btc-section {{
-  padding: 0 56px;
-}}
-.btc-top {{
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  margin-bottom: 0;
-}}
-.btc-label {{
-  font-size: 15px;
-  font-weight: 600;
-  color: #52525b;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}}
-.btc-price {{
-  font-size: 56px;
-  font-weight: 800;
-  color: #fafafa;
-  letter-spacing: -2px;
-}}
-.btc-chg {{
-  font-size: 22px;
-  font-weight: 700;
-}}
-.btc-chart {{
-  height: 140px;
-  margin: -8px -56px 0;
-  padding: 0 56px;
-  overflow: hidden;
-}}
+/* BTC */
+.btc{{padding:0 56px}}
+.btc-row{{display:flex;align-items:baseline;gap:14px}}
+.btc-lb{{font-size:14px;font-weight:600;color:#52525b;text-transform:uppercase;letter-spacing:2px}}
+.btc-p{{font-size:52px;font-weight:800;color:#fafafa;letter-spacing:-2px}}
+.chg{{font-size:20px;font-weight:700}}
+.btc-chart{{height:130px;margin:0 -56px;overflow:hidden}}
 
-/* === MAIN CARD === */
-.card {{
-  margin: 16px 56px;
-  padding: 36px 40px 32px;
-  background: linear-gradient(145deg, #111115 0%, #0a0a0e 100%);
-  border: 1px solid #1c1c22;
-  border-radius: 20px;
+/* CARD */
+.card{{
+  margin:20px 48px;
+  padding:32px 36px 28px;
+  background:linear-gradient(160deg,#111116,#0b0b10);
+  border:1px solid #1a1a20;
+  border-radius:20px;
 }}
-.c-top {{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
+.c-row{{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}}
+.c-lb{{font-size:18px;font-weight:600;color:#71717a}}
+.c-st{{font-size:18px;font-weight:800}}
+.c-num{{font-size:76px;font-weight:800;letter-spacing:-3px;margin:4px 0 16px;line-height:1}}
+.c-gauge{{margin-bottom:20px}}
+.c-meta{{
+  display:flex;gap:28px;padding-top:16px;
+  border-top:1px solid #1a1a20;
 }}
-.c-title {{
-  font-size: 18px;
-  font-weight: 600;
-  color: #71717a;
-}}
-.c-val {{
-  font-size: 80px;
-  font-weight: 800;
-  letter-spacing: -3px;
-  line-height: 1;
-  margin-bottom: 16px;
-}}
-.c-badge {{
-  display: inline-block;
-  padding: 6px 16px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 24px;
-}}
-.c-gauge {{
-  margin-bottom: 24px;
-}}
-.c-detail {{
-  display: flex;
-  gap: 32px;
-  padding-top: 20px;
-  border-top: 1px solid #1c1c22;
-}}
-.c-d-item {{
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}}
-.c-d-label {{
-  font-size: 13px;
-  font-weight: 500;
-  color: #52525b;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}}
-.c-d-val {{
-  font-size: 22px;
-  font-weight: 700;
-  color: #d4d4d8;
-}}
+.c-meta>div{{display:flex;flex-direction:column;gap:2px}}
+.c-ml{{font-size:12px;font-weight:500;color:#52525b;text-transform:uppercase;letter-spacing:0.5px}}
+.c-mv{{font-size:20px;font-weight:700;color:#d4d4d8}}
 
-/* === SUB INDICATORS === */
-.subs {{
-  margin: 0 56px;
-  padding: 24px 40px;
-  background: linear-gradient(145deg, #111115 0%, #0a0a0e 100%);
-  border: 1px solid #1c1c22;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+/* SUBS */
+.subs{{
+  margin:12px 48px 0;
+  padding:28px 36px;
+  background:linear-gradient(160deg,#111116,#0b0b10);
+  border:1px solid #1a1a20;
+  border-radius:20px;
+  flex:1;
+  display:flex;flex-direction:column;justify-content:space-evenly;
 }}
-.s-item {{
-  display: flex;
-  align-items: center;
-  padding: 20px 0;
-  border-bottom: 1px solid #1418;
+.s-row{{
+  display:flex;align-items:center;
+  padding:20px 0;
+  border-bottom:1px solid #15151a;
 }}
-.s-item:last-child {{ border-bottom: none; }}
-.s-left {{
-  width: 140px;
-}}
-.s-name {{
-  font-size: 14px;
-  font-weight: 600;
-  color: #52525b;
-  letter-spacing: 0.5px;
-  margin-bottom: 4px;
-}}
-.s-num {{
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}}
-.s-chart {{
-  flex: 1;
-  height: 36px;
-  padding: 0 16px;
-}}
-.s-status {{
-  width: 90px;
-  text-align: right;
-  font-size: 18px;
-  font-weight: 700;
-}}
+.s-row:last-child{{border-bottom:none}}
+.s-left{{width:160px;display:flex;flex-direction:column;gap:4px}}
+.s-name{{font-size:15px;font-weight:600;color:#52525b;letter-spacing:0.5px}}
+.s-val{{font-size:36px;font-weight:800;letter-spacing:-0.5px}}
+.s-mid{{flex:1;height:48px;padding:0 24px}}
+.s-tag{{width:90px;text-align:right;font-size:20px;font-weight:700}}
 
-/* === FOOTER === */
-.footer {{
-  padding: 28px 56px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* FOOTER */
+.ftr{{
+  padding:20px 56px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:13px;color:#27272a;
 }}
-.f-tag {{
-  font-size: 13px;
-  font-weight: 500;
-  color: #27272a;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}}
-.f-link {{
-  font-size: 18px;
-  font-weight: 700;
-  color: #3b82f6;
-}}
+.ftr-l{{color:#3b82f6;font-weight:700;font-size:17px}}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="h-brand">Crypto3D 数据日报</div>
-  <div class="h-date">{weekday} · {date_str}</div>
+<div class="hdr">
+  <div class="h-title">Crypto3D 数据日报</div>
+  <div class="h-date">{wd} · {date_str}</div>
 </div>
 
-<div class="btc-section">
-  <div class="btc-top">
-    <span class="btc-label">Bitcoin</span>
-    <span class="btc-price">${btc_price:,}</span>
-    <span class="btc-chg">{btc_chg_html}</span>
+<div class="btc">
+  <div class="btc-row">
+    <span class="btc-lb">Bitcoin</span>
+    <span class="btc-p">${btc_price:,}</span>
+    {btc_chg}
   </div>
-  <div class="btc-chart">{btc_chart}</div>
+  <div class="btc-chart">{btc_area}</div>
 </div>
 
-<div class="card">
-  <div class="c-top">
-    <span class="c-title">{card_title}</span>
-  </div>
-  {card_body}
-</div>
+{card}
 
 <div class="subs">
-{sub_rows}
+{rows}
 </div>
 
-<div class="footer">
-  <span class="f-tag">Daily Market Snapshot</span>
-  <span class="f-link">crypto3d.pro</span>
+<div class="ftr">
+  <span>DAILY MARKET SNAPSHOT</span>
+  <span class="ftr-l">crypto3d.pro</span>
 </div>
 
 </body>
@@ -492,20 +346,19 @@ async def generate():
     focus = select_focus(data)
     print(f"焦点: {focus.upper()}")
     html = render(focus, data)
-    today_str = datetime.now().strftime("%Y-%m-%d")
-    html_path = OUTPUT_DIR / f"{today_str}.html"
-    png_path = OUTPUT_DIR / f"{today_str}.png"
-    with open(html_path, "w") as f:
-        f.write(html)
+    ts = datetime.now().strftime("%Y-%m-%d")
+    hp = OUTPUT_DIR / f"{ts}.html"
+    pp = OUTPUT_DIR / f"{ts}.png"
+    with open(hp, "w") as f: f.write(html)
     from playwright.async_api import async_playwright
     async with async_playwright() as p:
         b = await p.chromium.launch(headless=True)
         pg = await b.new_page(viewport={"width":1080,"height":1350})
-        await pg.goto(f"file://{html_path}")
+        await pg.goto(f"file://{hp}")
         await pg.wait_for_timeout(800)
-        await pg.screenshot(path=str(png_path), type="png")
+        await pg.screenshot(path=str(pp), type="png")
         await b.close()
-    print(f"OK → {png_path}")
+    print(f"OK → {pp}")
 
 if __name__ == "__main__":
     asyncio.run(generate())
