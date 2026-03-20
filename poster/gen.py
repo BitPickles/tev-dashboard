@@ -272,9 +272,10 @@ body {{
 /* === HEADER === */
 .header {{
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  padding: 44px 56px 36px;
+  padding: 44px 56px 28px;
+  gap: 8px;
 }}
 .h-brand {{
   font-size: 40px;
@@ -450,7 +451,7 @@ body {{
 <body>
 
 <div class="header">
-  <div class="h-brand">Crypto3D 数据站日报</div>
+  <div class="h-brand">Crypto3D 数据日报</div>
   <div class="h-date">{weekday} · {date_str}</div>
 </div>
 
