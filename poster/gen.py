@@ -450,7 +450,7 @@ body {{
 <body>
 
 <div class="header">
-  <div class="h-brand">Crypto3D</div>
+  <div class="h-brand">Crypto3D 数据站日报</div>
   <div class="h-date">{weekday} · {date_str}</div>
 </div>
 
