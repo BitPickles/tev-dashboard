@@ -1,16 +1,16 @@
 {
   "protocol": "fluid",
-  "updated_at": "2026-03-19T13:05:22Z",
+  "updated_at": "2026-03-20T13:03:59Z",
   "data_source": "Etherscan on-chain (FLUID transfers to reserve wallets)",
   "data_source_url": "https://api.llama.fi/summary/fees/fluid?dataType=dailyHoldersRevenue",
   "note": "Fluid 批量回购模式，非每日连续",
   "summary": {
-    "total_fluid": 1202918.24,
-    "total_usd": 4506183.0,
-    "days_with_buyback": 42,
-    "trailing_365d_usd": 4506183.0,
-    "trailing_365d_fluid": 1202918.24,
-    "avg_daily_fluid": 28640.91
+    "total_fluid": 1250068.18,
+    "total_usd": 4613558.0,
+    "days_with_buyback": 43,
+    "trailing_365d_usd": 4613558.0,
+    "trailing_365d_fluid": 1250068.18,
+    "avg_daily_fluid": 29071.35
   },
   "records": [
     {
@@ -558,9 +558,22 @@
         "type": "onchain",
         "provider": "Etherscan"
       }
+    },
+    {
+      "date": "2026-03-20",
+      "type": "buyback",
+      "amount_fluid": 47149.94,
+      "amount_usd": 107374.99,
+      "avg_price": 2.2773,
+      "tx_count": 4,
+      "block": 24698188,
+      "source": {
+        "type": "onchain",
+        "provider": "Etherscan"
+      }
     }
   ],
-  "last_block": 24691016,
+  "last_block": 24698188,
   "reserve_wallets": [
     "0x3e6FeBd2b195e1Ef3e8e3F4AABB6772aada32353",
     "0x9Afb8C1798B93a8E04a18553eE65bAFa41a012F1"

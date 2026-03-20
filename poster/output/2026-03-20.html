@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;width:1080px;height:1350px;overflow:hidden;color:#e4e4e7;display:flex;flex-direction:column;background:#08080c;background-image:radial-gradient(ellipse 120% 50% at 50% 20%,#101018,#08080c)}
+
+/* HEADER - 居中紧凑 */
+.hdr{text-align:center;padding:36px 0 20px}
+.h-t{font-size:38px;font-weight:800;letter-spacing:-0.5px;color:#fafafa}
+.h-d{font-size:15px;font-weight:600;color:#52525b;margin-top:4px}
+
+/* BTC - 紧凑 */
+.btc{padding:0 56px}
+.btc-r{display:flex;align-items:baseline;gap:12px}
+.btc-l{font-size:14px;font-weight:700;color:#52525b;text-transform:uppercase;letter-spacing:2px}
+.btc-p{font-size:48px;font-weight:800;color:#fafafa;letter-spacing:-1px}
+.chg{font-size:18px;font-weight:700}
+.btc-c{height:120px;margin:0 -56px;overflow:hidden}
+
+/* CARD */
+.card{margin:16px 48px;padding:28px 32px 24px;background:linear-gradient(160deg,#111116,#0b0b10);border:1px solid #1a1a20;border-radius:18px}
+.c-hd{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.c-ic{font-size:22px}
+.c-nm{font-size:17px;font-weight:600;color:#71717a;flex:1}
+.c-st{font-size:17px;font-weight:800}
+.c-num{font-size:64px;font-weight:800;letter-spacing:-2px;margin:2px 0 14px;line-height:1}
+.c-g{margin-bottom:18px}
+.c-m{display:flex;gap:24px;padding-top:14px;border-top:1px solid #1a1a20;font-size:15px;color:#a1a1aa}
+.c-m b{color:#71717a;font-weight:600}
+
+/* SUBS */
+.subs{margin:8px 48px;padding:24px 32px;background:linear-gradient(160deg,#111116,#0b0b10);border:1px solid #1a1a20;border-radius:18px;flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+.s-r{display:flex;align-items:center;padding:18px 0;border-bottom:1px solid #15151a}
+.s-r:last-child{border-bottom:none}
+.s-l{width:150px;display:flex;flex-direction:column;gap:3px}
+.s-n{font-size:15px;font-weight:600;color:#52525b}
+.s-v{font-size:32px;font-weight:800;letter-spacing:-0.5px}
+.s-c{flex:1;height:40px;padding:0 16px}
+.s-t{width:85px;text-align:right;font-size:18px;font-weight:700}
+
+/* FOOTER */
+.ftr{padding:18px 56px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#27272a}
+.ftr-l{color:#3b82f6;font-weight:700;font-size:16px}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="h-t">Crypto3D 数据日报</div>
+  <div class="h-d">周五 · 2026.03.20</div>
+</div>
+
+<div class="btc">
+  <div class="btc-r">
+    <span class="btc-l">Bitcoin</span>
+    <span class="btc-p">$70,759</span>
+    <span class="chg" style="color:#fb7185">-3.3%</span>
+  </div>
+  <div class="btc-c"><svg viewBox="0 0 1000 130" style="display:block;width:100%;height:100%"><defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f59e0b" stop-opacity="0.35"/><stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/></linearGradient></defs><polygon fill="url(#ag)" points="0,69 167,94 333,76 500,40 667,26 833,75 1000,117 1000,130 0,130"/><polyline fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" points="0,69 167,94 333,76 500,40 667,26 833,75 1000,117"/></svg></div>
+</div>
+
+
+<div class="card">
+  <div class="c-hd"><span class="c-ic">🔥</span><span class="c-nm">AHR999</span><span class="c-st" style="color:#34d399">抄底区</span></div>
+  <div class="c-num" style="color:#34d399">0.36</div>
+  <div class="c-g"><div style="position:relative;height:12px;border-radius:6px;background:#1a1a1f"><div style="position:absolute;left:0.0%;width:30.0%;height:100%;background:#34d399;opacity:0.1;border-radius:5px"></div><div style="position:absolute;left:30.0%;width:50.0%;height:100%;background:#fbbf24;opacity:0.1;border-radius:5px"></div><div style="position:absolute;left:80.0%;width:20.0%;height:100%;background:#fb7185;opacity:0.1;border-radius:5px"></div><div style="position:absolute;left:0;width:24.14666666666667%;height:100%;background:linear-gradient(90deg,#34d39900,#34d399);opacity:0.35;border-radius:5px"></div><div style="position:absolute;left:24.14666666666667%;top:50%;transform:translate(-50%,-50%);width:16px;height:16px;border-radius:50%;background:#34d399;box-shadow:0 0 12px #34d39988"></div><div style="position:absolute;left:24.14666666666667%;top:50%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:50%;background:#fff"></div></div><div style="position:relative;height:28px;margin-top:6px"><span style="position:absolute;left:15.0%;transform:translateX(-50%);font-size:18px;font-weight:600;color:#71717a">抄底</span><span style="position:absolute;left:54.99999999999999%;transform:translateX(-50%);font-size:18px;font-weight:600;color:#71717a">定投</span><span style="position:absolute;left:90.0%;transform:translateX(-50%);font-size:18px;font-weight:600;color:#71717a">观望</span></div></div>
+  <div class="c-m">
+    <span><b>BTC</b> $70,759</span>
+    <span><b>200日成本</b> $93,000</span>
+    <span style="color:#34d399"><b>价格/成本</b> 76%</span>
+  </div>
+</div>
+
+<div class="subs">
+
+  <div class="s-r">
+    <div class="s-l"><span class="s-n">MVRV</span><span class="s-v" style="color:#34d399">1.29</span></div>
+    <div class="s-c"><svg viewBox="0 0 180 40" style="display:block;width:100%;height:100%"><polyline fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" points="0,29 30,28 60,19 90,8 120,12 150,27 180,34"/><circle cx="180" cy="34" r="3" fill="#34d399"/></svg></div>
+    <span class="s-t" style="color:#34d399">合理区</span>
+  </div>
+  <div class="s-r">
+    <div class="s-l"><span class="s-n">BMRI</span><span class="s-v" style="color:#60a5fa">45.2</span></div>
+    <div class="s-c"><svg viewBox="0 0 180 40" style="display:block;width:100%;height:100%"><polyline fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" points="0,32 30,34 60,13 90,8 120,26 150,29 180,32"/><circle cx="180" cy="32" r="3" fill="#60a5fa"/></svg></div>
+    <span class="s-t" style="color:#60a5fa">中性</span>
+  </div>
+  <div class="s-r">
+    <div class="s-l"><span class="s-n">BTC.D</span><span class="s-v" style="color:#34d399">58.2%</span></div>
+    <div class="s-c"><svg viewBox="0 0 180 40" style="display:block;width:100%;height:100%"><polyline fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" points="0,8 30,13 60,11 90,12 120,21 150,25 180,34"/><circle cx="180" cy="34" r="3" fill="#34d399"/></svg></div>
+    <span class="s-t" style="color:#34d399">平衡</span>
+  </div>
+</div>
+
+<div class="ftr">
+  <span>DAILY MARKET SNAPSHOT</span>
+  <span class="ftr-l">crypto3d.pro</span>
+</div>
+
+</body>
+</html>
