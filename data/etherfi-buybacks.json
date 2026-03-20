@@ -2,8 +2,8 @@
   "protocol": "etherfi",
   "ticker": "ETHFI",
   "total_supply": 1000000000,
-  "updated_at": "2026-03-19T13:05:17.996800+00:00",
-  "last_block": 24686748,
+  "updated_at": "2026-03-20T01:05:05.667160+00:00",
+  "last_block": 24692370,
   "data_type": "daily",
   "data_source": "onchain",
   "data_source_note": "追踪 ETHFI 流入回购地址 (Etherscan API)",
@@ -12,12 +12,12 @@
     "0x2f5301a3D59388c509C65f8698f521377D41Fd0F"
   ],
   "summary": {
-    "total_buyback_ethfi": 17425444.68,
-    "total_buyback_usd": 14944943.76,
-    "total_days": 109,
+    "total_buyback_ethfi": 17518517.22,
+    "total_buyback_usd": 14995792.29,
+    "total_days": 110,
     "first_date": "2025-05-09",
-    "last_date": "2026-03-18",
-    "avg_daily_ethfi": 159866.46
+    "last_date": "2026-03-19",
+    "avg_daily_ethfi": 159259.25
   },
   "daily_buybacks": [
     {
@@ -997,6 +997,15 @@
       "ethfi": 91084.05,
       "usd": 52079.26,
       "price": 0.5718,
+      "txs": 5,
+      "dataType": "onchain",
+      "source": "Etherscan"
+    },
+    {
+      "date": "2026-03-19",
+      "ethfi": 93072.54,
+      "usd": 50848.53,
+      "price": 0.5463,
       "txs": 5,
       "dataType": "onchain",
       "source": "Etherscan"
