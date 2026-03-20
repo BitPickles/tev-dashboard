@@ -653,17 +653,27 @@
         const resp = await fetch('../data/governance.json');
         if (!resp.ok) return;
         const data = await resp.json();
-        const tevProposals = data.proposals
+        const sortByDate = (a, b) => {
+          const aA = a.status === 'active' ? 1 : 0;
+          const bA = b.status === 'active' ? 1 : 0;
+          if (bA !== aA) return bA - aA;
+          const aT = typeof a.created === 'number' ? a.created : new Date(a.created).getTime() / 1000;
+          const bT = typeof b.created === 'number' ? b.created : new Date(b.created).getTime() / 1000;
+          return bT - aT;
+        };
+
+        // Try TEV-related first, fallback to all proposals for this protocol
+        let tevProposals = data.proposals
           .filter(p => p.protocol === govName && p.tev_related)
-          .sort((a, b) => {
-            const aA = a.status === 'active' ? 1 : 0;
-            const bA = b.status === 'active' ? 1 : 0;
-            if (bA !== aA) return bA - aA;
-            const aT = typeof a.created === 'number' ? a.created : new Date(a.created).getTime() / 1000;
-            const bT = typeof b.created === 'number' ? b.created : new Date(b.created).getTime() / 1000;
-            return bT - aT;
-          })
+          .sort(sortByDate)
           .slice(0, 5);
+
+        if (!tevProposals.length) {
+          tevProposals = data.proposals
+            .filter(p => p.protocol === govName)
+            .sort(sortByDate)
+            .slice(0, 5);
+        }
 
         if (!tevProposals.length) return;
 

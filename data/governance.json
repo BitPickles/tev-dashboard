@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-03-18T17:23:26.791633+00:00",
-  "total": 254,
-  "active_count": 38,
-  "passed_count": 216,
-  "tev_related": 68,
+  "updated_at": "2026-03-20T05:59:24.491317+00:00",
+  "total": 248,
+  "active_count": 33,
+  "passed_count": 215,
+  "tev_related": 65,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -148,7 +148,7 @@
       "source": "Snapshot",
       "protocol": "Aave",
       "title": "[TEMP CHECK] Aave V4 Licensing",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/aavedao.eth/proposal/0xeb59bf25e0e5391e9d145e12e62a661d6256cac94e5900f4206d5f8288facb89",
       "created": 1773585860,
       "end": 1773931460,
@@ -172,7 +172,8 @@
         "buyback"
       ],
       "summary_en": "This publication proposes reducing the annual AAVE buyback budget from approximately $50M to $30M ad outlined in the Aave DAO Funding Insights forum post.",
-      "summary_zh": "提案建议将 AAVE 年度回购预算从约 5000 万美元削减至 3000 万美元（削减 40%），依据 Aave DAO 资金洞察分析，旨在优化协议资金使用效率。"
+      "summary_zh": "提案建议将 AAVE 年度回购预算从约 5000 万美元削减至 3000 万美元（削减 40%），依据 Aave DAO 资金洞察分析，旨在优化协议资金使用效率。",
+      "analysis_zh": "Aave 提议将年回购预算砍掉 40% 至 $3000 万，直接削弱了 AAVE 的通缩力度与质押收益预期。\n\n鉴于借款费用收入较峰值下滑 25%（1 月仅 $7.95M），Aave DAO 不得不将年回购预算从 $5000 万缩减至 $3000 万以缓解财政压力。虽然年收入仍有 $1.22 亿，但回购占比的显著下降意味着 TEV Yield（当前 4.49%）将面临缩水，AAVE 作为“生息资产”的叙事逻辑短期受损。若节省的资金未能有效转化为生态增长动力，这种“节流”策略恐将打击长期持有者的信心，需警惕市场对收益预期下调的重新定价。"
     },
     {
       "source": "Snapshot",
@@ -390,22 +391,6 @@
     },
     {
       "source": "Snapshot",
-      "protocol": "Aave",
-      "title": "[TEMP CHECK] Focussing the Aave V3 Multichain Strategy",
-      "status": "passed",
-      "link": "https://snapshot.org/#/aavedao.eth/proposal/0x0ad3115883faa738c9e8134f9ba6c3f43a168cb288e488b43fdb1af15fc04be2",
-      "created": 1764574186,
-      "end": 1764919786,
-      "tev_related": true,
-      "tev_keywords": [
-        "revenue"
-      ],
-      "summary_en": "This Temp Check proposes an updated multichain strategy for Aave V3 that:.",
-      "summary_zh": "温度检查提案，提议更新 Aave V3 多链策略，聚焦核心链部署并优化资源配置，收缩低效多链布局。",
-      "analysis_zh": "Aave 收缩多链战线，关停三条低效链并设立 $2M 新链准入门槛\n\nAave DAO 提议调整 V3 多链策略，通过提高表现不佳实例的 Reserve Factor 增收，并果断关停 zkSync、Metis 和 Soneium 三个低效实例。这一举措标志着 Aave 从盲目扩张转向精细化运营，设立的 $2,000,000 年收入硬门槛将有效过滤缺乏流动性的长尾链，降低运营风险与安全成本。虽然短期内 TVL 可能微降，但资源集中于高收益链将提升资本效率，长期利好协议收入与代币价值捕获。"
-    },
-    {
-      "source": "Snapshot",
       "protocol": "Uniswap",
       "title": "[RFC] Governance Process Upgrade: Establishing a Statute of Limitations for Temperature Checks",
       "status": "passed",
@@ -581,7 +566,8 @@
         "fee"
       ],
       "summary_en": "is for chain selection feedback for the ongoing proposal.",
-      "summary_zh": "为 Uniswap 振兴与增长计划中的分析中心选定四条目标链的反馈投票。"
+      "summary_zh": "为 Uniswap 振兴与增长计划中的分析中心选定四条目标链的反馈投票。",
+      "analysis_zh": "Uniswap 振兴计划启动四链筛选，Unichain 仅作兴趣测试不计入最终名额。\n\nUniswap DAO 推进“Analytics Hub 振兴计划”，旨在通过 Snapshot 投票选出 4 条目标链以集中资源。值得玩味的是，Unichain 虽被列入选项以测试社区热度，但即便进入前四也会被“跳过”，名额顺延给下一条链。这种“只看不算”的机制设计，暗示了 Uniswap 对自家 L2 有着独立且更宏大的激励规划，不愿在此处挤占其他生态的资源和曝光，体现了 DAO 在资源分配上的精细化管理，避免了“既得利益者”通吃局面，确保了多链扩张的公平性。"
     },
     {
       "source": "Snapshot",
@@ -1131,7 +1117,7 @@
       ],
       "summary_en": "Deflationary Goal: We aim for a ~4% annual deflation rate and target a ~20% reduction in the CAKE supply by 2030.  Retirement of the veCAKE and Gauges Voting System: The veCAKE and Gauges Voting system will be phased out for a more straightforward an",
       "summary_zh": "CAKE Tokenomics 3.0 核心提案：目标年约 4% 通缩率，2030 年前减少约 20% CAKE 供应量；废除 veCAKE 和 Gauges 投票系统，改用更简洁的治理方案。",
-      "analysis_zh": "CAKE 经济模型 3.0 彻底废除 veCAKE 与质押，转向纯粹通缩叙事，旨在 2030 年减少"
+      "analysis_zh": "CAKE 经济学大改：废除 veCAKE 与质押，确立 4% 年通缩目标\n\nPancakeSwap 提案 3.0 彻底重构代币经济学，废除 veCAKE 和 Gauges Voting 系统，并解锁所有质押 CAKE，结束复杂的“贿选”时代。虽然当前 $111.0M 年收入和 6.33% 的 TEV Yield 具有吸引力，但改革旨在牺牲短期质押收益换取长期价值，目标实现约 4% 的年通缩率并在 2030 年前减少 20% 供应量。这一激进转型将治理权归还给持有者，消除了流动性挖矿的摩擦，尽管大量解锁可能带来短期抛压，但明确的通缩预期若能配合收入回购执行，将显著提升 CAKE 的资产质量。"
     },
     {
       "source": "Snapshot",
@@ -1891,37 +1877,6 @@
     {
       "source": "Snapshot",
       "protocol": "Compound",
-      "title": "After a Successful DAO Vote, Compound decided to Launch the 1 Phase of the $COMP Distribution",
-      "status": "passed",
-      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0x69e91b943ebdd65906cd909d196b95dd4e1be266823e76f89c13bf9050632c61",
-      "created": 1755511001,
-      "end": 1755770201,
-      "tev_related": true,
-      "tev_keywords": [
-        "distribution"
-      ],
-      "summary_en": "Calling all Compound users! We're delighted to share the exciting news that the eagerly anticipated $COMP distribution is now open for your enthusiastic participation. Dive into the specifics below to learn about the launch date and the transformativ",
-      "summary_zh": "Compound 社区宣布 $COMP 代币分配已开放参与，是 DAO 投票通过后的正式执行。",
-      "analysis_zh": "Compound 开启 COMP 分发，意在激活社区治理但难改代币价值捕获弱的现状。\n\nCompound DAO 宣布启动 $COMP 分发计划，尽管当前 TEV Yield 为 0% 且年收入仅 $2.4M，代币机制仍属“纯治理”无收入分配，但此举意在通过激励手段盘活高达 $1.56B 的 TVL 并回馈用户。面对 $188.7M 的市值，该提案虽"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Compound",
-      "title": "After a Successful DAO Vote, Compound decided to Launch the 1 Phase of the $COMP Distribution",
-      "status": "passed",
-      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0x14222d95cb6a81a2cf3d10e63f621b781fc17f2ea52fff834de9eaca34aca5ba",
-      "created": 1755473845,
-      "end": 1755733045,
-      "tev_related": true,
-      "tev_keywords": [
-        "distribution"
-      ],
-      "summary_en": "Calling all Compound users! We're delighted to share the exciting news that the eagerly anticipated $COMP distribution is now open for your enthusiastic participation. Dive into the specifics below to learn about the launch date and the transformativ",
-      "summary_zh": "Compound 社区宣布 $COMP 代币分配已开放参与，是 DAO 投票通过后的正式执行。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Compound",
       "title": "Security Service Provider RFP",
       "status": "passed",
       "link": "https://snapshot.org/#/comp-vote.eth/proposal/0x29f34f6cae855cb2605b81d490db7a13565be448a72b5f7a3d121db4b1a0cc49",
@@ -2086,7 +2041,8 @@
         "distribution"
       ],
       "summary_en": "This proposal recommends that the Ether.fi DAO allocates an additional 4,000,000 ETHFI tokens for use in Season 4 (S4). The primary purpose of this allocation is to incentivize new promotions and deposits during the season.",
-      "summary_zh": "为第四季（S4）额外分配 400 万 ETHFI 代币，用于激励新用户推广和存款活动。"
+      "summary_zh": "为第四季（S4）额外分配 400 万 ETHFI 代币，用于激励新用户推广和存款活动。",
+      "analysis_zh": "ETHFI 增拨 400 万代币用于 Season 4 激励，短期稀释风险换取 TVL 增长预期。\n\nEther.fi DAO 提议增拨 400 万枚 ETHFI 用于 Season 4 激励，试图在 TVL 已达 $5.99B"
     },
     {
       "source": "Snapshot",
@@ -2344,7 +2300,8 @@
         "revenue"
       ],
       "summary_en": "MIP-016 proposes to use 20% of protocol fee revenue from Q2 2025 to buyback $SYRUP tokens then distribute these as rewards to stakers of $SYRUP. This is a continuation of the monthly buybacks that were voted on and approved by the SYRUP community at ",
-      "summary_zh": "MIP-016：将 Q2 2025 协议费用收入的 20% 用于回购 $SYRUP 代币并分配给质押者，延续社区批准的月度回购计划。"
+      "summary_zh": "MIP-016：将 Q2 2025 协议费用收入的 20% 用于回购 $SYRUP 代币并分配给质押者，延续社区批准的月度回购计划。",
+      "analysis_zh": "MIP-016 延续 Q2 回购但比例降至 20%，质押收益模型微调。\n\nMaple Finance 提议 MIP-016 将 Q"
     },
     {
       "source": "Snapshot",
@@ -2389,7 +2346,8 @@
         "revenue"
       ],
       "summary_en": "MIP-013 proposes to use 20% of protocol fee revenue from Q1 2025 to buyback SYRUP tokens on market and then distribute these as rewards to stakers of SYRUP. A detailed summary of the proposal is provided below, including the background, rationale, me",
-      "summary_zh": "MIP-013：首次启动费用回购机制——将 Q1 2025 协议费用收入的 20% 用于市场回购 SYRUP 代币并分配给质押者。"
+      "summary_zh": "MIP-013：首次启动费用回购机制——将 Q1 2025 协议费用收入的 20% 用于市场回购 SYRUP 代币并分配给质押者。",
+      "analysis_zh": "MIP-013 将回购比例从 25% 下调至 20%，SYRUP 质押收益面临缩水。\n\nMaple Finance 提出 MIP-013，计划将协议收入的回购比例从现有的 25% 下"
     },
     {
       "source": "Snapshot",
@@ -2454,7 +2412,7 @@
       "source": "Snapshot",
       "protocol": "Spark",
       "title": "SAEP-12: Document Savings Liquidity Intent Capability in Spark Savings Artifact Section",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x2df4ef0f5ea492bebd4f741225201be11557e56a686c29227734d3f7c92fd187",
       "created": 1773677440,
       "end": 1773936640,
@@ -2468,7 +2426,7 @@
       "source": "Snapshot",
       "protocol": "Spark",
       "title": "# [Ethereum] Spark Treasury - Spark Foundation and Spark Assets Foundation Grants for Q2 2026",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x2ca62cbabf82254f8df685e73a4a7751cf6cf26a8ce8ccfd706c9063f27061c7",
       "created": 1773677287,
       "end": 1773936487,
@@ -2484,7 +2442,7 @@
       "source": "Snapshot",
       "protocol": "Spark",
       "title": "[Ethereum] Spark Liquidity Layer - Add USAT and USDT transferAsset Rate Limits to Anchorage",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x71d2b7802b54a579655ca9c1aca12e6256d2ea3dd8951fdfa39cd7da4524c75e",
       "created": 1773677173,
       "end": 1773936373,
@@ -2737,48 +2695,6 @@
       "tev_keywords": [],
       "summary_en": ">\n> - spUSDC\n>   - Deposit cap: 1 billion USDC\n>\n> [Ethereum] Spark Savings - Increase spETH Deposit Cap\n>\n> The Spark Savings ETH vault tracks yield generated by underlying investments, so there is no risk of asset vs liability yield mismatch causin",
       "summary_zh": "增加存款容量：spUSDC 存款上限设为 10 亿 USDC，spETH 上限同步提升。ETH 金库跟踪底层收益，无收益率错配风险。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Spark",
-      "title": "[Ethereum] Spark Liquidity Layer - Onboard Curve weETH/WETH-ng for Swaps",
-      "status": "passed",
-      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x7eb3a86a4da21475e760e2b2ed0d82fd72bbd4d33c99a0fbedf3d978e472f362",
-      "created": 1767654764,
-      "end": 1767913964,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": ">\n> - Curve weETH/WETH-ng\n>   - Pool address: 0xDB74dfDD3BB46bE8Ce6C33dC9D82777BCFc3dEd50xDB74dfDD3BB46bE8Ce6C33dC9D82777BCFc3dEd5\n>   - Swaps\n>     - maxAmount: 100\n>     - slope: 1,000 per day\n>     - maxSlippage: 0.25%.",
-      "summary_zh": "上线 Curve weETH/WETH-ng 池用于 Spark Liquidity Layer 兑换，maxAmount 100 ETH，slope 每日 1000 ETH，最大滑点 0.25%。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Spark",
-      "title": "[Ethereum, Base] Morpho Vaults Configuration",
-      "status": "passed",
-      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x85f242a3d35252380a21ae3e5c80b023122e74af95698a301b541c7b610ffee8",
-      "created": 1767654583,
-      "end": 1767913783,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": ">\n> - Curator role: multisig address to be provided before executive vote\n>   - Threshold: 3 of 5\n> - Guardian role: multisig address to be provided before executive vote\n>   - Threshold: 3 of 5\n> - Timelock: 10 days (240 hours)\n>\n> [Ethereum] Spark ",
-      "summary_zh": "配置以太坊和 Base 上 Morpho 金库的 Curator/Guardian 角色（3/5 多签），Timelock 设为 10 天（240 小时）。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Spark",
-      "title": "SAEP-08: Offchain Collateralized Lending",
-      "status": "passed",
-      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x58b8b5d202946912ec32b1cee4bc14a2fbe8547b3362ca091d121d9314ad5f27",
-      "created": 1765208447,
-      "end": 1765467647,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": ">\n> This proposal is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 - Root Edit Proposal Submission Requirements Exception\n> For Nested Contributors of the Spark Artifact. The proposal",
-      "summary_zh": "SAEP-08：Phoenix Labs 提案，在 Spark Artifact 中定义链下抵押贷款章节，为 Spark 的链下借贷业务提供治理框架。",
       "analysis_zh": ""
     },
     {
@@ -3505,7 +3421,7 @@
       "source": "Sky Polling",
       "protocol": "Sky (MakerDAO)",
       "title": "Atlas Edit Weekly Cycle Proposal - March 16, 2026",
-      "status": "active",
+      "status": "passed",
       "link": "https://vote.makerdao.com/polling/QmZRHXrp",
       "created": "2026-03-16T16:00:00",
       "end": "2026-03-19T16:00:00",
