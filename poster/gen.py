@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Crypto3D Daily Poster - 简洁优雅版"""
+"""Crypto3D Daily Poster - 信息图版"""
 import json
 import asyncio
 from datetime import datetime
@@ -11,6 +11,7 @@ INDICATORS_DIR = TEV_DIR / "indicators" / "data"
 OUTPUT_DIR = SCRIPT_DIR / "output"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
+
 def load_json(path):
     try:
         with open(path) as f:
@@ -18,167 +19,327 @@ def load_json(path):
     except:
         return None
 
+
 def load_all():
     data = {}
-    
-    # AHR999
+
     ahr999 = load_json(INDICATORS_DIR / "ahr999.json")
     if ahr999:
-        c = ahr999.get("current", {})
+        c = ahr999["current"]
         h = ahr999.get("history", [])
         data["ahr999"] = {
-            "value": c.get("value", 0),
-            "status": c.get("status", ""),
-            "price": c.get("price", 0),
-            "cost_200d": c.get("cost_200d", 0),
-            "week_prices": [x.get("close", 0) for x in h[-7:]] if h else []
+            "value": c["value"],
+            "status": c["status"],
+            "price": c["price"],
+            "cost_200d": c["cost_200d"],
+            "fitted": c.get("fitted_price", 0),
+            "prices": [x["close"] for x in h[-7:]],
         }
-    
-    # MVRV
+
     mvrv = load_json(INDICATORS_DIR / "mvrv.json")
     if mvrv:
-        c = mvrv.get("current", {})
+        c = mvrv["current"]
         h = mvrv.get("history", [])
         data["mvrv"] = {
-            "value": c.get("value", 0),
-            "status": c.get("status", ""),
-            "week": [x.get("mvrv", 0) for x in h[-7:]] if h else []
+            "value": c["value"],
+            "status": c["status"],
+            "week": [x["mvrv"] for x in h[-7:]],
         }
-    
-    # BMRI
+
     bmri = load_json(INDICATORS_DIR / "bmri.json")
-    if bmri and "1m" in bmri:
-        c = bmri["1m"].get("current", {})
+    if bmri:
+        c = bmri["1m"]["current"]
         h = bmri["1m"].get("history", [])
         data["bmri"] = {
-            "value": c.get("value", 50),
-            "week": [x.get("bmri", 50) for x in h[-7:]] if h else []
+            "value": c["value"],
+            "regime": c["regime"],
+            "week": [x["bmri"] for x in h[-7:]],
         }
-    
-    # BTC.D
+
     btcd = load_json(INDICATORS_DIR / "btc-dominance.json")
     if btcd:
-        c = btcd.get("current", {})
+        c = btcd["current"]
         h = btcd.get("history", [])
         data["btcd"] = {
-            "value": c.get("value", 50),
-            "zone": c.get("zone", "BALANCED"),
-            "week": [x.get("value", 50) for x in h[-7:]] if h else []
+            "value": c["value"],
+            "zone": c["zone"],
+            "week": [x["value"] for x in h[-7:]],
         }
-    
+
     return data
 
-def select_focus(data):
-    ahr999 = data.get("ahr999", {})
-    mvrv = data.get("mvrv", {})
-    bmri = data.get("bmri", {})
-    
-    if ahr999.get("value", 1) < 0.5:
-        return "ahr999"
-    if mvrv.get("value", 0) > 3:
-        return "mvrv"
-    if bmri.get("value", 50) < 30 or bmri.get("value", 50) > 70:
-        return "bmri"
-    
-    weekday = datetime.now().weekday()
-    return ["ahr999", "btcd", "mvrv", "bmri", "ahr999", "ahr999", "ahr999"][weekday]
 
-def sparkline(data, color, w=120, h=32):
-    if not data or len(data) < 2:
+def select_focus(data):
+    a = data.get("ahr999", {}).get("value", 1)
+    m = data.get("mvrv", {}).get("value", 1)
+    b = data.get("bmri", {}).get("value", 50)
+    if a < 0.5:
+        return "ahr999"
+    if m > 3:
+        return "mvrv"
+    if b < 30 or b > 70:
+        return "bmri"
+    wd = datetime.now().weekday()
+    return ["ahr999", "btcd", "mvrv", "bmri", "ahr999", "ahr999", "ahr999"][wd]
+
+
+def sparkline(vals, color, w=80, h=20):
+    """生成迷你折线 SVG"""
+    if not vals or len(vals) < 2:
         return ""
-    mn, mx = min(data), max(data)
-    r = mx - mn if mx > mn else 1
+    mn, mx = min(vals), max(vals)
+    rng = mx - mn if mx != mn else 1
     pts = []
-    for i in range(len(data)):
-        x = i * (w / (len(data) - 1))
-        y = h - ((data[i] - mn) / r * (h - 8)) - 4
+    for i, v in enumerate(vals):
+        x = i * w / (len(vals) - 1)
+        y = h - ((v - mn) / rng * (h - 6)) - 3
         pts.append(f"{x:.0f},{y:.0f}")
-    ly = h - ((data[-1] - mn) / r * (h - 8)) - 4
-    return f'<svg viewBox="0 0 {w} {h}"><polyline fill="none" stroke="{color}" stroke-width="2.5" stroke-linecap="round" points="{" ".join(pts)}"/><circle cx="{w}" cy="{ly:.0f}" r="3" fill="{color}"/></svg>'
+    ly = h - ((vals[-1] - mn) / rng * (h - 6)) - 3
+    pts_str = " ".join(pts)
+    return (
+        f'<svg viewBox="0 0 {w} {h}" style="display:block">'
+        f'<polyline fill="none" stroke="{color}" stroke-width="2" '
+        f'stroke-linecap="round" stroke-linejoin="round" points="{pts_str}"/>'
+        f'<circle cx="{w}" cy="{ly:.0f}" r="2.5" fill="{color}"/>'
+        f'</svg>'
+    )
+
+
+def area_chart(vals, color, w=900, h=80):
+    """生成面积图 SVG"""
+    if not vals or len(vals) < 2:
+        return ""
+    mn, mx = min(vals), max(vals)
+    rng = mx - mn if mx != mn else 1
+    pts = []
+    for i, v in enumerate(vals):
+        x = i * w / (len(vals) - 1)
+        y = h - ((v - mn) / rng * (h - 16)) - 8
+        pts.append(f"{x:.0f},{y:.0f}")
+    # 闭合路径做面积
+    fill_pts = pts + [f"{w},{h}", f"0,{h}"]
+    pts_str = " ".join(pts)
+    fill_str = " ".join(fill_pts)
+    return (
+        f'<svg viewBox="0 0 {w} {h}" style="display:block;width:100%;height:{h}px">'
+        f'<defs>'
+        f'<linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">'
+        f'<stop offset="0%" stop-color="{color}" stop-opacity="0.25"/>'
+        f'<stop offset="100%" stop-color="{color}" stop-opacity="0.02"/>'
+        f'</linearGradient>'
+        f'</defs>'
+        f'<polygon fill="url(#ag)" points="{fill_str}"/>'
+        f'<polyline fill="none" stroke="{color}" stroke-width="2.5" '
+        f'stroke-linecap="round" stroke-linejoin="round" points="{pts_str}"/>'
+        f'</svg>'
+    )
+
+
+def gauge_bar(value, min_v, max_v, zones, w=800):
+    """生成标尺条 SVG"""
+    rng = max_v - min_v
+    pos = (value - min_v) / rng * w
+    pos = max(8, min(pos, w - 8))
+
+    zone_rects = ""
+    for z in zones:
+        x1 = (z["from"] - min_v) / rng * w
+        x2 = (z["to"] - min_v) / rng * w
+        zone_rects += (
+            f'<rect x="{x1:.0f}" y="0" width="{x2-x1:.0f}" height="8" '
+            f'rx="4" fill="{z["color"]}" opacity="0.25"/>'
+        )
+
+    zone_labels = ""
+    for z in zones:
+        x = ((z["from"] + z["to"]) / 2 - min_v) / rng * w
+        zone_labels += (
+            f'<text x="{x:.0f}" y="28" text-anchor="middle" '
+            f'font-size="11" fill="#71717a" font-family="DM Sans">{z["label"]}</text>'
+        )
+
+    return (
+        f'<svg viewBox="0 0 {w} 36" style="display:block;width:100%;height:36px">'
+        f'{zone_rects}'
+        f'<circle cx="{pos:.0f}" cy="4" r="6" fill="#fafafa"/>'
+        f'<circle cx="{pos:.0f}" cy="4" r="3" fill="#09090b"/>'
+        f'{zone_labels}'
+        f'</svg>'
+    )
+
+
+def get_color(status):
+    s = str(status).lower()
+    if any(k in s for k in ["抄底", "合理", "neutral", "balanced", "low", "fair"]):
+        return "#22c55e"
+    if any(k in s for k in ["过热", "high", "extreme", "danger"]):
+        return "#ef4444"
+    return "#3b82f6"
+
 
 def render(focus, data):
     today = datetime.now().strftime("%Y.%m.%d")
-    
-    # BTC 价格
-    prices = data.get("ahr999", {}).get("week_prices", [])
-    btc_price = prices[-1] if prices else 0
-    btc_chart = sparkline(prices, "#f59e0b", 100, 24)
-    btc_change = ""
+
+    # === BTC 价格 ===
+    ahr = data.get("ahr999", {})
+    prices = ahr.get("prices", [])
+    btc_price = ahr.get("price", 0)
+    btc_area = area_chart(prices, "#f59e0b", 900, 80)
+
+    btc_chg = ""
     if len(prices) >= 2:
         ch = ((prices[-1] - prices[0]) / prices[0]) * 100
-        btc_change = f'<span style="color:{"#22c55e" if ch>0 else "#ef4444"}">{"+" if ch>0 else ""}{ch:.1f}%</span>'
-    
-    # 主指标
-    main = data.get(focus, {})
-    main_val = main.get("value", 0)
-    main_status = main.get("status", "中性")
-    
-    # 颜色逻辑
-    def col(v, s=""):
-        s = str(s).lower()
-        if "抄底" in s or "合理" in s or v < 0.5:
-            return "#22c55e"
-        if "过热" in s or v > 3:
-            return "#ef4444"
-        return "#3b82f6"
-    
-    main_color = col(main_val, main_status)
-    
-    # 主卡片内容
+        chg_color = "#22c55e" if ch > 0 else "#ef4444"
+        chg_sign = "+" if ch > 0 else ""
+        btc_chg = f'<span class="btc-chg" style="color:{chg_color}">7d {chg_sign}{ch:.1f}%</span>'
+
+    # === 主卡片 ===
+    fd = data.get(focus, {})
+    fval = fd.get("value", 0)
+    fstatus = fd.get("status", fd.get("regime", ""))
+    fcolor = get_color(fstatus)
+
     if focus == "ahr999":
+        cost = ahr.get("cost_200d", 1)
+        ratio = int(btc_price / cost * 100) if cost else 0
+        gauge = gauge_bar(fval, 0, 1.5, [
+            {"from": 0, "to": 0.45, "color": "#22c55e", "label": "抄底"},
+            {"from": 0.45, "to": 1.2, "color": "#eab308", "label": "定投"},
+            {"from": 1.2, "to": 1.5, "color": "#ef4444", "label": "观望"},
+        ])
         main_html = f'''
-    <div class="main">
-      <div class="m-hd"><span class="ic">🔥</span><span class="lb">AHR999</span></div>
-      <div class="m-num" style="color:{main_color}">{main_val:.2f}</div>
-      <div class="m-tag" style="background:{main_color}">{main_status}</div>
-      <div class="m-info">BTC ${data["ahr999"]["price"]:,} · 200日成本 ${data["ahr999"]["cost_200d"]:,.0f}</div>
-      <div class="m-desc">价格低于200日成本线，历史上此位置定投收益显著</div>
+    <div class="card">
+      <div class="card-hd">
+        <span class="card-icon">🔥</span>
+        <span class="card-name">AHR999</span>
+        <span class="card-status" style="color:{fcolor}">{fstatus}</span>
+      </div>
+      <div class="card-num" style="color:{fcolor}">{fval:.2f}</div>
+      <div class="card-gauge">{gauge}</div>
+      <div class="card-insight">
+        BTC 价格仅为 200 日定投成本的 <strong>{ratio}%</strong><br>
+        当前定投成本 ${cost:,.0f}，拟合价值 ${ahr.get("fitted", 0):,.0f}
+      </div>
     </div>'''
+
     elif focus == "mvrv":
+        gauge = gauge_bar(fval, 0, 4, [
+            {"from": 0, "to": 1, "color": "#22c55e", "label": "低估"},
+            {"from": 1, "to": 3, "color": "#eab308", "label": "合理"},
+            {"from": 3, "to": 4, "color": "#ef4444", "label": "过热"},
+        ])
         main_html = f'''
-    <div class="main">
-      <div class="m-hd"><span class="ic">📈</span><span class="lb">MVRV</span></div>
-      <div class="m-num" style="color:{main_color}">{main_val:.2f}</div>
-      <div class="m-tag" style="background:{main_color}">{main_status}</div>
-      <div class="m-desc">持币者盈利倍数，<1.5 为低估，>3 为过热</div>
+    <div class="card">
+      <div class="card-hd">
+        <span class="card-icon">📈</span>
+        <span class="card-name">MVRV</span>
+        <span class="card-status" style="color:{fcolor}">{fstatus}</span>
+      </div>
+      <div class="card-num" style="color:{fcolor}">{fval:.2f}</div>
+      <div class="card-gauge">{gauge}</div>
+      <div class="card-insight">
+        市场整体持币者盈利 <strong>{int((fval-1)*100)}%</strong><br>
+        MVRV &lt; 1 为历史底部区域
+      </div>
     </div>'''
+
     elif focus == "bmri":
-        risk = "低风险" if main_val < 30 else "高风险" if main_val > 70 else "中性"
+        risk_text = "低风险" if fval < 30 else "高风险" if fval > 70 else "中性"
+        gauge = gauge_bar(fval, 0, 100, [
+            {"from": 0, "to": 30, "color": "#22c55e", "label": "低风险"},
+            {"from": 30, "to": 70, "color": "#eab308", "label": "中性"},
+            {"from": 70, "to": 100, "color": "#ef4444", "label": "高风险"},
+        ])
         main_html = f'''
-    <div class="main">
-      <div class="m-hd"><span class="ic">⚠️</span><span class="lb">BMRI</span></div>
-      <div class="m-num" style="color:{main_color}">{main_val:.1f}</div>
-      <div class="m-tag" style="background:{main_color}">{risk}</div>
-      <div class="m-desc">综合风险指数，<30 低风险，>70 高风险</div>
+    <div class="card">
+      <div class="card-hd">
+        <span class="card-icon">⚠️</span>
+        <span class="card-name">BMRI</span>
+        <span class="card-status" style="color:{fcolor}">{risk_text}</span>
+      </div>
+      <div class="card-num" style="color:{fcolor}">{fval:.1f}</div>
+      <div class="card-gauge">{gauge}</div>
+      <div class="card-insight">
+        综合流动性、利率、市场风险多维度评估
+      </div>
     </div>'''
-    else:
-        zone = "BTC主导" if main.get("zone") == "BTC_DOMINANT" else "山寨季" if main.get("zone") == "ALT_SEASON" else "平衡"
+
+    else:  # btcd
+        zone = fd.get("zone", "BALANCED")
+        zt = "BTC主导" if zone == "BTC_DOMINANT" else "山寨季" if zone == "ALT_SEASON" else "平衡"
+        gauge = gauge_bar(fval, 40, 70, [
+            {"from": 40, "to": 50, "color": "#22c55e", "label": "山寨季"},
+            {"from": 50, "to": 60, "color": "#eab308", "label": "平衡"},
+            {"from": 60, "to": 70, "color": "#ef4444", "label": "BTC主导"},
+        ])
         main_html = f'''
-    <div class="main">
-      <div class="m-hd"><span class="ic">₿</span><span class="lb">BTC.D</span></div>
-      <div class="m-num" style="color:{main_color}">{main_val:.1f}%</div>
-      <div class="m-tag" style="background:{main_color}">{zone}</div>
-      <div class="m-desc">BTC 市值占比，>60% BTC主导，<50% 山寨季</div>
+    <div class="card">
+      <div class="card-hd">
+        <span class="card-icon">₿</span>
+        <span class="card-name">BTC.D</span>
+        <span class="card-status" style="color:{fcolor}">{zt}</span>
+      </div>
+      <div class="card-num" style="color:{fcolor}">{fval:.1f}%</div>
+      <div class="card-gauge">{gauge}</div>
+      <div class="card-insight">
+        BTC 市值占加密总市值的比例
+      </div>
     </div>'''
-    
-    # 副指标
-    mvrv = data.get("mvrv", {})
-    mvrv_v = mvrv.get("value", 0)
-    mvrv_c = col(mvrv_v, mvrv.get("status", ""))
-    mvrv_ch = sparkline(mvrv.get("week", []), mvrv_c, 80, 20)
-    
-    bmri = data.get("bmri", {})
-    bmri_v = bmri.get("value", 50)
-    bmri_c = "#22c55e" if bmri_v < 30 else "#ef4444" if bmri_v > 70 else "#3b82f6"
-    bmri_ch = sparkline(bmri.get("week", []), bmri_c, 80, 20)
-    
+
+    # === 副指标行 ===
+    sub_items = []
+    sub_order = {
+        "ahr999": ["mvrv", "bmri", "btcd"],
+        "mvrv": ["ahr999", "bmri", "btcd"],
+        "bmri": ["ahr999", "mvrv", "btcd"],
+        "btcd": ["ahr999", "mvrv", "bmri"],
+    }
+    for name in sub_order.get(focus, ["mvrv", "bmri", "btcd"]):
+        d = data.get(name, {})
+        v = d.get("value", 0)
+        st = d.get("status", d.get("regime", d.get("zone", "")))
+        c = get_color(st)
+        wk = d.get("week", d.get("week_data", []))
+        sp = sparkline(wk, c, 80, 18)
+
+        if name == "ahr999":
+            label = "AHR999"
+            vstr = f"{v:.2f}"
+            st_text = d.get("status", "")
+        elif name == "mvrv":
+            label = "MVRV"
+            vstr = f"{v:.2f}"
+            st_text = d.get("status", "")
+        elif name == "bmri":
+            label = "BMRI"
+            vstr = f"{v:.1f}"
+            st_text = "低" if v < 30 else "高" if v > 70 else "中性"
+        else:
+            label = "BTC.D"
+            vstr = f"{v:.1f}%"
+            z = d.get("zone", "BALANCED")
+            st_text = "BTC主导" if z == "BTC_DOMINANT" else "山寨季" if z == "ALT_SEASON" else "平衡"
+
+        sub_items.append(f'''
+      <div class="row">
+        <span class="row-name">{label}</span>
+        <span class="row-val" style="color:{c}">{vstr}</span>
+        <span class="row-chart">{sp}</span>
+        <span class="row-st" style="color:{c}">{st_text}</span>
+      </div>''')
+
+    subs_html = "\n".join(sub_items)
+
+    # === 完整 HTML ===
     return f"""<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap');
+
 * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+
 body {{
   font-family: 'DM Sans', sans-serif;
   background: #09090b;
@@ -190,275 +351,232 @@ body {{
   flex-direction: column;
 }}
 
-/* Header */
-.hd {{
-  padding: 48px 64px 32px;
+/* ── Header ── */
+.hdr {{
+  padding: 56px 72px 0;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: baseline;
 }}
-.logo {{
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}}
-.logo-t {{
+.brand {{
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   letter-spacing: -0.5px;
 }}
-.logo-s {{
-  font-size: 13px;
-  color: #52525b;
-  letter-spacing: 0.5px;
-}}
 .date {{
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 15px;
-  color: #71717a;
+  font-size: 16px;
+  color: #52525b;
   font-weight: 500;
 }}
 
-/* BTC Bar */
+/* ── BTC Section ── */
 .btc {{
-  margin: 0 64px;
-  padding: 20px 28px;
-  background: #18181b;
-  border-radius: 16px;
+  padding: 40px 72px 0;
+}}
+.btc-top {{
   display: flex;
-  align-items: center;
-  gap: 20px;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 16px;
 }}
-.btc-ic {{
-  font-size: 32px;
-}}
-.btc-info {{
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}}
-.btc-lb {{
-  font-size: 11px;
-  color: #71717a;
+.btc-label {{
+  font-size: 13px;
+  color: #52525b;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  font-weight: 500;
 }}
-.btc-num {{
+.btc-price {{
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 700;
-  color: #f59e0b;
-}}
-.btc-rt {{
-  margin-left: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 6px;
-}}
-.btc-ch {{
-  height: 24px;
-  width: 100px;
+  color: #fafafa;
 }}
 .btc-chg {{
-  font-size: 15px;
-  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}}
+.btc-chart {{
+  margin: 0 -72px;
+  padding: 0 72px;
 }}
 
-/* Main */
-.cnt {{
-  flex: 1;
-  padding: 48px 64px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+/* ── Divider ── */
+.divider {{
+  margin: 40px 72px;
+  height: 1px;
+  background: #27272a;
 }}
-.main {{
-  background: linear-gradient(135deg, #18181b 0%, #0f0f11 100%);
+
+/* ── Main Card ── */
+.card {{
+  margin: 0 72px;
+  background: linear-gradient(160deg, #141416 0%, #0c0c0e 100%);
+  border: 1px solid #1e1e22;
   border-radius: 24px;
-  padding: 40px;
-  border: 1px solid rgba(255,255,255,0.03);
+  padding: 40px 44px;
 }}
-.m-hd {{
+.card-hd {{
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }}
-.ic {{
-  font-size: 28px;
-}}
-.lb {{
+.card-icon {{ font-size: 24px; }}
+.card-name {{
   font-size: 14px;
-  color: #71717a;
-  font-weight: 500;
+  color: #52525b;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  font-weight: 500;
 }}
-.m-num {{
+.card-status {{
+  margin-left: auto;
+  font-size: 14px;
+  font-weight: 700;
+}}
+.card-num {{
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 80px;
+  font-size: 72px;
   font-weight: 700;
   letter-spacing: -2px;
-  margin-bottom: 16px;
+  margin: 8px 0 24px;
 }}
-.m-tag {{
-  display: inline-block;
-  padding: 8px 20px;
-  border-radius: 20px;
-  font-size: 15px;
-  font-weight: 600;
-  color: #fafafa;
-  margin-bottom: 20px;
+.card-gauge {{
+  margin-bottom: 24px;
 }}
-.m-info {{
+.card-insight {{
   font-size: 15px;
   color: #a1a1aa;
-  margin-bottom: 16px;
-}}
-.m-desc {{
-  font-size: 14px;
-  color: #71717a;
-  line-height: 1.6;
-  padding-top: 16px;
+  line-height: 1.7;
   border-top: 1px solid #27272a;
+  padding-top: 20px;
+}}
+.card-insight strong {{
+  color: #fafafa;
 }}
 
-/* Subs */
+/* ── Sub Rows ── */
 .subs {{
+  padding: 0 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}}
+.row {{
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}}
-.sub {{
-  background: #18181b;
-  border-radius: 16px;
-  padding: 24px;
-}}
-.s-hd {{
-  display: flex;
+  grid-template-columns: 80px 80px 100px 1fr;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #1a1a1d;
 }}
-.s-lb {{
-  font-size: 13px;
-  color: #71717a;
-  font-weight: 500;
-}}
-.s-val {{
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}}
-.s-ch {{
-  height: 20px;
-  width: 80px;
-  margin-bottom: 8px;
-}}
-.s-st {{
-  font-size: 12px;
-  font-weight: 500;
-}}
-
-/* Footer */
-.ft {{
-  padding: 32px 64px;
-  display: flex;
-  justify-content: space-between;
+.row:last-child {{ border-bottom: none; }}
+.row-name {{
   font-size: 13px;
   color: #52525b;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }}
-.link {{
+.row-val {{
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}}
+.row-chart {{
+  height: 18px;
+}}
+.row-st {{
+  font-size: 13px;
+  font-weight: 500;
+  text-align: right;
+}}
+
+/* ── Footer ── */
+.ftr {{
+  margin-top: auto;
+  padding: 32px 72px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #3f3f46;
+}}
+.ftr a {{
   color: #3b82f6;
+  text-decoration: none;
   font-weight: 600;
 }}
 </style>
 </head>
 <body>
 
-<div class="hd">
-  <div class="logo">
-    <div class="logo-t">Crypto3D Daily</div>
-    <div class="logo-s">Market Intelligence</div>
-  </div>
+<div class="hdr">
+  <div class="brand">Crypto3D</div>
   <div class="date">{today}</div>
 </div>
 
 <div class="btc">
-  <span class="btc-ic">₿</span>
-  <div class="btc-info">
-    <div class="btc-lb">Bitcoin</div>
-    <div class="btc-num">${btc_price:,.0f}</div>
+  <div class="btc-top">
+    <span class="btc-label">Bitcoin</span>
+    <span class="btc-price">${btc_price:,}</span>
+    {btc_chg}
   </div>
-  <div class="btc-rt">
-    <div class="btc-ch">{btc_chart}</div>
-    <div class="btc-chg">{btc_change}</div>
-  </div>
+  <div class="btc-chart">{btc_area}</div>
 </div>
 
-<div class="cnt">
+<div class="divider"></div>
+
 {main_html}
+
+<div class="divider"></div>
+
 <div class="subs">
-  <div class="sub">
-    <div class="s-hd">
-      <span class="s-lb">📈 MVRV</span>
-    </div>
-    <div class="s-val" style="color:{mvrv_c}">{mvrv_v:.2f}</div>
-    <div class="s-ch">{mvrv_ch}</div>
-    <div class="s-st" style="color:{mvrv_c}">{mvrv.get("status", "")}</div>
-  </div>
-  <div class="sub">
-    <div class="s-hd">
-      <span class="s-lb">⚠️ BMRI</span>
-    </div>
-    <div class="s-val" style="color:{bmri_c}">{bmri_v:.1f}</div>
-    <div class="s-ch">{bmri_ch}</div>
-    <div class="s-st" style="color:{bmri_c}">{"低风险" if bmri_v<30 else "高风险" if bmri_v>70 else "中性"}</div>
-  </div>
-</div>
+{subs_html}
 </div>
 
-<div class="ft">
-  <span>每日加密市场晴雨表</span>
-  <span class="link">crypto3d.pro</span>
+<div class="ftr">
+  <span>Daily Market Snapshot</span>
+  <a href="https://crypto3d.pro">crypto3d.pro</a>
 </div>
 
 </body>
 </html>"""
 
+
 async def generate():
     print("[1/4] 加载数据...")
     data = load_all()
-    
+
     print("[2/4] 选择焦点...")
     focus = select_focus(data)
     print(f"  焦点: {focus.upper()}")
-    
+
     print("[3/4] 渲染...")
     html = render(focus, data)
-    
+
     today_str = datetime.now().strftime("%Y-%m-%d")
     html_path = OUTPUT_DIR / f"{today_str}.html"
     with open(html_path, "w") as f:
         f.write(html)
-    
+
     print("[4/4] 截图...")
     png_path = OUTPUT_DIR / f"{today_str}.png"
-    
+
     from playwright.async_api import async_playwright
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
         page = await browser.new_page(viewport={"width": 1080, "height": 1350})
         await page.goto(f"file://{html_path}")
-        await page.wait_for_timeout(500)
+        await page.wait_for_timeout(800)
         await page.screenshot(path=str(png_path), type="png")
         await browser.close()
-    
+
     print(f"[OK] {png_path}")
     return png_path
+
 
 if __name__ == "__main__":
     asyncio.run(generate())
