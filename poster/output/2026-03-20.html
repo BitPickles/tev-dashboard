@@ -3,120 +3,261 @@
 <head>
 <meta charset="UTF-8">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap');
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:'DM Sans',sans-serif;
-  color:#fafafa;
-  width:1080px;
-  height:1350px;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  background:#07070a;
-  background-image:radial-gradient(ellipse 80% 60% at 50% 30%, #12121a 0%, #07070a 100%);
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  width: 1080px;
+  height: 1350px;
+  overflow: hidden;
+  color: #e4e4e7;
+  background: #08080c;
+  background-image:
+    radial-gradient(ellipse 100% 50% at 50% 0%, #13131a 0%, transparent 70%),
+    radial-gradient(circle at 80% 80%, #0f0f18 0%, transparent 50%);
 }
 
-/* Header */
-.hdr{
-  padding:52px 72px 0;
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
+/* === HEADER === */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 44px 56px 36px;
 }
-.brand{font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;letter-spacing:-0.5px}
-.sub-brand{font-size:13px;color:#3f3f46;letter-spacing:2px;text-transform:uppercase;margin-top:6px}
-.dt{text-align:right}
-.dt-date{font-family:'Space Grotesk',sans-serif;font-size:20px;color:#52525b;font-weight:500}
-.dt-day{font-size:13px;color:#3f3f46;margin-top:4px}
-
-/* BTC */
-.btc{padding:36px 72px 0}
-.btc-r{display:flex;align-items:baseline;gap:20px;margin-bottom:16px}
-.btc-lb{font-size:16px;color:#52525b;text-transform:uppercase;letter-spacing:2px;font-weight:500}
-.btc-p{font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:700;color:#fafafa}
-
-/* Divider */
-.dv{margin:32px 72px;height:1px;background:linear-gradient(90deg,transparent,#27272a 20%,#27272a 80%,transparent)}
-
-/* Card */
-.card{margin:0 72px;background:linear-gradient(160deg,rgba(20,20,24,0.8),rgba(12,12,14,0.9));border:1px solid rgba(255,255,255,0.04);border-radius:24px;padding:36px 44px;backdrop-filter:blur(10px)}
-.c-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
-.c-lb{font-size:20px;color:#71717a;font-weight:500}
-.c-st{font-size:20px;font-weight:700}
-.c-num{font-family:'Space Grotesk',sans-serif;font-size:88px;font-weight:700;letter-spacing:-3px;margin:4px 0 20px}
-.c-gauge{margin-bottom:20px}
-.c-ins{font-size:18px;color:#71717a;line-height:1.6;border-top:1px solid rgba(255,255,255,0.06);padding-top:18px}
-.c-ins b{color:#d4d4d8;font-weight:700}
-
-/* Subs */
-.subs{padding:0 72px}
-.row{display:grid;grid-template-columns:100px 100px 140px 1fr;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
-.row:last-child{border-bottom:none}
-.r-lb{font-size:17px;color:#52525b;font-weight:600}
-.r-v{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700}
-.r-sp{height:28px}
-.r-s{font-size:16px;font-weight:600;text-align:right}
-
-/* Footer */
-.ftr{
-  margin-top:auto;
-  padding:32px 72px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:14px;
-  color:#27272a;
+.h-brand {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #fafafa;
 }
-.ftr-l{color:#3b82f6;font-weight:600;font-size:18px}
+.h-date {
+  font-size: 18px;
+  font-weight: 600;
+  color: #3f3f46;
+  letter-spacing: 1px;
+}
+
+/* === BTC SECTION === */
+.btc-section {
+  padding: 0 56px;
+}
+.btc-top {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.btc-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #52525b;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.btc-price {
+  font-size: 56px;
+  font-weight: 800;
+  color: #fafafa;
+  letter-spacing: -2px;
+}
+.btc-chg {
+  font-size: 22px;
+  font-weight: 700;
+}
+.btc-chart {
+  height: 160px;
+  margin: 0 -56px;
+  padding: 0 56px;
+  overflow: hidden;
+}
+
+/* === MAIN CARD === */
+.card {
+  margin: 24px 56px;
+  padding: 36px 40px 32px;
+  background: linear-gradient(145deg, #111115 0%, #0a0a0e 100%);
+  border: 1px solid #1c1c22;
+  border-radius: 20px;
+}
+.c-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.c-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #71717a;
+}
+.c-val {
+  font-size: 80px;
+  font-weight: 800;
+  letter-spacing: -3px;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.c-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+.c-gauge {
+  margin-bottom: 24px;
+}
+.c-detail {
+  display: flex;
+  gap: 32px;
+  padding-top: 20px;
+  border-top: 1px solid #1c1c22;
+}
+.c-d-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.c-d-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #52525b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.c-d-val {
+  font-size: 22px;
+  font-weight: 700;
+  color: #d4d4d8;
+}
+
+/* === SUB INDICATORS === */
+.subs {
+  padding: 0 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.s-item {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #1418;
+}
+.s-item:last-child { border-bottom: none; }
+.s-left {
+  width: 160px;
+}
+.s-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #52525b;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.s-num {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+.s-chart {
+  flex: 1;
+  height: 32px;
+  padding: 0 24px;
+}
+.s-status {
+  width: 80px;
+  text-align: right;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* === FOOTER === */
+.footer {
+  margin-top: auto;
+  padding: 28px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.f-tag {
+  font-size: 13px;
+  font-weight: 500;
+  color: #27272a;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.f-link {
+  font-size: 18px;
+  font-weight: 700;
+  color: #3b82f6;
+}
 </style>
 </head>
 <body>
 
-<div class="hdr">
-  <div>
-    <div class="brand">Crypto3D</div>
-    <div class="sub-brand">Market Intelligence</div>
-  </div>
-  <div class="dt">
-    <div class="dt-date">2026.03.20</div>
-    <div class="dt-day">周五</div>
-  </div>
+<div class="header">
+  <div class="h-brand">Crypto3D</div>
+  <div class="h-date">FRI · 2026.03.20</div>
 </div>
 
-<div class="btc">
-  <div class="btc-r">
-    <span class="btc-lb">Bitcoin</span>
-    <span class="btc-p">$70,759</span>
-    <span style="color:#f87171;font-family:Space Grotesk;font-size:20px;font-weight:600">-3.3%</span>
+<div class="btc-section">
+  <div class="btc-top">
+    <span class="btc-label">Bitcoin</span>
+    <span class="btc-price">$70,759</span>
+    <span class="btc-chg"><span style="color:#fb7185">-3.3%</span></span>
   </div>
-  <svg viewBox="0 0 940 130" style="display:block;width:100%"><defs><linearGradient id="agrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f59e0b" stop-opacity="0.35"/><stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/></linearGradient></defs><polygon fill="url(#agrad)" points="0,62 157,91 313,70 470,29 627,12 783,70 940,118 940,130 0,130"/><polyline fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="0,62 157,91 313,70 470,29 627,12 783,70 940,118"/></svg>
+  <div class="btc-chart"><svg viewBox="0 0 1000 160" preserveAspectRatio="none" style="display:block;width:100%;height:100%"><defs><linearGradient id="af" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f59e0b" stop-opacity="0.4"/><stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/></linearGradient></defs><polygon fill="url(#af)" points="0,77 167,107 333,85 500,42 667,24 833,85 1000,136 1000,160 0,160"/><polyline fill="none" stroke="#f59e0b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" points="0,77 167,107 333,85 500,42 667,24 833,85 1000,136"/></svg></div>
 </div>
-
-<div class="dv"></div>
-
 
 <div class="card">
-  <div class="c-top"><div class="c-lb">🔥 AHR999</div><div class="c-st" style="color:#4ade80">抄底区</div></div>
-  <div class="c-num" style="color:#4ade80;text-shadow:0 0 80px #4ade8040">0.36</div>
-  <div class="c-gauge"><svg viewBox="0 0 840 48" style="display:block;width:100%"><rect x="0" y="8" width="252" height="6" fill="#4ade80" opacity="0.15" rx="3"/><rect x="252" y="8" width="420" height="6" fill="#facc15" opacity="0.15" rx="3"/><rect x="672" y="8" width="168" height="6" fill="#f87171" opacity="0.15" rx="3"/><rect x="0" y="8" width="203" height="6" fill="#4ade80" opacity="0.5" rx="3"/><circle cx="203" cy="11" r="8" fill="#4ade80" opacity="0.3"/><circle cx="203" cy="11" r="5" fill="#fafafa"/><circle cx="203" cy="11" r="2.5" fill="#4ade80"/><text x="126" y="40" text-anchor="middle" font-size="16" fill="#52525b" font-family="DM Sans,sans-serif" font-weight="500">抄底</text><text x="462" y="40" text-anchor="middle" font-size="16" fill="#52525b" font-family="DM Sans,sans-serif" font-weight="500">定投</text><text x="756" y="40" text-anchor="middle" font-size="16" fill="#52525b" font-family="DM Sans,sans-serif" font-weight="500">观望</text></svg></div>
-  <div class="c-ins">价格 = 200日成本的 <b>76%</b> · 定投成本 $93,000</div>
+  <div class="c-top">
+    <span class="c-title">🔥 AHR999</span>
+  </div>
+  
+        <div class="c-val" style="color:#34d399">0.36</div>
+        <div class="c-badge" style="background:#34d39920;color:#34d399">抄底区</div>
+        <div class="c-gauge"><div style="position:relative;height:10px;border-radius:5px;background:#1a1a1f"><div style="position:absolute;left:0.0%;width:30.0%;height:100%;background:#34d399;opacity:0.12;border-radius:5px"></div><div style="position:absolute;left:30.0%;width:50.0%;height:100%;background:#fbbf24;opacity:0.12;border-radius:5px"></div><div style="position:absolute;left:80.0%;width:20.0%;height:100%;background:#fb7185;opacity:0.12;border-radius:5px"></div><div style="position:absolute;left:0;width:24.14666666666667%;height:100%;background:linear-gradient(90deg,#34d39900,#34d399);opacity:0.35;border-radius:5px"></div><div style="position:absolute;left:24.14666666666667%;top:50%;transform:translate(-50%,-50%);width:16px;height:16px;border-radius:50%;background:#34d399;box-shadow:0 0 12px #34d39980"></div><div style="position:absolute;left:24.14666666666667%;top:50%;transform:translate(-50%,-50%);width:8px;height:8px;border-radius:50%;background:#fff"></div></div>
+    <div style="position:relative;height:28px;margin-top:8px"><span style="position:absolute;left:15.0%;transform:translateX(-50%);font-size:16px;color:#52525b;font-weight:500">抄底</span><span style="position:absolute;left:54.99999999999999%;transform:translateX(-50%);font-size:16px;color:#52525b;font-weight:500">定投</span><span style="position:absolute;left:90.0%;transform:translateX(-50%);font-size:16px;color:#52525b;font-weight:500">观望</span></div></div>
+        <div class="c-detail">
+          <div class="c-d-item"><span class="c-d-label">BTC 价格</span><span class="c-d-val">$70,759</span></div>
+          <div class="c-d-item"><span class="c-d-label">200日成本</span><span class="c-d-val">$93,000</span></div>
+          <div class="c-d-item"><span class="c-d-label">价格/成本</span><span class="c-d-val" style="color:#34d399">76%</span></div>
+        </div>
 </div>
-
-<div class="dv"></div>
 
 <div class="subs">
-
-  <div class="row"><span class="r-lb">MVRV</span><span class="r-v" style="color:#4ade80">1.29</span><span class="r-sp"><svg viewBox="0 0 120 28" style="display:block"><polyline fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points="0,20 20,19 40,12 60,4 80,7 100,19 120,24"/><circle cx="120" cy="24" r="3.5" fill="#4ade80"/></svg></span><span class="r-s" style="color:#4ade80">合理区</span></div>
-
-  <div class="row"><span class="r-lb">BMRI</span><span class="r-v" style="color:#4ade80">45.2</span><span class="r-sp"><svg viewBox="0 0 120 28" style="display:block"><polyline fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points="0,23 20,24 40,8 60,4 80,18 100,20 120,22"/><circle cx="120" cy="22" r="3.5" fill="#4ade80"/></svg></span><span class="r-s" style="color:#4ade80">中性</span></div>
-
-  <div class="row"><span class="r-lb">BTC.D</span><span class="r-v" style="color:#4ade80">58.2%</span><span class="r-sp"><svg viewBox="0 0 120 28" style="display:block"><polyline fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points="0,4 20,8 40,6 60,7 80,14 100,17 120,24"/><circle cx="120" cy="24" r="3.5" fill="#4ade80"/></svg></span><span class="r-s" style="color:#4ade80">平衡</span></div>
+  
+        <div class="s-item">
+          <div class="s-left">
+            <div class="s-name">MVRV</div>
+            <div class="s-num" style="color:#34d399">1.29</div>
+          </div>
+          <div class="s-chart"><svg viewBox="0 0 100 32" style="display:block;width:100%;height:100%"><polyline fill="none" stroke="#34d399" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="0,23 17,22 33,14 50,5 67,8 83,21 100,27"/><circle cx="100" cy="27" r="4" fill="#34d399"/></svg></div>
+          <div class="s-status" style="color:#34d399">合理区</div>
+        </div>
+        <div class="s-item">
+          <div class="s-left">
+            <div class="s-name">BMRI</div>
+            <div class="s-num" style="color:#34d399">45.2</div>
+          </div>
+          <div class="s-chart"><svg viewBox="0 0 100 32" style="display:block;width:100%;height:100%"><polyline fill="none" stroke="#34d399" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="0,26 17,27 33,9 50,5 67,20 83,23 100,25"/><circle cx="100" cy="25" r="4" fill="#34d399"/></svg></div>
+          <div class="s-status" style="color:#34d399">中性</div>
+        </div>
+        <div class="s-item">
+          <div class="s-left">
+            <div class="s-name">BTC.D</div>
+            <div class="s-num" style="color:#34d399">58.2%</div>
+          </div>
+          <div class="s-chart"><svg viewBox="0 0 100 32" style="display:block;width:100%;height:100%"><polyline fill="none" stroke="#34d399" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="0,5 17,9 33,7 50,8 67,16 83,19 100,27"/><circle cx="100" cy="27" r="4" fill="#34d399"/></svg></div>
+          <div class="s-status" style="color:#34d399">平衡</div>
+        </div>
 </div>
 
-<div class="ftr">
-  <span>Daily Market Snapshot</span>
-  <span class="ftr-l">crypto3d.pro</span>
+<div class="footer">
+  <span class="f-tag">Daily Market Snapshot</span>
+  <span class="f-link">crypto3d.pro</span>
 </div>
 
 </body>
