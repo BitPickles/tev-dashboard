@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-03-20T01:35:26.024955+00:00",
-  "total": 250,
+  "updated_at": "2026-03-20T05:59:24.491317+00:00",
+  "total": 248,
   "active_count": 33,
-  "passed_count": 217,
-  "tev_related": 67,
+  "passed_count": 215,
+  "tev_related": 65,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -1116,7 +1116,8 @@
         "tokenomics"
       ],
       "summary_en": "Deflationary Goal: We aim for a ~4% annual deflation rate and target a ~20% reduction in the CAKE supply by 2030.  Retirement of the veCAKE and Gauges Voting System: The veCAKE and Gauges Voting system will be phased out for a more straightforward an",
-      "summary_zh": "CAKE Tokenomics 3.0 核心提案：目标年约 4% 通缩率，2030 年前减少约 20% CAKE 供应量；废除 veCAKE 和 Gauges 投票系统，改用更简洁的治理方案。"
+      "summary_zh": "CAKE Tokenomics 3.0 核心提案：目标年约 4% 通缩率，2030 年前减少约 20% CAKE 供应量；废除 veCAKE 和 Gauges 投票系统，改用更简洁的治理方案。",
+      "analysis_zh": "CAKE 经济学大改：废除 veCAKE 与质押，确立 4% 年通缩目标\n\nPancakeSwap 提案 3.0 彻底重构代币经济学，废除 veCAKE 和 Gauges Voting 系统，并解锁所有质押 CAKE，结束复杂的“贿选”时代。虽然当前 $111.0M 年收入和 6.33% 的 TEV Yield 具有吸引力，但改革旨在牺牲短期质押收益换取长期价值，目标实现约 4% 的年通缩率并在 2030 年前减少 20% 供应量。这一激进转型将治理权归还给持有者，消除了流动性挖矿的摩擦，尽管大量解锁可能带来短期抛压，但明确的通缩预期若能配合收入回购执行，将显著提升 CAKE 的资产质量。"
     },
     {
       "source": "Snapshot",
@@ -1876,37 +1877,6 @@
     {
       "source": "Snapshot",
       "protocol": "Compound",
-      "title": "After a Successful DAO Vote, Compound decided to Launch the 1 Phase of the $COMP Distribution",
-      "status": "passed",
-      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0x69e91b943ebdd65906cd909d196b95dd4e1be266823e76f89c13bf9050632c61",
-      "created": 1755511001,
-      "end": 1755770201,
-      "tev_related": true,
-      "tev_keywords": [
-        "distribution"
-      ],
-      "summary_en": "Calling all Compound users! We're delighted to share the exciting news that the eagerly anticipated $COMP distribution is now open for your enthusiastic participation. Dive into the specifics below to learn about the launch date and the transformativ",
-      "summary_zh": "Compound 社区宣布 $COMP 代币分配已开放参与，是 DAO 投票通过后的正式执行。",
-      "analysis_zh": "Compound 开启 COMP 分发，意在激活社区治理但难改代币价值捕获弱的现状。\n\nCompound DAO 宣布启动 $COMP 分发计划，尽管当前 TEV Yield 为 0% 且年收入仅 $2.4M，代币机制仍属“纯治理”无收入分配，但此举意在通过激励手段盘活高达 $1.56B 的 TVL 并回馈用户。面对 $188.7M 的市值，该提案虽"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Compound",
-      "title": "After a Successful DAO Vote, Compound decided to Launch the 1 Phase of the $COMP Distribution",
-      "status": "passed",
-      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0x14222d95cb6a81a2cf3d10e63f621b781fc17f2ea52fff834de9eaca34aca5ba",
-      "created": 1755473845,
-      "end": 1755733045,
-      "tev_related": true,
-      "tev_keywords": [
-        "distribution"
-      ],
-      "summary_en": "Calling all Compound users! We're delighted to share the exciting news that the eagerly anticipated $COMP distribution is now open for your enthusiastic participation. Dive into the specifics below to learn about the launch date and the transformativ",
-      "summary_zh": "Compound 社区宣布 $COMP 代币分配已开放参与，是 DAO 投票通过后的正式执行。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Compound",
       "title": "Security Service Provider RFP",
       "status": "passed",
       "link": "https://snapshot.org/#/comp-vote.eth/proposal/0x29f34f6cae855cb2605b81d490db7a13565be448a72b5f7a3d121db4b1a0cc49",
@@ -2071,7 +2041,8 @@
         "distribution"
       ],
       "summary_en": "This proposal recommends that the Ether.fi DAO allocates an additional 4,000,000 ETHFI tokens for use in Season 4 (S4). The primary purpose of this allocation is to incentivize new promotions and deposits during the season.",
-      "summary_zh": "为第四季（S4）额外分配 400 万 ETHFI 代币，用于激励新用户推广和存款活动。"
+      "summary_zh": "为第四季（S4）额外分配 400 万 ETHFI 代币，用于激励新用户推广和存款活动。",
+      "analysis_zh": "ETHFI 增拨 400 万代币用于 Season 4 激励，短期稀释风险换取 TVL 增长预期。\n\nEther.fi DAO 提议增拨 400 万枚 ETHFI 用于 Season 4 激励，试图在 TVL 已达 $5.99B"
     },
     {
       "source": "Snapshot",
