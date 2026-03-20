@@ -277,9 +277,9 @@ body {{
   padding: 44px 56px 36px;
 }}
 .h-brand {{
-  font-size: 28px;
+  font-size: 40px;
   font-weight: 800;
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;
   color: #fafafa;
 }}
 .h-date {{
