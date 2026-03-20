@@ -106,9 +106,9 @@ def render(F, D):
   <div class="c-num" style="color:{fc}">{fv:.2f}</div>
   <div class="c-g">{g}</div>
   <div class="c-m">
-    <span><b>BTC</b> ${bp:,}</span>
-    <span><b>200日成本</b> ${bc:,.0f}</span>
-    <span style="color:{fc}"><b>价格/成本</b> {rt}%</span>
+    <div><b>BTC 价格</b><span>${bp:,}</span></div>
+    <div><b>200日成本</b><span>${bc:,.0f}</span></div>
+    <div><b>价格/成本</b><span style="color:{fc}">{rt}%</span></div>
   </div>
 </div>'''
     elif F == "mvrv":
@@ -119,7 +119,9 @@ def render(F, D):
   <div class="c-hd"><span class="c-ic">📈</span><span class="c-nm">MVRV</span><span class="c-st" style="color:{fc}">{fs}</span></div>
   <div class="c-num" style="color:{fc}">{fv:.2f}</div>
   <div class="c-g">{g}</div>
-  <div class="c-m"><span style="color:{fc}"><b>持币盈利</b> {pn}%</span></div>
+  <div class="c-m">
+    <div><b>持币盈利</b><span style="color:{fc}">{pn}%</span></div>
+  </div>
 </div>'''
     elif F == "bmri":
         rx = "低风险" if fv<30 else "高风险" if fv>70 else "中性"
@@ -176,32 +178,32 @@ body{{font-family:'Inter',sans-serif;width:1080px;height:1350px;overflow:hidden;
 
 /* BTC - 紧凑 */
 .btc{{padding:0 56px}}
-.btc-r{{display:flex;align-items:baseline;gap:12px}}
-.btc-l{{font-size:14px;font-weight:700;color:#52525b;text-transform:uppercase;letter-spacing:2px}}
-.btc-p{{font-size:48px;font-weight:800;color:#fafafa;letter-spacing:-1px}}
-.chg{{font-size:18px;font-weight:700}}
+.btc-r{{display:flex;align-items:baseline;gap:14px}}
+.btc-l{{font-size:13px;font-weight:600;color:#52525b;text-transform:uppercase;letter-spacing:2px}}
+.btc-p{{font-size:52px;font-weight:800;color:#fafafa;letter-spacing:-1px}}
+.chg{{font-size:20px;font-weight:700}}
 .btc-c{{height:120px;margin:0 -56px;overflow:hidden}}
 
 /* CARD */
-.card{{margin:16px 48px;padding:28px 32px 24px;background:linear-gradient(160deg,#111116,#0b0b10);border:1px solid #1a1a20;border-radius:18px}}
-.c-hd{{display:flex;align-items:center;gap:10px;margin-bottom:4px}}
-.c-ic{{font-size:22px}}
-.c-nm{{font-size:17px;font-weight:600;color:#71717a;flex:1}}
-.c-st{{font-size:17px;font-weight:800}}
-.c-num{{font-size:64px;font-weight:800;letter-spacing:-2px;margin:2px 0 14px;line-height:1}}
-.c-g{{margin-bottom:18px}}
-.c-m{{display:flex;gap:24px;padding-top:14px;border-top:1px solid #1a1a20;font-size:15px;color:#a1a1aa}}
-.c-m b{{color:#71717a;font-weight:600}}
+.card{{margin:16px 48px;padding:30px 36px 26px;background:linear-gradient(160deg,#111116,#0b0b10);border:1px solid #1a1a20;border-radius:18px}}
+.c-hd{{display:flex;align-items:center;gap:12px;margin-bottom:6px}}
+.c-ic{{font-size:24px}}
+.c-nm{{font-size:16px;font-weight:500;color:#52525b;flex:1;letter-spacing:1px;text-transform:uppercase}}
+.c-st{{font-size:18px;font-weight:800}}
+.c-num{{font-size:68px;font-weight:800;letter-spacing:-2px;margin:4px 0 18px;line-height:1}}
+.c-g{{margin-bottom:20px}}
+.c-m{{display:flex;gap:28px;padding-top:16px;border-top:1px solid #1a1a20;font-size:16px;color:#a1a1aa}}
+.c-m b{{color:#52525b;font-weight:600;font-size:13px;display:block;margin-bottom:2px}}
 
 /* SUBS */
-.subs{{margin:8px 48px;padding:24px 32px;background:linear-gradient(160deg,#111116,#0b0b10);border:1px solid #1a1a20;border-radius:18px;flex:1;display:flex;flex-direction:column;justify-content:space-evenly}}
-.s-r{{display:flex;align-items:center;padding:18px 0;border-bottom:1px solid #15151a}}
+.subs{{margin:12px 48px 0;padding:28px 36px;background:linear-gradient(160deg,#111116,#0b0b10);border:1px solid #1a1a20;border-radius:18px;flex:1;display:flex;flex-direction:column;justify-content:space-evenly}}
+.s-r{{display:flex;align-items:center;padding:20px 0;border-bottom:1px solid #15151a}}
 .s-r:last-child{{border-bottom:none}}
-.s-l{{width:150px;display:flex;flex-direction:column;gap:3px}}
-.s-n{{font-size:15px;font-weight:600;color:#52525b}}
-.s-v{{font-size:32px;font-weight:800;letter-spacing:-0.5px}}
-.s-c{{flex:1;height:40px;padding:0 16px}}
-.s-t{{width:85px;text-align:right;font-size:18px;font-weight:700}}
+.s-l{{width:140px;display:flex;flex-direction:column;gap:4px}}
+.s-n{{font-size:14px;font-weight:500;color:#52525b;letter-spacing:0.5px}}
+.s-v{{font-size:34px;font-weight:800;letter-spacing:-0.5px}}
+.s-c{{flex:1;height:44px;padding:0 20px}}
+.s-t{{width:80px;text-align:right;font-size:17px;font-weight:700}}
 
 /* FOOTER */
 .ftr{{padding:18px 56px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#27272a}}

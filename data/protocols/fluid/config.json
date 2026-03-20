@@ -87,10 +87,10 @@
   "data_source_note": "链上追踪 (FLUID 流入储备钱包)",
   "tev_data": {
     "has_tev": true,
-    "trailing_365d_tev_usd": 4506183,
+    "trailing_365d_tev_usd": 4613558.0,
     "tev_yield_percent": 2.58,
-    "market_cap_usd": 174715856,
-    "price_usd": 2.23,
+    "market_cap_usd": 178886148.0,
+    "price_usd": 2.28,
     "calculation_date": "2026-03-01",
     "methodology": "链上回购追踪（Etherscan FLUID→储备钱包），DefiLlama 交叉验证",
     "sources": [
@@ -102,11 +102,11 @@
       }
     ],
     "validation": {
-      "onchain_total_usd": 4506183,
-      "defillama_total_usd": 4473933,
-      "diff_pct": 0.7
+      "onchain_total_usd": 4613558.0,
+      "defillama_total_usd": 4637397,
+      "diff_pct": 0.5
     },
-    "last_updated": "2026-03-19"
+    "last_updated": "2026-03-20"
   },
   "buyback_data": {
     "total_bought": 1094934,
@@ -134,8 +134,8 @@
     "en": "Dual wallets fully on-chain trackable (Etherscan), cross-validated with DefiLlama <0.1% diff"
   },
   "market_data": {
-    "tvl": 1228798458.1711347,
-    "tvl_updated": "2026-03-20T01:00:36.576Z"
+    "tvl": 1241274291.6580143,
+    "tvl_updated": "2026-03-20T13:00:35.154Z"
   },
   "tevRatio": 0.35,
   "earning_yield_percent": 6.73,
