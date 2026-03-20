@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-03-20T05:59:24.491317+00:00",
-  "total": 248,
-  "active_count": 33,
+  "updated_at": "2026-03-20T13:31:07.514006+00:00",
+  "total": 249,
+  "active_count": 34,
   "passed_count": 215,
   "tev_related": 65,
   "monitored_protocols": 19,
@@ -130,6 +130,20 @@
     }
   },
   "proposals": [
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[ARFC] Aave V4 Activation on Ethereum Mainnet",
+      "status": "active",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0x55e85a32828da36122b9c8d50548696d7c748fd41c775f5bf06bdf0f2e32a265",
+      "created": 1773925563,
+      "end": 1774271163,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "This proposal seeks community approval to deploy Aave V4 to Ethereum Mainnet through a security-first initial setup with conservative risk parameters and a deliberately narrow Hub and Spoke configuration. Aave V4 introduces a modular architecture whe",
+      "summary_zh": "[ARFC] Aave V4于以太坊主网激活提案\n本提案旨在获得社区批准，将Aave V4部署至以太坊主网，通过以安全为首要原则的初始设置，采用保守的风险参数和故意狭窄的枢纽-辐条配置。Aave V4引入模块化架构，...",
+      "analysis_zh": ""
+    },
     {
       "source": "Snapshot",
       "protocol": "Aave",
