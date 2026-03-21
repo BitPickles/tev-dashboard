@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-03-21T01:10:52.004290+00:00",
-  "total": 243,
+  "updated_at": "2026-03-21T13:09:24.141431+00:00",
+  "total": 248,
   "active_count": 33,
-  "passed_count": 210,
-  "tev_related": 63,
+  "passed_count": 215,
+  "tev_related": 65,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -3416,6 +3416,80 @@
       "summary_en": "Flashloan Aggregator and Instadapp Flashloan Source",
       "summary_zh": "闪电贷聚合器与 Instadapp 闪电贷源提案，构建跨协议闪电贷聚合服务，优化闪电贷资金路由效率。",
       "analysis_zh": ""
+    },
+    {
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
+      "title": "Atlas Edit Weekly Cycle Proposal - March 16, 2026",
+      "status": "passed",
+      "link": "https://vote.makerdao.com/polling/QmZRHXrp",
+      "created": "2026-03-16T16:00:00",
+      "end": "2026-03-19T16:00:00",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "This Atlas edit proposal 1) authorizes funding for Genesis Agents, 2) adds Allocation Vault parameters for Launch Agent 6 and Launch Agent 7, 3) authorizes investments in ACRDX on Ethereum mainnet, 4) adds Allocation System instances to the Grove Art",
+      "summary_zh": "本 Atlas 编辑提案授权 Genesis Agents 资金拨付，添加 Launch Agent 6 和 7 的分配金库参数，授权在以太坊主网投资 ACRDX，更新 Grove Artifact 的分配系统实例，将多签操作者更新为 Soter Labs。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
+      "title": "Atlas Edit Weekly Cycle Proposal - March 9, 2026",
+      "status": "passed",
+      "link": "https://vote.makerdao.com/polling/QmRjnvHa",
+      "created": "2026-03-09T16:00:00",
+      "end": "2026-03-12T16:00:00",
+      "tev_related": true,
+      "tev_keywords": [
+        "buyback"
+      ],
+      "summary_en": "This Atlas Edit 1) reduces SKY buybacks, 2) removes JAAA from Sky Direct Exposure, 3) adds sanctioned locations to Full Block List, 4) updates RRC dashboard references, 5) corrects LayerZero multisig signers, 6) corrects Safe Harbor addresses and par",
+      "summary_zh": "本 Atlas 编辑提案削减 SKY 回购规模，移除 JAAA 的 Sky 直接敞口，将受制裁地点加入全面封锁名单，更新 RRC 仪表盘引用，修正 LayerZero 多签签名者和 Safe Harbor 地址参数。",
+      "analysis_zh": "Sky 削减 SKY 回购规模，代币通缩支撑力度减弱。\n\n本次 Atlas Edit 提议减少 SKY 回购，直接冲击当前 6.21% 的 TEV Yield 表现，削弱了 Smart Burn Engine 带来的通缩叙事。尽管协议年收入高达 $250.8M，但削减回购意味着流向二级市场的买盘力量减弱，对于看重现金流回馈的持有者而言是明显利空。同时，移除 Sky Direct Exposure 中的 JAAA 并更新 Full Block List，显示出 DAO 在资产配置上的避险转向及合规收紧，虽然技术层面的 LayerZero 多签更正属于常规维护，但核心经济模型的调整无疑让市值 $1.70B 的 SKY 短期承压。"
+    },
+    {
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
+      "title": "Atlas Edit Weekly Cycle Proposal - February 23, 2026",
+      "status": "passed",
+      "link": "https://vote.makerdao.com/polling/QmWXGHpC",
+      "created": "2026-02-23T16:00:00",
+      "end": "2026-02-26T16:00:00",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "This Atlas Edit 1) updates references to Amatsu GovOps to Soter Labs, 2) adds Governance Accessibility Reward Instances to the Skybase Artifact, 3) removes references to StarkNet in Safe Harbor documentation, 4) aligns GitHub and Portal versions of t",
+      "summary_zh": "本 Atlas 编辑提案将 Amatsu GovOps 引用更新为 Soter Labs，向 Skybase Artifact 添加治理可访问性奖励实例，移除 Safe Harbor 文档中的 StarkNet 引用，对齐 GitHub 和 Portal 版本的 Atlas。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
+      "title": "Atlas Edit Weekly Cycle Proposal - February 16, 2026",
+      "status": "passed",
+      "link": "https://vote.makerdao.com/polling/QmcxUENd",
+      "created": "2026-02-16T16:00:00",
+      "end": "2026-02-19T16:00:00",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "This Atlas edit 1) adds additional responsibilities for Aligned Delegates, 2) authorizes the Safe Harbor Agreement, 3) updates risk parameters for Anchorage Digital, 4) clarifies references to Ozone, 5) updates names of Obex Foundation and Developmen",
+      "summary_zh": "本 Atlas 编辑提案为 Aligned Delegates 增加新职责，授权 Safe Harbor 协议，更新 Anchorage Digital 风险参数，澄清 Ozone 引用，更新 Obex Foundation 名称，添加 Launch Agent 7 Artifact。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
+      "title": "Atlas Edit Weekly Cycle Proposal - February 9, 2026",
+      "status": "passed",
+      "link": "https://vote.makerdao.com/polling/QmPKRsDY",
+      "created": "2026-02-09T16:00:00",
+      "end": "2026-02-12T16:00:00",
+      "tev_related": true,
+      "tev_keywords": [
+        "distribution"
+      ],
+      "summary_en": "This Atlas edit proposal 1) updates the Ecosystem Accord between Sky, Spark, and Grove, 2) builds out basic information for Core Governance Reward Primitive, 3) removes legacy documents for Ranked Delegates, 4) updates the Distribution Reward Instanc",
+      "summary_zh": "本 Atlas 编辑提案更新 Sky、Spark 和 Grove 之间的生态系统协议，构建核心治理奖励原语基础信息，移除排名代表遗留文档，更新分配奖励实例和 Active Data Process。",
+      "analysis_zh": "Sky Atlas 修订聚焦治理架构优化，确立 Core Governance Reward Primitive 基础框架。\n\nSky 此次 Atlas 修订提案虽不直接触及 $105.3M 的年 TEV 分配，但通过清理 Ranked Delegates 旧文档和更新 Sky、Spark、Grove 间的 Ecosystem Accord，显著优化了治理架构的清晰度。在年收入 $250.8M 的强劲造血能力支撑下，确立 Core Governance Reward Primitive 基础信息显得尤为关键，这有助于解决长期激励机制模糊的问题。虽然 TEV Yield 维持在 6.21% 的高位主要依赖 Smart Burn Engine，但治理层面的“去腐生肌”——如移除 Scope Advisor 和更新 Active Data Process——能有效降低治理摩擦成本，为后续更高效的资本配置铺平道路，属于典型的“磨刀不误砍柴工”式基建维护。"
     },
     {
       "source": "Mantle Forum",
