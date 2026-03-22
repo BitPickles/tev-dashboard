@@ -167,6 +167,7 @@
         var statusEl=c.querySelector('.gov-card-status');
         if(titleEl){
           var title=isEn?(p.summary_en||p.title||''):(p.summary_zh||p.title||'');
+          title=title.replace(/[>#*\-\n\r]+/g,' ').replace(/\s+/g,' ').trim();
           titleEl.textContent=title.substring(0,40);
         }
         var statusActive=isEn?'Voting':'投票中';
