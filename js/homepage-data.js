@@ -157,22 +157,32 @@
     var active=proposals.filter(function(p){return p.status==='active'||p.tev_related});
     if(!active.length)active=proposals;
     active.sort(function(a,b){return(b.created||0)-(a.created||0)});
-    var cards=document.querySelectorAll('.gov-card');
-    for(var i=0;i<Math.min(cards.length,active.length);i++){
-      var p=active[i],c=cards[i];
-      var titleEl=c.querySelector('.gov-card-title');
-      var protoEl=c.querySelector('.gov-card-proto');
-      var statusEl=c.querySelector('.gov-card-status');
-      if(titleEl)titleEl.textContent=(p.summary_zh||p.title||'').substring(0,40);
-      if(protoEl)protoEl.textContent=p.protocol+' · '+(p.status==='active'?'投票中':'已结束');
-      if(statusEl){
-        if(p.tev_related){statusEl.textContent='TEV 相关';statusEl.className='gov-card-status tev';}
-        else if(p.status==='active'){statusEl.textContent='投票中';statusEl.className='gov-card-status active';}
-        else{statusEl.textContent='已结束';statusEl.className='gov-card-status passed';}
+    function renderGovCards(lang){
+      var cards=document.querySelectorAll('.gov-card');
+      var isEn=lang==='en';
+      for(var i=0;i<Math.min(cards.length,active.length);i++){
+        var p=active[i],c=cards[i];
+        var titleEl=c.querySelector('.gov-card-title');
+        var protoEl=c.querySelector('.gov-card-proto');
+        var statusEl=c.querySelector('.gov-card-status');
+        if(titleEl){
+          var title=isEn?(p.summary_en||p.title||''):(p.summary_zh||p.title||'');
+          titleEl.textContent=title.substring(0,40);
+        }
+        var statusActive=isEn?'Voting':'投票中';
+        var statusEnded=isEn?'Ended':'已结束';
+        if(protoEl)protoEl.textContent=p.protocol+' · '+(p.status==='active'?statusActive:statusEnded);
+        if(statusEl){
+          if(p.tev_related){statusEl.textContent=isEn?'TEV Related':'TEV 相关';statusEl.className='gov-card-status tev';}
+          else if(p.status==='active'){statusEl.textContent=statusActive;statusEl.className='gov-card-status active';}
+          else{statusEl.textContent=statusEnded;statusEl.className='gov-card-status passed';}
+        }
+        c.href='./governance/';
       }
-      // Update link
-      c.href='./governance/';
     }
+    var curLang=window.CryptoLang?CryptoLang.get():(localStorage.getItem('lang')||'zh');
+    renderGovCards(curLang);
+    window.addEventListener('langchange',function(e){renderGovCards(e.detail.lang);});
   }).catch(function(){});
 
 })();
