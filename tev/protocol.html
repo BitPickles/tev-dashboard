@@ -133,7 +133,7 @@
       <div class="header-content">
         <a href="../" class="logo"><img src="../logo.svg" alt="3D" class="logo-icon"><span class="logo-text">Crypto3D</span></a>
         <nav class="nav-links">
-          <a href="../" data-i18n="nav.home">首页</a>
+          <a href="../" data-i18n="nav.home" data-zh="首页" data-en="Home">首页</a>
           <a href="./" data-i18n="nav.tev">TEV</a>
         </nav>
         <div class="lang-switch-tev">
@@ -172,13 +172,13 @@
       <div class="section">
         <div class="section-title"><span class="icon">📊</span><span data-i18n="section.tevSummary">TEV 概览</span></div>
         <div class="tev-summary-grid tev-grid-compact">
-          <div class="tev-summary-item"><div class="tev-summary-label">TEV Ratio<br><span class="label-zh">分配比例</span></div><div class="tev-summary-value" id="summary-tevratio">—</div></div>
-          <div class="tev-summary-item"><div class="tev-summary-label">Market Cap<br><span class="label-zh">市值</span></div><div class="tev-summary-value" id="summary-marketcap">—</div></div>
-          <div class="tev-summary-item"><div class="tev-summary-label">Earnings Yield<br><span class="label-zh">收益率</span></div><div class="tev-summary-value" id="summary-earningsyield">—</div></div>
+          <div class="tev-summary-item"><div class="tev-summary-label">TEV Ratio<br><span class="label-zh" data-zh="分配比例" data-en="Distribution Ratio">分配比例</span></div><div class="tev-summary-value" id="summary-tevratio">—</div></div>
+          <div class="tev-summary-item"><div class="tev-summary-label">Market Cap<br><span class="label-zh" data-zh="市值" data-en="Market Cap">市值</span></div><div class="tev-summary-value" id="summary-marketcap">—</div></div>
+          <div class="tev-summary-item"><div class="tev-summary-label">Earnings Yield<br><span class="label-zh" data-zh="收益率" data-en="Earning Yield">收益率</span></div><div class="tev-summary-value" id="summary-earningsyield">—</div></div>
           <div class="tev-summary-item"><div class="tev-summary-label">TEV Yield<br><span class="label-zh">TEV 收益率</span></div><div class="tev-summary-value" id="summary-tevyield">—</div></div>
-          <div class="tev-summary-item"><div class="tev-summary-label">Buybacks<br><span class="label-zh">回购</span></div><div class="tev-summary-value" id="summary-buybacks">—</div></div>
-          <div class="tev-summary-item"><div class="tev-summary-label">Dividends<br><span class="label-zh">分红</span></div><div class="tev-summary-value" id="summary-dividends">—</div></div>
-          <div class="tev-summary-item"><div class="tev-summary-label">Burns<br><span class="label-zh">销毁</span></div><div class="tev-summary-value" id="summary-burns">—</div></div>
+          <div class="tev-summary-item"><div class="tev-summary-label">Buybacks<br><span class="label-zh" data-zh="回购" data-en="Buyback">回购</span></div><div class="tev-summary-value" id="summary-buybacks">—</div></div>
+          <div class="tev-summary-item"><div class="tev-summary-label">Dividends<br><span class="label-zh" data-zh="分红" data-en="Dividend">分红</span></div><div class="tev-summary-value" id="summary-dividends">—</div></div>
+          <div class="tev-summary-item"><div class="tev-summary-label">Burns<br><span class="label-zh" data-zh="销毁" data-en="Burn">销毁</span></div><div class="tev-summary-value" id="summary-burns">—</div></div>
           <div class="tev-summary-item"><div class="tev-summary-label">Confidence<br><span class="label-zh">可信度</span></div><div class="tev-summary-value" id="summary-confidence">—</div></div>
         </div>
       </div>
@@ -227,17 +227,17 @@
         </div>
       </div>
 
-      <div class="section"><div class="section-title"><span class="icon">⚙️</span><span data-i18n="section.tevMechanisms">TEV 机制详情</span></div><div id="mechanisms-container"></div></div>
-      <div class="section" id="references-section" style="display: none;"><div class="section-title"><span class="icon">📚</span><span data-i18n="section.references">参考资料</span></div><div class="references-list" id="references-container"></div></div>
-      <div class="section" id="notes-section" style="display: none;"><div class="section-title"><span class="icon">📝</span><span data-i18n="section.notes">分析师备注</span></div><div class="protocol-notes" id="protocol-notes"></div></div>
+      <div class="section"><div class="section-title"><span class="icon">⚙️</span><span data-i18n="section.tevMechanisms" data-zh="TEV 机制详情" data-en="TEV Mechanism Details">TEV 机制详情</span></div><div id="mechanisms-container"></div></div>
+      <div class="section" id="references-section" style="display: none;"><div class="section-title"><span class="icon">📚</span><span data-i18n="section.references" data-zh="参考资料" data-en="References">参考资料</span></div><div class="references-list" id="references-container"></div></div>
+      <div class="section" id="notes-section" style="display: none;"><div class="section-title"><span class="icon">📝</span><span data-i18n="section.notes" data-zh="分析师备注" data-en="Analyst Notes">分析师备注</span></div><div class="protocol-notes" id="protocol-notes"></div></div>
       <!-- Governance Section -->
       <div class="section" id="governance-section" style="display:none;">
-        <div class="section-title"><span class="icon">🏛️</span><span>TEV 治理动态</span></div>
+        <div class="section-title"><span class="icon">🏛️</span><span data-zh="TEV 治理动态" data-en="TEV Governance Feed">TEV 治理动态</span></div>
         <div id="governance-list" style="display:flex;flex-direction:column;gap:8px;"></div>
         <div id="governance-more" style="margin-top:12px;text-align:right;"></div>
       </div>
 
-      <div class="section"><div class="section-title"><span class="icon">🔗</span><span data-i18n="section.dataSources">数据来源</span></div><div class="sources-list" id="sources-container"></div></div>
+      <div class="section"><div class="section-title"><span class="icon">🔗</span><span data-i18n="section.dataSources" data-zh="数据来源" data-en="Data Source">数据来源</span></div><div class="sources-list" id="sources-container"></div></div>
     </div>
   </main>
 

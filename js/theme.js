@@ -45,7 +45,7 @@
   }
 
   var saved = localStorage.getItem(STORAGE_KEY);
-  applyTheme(saved === 'light' ? 'light' : 'dark');
+  applyTheme(saved === 'dark' ? 'dark' : 'light');
 
   var existingToggle = document.querySelector('[data-theme-toggle]') || document.getElementById('tt');
   if (existingToggle) {

@@ -133,30 +133,57 @@
     }
   }).catch(function(){});
 
+  // Update TEV KPI stats from all-protocols.json
+  fetch('./data/all-protocols.json').then(function(r){return r.json()}).then(function(d){
+    var protos=d.protocols,list=[];
+    var totalProtos=Object.keys(protos).length;
+    for(var k in protos){var p=protos[k];var y=p.tev_yield_percent||0;if(y>0)list.push(y)}
+    var el1=document.getElementById('kpi-total');if(el1)el1.textContent=totalProtos;
+    var el1b=document.getElementById('stat-total');if(el1b)el1b.textContent=totalProtos;
+    var el2=document.getElementById('kpi-active');if(el2)el2.textContent=list.length;
+    // governance count updated from governance.json below
+  }).catch(function(){});
+
   // Load governance data for governance cards
   fetch('./data/governance.json').then(function(r){return r.json()}).then(function(d){
     var proposals=d.proposals||[];
+    // Update governance protocol count
+    var govProtos=new Set();
+    proposals.forEach(function(p){if(p.protocol)govProtos.add(p.protocol)});
+    var gEl=document.getElementById('kpi-governance');if(gEl)gEl.textContent=govProtos.size;
+    var gEl2=document.getElementById('stat-governance');if(gEl2)gEl2.textContent=govProtos.size;
     if(!proposals.length)return;
     // Get 2 most recent TEV-related or active proposals
     var active=proposals.filter(function(p){return p.status==='active'||p.tev_related});
     if(!active.length)active=proposals;
     active.sort(function(a,b){return(b.created||0)-(a.created||0)});
-    var cards=document.querySelectorAll('.gov-card');
-    for(var i=0;i<Math.min(cards.length,active.length);i++){
-      var p=active[i],c=cards[i];
-      var titleEl=c.querySelector('.gov-card-title');
-      var protoEl=c.querySelector('.gov-card-proto');
-      var statusEl=c.querySelector('.gov-card-status');
-      if(titleEl)titleEl.textContent=(p.summary_zh||p.title||'').substring(0,40);
-      if(protoEl)protoEl.textContent=p.protocol+' · '+(p.status==='active'?'投票中':'已结束');
-      if(statusEl){
-        if(p.tev_related){statusEl.textContent='TEV 相关';statusEl.className='gov-card-status tev';}
-        else if(p.status==='active'){statusEl.textContent='投票中';statusEl.className='gov-card-status active';}
-        else{statusEl.textContent='已结束';statusEl.className='gov-card-status passed';}
+    function renderGovCards(lang){
+      var cards=document.querySelectorAll('.gov-card');
+      var isEn=lang==='en';
+      for(var i=0;i<Math.min(cards.length,active.length);i++){
+        var p=active[i],c=cards[i];
+        var titleEl=c.querySelector('.gov-card-title');
+        var protoEl=c.querySelector('.gov-card-proto');
+        var statusEl=c.querySelector('.gov-card-status');
+        if(titleEl){
+          var title=isEn?(p.summary_en||p.title||''):(p.summary_zh||p.title||'');
+          title=title.replace(/[>#*\-\n\r]+/g,' ').replace(/\s+/g,' ').trim();
+          titleEl.textContent=title.substring(0,40);
+        }
+        var statusActive=isEn?'Voting':'投票中';
+        var statusEnded=isEn?'Ended':'已结束';
+        if(protoEl)protoEl.textContent=p.protocol+' · '+(p.status==='active'?statusActive:statusEnded);
+        if(statusEl){
+          if(p.tev_related){statusEl.textContent=isEn?'TEV Related':'TEV 相关';statusEl.className='gov-card-status tev';}
+          else if(p.status==='active'){statusEl.textContent=statusActive;statusEl.className='gov-card-status active';}
+          else{statusEl.textContent=statusEnded;statusEl.className='gov-card-status passed';}
+        }
+        c.href='./governance/';
       }
-      // Update link
-      c.href='./governance/';
     }
+    var curLang=window.CryptoLang?CryptoLang.get():(localStorage.getItem('lang')||'zh');
+    renderGovCards(curLang);
+    window.addEventListener('langchange',function(e){renderGovCards(e.detail.lang);});
   }).catch(function(){});
 
 })();
