@@ -2,6 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('theme');if(t!=='dark')document.documentElement.setAttribute('data-theme','light')})()</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
@@ -13,6 +14,7 @@
   <link rel="stylesheet" href="../indicators/css/common.css">
   <script src="https://unpkg.com/lightweight-charts@4/dist/lightweight-charts.standalone.production.js"></script>
   <script src="../indicators/js/chart-utils.js"></script>
+  <link rel="stylesheet" href="../css/theme-override.css">
 </head>
 <body>
   <header>
@@ -358,5 +360,7 @@
       loadData();
     });
   </script>
+<script src="../js/theme.js"></script>
+<script src="../js/lang.js"></script>
 </body>
 </html>

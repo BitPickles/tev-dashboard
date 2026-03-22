@@ -1,0 +1,1058 @@
+/**
+ * Crypto3D Design Lab — Theme Override
+ * 全站设计 token 收口层：只改视觉，不改业务逻辑
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* ============================================================
+   GLOBAL TOKENS
+   ============================================================ */
+:root {
+  --bg-primary: #050507;
+  --bg-secondary: #0a0a0e;
+  --bg-tertiary: #101015;
+  --bg-hover: #16161c;
+  --border: rgba(255,255,255,0.06);
+  --border-hover: rgba(255,255,255,0.12);
+  --text-primary: #e8e8ec;
+  --text-secondary: #7a7a88;
+  --text-tertiary: #4a4a56;
+  --accent: #34d399;
+  --accent-dim: rgba(52,211,153,0.08);
+  --warning: #fbbf24;
+  --warning-dim: rgba(251,191,36,0.08);
+  --danger: #f87171;
+  --danger-dim: rgba(248,113,113,0.08);
+  --blue: #60a5fa;
+  --blue-dim: rgba(96,165,250,0.08);
+  --purple: #a78bfa;
+  --cyan: #38bdf8;
+
+  --page-max: 1240px;
+  --page-pad: 28px;
+  --radius-xs: 8px;
+  --radius-sm: 10px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --shadow-soft: 0 10px 30px rgba(0,0,0,0.22);
+  --shadow-hover: 0 18px 40px rgba(0,0,0,0.28);
+  --shadow-light-soft: 0 8px 24px rgba(17,24,39,0.06);
+  --shadow-light-hover: 0 16px 36px rgba(17,24,39,0.10);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 56px;
+  --space-10: 72px;
+}
+
+[data-theme="light"],
+[data-theme="light"] :root {
+  --bg-primary: #fafafa;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f3f3f6;
+  --bg-hover: #eaeaef;
+  --border: rgba(0,0,0,0.06);
+  --border-hover: rgba(0,0,0,0.12);
+  --text-primary: #111118;
+  --text-secondary: #5a5a6e;
+  --text-tertiary: #9090a0;
+  --accent: #059669;
+  --accent-dim: rgba(5,150,105,0.06);
+  --warning: #d97706;
+  --warning-dim: rgba(217,119,6,0.06);
+  --danger: #dc2626;
+  --danger-dim: rgba(220,38,38,0.06);
+  --blue: #2563eb;
+  --blue-dim: rgba(37,99,235,0.06);
+  --purple: #7c3aed;
+  --cyan: #0a7aab;
+}
+
+/* ============================================================
+   GLOBAL BASELINE
+   ============================================================ */
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+body {
+  font-family: 'Inter', 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+:lang(zh),
+html[lang="zh-CN"] body,
+html[lang="zh"] body {
+  font-family: 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+.container,
+.hd,
+.sec,
+.hero-inner,
+.stats-bar-inner,
+.risk-content {
+  max-width: var(--page-max) !important;
+}
+
+.container {
+  padding-left: var(--page-pad) !important;
+  padding-right: var(--page-pad) !important;
+}
+
+@media (max-width: 768px) {
+  :root { --page-pad: 20px; }
+}
+
+/* ============================================================
+   TYPOGRAPHY TOKENS
+   ============================================================ */
+h1, .page-title, .sec-title, .hero-title {
+  letter-spacing: -0.03em;
+}
+
+h1 { font-weight: 800 !important; }
+h2 { font-weight: 700 !important; letter-spacing: -0.025em; }
+h3 { font-weight: 700 !important; letter-spacing: -0.02em; }
+
+.page-title { font-size: clamp(28px, 4vw, 38px) !important; line-height: 1.1 !important; }
+.page-subtitle, .page-desc, .sec-desc, .hero p, .protocol-notes, p {
+  line-height: 1.68;
+}
+
+.stat-value,
+.metric-value,
+.value,
+.tev-value,
+.hero-price,
+.ind-val,
+.stat-num,
+.mono,
+.yield,
+[class*="value"]:not(.label):not(.stat-label) {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-variant-numeric: tabular-nums;
+}
+
+.label,
+.stat-label,
+.chart-stat-label,
+.hero-meta-label,
+.tev-kpi-l,
+.table thead th,
+.table-title,
+.data-update-time,
+.feed-count,
+.feed-kw,
+.feed-time,
+.protocol-ticker,
+.section-subtitle,
+.updated-at {
+  letter-spacing: 0.06em;
+}
+
+/* ============================================================
+   HEADER + NAV CONSISTENCY
+   ============================================================ */
+header {
+  padding: 0 !important;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+[data-theme="light"] header {
+  background: rgba(250,250,250,0.92) !important;
+  border-bottom-color: var(--border) !important;
+}
+
+.header-content {
+  height: 52px;
+  align-items: center;
+  gap: 18px;
+}
+
+.logo-text { font-size: 15px !important; font-weight: 700 !important; }
+.nav-links a, nav a, .hd-nav a { font-size: 13px !important; }
+
+/* ============================================================
+   CARD SYSTEM
+   ============================================================ */
+.card,
+.intro-card,
+.author-card,
+.video-card,
+.table-container,
+.chart-card,
+.chart-section,
+.section,
+.proposal-card,
+.protocol-card,
+.mini-stat,
+.stat-card,
+.metric-card,
+.feed-item,
+.source-item,
+.mechanism-card,
+.bento-card,
+.risk-card,
+.indicator-card,
+.gov-card {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: none;
+}
+
+[data-theme="light"] .card,
+[data-theme="light"] .intro-card,
+[data-theme="light"] .author-card,
+[data-theme="light"] .video-card,
+[data-theme="light"] .table-container,
+[data-theme="light"] .chart-card,
+[data-theme="light"] .chart-section,
+[data-theme="light"] .section,
+[data-theme="light"] .proposal-card,
+[data-theme="light"] .protocol-card,
+[data-theme="light"] .mini-stat,
+[data-theme="light"] .stat-card,
+[data-theme="light"] .metric-card,
+[data-theme="light"] .feed-item,
+[data-theme="light"] .source-item,
+[data-theme="light"] .mechanism-card,
+[data-theme="light"] .bento-card,
+[data-theme="light"] .risk-card,
+[data-theme="light"] .indicator-card,
+[data-theme="light"] .gov-card {
+  background: var(--bg-secondary) !important;
+  border-color: var(--border) !important;
+}
+
+.card:hover,
+.intro-card:hover,
+.author-card:hover,
+.video-card:hover,
+.proposal-card:hover,
+.protocol-card:hover,
+.feed-item:hover,
+.bento-card:hover,
+.gov-card:hover,
+.clickable-stat:hover {
+  border-color: var(--border-hover) !important;
+}
+
+[data-theme="light"] .card:hover,
+[data-theme="light"] .intro-card:hover,
+[data-theme="light"] .author-card:hover,
+[data-theme="light"] .video-card:hover,
+[data-theme="light"] .proposal-card:hover,
+[data-theme="light"] .protocol-card:hover,
+[data-theme="light"] .feed-item:hover,
+[data-theme="light"] .bento-card:hover,
+[data-theme="light"] .gov-card:hover,
+[data-theme="light"] .clickable-stat:hover {
+  box-shadow: var(--shadow-light-soft) !important;
+}
+
+.chart-container,
+.table-container,
+.section,
+.chart-card,
+.chart-section {
+  padding: 24px !important;
+}
+
+@media (max-width: 768px) {
+  .chart-container,
+  .table-container,
+  .section,
+  .chart-card,
+  .chart-section {
+    padding: 18px !important;
+  }
+}
+
+/* ============================================================
+   TABLE TOKENS
+   ============================================================ */
+table { font-size: 14px; }
+
+table thead th,
+#protocol-table thead th {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  color: var(--text-secondary) !important;
+  background: var(--bg-tertiary) !important;
+  padding: 12px 16px !important;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+table tbody td,
+#protocol-table tbody td {
+  padding: 14px 16px !important;
+  vertical-align: middle;
+}
+
+#protocol-table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+
+#protocol-table tbody tr {
+  transition: background-color .16s ease, transform .16s ease;
+}
+
+#protocol-table tbody td {
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+[data-theme="light"] #protocol-table tbody td {
+  border-bottom: 1px solid rgba(17,24,39,0.04);
+}
+
+#protocol-table tbody td:first-child {
+  padding-left: 18px !important;
+}
+
+#protocol-table tbody td:last-child {
+  padding-right: 18px !important;
+}
+
+#protocol-table tbody tr:hover {
+  transform: translateX(1px);
+}
+
+[data-theme="light"] table tbody tr:hover td {
+  background: var(--bg-tertiary) !important;
+}
+
+/* ============================================================
+   BUTTONS / TAGS / FILTERS
+   ============================================================ */
+.theme-toggle-btn,
+.ib,
+.filter-btn,
+.feed-toggle,
+.lang-btn,
+.yt-banner-btn,
+.author-link,
+.protocol-link,
+.source-link,
+.gov-more-link {
+  transition: all .18s ease !important;
+}
+
+.theme-toggle-btn,
+.lang-toggle-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.lang-toggle-btn {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-right: 6px;
+  font-family: Inter, -apple-system, sans-serif;
+}
+
+.theme-toggle-btn:hover,
+.lang-toggle-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+/* Hide page-level lang switchers (global lang.js handles it) */
+.lang-switch,
+.lang-switch-tev {
+  display: none !important;
+}
+
+.theme-toggle-btn svg { width: 15px; height: 15px; }
+.theme-toggle-btn .sun { display: block; }
+.theme-toggle-btn .moon { display: none; }
+[data-theme="light"] .theme-toggle-btn .sun { display: none; }
+[data-theme="light"] .theme-toggle-btn .moon { display: block; }
+
+.filter-btn,
+.lang-btn,
+.feed-toggle {
+  border-radius: var(--radius-xs) !important;
+}
+
+[data-theme="light"] .filter-btn {
+  background: transparent !important;
+  border-color: var(--border) !important;
+  color: var(--text-secondary) !important;
+}
+[data-theme="light"] .filter-btn:hover {
+  border-color: var(--border-hover) !important;
+  color: var(--text-primary) !important;
+}
+[data-theme="light"] .filter-btn.active {
+  background: var(--accent-dim) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+
+/* ============================================================
+   CHART / DATA CONTAINERS
+   ============================================================ */
+.chart-header,
+.table-header,
+.section-title,
+.feed-header,
+.cards-panel-header {
+  margin-bottom: 16px !important;
+}
+
+.chart-stat-value,
+.stat-value,
+.metric-value,
+.value,
+.tev-summary-value,
+.tev-kpi-v,
+.ind-val,
+.stat-num {
+  letter-spacing: -0.03em;
+}
+
+.chart-hint,
+.data-update-time,
+.updated-at,
+.feed-time,
+.hero-meta-label,
+.protocol-ticker,
+.source-type,
+.mechanism-type {
+  color: var(--text-tertiary) !important;
+}
+
+/* ============================================================
+   AUTHOR / VIDEO / YT-BANNER — Research Signature Style
+   ============================================================ */
+
+/* Author card: minimal research signature */
+.author-video-section {
+  margin-top: 24px !important;
+}
+.author-video-grid {
+  gap: 16px !important;
+}
+.author-card {
+  padding: 20px 24px !important;
+}
+.author-avatar {
+  font-size: 20px !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: var(--bg-tertiary, rgba(255,255,255,0.04)) !important;
+  border-radius: 8px !important;
+}
+.author-header {
+  margin-bottom: 10px !important;
+}
+.author-card h3 {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+}
+.author-card .tagline {
+  font-size: 11px !important;
+  color: var(--text-tertiary) !important;
+  letter-spacing: 0.02em !important;
+  text-transform: uppercase !important;
+}
+.author-bio {
+  font-size: 12.5px !important;
+  line-height: 1.65 !important;
+  color: var(--text-secondary) !important;
+  margin-bottom: 12px !important;
+}
+.author-links {
+  gap: 12px !important;
+}
+.author-link {
+  font-size: 11.5px !important;
+  color: var(--text-tertiary) !important;
+  opacity: 0.8;
+  text-decoration: none !important;
+  padding: 4px 0 !important;
+  background: none !important;
+  border: none !important;
+}
+.author-link:hover {
+  color: var(--text-primary) !important;
+  opacity: 1;
+}
+.author-link svg {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+/* Video card: reference material style */
+.video-card {
+  padding: 20px 24px !important;
+}
+.video-card h2 {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--text-secondary) !important;
+  letter-spacing: 0.03em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 12px !important;
+}
+.video-container {
+  border-radius: var(--radius-sm) !important;
+  overflow: hidden !important;
+}
+
+/* YT Banner: demote to footnote-level */
+section.yt-banner,
+.yt-banner {
+  padding: 14px 0 !important;
+  margin: 0 !important;
+  border-top: 1px solid var(--border) !important;
+  border-bottom: none !important;
+  background: transparent !important;
+  background-image: none !important;
+}
+section.yt-banner .yt-banner-content,
+.yt-banner .yt-banner-content,
+.yt-banner-content {
+  gap: 12px !important;
+  align-items: center !important;
+  background: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  padding: 8px 0 !important;
+  border-radius: 0 !important;
+}
+section.yt-banner .yt-banner-icon,
+.yt-banner-icon {
+  display: none !important;
+}
+section.yt-banner .yt-banner-text h3,
+.yt-banner-text h3 {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: var(--text-secondary) !important;
+  margin: 0 !important;
+  margin-bottom: 0 !important;
+}
+section.yt-banner .yt-banner-text p,
+.yt-banner-text p {
+  font-size: 11px !important;
+  color: var(--text-tertiary) !important;
+  margin: 2px 0 0 !important;
+}
+section.yt-banner a.yt-banner-btn,
+a.yt-banner-btn,
+.yt-banner-btn {
+  font-size: 11px !important;
+  padding: 5px 14px !important;
+  border-radius: var(--radius-xs) !important;
+  background: transparent !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-secondary) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transform: none !important;
+}
+section.yt-banner a.yt-banner-btn:hover,
+a.yt-banner-btn:hover,
+.yt-banner-btn:hover {
+  border-color: var(--border-hover) !important;
+  color: var(--text-primary) !important;
+  background: transparent !important;
+  transform: none !important;
+}
+
+/* Light theme specifics */
+[data-theme="light"] section.yt-banner,
+[data-theme="light"] .yt-banner {
+  background: transparent !important;
+  border-top-color: var(--border) !important;
+}
+[data-theme="light"] section.yt-banner .yt-banner-content,
+[data-theme="light"] .yt-banner-content {
+  background: transparent !important;
+  border: none !important;
+}
+[data-theme="light"] section.yt-banner a.yt-banner-btn,
+[data-theme="light"] a.yt-banner-btn,
+[data-theme="light"] .yt-banner-btn {
+  background: transparent !important;
+  border-color: var(--border) !important;
+  color: var(--text-secondary) !important;
+}
+[data-theme="light"] section.yt-banner a.yt-banner-btn:hover,
+[data-theme="light"] a.yt-banner-btn:hover,
+[data-theme="light"] .yt-banner-btn:hover {
+  border-color: var(--border-hover) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .formula-box,
+[data-theme="light"] #g-tip {
+  background: var(--bg-secondary) !important;
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="light"] #g-tip {
+  box-shadow: var(--shadow-light-soft) !important;
+}
+
+/* ============================================================
+   HOMEPAGE TOKEN ALIGNMENT
+   ============================================================ */
+.hero { background: var(--bg-primary) !important; }
+.sec { padding-top: 56px !important; padding-bottom: 56px !important; }
+.sec-head { margin-bottom: 32px !important; }
+.sec-title { font-size: clamp(28px, 4vw, 38px) !important; }
+.sec-desc { max-width: 620px !important; }
+.bento-card { border-radius: var(--radius-lg) !important; padding: 26px !important; }
+.tev-tag { border-radius: 6px !important; }
+.stats-bar { border-color: var(--border) !important; }
+[data-theme="light"] .stats-bar { background: #e6e8ef !important; }
+[data-theme="light"] .sec-tinted { background: #eef0f5 !important; }
+[data-theme="light"] .risk-gradient { background: linear-gradient(180deg,var(--bg-primary) 0%, #e2e4ed 50%, var(--bg-primary) 100%) !important; }
+
+/* ============================================================
+   TEV / GOVERNANCE DETAIL PAGES
+   ============================================================ */
+.protocol-notes {
+  font-size: 14px !important;
+  line-height: 1.72 !important;
+  color: var(--text-secondary) !important;
+}
+.protocol-notes h2 { font-size: 18px !important; margin: 24px 0 12px !important; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.protocol-notes h3 { font-size: 15px !important; margin: 20px 0 8px !important; }
+.protocol-notes code,
+.feed-kw,
+.source-type,
+.protocol-ticker,
+.feed-time,
+.chart-stat-label {
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* ============================================================
+   TEV DETAIL PAGE RHYTHM + RESEARCH PRODUCT FEEL
+   ============================================================ */
+.breadcrumb {
+  font-size: 12px !important;
+  color: var(--text-tertiary) !important;
+  margin: 14px 0 18px !important;
+  letter-spacing: 0.04em;
+}
+
+.breadcrumb a {
+  color: var(--text-secondary) !important;
+}
+
+.breadcrumb a:hover {
+  color: var(--text-primary) !important;
+}
+
+.protocol-header {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 24px;
+  align-items: stretch;
+  margin: 18px 0 28px !important;
+}
+
+.protocol-title,
+.tev-highlight {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 24px !important;
+}
+
+.protocol-title {
+  position: relative;
+  overflow: hidden;
+}
+
+.protocol-title::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.018), transparent 42%);
+}
+
+.tev-highlight {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(180deg, var(--bg-secondary), var(--bg-tertiary)) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.tev-highlight::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, var(--accent-dim), transparent 55%);
+}
+
+.protocol-info h1 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  font-size: clamp(30px, 4vw, 40px) !important;
+  line-height: 1.05 !important;
+}
+
+.protocol-icon-lg {
+  width: 64px !important;
+  height: 64px !important;
+  border-radius: 18px !important;
+  background: var(--bg-tertiary) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+.protocol-link {
+  padding: 7px 10px !important;
+  border-radius: 8px !important;
+  background: var(--bg-tertiary) !important;
+  border: 1px solid var(--border) !important;
+  font-size: 12px !important;
+  color: var(--text-secondary) !important;
+}
+
+.protocol-link:hover {
+  color: var(--text-primary) !important;
+  border-color: var(--border-hover) !important;
+}
+
+.tev-status,
+.badge,
+.feed-status,
+.mechanism-status {
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em;
+}
+
+.tev-value {
+  font-size: clamp(28px, 4vw, 40px) !important;
+  letter-spacing: -0.04em !important;
+  margin: 6px 0 !important;
+}
+
+.tev-label {
+  font-size: 11px !important;
+  color: var(--text-tertiary) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tev-summary-grid {
+  gap: 12px !important;
+}
+
+.tev-summary-item,
+.burn-chart-card,
+.burn-stat,
+.chart-stat {
+  background: var(--bg-tertiary) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+.tev-summary-item {
+  padding: 14px 16px !important;
+  min-height: 92px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tev-summary-item:hover,
+.burn-chart-card:hover,
+.chart-stat:hover {
+  border-color: var(--border-hover) !important;
+}
+
+.tev-summary-label,
+.burn-stat-label,
+.chart-stat-label {
+  font-size: 11px !important;
+  color: var(--text-tertiary) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600 !important;
+}
+
+.tev-summary-label .label-zh,
+.burn-stat-label,
+.chart-stat-label,
+.tev-summary-value,
+.mechanism-status,
+.feed-status,
+.badge {
+  -webkit-font-smoothing: antialiased;
+}
+
+.tev-summary-value,
+.burn-stat-value,
+.chart-stat-value {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+}
+
+#tev-chart-section .chart-container,
+#buyback-chart-section .chart-container,
+#token-burns-section .burn-chart-card {
+  background: var(--bg-secondary) !important;
+}
+
+#tev-chart-section .chart-container,
+#buyback-chart-section .chart-container {
+  padding: 20px !important;
+  border-radius: var(--radius-md) !important;
+}
+
+.chart-canvas-wrap {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#tev-chart-section .chart-stats {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px !important;
+}
+
+.mechanism-card,
+.source-item,
+.gov-card {
+  padding: 16px 18px !important;
+}
+
+.mechanism-card,
+.source-item,
+.gov-card,
+.feed-item,
+.protocol-card {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+.mechanism-header,
+.source-item,
+.gov-card-meta {
+  align-items: flex-start !important;
+}
+
+.mechanism-name,
+.source-name,
+.gov-card-title {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+}
+
+.mechanism-desc,
+.gov-card-summary,
+.source-link,
+.protocol-notes p,
+.protocol-notes li {
+  line-height: 1.72 !important;
+}
+
+#governance-list {
+  gap: 10px !important;
+}
+
+/* ============================================================
+   GOVERNANCE INTELLIGENCE FEEL
+   ============================================================ */
+.feed-panel,
+.cards-panel {
+  background: transparent !important;
+}
+
+.feed-header,
+.cards-panel-header {
+  padding-bottom: 10px !important;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 14px !important;
+}
+
+.feed-count {
+  min-width: 28px;
+  text-align: center;
+  font-weight: 700 !important;
+}
+
+.feed-title,
+.cards-panel-header {
+  letter-spacing: -0.02em;
+}
+
+.feed-item {
+  padding: 16px 18px !important;
+  border-radius: var(--radius-md) !important;
+  position: relative;
+}
+
+.feed-item.is-active {
+  border-left-width: 3px !important;
+  background: linear-gradient(180deg, rgba(34,197,94,0.05), transparent 55%), var(--bg-secondary) !important;
+}
+
+.feed-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.015), transparent 40%);
+}
+
+.feed-proposal-title {
+  font-size: 14px !important;
+  line-height: 1.45 !important;
+}
+
+.feed-summary {
+  font-size: 12px !important;
+  color: var(--text-secondary) !important;
+}
+
+.protocol-card {
+  padding: 16px 18px !important;
+  gap: 10px !important;
+  position: relative;
+}
+
+.card-name {
+  font-size: 14px !important;
+}
+
+.card-stats-row {
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  justify-content: space-between;
+}
+
+.card-stats-row .stat-num {
+  font-size: 12px !important;
+  letter-spacing: -0.02em;
+}
+
+[data-theme="light"] .feed-header {
+  background: var(--bg-primary) !important;
+}
+
+/* ============================================================
+   FINANCIAL PRODUCT DENSITY / MICRO-POLISH
+   ============================================================ */
+.table-title,
+.section-title,
+.chart-header h3,
+.chart-header h2,
+.cards-panel-header,
+.feed-title {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+.table-header,
+.chart-header {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.data-update-time,
+.updated-at,
+.footer-text {
+  font-size: 11px !important;
+}
+
+.text-right,
+.stat-num,
+.card-tev-yield,
+.tev-yield,
+.tev-summary-value,
+.chart-stat-value,
+.burn-stat-value {
+  font-variant-numeric: tabular-nums;
+}
+
+[data-theme="light"] .protocol-title,
+[data-theme="light"] .tev-highlight,
+[data-theme="light"] .tev-summary-item,
+[data-theme="light"] .burn-chart-card,
+[data-theme="light"] .burn-stat,
+[data-theme="light"] .chart-stat,
+[data-theme="light"] .protocol-link {
+  box-shadow: var(--shadow-light-soft);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  border-top-color: var(--border) !important;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .protocol-header {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  header { height: 48px; }
+  .header-content { height: 48px; }
+  .page-title { font-size: 28px !important; }
+  .section,
+  .chart-card,
+  .chart-section,
+  .table-container,
+  .bento-card { border-radius: var(--radius-sm) !important; }
+  #tev-chart-section .chart-stats {
+    grid-template-columns: 1fr !important;
+  }
+  .protocol-title,
+  .tev-highlight {
+    padding: 18px !important;
+  }
+}
