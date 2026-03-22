@@ -354,11 +354,23 @@
         </div>
         <div class="tev-table">
           <div class="tev-table-head">Top TEV Yield</div>
-          <div class="tev-row"><span class="tev-rank">1</span><span class="tev-proto">Hyperliquid</span><span class="tev-yield mono">42.8%</span><span class="tev-mech">销毁</span></div>
-          <div class="tev-row"><span class="tev-rank">2</span><span class="tev-proto">dYdX</span><span class="tev-yield mono">18.3%</span><span class="tev-mech">分配</span></div>
-          <div class="tev-row"><span class="tev-rank">3</span><span class="tev-proto">GMX</span><span class="tev-yield mono">12.6%</span><span class="tev-mech">分红</span></div>
-          <div class="tev-row"><span class="tev-rank">4</span><span class="tev-proto">Curve</span><span class="tev-yield mono">8.9%</span><span class="tev-mech">分红</span></div>
-          <div class="tev-row"><span class="tev-rank">5</span><span class="tev-proto">Aave</span><span class="tev-yield mono">5.2%</span><span class="tev-mech">回购</span></div>
+          <div id="tev-ranking-list"><div class="tev-row" style="color:var(--text-3)">Loading...</div></div>
+          <script>
+          (function(){
+            fetch('./data/all-protocols.json').then(r=>r.json()).then(function(d){
+              var protos=d.protocols,list=[];
+              var mechMap={buyback:'回购',burn:'销毁',dividend:'分红',staking_reward:'质押',distribution:'分配',mixed:'混合'};
+              for(var k in protos){var p=protos[k];var y=p.tev_yield_percent||0;if(y>0)list.push({name:p.name,yield:y,cat:p.category||''})}
+              list.sort(function(a,b){return b.yield-a.yield});
+              var html='';
+              for(var i=0;i<Math.min(list.length,5);i++){
+                var m=list[i];
+                html+='<div class="tev-row"><span class="tev-rank">'+(i+1)+'</span><span class="tev-proto">'+m.name+'</span><span class="tev-yield mono">'+m.yield.toFixed(1)+'%</span></div>';
+              }
+              document.getElementById('tev-ranking-list').innerHTML=html;
+            }).catch(function(){});
+          })();
+          </script>
           <div class="tev-link">查看完整排名 →</div>
         </div>
       </div>
