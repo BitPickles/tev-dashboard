@@ -28,10 +28,11 @@
     var mc=data.total_market_cap&&data.total_market_cap.usd;
     var vol=data.total_volume&&data.total_volume.usd;
     var btcD=data.market_cap_percentage&&data.market_cap_percentage.btc;
-    // Update hero
-    if(mc)setText('.hero-meta-item:nth-child(1) .hero-meta-val',fmtUSD(mc));
-    if(vol)setText('.hero-meta-item:nth-child(2) .hero-meta-val',fmtUSD(vol));
-    if(btcD)setText('.hero-meta-item:nth-child(3) .hero-meta-val',fmt(btcD,1)+'%');
+    // Update hero meta values by index
+    var metaVals=document.querySelectorAll('.hero-meta-item .hero-meta-val');
+    if(mc&&metaVals[0])metaVals[0].textContent=fmtUSD(mc);
+    if(vol&&metaVals[1])metaVals[1].textContent=fmtUSD(vol);
+    if(btcD&&metaVals[2])metaVals[2].textContent=fmt(btcD,1)+'%';
   }).catch(function(){});
 
   // Load BTC price from CoinGecko simple/price
