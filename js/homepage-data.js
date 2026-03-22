@@ -22,6 +22,30 @@
     if(el)el.textContent=val;
   }
 
+  // Load global market data from CoinGecko
+  fetch('https://api.coingecko.com/api/v3/global').then(function(r){return r.json()}).then(function(d){
+    var data=d.data||{};
+    var mc=data.total_market_cap&&data.total_market_cap.usd;
+    var vol=data.total_volume&&data.total_volume.usd;
+    var btcD=data.market_cap_percentage&&data.market_cap_percentage.btc;
+    // Update hero
+    if(mc)setText('.hero-meta-item:nth-child(1) .hero-meta-val',fmtUSD(mc));
+    if(vol)setText('.hero-meta-item:nth-child(2) .hero-meta-val',fmtUSD(vol));
+    if(btcD)setText('.hero-meta-item:nth-child(3) .hero-meta-val',fmt(btcD,1)+'%');
+  }).catch(function(){});
+
+  // Load BTC price from CoinGecko simple/price
+  fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true').then(function(r){return r.json()}).then(function(d){
+    var btc=d.bitcoin||{};
+    if(btc.usd)setText('.hero-price','$'+Math.round(btc.usd).toLocaleString());
+    var chg=btc.usd_24h_change;
+    var heroChg=document.querySelector('.hero-change');
+    if(heroChg&&chg!==undefined&&chg!==null){
+      heroChg.textContent=(chg>=0?'+':'')+fmt(chg,1)+'%';
+      heroChg.className='hero-change '+(chg>=0?'up':'down');
+    }
+  }).catch(function(){});
+
   // Load AHR999
   fetch('./indicators/data/ahr999.json').then(function(r){return r.json()}).then(function(d){
     var cur=d.current||{};
@@ -50,16 +74,9 @@
       chgEl.textContent=(chg>=0?'+':'')+fmt(chg,1)+'%';
       chgEl.className='ind-chg '+(chg>=0?'up':'down')+' mono';
     }
-    // Update hero price
-    if(price){
+    // Hero price fallback (if CoinGecko fails)
+    if(price&&!document.querySelector('.hero-price.cg-loaded')){
       setText('.hero-price','$'+Math.round(price).toLocaleString());
-    }
-    // 24h change from ahr999 history
-    var dayChg=pctChange(hist,'btc_price',1);
-    var heroChg=document.querySelector('.hero-change');
-    if(heroChg&&dayChg!==null){
-      heroChg.textContent=(dayChg>=0?'+':'')+fmt(dayChg,1)+'%';
-      heroChg.className='hero-change '+(dayChg>=0?'up':'down');
     }
   }).catch(function(){});
 
