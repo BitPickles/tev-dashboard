@@ -133,6 +133,21 @@
     }
   }).catch(function(){});
 
+  // Update TEV KPI stats from all-protocols.json
+  fetch('./data/all-protocols.json').then(function(r){return r.json()}).then(function(d){
+    var protos=d.protocols,list=[];
+    var totalProtos=Object.keys(protos).length;
+    for(var k in protos){var p=protos[k];var y=p.tev_yield_percent||0;if(y>0)list.push(y)}
+    var el1=document.getElementById('kpi-total');if(el1)el1.textContent=totalProtos;
+    var el1b=document.getElementById('stat-total');if(el1b)el1b.textContent=totalProtos;
+    var el2=document.getElementById('kpi-active');if(el2)el2.textContent=list.length;
+    if(list.length>0){
+      var avgY=list.reduce(function(s,x){return s+x},0)/list.length;
+      var el3=document.getElementById('kpi-avg-yield');if(el3)el3.textContent=avgY.toFixed(1)+'%';
+      var el3b=document.getElementById('stat-avg-yield');if(el3b)el3b.textContent=avgY.toFixed(1)+'%';
+    }
+  }).catch(function(){});
+
   // Load governance data for governance cards
   fetch('./data/governance.json').then(function(r){return r.json()}).then(function(d){
     var proposals=d.proposals||[];
