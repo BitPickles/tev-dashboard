@@ -92,7 +92,7 @@
   fetch('./indicators/data/btc-dominance.json').then(function(r){return r.json()}).then(function(d){
     var cur=d.current||{};
     var hist=d.history||[];
-    var val=cur.dominance||hist[hist.length-1]?.dominance;
+    var val=cur.dominance||cur.value||hist[hist.length-1]?.dominance||hist[hist.length-1]?.value;
     var indEl=document.querySelector('a[href="./btc-dominance/"] .ind-val');
     if(indEl&&val)indEl.textContent=fmt(val,1)+'%';
     // Hero BTC占比
@@ -104,10 +104,10 @@
       else{zoneEl.textContent='山寨季';zoneEl.className='ind-zone g';}
     }
     if(hist.length>7){
-      var last7=hist.slice(-7).map(function(x){return x.dominance});
+      var last7=hist.slice(-7).map(function(x){return x.dominance||x.value});
       if(window.sp)sp('sp-d',last7,'#38bdf8');
     }
-    var chg=pctChange(hist,'dominance',7);
+    var chg=pctChange(hist,hist[0]?.dominance!==undefined?'dominance':'value',7);
     var chgEl=document.querySelector('a[href="./btc-dominance/"] .ind-chg');
     if(chgEl&&chg!==null){
       chgEl.textContent=(chg>=0?'+':'')+fmt(chg,1)+'%';
