@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <script>(function(){var t=localStorage.getItem('theme');if(t!=='dark')document.documentElement.setAttribute('data-theme','light')})()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日数据播报 — Crypto3D</title>
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <style>
+    :root {
+      --bg-0: #050507;
+      --bg-1: #0a0a0e;
+      --bg-2: #101015;
+      --bg-3: #16161c;
+      --text-1: #e8e8ec;
+      --text-2: #7a7a88;
+      --text-3: #4a4a56;
+      --border: rgba(255,255,255,0.06);
+      --border-h: rgba(255,255,255,0.12);
+      --green: #34d399;
+      --green-d: rgba(52,211,153,0.08);
+      --blue: #60a5fa;
+      --blue-d: rgba(96,165,250,0.08);
+      --amber: #fbbf24;
+      --amber-d: rgba(251,191,36,0.08);
+      --red: #f87171;
+      --red-d: rgba(248,113,113,0.08);
+      --purple: #a78bfa;
+      --purple-d: rgba(167,139,250,0.08);
+    }
+
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{-webkit-font-smoothing:antialiased}
+    body{font-family:'Inter','Noto Sans SC',-apple-system,sans-serif;background:var(--bg-0);color:var(--text-1);line-height:1.5}
+    .mono{font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums}
+
+    /* ── TOOLBAR (not captured) ── */
+    .toolbar{
+      position:sticky;top:0;z-index:100;
+      background:rgba(5,5,7,0.92);backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--border);
+      padding:12px 32px;display:flex;align-items:center;justify-content:space-between;
+    }
+    .toolbar-left{display:flex;align-items:center;gap:12px}
+    .toolbar-logo{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700}
+    .toolbar-logo-mark{width:26px;height:26px;border-radius:6px;background:linear-gradient(135deg,var(--green),var(--blue));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#000}
+    .btn{
+      padding:8px 20px;border-radius:8px;border:1px solid var(--border);
+      background:var(--bg-2);color:var(--text-1);font-size:13px;font-weight:600;
+      cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;
+    }
+    .btn:hover{border-color:var(--border-h);background:var(--bg-3)}
+    .btn-primary{background:var(--green);color:#000;border-color:transparent}
+    .btn-primary:hover{opacity:0.9;border-color:transparent}
+    .btn svg{width:16px;height:16px}
+
+    /* ── REPORT CARD (captured area) ── */
+    .report-wrap{
+      max-width:680px;margin:32px auto;padding:0 20px;
+    }
+    .report-card{
+      background:var(--bg-1);border:1px solid var(--border);border-radius:20px;
+      padding:40px 36px;position:relative;overflow:hidden;
+    }
+
+    /* Subtle gradient glow */
+    .report-card::before{
+      content:'';position:absolute;top:-80px;right:-80px;
+      width:300px;height:300px;
+      background:radial-gradient(circle,rgba(52,211,153,0.06),transparent 70%);
+      pointer-events:none;
+    }
+
+    /* Header */
+    .report-header{margin-bottom:32px;position:relative}
+    .report-brand{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+    .report-brand-mark{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--green),var(--blue));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#000}
+    .report-brand-text{font-size:16px;font-weight:700}
+    .report-title{font-size:13px;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px}
+    .report-date{font-size:28px;font-weight:800;letter-spacing:-0.02em}
+
+    /* BTC Price banner */
+    .btc-banner{
+      display:flex;align-items:center;gap:16px;
+      background:var(--bg-2);border:1px solid var(--border);border-radius:12px;
+      padding:16px 20px;margin-bottom:28px;
+    }
+    .btc-icon{
+      width:40px;height:40px;border-radius:50%;
+      background:linear-gradient(135deg,#f7931a,#ff6b00);
+      display:flex;align-items:center;justify-content:center;
+      font-size:18px;font-weight:900;color:#fff;flex-shrink:0;
+    }
+    .btc-info{flex:1}
+    .btc-label{font-size:12px;font-weight:500;color:var(--text-3);text-transform:uppercase;letter-spacing:0.06em}
+    .btc-price{font-size:28px;font-weight:800;letter-spacing:-0.02em}
+    .btc-change{font-size:14px;font-weight:700;padding:3px 10px;border-radius:6px}
+    .btc-change.up{color:var(--green);background:var(--green-d)}
+    .btc-change.down{color:var(--red);background:var(--red-d)}
+
+    /* Indicator grid */
+    .indicators{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+    .ind-card{
+      background:var(--bg-2);border:1px solid var(--border);border-radius:14px;
+      padding:20px;position:relative;overflow:hidden;
+    }
+    .ind-card::after{
+      content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+      border-radius:0 0 14px 14px;
+    }
+    .ind-card.green::after{background:var(--green)}
+    .ind-card.amber::after{background:var(--amber)}
+    .ind-card.red::after{background:var(--red)}
+    .ind-card.blue::after{background:var(--blue)}
+
+    .ind-name{font-size:12px;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px}
+    .ind-value{font-size:26px;font-weight:800;letter-spacing:-0.02em;margin-bottom:6px}
+    .ind-status{
+      font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px;
+      display:inline-block;
+    }
+    .ind-status.green{color:var(--green);background:var(--green-d)}
+    .ind-status.amber{color:var(--amber);background:var(--amber-d)}
+    .ind-status.red{color:var(--red);background:var(--red-d)}
+    .ind-status.blue{color:var(--blue);background:var(--blue-d)}
+
+    .ind-detail{font-size:11px;color:var(--text-3);margin-top:8px;line-height:1.5}
+
+    /* Cycle summary */
+    .cycle-section{
+      background:var(--bg-2);border:1px solid var(--border);border-radius:14px;
+      padding:20px;margin-bottom:28px;
+    }
+    .cycle-title{font-size:12px;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px}
+    .cycle-text{font-size:14px;color:var(--text-2);line-height:1.8}
+
+    /* Footer */
+    .report-footer{
+      display:flex;align-items:center;justify-content:space-between;
+      padding-top:20px;border-top:1px solid var(--border);
+    }
+    .report-footer-url{font-size:14px;font-weight:700;color:var(--green)}
+    .report-footer-note{font-size:11px;color:var(--text-3);text-align:right;max-width:280px;line-height:1.4}
+
+    /* Loading */
+    .loading-state{text-align:center;padding:80px 20px;color:var(--text-3)}
+    .loading-spinner{
+      width:32px;height:32px;border:3px solid var(--bg-3);border-top-color:var(--green);
+      border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    @media(max-width:520px){
+      .report-card{padding:28px 20px}
+      .report-date{font-size:22px}
+      .btc-price{font-size:22px}
+      .indicators{grid-template-columns:1fr}
+      .ind-value{font-size:22px}
+      .report-wrap{margin:16px auto}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toolbar (not captured in image) -->
+  <div class="toolbar" id="toolbar">
+    <div class="toolbar-left">
+      <a href="../" class="toolbar-logo">
+        <div class="toolbar-logo-mark">3D</div>
+        <span>Crypto3D</span>
+      </a>
+      <span style="color:var(--text-3);font-size:13px">/ 每日播报</span>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn" onclick="refreshData()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+        刷新
+      </button>
+      <button class="btn btn-primary" onclick="downloadImage()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        下载图片
+      </button>
+    </div>
+  </div>
+
+  <!-- Report Card -->
+  <div class="report-wrap">
+    <div class="report-card" id="report-card">
+
+      <!-- Loading -->
+      <div class="loading-state" id="loading">
+        <div class="loading-spinner"></div>
+        <div>加载数据中...</div>
+      </div>
+
+      <!-- Content (hidden until data loaded) -->
+      <div id="content" style="display:none">
+
+        <!-- Header -->
+        <div class="report-header">
+          <div class="report-brand">
+            <div class="report-brand-mark">3D</div>
+            <div class="report-brand-text">Crypto3D</div>
+          </div>
+          <div class="report-title">Daily Data Report</div>
+          <div class="report-date" id="report-date">—</div>
+        </div>
+
+        <!-- BTC Price -->
+        <div class="btc-banner">
+          <div class="btc-icon">₿</div>
+          <div class="btc-info">
+            <div class="btc-label">Bitcoin</div>
+            <div class="btc-price mono" id="btc-price">—</div>
+          </div>
+          <div class="btc-change" id="btc-change">—</div>
+        </div>
+
+        <!-- Indicators -->
+        <div class="indicators">
+
+          <!-- AHR999 -->
+          <div class="ind-card" id="card-ahr999">
+            <div class="ind-name">AHR999</div>
+            <div class="ind-value mono" id="val-ahr999">—</div>
+            <div class="ind-status" id="status-ahr999">—</div>
+            <div class="ind-detail" id="detail-ahr999"></div>
+          </div>
+
+          <!-- MVRV -->
+          <div class="ind-card" id="card-mvrv">
+            <div class="ind-name">MVRV</div>
+            <div class="ind-value mono" id="val-mvrv">—</div>
+            <div class="ind-status" id="status-mvrv">—</div>
+            <div class="ind-detail" id="detail-mvrv"></div>
+          </div>
+
+          <!-- BTC.D -->
+          <div class="ind-card" id="card-btcd">
+            <div class="ind-name">BTC.D</div>
+            <div class="ind-value mono" id="val-btcd">—</div>
+            <div class="ind-status" id="status-btcd">—</div>
+            <div class="ind-detail" id="detail-btcd"></div>
+          </div>
+
+          <!-- BMRI -->
+          <div class="ind-card" id="card-bmri">
+            <div class="ind-name">BMRI</div>
+            <div class="ind-value mono" id="val-bmri">—</div>
+            <div class="ind-status" id="status-bmri">—</div>
+            <div class="ind-detail" id="detail-bmri"></div>
+          </div>
+
+        </div>
+
+        <!-- Cycle summary -->
+        <div class="cycle-section">
+          <div class="cycle-title">Cycle Perspective / 周期视角</div>
+          <div class="cycle-text" id="cycle-text">—</div>
+        </div>
+
+        <!-- Footer -->
+        <div class="report-footer">
+          <div class="report-footer-url">crypto3d.pro</div>
+          <div class="report-footer-note">由 AI 运营助手自动生成<br>仅供参考，不构成投资建议</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Data base URL - relative for local, absolute for deployed
+    const BASE = '../indicators/data/';
+
+    async function fetchJSON(file) {
+      const res = await fetch(BASE + file + '?t=' + Date.now());
+      if (!res.ok) throw new Error('Failed to fetch ' + file);
+      return res.json();
+    }
+
+    function formatPrice(n) {
+      return '$' + n.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    }
+
+    function formatDate(d) {
+      return d.replace(/-/g, '.');
+    }
+
+    // AHR999 zone
+    function ahr999Zone(v) {
+      if (v < 0.45) return { text: '定投区间', cls: 'green' };
+      if (v < 1.2) return { text: '正常波动', cls: 'blue' };
+      return { text: '偏贵谨慎', cls: 'red' };
+    }
+
+    // MVRV zone
+    function mvrvZone(v) {
+      if (v < 1.0) return { text: '深度低估', cls: 'green' };
+      if (v < 2.0) return { text: '合理区间', cls: 'blue' };
+      if (v < 3.0) return { text: '偏热', cls: 'amber' };
+      return { text: '过热警告', cls: 'red' };
+    }
+
+    // BTC.D zone
+    function btcdZone(v) {
+      if (v > 60) return { text: 'BTC 主导', cls: 'amber' };
+      if (v > 50) return { text: '均衡', cls: 'blue' };
+      return { text: '山寨季', cls: 'red' };
+    }
+
+    // BMRI zone
+    function bmriZone(v) {
+      if (v < 30) return { text: '宏观低风险', cls: 'green' };
+      if (v < 70) return { text: '中等风险', cls: 'amber' };
+      return { text: '宏观高风险', cls: 'red' };
+    }
+
+    // Generate cycle text based on data
+    function generateCycleText(ahr999, mvrv, btcd, bmri, btcPrice, cost200d) {
+      const parts = [];
+
+      // Price vs 200d cost
+      const deviation = ((btcPrice - cost200d) / cost200d * 100).toFixed(1);
+      parts.push(`BTC 当前价格偏离 200 日均线成本 ${deviation}%`);
+
+      // Multi-indicator reading
+      if (ahr999 < 0.45 && mvrv < 1.5) {
+        parts.push('AHR999 与 MVRV 双双指向低估区域');
+      } else if (ahr999 > 1.2 && mvrv > 2.5) {
+        parts.push('AHR999 与 MVRV 同时偏高，注意风险');
+      }
+
+      // BMRI context
+      if (bmri < 30) {
+        parts.push('宏观环境偏友好，流动性条件支持风险资产');
+      } else if (bmri > 70) {
+        parts.push('宏观风险偏高，外部环境对加密市场构成压力');
+      } else {
+        parts.push('宏观面暂无明确方向，关注后续变量');
+      }
+
+      // BTC.D
+      if (btcd > 60) {
+        parts.push('资金高度集中于 BTC，山寨整体承压');
+      } else if (btcd < 50) {
+        parts.push('山寨资金活跃，注意轮动风险');
+      }
+
+      parts.push('保持纪律，分批优于一把梭');
+
+      return parts.join('。') + '。';
+    }
+
+    async function loadData() {
+      try {
+        const [ahr999Data, mvrvData, btcdData, bmriData] = await Promise.all([
+          fetchJSON('ahr999.json'),
+          fetchJSON('mvrv.json'),
+          fetchJSON('btc-dominance.json'),
+          fetchJSON('bmri.json'),
+        ]);
+
+        const ahr = ahr999Data.history[ahr999Data.history.length - 1];
+        const mvrv = mvrvData.history[mvrvData.history.length - 1];
+        const btcd = btcdData.history[btcdData.history.length - 1];
+        const bmri6m = bmriData['6m'].history;
+        const bmri = bmri6m[bmri6m.length - 1];
+
+        // Date - use most recent
+        const dates = [ahr.date, mvrv.date, btcd.date, bmri.date].sort();
+        const latestDate = dates[dates.length - 1];
+        document.getElementById('report-date').textContent = formatDate(latestDate);
+
+        // BTC Price
+        document.getElementById('btc-price').textContent = formatPrice(ahr.close);
+
+        // BTC 24h change - compute from last 2 entries
+        const prevAhr = ahr999Data.history[ahr999Data.history.length - 2];
+        if (prevAhr) {
+          const change = ((ahr.close - prevAhr.close) / prevAhr.close * 100);
+          const changeEl = document.getElementById('btc-change');
+          changeEl.textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
+          changeEl.classList.add(change >= 0 ? 'up' : 'down');
+        }
+
+        // AHR999
+        const ahr999Val = ahr.ahr999;
+        const ahr999Z = ahr999Zone(ahr999Val);
+        document.getElementById('val-ahr999').textContent = ahr999Val.toFixed(4);
+        const statusAhr = document.getElementById('status-ahr999');
+        statusAhr.textContent = ahr999Z.text;
+        statusAhr.classList.add(ahr999Z.cls);
+        document.getElementById('card-ahr999').classList.add(ahr999Z.cls);
+        document.getElementById('detail-ahr999').textContent =
+          '200日成本 ' + formatPrice(ahr.cost_200d);
+
+        // MVRV
+        const mvrvVal = mvrv.mvrv;
+        const mvrvZ = mvrvZone(mvrvVal);
+        document.getElementById('val-mvrv').textContent = mvrvVal.toFixed(4);
+        const statusMvrv = document.getElementById('status-mvrv');
+        statusMvrv.textContent = mvrvZ.text;
+        statusMvrv.classList.add(mvrvZ.cls);
+        document.getElementById('card-mvrv').classList.add(mvrvZ.cls);
+        document.getElementById('detail-mvrv').textContent =
+          mvrvVal < 1 ? '低于全网持仓成本' : '全网持仓浮盈中';
+
+        // BTC.D
+        const btcdVal = btcd.value;
+        const btcdZ = btcdZone(btcdVal);
+        document.getElementById('val-btcd').textContent = btcdVal.toFixed(1) + '%';
+        const statusBtcd = document.getElementById('status-btcd');
+        statusBtcd.textContent = btcdZ.text;
+        statusBtcd.classList.add(btcdZ.cls);
+        document.getElementById('card-btcd').classList.add(btcdZ.cls);
+
+        // BMRI
+        const bmriVal = bmri.bmri;
+        const bmriZ = bmriZone(bmriVal);
+        document.getElementById('val-bmri').textContent = bmriVal.toFixed(1);
+        const statusBmri = document.getElementById('status-bmri');
+        statusBmri.textContent = bmriZ.text;
+        statusBmri.classList.add(bmriZ.cls);
+        document.getElementById('card-bmri').classList.add(bmriZ.cls);
+        document.getElementById('detail-bmri').textContent =
+          'Rates ' + bmri.rates.toFixed(1) + ' / Liq ' + bmri.liq.toFixed(1) + ' / Risk ' + bmri.risk.toFixed(1);
+
+        // Cycle text
+        document.getElementById('cycle-text').textContent =
+          generateCycleText(ahr999Val, mvrvVal, btcdVal, bmriVal, ahr.close, ahr.cost_200d);
+
+        // Show content
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+
+      } catch (err) {
+        console.error('Data load error:', err);
+        document.getElementById('loading').innerHTML =
+          '<div style="color:var(--red)">数据加载失败</div><div style="margin-top:8px;font-size:12px;color:var(--text-3)">' + err.message + '</div>';
+      }
+    }
+
+    function refreshData() {
+      document.getElementById('loading').style.display = 'block';
+      document.getElementById('content').style.display = 'none';
+      loadData();
+    }
+
+    async function downloadImage() {
+      const card = document.getElementById('report-card');
+      const btn = event.target.closest('.btn');
+      const origText = btn.innerHTML;
+      btn.innerHTML = '生成中...';
+      btn.disabled = true;
+
+      try {
+        const canvas = await html2canvas(card, {
+          backgroundColor: '#050507',
+          scale: 2,
+          useCORS: true,
+          logging: false,
+        });
+
+        const link = document.createElement('a');
+        const dateStr = document.getElementById('report-date').textContent.replace(/\./g, '-');
+        link.download = 'Crypto3D-Daily-' + dateStr + '.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      } catch (err) {
+        console.error('Screenshot error:', err);
+        alert('图片生成失败: ' + err.message);
+      } finally {
+        btn.innerHTML = origText;
+        btn.disabled = false;
+      }
+    }
+
+    // Init
+    loadData();
+  </script>
+</body>
+</html>
