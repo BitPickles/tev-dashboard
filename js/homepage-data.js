@@ -141,16 +141,17 @@
     var el1=document.getElementById('kpi-total');if(el1)el1.textContent=totalProtos;
     var el1b=document.getElementById('stat-total');if(el1b)el1b.textContent=totalProtos;
     var el2=document.getElementById('kpi-active');if(el2)el2.textContent=list.length;
-    if(list.length>0){
-      var avgY=list.reduce(function(s,x){return s+x},0)/list.length;
-      var el3=document.getElementById('kpi-avg-yield');if(el3)el3.textContent=avgY.toFixed(1)+'%';
-      var el3b=document.getElementById('stat-avg-yield');if(el3b)el3b.textContent=avgY.toFixed(1)+'%';
-    }
+    // governance count updated from governance.json below
   }).catch(function(){});
 
   // Load governance data for governance cards
   fetch('./data/governance.json').then(function(r){return r.json()}).then(function(d){
     var proposals=d.proposals||[];
+    // Update governance protocol count
+    var govProtos=new Set();
+    proposals.forEach(function(p){if(p.protocol)govProtos.add(p.protocol)});
+    var gEl=document.getElementById('kpi-governance');if(gEl)gEl.textContent=govProtos.size;
+    var gEl2=document.getElementById('stat-governance');if(gEl2)gEl2.textContent=govProtos.size;
     if(!proposals.length)return;
     // Get 2 most recent TEV-related or active proposals
     var active=proposals.filter(function(p){return p.status==='active'||p.tev_related});
