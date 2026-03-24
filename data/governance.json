@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-03-23T13:06:35.015829+00:00",
-  "total": 248,
-  "active_count": 33,
-  "passed_count": 215,
-  "tev_related": 65,
+  "updated_at": "2026-03-24T01:05:50.059416+00:00",
+  "total": 246,
+  "active_count": 34,
+  "passed_count": 212,
+  "tev_related": 62,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -134,21 +134,7 @@
       "source": "Snapshot",
       "protocol": "Aave",
       "title": "[ARFC] Aave V4 Activation on Ethereum Mainnet",
-      "status": "active",
-      "link": "https://snapshot.org/#/aavedao.eth/proposal/0x55e85a32828da36122b9c8d50548696d7c748fd41c775f5bf06bdf0f2e32a265",
-      "created": 1773925563,
-      "end": 1774271163,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "This proposal seeks community approval to deploy Aave V4 to Ethereum Mainnet through a security-first initial setup with conservative risk parameters and a deliberately narrow Hub and Spoke configuration. Aave V4 introduces a modular architecture whe",
-      "summary_zh": "[ARFC] Aave V4于以太坊主网激活提案\n本提案旨在获得社区批准，将Aave V4部署至以太坊主网，通过以安全为首要原则的初始设置，采用保守的风险参数和故意狭窄的枢纽-辐条配置。Aave V4引入模块化架构，...",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Aave",
-      "title": "[ARFC] Aave V4 Activation on Ethereum Mainnet",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/aavedao.eth/proposal/0x55e85a32828da36122b9c8d50548696d7c748fd41c775f5bf06bdf0f2e32a265",
       "created": 1773925563,
       "end": 1774271163,
@@ -387,20 +373,6 @@
       "tev_keywords": [],
       "summary_en": "Proposing the latest renewal of the Orbit program for recognized delegates, compensating them with GHO, associated with their future governance activity during Q1 and Q2 2026( From 2026-01-01 new date when [[ARFC] Orbit Program Renewal - Q3 and Q4 20",
       "summary_zh": "续期 Orbit 委托人激励计划至 2026 年 Q1-Q2，以 GHO 稳定币补偿获认可的委托人的治理参与活动。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Aave",
-      "title": "[ARFC-Addendum] Update Merit for Round  41 -  Adding OKX",
-      "status": "passed",
-      "link": "https://snapshot.org/#/aavedao.eth/proposal/0x378249e1170bb2021a949b3101aa58ada9e9d9c8d975076d0d6bb725d122275e",
-      "created": 1765377658,
-      "end": 1765723258,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "This addendum proposes updates to the Boosters for Merit Round 41 to add OKX Wallet.",
-      "summary_zh": "更新 Merit 第 41 轮的 Booster 名单，新增 OKX Wallet 作为参与方。",
       "analysis_zh": ""
     },
     {
@@ -742,22 +714,6 @@
     {
       "source": "Snapshot",
       "protocol": "GMX",
-      "title": "GMX Security Committee Season 4",
-      "status": "active",
-      "link": "https://snapshot.org/#/gmx.eth/proposal/0x45992ed6f365cd8ba1cfee5bee26cc117cdb4a18c54d100499ae6741c4cef4ce",
-      "created": 1773671101,
-      "end": 1774276800,
-      "tev_related": true,
-      "tev_keywords": [
-        "fee"
-      ],
-      "summary_en": "This Snapshot is held to elect the GMX Security Council for Season 4, covering the term May 1, 2026 through October 31, 2026. The Security Council serves as the protocol's dedicated security oversight body, responsible for reviewing and verifying pro",
-      "summary_zh": "选举 GMX 第四季安全理事会成员，任期 2026 年 5 月 1 日至 10 月 31 日。安全理事会负责审查和验证协议安全相关事务，是关键安全监督机构。",
-      "analysis_zh": "GMX Security Council Season 4 选举启动，每月 $500 薪酬强化协议安全风控\n\nGMX 启动 Security Council Season 4 选举，任期覆盖 2026 年 5 月至 10 月，旨在为拥有 $271.7M TVL 的协议构筑安全防线。当选成员需每周投入至少 5 小时审查升级与 timelock 交易，虽每月仅获 $500 薪酬，但对于年收入 $22.0M 的项目而言，这笔投入能显著降低运营与执行风险，是维持高 TEV Yield 28.9% 背后不可或缺的信任基石，体现了 DAO 对资产安全的审慎态度。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "GMX",
       "title": "GMX Labs Leadership Update",
       "status": "passed",
       "link": "https://snapshot.org/#/gmx.eth/proposal/0x1502634c70531215f88c2c60f3df8f7bc63633e08404493566ebaa9b3d107b8e",
@@ -991,22 +947,6 @@
       "summary_en": "The GMX DAO currently holds outstanding pool fees amounting to 994.70 ETH (3.2m USD) and 69,132.83 GMX (1.6m USD) from its GMX/ETH Uniswap LP position. This proposal seeks to authorize GMX DAO to collect these outstanding position fees from Uniswap a",
       "summary_zh": "GMX DAO 的 Uniswap LP 头寸累积了 994.70 ETH（320 万美元）和 69,132.83 GMX（160 万美元）的未提取费用，提案授权 DAO 领取这些费用。",
       "analysis_zh": "GMX 拟收回 Uniswap 上 $480 万未领费用并迁移 POL 至 Timelock，强化资金安全与流动性部署。\n\n提案计划收取 GMX/ETH Uniswap LP 头寸中累积的 994.70 ETH（约 $3.2m）及 69,132.83 GMX（约 $1.6m），总价值近 $480 万，同时将 21 个 POL NFTs 移入 DAO Timelock Contract。此举将单一托管转为时间锁合约，显著降低了资金托管风险，展现了 DAO 对资产安全的重视。收回资金将用于增强 CEX 与链上流动性并支持 GLV 资产组合，这对 TVL 达 $271.7m 的协议而言是高效的资本再分配，能有效提升资金利用率与市场深度，属于典型的存量优化策略。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "GMX",
-      "title": "Network Fee Smoothing",
-      "status": "passed",
-      "link": "https://snapshot.org/#/gmx.eth/proposal/0x75d40111f472d8c29f55b21f9946b4872b3fba27c3f489f8a13c5dfa30fde26f",
-      "created": 1737704686,
-      "end": 1738136580,
-      "tev_related": true,
-      "tev_keywords": [
-        "fee"
-      ],
-      "summary_en": "to allow for network fee smoothing, this would work by having higher network fees during times of regular network conditions and using the accumulated fees to subsidise network fees during times of network congestion.",
-      "summary_zh": "提议实施网络费用平滑机制：网络正常时收取较高费用并累积储备，网络拥堵时用储备补贴费用，降低用户体验波动。",
-      "analysis_zh": "GMX 拟推行 Network Fee Smoothing，常态交易成本微增换取拥堵期费用平滑。\n\nGMX 提议引入 Network Fee Smoothing 机制，通过“削峰填谷”策略平滑交易成本。具体方案是在交易费低于 0.001 ETH 时额外收取 0.00004 ETH 至 0.001 ETH 用于积累资金池，而在费用高企时反向补贴用户。虽然常态下交易成本可能微增，但能有效规避网络拥堵时的昂贵 Gas 费，提升交易体验的确定性。考虑到 GMX 当前 TEV Yield 高达 28.9% 且年分配近 $19.8M，协议具备充足的财力支持此项优化，尽管短期内可能引发部分用户对“变相涨价”的抵触，但长远看能防止极端行情下的用户流失，属于以微小成本换取系统稳定性的明智之举。"
     },
     {
       "source": "Snapshot",
@@ -2411,6 +2351,34 @@
     {
       "source": "Snapshot",
       "protocol": "Spark",
+      "title": "[Ethereum] Spark Blue Chip USDT Morpho Vault v2 Adjustments",
+      "status": "active",
+      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x44e61cf16177e1dc6c486790db8c7d09d097d7aa0c0cde910ef01fc8242f0f07",
+      "created": 1774281532,
+      "end": 1774540732,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "into the voting system on behalf of nested contributor Phoenix Labs.",
+      "summary_zh": "协议：Spark\n标题：[以太坊] Spark 蓝筹 USDT Morpho Vault v2 调整\n摘要：代表嵌套贡献者凤凰实验室对投票系统进行调整。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Spark",
+      "title": "SAEP-13: Risk Curation Framework",
+      "status": "active",
+      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x0f61f87161bf238c73f73ee5ad476e8e352dafdbda8a599b482cf37f15cfe378",
+      "created": 1774281421,
+      "end": 1774540621,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "> \n> This proposal is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 of the Spark Artifact. The proposal recommends that Spark governance adopt a Risk Curation Framework, under which c",
+      "summary_zh": "Spark协议治理提案：SAEP-13：风险编纂框架\n摘要：\n此提案由Phoenix Labs作为嵌套贡献者提交，根据Spark Artifact的A.6.1.1.1.2.2.2.1.2.1.1.1部分定义。提案建议Spark治理采用风险编纂框架。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Spark",
       "title": "SAEP-12: Document Savings Liquidity Intent Capability in Spark Savings Artifact Section",
       "status": "passed",
       "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x2df4ef0f5ea492bebd4f741225201be11557e56a686c29227734d3f7c92fd187",
@@ -3420,6 +3388,34 @@
     {
       "source": "Sky Polling",
       "protocol": "Sky (MakerDAO)",
+      "title": "Atlas Edit Weekly Cycle Proposal - March 23, 2026",
+      "status": "active",
+      "link": "https://vote.makerdao.com/polling/QmVbqw1G",
+      "created": "2026-03-23T16:00:00",
+      "end": "2026-03-26T16:00:00",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "This Atlas edit proposal 1) removes Governance poll requirement for SparkLend parameter changes, 2) removes Signal Requests and Non-Standard Weekly Polls from the Atlas, 3) clarifies Facilitator authority to update Atlas after spell execution, 4) add",
+      "summary_zh": "协议：Sky（MakerDAO）\n标题：Atlas 编辑每周周期提案 - 2026年3月23日\n摘要：本提案1）取消SparkLend参数变更的治理投票要求，2）从Atlas中移除信号请求和非标准每周投票，3）明确执行咒语后更新Atlas的协调员权限，4）添加...",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
+      "title": "SparkLend Mainnet - Reactivate WBTC - March 23, 2026",
+      "status": "active",
+      "link": "https://vote.makerdao.com/polling/QmX7MC2S",
+      "created": "2026-03-23T16:00:00",
+      "end": "2026-03-26T16:00:00",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Signal your support or opposition to reactivating WBTC with the listed parameters on SparkLend Mainnet.",
+      "summary_zh": "Signal your support or opposition to reactivating WBTC with the listed parameters on SparkLend Mainnet.",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
       "title": "Atlas Edit Weekly Cycle Proposal - March 16, 2026",
       "status": "passed",
       "link": "https://vote.makerdao.com/polling/QmZRHXrp",
@@ -3460,36 +3456,6 @@
       "summary_en": "This Atlas Edit 1) updates references to Amatsu GovOps to Soter Labs, 2) adds Governance Accessibility Reward Instances to the Skybase Artifact, 3) removes references to StarkNet in Safe Harbor documentation, 4) aligns GitHub and Portal versions of t",
       "summary_zh": "本 Atlas 编辑提案将 Amatsu GovOps 引用更新为 Soter Labs，向 Skybase Artifact 添加治理可访问性奖励实例，移除 Safe Harbor 文档中的 StarkNet 引用，对齐 GitHub 和 Portal 版本的 Atlas。",
       "analysis_zh": ""
-    },
-    {
-      "source": "Sky Polling",
-      "protocol": "Sky (MakerDAO)",
-      "title": "Atlas Edit Weekly Cycle Proposal - February 16, 2026",
-      "status": "passed",
-      "link": "https://vote.makerdao.com/polling/QmcxUENd",
-      "created": "2026-02-16T16:00:00",
-      "end": "2026-02-19T16:00:00",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "This Atlas edit 1) adds additional responsibilities for Aligned Delegates, 2) authorizes the Safe Harbor Agreement, 3) updates risk parameters for Anchorage Digital, 4) clarifies references to Ozone, 5) updates names of Obex Foundation and Developmen",
-      "summary_zh": "本 Atlas 编辑提案为 Aligned Delegates 增加新职责，授权 Safe Harbor 协议，更新 Anchorage Digital 风险参数，澄清 Ozone 引用，更新 Obex Foundation 名称，添加 Launch Agent 7 Artifact。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Sky Polling",
-      "protocol": "Sky (MakerDAO)",
-      "title": "Atlas Edit Weekly Cycle Proposal - February 9, 2026",
-      "status": "passed",
-      "link": "https://vote.makerdao.com/polling/QmPKRsDY",
-      "created": "2026-02-09T16:00:00",
-      "end": "2026-02-12T16:00:00",
-      "tev_related": true,
-      "tev_keywords": [
-        "distribution"
-      ],
-      "summary_en": "This Atlas edit proposal 1) updates the Ecosystem Accord between Sky, Spark, and Grove, 2) builds out basic information for Core Governance Reward Primitive, 3) removes legacy documents for Ranked Delegates, 4) updates the Distribution Reward Instanc",
-      "summary_zh": "本 Atlas 编辑提案更新 Sky、Spark 和 Grove 之间的生态系统协议，构建核心治理奖励原语基础信息，移除排名代表遗留文档，更新分配奖励实例和 Active Data Process。",
-      "analysis_zh": "Sky Atlas 修订聚焦治理架构优化，确立 Core Governance Reward Primitive 基础框架。\n\nSky 此次 Atlas 修订提案虽不直接触及 $105.3M 的年 TEV 分配，但通过清理 Ranked Delegates 旧文档和更新 Sky、Spark、Grove 间的 Ecosystem Accord，显著优化了治理架构的清晰度。在年收入 $250.8M 的强劲造血能力支撑下，确立 Core Governance Reward Primitive 基础信息显得尤为关键，这有助于解决长期激励机制模糊的问题。虽然 TEV Yield 维持在 6.21% 的高位主要依赖 Smart Burn Engine，但治理层面的“去腐生肌”——如移除 Scope Advisor 和更新 Active Data Process——能有效降低治理摩擦成本，为后续更高效的资本配置铺平道路，属于典型的“磨刀不误砍柴工”式基建维护。"
     },
     {
       "source": "Mantle Forum",
