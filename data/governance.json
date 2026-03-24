@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-03-24T01:05:50.059416+00:00",
+  "updated_at": "2026-03-24T13:17:19.226581+00:00",
   "total": 246,
-  "active_count": 34,
-  "passed_count": 212,
+  "active_count": 36,
+  "passed_count": 210,
   "tev_related": 62,
   "monitored_protocols": 19,
   "protocols_meta": {
@@ -2850,6 +2850,20 @@
     {
       "source": "dYdX Cosmos",
       "protocol": "dYdX",
+      "title": "Appoint New Designated Proposer Set",
+      "status": "active",
+      "link": "https://www.mintscan.io/dydx/proposals/368",
+      "created": "2026-03-24T05:56:36.104451825Z",
+      "end": "2026-03-27T05:56:36.104451825Z",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Appoint the following eight validators as the new designated proposer set: RHINO, Kiln, Kingnodes, Keplr, PRO Delegators, Crosnest, TTT VN, and CryptoCrew X Defi Dojo. Forum Post",
+      "summary_zh": "任命以下八名验证者为新的指定提案人集合：RHINO、Kiln、Kingnodes、Keplr、PRO Delegators、Crosnest、TTT VN和CryptoCrew X Defi Dojo。论坛帖子",
+      "analysis_zh": ""
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
       "title": "Update Governance Parameters on dYdX Chain",
       "status": "passed",
       "link": "https://www.mintscan.io/dydx/proposals/367",
@@ -2962,17 +2976,17 @@
       "analysis_zh": ""
     },
     {
-      "source": "dYdX Cosmos",
-      "protocol": "dYdX",
-      "title": "Update Governance Parameters on dYdX Chain",
-      "status": "closed",
-      "link": "https://www.mintscan.io/dydx/proposals/358",
-      "created": "2026-03-09T09:07:20.372055872Z",
-      "end": "2026-03-11T09:07:20.372055872Z",
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
+      "title": "BAP-674: Privacy-Preserving Token Transfer Protocol",
+      "status": "active",
+      "link": "https://github.com/bnb-chain/BEPs/pull/674",
+      "created": "2026-03-24T01:31:52",
+      "end": "",
       "tev_related": false,
       "tev_keywords": [],
-      "summary_en": "Update governance parameters on the x/gov module. Forum Post",
-      "summary_zh": "更新 dYdX Chain x/gov 模块的治理参数（此提案已关闭/失效）。",
+      "summary_en": "BAP-674 specifies a standard interface for privacy-preserving token transfers on BNB Chain, enabling deposit, transfer, and withdraw of BEP-20 tokens (and native BNB) with on-chain confidentiality using a UTXO-based model and zk-SNARK (Groth16) proof",
+      "summary_zh": "BAP-674规定在BNB Chain上隐私保护代币转账的标准接口，允许使用基于UTXO模型和Groth16证明的链上隐私，进行BEP-20代币（及原生BNB）的存取转操作。",
       "analysis_zh": ""
     },
     {
@@ -3099,20 +3113,6 @@
       "tev_keywords": [],
       "summary_en": "feat: support bep-652 analysis doc",
       "summary_zh": "添加 BEP-652 分析文档支持，为该提案提供详细的技术分析说明。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "Fix broken links in BEP322 motivation section",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/664",
-      "created": "2026-01-27T13:02:21",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Corrected links in the motivation section for clarity.",
-      "summary_zh": "修复 BEP-322 动机（Motivation）章节中的失效链接，提升文档可读性。",
       "analysis_zh": ""
     },
     {
