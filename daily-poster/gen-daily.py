@@ -230,9 +230,8 @@ def render_html(data):
     html = TEMPLATE.read_text(encoding="utf-8")
     now = data["date"]
 
-    # === FIX #4: Logo — convert relative to absolute path ===
-    logo_abs = str(LOGO_PATH)
-    html = html.replace('src="logo-3d.jpg"', f'src="file://{logo_abs}"')
+    # === Logo: relative path from output/ subdir to parent ===
+    html = html.replace('src="logo-3d.jpg"', 'src="../logo-3d.jpg"')
 
     # --- Date ---
     day_num = str(now.day)
