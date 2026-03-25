@@ -564,6 +564,57 @@ def render_html(data):
 """
     html = html.replace('</style>', card_fix_css + '</style>')
 
+    # === FIX: PC viewport — auto-scale to fit screen, centered ===
+    viewport_css = """
+<style>
+/* When viewed in browser (not Playwright), scale to fit viewport */
+@media screen {
+  html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: #e5e5e5;
+    overflow-y: auto;
+  }
+  body {
+    overflow: visible !important;
+    margin: 20px auto !important;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+    border-radius: 8px;
+    /* Scale down to fit viewport width */
+    transform-origin: top center;
+  }
+}
+</style>
+<script>
+// Auto-scale poster to fit viewport
+(function() {
+  function fitScale() {
+    var body = document.body;
+    var vw = window.innerWidth;
+    var vh = window.innerHeight;
+    // body has zoom applied, get actual rendered size
+    var bw = body.scrollWidth;
+    var bh = body.scrollHeight;
+    var scaleW = Math.min(1, (vw - 40) / 1080);
+    var scaleH = Math.min(1, (vh - 40) / 1920);
+    var scale = Math.min(scaleW, scaleH);
+    if (scale < 1) {
+      body.style.transform = 'scale(' + scale + ')';
+      body.style.transformOrigin = 'top center';
+    }
+  }
+  // Only run in browser, not in Playwright (Playwright sets exact viewport)
+  if (window.innerWidth !== 1080) {
+    fitScale();
+    window.addEventListener('resize', fitScale);
+  }
+})();
+</script>
+"""
+    html = html.replace('</head>', viewport_css + '</head>')
+
     # === Download button: html2canvas → save as PNG ===
     download_btn = """
 <style>
