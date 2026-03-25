@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-03-24T13:17:19.226581+00:00",
-  "total": 246,
-  "active_count": 36,
+  "updated_at": "2026-03-25T01:05:47.623427+00:00",
+  "total": 247,
+  "active_count": 37,
   "passed_count": 210,
   "tev_related": 62,
   "monitored_protocols": 19,
@@ -130,6 +130,20 @@
     }
   },
   "proposals": [
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[ARFC] Bug Bounty Program on Sherlock",
+      "status": "active",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0x5d2fa1381e7a3bae9c9e441b2e80c18d9ec793e637813502862548e9894a62ca",
+      "created": 1774275802,
+      "end": 1774621402,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Aave Labs proposes launching a dedicated Aave V4 bug bounty program on the Sherlock platform. The objective is to add an always-on security reporting channel for Aave V4, with a triage setup designed to reduce spam and route high-severity reports wit",
+      "summary_zh": "Aave Labs拟在Sherlock平台启动专门的Aave V4漏洞赏金计划。旨在为Aave V4提供持续的漏洞报告渠道，并建立分级机制以减少垃圾信息，并优先处理严重漏洞报告。",
+      "analysis_zh": ""
+    },
     {
       "source": "Snapshot",
       "protocol": "Aave",
