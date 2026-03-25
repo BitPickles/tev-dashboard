@@ -640,39 +640,19 @@ def render_html(data):
 .dl-btn svg { width: 18px; height: 18px; }
 @media print { .dl-btn { display: none; } }
 </style>
-<button class="dl-btn" onclick="downloadPoster()">
+<a class="dl-btn" id="dlBtn">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
   下载图片
-</button>
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</a>
 <script>
-async function downloadPoster() {
-  const btn = document.querySelector('.dl-btn');
-  btn.textContent = '生成中...';
-  btn.disabled = true;
-  try {
-    // Hide button during capture
-    btn.style.display = 'none';
-    const poster = document.querySelector('.poster');
-    const canvas = await html2canvas(poster, {
-      scale: 2,
-      useCORS: true,
-      backgroundColor: '#f5f5f7',
-      width: 1080,
-      height: 1920,
-    });
-    btn.style.display = 'flex';
-    const link = document.createElement('a');
-    const today = new Date().toISOString().slice(0,10);
-    link.download = 'crypto3d-daily-' + today + '.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-  } catch(e) {
-    alert('导出失败: ' + e.message);
-  }
-  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> 下载图片';
-  btn.disabled = false;
-}
+// Download the Playwright-generated PNG directly (same filename, .png)
+(function() {
+  var href = location.href;
+  var pngUrl = href.replace(/\.html(\?.*)?$/, '.png');
+  var btn = document.getElementById('dlBtn');
+  btn.href = pngUrl;
+  btn.download = pngUrl.split('/').pop();
+})();
 </script>
 """
     html = html.replace('</body>', download_btn + '</body>')
