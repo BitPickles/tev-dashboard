@@ -1,0 +1,45 @@
+{
+  "project": {
+    "name": "示例项目",
+    "dir": "~/.openclaw/workspace-engineer/my-project",
+    "branch": "dev"
+  },
+  "agents": {
+    "engineer": {
+      "branch": "dev-engineer",
+      "worktree": "~/.openclaw/workspace-engineer/my-project-engineer",
+      "role": "后端+数据+架构"
+    },
+    "engineer2": {
+      "branch": "dev-engineer2",
+      "worktree": "~/.openclaw/workspace-engineer/my-project-engineer2",
+      "role": "前端页面+组件+交互"
+    },
+    "designer": {
+      "branch": "dev-designer",
+      "worktree": "~/.openclaw/workspace-engineer/my-project-designer",
+      "role": "UI设计+样式+响应式"
+    }
+  },
+  "telegram": {
+    "chat_id": "1311453837",
+    "bot_token_env": "TG_BOT_TOKEN",
+    "proxy": "http://127.0.0.1:7890"
+  },
+  "thresholds": {
+    "nudge_minutes": 30,
+    "reset_minutes": 120,
+    "nudge_cooldown_minutes": 15,
+    "session_max_lines": 300
+  },
+  "paths": {
+    "state_dir": "~/clawd/state",
+    "logs_dir": "~/clawd/logs",
+    "task_registry": "~/clawd/tasks/my-project/task-registry.json",
+    "checks_file": "~/clawd/memory/my-project-checks.md"
+  },
+  "models": {
+    "agent_model": "openai-codex/gpt-5.4",
+    "cron_model": "openai-codex/gpt-5.4"
+  }
+}

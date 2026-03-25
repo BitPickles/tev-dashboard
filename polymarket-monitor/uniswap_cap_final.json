@@ -1,0 +1,83 @@
+{
+  "uniswap_v3_cap_analysis": {
+    "what_is_cap": "Cap Pools limit the maximum liquidity a single LP can provide",
+    "contracts": {
+      "factory": "0x1F98431c8aD985033C64D989b4641",
+      "pool_deployer": "0xB527A6f992518A6C8192E7e384b1",
+      "v3_pool": "0x8ad599c3A0ff1De082011EFDDc58f0389",
+      "erc721_nft": "0xC36442b4a4522E78Ef090cD029eF2e08"
+    },
+    "example_pools": [
+      {
+        "name": "ETH/USDT 0.05%",
+        "fee": 500,
+        "tick_spacing": 10
+      },
+      {
+        "name": "WBTC/ETH 0.3%",
+        "fee": 3000,
+        "tick_spacing": 60
+      },
+      {
+        "name": "DAI/USDC 0.01%",
+        "fee": 100,
+        "tick_spacing": 1
+      }
+    ],
+    "functions": [
+      "deploy",
+      "add_liquidity",
+      "remove_liquidity",
+      "collect",
+      "multicall",
+      "sweep"
+    ]
+  },
+  "cap_benefits": {
+    "prevents_single_lp_dominance": "Prevents one LP from controlling entire pool",
+    "protects_small_lps": "Protects small LPs earnings",
+    "reduces_mev": "Reduces MEV attack surface",
+    "controls_gas": "Controls gas consumption",
+    "enables_token_distribution": "Enables fair token distribution"
+  },
+  "cap_types": {
+    "fixed_cap": {
+      "description": "Same cap for all LPs",
+      "pros": [
+        "Simple",
+        "Fair"
+      ],
+      "cons": [
+        "Inflexible",
+        "Not optimal for growth"
+      ]
+    },
+    "variable_cap": {
+      "description": "Dynamic caps per LP",
+      "pros": [
+        "Flexible",
+        "Can incentivize large LPs"
+      ],
+      "cons": [
+        "Complex",
+        "Requires governance"
+      ]
+    }
+  },
+  "swap_router": {
+    "address": "0xE592427A0AEce92De3Edee1F18E0157C05861564",
+    "functions": [
+      "exactInputSingle",
+      "exactInputMultihop",
+      "V3Swap"
+    ],
+    "interaction_with_cap": "Swap Router can execute trades in Cap Pools same as regular pools"
+  },
+  "key_findings": [
+    "Cap Pools are still standard Uniswap V3 pools with additional constraint",
+    "LP operations check cap before execution",
+    "Swap Router doesn't check cap",
+    "Caps are stored in pool state",
+    "Caps can be changed by pool deployer or governance"
+  ]
+}

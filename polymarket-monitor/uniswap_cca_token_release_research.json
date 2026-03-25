@@ -1,0 +1,211 @@
+{
+  "title": "Uniswap V3 CCA 代币释放效率调研",
+  "timestamp": "2026-01-31T02:10:50.305529",
+  "cca_overview": {
+    "name": "Concentrated Liquidity Auction",
+    "description": "Uniswap V3 的流动性拍卖机制",
+    "key_concepts": [
+      "Concentrated Liquidity",
+      "Auction Mechanism",
+      "Token Release",
+      "Cliff Period",
+      "Vesting Period"
+    ]
+  },
+  "release_mechanism": {
+    "description": "CCA 中的代币释放流程",
+    "phases": [
+      {
+        "name": "Auction Phase",
+        "description": "拍卖阶段，流动性提供者出价",
+        "block_range": "Start_Block to Auction_End_Block"
+      },
+      {
+        "name": "Cliff Period",
+        "description": "悬崖期，不释放代币（0 Token/Block）",
+        "block_range": "Auction_End_Block to Cliff_End_Block"
+      },
+      {
+        "name": "Vesting Period",
+        "description": "释放期，线性释放代币",
+        "block_range": "Cliff_End_Block to Release_End_Block",
+        "release_rate": "X Tokens per Block (Linear)"
+      },
+      {
+        "name": "Completion",
+        "description": "释放完成，100% 解锁",
+        "block_range": "Release_End_Block"
+      }
+    ]
+  },
+  "release_parameters": {
+    "start_block": {
+      "description": "释放开始的区块号",
+      "typical_values": [
+        "15000000",
+        "16000000",
+        "17000000"
+      ]
+    },
+    "end_block": {
+      "description": "释放结束的区块号",
+      "typical_values": [
+        "20000000",
+        "21000000",
+        "22000000"
+      ]
+    },
+    "total_blocks": {
+      "description": "总释放区块数",
+      "typical_values": [
+        "5000000",
+        "6000000",
+        "7000000"
+      ]
+    },
+    "cliff_duration": {
+      "description": "悬崖期时长（区块数）",
+      "typical_values": [
+        "1000000",
+        "2000000",
+        "3000000"
+      ]
+    },
+    "vesting_duration": {
+      "description": "释放期时长（区块数）",
+      "typical_values": [
+        "4000000",
+        "4000000",
+        "4000000"
+      ]
+    },
+    "total_supply": {
+      "description": "总代币供应量",
+      "typical_values": [
+        "1000000",
+        "10000000",
+        "100000000"
+      ]
+    },
+    "cliff_release": {
+      "description": "悬崖期释放量（通常是 0）",
+      "typical_values": [
+        "0 Tokens/Block"
+      ]
+    },
+    "vesting_release_rate": {
+      "description": "释放期释放速率",
+      "typical_values": [
+        "0.0001",
+        "0.0002",
+        "0.0005"
+      ]
+    }
+  },
+  "release_efficiency": {
+    "efficiency_metrics": [
+      {
+        "name": "Tokens Per Block",
+        "description": "每块释放的代币数量",
+        "formula": "Tokens_Per_Block = Total_Supply / Vesting_Blocks",
+        "example": "1000000 / 4000000 = 0.00025 Tokens/Block"
+      },
+      {
+        "name": "Tokens Per Second",
+        "description": "每秒释放的代币数量",
+        "formula": "Tokens_Per_Second = Tokens_Per_Block / 12",
+        "example": "0.00025 / 12 = 0.0000208 Tokens/Second"
+      },
+      {
+        "name": "Release Duration",
+        "description": "总释放时长（秒）",
+        "formula": "Release_Duration = Vesting_Blocks * 12",
+        "example": "4000000 * 12 = 48000000 Seconds = 555 Days"
+      },
+      {
+        "name": "Completion Percentage",
+        "description": "当前区块的完成百分比",
+        "formula": "Completion_% = (Current_Block - Cliff_End_Block) / Vesting_Blocks * 100"
+      },
+      {
+        "name": "Time to Completion",
+        "description": "预计完成时间（秒）",
+        "formula": "Time_to_Completion = (Release_End_Block - Current_Block) * 12"
+      }
+    ]
+  },
+  "contracts": {
+    "cca_factory": {
+      "address": "0x...",
+      "name": "CCA Factory",
+      "description": "创建和管理所有 CCA 拍卖的工厂合约"
+    },
+    "cca_auction": {
+      "address": "0x...",
+      "name": "CCA Auction",
+      "description": "处理流动性拍卖的合约"
+    },
+    "cca_liquidity": {
+      "address": "0x...",
+      "name": "CCA Liquidity Manager",
+      "description": "管理拍卖后流动性的合约"
+    },
+    "cca_token": {
+      "address": "0x...",
+      "name": "CCA Token",
+      "description": "CCA 治理代币或拍卖代币"
+    }
+  },
+  "examples": {
+    "example_1_linear_vesting": {
+      "name": "线性释放示例",
+      "description": "每块释放固定数量的代币",
+      "parameters": {
+        "total_supply": "1000000",
+        "start_block": "16000000",
+        "cliff_end_block": "18000000",
+        "vesting_end_block": "22000000",
+        "vesting_blocks": "4000000",
+        "tokens_per_block": "0.00025"
+      },
+      "calculations": {
+        "cliff_duration": "2000000 Blocks = 277 Days",
+        "vesting_duration": "4000000 Blocks = 555 Days",
+        "tokens_per_block": "0.00025",
+        "tokens_per_second": "0.0000208",
+        "release_duration": "48000000 Seconds = 555 Days"
+      }
+    },
+    "example_2_curve_vesting": {
+      "name": "曲线释放示例",
+      "description": "初期释放少，后期释放多",
+      "parameters": {
+        "total_supply": "1000000",
+        "start_block": "16000000",
+        "cliff_end_block": "18000000",
+        "vesting_end_block": "22000000",
+        "vesting_blocks": "4000000",
+        "curve_type": "Exponential"
+      },
+      "calculations": {
+        "initial_release_rate": "0.00001",
+        "final_release_rate": "0.001",
+        "average_release_rate": "0.0005",
+        "tokens_per_second_avg": "0.0000417",
+        "release_duration": "48000000 Seconds = 555 Days"
+      }
+    }
+  },
+  "code_examples": {
+    "solidity_calculate_release": {
+      "language": "Solidity",
+      "function": "calculateRelease",
+      "code": "function calculateRelease(uint256 currentBlock, uint256 cliffEndBlock, uint256 vestingEndBlock, uint256 totalSupply) view returns (uint256 released, uint256 remaining, uint256 percentage) { cliffDuration = vestingEndBlock - cliffEndBlock; if (currentBlock <= cliffEndBlock) { return (0, totalSupply, 0); } vestingDuration = vestingEndBlock - cliffEndBlock; if (currentBlock >= vestingEndBlock) { return (totalSupply, 0, 10000); // 10000 = 100% } progress = (currentBlock - cliffEndBlock) * 10000 / vestingDuration; released = totalSupply * progress / 10000; remaining = totalSupply - released; return (released, remaining, progress / 100); }"
+    },
+    "python_calculate_release": {
+      "language": "Python",
+      "function": "calculate_release_efficiency",
+      "code": "import json\ndef calculate_release_efficiency(total_supply, start_block, cliff_end_block, vesting_end_block, current_block):\n    cliff_duration = cliff_end_block - start_block\n    vesting_duration = vesting_end_block - cliff_end_block\n    \n    if current_block <= cliff_end_block:\n        released = 0\n        remaining = total_supply\n        percentage = 0\n    elif current_block >= vesting_end_block:\n        released = total_supply\n        remaining = 0\n        percentage = 100\n    else:\n        vesting_blocks = vesting_end_block - cliff_end_block\n        progress = (current_block - cliff_end_block) / vesting_blocks\n        released = total_supply * progress\n        remaining = total_supply - released\n        percentage = progress * 100\n    \n    return {\n        'released': released,\n        'remaining': remaining,\n        'percentage': percentage,\n        'cliff_duration': cliff_duration,\n        'vesting_duration': vesting_duration\n    }\n"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "core": {
+    "factory": {
+      "address": "0x1F98431c8aD985033C64D989b4641",
+      "name": "Uniswap V3 Factory",
+      "chain": "Mainnet",
+      "description": "创建和管理所有池的工厂合约"
+    },
+    "router": {
+      "address": "0xE592427A0AEce92De3Edee1F18E0157C05861564",
+      "name": "Uniswap V3 SwapRouter",
+      "chain": "Mainnet",
+      "description": "处理多跳交易的路由合约"
+    },
+    "quoter": {
+      "address": "0xb27308f9F908603524f4266fD983f8",
+      "name": "QuoterV2",
+      "chain": "Mainnet",
+      "description": "提供最佳路径和报价的合约"
+    },
+    "nft_manager": {
+      "address": "0xC36442b4a4522E78Ef090cD029eF2e08",
+      "name": "NonfungiblePositionManager",
+      "chain": "Mainnet",
+      "description": "NFT 位置管理合约"
+    },
+    "pool_deployer": {
+      "address": "0xB527A6f992518A6C8192E7e384b1",
+      "name": "V3PoolDeployer",
+      "chain": "Mainnet",
+      "description": "部署池的合约"
+    }
+  },
+  "oracle": {
+    "uniswap_oracle": {
+      "address": "0x1C232F01118CB8B424d1",
+      "name": "UniswapV3Oracle",
+      "chain": "Mainnet",
+      "description": "Uniswap 原生预言机"
+    },
+    "chainlink_oracle": {
+      "address": "0x47Fb2595D2Fb2563b",
+      "name": "Chainlink Price Feed",
+      "chain": "Mainnet",
+      "description": "Chainlink 价格预言机（备用）"
+    }
+  },
+  "example_pools": {
+    "eth_usdt": {
+      "address": "0x8ad599c3A0ff1De082011EFDDc58f0389",
+      "name": "ETH/USDT 0.05%",
+      "token0": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "token1": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      "fee": 500,
+      "tick_spacing": 10,
+      "pool_type": "Concentrated Liquidity"
+    },
+    "wbtc_eth": {
+      "address": "0xC2Ee7430f6145C8f837Debf4e8a3A",
+      "name": "WBTC/ETH 0.3%",
+      "token0": "0x2260FAC5E51F2",
+      "token1": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "fee": 3000,
+      "tick_spacing": 60,
+      "pool_type": "Concentrated Liquidity"
+    }
+  }
+}

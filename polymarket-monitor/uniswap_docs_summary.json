@@ -1,0 +1,56 @@
+{
+  "main_doc": {
+    "name": "Uniswap V3 Core",
+    "url": "https://docs.uniswap.org/protocol/concentrated-liquidity/overview",
+    "description": "Concentrated Liquidity 机制概览",
+    "key_concepts": [
+      "Concentrated Liquidity",
+      "Uniswap V3 Hooks",
+      "Tick Mathematics",
+      "Fee Tier"
+    ]
+  },
+  "technical_specs": {
+    "name": "Technical Specifications",
+    "url": "https://docs.uniswap.org/protocol/concentrated-liquidity/technical-specifications",
+    "description": "集中流动性的技术规范",
+    "key_topics": [
+      "Tick Spacing",
+      "Tick Size",
+      "Sqrt Price",
+      "Fee Tiers"
+    ]
+  },
+  "hooks": {
+    "name": "Uniswap V3 Hooks",
+    "url": "https://docs.uniswap.org/protocol/concentrated-liquidity/hooks",
+    "description": "集中流动性 Hooks 接口",
+    "hook_types": [
+      "before_add_liquidity",
+      "after_add_liquidity",
+      "before_remove_liquidity",
+      "after_remove_liquidity"
+    ]
+  },
+  "oracle": {
+    "name": "Oracle",
+    "url": "https://docs.uniswap.org/protocol/concentrated-liquidity/oracle",
+    "description": "价格预言机接口",
+    "oracle_implementations": [
+      "UniswapV3Oracle",
+      "Chainlink Price Feed"
+    ]
+  },
+  "periphery": {
+    "name": "Periphery Contracts",
+    "url": "https://docs.uniswap.org/protocol/concentrated-liquidity/periphery",
+    "description": "外围合约（集中流动性管理）",
+    "contracts": [
+      "UniswapV3Pool",
+      "UniswapV3Factory",
+      "UniswapV3SwapRouter",
+      "Quoter",
+      "TickLens"
+    ]
+  }
+}

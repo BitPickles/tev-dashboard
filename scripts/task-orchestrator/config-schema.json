@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "task-orchestrator 通用配置",
+  "type": "object",
+  "required": ["project", "agents", "telegram"],
+  "properties": {
+    "project": {
+      "type": "object",
+      "required": ["name", "dir", "branch"],
+      "properties": {
+        "name": { "type": "string", "description": "项目显示名" },
+        "dir": { "type": "string", "description": "主仓库目录（支持 ~）" },
+        "branch": { "type": "string", "description": "主分支名" }
+      }
+    },
+    "agents": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["branch", "worktree", "role"],
+        "properties": {
+          "branch": { "type": "string" },
+          "worktree": { "type": "string" },
+          "role": { "type": "string" }
+        }
+      }
+    },
+    "telegram": {
+      "type": "object",
+      "required": ["chat_id"],
+      "properties": {
+        "chat_id": { "type": "string" },
+        "bot_token_env": { "type": "string", "default": "TG_BOT_TOKEN", "description": "环境变量名" },
+        "proxy": { "type": "string", "description": "HTTP 代理" }
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "properties": {
+        "nudge_minutes": { "type": "integer", "default": 30 },
+        "reset_minutes": { "type": "integer", "default": 120 },
+        "nudge_cooldown_minutes": { "type": "integer", "default": 15 },
+        "session_max_lines": { "type": "integer", "default": 300 }
+      }
+    },
+    "paths": {
+      "type": "object",
+      "properties": {
+        "state_dir": { "type": "string", "default": "~/clawd/state" },
+        "logs_dir": { "type": "string", "default": "~/clawd/logs" },
+        "task_registry": { "type": "string", "description": "任务注册表路径" },
+        "checks_file": { "type": "string", "description": "检查记录文件路径" }
+      }
+    },
+    "models": {
+      "type": "object",
+      "properties": {
+        "agent_model": { "type": "string", "default": "openai-codex/gpt-5.4", "description": "下属 Agent 模型" },
+        "cron_model": { "type": "string", "default": "openai-codex/gpt-5.4", "description": "Cron 任务模型" }
+      }
+    }
+  }
+}
