@@ -540,5 +540,64 @@ body {
     </div>
   </div>
 </div>
+
+<style>
+.dl-btn {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  background: #18181b;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.2s;
+}
+.dl-btn:hover { opacity: 0.85; }
+.dl-btn svg { width: 18px; height: 18px; }
+@media print { .dl-btn { display: none; } }
+</style>
+<button class="dl-btn" onclick="downloadPoster()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+  下载图片
+</button>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script>
+async function downloadPoster() {
+  const btn = document.querySelector('.dl-btn');
+  btn.textContent = '生成中...';
+  btn.disabled = true;
+  try {
+    // Hide button during capture
+    btn.style.display = 'none';
+    const poster = document.querySelector('.poster');
+    const canvas = await html2canvas(poster, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#f5f5f7',
+      width: 1080,
+      height: 1920,
+    });
+    btn.style.display = 'flex';
+    const link = document.createElement('a');
+    const today = new Date().toISOString().slice(0,10);
+    link.download = 'crypto3d-daily-' + today + '.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  } catch(e) {
+    alert('导出失败: ' + e.message);
+  }
+  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> 下载图片';
+  btn.disabled = false;
+}
+</script>
 </body>
 </html>
