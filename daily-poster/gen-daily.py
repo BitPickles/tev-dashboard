@@ -671,9 +671,18 @@ def generate_comment(data):
     bmri = data.get("bmri", {})
     btcd = data.get("btcd", {})
 
-    indicators = f"""当前指标数据：
-- BTC 价格: ${btc.get('price', 0):,.0f}，7日变化: {btc.get('price_chg_7d', 0):+.1f}%
-- AHR999: {ahr.get('value', 0):.2f}（{ahr.get('status', '')}），7日变化: {ahr.get('chg_7d', 0):+.1f}%，BTC价格远低于200日成本${ahr.get('cost_200d', 0):,.0f}，偏离拟合价格{ahr.get('deviation', 0):.0f}%
+    price = btc.get('price', 0)
+    cost_200d = ahr.get('cost_200d', 0)
+    fitted = ahr.get('fitted_price', 0)
+    dev_cost = ((price - cost_200d) / cost_200d * 100) if cost_200d else 0
+    dev_fitted = ((price - fitted) / fitted * 100) if fitted else 0
+
+    indicators = f"""当前指标数据（请严格使用以下数字，不要编造或四舍五入）：
+- BTC 价格: ${price:,.0f}，7日变化: {btc.get('price_chg_7d', 0):+.1f}%
+- AHR999: {ahr.get('value', 0):.2f}（{ahr.get('status', '')}），7日变化: {ahr.get('chg_7d', 0):+.1f}%
+  · BTC 价格偏离 200日成本(${cost_200d:,.0f})为 {dev_cost:+.1f}%
+  · BTC 价格偏离拟合价格(${fitted:,.0f})为 {dev_fitted:+.1f}%
+  · 注意：这是两个不同的偏离度，不要混淆
 - MVRV: {mvrv.get('value', 0):.2f}，历史百分位P{mvrv.get('percentile', 0):.0f}，上轮周期同期: {mvrv.get('prev_cycle', 0):.2f}
 - BMRI: {bmri.get('value', 0):.0f}（{bmri.get('regime', '')}）
 - BTC.D: {btcd.get('value', 0):.1f}%，7日变化: {btcd.get('chg_7d', 0):+.1f}%"""
@@ -708,8 +717,9 @@ def generate_comment(data):
 6. 语气自信、有洞察，但绝对不要喊单、不要建议买入卖出
 7. 只用数据制造张力，让读者自己去判断
 8. 结尾用一个开放性问题收尾
-9. 最后一行：→ 完整指标数据：crypto3d.pro
-10. 不要用 markdown 格式，纯文本"""
+9. 数据准确性是底线：引用数字必须和上面给出的完全一致，不要编造、不要混淆不同指标
+10. 不要用 markdown 格式，纯文本
+11. 不要在末尾加任何网站链接"""
 
     payload = json.dumps({
         "model": "glm-5",
@@ -720,16 +730,23 @@ def generate_comment(data):
     }, ensure_ascii=False)
 
     try:
-        result = subprocess.run([
-            'curl', '-s', 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
-            '-H', f'Authorization: Bearer {api_key}',
-            '-H', 'Content-Type: application/json',
-            '-d', '@-',
-            '--max-time', '60',
-        ], input=payload, capture_output=True, text=True, timeout=70)
+        import tempfile
+        tmp = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8')
+        tmp.write(payload)
+        tmp.close()
+        try:
+            result = subprocess.run([
+                'curl', '-s', 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+                '-H', f'Authorization: Bearer {api_key}',
+                '-H', 'Content-Type: application/json',
+                '-d', f'@{tmp.name}',
+                '--max-time', '90',
+            ], capture_output=True, text=True, timeout=100)
+        finally:
+            Path(tmp.name).unlink(missing_ok=True)
 
         if result.returncode != 0:
-            print(f"[WARN] Comment API failed: {result.stderr[:100]}")
+            print(f"[WARN] Comment API failed: rc={result.returncode} {result.stderr[:100]}")
             return None
 
         resp = json.loads(result.stdout)
@@ -746,13 +763,19 @@ def generate_comment(data):
                 "temperature": 0.7,
                 "max_tokens": 2000,
             }, ensure_ascii=False)
-            result2 = subprocess.run([
-                'curl', '-s', 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
-                '-H', f'Authorization: Bearer {api_key}',
-                '-H', 'Content-Type: application/json',
-                '-d', '@-',
-                '--max-time', '60',
-            ], input=payload2, capture_output=True, text=True, timeout=70)
+            tmp2 = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8')
+            tmp2.write(payload2)
+            tmp2.close()
+            try:
+                result2 = subprocess.run([
+                    'curl', '-s', 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+                    '-H', f'Authorization: Bearer {api_key}',
+                    '-H', 'Content-Type: application/json',
+                    '-d', f'@{tmp2.name}',
+                    '--max-time', '60',
+                ], capture_output=True, text=True, timeout=70)
+            finally:
+                Path(tmp2.name).unlink(missing_ok=True)
             if result2.returncode == 0:
                 resp2 = json.loads(result2.stdout)
                 content = (resp2.get("choices", [{}])[0].get("message", {}).get("content") or "").strip()
