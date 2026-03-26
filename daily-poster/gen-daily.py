@@ -233,8 +233,25 @@ def render_html(data):
     # === Logo: relative path from output/ subdir to parent ===
     html = html.replace('src="logo-3d.jpg"', 'src="../logo-3d.jpg"')
 
-    # === Update timestamp — inline with date line ===
-    ts_str = now.strftime("%H:%M CST")
+    # === Update timestamp — show data update date, not current time ===
+    # Use the latest date from indicator data files
+    data_dates = []
+    for key in ["ahr999", "mvrv", "bmri", "btcd"]:
+        d = data.get(key, {})
+        # collect_data stores date in the parent data dict only
+    ahr_data = load_json(INDICATORS / "ahr999.json")
+    if ahr_data:
+        data_dates.append(ahr_data["current"].get("date", ""))
+    mvrv_data = load_json(INDICATORS / "mvrv.json")
+    if mvrv_data:
+        data_dates.append(mvrv_data["current"].get("date", ""))
+    bmri_data = load_json(INDICATORS / "bmri.json")
+    if bmri_data:
+        data_dates.append(bmri_data["1m"]["current"].get("date", ""))
+    # Latest data date
+    data_dates = [d for d in data_dates if d]
+    data_dates.sort()
+    ts_str = data_dates[-1] if data_dates else now.strftime("%Y-%m-%d")
     # Make title-section position:relative, add absolute-right timestamp
     html = html.replace(
         '<div class="title-section">',
