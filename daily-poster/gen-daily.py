@@ -720,7 +720,7 @@ def generate_comment(data):
   · BTC 价格偏离 200日成本(${cost_200d:,.0f})为 {dev_cost:+.1f}%
   · BTC 价格偏离拟合价格(${fitted:,.0f})为 {dev_fitted:+.1f}%
   · 注意：这是两个不同的偏离度，不要混淆
-- MVRV: {mvrv.get('value', 0):.2f}，历史百分位P{mvrv.get('percentile', 0):.0f}，上轮周期同期（{mvrv.get('prev_cycle_period', '2022-04')}）: {mvrv.get('prev_cycle', 0):.2f}
+- MVRV: {mvrv.get('value', 0):.2f}，低于历史 {100 - mvrv.get('percentile', 50):.0f}% 的时间，上轮周期同期（{mvrv.get('prev_cycle_period', '2022-04')}）: {mvrv.get('prev_cycle', 0):.2f}
 - BMRI: {bmri.get('value', 0):.0f}（{bmri.get('regime', '')}）
 - BTC.D: {btcd.get('value', 0):.1f}%，7日变化: {btcd.get('chg_7d', 0):+.1f}%"""
 
