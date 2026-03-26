@@ -641,8 +641,139 @@ async def screenshot(html_path, png_path):
         await browser.close()
 
 
+def load_env_key(key):
+    """Load key from ~/.openclaw/.env"""
+    env_file = Path.home() / ".openclaw" / ".env"
+    if not env_file.exists():
+        return ""
+    for line in env_file.read_text().splitlines():
+        if not line or line.lstrip().startswith("#") or "=" not in line:
+            continue
+        k, v = line.split("=", 1)
+        if k.strip() == key:
+            return v.strip().strip('"').strip("'")
+    return ""
+
+
+def generate_comment(data):
+    """Generate AI daily comment using GLM-5."""
+    import subprocess
+
+    api_key = load_env_key("ZHIPUAI_API_KEY")
+    if not api_key:
+        print("[WARN] No ZHIPUAI_API_KEY, skipping comment")
+        return None
+
+    # Build context
+    btc = data.get("btc", {})
+    ahr = data.get("ahr999", {})
+    mvrv = data.get("mvrv", {})
+    bmri = data.get("bmri", {})
+    btcd = data.get("btcd", {})
+
+    indicators = f"""当前指标数据：
+- BTC 价格: ${btc.get('price', 0):,.0f}，7日变化: {btc.get('price_chg_7d', 0):+.1f}%
+- AHR999: {ahr.get('value', 0):.2f}（{ahr.get('status', '')}），7日变化: {ahr.get('chg_7d', 0):+.1f}%，BTC价格远低于200日成本${ahr.get('cost_200d', 0):,.0f}，偏离拟合价格{ahr.get('deviation', 0):.0f}%
+- MVRV: {mvrv.get('value', 0):.2f}，历史百分位P{mvrv.get('percentile', 0):.0f}，上轮周期同期: {mvrv.get('prev_cycle', 0):.2f}
+- BMRI: {bmri.get('value', 0):.0f}（{bmri.get('regime', '')}）
+- BTC.D: {btcd.get('value', 0):.1f}%，7日变化: {btcd.get('chg_7d', 0):+.1f}%"""
+
+    # Load top news
+    news_file = TEV_DIR / "data" / "news.json"
+    news_context = ""
+    if news_file.exists():
+        try:
+            nd = json.load(open(news_file))
+            top_news = [n for n in nd.get("news", []) if n.get("importance", 0) >= 6][:5]
+            if top_news:
+                news_lines = []
+                for n in top_news:
+                    title = n.get("title_zh", n.get("title_en", ""))
+                    summary = n.get("summary_zh", "")[:80]
+                    news_lines.append(f"- [{n.get('category','')}] {title}：{summary}")
+                news_context = "\n\n今日重要新闻：\n" + "\n".join(news_lines)
+        except Exception:
+            pass
+
+    prompt = f"""{indicators}{news_context}
+
+你是 Crypto3D 数据站的市场评论员。根据以上数据和新闻，写一段每日短评。
+
+要求：
+1. 格式：第一行是🔥开头的标题（20字以内，有观点、有话题性），空一行后是正文
+2. 正文 150-250 字，像 crypto Twitter 上犀利的分析师写的
+3. 只抓一个最有话题性的角度深入，不要面面俱到
+4. 用数据佐证观点，但不要罗列数据
+5. 可以穿插一条当天最重要的新闻作为催化剂
+6. 语气自信、有洞察，但绝对不要喊单、不要建议买入卖出
+7. 只用数据制造张力，让读者自己去判断
+8. 结尾用一个开放性问题收尾
+9. 最后一行：→ 完整指标数据：crypto3d.pro
+10. 不要用 markdown 格式，纯文本"""
+
+    payload = json.dumps({
+        "model": "glm-5",
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "do_sample": True,
+    }, ensure_ascii=False)
+
+    try:
+        result = subprocess.run([
+            'curl', '-s', 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+            '-H', f'Authorization: Bearer {api_key}',
+            '-H', 'Content-Type: application/json',
+            '-d', '@-',
+            '--max-time', '60',
+        ], input=payload, capture_output=True, text=True, timeout=70)
+
+        if result.returncode != 0:
+            print(f"[WARN] Comment API failed: {result.stderr[:100]}")
+            return None
+
+        resp = json.loads(result.stdout)
+        msg = resp.get("choices", [{}])[0].get("message", {})
+        content = (msg.get("content") or "").strip()
+        if not content:
+            # GLM-5 sometimes puts output in reasoning_content when max_tokens is low
+            print(f"[WARN] Empty content, finish_reason={resp.get('choices',[{}])[0].get('finish_reason','?')}")
+            print(f"[INFO] Retrying with glm-4-flash...")
+            # Fallback to glm-4-flash which doesn't have reasoning mode
+            payload2 = json.dumps({
+                "model": "glm-4-flash",
+                "messages": [{"role": "user", "content": prompt}],
+                "temperature": 0.7,
+                "max_tokens": 2000,
+            }, ensure_ascii=False)
+            result2 = subprocess.run([
+                'curl', '-s', 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+                '-H', f'Authorization: Bearer {api_key}',
+                '-H', 'Content-Type: application/json',
+                '-d', '@-',
+                '--max-time', '60',
+            ], input=payload2, capture_output=True, text=True, timeout=70)
+            if result2.returncode == 0:
+                resp2 = json.loads(result2.stdout)
+                content = (resp2.get("choices", [{}])[0].get("message", {}).get("content") or "").strip()
+            if not content:
+                print("[WARN] Fallback also empty")
+                return None
+
+        # Parse title and body
+        lines = content.split("\n")
+        title = lines[0].strip()
+        body = "\n".join(l for l in lines[1:] if l.strip()).strip()
+
+        return {"title": title, "body": body, "date": data["date"].strftime("%Y-%m-%d")}
+
+    except Exception as e:
+        print(f"[WARN] Comment generation failed: {e}")
+        return None
+
+
 async def main():
-    print("[1/4] Collecting data...")
+    print("[1/5] Collecting data...")
     data = collect_data()
 
     # Print summary
@@ -662,18 +793,34 @@ async def main():
     else:
         print("  Governance: none active")
 
-    print("\n[2/4] Rendering HTML...")
+    print("\n[2/5] Generating AI comment...")
+    comment = generate_comment(data)
+    if comment:
+        print(f"  Title: {comment['title']}")
+        print(f"  Body: {comment['body'][:80]}...")
+    else:
+        print("  Skipped")
+
+    print("\n[3/5] Rendering HTML...")
     html = render_html(data)
 
     now = data["date"]
     ts = now.strftime("%Y-%m-%d")
     html_path = OUTPUT_DIR / f"{ts}.html"
     png_path = OUTPUT_DIR / f"{ts}.png"
+    comment_path = OUTPUT_DIR / f"{ts}-comment.json"
 
     html_path.write_text(html, encoding="utf-8")
     print(f"  → {html_path}")
 
-    print("\n[3/4] Taking screenshot...")
+    # Save comment
+    if comment:
+        comment_path.write_text(json.dumps(comment, ensure_ascii=False, indent=2))
+        # Also save as latest
+        (SCRIPT_DIR / "comment.json").write_text(json.dumps(comment, ensure_ascii=False, indent=2))
+        print(f"  → {comment_path}")
+
+    print("\n[4/5] Taking screenshot...")
     await screenshot(html_path, png_path)
     print(f"  → {png_path}")
 
@@ -683,7 +830,7 @@ async def main():
     shutil.copy2(png_path, latest_path)
     print(f"  → {latest_path} (latest)")
 
-    print(f"\n[4/4] Done! Poster generated for {ts}")
+    print(f"\n[5/5] Done! Poster generated for {ts}")
     return str(png_path)
 
 
