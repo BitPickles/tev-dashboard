@@ -233,10 +233,11 @@ def render_html(data):
     # === Logo: relative path from output/ subdir to parent ===
     html = html.replace('src="logo-3d.jpg"', 'src="../logo-3d.jpg"')
 
-    # === Update timestamp ===
+    # === Update timestamp — top right, next to header ===
     ts_str = now.strftime("%Y-%m-%d %H:%M CST")
-    ts_html = f'<div style="text-align:center;font-size:12px;font-weight:500;color:#c4c4cc;letter-spacing:0.02em;padding:6px 0 0;">数据更新于 {ts_str}</div>'
-    html = html.replace('</div>\n</div>\n</body>', f'{ts_html}</div>\n</div>\n</body>')
+    ts_html = f'<div style="text-align:right;font-size:12px;font-weight:500;color:#c4c4cc;letter-spacing:0.02em;margin-top:-4px;padding:0 4px;">Updated {ts_str}</div>'
+    # Insert right after the header div
+    html = html.replace('</div>\n\n  <!-- TITLE -->', f'</div>\n  {ts_html}\n\n  <!-- TITLE -->')
 
     # --- Date ---
     day_num = str(now.day)
