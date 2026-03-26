@@ -619,48 +619,7 @@ def render_html(data):
 """
     html = html.replace('</body>', viewport_js + '</body>')
 
-    # === Download button: html2canvas → save as PNG ===
-    download_btn = """
-<style>
-.dl-btn {
-  position: fixed;
-  top: 24px;
-  right: 24px;
-  z-index: 9999;
-  background: #18181b;
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: opacity 0.2s;
-}
-.dl-btn:hover { opacity: 0.85; }
-.dl-btn svg { width: 18px; height: 18px; }
-@media print { .dl-btn { display: none; } }
-</style>
-<a class="dl-btn" id="dlBtn">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-  下载图片
-</a>
-<script>
-// Download the Playwright-generated PNG directly (same filename, .png)
-(function() {
-  var href = location.href;
-  var pngUrl = href.replace(/\.html(\?.*)?$/, '.png');
-  var btn = document.getElementById('dlBtn');
-  btn.href = pngUrl;
-  btn.download = pngUrl.split('/').pop();
-})();
-</script>
-"""
-    html = html.replace('</body>', download_btn + '</body>')
+    # Download button removed from poster HTML — handled by index.html wrapper
 
     return html
 
