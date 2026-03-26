@@ -858,7 +858,50 @@ def generate_comment(data):
         title = lines[0].strip()
         body = "\n".join(l for l in lines[1:] if l.strip()).strip()
 
-        return {"title": title, "body": body, "date": data["date"].strftime("%Y-%m-%d")}
+        comment = {"title": title, "body": body, "date": data["date"].strftime("%Y-%m-%d")}
+
+        # Generate English version
+        print("  Generating English version...")
+        en_prompt = f"""Translate the following crypto market daily comment into English.
+Keep the same tone: confident, insightful, like a sharp crypto analyst on Twitter.
+Keep the 🔥 emoji in the title. Do not add any website links.
+First line is the title, then a blank line, then the body.
+
+Chinese version:
+{title}
+
+{body}"""
+        en_payload = json.dumps({
+            "model": "glm-4-flash",
+            "messages": [{"role": "user", "content": en_prompt}],
+            "temperature": 0.3,
+            "max_tokens": 2000,
+        }, ensure_ascii=False)
+        tmp_en = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8')
+        tmp_en.write(en_payload)
+        tmp_en.close()
+        try:
+            result_en = subprocess.run([
+                'curl', '-s', 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+                '-H', f'Authorization: Bearer {api_key}',
+                '-H', 'Content-Type: application/json',
+                '-d', f'@{tmp_en.name}',
+                '--max-time', '30',
+            ], capture_output=True, text=True, timeout=35)
+            if result_en.returncode == 0:
+                resp_en = json.loads(result_en.stdout)
+                en_content = (resp_en.get("choices", [{}])[0].get("message", {}).get("content") or "").strip()
+                if en_content:
+                    en_lines = en_content.split("\n")
+                    comment["title_en"] = en_lines[0].strip()
+                    comment["body_en"] = "\n".join(l for l in en_lines[1:] if l.strip()).strip()
+                    print(f"  EN title: {comment['title_en']}")
+        except Exception as e:
+            print(f"  [WARN] English translation failed: {e}")
+        finally:
+            Path(tmp_en.name).unlink(missing_ok=True)
+
+        return comment
 
     except Exception as e:
         print(f"[WARN] Comment generation failed: {e}")
