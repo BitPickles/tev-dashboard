@@ -822,32 +822,34 @@ def generate_comment(data):
         if not content:
             # GLM-5 sometimes puts output in reasoning_content when max_tokens is low
             print(f"[WARN] Empty content, finish_reason={resp.get('choices',[{}])[0].get('finish_reason','?')}")
-            print(f"[INFO] Retrying with glm-4-flash...")
-            # Fallback to glm-4-flash which doesn't have reasoning mode
+            print(f"[INFO] Retrying with MiniMax-M2.7...")
+            minimax_key = load_env_key("MINIMAX_API_KEY")
+            if not minimax_key:
+                print("[WARN] No MINIMAX_API_KEY, skip fallback")
+                return None
             payload2 = json.dumps({
-                "model": "glm-4-flash",
+                "model": "MiniMax-M2.7",
                 "messages": [{"role": "user", "content": prompt}],
-                "temperature": 0.7,
-                "max_tokens": 2000,
+                "max_tokens": 4000,
             }, ensure_ascii=False)
             tmp2 = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8')
             tmp2.write(payload2)
             tmp2.close()
             try:
                 result2 = subprocess.run([
-                    'curl', '-s', 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
-                    '-H', f'Authorization: Bearer {api_key}',
+                    'curl', '-s', 'https://api.minimax.chat/v1/text/chatcompletion_v2',
+                    '-H', f'Authorization: Bearer {minimax_key}',
                     '-H', 'Content-Type: application/json',
                     '-d', f'@{tmp2.name}',
-                    '--max-time', '60',
-                ], capture_output=True, text=True, timeout=70)
+                    '--max-time', '90',
+                ], capture_output=True, text=True, timeout=100)
             finally:
                 Path(tmp2.name).unlink(missing_ok=True)
             if result2.returncode == 0:
                 resp2 = json.loads(result2.stdout)
                 content = (resp2.get("choices", [{}])[0].get("message", {}).get("content") or "").strip()
             if not content:
-                print("[WARN] Fallback also empty")
+                print("[WARN] MiniMax fallback also empty")
                 return None
 
         # Parse title and body
