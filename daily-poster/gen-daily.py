@@ -723,6 +723,28 @@ def generate_comment(data):
 - BMRI: {bmri.get('value', 0):.0f}（{bmri.get('regime', '')}）
 - BTC.D: {btcd.get('value', 0):.1f}%，7日变化: {btcd.get('chg_7d', 0):+.1f}%"""
 
+    # Load major governance events (only big ones: buyback, fee switch, revenue share)
+    gov_file = TEV_DIR / "data" / "governance.json"
+    gov_context = ""
+    if gov_file.exists():
+        try:
+            gd = json.load(open(gov_file))
+            major_keywords = {"buyback", "fee", "revenue", "dividend", "burn", "staking reward"}
+            major = []
+            for p in gd.get("proposals", []):
+                if not p.get("tev_related"):
+                    continue
+                if p.get("status") not in ("active", "passed"):
+                    continue
+                kws = set(p.get("tev_keywords", []))
+                if kws & major_keywords:
+                    analysis = p.get("analysis_zh", p.get("summary_zh", ""))[:120]
+                    major.append(f"- [{p['protocol']}] {p['title'][:60]}：{analysis}")
+            if major:
+                gov_context = "\n\n重大治理动态（仅在你认为值得评论时提及，小事忽略）：\n" + "\n".join(major[:3])
+        except Exception:
+            pass
+
     # Load top news
     news_file = TEV_DIR / "data" / "news.json"
     news_context = ""
@@ -749,7 +771,7 @@ def generate_comment(data):
             lines.append(f"[{h['date']}] {h['title']}\n{h['body'][:150]}...")
         history_context = "\n\n你最近几天写的短评（保持风格连贯，但不要重复相同角度）：\n" + "\n\n".join(lines)
 
-    prompt = f"""{indicators}{news_context}{history_context}
+    prompt = f"""{indicators}{gov_context}{news_context}{history_context}
 
 你是 Crypto3D 数据站的市场评论员。根据以上数据和新闻，写一段每日短评。
 
