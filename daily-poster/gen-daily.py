@@ -720,7 +720,7 @@ def generate_comment(data):
   · BTC 价格偏离 200日成本(${cost_200d:,.0f})为 {dev_cost:+.1f}%
   · BTC 价格偏离拟合价格(${fitted:,.0f})为 {dev_fitted:+.1f}%
   · 注意：这是两个不同的偏离度，不要混淆
-- MVRV: {mvrv.get('value', 0):.2f}，历史百分位P{mvrv.get('percentile', 0):.0f}，上轮周期同期（{mvrv.get('prev_cycle_period', '2022-04')}）: {mvrv.get('prev_cycle', 0):.2f}
+- MVRV: {mvrv.get('value', 0):.2f}，低于历史 {100 - mvrv.get('percentile', 50):.0f}% 的时间，上轮周期同期（{mvrv.get('prev_cycle_period', '2022-04')}）: {mvrv.get('prev_cycle', 0):.2f}
 - BMRI: {bmri.get('value', 0):.0f}（{bmri.get('regime', '')}）
 - BTC.D: {btcd.get('value', 0):.1f}%，7日变化: {btcd.get('chg_7d', 0):+.1f}%"""
 
@@ -774,20 +774,39 @@ def generate_comment(data):
 
     prompt = f"""{indicators}{gov_context}{news_context}{history_context}
 
-你是 Crypto3D 数据站的市场评论员。根据以上数据和新闻，写一段每日短评。
+你是一个专业的加密市场研究员，擅长链上数据分析、周期判断和资金结构推演。你同时是 Crypto3D 数据站的首席评论员。
 
-要求：
-1. 格式：第一行是🔥开头的标题（20字以内，有观点、有话题性），空一行后是正文
-2. 正文 150-250 字，像 crypto Twitter 上犀利的分析师写的
-3. 只抓一个最有话题性的角度深入，不要面面俱到
-4. 用数据佐证观点，但不要罗列数据
-5. 可以穿插一条当天最重要的新闻作为催化剂
-6. 语气自信、有洞察，但绝对不要喊单、不要建议买入卖出
-7. 只用数据制造张力，让读者自己去判断
-8. 结尾用一个开放性问题收尾
-9. 数据准确性是底线：引用数字必须和上面给出的完全一致，不要编造、不要混淆不同指标
-10. 不要用 markdown 格式，纯文本
-11. 不要在末尾加任何网站链接"""
+请根据以上数据写一段每日市场短评。
+
+【格式】
+第一行：🔥开头的标题（20字以内，必须包含明确判断或锐利观点）
+空一行后：正文 200-300 字
+
+【结构要求】
+1. 市场状态定义：开篇一句话定性当前阶段（横盘/分配/底部构建/趋势启动）
+2. 核心指标解读：选 1-2 个最关键的指标深入分析
+   - AHR999：作为情绪/估值参考，解释它意味着什么，不能直接下"该买"的结论
+   - MVRV：必须解释盈利结构含义（全网浮盈/浮亏状态）
+   - 200日成本线：用于判断市场整体盈亏状态
+   - 不要堆砌所有指标，只挑最有说服力的
+3. 推理链：必须有清晰的"因此→所以"逻辑，不能跳跃推导
+4. 外部催化剂：如有重要新闻/治理事件，必须区分短期 vs 长期影响
+5. 最终判断：明确给出偏多/中性/偏空/未确认的结论
+6. 收尾：用一个开放性问题让读者思考
+
+【风格】
+- 语言简洁，有压迫感
+- 结论优先：先说判断，再解释
+- 允许有观点，但必须有数据依据
+- 绝对不要喊单、不要建议买入卖出，只用数据暗示
+
+【禁止】
+- 不要使用空洞情绪词（"暗流涌动""机会来了""风暴前的宁静"）
+- 不要只提数据不解释意义
+- 不要用指标结论直接代替分析
+- 不要用 markdown 格式
+- 不要加任何网站链接
+- 引用数字必须和上面给出的完全一致，不要编造、不要混淆不同指标"""
 
     payload = json.dumps({
         "model": "glm-5",
@@ -858,7 +877,50 @@ def generate_comment(data):
         title = lines[0].strip()
         body = "\n".join(l for l in lines[1:] if l.strip()).strip()
 
-        return {"title": title, "body": body, "date": data["date"].strftime("%Y-%m-%d")}
+        comment = {"title": title, "body": body, "date": data["date"].strftime("%Y-%m-%d")}
+
+        # Generate English version
+        print("  Generating English version...")
+        en_prompt = f"""Translate the following crypto market daily comment into English.
+Keep the same tone: confident, insightful, like a sharp crypto analyst on Twitter.
+Keep the 🔥 emoji in the title. Do not add any website links.
+First line is the title, then a blank line, then the body.
+
+Chinese version:
+{title}
+
+{body}"""
+        en_payload = json.dumps({
+            "model": "glm-4-flash",
+            "messages": [{"role": "user", "content": en_prompt}],
+            "temperature": 0.3,
+            "max_tokens": 2000,
+        }, ensure_ascii=False)
+        tmp_en = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8')
+        tmp_en.write(en_payload)
+        tmp_en.close()
+        try:
+            result_en = subprocess.run([
+                'curl', '-s', 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+                '-H', f'Authorization: Bearer {api_key}',
+                '-H', 'Content-Type: application/json',
+                '-d', f'@{tmp_en.name}',
+                '--max-time', '30',
+            ], capture_output=True, text=True, timeout=35)
+            if result_en.returncode == 0:
+                resp_en = json.loads(result_en.stdout)
+                en_content = (resp_en.get("choices", [{}])[0].get("message", {}).get("content") or "").strip()
+                if en_content:
+                    en_lines = en_content.split("\n")
+                    comment["title_en"] = en_lines[0].strip()
+                    comment["body_en"] = "\n".join(l for l in en_lines[1:] if l.strip()).strip()
+                    print(f"  EN title: {comment['title_en']}")
+        except Exception as e:
+            print(f"  [WARN] English translation failed: {e}")
+        finally:
+            Path(tmp_en.name).unlink(missing_ok=True)
+
+        return comment
 
     except Exception as e:
         print(f"[WARN] Comment generation failed: {e}")

@@ -164,8 +164,8 @@ body {
       html += '<span class="comment-item-label">🤖 AI 短评</span>';
       html += '<span class="comment-item-date">' + (c.date || '') + '</span>';
       html += '</div>';
-      html += '<div class="comment-item-title">' + (c.title || '') + '</div>';
-      html += '<div class="comment-item-body">' + (c.body || '') + '</div>';
+      html += '<div class="comment-item-title" data-zh="' + (c.title||'').replace(/"/g,'&quot;') + '" data-en="' + (c.title_en||c.title||'').replace(/"/g,'&quot;') + '">' + (c.title || '') + '</div>';
+      html += '<div class="comment-item-body" data-zh="' + (c.body||'').replace(/"/g,'&quot;').replace(/\n/g,'&#10;') + '" data-en="' + (c.body_en||c.body||'').replace(/"/g,'&quot;').replace(/\n/g,'&#10;') + '">' + (c.body || '') + '</div>';
       html += '<div class="comment-item-disclaimer">以上为 AI 基于公开数据生成，不构成投资建议</div>';
       html += '</div>';
     });
