@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crypto3D 每日数据</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+  background: #f0f0f2;
+  color: #18181b;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+  min-height: 100vh;
+}
+
+/* === Left: Poster === */
+.poster-col {
+  flex: 0 0 420px;
+  position: sticky;
+  top: 24px;
+  align-self: flex-start;
+  height: calc(100vh - 48px);
+}
+
+.poster-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  background: #fff;
+  position: relative;
+}
+
+.poster-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.poster-dl {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(24,24,27,0.85);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(8px);
+  transition: opacity 0.2s;
+}
+.poster-dl:hover { opacity: 0.85; }
+.poster-dl svg { width: 14px; height: 14px; }
+
+/* === Right: News Feed === */
+.feed-col {
+  flex: 1;
+  min-width: 0;
+  max-width: 560px;
+}
+
+.feed-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e4e4e7;
+}
+
+.feed-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #18181b;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.feed-title .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3b82f6;
+}
+
+.feed-meta {
+  font-size: 13px;
+  color: #a1a1aa;
+  font-weight: 500;
+}
+
+/* News card */
+.news-card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-bottom: 12px;
+  transition: box-shadow 0.15s;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+.news-card:hover {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.news-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.news-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 5px;
+}
+
+.badge-markets { background: rgba(34,197,94,0.08); color: #16a34a; }
+.badge-policy { background: rgba(59,130,246,0.08); color: #3b82f6; }
+.badge-defi { background: rgba(168,85,247,0.08); color: #8b5cf6; }
+.badge-macro { background: rgba(245,158,11,0.08); color: #d97706; }
+.badge-business { background: rgba(107,114,128,0.08); color: #4b5563; }
+.badge-security { background: rgba(239,68,68,0.08); color: #dc2626; }
+.badge-technology { background: rgba(56,189,248,0.08); color: #0284c7; }
+
+.news-importance {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #a1a1aa;
+}
+
+.news-source {
+  font-size: 12px;
+  font-weight: 600;
+  color: #a1a1aa;
+  margin-left: auto;
+}
+
+.news-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #18181b;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.news-summary {
+  font-size: 14px;
+  color: #71717a;
+  line-height: 1.6;
+}
+
+.news-time {
+  font-size: 12px;
+  color: #c4c4cc;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+/* Loading / Empty */
+.feed-loading {
+  text-align: center;
+  padding: 60px 0;
+  color: #a1a1aa;
+  font-size: 15px;
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 860px) {
+  .page {
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+  }
+  .poster-col {
+    flex: none;
+    width: 100%;
+    position: static;
+    height: auto;
+    max-height: 70vh;
+  }
+  .feed-col {
+    max-width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <!-- Left: Poster -->
+  <div class="poster-col">
+    <div class="poster-frame">
+      <img id="posterImg" alt="Crypto3D Daily">
+      <a id="posterDl" class="poster-dl">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        下载
+      </a>
+    </div>
+  </div>
+
+  <!-- Right: News Feed -->
+  <div class="feed-col">
+    <div class="feed-header">
+      <div class="feed-title"><span class="dot"></span>新闻雷达</div>
+      <div class="feed-meta" id="feedMeta">加载中...</div>
+    </div>
+    <div id="feedList">
+      <div class="feed-loading">📡 加载新闻数据...</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Find latest poster PNG
+(function() {
+  var today = new Date().toISOString().slice(0, 10);
+  var img = document.getElementById('posterImg');
+  var dl = document.getElementById('posterDl');
+  var pngUrl = today + '.png';
+
+  img.src = pngUrl;
+  img.onerror = function() {
+    // Fallback: try yesterday
+    var d = new Date();
+    d.setDate(d.getDate() - 1);
+    var yesterday = d.toISOString().slice(0, 10);
+    img.src = yesterday + '.png';
+    pngUrl = yesterday + '.png';
+    dl.href = pngUrl;
+    dl.download = 'crypto3d-daily-' + yesterday + '.png';
+  };
+  dl.href = pngUrl;
+  dl.download = 'crypto3d-daily-' + today + '.png';
+})();
+
+// Load news
+(function() {
+  var newsUrl = '../../data/news.json';
+  fetch(newsUrl).then(function(r) { return r.json(); }).then(function(d) {
+    var meta = document.getElementById('feedMeta');
+    var list = document.getElementById('feedList');
+    var news = d.news || [];
+
+    // Update meta
+    var updatedAt = d.updated_at || '';
+    var dateStr = updatedAt.slice(0, 10);
+    meta.textContent = news.length + ' 条 · ' + dateStr;
+
+    if (!news.length) {
+      list.innerHTML = '<div class="feed-loading">暂无新闻数据</div>';
+      return;
+    }
+
+    var html = '';
+    news.forEach(function(item) {
+      var cat = item.category || 'technology';
+      var badgeCls = 'badge-' + cat;
+      var catLabels = {
+        markets: '市场', policy: '政策', defi: 'DeFi', macro: '宏观',
+        business: '商业', security: '安全', technology: '技术'
+      };
+      var catLabel = catLabels[cat] || cat;
+      var imp = item.importance || 5;
+      var impDots = '';
+      for (var i = 0; i < Math.min(imp, 10); i++) impDots += '●';
+      for (var j = imp; j < 10; j++) impDots += '○';
+
+      var pubTime = '';
+      if (item.published_at) {
+        var pd = new Date(item.published_at);
+        var hours = Math.round((Date.now() - pd.getTime()) / 3600000);
+        if (hours < 24) pubTime = hours + 'h ago';
+        else pubTime = Math.round(hours / 24) + 'd ago';
+      }
+
+      html += '<a class="news-card" href="' + (item.source_url || '#') + '" target="_blank">';
+      html += '<div class="news-top">';
+      html += '<span class="news-badge ' + badgeCls + '">' + catLabel + '</span>';
+      html += '<span class="news-importance">' + impDots + '</span>';
+      html += '<span class="news-source">' + (item.source || '') + '</span>';
+      html += '</div>';
+      html += '<div class="news-title">' + (item.title_zh || item.title_en || '') + '</div>';
+      html += '<div class="news-summary">' + (item.summary_zh || '') + '</div>';
+      if (pubTime) html += '<div class="news-time">' + pubTime + '</div>';
+      html += '</a>';
+    });
+
+    list.innerHTML = html;
+  }).catch(function(e) {
+    document.getElementById('feedList').innerHTML =
+      '<div class="feed-loading">⚠️ 新闻加载失败</div>';
+  });
+})();
+</script>
+</body>
+</html>
