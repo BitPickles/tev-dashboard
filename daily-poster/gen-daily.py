@@ -655,9 +655,45 @@ def load_env_key(key):
     return ""
 
 
+COMMENTS_ARCHIVE = OUTPUT_DIR / "comments.json"
+
+
+def load_comment_history(limit=5):
+    """Load recent comments from archive for context."""
+    if not COMMENTS_ARCHIVE.exists():
+        return []
+    try:
+        archive = json.loads(COMMENTS_ARCHIVE.read_text())
+        comments = archive.get("comments", [])
+        # Return latest N, sorted by date desc
+        comments.sort(key=lambda x: x.get("date", ""), reverse=True)
+        return comments[:limit]
+    except Exception:
+        return []
+
+
+def save_to_archive(comment):
+    """Append comment to archive file."""
+    archive = {"comments": []}
+    if COMMENTS_ARCHIVE.exists():
+        try:
+            archive = json.loads(COMMENTS_ARCHIVE.read_text())
+        except Exception:
+            pass
+
+    comments = archive.get("comments", [])
+    # Remove existing entry for same date
+    comments = [c for c in comments if c.get("date") != comment["date"]]
+    comments.append(comment)
+    # Sort by date desc
+    comments.sort(key=lambda x: x.get("date", ""), reverse=True)
+    archive["comments"] = comments
+    COMMENTS_ARCHIVE.write_text(json.dumps(archive, ensure_ascii=False, indent=2))
+
+
 def generate_comment(data):
     """Generate AI daily comment using GLM-5."""
-    import subprocess
+    import subprocess, tempfile
 
     api_key = load_env_key("ZHIPUAI_API_KEY")
     if not api_key:
@@ -704,7 +740,16 @@ def generate_comment(data):
         except Exception:
             pass
 
-    prompt = f"""{indicators}{news_context}
+    # Load historical comments for continuity
+    history = load_comment_history(3)
+    history_context = ""
+    if history:
+        lines = []
+        for h in history:
+            lines.append(f"[{h['date']}] {h['title']}\n{h['body'][:150]}...")
+        history_context = "\n\n你最近几天写的短评（保持风格连贯，但不要重复相同角度）：\n" + "\n\n".join(lines)
+
+    prompt = f"""{indicators}{news_context}{history_context}
 
 你是 Crypto3D 数据站的市场评论员。根据以上数据和新闻，写一段每日短评。
 
@@ -836,12 +881,13 @@ async def main():
     html_path.write_text(html, encoding="utf-8")
     print(f"  → {html_path}")
 
-    # Save comment
+    # Save comment + archive
     if comment:
         comment_path.write_text(json.dumps(comment, ensure_ascii=False, indent=2))
-        # Also save as latest
         (SCRIPT_DIR / "comment.json").write_text(json.dumps(comment, ensure_ascii=False, indent=2))
+        save_to_archive(comment)
         print(f"  → {comment_path}")
+        print(f"  → archive ({len(load_comment_history(100))} total)")
 
     print("\n[4/5] Taking screenshot...")
     await screenshot(html_path, png_path)

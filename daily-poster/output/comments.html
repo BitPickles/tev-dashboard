@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crypto3D AI 短评归档</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+  background: #f0f0f2;
+  color: #18181b;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.top-bar {
+  background: #fff;
+  border-bottom: 1px solid #e4e4e7;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.top-left { display: flex; align-items: center; gap: 12px; }
+.top-brand { font-weight: 800; font-size: 18px; color: #18181b; text-decoration: none; }
+.top-sep { color: #d4d4d8; font-weight: 300; }
+.top-page { font-size: 15px; font-weight: 600; color: #71717a; }
+.top-right { display: flex; gap: 12px; }
+.top-btn {
+  font-size: 13px; font-weight: 600; color: #52525b;
+  text-decoration: none; padding: 6px 14px; border-radius: 8px;
+  border: 1px solid #e4e4e7; transition: all 0.15s;
+}
+.top-btn:hover { background: #f4f4f5; }
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.page-desc {
+  font-size: 15px;
+  color: #71717a;
+  margin-bottom: 32px;
+}
+
+.comment-item {
+  background: linear-gradient(135deg, #18181b 0%, #1e1e26 100%);
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 16px;
+  color: #f4f4f5;
+}
+
+.comment-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.comment-item-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: #52525b;
+  background: rgba(255,255,255,0.05);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.comment-item-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #3f3f46;
+  letter-spacing: 0.04em;
+}
+
+.comment-item-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fafafa;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.comment-item-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #d4d4d8;
+  white-space: pre-line;
+}
+
+.comment-item-disclaimer {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid #27272a;
+  font-size: 11px;
+  color: #3f3f46;
+}
+
+.empty {
+  text-align: center;
+  padding: 80px 0;
+  color: #a1a1aa;
+  font-size: 16px;
+}
+
+@media (max-width: 640px) {
+  .container { padding: 20px 16px; }
+  .comment-item { padding: 18px 20px; }
+  .comment-item-title { font-size: 17px; }
+  .comment-item-body { font-size: 14px; }
+}
+</style>
+</head>
+<body>
+<div class="top-bar">
+  <div class="top-left">
+    <a href="../../" class="top-brand">Crypto3D</a>
+    <span class="top-sep">/</span>
+    <span class="top-page">AI 短评归档</span>
+  </div>
+  <div class="top-right">
+    <a href="./" class="top-btn">← 每日数据</a>
+    <a href="../../" class="top-btn">首页</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="page-title">🤖 AI 每日短评</div>
+  <div class="page-desc">基于链上指标和市场新闻，AI 生成的每日市场观察。</div>
+  <div id="commentList">
+    <div class="empty">加载中...</div>
+  </div>
+</div>
+
+<script>
+(function() {
+  fetch('comments.json').then(function(r) { return r.json(); }).then(function(d) {
+    var comments = d.comments || [];
+    var list = document.getElementById('commentList');
+
+    if (!comments.length) {
+      list.innerHTML = '<div class="empty">暂无短评数据</div>';
+      return;
+    }
+
+    var html = '';
+    comments.forEach(function(c) {
+      html += '<div class="comment-item">';
+      html += '<div class="comment-item-header">';
+      html += '<span class="comment-item-label">🤖 AI 短评</span>';
+      html += '<span class="comment-item-date">' + (c.date || '') + '</span>';
+      html += '</div>';
+      html += '<div class="comment-item-title">' + (c.title || '') + '</div>';
+      html += '<div class="comment-item-body">' + (c.body || '') + '</div>';
+      html += '<div class="comment-item-disclaimer">以上为 AI 基于公开数据生成，不构成投资建议</div>';
+      html += '</div>';
+    });
+
+    list.innerHTML = html;
+  }).catch(function() {
+    document.getElementById('commentList').innerHTML = '<div class="empty">⚠️ 加载失败</div>';
+  });
+})();
+</script>
+</body>
+</html>
