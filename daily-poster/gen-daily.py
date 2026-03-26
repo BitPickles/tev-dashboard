@@ -567,6 +567,11 @@ def render_html(data):
         f'width: {inner_w}px;\n  height: {inner_h}px;\n  padding:'
     )
 
+    # Tighten top padding
+    html = html.replace('padding: 56px 56px 48px;', 'padding: 32px 56px 48px;')
+    # Reduce title section margin
+    html = html.replace('margin-bottom: 4px;\n}', 'margin-bottom: 0;\n}')
+
     card_fix_css = """
 /* === Card alignment fixes === */
 .two-col { align-items: stretch !important; }
