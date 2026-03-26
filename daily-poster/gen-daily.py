@@ -233,10 +233,11 @@ def render_html(data):
     # === Logo: relative path from output/ subdir to parent ===
     html = html.replace('src="logo-3d.jpg"', 'src="../logo-3d.jpg"')
 
-    # === Update timestamp — between date line and BTC card ===
-    ts_str = now.strftime("%Y-%m-%d %H:%M CST")
-    ts_html = f'<div style="text-align:right;font-size:12px;font-weight:500;color:#c4c4cc;letter-spacing:0.02em;">Updated {ts_str}</div>'
-    html = html.replace('<!-- BTC (full width)', f'{ts_html}\n\n  <!-- BTC (full width)')
+    # === Update timestamp — inline with date line ===
+    ts_str = now.strftime("%H:%M CST")
+    ts_span = f' <span style="font-size:14px;color:#c4c4cc;margin-left:12px;">Updated {ts_str}</span>'
+    html = html.replace('</div>\n    </div>\n  </div>\n\n  <!-- BTC',
+                         f'{ts_span}</div>\n    </div>\n  </div>\n\n  <!-- BTC')
 
     # --- Date ---
     day_num = str(now.day)
