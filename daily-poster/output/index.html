@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crypto3D 每日数据</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+  background: #f0f0f2;
+  color: #18181b;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === Top nav === */
+.top-bar {
+  background: #fff;
+  border-bottom: 1px solid #e4e4e7;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.top-left { display: flex; align-items: center; gap: 12px; }
+.top-logo { height: 28px; width: auto; }
+.top-brand { font-weight: 800; font-size: 18px; color: #18181b; text-decoration: none; }
+.top-sep { color: #d4d4d8; font-weight: 300; }
+.top-page { font-size: 15px; font-weight: 600; color: #71717a; }
+.top-date { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #a1a1aa; font-weight: 500; }
+.top-right { display: flex; align-items: center; gap: 12px; }
+.top-btn {
+  font-size: 13px; font-weight: 600; color: #52525b;
+  text-decoration: none; padding: 6px 14px; border-radius: 8px;
+  border: 1px solid #e4e4e7; transition: all 0.15s;
+}
+.top-btn:hover { background: #f4f4f5; }
+
+.page {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+  min-height: calc(100vh - 56px);
+}
+
+/* === Left: Poster === */
+.poster-col {
+  flex: 0 0 420px;
+  position: sticky;
+  top: 80px;
+  align-self: flex-start;
+  height: calc(100vh - 104px);
+}
+
+.poster-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  background: #f5f5f7;
+  position: relative;
+}
+
+.poster-dl {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  background: rgba(24,24,27,0.8);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: opacity 0.2s;
+  opacity: 0;
+}
+.poster-frame:hover .poster-dl { opacity: 1; }
+.poster-dl:hover { opacity: 0.9 !important; }
+.poster-dl svg { width: 13px; height: 13px; }
+
+.poster-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* === Right: News Feed === */
+.feed-col {
+  flex: 1;
+  min-width: 0;
+  max-width: 560px;
+}
+
+.feed-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e4e4e7;
+}
+
+.feed-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #18181b;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.feed-title .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #3b82f6;
+}
+
+.feed-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #a1a1aa;
+  font-weight: 500;
+}
+
+/* === AI Comment Card === */
+.comment-card {
+  background: linear-gradient(135deg, #18181b 0%, #1e1e26 100%);
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin-bottom: 16px;
+  color: #f4f4f5;
+}
+.comment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.comment-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #a1a1aa;
+  letter-spacing: 0.04em;
+}
+.comment-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #52525b;
+}
+.comment-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fafafa;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.comment-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #d4d4d8;
+  white-space: pre-line;
+}
+.comment-disclaimer {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid #27272a;
+  font-size: 11px;
+  color: #3f3f46;
+}
+
+/* News card — compact */
+.news-card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 8px;
+  transition: box-shadow 0.15s;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+.news-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+
+.news-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.news-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.badge-markets { background: rgba(34,197,94,0.08); color: #16a34a; }
+.badge-policy { background: rgba(59,130,246,0.08); color: #3b82f6; }
+.badge-defi { background: rgba(168,85,247,0.08); color: #8b5cf6; }
+.badge-macro { background: rgba(245,158,11,0.08); color: #d97706; }
+.badge-business { background: rgba(107,114,128,0.08); color: #4b5563; }
+.badge-security { background: rgba(239,68,68,0.08); color: #dc2626; }
+.badge-technology { background: rgba(56,189,248,0.08); color: #0284c7; }
+
+/* Importance: colored bar */
+.news-imp {
+  height: 4px;
+  border-radius: 2px;
+  width: 48px;
+  background: #e4e4e7;
+  position: relative;
+  flex-shrink: 0;
+}
+.news-imp-fill {
+  position: absolute;
+  left: 0; top: 0; height: 100%;
+  border-radius: 2px;
+}
+.imp-high { background: #16a34a; }
+.imp-mid { background: #f59e0b; }
+.imp-low { background: #d4d4d8; }
+
+.news-source {
+  font-size: 11px;
+  font-weight: 600;
+  color: #a1a1aa;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.news-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #18181b;
+  line-height: 1.35;
+  margin-bottom: 4px;
+}
+
+.news-summary {
+  font-size: 13px;
+  color: #71717a;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-bottom {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.news-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #c4c4cc;
+  font-weight: 500;
+}
+
+/* Loading */
+.feed-loading {
+  text-align: center;
+  padding: 60px 0;
+  color: #a1a1aa;
+  font-size: 15px;
+}
+
+/* === Mobile === */
+@media (max-width: 860px) {
+  .page {
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+  }
+  .poster-col {
+    flex: none;
+    width: 100%;
+    position: static;
+    height: auto;
+  }
+  .poster-frame {
+    max-height: 50vh;
+  }
+  .poster-frame img {
+    object-fit: contain;
+    height: auto;
+    max-height: 50vh;
+  }
+  .feed-col { max-width: 100%; }
+  /* Tab switcher for mobile */
+  .mobile-tabs {
+    display: flex;
+    gap: 0;
+    background: #fff;
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 12px;
+    border: 1px solid #e4e4e7;
+  }
+  .mobile-tab {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #71717a;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .mobile-tab.active {
+    background: #18181b;
+    color: #fff;
+  }
+}
+@media (min-width: 861px) {
+  .mobile-tabs { display: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Top navigation -->
+<div class="top-bar">
+  <div class="top-left">
+    <a href="../../" class="top-brand">Crypto3D</a>
+    <span class="top-sep">/</span>
+    <span class="top-page">每日数据</span>
+    <span class="top-date" id="topDate"></span>
+  </div>
+  <div class="top-right">
+    <a href="../../" class="top-btn">← 首页</a>
+  </div>
+</div>
+
+<div class="page">
+  <!-- Mobile tabs -->
+  <div class="mobile-tabs" id="mobileTabs" style="display:none;">
+    <div class="mobile-tab active" data-target="poster">📊 数据海报</div>
+    <div class="mobile-tab" data-target="feed">📡 新闻雷达</div>
+  </div>
+
+  <!-- Left: Poster -->
+  <div class="poster-col" id="posterCol">
+    <div class="poster-frame">
+      <a id="posterDl" class="poster-dl">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        下载
+      </a>
+      <img id="posterImg" alt="Crypto3D Daily">
+    </div>
+  </div>
+
+  <!-- Right: Comment + News Feed -->
+  <div class="feed-col" id="feedCol">
+    <!-- AI Comment -->
+    <div class="comment-card" id="commentCard" style="display:none;">
+      <div class="comment-header">
+        <span class="comment-label">🤖 AI 短评</span>
+        <span class="comment-date" id="commentDate"></span>
+      </div>
+      <div class="comment-title" id="commentTitle"></div>
+      <div class="comment-body" id="commentBody"></div>
+      <div class="comment-disclaimer">
+        以上为 AI 基于公开数据生成，不构成投资建议
+        <a href="comments.html" style="float:right;color:#52525b;font-size:12px;font-weight:600;text-decoration:none;">查看历史短评 →</a>
+      </div>
+    </div>
+
+    <!-- News Feed -->
+    <div class="feed-header">
+      <div class="feed-title"><span class="dot"></span>新闻雷达</div>
+      <div class="feed-meta" id="feedMeta">加载中...</div>
+    </div>
+    <div id="feedList">
+      <div class="feed-loading">📡 加载新闻数据...</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// === Date & Poster ===
+(function() {
+  var today = new Date().toISOString().slice(0, 10);
+  document.getElementById('topDate').textContent = today;
+  document.title = 'Crypto3D 每日数据 · ' + today;
+
+  var img = document.getElementById('posterImg');
+  var dl = document.getElementById('posterDl');
+  var pngUrl = today + '.png';
+
+  img.src = pngUrl;
+  img.onerror = function() {
+    var d = new Date(); d.setDate(d.getDate() - 1);
+    var y = d.toISOString().slice(0, 10);
+    img.src = y + '.png';
+    pngUrl = y + '.png';
+    dl.href = pngUrl;
+    dl.download = 'crypto3d-daily-' + y + '.png';
+  };
+  dl.href = pngUrl;
+  dl.download = 'crypto3d-daily-' + today + '.png';
+})();
+
+// === AI Comment ===
+(function() {
+  var today = new Date().toISOString().slice(0, 10);
+  var url = today + '-comment.json';
+  fetch(url).then(function(r) {
+    if (!r.ok) throw new Error('not found');
+    return r.json();
+  }).then(function(d) {
+    var card = document.getElementById('commentCard');
+    card.style.display = '';
+    document.getElementById('commentDate').textContent = d.date || today;
+    document.getElementById('commentTitle').textContent = d.title || '';
+    document.getElementById('commentBody').textContent = d.body || '';
+  }).catch(function() {
+    // Try yesterday
+    var d = new Date(); d.setDate(d.getDate() - 1);
+    var y = d.toISOString().slice(0, 10);
+    fetch(y + '-comment.json').then(function(r) {
+      if (!r.ok) throw new Error('not found');
+      return r.json();
+    }).then(function(d) {
+      var card = document.getElementById('commentCard');
+      card.style.display = '';
+      document.getElementById('commentDate').textContent = d.date || y;
+      document.getElementById('commentTitle').textContent = d.title || '';
+      document.getElementById('commentBody').textContent = d.body || '';
+    }).catch(function() {});
+  });
+})();
+
+// === News Feed ===
+(function() {
+  fetch('../../data/news.json').then(function(r) { return r.json(); }).then(function(d) {
+    var meta = document.getElementById('feedMeta');
+    var list = document.getElementById('feedList');
+    var news = d.news || [];
+
+    var dateStr = (d.updated_at || '').slice(0, 10);
+    meta.textContent = news.length + ' 条 · ' + dateStr;
+
+    if (!news.length) {
+      list.innerHTML = '<div class="feed-loading">暂无新闻数据</div>';
+      return;
+    }
+
+    var catLabels = {
+      markets: '市场', policy: '政策', defi: 'DeFi', macro: '宏观',
+      business: '商业', security: '安全', technology: '技术'
+    };
+
+    var html = '';
+    news.forEach(function(item) {
+      var cat = item.category || 'technology';
+      var catLabel = catLabels[cat] || cat;
+      var imp = item.importance || 5;
+      var impPct = Math.min(imp * 10, 100);
+      var impCls = imp >= 7 ? 'imp-high' : imp >= 4 ? 'imp-mid' : 'imp-low';
+
+      // Time: relative + absolute date
+      var timeStr = '';
+      if (item.published_at) {
+        var pd = new Date(item.published_at);
+        var hours = Math.round((Date.now() - pd.getTime()) / 3600000);
+        var rel = hours < 1 ? '刚刚' : hours < 24 ? hours + 'h' : Math.round(hours / 24) + 'd';
+        var abs = item.published_at.slice(5, 10);
+        timeStr = rel + ' · ' + abs;
+      }
+
+      html += '<a class="news-card" href="' + (item.source_url || '#') + '" target="_blank">';
+      html += '<div class="news-top">';
+      html += '<span class="news-badge badge-' + cat + '">' + catLabel + '</span>';
+      html += '<div class="news-imp"><div class="news-imp-fill ' + impCls + '" style="width:' + impPct + '%"></div></div>';
+      html += '<span class="news-source">' + (item.source || '') + '</span>';
+      html += '</div>';
+      html += '<div class="news-title">' + (item.title_zh || item.title_en || '') + '</div>';
+      html += '<div class="news-summary">' + (item.summary_zh || '') + '</div>';
+      if (timeStr) html += '<div class="news-bottom"><span class="news-time">' + timeStr + '</span></div>';
+      html += '</a>';
+    });
+
+    list.innerHTML = html;
+  }).catch(function() {
+    document.getElementById('feedList').innerHTML = '<div class="feed-loading">⚠️ 新闻加载失败</div>';
+  });
+})();
+
+// === Mobile tab switching ===
+(function() {
+  if (window.innerWidth > 860) return;
+  var tabs = document.getElementById('mobileTabs');
+  tabs.style.display = 'flex';
+  var posterCol = document.getElementById('posterCol');
+  var feedCol = document.getElementById('feedCol');
+  feedCol.style.display = 'none';
+
+  tabs.addEventListener('click', function(e) {
+    var tab = e.target.closest('.mobile-tab');
+    if (!tab) return;
+    tabs.querySelectorAll('.mobile-tab').forEach(function(t) { t.classList.remove('active'); });
+    tab.classList.add('active');
+    var target = tab.dataset.target;
+    posterCol.style.display = target === 'poster' ? '' : 'none';
+    feedCol.style.display = target === 'feed' ? '' : 'none';
+  });
+})();
+</script>
+</body>
+</html>

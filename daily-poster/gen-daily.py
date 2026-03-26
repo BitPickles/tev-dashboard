@@ -107,6 +107,7 @@ def collect_data():
             "chg_7d": mvrv_chg_7d,
             "percentile": percentile,
             "prev_cycle": prev_cycle_mvrv,
+            "prev_cycle_period": target_str,
         }
 
     # --- BMRI ---
@@ -232,6 +233,34 @@ def render_html(data):
 
     # === Logo: relative path from output/ subdir to parent ===
     html = html.replace('src="logo-3d.jpg"', 'src="../logo-3d.jpg"')
+
+    # === Update timestamp — show data update date, not current time ===
+    # Use the latest date from indicator data files
+    data_dates = []
+    for key in ["ahr999", "mvrv", "bmri", "btcd"]:
+        d = data.get(key, {})
+        # collect_data stores date in the parent data dict only
+    ahr_data = load_json(INDICATORS / "ahr999.json")
+    if ahr_data:
+        data_dates.append(ahr_data["current"].get("date", ""))
+    mvrv_data = load_json(INDICATORS / "mvrv.json")
+    if mvrv_data:
+        data_dates.append(mvrv_data["current"].get("date", ""))
+    bmri_data = load_json(INDICATORS / "bmri.json")
+    if bmri_data:
+        data_dates.append(bmri_data["1m"]["current"].get("date", ""))
+    # Latest data date
+    data_dates = [d for d in data_dates if d]
+    data_dates.sort()
+    ts_str = data_dates[-1] if data_dates else now.strftime("%Y-%m-%d")
+    # Make title-section position:relative, add absolute-right timestamp
+    html = html.replace(
+        '<div class="title-section">',
+        '<div class="title-section" style="position:relative;">'
+    )
+    ts_span = f'<span style="position:absolute;right:0;bottom:0;font-family:JetBrains Mono,monospace;font-size:14px;font-weight:500;color:#c4c4cc;">Updated {ts_str}</span>'
+    html = html.replace('</div>\n  </div>\n\n  <!-- BTC',
+                         f'{ts_span}</div>\n  </div>\n\n  <!-- BTC')
 
     # --- Date ---
     day_num = str(now.day)
@@ -539,6 +568,11 @@ def render_html(data):
         f'width: {inner_w}px;\n  height: {inner_h}px;\n  padding:'
     )
 
+    # Tighten top padding
+    html = html.replace('padding: 56px 56px 48px;', 'padding: 32px 56px 48px;')
+    # Reduce title section margin
+    html = html.replace('margin-bottom: 4px;\n}', 'margin-bottom: 0;\n}')
+
     card_fix_css = """
 /* === Card alignment fixes === */
 .two-col { align-items: stretch !important; }
@@ -591,48 +625,7 @@ def render_html(data):
 """
     html = html.replace('</body>', viewport_js + '</body>')
 
-    # === Download button: html2canvas → save as PNG ===
-    download_btn = """
-<style>
-.dl-btn {
-  position: fixed;
-  top: 24px;
-  right: 24px;
-  z-index: 9999;
-  background: #18181b;
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: opacity 0.2s;
-}
-.dl-btn:hover { opacity: 0.85; }
-.dl-btn svg { width: 18px; height: 18px; }
-@media print { .dl-btn { display: none; } }
-</style>
-<a class="dl-btn" id="dlBtn">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-  下载图片
-</a>
-<script>
-// Download the Playwright-generated PNG directly (same filename, .png)
-(function() {
-  var href = location.href;
-  var pngUrl = href.replace(/\.html(\?.*)?$/, '.png');
-  var btn = document.getElementById('dlBtn');
-  btn.href = pngUrl;
-  btn.download = pngUrl.split('/').pop();
-})();
-</script>
-"""
-    html = html.replace('</body>', download_btn + '</body>')
+    # Download button removed from poster HTML — handled by index.html wrapper
 
     return html
 
@@ -649,8 +642,231 @@ async def screenshot(html_path, png_path):
         await browser.close()
 
 
+def load_env_key(key):
+    """Load key from ~/.openclaw/.env"""
+    env_file = Path.home() / ".openclaw" / ".env"
+    if not env_file.exists():
+        return ""
+    for line in env_file.read_text().splitlines():
+        if not line or line.lstrip().startswith("#") or "=" not in line:
+            continue
+        k, v = line.split("=", 1)
+        if k.strip() == key:
+            return v.strip().strip('"').strip("'")
+    return ""
+
+
+COMMENTS_ARCHIVE = OUTPUT_DIR / "comments.json"
+
+
+def load_comment_history(limit=5):
+    """Load recent comments from archive for context."""
+    if not COMMENTS_ARCHIVE.exists():
+        return []
+    try:
+        archive = json.loads(COMMENTS_ARCHIVE.read_text())
+        comments = archive.get("comments", [])
+        # Return latest N, sorted by date desc
+        comments.sort(key=lambda x: x.get("date", ""), reverse=True)
+        return comments[:limit]
+    except Exception:
+        return []
+
+
+def save_to_archive(comment):
+    """Append comment to archive file."""
+    archive = {"comments": []}
+    if COMMENTS_ARCHIVE.exists():
+        try:
+            archive = json.loads(COMMENTS_ARCHIVE.read_text())
+        except Exception:
+            pass
+
+    comments = archive.get("comments", [])
+    # Remove existing entry for same date
+    comments = [c for c in comments if c.get("date") != comment["date"]]
+    comments.append(comment)
+    # Sort by date desc
+    comments.sort(key=lambda x: x.get("date", ""), reverse=True)
+    archive["comments"] = comments
+    COMMENTS_ARCHIVE.write_text(json.dumps(archive, ensure_ascii=False, indent=2))
+
+
+def generate_comment(data):
+    """Generate AI daily comment using GLM-5."""
+    import subprocess, tempfile
+
+    api_key = load_env_key("ZHIPUAI_API_KEY")
+    if not api_key:
+        print("[WARN] No ZHIPUAI_API_KEY, skipping comment")
+        return None
+
+    # Build context
+    btc = data.get("btc", {})
+    ahr = data.get("ahr999", {})
+    mvrv = data.get("mvrv", {})
+    bmri = data.get("bmri", {})
+    btcd = data.get("btcd", {})
+
+    price = btc.get('price', 0)
+    cost_200d = ahr.get('cost_200d', 0)
+    fitted = ahr.get('fitted_price', 0)
+    dev_cost = ((price - cost_200d) / cost_200d * 100) if cost_200d else 0
+    dev_fitted = ((price - fitted) / fitted * 100) if fitted else 0
+
+    indicators = f"""当前指标数据（请严格使用以下数字，不要编造或四舍五入）：
+- BTC 价格: ${price:,.0f}，7日变化: {btc.get('price_chg_7d', 0):+.1f}%
+- AHR999: {ahr.get('value', 0):.2f}（{ahr.get('status', '')}），7日变化: {ahr.get('chg_7d', 0):+.1f}%
+  · BTC 价格偏离 200日成本(${cost_200d:,.0f})为 {dev_cost:+.1f}%
+  · BTC 价格偏离拟合价格(${fitted:,.0f})为 {dev_fitted:+.1f}%
+  · 注意：这是两个不同的偏离度，不要混淆
+- MVRV: {mvrv.get('value', 0):.2f}，历史百分位P{mvrv.get('percentile', 0):.0f}，上轮周期同期（{mvrv.get('prev_cycle_period', '2022-04')}）: {mvrv.get('prev_cycle', 0):.2f}
+- BMRI: {bmri.get('value', 0):.0f}（{bmri.get('regime', '')}）
+- BTC.D: {btcd.get('value', 0):.1f}%，7日变化: {btcd.get('chg_7d', 0):+.1f}%"""
+
+    # Load major governance events (only big ones: buyback, fee switch, revenue share)
+    gov_file = TEV_DIR / "data" / "governance.json"
+    gov_context = ""
+    if gov_file.exists():
+        try:
+            gd = json.load(open(gov_file))
+            major_keywords = {"buyback", "fee", "revenue", "dividend", "burn", "staking reward"}
+            major = []
+            for p in gd.get("proposals", []):
+                if not p.get("tev_related"):
+                    continue
+                if p.get("status") not in ("active", "passed"):
+                    continue
+                kws = set(p.get("tev_keywords", []))
+                if kws & major_keywords:
+                    analysis = p.get("analysis_zh", p.get("summary_zh", ""))[:120]
+                    major.append(f"- [{p['protocol']}] {p['title'][:60]}：{analysis}")
+            if major:
+                gov_context = "\n\n重大治理动态（仅在你认为值得评论时提及，小事忽略）：\n" + "\n".join(major[:3])
+        except Exception:
+            pass
+
+    # Load top news
+    news_file = TEV_DIR / "data" / "news.json"
+    news_context = ""
+    if news_file.exists():
+        try:
+            nd = json.load(open(news_file))
+            top_news = [n for n in nd.get("news", []) if n.get("importance", 0) >= 6][:5]
+            if top_news:
+                news_lines = []
+                for n in top_news:
+                    title = n.get("title_zh", n.get("title_en", ""))
+                    summary = n.get("summary_zh", "")[:80]
+                    news_lines.append(f"- [{n.get('category','')}] {title}：{summary}")
+                news_context = "\n\n今日重要新闻：\n" + "\n".join(news_lines)
+        except Exception:
+            pass
+
+    # Load historical comments for continuity
+    history = load_comment_history(3)
+    history_context = ""
+    if history:
+        lines = []
+        for h in history:
+            lines.append(f"[{h['date']}] {h['title']}\n{h['body'][:150]}...")
+        history_context = "\n\n你最近几天写的短评（保持风格连贯，但不要重复相同角度）：\n" + "\n\n".join(lines)
+
+    prompt = f"""{indicators}{gov_context}{news_context}{history_context}
+
+你是 Crypto3D 数据站的市场评论员。根据以上数据和新闻，写一段每日短评。
+
+要求：
+1. 格式：第一行是🔥开头的标题（20字以内，有观点、有话题性），空一行后是正文
+2. 正文 150-250 字，像 crypto Twitter 上犀利的分析师写的
+3. 只抓一个最有话题性的角度深入，不要面面俱到
+4. 用数据佐证观点，但不要罗列数据
+5. 可以穿插一条当天最重要的新闻作为催化剂
+6. 语气自信、有洞察，但绝对不要喊单、不要建议买入卖出
+7. 只用数据制造张力，让读者自己去判断
+8. 结尾用一个开放性问题收尾
+9. 数据准确性是底线：引用数字必须和上面给出的完全一致，不要编造、不要混淆不同指标
+10. 不要用 markdown 格式，纯文本
+11. 不要在末尾加任何网站链接"""
+
+    payload = json.dumps({
+        "model": "glm-5",
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "do_sample": True,
+    }, ensure_ascii=False)
+
+    try:
+        import tempfile
+        tmp = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8')
+        tmp.write(payload)
+        tmp.close()
+        try:
+            result = subprocess.run([
+                'curl', '-s', 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+                '-H', f'Authorization: Bearer {api_key}',
+                '-H', 'Content-Type: application/json',
+                '-d', f'@{tmp.name}',
+                '--max-time', '90',
+            ], capture_output=True, text=True, timeout=100)
+        finally:
+            Path(tmp.name).unlink(missing_ok=True)
+
+        if result.returncode != 0:
+            print(f"[WARN] Comment API failed: rc={result.returncode} {result.stderr[:100]}")
+            return None
+
+        resp = json.loads(result.stdout)
+        msg = resp.get("choices", [{}])[0].get("message", {})
+        content = (msg.get("content") or "").strip()
+        if not content:
+            # GLM-5 sometimes puts output in reasoning_content when max_tokens is low
+            print(f"[WARN] Empty content, finish_reason={resp.get('choices',[{}])[0].get('finish_reason','?')}")
+            print(f"[INFO] Retrying with MiniMax-M2.7...")
+            minimax_key = load_env_key("MINIMAX_API_KEY")
+            if not minimax_key:
+                print("[WARN] No MINIMAX_API_KEY, skip fallback")
+                return None
+            payload2 = json.dumps({
+                "model": "MiniMax-M2.7",
+                "messages": [{"role": "user", "content": prompt}],
+                "max_tokens": 4000,
+            }, ensure_ascii=False)
+            tmp2 = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8')
+            tmp2.write(payload2)
+            tmp2.close()
+            try:
+                result2 = subprocess.run([
+                    'curl', '-s', 'https://api.minimax.chat/v1/text/chatcompletion_v2',
+                    '-H', f'Authorization: Bearer {minimax_key}',
+                    '-H', 'Content-Type: application/json',
+                    '-d', f'@{tmp2.name}',
+                    '--max-time', '90',
+                ], capture_output=True, text=True, timeout=100)
+            finally:
+                Path(tmp2.name).unlink(missing_ok=True)
+            if result2.returncode == 0:
+                resp2 = json.loads(result2.stdout)
+                content = (resp2.get("choices", [{}])[0].get("message", {}).get("content") or "").strip()
+            if not content:
+                print("[WARN] MiniMax fallback also empty")
+                return None
+
+        # Parse title and body
+        lines = content.split("\n")
+        title = lines[0].strip()
+        body = "\n".join(l for l in lines[1:] if l.strip()).strip()
+
+        return {"title": title, "body": body, "date": data["date"].strftime("%Y-%m-%d")}
+
+    except Exception as e:
+        print(f"[WARN] Comment generation failed: {e}")
+        return None
+
+
 async def main():
-    print("[1/4] Collecting data...")
+    print("[1/5] Collecting data...")
     data = collect_data()
 
     # Print summary
@@ -670,18 +886,35 @@ async def main():
     else:
         print("  Governance: none active")
 
-    print("\n[2/4] Rendering HTML...")
+    print("\n[2/5] Generating AI comment...")
+    comment = generate_comment(data)
+    if comment:
+        print(f"  Title: {comment['title']}")
+        print(f"  Body: {comment['body'][:80]}...")
+    else:
+        print("  Skipped")
+
+    print("\n[3/5] Rendering HTML...")
     html = render_html(data)
 
     now = data["date"]
     ts = now.strftime("%Y-%m-%d")
     html_path = OUTPUT_DIR / f"{ts}.html"
     png_path = OUTPUT_DIR / f"{ts}.png"
+    comment_path = OUTPUT_DIR / f"{ts}-comment.json"
 
     html_path.write_text(html, encoding="utf-8")
     print(f"  → {html_path}")
 
-    print("\n[3/4] Taking screenshot...")
+    # Save comment + archive
+    if comment:
+        comment_path.write_text(json.dumps(comment, ensure_ascii=False, indent=2))
+        (SCRIPT_DIR / "comment.json").write_text(json.dumps(comment, ensure_ascii=False, indent=2))
+        save_to_archive(comment)
+        print(f"  → {comment_path}")
+        print(f"  → archive ({len(load_comment_history(100))} total)")
+
+    print("\n[4/5] Taking screenshot...")
     await screenshot(html_path, png_path)
     print(f"  → {png_path}")
 
@@ -691,7 +924,7 @@ async def main():
     shutil.copy2(png_path, latest_path)
     print(f"  → {latest_path} (latest)")
 
-    print(f"\n[4/4] Done! Poster generated for {ts}")
+    print(f"\n[5/5] Done! Poster generated for {ts}")
     return str(png_path)
 
 
