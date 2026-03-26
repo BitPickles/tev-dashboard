@@ -233,6 +233,11 @@ def render_html(data):
     # === Logo: relative path from output/ subdir to parent ===
     html = html.replace('src="logo-3d.jpg"', 'src="../logo-3d.jpg"')
 
+    # === Update timestamp ===
+    ts_str = now.strftime("%Y-%m-%d %H:%M CST")
+    ts_html = f'<div style="text-align:center;font-size:12px;font-weight:500;color:#c4c4cc;letter-spacing:0.02em;padding:6px 0 0;">数据更新于 {ts_str}</div>'
+    html = html.replace('</div>\n</div>\n</body>', f'{ts_html}</div>\n</div>\n</body>')
+
     # --- Date ---
     day_num = str(now.day)
     month_en = MONTHS_EN[now.month]
