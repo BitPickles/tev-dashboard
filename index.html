@@ -333,72 +333,39 @@
 </section>
 
 <!-- ═══════════════════ 每日数据入口 ═══════════════════ -->
-<section class="daily-banner rv">
-  <a href="./daily-poster/output/" class="daily-card">
-    <div class="daily-left">
-      <div class="daily-eyebrow">📊 每日数据 · Daily Brief</div>
-      <div class="daily-comment-title" id="dailyTitle">加载中...</div>
-      <div class="daily-meta">
-        <span class="daily-tag">AI 短评</span>
-        <span class="daily-tag">新闻雷达</span>
-        <span class="daily-tag">数据海报</span>
+<section class="sec" style="padding-top:0;padding-bottom:0;margin-top:-8px;margin-bottom:8px;">
+  <a href="./daily-poster/output/" class="bento-card glow rv" style="display:block;padding:24px 28px;">
+    <div class="sec-eyebrow" style="color:var(--blue);margin-bottom:10px"><div class="dot" style="background:var(--blue)"></div>Daily Brief</div>
+    <div id="dailyTitle" style="font-size:20px;font-weight:800;color:var(--text-1);line-height:1.35;margin-bottom:10px;">加载中...</div>
+    <div id="dailyBody" style="font-size:14px;color:var(--text-3);line-height:1.65;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:12px;"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;gap:8px">
+        <span style="font-size:11px;font-weight:600;color:var(--text-3);background:rgba(255,255,255,0.04);padding:3px 8px;border-radius:5px">🤖 AI 短评</span>
+        <span style="font-size:11px;font-weight:600;color:var(--text-3);background:rgba(255,255,255,0.04);padding:3px 8px;border-radius:5px">📡 新闻雷达</span>
       </div>
-      <div class="daily-cta" data-zh="查看今日数据 →" data-en="View Today's Brief →">查看今日数据 →</div>
-    </div>
-    <div class="daily-right">
-      <img id="dailyPoster" src="./daily-poster/output.png" alt="Daily Poster" class="daily-poster-thumb">
+      <span style="font-size:14px;font-weight:700;color:var(--blue)" data-zh="查看详情 →" data-en="View Details →">查看详情 →</span>
     </div>
   </a>
 </section>
 
-<style>
-.daily-banner { padding: 0 var(--pad); margin-top: -8px; margin-bottom: 8px; }
-.daily-card {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  background: linear-gradient(135deg, #111114 0%, #18181f 100%);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 28px 32px;
-  text-decoration: none;
-  color: inherit;
-  max-width: 1200px;
-  margin: 0 auto;
-  transition: border-color 0.2s;
-}
-.daily-card:hover { border-color: var(--text-3); }
-.daily-left { flex: 1; min-width: 0; }
-.daily-eyebrow { font-size: 13px; font-weight: 700; color: var(--text-3); letter-spacing: 0.04em; margin-bottom: 10px; }
-.daily-comment-title { font-size: 22px; font-weight: 800; color: var(--text-1); line-height: 1.3; margin-bottom: 12px; }
-.daily-meta { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
-.daily-tag { font-size: 12px; font-weight: 600; color: var(--text-3); background: rgba(255,255,255,0.05); padding: 4px 10px; border-radius: 6px; }
-.daily-cta { font-size: 15px; font-weight: 700; color: var(--blue); }
-.daily-right { flex: 0 0 120px; }
-.daily-poster-thumb { width: 120px; height: 213px; object-fit: cover; border-radius: 12px; opacity: 0.85; }
-@media (max-width: 640px) {
-  .daily-card { flex-direction: column; gap: 16px; padding: 22px 20px; }
-  .daily-right { flex: none; width: 100%; }
-  .daily-poster-thumb { width: 100%; height: auto; max-height: 200px; object-fit: contain; }
-  .daily-comment-title { font-size: 18px; }
-}
-</style>
-
 <script>
-// Load today's AI comment title for the daily banner
 (function(){
   var today = new Date().toISOString().slice(0,10);
-  fetch('./daily-poster/output/' + today + '-comment.json')
-    .then(function(r){ if(!r.ok) throw ''; return r.json(); })
-    .then(function(d){ if(d.title) document.getElementById('dailyTitle').textContent = d.title; })
-    .catch(function(){
-      // Try yesterday
-      var d = new Date(); d.setDate(d.getDate()-1);
-      fetch('./daily-poster/output/' + d.toISOString().slice(0,10) + '-comment.json')
-        .then(function(r){ if(!r.ok) throw ''; return r.json(); })
-        .then(function(d){ if(d.title) document.getElementById('dailyTitle').textContent = d.title; })
-        .catch(function(){ document.getElementById('dailyTitle').textContent = '每日市场数据 + AI 短评 + 新闻雷达'; });
+  function load(date) {
+    return fetch('./daily-poster/output/' + date + '-comment.json')
+      .then(function(r){ if(!r.ok) throw ''; return r.json(); });
+  }
+  function show(d) {
+    if(d.title) document.getElementById('dailyTitle').textContent = d.title;
+    if(d.body) document.getElementById('dailyBody').textContent = d.body;
+  }
+  load(today).then(show).catch(function(){
+    var d = new Date(); d.setDate(d.getDate()-1);
+    load(d.toISOString().slice(0,10)).then(show).catch(function(){
+      document.getElementById('dailyTitle').textContent = '每日市场短评 + 新闻雷达';
+      document.getElementById('dailyBody').textContent = '结合链上指标与全球新闻，每日更新市场观察。';
     });
+  });
 })();
 </script>
 
