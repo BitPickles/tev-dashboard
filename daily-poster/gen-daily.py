@@ -235,9 +235,14 @@ def render_html(data):
 
     # === Update timestamp — inline with date line ===
     ts_str = now.strftime("%H:%M CST")
-    ts_span = f' <span style="font-size:14px;color:#c4c4cc;margin-left:12px;">Updated {ts_str}</span>'
-    html = html.replace('</div>\n    </div>\n  </div>\n\n  <!-- BTC',
-                         f'{ts_span}</div>\n    </div>\n  </div>\n\n  <!-- BTC')
+    # Make title-section position:relative, add absolute-right timestamp
+    html = html.replace(
+        '<div class="title-section">',
+        '<div class="title-section" style="position:relative;">'
+    )
+    ts_span = f'<span style="position:absolute;right:0;bottom:0;font-family:JetBrains Mono,monospace;font-size:14px;font-weight:500;color:#c4c4cc;">Updated {ts_str}</span>'
+    html = html.replace('</div>\n  </div>\n\n  <!-- BTC',
+                         f'{ts_span}</div>\n  </div>\n\n  <!-- BTC')
 
     # --- Date ---
     day_num = str(now.day)
