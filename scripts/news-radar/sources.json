@@ -1,0 +1,17 @@
+{
+  "rss": [
+    {"name": "CoinDesk", "url": "https://www.coindesk.com/arc/outboundfeeds/rss/", "kind": "crypto", "priority": 100},
+    {"name": "CoinTelegraph", "url": "https://cointelegraph.com/rss", "kind": "crypto", "priority": 90},
+    {"name": "The Block", "url": "https://www.theblock.co/rss.xml", "kind": "crypto", "priority": 95},
+    {"name": "Decrypt", "url": "https://decrypt.co/feed", "kind": "crypto", "priority": 80},
+    {"name": "Blockworks", "url": "https://blockworks.co/feed", "kind": "crypto", "priority": 85},
+    {"name": "DL News", "url": "https://www.dlnews.com/arc/outboundfeeds/rss/", "kind": "crypto", "priority": 75},
+    {"name": "Unchained", "url": "https://unchainedcrypto.com/feed/", "kind": "crypto", "priority": 70},
+    {"name": "Foresight News", "url": "https://foresightnews.pro/rss", "kind": "crypto_cn", "priority": 65},
+    {"name": "CNBC Markets", "url": "https://www.cnbc.com/id/10000664/device/rss/rss.html", "kind": "macro", "priority": 88}
+  ],
+  "apis": [
+    {"name": "BlockBeats Flash", "url": "https://api.theblockbeats.news/v1/open-api/open-flash?size=50&page=1&type=push", "kind": "crypto_cn", "priority": 92},
+    {"name": "BlockBeats Info", "url": "https://api.theblockbeats.news/v1/open-api/open-information?size=20&page=1", "kind": "crypto_cn", "priority": 92}
+  ]
+}
