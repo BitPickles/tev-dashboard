@@ -61,9 +61,12 @@ def get_tweet_content(date_str=None):
     
     result['poster_path'] = str(poster_path)
     
-    # Extract title (remove emojis)
+    # Extract title (remove ALL emojis)
     title = result['title']
-    for emoji in ['🔥', '📊', '💡', '⚠️', '✅', '🔗', '📈', '📌', '🎯', '💰', '🚀']:
+    # Common emojis to remove
+    emojis = ['🔥', '📊', '💡', '⚠️', '✅', '🔗', '📈', '📌', '🎯', '💰', '🚀', 
+              '📉', '💪', '🚨', '⚡', '🤔', '👀', '💎', '🙌', '❤️', '👍', '🙏']
+    for emoji in emojis:
         title = title.replace(emoji, '')
     title = title.strip()
     
@@ -79,10 +82,11 @@ def get_tweet_content(date_str=None):
         last_sentence = body_lines[-1] if body_lines else ''
     
     # Build tweet (under 150 chars)
-    tweet_text = f"{title}\n\n{last_sentence}\n\ncrypto3d.pro\n\nBy AI"
+    # NO emojis, NO website URL, NO "By AI"
+    tweet_text = f"{title}\n\n{last_sentence}"
     
     if len(tweet_text) > 150:
-        tweet_text = f"{title}\n\ncrypto3d.pro\n\nBy AI"
+        tweet_text = title
     
     result['tweet_text'] = tweet_text
     result['success'] = True
