@@ -695,6 +695,81 @@ def save_to_archive(comment):
     COMMENTS_ARCHIVE.write_text(json.dumps(archive, ensure_ascii=False, indent=2))
 
 
+def build_trend_context():
+    """Build monthly trend (4 years) + weekly detail for all indicators.
+    Returns a string block to inject into the AI prompt."""
+    from collections import defaultdict
+
+    lines = []
+
+    # --- Helper: aggregate monthly from history ---
+    def monthly_agg(history, val_key, years=4):
+        cutoff = (datetime.now(TZ) - timedelta(days=years * 365)).strftime("%Y-%m")
+        months = defaultdict(list)
+        for h in history:
+            m = h["date"][:7]
+            if m >= cutoff:
+                v = h.get(val_key)
+                if v is not None:
+                    months[m].append(v)
+        result = []
+        for m in sorted(months):
+            vals = months[m]
+            result.append(f"{m}: avg={sum(vals)/len(vals):.2f}, min={min(vals):.2f}, max={max(vals):.2f}")
+        return result
+
+    def weekly_detail(history, val_key, n=7):
+        recent = history[-n:] if len(history) >= n else history
+        return [f"{h['date']}: {h.get(val_key, 'N/A')}" for h in recent]
+
+    # --- AHR999 ---
+    ahr = load_json(INDICATORS / "ahr999.json")
+    if ahr and ahr.get("history"):
+        h = ahr["history"]
+        lines.append("【AHR999 月度趋势（近4年）】")
+        lines.extend(monthly_agg(h, "ahr999"))
+        lines.append("【AHR999 近7天】")
+        lines.extend(weekly_detail(h, "ahr999"))
+        lines.append("")
+
+    # --- MVRV ---
+    mvrv = load_json(INDICATORS / "mvrv.json")
+    if mvrv and mvrv.get("history"):
+        h = mvrv["history"]
+        lines.append("【MVRV 月度趋势（近4年）】")
+        lines.extend(monthly_agg(h, "mvrv"))
+        lines.append("【MVRV 近7天】")
+        lines.extend(weekly_detail(h, "mvrv"))
+        lines.append("")
+
+    # --- BTC.D ---
+    btcd = load_json(INDICATORS / "btc-dominance.json")
+    if btcd and btcd.get("history"):
+        h = btcd["history"]
+        lines.append("【BTC.D 月度趋势（近4年）】")
+        lines.extend(monthly_agg(h, "value"))
+        lines.append("【BTC.D 近7天】")
+        lines.extend(weekly_detail(h, "value"))
+        lines.append("")
+
+    # --- BMRI ---
+    bmri = load_json(INDICATORS / "bmri.json")
+    if bmri:
+        # BMRI uses nested structure: 6m.history
+        bh = bmri.get("6m", {}).get("history", [])
+        if bh:
+            lines.append("【BMRI 月度趋势（近4年）】")
+            lines.extend(monthly_agg(bh, "risk"))
+            lines.append("【BMRI 近7天】")
+            lines.extend(weekly_detail(bh, "risk"))
+            lines.append("")
+
+    if not lines:
+        return ""
+    header = "\n\n历史趋势参考（请据此判断当前指标处于历史什么位置，避免把低位小幅反弹误判为上升趋势）：\n"
+    return header + "\n".join(lines)
+
+
 def generate_comment(data):
     """Generate AI daily comment using GLM-5."""
     import subprocess, tempfile
@@ -778,7 +853,9 @@ def generate_comment(data):
         history_context = "\n\n你最近几天写的短评（保持风格连贯，但【必须换全新视角】）：\n" + "\n\n".join(lines)
         history_context += f"\n\n⚠️ 以上短评已用过的角度，今天【绝对禁止】再用类似主题。必须选一个完全不同的切入点。"
 
-    prompt = f"""{indicators}{gov_context}{news_context}{history_context}
+    trend_context = build_trend_context()
+
+    prompt = f"""{indicators}{trend_context}{gov_context}{news_context}{history_context}
 
 你是一个专业的加密市场研究员，擅长链上数据分析、周期判断和资金结构推演。你同时是 Crypto3D 数据站的首席评论员。
 
