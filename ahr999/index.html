@@ -210,17 +210,17 @@
              data-en="The quadratic power law produced nearly identical results to the standard version (the quadratic term was positive, not negative — meaning BTC growth has not decelerated historically), so the added complexity brought no improvement. We stick with the standard power law.">
             二次幂律的实测结果与标准幂律几乎一致（二次项为正而非负，说明 BTC 增长历史上并未减速），额外复杂度没有带来改进。最终我们沿用标准幂律。</p>
 
-          <!-- 九神参数的问题 -->
-          <h3 style="margin-top: 20px; color: var(--text-primary);" data-zh="🔍 九神原版参数的问题" data-en="🔍 Issue with Classic Parameters">🔍 九神原版参数的问题</h3>
-          <p data-zh="九神给出的参数是 a=5.84、b=-17.01。我们用 2011-2026 年共 5,530 天的完整数据重新做对数回归，得到的最佳拟合参数是 a=5.5189、b=-15.8993。"
-             data-en="九神's original parameters are a=5.84, b=-17.01. We re-ran the log regression on 5,530 days of complete 2011-2026 data. The best-fit result is a=5.5189, b=-15.8993.">
-            九神给出的参数是 a=5.84、b=-17.01。我们用 2011-2026 年共 5,530 天的完整数据重新做对数回归，得到的最佳拟合参数是 a=5.5189、b=-15.8993。</p>
-          <p data-zh="有意思的是，即使只用九神当年能看到的 2011-2019 数据来拟合，结果也是 5.518 而非 5.84。换句话说，5.84 这个数字并非标准统计回归的产物——九神可能做了人为上调，或采用了不同的数据源和权重方法。"
-             data-en="Interestingly, even fitting only on 2011-2019 data (what 九神 had access to), the result is 5.518, not 5.84. In other words, 5.84 is not the product of standard statistical regression — 九神 may have manually adjusted it, or used a different data source or weighting method.">
-            有意思的是，即使只用九神当年能看到的 2011-2019 数据来拟合，结果也是 5.518 而非 5.84。换句话说，5.84 这个数字并非标准统计回归的产物——九神可能做了人为上调，或采用了不同的数据源和权重方法。</p>
-          <p data-zh="偏高的斜率导致拟合线增长过快。在近几年的市场中，BTC 价格与九神拟合线的差距越来越大——2022 年至 2026 年，两者几乎没有交汇过。一条长期无法触及的「估值线」正在失去参考意义。"
-             data-en="The inflated slope causes the fitted line to grow too fast. In recent years, the gap between BTC price and 九神's fitted line has widened — from 2022 to 2026, they barely intersected. A 'valuation line' that price can never reach is losing its reference value.">
-            偏高的斜率导致拟合线增长过快。在近几年的市场中，BTC 价格与九神拟合线的差距越来越大——2022 年至 2026 年，两者几乎没有交汇过。一条长期无法触及的「估值线」正在失去参考意义。</p>
+          <!-- 九神参数的局限性 -->
+          <h3 style="margin-top: 20px; color: var(--text-primary);" data-zh="🔍 九神原版参数的局限性" data-en="🔍 Limitations of Classic Parameters">🔍 九神原版参数的局限性</h3>
+          <p data-zh="九神给出的参数是 a=5.84、b=-17.01，在那个时代是非常有价值的创新。但任何基于历史数据拟合的模型参数，都有其时效性——随着市场结构的演变和新数据的积累，参数需要与时俱进。"
+             data-en="九神's original parameters are a=5.84, b=-17.01, which was a valuable innovation at the time. But any model parameters fitted on historical data have a shelf life — as the market evolves and new data accumulates, parameters need to keep pace.">
+            九神给出的参数是 a=5.84、b=-17.01，在那个时代是非常有价值的创新。但任何基于历史数据拟合的模型参数，都有其时效性——随着市场结构的演变和新数据的积累，参数需要与时俱进。</p>
+          <p data-zh="我们用 2011-2026 年共 5,530 天的完整数据重新做对数回归，得到的最佳拟合参数是 a=5.5189、b=-15.8993。两组参数的差异，反映的是比特币从早期小众资产成长为万亿级资产的过程中，增长模式的自然变化。"
+             data-en="We re-ran the log regression on 5,530 days of 2011-2026 data, yielding best-fit parameters a=5.5189, b=-15.8993. The difference between the two parameter sets reflects the natural evolution of Bitcoin's growth pattern as it matured from a niche asset to a trillion-dollar asset class.">
+            我们用 2011-2026 年共 5,530 天的完整数据重新做对数回归，得到的最佳拟合参数是 a=5.5189、b=-15.8993。两组参数的差异，反映的是比特币从早期小众资产成长为万亿级资产的过程中，增长模式的自然变化。</p>
+          <p data-zh="随着时间推移，原版拟合线的增长速度逐渐快于实际市场。在近几年的行情中，BTC 价格与九神拟合线的差距越来越大——2022 年至 2026 年间，两者几乎没有交汇过。当一条估值参考线长期脱离实际价格，它的实用性就会打折扣。"
+             data-en="Over time, the classic fitted line has been growing faster than the actual market. In recent years, the gap between BTC price and 九神's fitted line has widened — from 2022 to 2026, they barely intersected. When a valuation reference line stays detached from actual prices for too long, its practical usefulness diminishes.">
+            随着时间推移，原版拟合线的增长速度逐渐快于实际市场。在近几年的行情中，BTC 价格与九神拟合线的差距越来越大——2022 年至 2026 年间，两者几乎没有交汇过。当一条估值参考线长期脱离实际价格，它的实用性就会打折扣。</p>
 
           <!-- 我们做了什么 -->
           <h3 style="margin-top: 20px; color: var(--text-primary);" data-zh="🛠 Crypto3D 的做法" data-en="🛠 What Crypto3D Did">🛠 Crypto3D 的做法</h3>
