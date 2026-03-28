@@ -160,38 +160,75 @@
       <div class="info-section">
         <h2 class="info-title" data-zh="指标说明" data-en="About AHR999">指标说明</h2>
         <div class="info-text">
-          <p data-zh="AHR999 是由「九神」提出的比特币长期估值指标，用于观察比特币现价与历史定投成本、长期估值之间的偏离程度。" 
-             data-en="AHR999 is a long-term Bitcoin valuation indicator proposed by '九神', used to observe the deviation between current price and historical DCA cost / long-term valuation.">
-            AHR999 是由「九神」提出的比特币长期估值指标，用于观察比特币现价与历史定投成本、长期估值之间的偏离程度。
+          <p data-zh="AHR999 是由「九神」提出的比特币长期估值指标，通过比较当前价格与两个基准——200日定投成本和币龄拟合价格——来判断 BTC 是否被低估或高估。"
+             data-en="AHR999 is a long-term Bitcoin valuation indicator proposed by '九神'. It compares the current price against two benchmarks — 200-day DCA cost and age-fitted price — to gauge whether BTC is undervalued or overvalued.">
+            AHR999 是由「九神」提出的比特币长期估值指标，通过比较当前价格与两个基准——200日定投成本和币龄拟合价格——来判断 BTC 是否被低估或高估。
           </p>
-          <div class="formula">AHR999 = (Price / 200日定投成本) × (Price / 币龄估值)</div>
-          <p data-zh="• 当 AHR999 < 0.45 时，处于抄底区，历史上是较好的买入时机" 
-             data-en="• When AHR999 < 0.45, it's in the buy zone, historically a good time to buy">
-            • 当 AHR999 < 0.45 时，处于抄底区，历史上是较好的买入时机
+          <div class="formula">AHR999 = (Price / 200日定投成本) × (Price / 币龄拟合价格)</div>
+
+          <h3 style="margin-top: 20px; color: var(--text-primary);" data-zh="操作区间" data-en="Zones">操作区间</h3>
+          <p data-zh="• AHR999 < 0.45 → 抄底区：历史上是较好的买入时机"
+             data-en="• AHR999 < 0.45 → Buy Zone: historically a good time to buy">
+            • AHR999 < 0.45 → 抄底区：历史上是较好的买入时机
           </p>
-          <p data-zh="• 当 0.45 ≤ AHR999 ≤ 1.2 时，处于定投区，适合定期定额投资" 
-             data-en="• When 0.45 ≤ AHR999 ≤ 1.2, it's in the DCA zone, suitable for regular investment">
-            • 当 0.45 ≤ AHR999 ≤ 1.2 时，处于定投区，适合定期定额投资
+          <p data-zh="• 0.45 ≤ AHR999 ≤ 1.2 → 定投区：适合定期定额投资"
+             data-en="• 0.45 ≤ AHR999 ≤ 1.2 → DCA Zone: suitable for regular investment">
+            • 0.45 ≤ AHR999 ≤ 1.2 → 定投区：适合定期定额投资
           </p>
-          <p data-zh="• 当 AHR999 > 1.2 时，处于观望区，价格可能偏高" 
-             data-en="• When AHR999 > 1.2, it's in the wait zone, price may be overvalued">
-            • 当 AHR999 > 1.2 时，处于观望区，价格可能偏高
+          <p data-zh="• AHR999 > 1.2 → 观望区：价格可能偏高"
+             data-en="• AHR999 > 1.2 → Wait Zone: price may be overvalued">
+            • AHR999 > 1.2 → 观望区：价格可能偏高
           </p>
-          <h3 style="margin-top: 16px; color: var(--text-primary);" data-zh="📐 两条拟合线说明" data-en="📐 Two Fitted Lines">📐 两条拟合线说明</h3>
+
+          <h3 style="margin-top: 20px; color: var(--text-primary);" data-zh="📐 关于拟合价格" data-en="📐 About Fitted Price">📐 关于拟合价格</h3>
+          <p data-zh="AHR999 公式中的「币龄拟合价格」是一条对数回归线，用比特币的币龄天数来推算理论价格："
+             data-en="The 'age-fitted price' in the AHR999 formula is a log-regression line that estimates theoretical price from Bitcoin's age in days:">
+            AHR999 公式中的「币龄拟合价格」是一条对数回归线，用比特币的币龄天数来推算理论价格：
+          </p>
+          <div class="formula" data-zh="拟合价格 = 10^(a × log₁₀(币龄天数) + b)" data-en="Fitted Price = 10^(a × log₁₀(coin_age_days) + b)">拟合价格 = 10^(a × log₁₀(币龄天数) + b)</div>
+          <p data-zh="九神在约 2019 年发表这个指标时，给出的参数是 a=5.84、b=-17.01。这组参数被广泛使用至今，几乎所有引用 AHR999 的网站都采用这个版本。"
+             data-en="When 九神 published this indicator around 2019, he provided parameters a=5.84, b=-17.01. These have been widely used since then — almost every site referencing AHR999 uses this version.">
+            九神在约 2019 年发表这个指标时，给出的参数是 a=5.84、b=-17.01。这组参数被广泛使用至今，几乎所有引用 AHR999 的网站都采用这个版本。
+          </p>
+
+          <h3 style="margin-top: 20px; color: var(--text-primary);" data-zh="🔍 我们发现了什么" data-en="🔍 What We Found">🔍 我们发现了什么</h3>
+          <p data-zh="我们用 2011-2026 年的 5,530 天完整数据重新做了对数回归，得到的最佳拟合参数是 a=5.5189、b=-15.8993。这和九神原版存在明显差异——即使只用九神当时能看到的 2011-2019 数据来拟合，结果也是 5.518 而非 5.84。"
+             data-en="We re-ran the log regression on 5,530 days of complete 2011-2026 data. The best-fit parameters are a=5.5189, b=-15.8993 — noticeably different from the original. Even fitting only on 2011-2019 data (what 九神 had access to), we get 5.518, not 5.84.">
+            我们用 2011-2026 年的 5,530 天完整数据重新做了对数回归，得到的最佳拟合参数是 a=5.5189、b=-15.8993。这和九神原版存在明显差异——即使只用九神当时能看到的 2011-2019 数据来拟合，结果也是 5.518 而非 5.84。
+          </p>
+          <p data-zh="九神原版参数可能做了人为上调，或使用了不同的数据源和权重方法。无论原因如何，结果是原版拟合线偏高，在当前市场环境下显得越来越「乐观」："
+             data-en="The original parameters may have been manually adjusted, or derived from a different data source or weighting method. Regardless, the result is that the classic fitted line runs increasingly 'optimistic' in today's market:">
+            九神原版参数可能做了人为上调，或使用了不同的数据源和权重方法。无论原因如何，结果是原版拟合线偏高，在当前市场环境下显得越来越「乐观」：
+          </p>
+          <p data-zh="• 2026年3月：九神版拟合价 $149,737，重拟合版 $116,451，差距约 22%"
+             data-en="• Mar 2026: Classic fitted $149,737, re-fitted $116,451, ~22% gap">
+            • 2026年3月：九神版拟合价 $149,737，重拟合版 $116,451，差距约 22%
+          </p>
+          <p data-zh="• 到 2030 年，差距将扩大到 27%（$532K vs $386K）"
+             data-en="• By 2030, the gap widens to 27% ($532K vs $386K)">
+            • 到 2030 年，差距将扩大到 27%（$532K vs $386K）
+          </p>
+
+          <h3 style="margin-top: 20px; color: var(--text-primary);" data-zh="📊 双线对比" data-en="📊 Dual Fitted Lines">📊 双线对比</h3>
+          <p data-zh="为了让用户获得更完整的视角，我们在图表中同时展示两条拟合线："
+             data-en="To give users a more complete picture, we display both fitted lines on the chart:">
+            为了让用户获得更完整的视角，我们在图表中同时展示两条拟合线：
+          </p>
           <p style="color: var(--text-secondary);">
-            <span style="color:#06b6d4; font-weight:600;" data-zh="拟合·九神" data-en="Fit·Classic">拟合·九神</span>
-            <span data-zh="：原版参数（5.84, -17.01），诞生于 2019 年前，基于早期高增长数据拟合，长期趋势偏乐观。"
-                  data-en=": Original parameters (5.84, -17.01) from 2019, fitted on early high-growth data, tends to be optimistic.">：原版参数（5.84, -17.01），诞生于 2019 年前，基于早期高增长数据拟合，长期趋势偏乐观。</span>
+            <span style="color:#06b6d4; font-weight:600;" data-zh="拟合·九神（青色虚线）" data-en="Fit·Classic (cyan dotted)">拟合·九神（青色虚线）</span>
+            <span data-zh=" — 原版参数 a=5.84, b=-17.01，保留以便与其他平台对照。"
+                  data-en=" — Original params a=5.84, b=-17.01, kept for comparison with other platforms."> — 原版参数 a=5.84, b=-17.01，保留以便与其他平台对照。</span>
           </p>
           <p style="color: var(--text-secondary);">
-            <span style="color:#f472b6; font-weight:600;" data-zh="拟合·重拟合" data-en="Fit·Updated">拟合·重拟合</span>
-            <span data-zh="：使用 2011-2026 全量数据重新回归的参数（5.5189, -15.8993），拟合价格比九神版低约 22%，更贴近当前市场。"
-                  data-en=": Re-fitted with full 2011-2026 data (5.5189, -15.8993), ~22% lower than classic, closer to current market reality.">：使用 2011-2026 全量数据重新回归的参数（5.5189, -15.8993），拟合价格比九神版低约 22%，更贴近当前市场。</span>
+            <span style="color:#f472b6; font-weight:600;" data-zh="拟合·重拟合（粉色虚线）" data-en="Fit·Updated (pink dashed)">拟合·重拟合（粉色虚线）</span>
+            <span data-zh=" — Crypto3D 基于全量数据重新回归的参数 a=5.5189, b=-15.8993，R²=0.952。"
+                  data-en=" — Crypto3D re-fitted with full data, params a=5.5189, b=-15.8993, R²=0.952."> — Crypto3D 基于全量数据重新回归的参数 a=5.5189, b=-15.8993，R²=0.952。</span>
           </p>
-          <div class="disclaimer" 
-               data-zh="⚠️ 没有永远有效的指标。AHR999 诞生于两个周期以前，拟合价格是基于历史幂律的理论值，不是价格预测。请酌情参考，理性决策。"
-               data-en="⚠️ No indicator is forever effective. AHR999 was created two cycles ago. Fitted prices are theoretical values based on historical power law, not price predictions. Please use as reference and make rational decisions.">
-            ⚠️ 没有永远有效的指标。AHR999 诞生于两个周期以前，拟合价格是基于历史幂律的理论值，不是价格预测。请酌情参考，理性决策。
+
+          <div class="disclaimer"
+               data-zh="⚠️ 拟合价格是基于历史幂律的统计回归值，不是价格预测。BTC 的增长率在长期一定会放缓，任何固定参数的幂律模型终将失效。两条拟合线提供的是不同视角的参考，不应作为交易依据。"
+               data-en="⚠️ Fitted prices are statistical regression values based on historical power law, not price predictions. BTC's growth rate will inevitably slow over time, and any fixed-parameter power law model will eventually break down. The two fitted lines offer different perspectives for reference, not trading signals.">
+            ⚠️ 拟合价格是基于历史幂律的统计回归值，不是价格预测。BTC 的增长率在长期一定会放缓，任何固定参数的幂律模型终将失效。两条拟合线提供的是不同视角的参考，不应作为交易依据。
           </div>
         </div>
       </div>
