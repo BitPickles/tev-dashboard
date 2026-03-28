@@ -58,8 +58,12 @@
           <div class="stat-value" id="current-cost" style="color: var(--purple); font-size: 16px;">—</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label" data-zh="拟合价格" data-en="Fitted Price">拟合价格</div>
+          <div class="stat-label" data-zh="拟合价格（九神）" data-en="Fitted (Classic)">拟合价格（九神）</div>
           <div class="stat-value" id="current-fitted" style="color: var(--cyan); font-size: 16px;">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" data-zh="拟合价格（重拟合）" data-en="Fitted (Updated)">拟合价格（重拟合）</div>
+          <div class="stat-value" id="current-fitted-v2" style="color: #f472b6; font-size: 16px;">—</div>
         </div>
         <div class="stat-card">
           <div class="stat-label" data-zh="操作建议" data-en="Suggestion">操作建议</div>
@@ -112,7 +116,11 @@
             </div>
             <div class="legend-item disabled" data-series="fitted" onclick="toggleSeries('fitted')">
               <div class="legend-line" style="background: #06b6d4;"></div>
-              <span data-zh="拟合价格" data-en="Fitted">拟合价格</span>
+              <span data-zh="拟合·九神" data-en="Fit·Classic">拟合·九神</span>
+            </div>
+            <div class="legend-item disabled" data-series="fittedV2" onclick="toggleSeries('fittedV2')">
+              <div class="legend-line" style="background: #f472b6;"></div>
+              <span data-zh="拟合·重拟合" data-en="Fit·Updated">拟合·重拟合</span>
             </div>
           </div>
         </div>
@@ -136,8 +144,13 @@
           </div>
           <div class="tooltip-item" id="tooltip-fitted" style="display: none;">
             <div class="tooltip-dot" style="background: #06b6d4;"></div>
-            <span class="tooltip-label" data-zh="拟合:" data-en="Fit:">拟合:</span>
+            <span class="tooltip-label" data-zh="九神:" data-en="Classic:">九神:</span>
             <span class="tooltip-value" id="tooltip-fitted-value">—</span>
+          </div>
+          <div class="tooltip-item" id="tooltip-fittedV2" style="display: none;">
+            <div class="tooltip-dot" style="background: #f472b6;"></div>
+            <span class="tooltip-label" data-zh="重拟合:" data-en="Updated:">重拟合:</span>
+            <span class="tooltip-value" id="tooltip-fittedV2-value">—</span>
           </div>
         </div>
         <div class="chart-hint" data-zh="💡 拖动平移 · 滚轮缩放 · 双击重置" data-en="💡 Drag to pan · Scroll to zoom · Double-click to reset">💡 拖动平移 · 滚轮缩放 · 双击重置</div>
@@ -164,10 +177,19 @@
              data-en="• When AHR999 > 1.2, it's in the wait zone, price may be overvalued">
             • 当 AHR999 > 1.2 时，处于观望区，价格可能偏高
           </p>
+          <h3 style="margin-top: 16px; color: var(--text-primary);" data-zh="📐 两条拟合线说明" data-en="📐 Two Fitted Lines">📐 两条拟合线说明</h3>
+          <p data-zh="<b style='color:#06b6d4'>拟合·九神</b>：九神原版参数（5.84, -17.01），诞生于 2019 年前，基于早期高增长数据拟合，长期趋势偏乐观。"
+             data-en="<b style='color:#06b6d4'>Fit·Classic</b>: Original parameters (5.84, -17.01) from 2019, fitted on early high-growth data, tends to be optimistic.">
+            <b style="color:#06b6d4">拟合·九神</b>：九神原版参数（5.84, -17.01），诞生于 2019 年前，基于早期高增长数据拟合，长期趋势偏乐观。
+          </p>
+          <p data-zh="<b style='color:#f472b6'>拟合·重拟合</b>：使用 2011-2026 全量数据重新回归的参数（5.5189, -15.8993），拟合价格比九神版低约 22%，更贴近当前市场。"
+             data-en="<b style='color:#f472b6'>Fit·Updated</b>: Re-fitted with full 2011-2026 data (5.5189, -15.8993), ~22% lower than classic, closer to current market reality.">
+            <b style="color:#f472b6">拟合·重拟合</b>：使用 2011-2026 全量数据重新回归的参数（5.5189, -15.8993），拟合价格比九神版低约 22%，更贴近当前市场。
+          </p>
           <div class="disclaimer" 
-               data-zh="⚠️ 没有永远有效的指标。AHR999 诞生于两个周期以前，在新的市场环境下可能存在一定局限性，请酌情参考，理性决策。"
-               data-en="⚠️ No indicator is forever effective. AHR999 was created two cycles ago and may have limitations in the current market environment. Please use it as a reference and make rational decisions.">
-            ⚠️ 没有永远有效的指标。AHR999 诞生于两个周期以前，在新的市场环境下可能存在一定局限性，请酌情参考，理性决策。
+               data-zh="⚠️ 没有永远有效的指标。AHR999 诞生于两个周期以前，拟合价格是基于历史幂律的理论值，不是价格预测。请酌情参考，理性决策。"
+               data-en="⚠️ No indicator is forever effective. AHR999 was created two cycles ago. Fitted prices are theoretical values based on historical power law, not price predictions. Please use as reference and make rational decisions.">
+            ⚠️ 没有永远有效的指标。AHR999 诞生于两个周期以前，拟合价格是基于历史幂律的理论值，不是价格预测。请酌情参考，理性决策。
           </div>
         </div>
       </div>
@@ -185,7 +207,7 @@
     let chart = null;
     let series = {};
     let zones = {};
-    let seriesVisible = { ahr999: true, price: false, cost: false, fitted: false };
+    let seriesVisible = { ahr999: true, price: false, cost: false, fitted: false, fittedV2: false };
     let isLogScale = true;
     let defaultRange = null;
     let historyData = {};
@@ -242,6 +264,9 @@
       document.getElementById('current-price').textContent = '$' + current.price.toLocaleString();
       document.getElementById('current-cost').textContent = '$' + current.cost_200d.toLocaleString();
       document.getElementById('current-fitted').textContent = '$' + current.fitted_price.toLocaleString();
+      if (current.fitted_price_v2) {
+        document.getElementById('current-fitted-v2').textContent = '$' + current.fitted_price_v2.toLocaleString();
+      }
       document.getElementById('suggestion').textContent = zoneInfo.suggestion;
 
       if (currentData.updated_at) {
@@ -271,6 +296,7 @@
       const priceData = history.map(d => ({ time: d.date, value: d.close }));
       const costData = history.map(d => ({ time: d.date, value: d.cost_200d }));
       const fittedData = history.map(d => ({ time: d.date, value: d.fitted_price }));
+      const fittedV2Data = history.filter(d => d.fitted_price_v2).map(d => ({ time: d.date, value: d.fitted_price_v2 }));
       historyData = buildHistoryLookup(history);
 
       const firstDate = history[0].date;
@@ -330,7 +356,7 @@
       });
       series.cost.setData(costData);
 
-      // Fitted Price Series (left axis, hidden)
+      // Fitted Price Series - Classic (left axis, hidden)
       series.fitted = chart.addLineSeries({
         color: '#06b6d4',
         lineWidth: 1,
@@ -342,6 +368,19 @@
         visible: false,
       });
       series.fitted.setData(fittedData);
+
+      // Fitted Price Series - Updated v2 (left axis, hidden)
+      series.fittedV2 = chart.addLineSeries({
+        color: '#f472b6',
+        lineWidth: 1.5,
+        lineStyle: LightweightCharts.LineStyle.Dashed,
+        priceScaleId: 'left',
+        priceFormat: { type: 'price', precision: 0, minMove: 1 },
+        lastValueVisible: false,
+        priceLineVisible: false,
+        visible: false,
+      });
+      series.fittedV2.setData(fittedV2Data);
 
       // Configure scales
       chart.priceScale('left').applyOptions({
@@ -367,6 +406,7 @@
           { key: 'price', dataKey: 'close', format: v => '$' + v.toLocaleString() },
           { key: 'cost', dataKey: 'cost_200d', format: v => '$' + v.toLocaleString() },
           { key: 'fitted', dataKey: 'fitted_price', format: v => '$' + v.toLocaleString() },
+          { key: 'fittedV2', dataKey: 'fitted_price_v2', format: v => v ? '$' + v.toLocaleString() : '—' },
         ],
       });
     }
