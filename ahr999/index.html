@@ -103,11 +103,11 @@
               <div class="legend-line dashed" style="color: #22c55e;"></div>
               <span>0.45</span>
             </div>
-            <div class="legend-item" data-series="ahr999" onclick="toggleSeries('ahr999')">
+            <div class="legend-item disabled" data-series="ahr999" onclick="toggleSeries('ahr999')">
               <div class="legend-line" style="background: #3b82f6;"></div>
               <span data-zh="AHR999·九神" data-en="AHR999·Classic">AHR999·九神</span>
             </div>
-            <div class="legend-item disabled" data-series="ahr999_3d" onclick="toggleSeries('ahr999_3d')">
+            <div class="legend-item" data-series="ahr999_3d" onclick="toggleSeries('ahr999_3d')">
               <div class="legend-line" style="background: #f472b6;"></div>
               <span data-zh="AHR999·3D" data-en="AHR999·3D">AHR999·3D</span>
             </div>
@@ -132,15 +132,15 @@
         <div class="chart-wrapper" id="chart-container"></div>
         <div class="chart-tooltip" id="chart-tooltip">
           <div class="tooltip-date" id="tooltip-date">—</div>
-          <div class="tooltip-item" id="tooltip-ahr999" style="display: none;">
-            <div class="tooltip-dot" style="background: #3b82f6;"></div>
-            <span class="tooltip-label" data-zh="九神:" data-en="Classic:">九神:</span>
-            <span class="tooltip-value" id="tooltip-ahr999-value">—</span>
-          </div>
           <div class="tooltip-item" id="tooltip-ahr999_3d" style="display: none;">
             <div class="tooltip-dot" style="background: #f472b6;"></div>
             <span class="tooltip-label">3D:</span>
             <span class="tooltip-value" id="tooltip-ahr999_3d-value">—</span>
+          </div>
+          <div class="tooltip-item" id="tooltip-ahr999" style="display: none;">
+            <div class="tooltip-dot" style="background: #3b82f6;"></div>
+            <span class="tooltip-label" data-zh="九神:" data-en="Classic:">九神:</span>
+            <span class="tooltip-value" id="tooltip-ahr999-value">—</span>
           </div>
           <div class="tooltip-item" id="tooltip-price" style="display: none;">
             <div class="tooltip-dot" style="background: #f59e0b;"></div>
@@ -272,7 +272,7 @@
     let chart = null;
     let series = {};
     let zones = {};
-    let seriesVisible = { ahr999: true, ahr999_3d: false, price: false, cost: false, fitted: false, fittedV2: false };
+    let seriesVisible = { ahr999: false, ahr999_3d: true, price: false, cost: false, fitted: false, fittedV2: false };
     let isLogScale = true;
     let defaultRange = null;
     let historyData = {};
@@ -292,7 +292,7 @@
 
     // === Chart Controls ===
     function toggleSeries(name) {
-      toggleSeriesVisibility(series, seriesVisible, name, { ahr999: zones, ahr999_3d: {} });
+      toggleSeriesVisibility(series, seriesVisible, name, { ahr999_3d: zones });
       const el = document.getElementById(`tooltip-${name}`);
       if (el) el.style.display = seriesVisible[name] ? 'flex' : 'none';
     }
@@ -365,32 +365,32 @@
       const firstDate = history[0].date;
       const lastDate = history[history.length - 1].date;
 
-      // Zone backgrounds (tied to classic AHR999)
+      // Zone backgrounds (tied to 3D AHR999 — the default series)
       zones.green = createZoneSeries(chart, 0.45, { bottomFill1: 'rgba(34, 197, 94, 0.08)', bottomFill2: 'rgba(34, 197, 94, 0.25)' });
-      zones.green.setData(ahr999Data);
+      zones.green.setData(ahr999_3dData);
       zones.red = createZoneSeries(chart, 1.2, { topFill1: 'rgba(239, 68, 68, 0.08)', topFill2: 'rgba(239, 68, 68, 0.25)' });
-      zones.red.setData(ahr999Data);
+      zones.red.setData(ahr999_3dData);
 
-      // AHR999 Classic
-      const ahr999WithWs = addFutureWhitespace(ahr999Data, lastDate, 180);
-      series.ahr999 = chart.addLineSeries({
-        color: '#3b82f6', lineWidth: 2, priceScaleId: 'right',
-        priceFormat: { type: 'price', precision: 4, minMove: 0.0001 },
-        lastValueVisible: false, priceLineVisible: false,
-      });
-      series.ahr999.setData(ahr999WithWs);
-
-      // Threshold lines
-      createThresholdLine(series.ahr999, 0.45, '#22c55e');
-      createThresholdLine(series.ahr999, 1.2, '#ef4444');
-
-      // AHR999 3D
+      // AHR999 3D (default, visible)
+      const ahr999_3dWithWs = addFutureWhitespace(ahr999_3dData, lastDate, 180);
       series.ahr999_3d = chart.addLineSeries({
         color: '#f472b6', lineWidth: 2, priceScaleId: 'right',
         priceFormat: { type: 'price', precision: 4, minMove: 0.0001 },
+        lastValueVisible: false, priceLineVisible: false,
+      });
+      series.ahr999_3d.setData(ahr999_3dWithWs);
+
+      // Threshold lines (on 3D series)
+      createThresholdLine(series.ahr999_3d, 0.45, '#22c55e');
+      createThresholdLine(series.ahr999_3d, 1.2, '#ef4444');
+
+      // AHR999 Classic (hidden by default)
+      series.ahr999 = chart.addLineSeries({
+        color: '#3b82f6', lineWidth: 2, priceScaleId: 'right',
+        priceFormat: { type: 'price', precision: 4, minMove: 0.0001 },
         lastValueVisible: false, priceLineVisible: false, visible: false,
       });
-      series.ahr999_3d.setData(ahr999_3dData);
+      series.ahr999.setData(ahr999Data);
 
       // Price (left axis, hidden)
       series.price = chart.addLineSeries({
