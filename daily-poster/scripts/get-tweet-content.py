@@ -63,30 +63,13 @@ def get_tweet_content(date_str=None):
     
     # Extract title (remove ALL emojis)
     title = result['title']
-    # Common emojis to remove
-    emojis = ['🔥', '📊', '💡', '⚠️', '✅', '🔗', '📈', '📌', '🎯', '💰', '🚀', 
-              '📉', '💪', '🚨', '⚡', '🤔', '👀', '💎', '🙌', '❤️', '👍', '🙏']
-    for emoji in emojis:
-        title = title.replace(emoji, '')
-    title = title.strip()
+    import re
+    # Remove emoji characters (covers most common ranges)
+    title = re.sub(r'[\U0001F300-\U0001F9FF\u2600-\u27BF\uFE00-\uFE0F\u200D]+', '', title).strip()
     
-    # Extract conclusion
-    last_sentence = ''
-    if '结论' in result['body']:
-        conclusion_start = result['body'].find('结论')
-        if conclusion_start > 0:
-            conclusion = result['body'][conclusion_start:].split('。')[0]
-            last_sentence = conclusion
-    else:
-        body_lines = result['body'].split('。')
-        last_sentence = body_lines[-1] if body_lines else ''
-    
-    # Build tweet (under 150 chars)
-    # NO emojis, NO website URL, NO "By AI"
-    tweet_text = f"{title}\n\n{last_sentence}"
-    
-    if len(tweet_text) > 150:
-        tweet_text = title
+    # Build full tweet: title + body + footer
+    body = result['body'].strip()
+    tweet_text = f"{title}\n\n{body}"
     
     result['tweet_text'] = tweet_text
     result['success'] = True
