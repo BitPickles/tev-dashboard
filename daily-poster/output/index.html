@@ -505,9 +505,9 @@ body {
     var html = '';
     dates.forEach(function(date) {
       var items = byDate[date];
-      // Within each date, sort by time earliest first
+      // Within each date, sort by time newest first
       items.sort(function(a, b) {
-        return (a.published_at || '').localeCompare(b.published_at || '');
+        return (b.published_at || '').localeCompare(a.published_at || '');
       });
 
       // Date section header
