@@ -794,7 +794,7 @@ def self_check_comment(title, body, indicators_context, api_key):
 {{"pass": true}} 或 {{"pass": false, "reason": "具体问题描述"}}"""
 
     payload = json.dumps({
-        "model": "glm-4-flash",
+        "model": "glm-5.1",
         "messages": [{"role": "user", "content": check_prompt}],
         "temperature": 0.1,
         "max_tokens": 500,
@@ -806,7 +806,7 @@ def self_check_comment(title, body, indicators_context, api_key):
         tmp.close()
         try:
             result = subprocess.run([
-                'curl', '-s', 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+                'curl', '-s', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp.name}',
