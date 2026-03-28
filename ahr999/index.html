@@ -46,7 +46,7 @@
       <!-- 双版本指标值 -->
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-label" data-zh="AHR999（九神）" data-en="AHR999 (Classic)">AHR999（九神）</div>
+          <div class="stat-label" data-zh="AHR999（Classic）" data-en="AHR999 (Classic)">AHR999（Classic）</div>
           <div class="stat-value" id="current-value">—</div>
           <div class="stat-hint" id="current-zone">—</div>
         </div>
@@ -64,7 +64,7 @@
           <div class="stat-value" id="current-cost" style="color: var(--purple); font-size: 16px;">—</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label" data-zh="拟合价格（九神）" data-en="Fitted (Classic)">拟合价格（九神）</div>
+          <div class="stat-label" data-zh="拟合价格（Classic）" data-en="Fitted (Classic)">拟合价格（Classic）</div>
           <div class="stat-value" id="current-fitted" style="color: var(--cyan); font-size: 16px;">—</div>
         </div>
         <div class="stat-card">
@@ -105,7 +105,7 @@
             </div>
             <div class="legend-item disabled" data-series="ahr999" onclick="toggleSeries('ahr999')">
               <div class="legend-line" style="background: #3b82f6;"></div>
-              <span data-zh="AHR999·九神" data-en="AHR999·Classic">AHR999·九神</span>
+              <span data-zh="AHR999·Classic" data-en="AHR999·Classic">AHR999·Classic</span>
             </div>
             <div class="legend-item" data-series="ahr999_3d" onclick="toggleSeries('ahr999_3d')">
               <div class="legend-line" style="background: #f472b6;"></div>
@@ -121,7 +121,7 @@
             </div>
             <div class="legend-item disabled" data-series="fitted" onclick="toggleSeries('fitted')">
               <div class="legend-line" style="background: #06b6d4;"></div>
-              <span data-zh="拟合·九神" data-en="Fit·Classic">拟合·九神</span>
+              <span data-zh="拟合·Classic" data-en="Fit·Classic">拟合·Classic</span>
             </div>
             <div class="legend-item disabled" data-series="fittedV2" onclick="toggleSeries('fittedV2')">
               <div class="legend-line" style="background: #f472b6;"></div>
@@ -139,7 +139,7 @@
           </div>
           <div class="tooltip-item" id="tooltip-ahr999" style="display: none;">
             <div class="tooltip-dot" style="background: #3b82f6;"></div>
-            <span class="tooltip-label" data-zh="九神:" data-en="Classic:">九神:</span>
+            <span class="tooltip-label" data-zh="Classic:" data-en="Classic:">Classic:</span>
             <span class="tooltip-value" id="tooltip-ahr999-value">—</span>
           </div>
           <div class="tooltip-item" id="tooltip-price" style="display: none;">
@@ -154,7 +154,7 @@
           </div>
           <div class="tooltip-item" id="tooltip-fitted" style="display: none;">
             <div class="tooltip-dot" style="background: #06b6d4;"></div>
-            <span class="tooltip-label" data-zh="拟合·九神:" data-en="Fit·Classic:">拟合·九神:</span>
+            <span class="tooltip-label" data-zh="拟合·Classic:" data-en="Fit·Classic:">拟合·Classic:</span>
             <span class="tooltip-value" id="tooltip-fitted-value">—</span>
           </div>
           <div class="tooltip-item" id="tooltip-fittedV2" style="display: none;">
@@ -210,17 +210,17 @@
              data-en="The quadratic power law produced nearly identical results to the standard version (the quadratic term was positive, not negative — meaning BTC growth has not decelerated historically), so the added complexity brought no improvement. We stick with the standard power law.">
             二次幂律的实测结果与标准幂律几乎一致（二次项为正而非负，说明 BTC 增长历史上并未减速），额外复杂度没有带来改进。最终我们沿用标准幂律。</p>
 
-          <!-- 九神参数的局限性 -->
-          <h3 style="margin-top: 20px; color: var(--text-primary);" data-zh="🔍 九神原版参数的局限性" data-en="🔍 Limitations of Classic Parameters">🔍 九神原版参数的局限性</h3>
+          <!-- Classic 参数的局限性 -->
+          <h3 style="margin-top: 20px; color: var(--text-primary);" data-zh="🔍 Classic 版参数的局限性" data-en="🔍 Limitations of Classic Parameters">🔍 Classic 版参数的局限性</h3>
           <p data-zh="九神给出的参数是 a=5.84、b=-17.01，在那个时代是非常有价值的创新。但任何基于历史数据拟合的模型参数，都有其时效性——随着市场结构的演变和新数据的积累，参数需要与时俱进。"
              data-en="九神's original parameters are a=5.84, b=-17.01, which was a valuable innovation at the time. But any model parameters fitted on historical data have a shelf life — as the market evolves and new data accumulates, parameters need to keep pace.">
             九神给出的参数是 a=5.84、b=-17.01，在那个时代是非常有价值的创新。但任何基于历史数据拟合的模型参数，都有其时效性——随着市场结构的演变和新数据的积累，参数需要与时俱进。</p>
           <p data-zh="我们用 2011-2026 年共 5,530 天的完整数据重新做对数回归，得到的最佳拟合参数是 a=5.5189、b=-15.8993。两组参数的差异，反映的是比特币从早期小众资产成长为万亿级资产的过程中，增长模式的自然变化。"
              data-en="We re-ran the log regression on 5,530 days of 2011-2026 data, yielding best-fit parameters a=5.5189, b=-15.8993. The difference between the two parameter sets reflects the natural evolution of Bitcoin's growth pattern as it matured from a niche asset to a trillion-dollar asset class.">
             我们用 2011-2026 年共 5,530 天的完整数据重新做对数回归，得到的最佳拟合参数是 a=5.5189、b=-15.8993。两组参数的差异，反映的是比特币从早期小众资产成长为万亿级资产的过程中，增长模式的自然变化。</p>
-          <p data-zh="随着时间推移，原版拟合线的增长速度逐渐快于实际市场。在近几年的行情中，BTC 价格与九神拟合线的差距越来越大——2022 年至 2026 年间，两者几乎没有交汇过。当一条估值参考线长期脱离实际价格，它的实用性就会打折扣。"
-             data-en="Over time, the classic fitted line has been growing faster than the actual market. In recent years, the gap between BTC price and 九神's fitted line has widened — from 2022 to 2026, they barely intersected. When a valuation reference line stays detached from actual prices for too long, its practical usefulness diminishes.">
-            随着时间推移，原版拟合线的增长速度逐渐快于实际市场。在近几年的行情中，BTC 价格与九神拟合线的差距越来越大——2022 年至 2026 年间，两者几乎没有交汇过。当一条估值参考线长期脱离实际价格，它的实用性就会打折扣。</p>
+          <p data-zh="随着时间推移，原版拟合线的增长速度逐渐快于实际市场。在近几年的行情中，BTC 价格与Classic 拟合线的差距越来越大——2022 年至 2026 年间，两者几乎没有交汇过。当一条估值参考线长期脱离实际价格，它的实用性就会打折扣。"
+             data-en="Over time, the classic fitted line has been growing faster than the actual market. In recent years, the gap between BTC price and the classic fitted line has widened — from 2022 to 2026, they barely intersected. When a valuation reference line stays detached from actual prices for too long, its practical usefulness diminishes.">
+            随着时间推移，原版拟合线的增长速度逐渐快于实际市场。在近几年的行情中，BTC 价格与Classic 拟合线的差距越来越大——2022 年至 2026 年间，两者几乎没有交汇过。当一条估值参考线长期脱离实际价格，它的实用性就会打折扣。</p>
 
           <!-- 我们做了什么 -->
           <h3 style="margin-top: 20px; color: var(--text-primary);" data-zh="🛠 Crypto3D 的做法" data-en="🛠 What Crypto3D Did">🛠 Crypto3D 的做法</h3>
@@ -239,16 +239,16 @@
 
           <!-- 3D版 -->
           <h3 style="margin-top: 20px; color: var(--text-primary);" data-zh="📊 AHR999 · 3D 版" data-en="📊 AHR999 · 3D Edition">📊 AHR999 · 3D 版</h3>
-          <p data-zh="基于以上分析，我们推出 AHR999 的 3D 版——公式结构与九神原版完全一致，唯一区别是拟合价格采用 Crypto3D 基于全量数据（2011-2026，5530天）重新回归的参数："
+          <p data-zh="基于以上分析，我们推出 AHR999 的 3D 版——公式结构与 Classic 版完全一致，唯一区别是拟合价格采用 Crypto3D 基于全量数据（2011-2026，5530天）重新回归的参数："
              data-en="Based on the above analysis, we present the 3D edition of AHR999 — identical formula structure to the classic, with the only difference being that the fitted price uses Crypto3D's re-regressed parameters from full data (2011-2026, 5,530 days):">
-            基于以上分析，我们推出 AHR999 的 3D 版——公式结构与九神原版完全一致，唯一区别是拟合价格采用 Crypto3D 基于全量数据（2011-2026，5530天）重新回归的参数：</p>
+            基于以上分析，我们推出 AHR999 的 3D 版——公式结构与 Classic 版完全一致，唯一区别是拟合价格采用 Crypto3D 基于全量数据（2011-2026，5530天）重新回归的参数：</p>
           <div class="formula" style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-            <span data-zh="九神版：a = 5.84, b = -17.01" data-en="Classic: a = 5.84, b = -17.01">九神版：a = 5.84, b = -17.01</span>
+            <span data-zh="Classic：a = 5.84, b = -17.01" data-en="Classic: a = 5.84, b = -17.01">Classic：a = 5.84, b = -17.01</span>
             <span style="color: #f472b6; font-weight: 600;" data-zh="3D 版：a = 5.5189, b = -15.8993" data-en="3D Ed.: a = 5.5189, b = -15.8993">3D 版：a = 5.5189, b = -15.8993</span>
           </div>
-          <p data-zh="3D 版拟合价格比九神版低约 22%，与实际价格的交汇更频繁，作为估值参考更具实用性。九神原版同时保留在图表中，方便与其他平台的数据进行对照。"
+          <p data-zh="3D 版拟合价格比 Classic 版低约 22%，与实际价格的交汇更频繁，作为估值参考更具实用性。Classic 版同时保留在图表中，方便与其他平台的数据进行对照。"
              data-en="The 3D fitted price is ~22% lower than the classic, intersects with actual price more frequently, and is more practical as a valuation reference. The classic version is retained on the chart for cross-platform comparison.">
-            3D 版拟合价格比九神版低约 22%，与实际价格的交汇更频繁，作为估值参考更具实用性。九神原版同时保留在图表中，方便与其他平台的数据进行对照。</p>
+            3D 版拟合价格比 Classic 版低约 22%，与实际价格的交汇更频繁，作为估值参考更具实用性。Classic 版同时保留在图表中，方便与其他平台的数据进行对照。</p>
 
           <!-- 免责 -->
           <div class="disclaimer"
@@ -310,7 +310,7 @@
       if (!currentData) return;
       const current = currentData.current;
 
-      // 九神版
+      // Classic版
       const zoneInfo = getZoneInfo(current.value);
       document.getElementById('current-value').textContent = current.value.toFixed(4);
       document.getElementById('current-value').className = `stat-value ${zoneInfo.class}`;
