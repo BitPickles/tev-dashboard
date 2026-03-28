@@ -918,7 +918,7 @@ F. 资金流向（交易所流入流出、巨鲸动向、期货持仓）
         tmp.close()
         try:
             result = subprocess.run([
-                'curl', '-s', 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+                'curl', '-s', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp.name}',
