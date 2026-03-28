@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-03-27T01:05:39.468227+00:00",
+  "updated_at": "2026-03-28T01:05:59.930347+00:00",
   "total": 248,
-  "active_count": 36,
-  "passed_count": 212,
-  "tev_related": 62,
+  "active_count": 35,
+  "passed_count": 213,
+  "tev_related": 63,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -162,7 +162,7 @@
       "source": "Snapshot",
       "protocol": "Aave",
       "title": "[ARFC] Bug Bounty Program on Sherlock",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/aavedao.eth/proposal/0x5d2fa1381e7a3bae9c9e441b2e80c18d9ec793e637813502862548e9894a62ca",
       "created": 1774275802,
       "end": 1774621402,
@@ -2864,6 +2864,22 @@
     {
       "source": "dYdX Cosmos",
       "protocol": "dYdX",
+      "title": "Fee Holiday for BTC & BONK markets - April 2026",
+      "status": "active",
+      "link": "https://www.mintscan.io/dydx/proposals/370",
+      "created": "2026-03-27T02:39:49.125114071Z",
+      "end": "2026-03-30T02:39:49.125114071Z",
+      "tev_related": true,
+      "tev_keywords": [
+        "fee"
+      ],
+      "summary_en": "100% fee discount (free trading) for BTC-USD and BONK-USD perpetual markets through April 2026.",
+      "summary_zh": "协议：dYdX\n标题：BTC & BONK市场费用假期 - 2026年4月\n摘要：2026年4月前，BTC-USD和BONK-USD永续市场提供100%费用减免（免费交易）。",
+      "analysis_zh": "dYdX 对 BTC 和 BONK 实施免交易费至 2026 年，短期收入锐减将直接冲击 DYDX 回购支撑。\n\n该提案针对 BTC-USD 和 BONK-USD 市场实施 100% 费用折扣直至 2026 年 4 月，这无疑是一场激进的以收入换流量的博弈。当前年收入仅 $12.5M，其中 $11.3M 用于回购支撑着 5.33% 的 TEV Yield，免交易费政策将切断这部分核心收入来源，直接削弱 DYDX 的价值捕获能力。虽然长期看可能通过提升 TVL（现 $158.7M）和市场份额来反哺生态，但在市值仅 $75.0M 的背景下，长达两年的“造血”缺失对质押者并不友好，短期抛压风险显著上升。"
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
       "title": "Re-enable Permissionless Market Listings",
       "status": "active",
       "link": "https://www.mintscan.io/dydx/proposals/369",
@@ -2879,7 +2895,7 @@
       "source": "dYdX Cosmos",
       "protocol": "dYdX",
       "title": "Appoint New Designated Proposer Set",
-      "status": "active",
+      "status": "passed",
       "link": "https://www.mintscan.io/dydx/proposals/368",
       "created": "2026-03-24T05:56:36.104451825Z",
       "end": "2026-03-27T05:56:36.104451825Z",
@@ -2987,20 +3003,6 @@
       "tev_keywords": [],
       "summary_en": "Wind down PROVE-USD, BRETT-USD, ES-USD, PROMPT-USD, TREE-USD, AERGO-USD, ID-USD, LUNC-USD, ENJ-USD, GALA-USD, THETA-USD, AIXBT-USD, XTZ-USD, STEEM-USD, GAS-USD and NOT-USD markets",
       "summary_zh": "关闭 PROVE-USD、BRETT-USD、AIXBT-USD 等 16 个低活跃度市场，优化交易对列表和协议资源分配。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "dYdX Cosmos",
-      "protocol": "dYdX",
-      "title": "Reduce the active validator set to 31",
-      "status": "passed",
-      "link": "https://www.mintscan.io/dydx/proposals/360",
-      "created": "2026-03-09T23:27:54.247503709Z",
-      "end": "2026-03-11T23:27:54.247503709Z",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Supersedes proposal 359 (vote No on 359). Reduce max validators from 42 to 31.",
-      "summary_zh": "取代提案 359（应对 359 投反对票），将 dYdX Chain 最大验证者数量从 42 减至 31，提升网络效率。",
       "analysis_zh": ""
     },
     {
