@@ -1130,8 +1130,8 @@ Chinese version:
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp_en.name}',
-                '--max-time', '180',
-            ], capture_output=True, text=True, timeout=200)
+                '--max-time', '60',
+            ], capture_output=True, text=True, timeout=70)
             if result_en.returncode == 0:
                 resp_en = json.loads(result_en.stdout)
                 en_content = (resp_en.get("choices", [{}])[0].get("message", {}).get("content") or "").strip()
