@@ -62,8 +62,9 @@ def collect_data():
         a_now = c["value"]
         a_7d = h[-8]["ahr999"] if len(h) > 7 else h[0]["ahr999"]
         ahr_chg_7d = (a_now - a_7d) / a_7d * 100
-        # Price deviation from fitted
-        deviation = (p_now - c["fitted_price"]) / c["fitted_price"] * 100
+        # Price deviation from fitted (use 3D version if available)
+        fitted_3d = c.get("fitted_price_v2", c["fitted_price"])
+        deviation = (p_now - fitted_3d) / fitted_3d * 100
 
         data["btc"] = {
             "price": p_now,
@@ -72,9 +73,11 @@ def collect_data():
         }
         data["ahr999"] = {
             "value": a_now,
+            "ahr999_3d": c.get("ahr999_3d", a_now),
             "status": c["status"],
             "cost_200d": c["cost_200d"],
             "fitted_price": c["fitted_price"],
+            "fitted_price_v2": fitted_3d,
             "deviation": deviation,
             "chg_7d": ahr_chg_7d,
         }
@@ -337,7 +340,7 @@ def render_html(data):
     ahr_val = ahr.get("value", 0)
     ahr_chg = ahr.get("chg_7d", 0)
     cost_200d = ahr.get("cost_200d", 0)
-    fitted = ahr.get("fitted_price", 0)
+    fitted = ahr.get("fitted_price_v2", ahr.get("fitted_price", 0))
     deviation = ahr.get("deviation", 0)
 
     # AHR value
@@ -710,19 +713,19 @@ def generate_comment(data):
 
     price = btc.get('price', 0)
     cost_200d = ahr.get('cost_200d', 0)
-    fitted = ahr.get('fitted_price', 0)
+    fitted_3d = ahr.get('fitted_price_v2', ahr.get('fitted_price', 0))
     dev_cost = ((price - cost_200d) / cost_200d * 100) if cost_200d else 0
-    dev_fitted = ((price - fitted) / fitted * 100) if fitted else 0
+    dev_fitted_3d = ((price - fitted_3d) / fitted_3d * 100) if fitted_3d else 0
+    ahr999_3d = ahr.get('ahr999_3d', ahr.get('value', 0))
 
     indicators = f"""当前指标数据（请严格使用以下数字，不要编造或四舍五入）：
 - BTC 价格: ${price:,.0f}，7日变化: {btc.get('price_chg_7d', 0):+.1f}%
-- AHR999: {ahr.get('value', 0):.2f}（{ahr.get('status', '')}），7日变化: {ahr.get('chg_7d', 0):+.1f}%
-  · BTC 价格偏离 200日成本(${cost_200d:,.0f})为 {dev_cost:+.1f}%
-  · BTC 价格偏离拟合价格(${fitted:,.0f})为 {dev_fitted:+.1f}%
-  · 注意：这是两个不同的偏离度，不要混淆
+- AHR999(3D版): {ahr999_3d:.2f}（{ahr.get('status', '')}），7日变化: {ahr.get('chg_7d', 0):+.1f}%
+- 200日定投成本: ${cost_200d:,.0f}，价格偏离: {dev_cost:+.1f}%
 - MVRV: {mvrv.get('value', 0):.2f}，低于历史 {100 - mvrv.get('percentile', 50):.0f}% 的时间，上轮周期同期（{mvrv.get('prev_cycle_period', '2022-04')}）: {mvrv.get('prev_cycle', 0):.2f}
 - BMRI: {bmri.get('value', 0):.0f}（{bmri.get('regime', '')}）
-- BTC.D: {btcd.get('value', 0):.1f}%，7日变化: {btcd.get('chg_7d', 0):+.1f}%"""
+- BTC.D: {btcd.get('value', 0):.1f}%，7日变化: {btcd.get('chg_7d', 0):+.1f}%
+（补充参考：3D版拟合价格 ${fitted_3d:,.0f}，偏离 {dev_fitted_3d:+.1f}%。拟合价格仅供辅助参考，不要作为标题或核心论点。）"""
 
     # Load major governance events (only big ones: buyback, fee switch, revenue share)
     gov_file = TEV_DIR / "data" / "governance.json"
@@ -766,11 +769,14 @@ def generate_comment(data):
     # Load historical comments for continuity
     history = load_comment_history(3)
     history_context = ""
+    used_angles = []
     if history:
         lines = []
         for h in history:
             lines.append(f"[{h['date']}] {h['title']}\n{h['body'][:150]}...")
-        history_context = "\n\n你最近几天写的短评（保持风格连贯，但不要重复相同角度）：\n" + "\n\n".join(lines)
+            used_angles.append(h.get('title', ''))
+        history_context = "\n\n你最近几天写的短评（保持风格连贯，但【必须换全新视角】）：\n" + "\n\n".join(lines)
+        history_context += f"\n\n⚠️ 以上短评已用过的角度，今天【绝对禁止】再用类似主题。必须选一个完全不同的切入点。"
 
     prompt = f"""{indicators}{gov_context}{news_context}{history_context}
 
@@ -781,6 +787,15 @@ def generate_comment(data):
 【格式】
 第一行：🔥开头的标题（20字以内，必须包含明确判断或锐利观点）
 空一行后：正文 **100-150字**（必须精简，适合推特发布）
+
+【视角轮换】每天必须从以下视角中选一个你最近3天没用过的：
+A. 链上估值（MVRV、已实现价格、持有者盈亏比）
+B. 宏观环境（BMRI、利率周期、美元流动性）
+C. 市场结构（BTC.D、资金轮动、山寨季信号）
+D. 周期定位（距减半天数、历史同期对比、200日成本线）
+E. 事件驱动（重大新闻、治理提案、监管动态）
+F. 资金流向（交易所流入流出、巨鲸动向、期货持仓）
+选好后在正文中自然展开，不要标注你选了哪个。
 
 【结构要求】
 1. 市场状态定义：一句话定性（横盘/筑底/趋势启动）
@@ -802,6 +817,8 @@ def generate_comment(data):
 - 绝对不要喊单、不要建议买入卖出，只用数据暗示
 
 【禁止】
+- ❌ 不要以拟合价格或拟合偏离度作为标题或核心论点（拟合价格只是模型参考值，不是市场真实数据）
+- ❌ 不要连续两天使用相同角度或相似标题结构
 - 不要使用空洞情绪词（"暗流涌动""机会来了""风暴前的宁静"）
 - 不要只提数据不解释意义
 - 不要用指标结论直接代替分析
