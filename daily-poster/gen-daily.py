@@ -904,7 +904,7 @@ F. 资金流向（交易所流入流出、巨鲸动向、期货持仓）
 - 引用数字必须和上面给出的完全一致，不要编造、不要混淆不同指标"""
 
     payload = json.dumps({
-        "model": "glm-5",
+        "model": "glm-5.1",
         "messages": [{"role": "user", "content": prompt}],
         "temperature": 0.7,
         "max_tokens": 4000,
