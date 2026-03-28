@@ -770,6 +770,107 @@ def build_trend_context():
     return header + "\n".join(lines)
 
 
+def self_check_comment(title, body, indicators_context, api_key):
+    """AI self-check: verify comment only uses provided data, no fabrication."""
+    import subprocess, tempfile
+
+    check_prompt = f"""你是一个严格的数据审核员。请检查以下 AI 生成的加密市场短评是否存在问题。
+
+【提供给 AI 的原始数据】
+{indicators_context}
+
+【AI 生成的短评】
+标题: {title}
+正文: {body}
+
+【检查项】
+1. 短评中引用的所有数字（价格、百分比、指标值）是否都能在原始数据中找到对应？
+2. 是否编造了原始数据中不存在的数据？（如矿工成本、交易所流入流出、巨鲸数据、期货持仓等）
+3. 对指标趋势的描述是否与原始数据一致？（如不能把低位说成高位、不能把微小波动说成大幅变化）
+4. 是否包含表情符号（标题中的🔥除外）？
+5. 是否包含网站链接？
+
+【输出格式】严格按以下 JSON 格式输出，不要输出其他内容：
+{{"pass": true}} 或 {{"pass": false, "reason": "具体问题描述"}}"""
+
+    payload = json.dumps({
+        "model": "glm-4-flash",
+        "messages": [{"role": "user", "content": check_prompt}],
+        "temperature": 0.1,
+        "max_tokens": 500,
+    }, ensure_ascii=False)
+
+    try:
+        tmp = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8')
+        tmp.write(payload)
+        tmp.close()
+        try:
+            result = subprocess.run([
+                'curl', '-s', 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+                '-H', f'Authorization: Bearer {api_key}',
+                '-H', 'Content-Type: application/json',
+                '-d', f'@{tmp.name}',
+                '--max-time', '30',
+            ], capture_output=True, text=True, timeout=35)
+        finally:
+            Path(tmp.name).unlink(missing_ok=True)
+
+        if result.returncode == 0:
+            resp = json.loads(result.stdout)
+            content = (resp.get("choices", [{}])[0].get("message", {}).get("content") or "").strip()
+            # Extract JSON from response
+            import re
+            json_match = re.search(r'\{[^}]+\}', content)
+            if json_match:
+                return json.loads(json_match.group())
+        return {"pass": True}  # If check fails, don't block
+    except Exception as e:
+        print(f"  [WARN] Self-check error: {e}")
+        return {"pass": True}  # Don't block on error
+
+
+def retry_comment_with_feedback(original_prompt, feedback, api_key):
+    """Retry comment generation with self-check feedback."""
+    import subprocess, tempfile
+
+    retry_prompt = f"""{original_prompt}
+
+⚠️ 上一次生成的内容未通过审核，原因：{feedback}
+请严格修正以上问题，重新生成短评。记住：只能使用上面提供的数据，禁止编造任何未提供的数据。"""
+
+    payload = json.dumps({
+        "model": "glm-5.1",
+        "messages": [{"role": "user", "content": retry_prompt}],
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "do_sample": True,
+    }, ensure_ascii=False)
+
+    try:
+        tmp = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8')
+        tmp.write(payload)
+        tmp.close()
+        try:
+            result = subprocess.run([
+                'curl', '-s', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
+                '-H', f'Authorization: Bearer {api_key}',
+                '-H', 'Content-Type: application/json',
+                '-d', f'@{tmp.name}',
+                '--max-time', '180',
+            ], capture_output=True, text=True, timeout=200)
+        finally:
+            Path(tmp.name).unlink(missing_ok=True)
+
+        if result.returncode == 0:
+            resp = json.loads(result.stdout)
+            content = (resp.get("choices", [{}])[0].get("message", {}).get("content") or "").strip()
+            return content if content else None
+        return None
+    except Exception as e:
+        print(f"  [WARN] Retry failed: {e}")
+        return None
+
+
 def generate_comment(data):
     """Generate AI daily comment using GLM-5."""
     import subprocess, tempfile
@@ -923,8 +1024,8 @@ E. 事件驱动（重大新闻、治理提案、监管动态）
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp.name}',
-                '--max-time', '90',
-            ], capture_output=True, text=True, timeout=100)
+                '--max-time', '180',
+            ], capture_output=True, text=True, timeout=200)
         finally:
             Path(tmp.name).unlink(missing_ok=True)
 
@@ -957,8 +1058,8 @@ E. 事件驱动（重大新闻、治理提案、监管动态）
                     '-H', f'Authorization: Bearer {minimax_key}',
                     '-H', 'Content-Type: application/json',
                     '-d', f'@{tmp2.name}',
-                    '--max-time', '90',
-                ], capture_output=True, text=True, timeout=100)
+                    '--max-time', '180',
+                ], capture_output=True, text=True, timeout=200)
             finally:
                 Path(tmp2.name).unlink(missing_ok=True)
             if result2.returncode == 0:
@@ -972,6 +1073,39 @@ E. 事件驱动（重大新闻、治理提案、监管动态）
         lines = content.split("\n")
         title = lines[0].strip()
         body = "\n".join(l for l in lines[1:] if l.strip()).strip()
+
+        # === Self-check loop ===
+        max_retries = 5
+        for attempt in range(max_retries):
+            check_result = self_check_comment(title, body, indicators, api_key)
+            if check_result["pass"]:
+                print(f"  ✅ 自检通过 (第{attempt+1}轮)")
+                break
+            else:
+                reason = check_result.get("reason", "未知原因")
+                print(f"  ❌ 自检未通过 (第{attempt+1}轮): {reason}")
+                if attempt < max_retries - 1:
+                    print(f"  🔄 重新生成...")
+                    retry_content = retry_comment_with_feedback(prompt, reason, api_key)
+                    if retry_content:
+                        r_lines = retry_content.split("\n")
+                        title = r_lines[0].strip()
+                        body = "\n".join(l for l in r_lines[1:] if l.strip()).strip()
+                    else:
+                        print(f"  [WARN] 重新生成失败，使用当前版本")
+                        break
+                else:
+                    # 5轮都失败，发 TG 通知
+                    print(f"  🚨 自检连续{max_retries}轮失败，发送 TG 通知")
+                    try:
+                        subprocess.run([
+                            'curl', '-s', '-X', 'POST',
+                            f'https://api.telegram.org/bot{load_env_key("TELEGRAM_BOT_TOKEN")}/sendMessage',
+                            '-d', f'chat_id=1311453837',
+                            '-d', f'text=⚠️ AI短评自检连续{max_retries}轮失败\n最后原因: {reason}\n标题: {title}\n请人工检查',
+                        ], timeout=10)
+                    except Exception as e:
+                        print(f"  [WARN] TG 通知失败: {e}")
 
         comment = {"title": title, "body": body, "date": data["date"].strftime("%Y-%m-%d")}
 
