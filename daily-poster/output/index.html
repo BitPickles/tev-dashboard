@@ -474,8 +474,23 @@ body {
     var list = document.getElementById('feedList');
     var news = d.news || [];
 
-    var dateStr = (d.updated_at || '').slice(0, 10);
-    meta.textContent = news.length + ' 条 · ' + dateStr;
+    // Sort by time: earliest first (chronological order)
+    news.sort(function(a, b) {
+      return (a.published_at || '').localeCompare(b.published_at || '');
+    });
+
+    // Group by date
+    var byDate = {};
+    news.forEach(function(item) {
+      var date = (item.published_at || '').slice(0, 10);
+      if (!byDate[date]) byDate[date] = [];
+      byDate[date].push(item);
+    });
+
+    var dates = Object.keys(byDate).sort().reverse(); // newest date first
+    var today = new Date().toISOString().slice(0, 10);
+    var todayCount = (byDate[today] || []).length;
+    meta.textContent = todayCount + ' 条今日 · 共 ' + news.length + ' 条';
 
     if (!news.length) {
       list.innerHTML = '<div class="feed-loading">暂无新闻数据</div>';
@@ -488,33 +503,44 @@ body {
     };
 
     var html = '';
-    news.forEach(function(item) {
-      var cat = item.category || 'technology';
-      var catLabel = catLabels[cat] || cat;
-      var imp = item.importance || 5;
-      var impPct = Math.min(imp * 10, 100);
-      var impCls = imp >= 7 ? 'imp-high' : imp >= 4 ? 'imp-mid' : 'imp-low';
+    dates.forEach(function(date) {
+      var items = byDate[date];
+      // Within each date, sort by time earliest first
+      items.sort(function(a, b) {
+        return (a.published_at || '').localeCompare(b.published_at || '');
+      });
 
-      // Time: relative + absolute date
-      var timeStr = '';
-      if (item.published_at) {
-        var pd = new Date(item.published_at);
-        var hours = Math.round((Date.now() - pd.getTime()) / 3600000);
-        var rel = hours < 1 ? '刚刚' : hours < 24 ? hours + 'h' : Math.round(hours / 24) + 'd';
-        var abs = item.published_at.slice(5, 10);
-        timeStr = rel + ' · ' + abs;
-      }
+      // Date section header
+      var dateLabel = date === today ? '📡 今日' : date;
+      html += '<div style="font-size:13px;font-weight:700;color:#a1a1aa;padding:12px 0 6px;margin-top:8px;border-top:1px solid #e4e4e7;">' + dateLabel + '（' + items.length + ' 条）</div>';
 
-      html += '<a class="news-card" href="' + (item.source_url || '#') + '" target="_blank">';
-      html += '<div class="news-top">';
-      html += '<span class="news-badge badge-' + cat + '">' + catLabel + '</span>';
-      html += '<div class="news-imp"><div class="news-imp-fill ' + impCls + '" style="width:' + impPct + '%"></div></div>';
-      html += '<span class="news-source">' + (item.source || '') + '</span>';
-      html += '</div>';
-      html += '<div class="news-title">' + (item.title_zh || item.title_en || '') + '</div>';
-      html += '<div class="news-summary">' + (item.summary_zh || '') + '</div>';
-      if (timeStr) html += '<div class="news-bottom"><span class="news-time">' + timeStr + '</span></div>';
-      html += '</a>';
+      items.forEach(function(item) {
+        var cat = item.category || 'technology';
+        var catLabel = catLabels[cat] || cat;
+        var imp = item.importance || 5;
+        var impPct = Math.min(imp * 10, 100);
+        var impCls = imp >= 7 ? 'imp-high' : imp >= 4 ? 'imp-mid' : 'imp-low';
+
+        var timeStr = '';
+        if (item.published_at) {
+          var pd = new Date(item.published_at);
+          var hours = Math.round((Date.now() - pd.getTime()) / 3600000);
+          var rel = hours < 1 ? '刚刚' : hours < 24 ? hours + 'h' : Math.round(hours / 24) + 'd';
+          var timeOnly = item.published_at.slice(11, 16);
+          timeStr = timeOnly + ' · ' + rel;
+        }
+
+        html += '<a class="news-card" href="' + (item.source_url || '#') + '" target="_blank">';
+        html += '<div class="news-top">';
+        html += '<span class="news-badge badge-' + cat + '">' + catLabel + '</span>';
+        html += '<div class="news-imp"><div class="news-imp-fill ' + impCls + '" style="width:' + impPct + '%"></div></div>';
+        html += '<span class="news-source">' + (item.source || '') + '</span>';
+        html += '</div>';
+        html += '<div class="news-title">' + (item.title_zh || item.title_en || '') + '</div>';
+        html += '<div class="news-summary">' + (item.summary_zh || '') + '</div>';
+        if (timeStr) html += '<div class="news-bottom"><span class="news-time">' + timeStr + '</span></div>';
+        html += '</a>';
+      });
     });
 
     list.innerHTML = html;
