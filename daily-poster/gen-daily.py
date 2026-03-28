@@ -810,8 +810,8 @@ def self_check_comment(title, body, indicators_context, api_key):
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp.name}',
-                '--max-time', '180',
-            ], capture_output=True, text=True, timeout=200)
+                '--max-time', '100',
+            ], capture_output=True, text=True, timeout=120)
         finally:
             Path(tmp.name).unlink(missing_ok=True)
 
@@ -856,8 +856,8 @@ def retry_comment_with_feedback(original_prompt, feedback, api_key):
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp.name}',
-                '--max-time', '180',
-            ], capture_output=True, text=True, timeout=200)
+                '--max-time', '100',
+            ], capture_output=True, text=True, timeout=120)
         finally:
             Path(tmp.name).unlink(missing_ok=True)
 
@@ -1024,8 +1024,8 @@ E. 事件驱动（重大新闻、治理提案、监管动态）
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp.name}',
-                '--max-time', '180',
-            ], capture_output=True, text=True, timeout=200)
+                '--max-time', '100',
+            ], capture_output=True, text=True, timeout=120)
         finally:
             Path(tmp.name).unlink(missing_ok=True)
 
@@ -1051,8 +1051,8 @@ E. 事件驱动（重大新闻、治理提案、监管动态）
                         '-H', f'Authorization: Bearer {api_key}',
                         '-H', 'Content-Type: application/json',
                         '-d', f'@{tmp_retry.name}',
-                        '--max-time', '180',
-                    ], capture_output=True, text=True, timeout=200)
+                        '--max-time', '100',
+                    ], capture_output=True, text=True, timeout=120)
                 finally:
                     Path(tmp_retry.name).unlink(missing_ok=True)
                 if result2.returncode == 0:
