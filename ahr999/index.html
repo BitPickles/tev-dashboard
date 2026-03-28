@@ -40,14 +40,20 @@
     <div class="container">
       <div class="page-header">
         <h1 class="page-title">AHR999 <span data-zh="指标" data-en="Index">指标</span></h1>
-        <p class="page-subtitle" data-zh="比特币长期价值偏离程度观测" data-en="Bitcoin long-term value deviation indicator">比特币长期价值偏离程度观测</p>
+        <p class="page-subtitle" data-zh="比特币长期价值偏离程度观测（含 3D 重拟合版）" data-en="Bitcoin long-term value deviation (with 3D re-fitted version)">比特币长期价值偏离程度观测（含 3D 重拟合版）</p>
       </div>
 
+      <!-- 双版本指标值 -->
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-label" data-zh="当前值" data-en="Current">当前值</div>
+          <div class="stat-label" data-zh="AHR999（Classic）" data-en="AHR999 (Classic)">AHR999（Classic）</div>
           <div class="stat-value" id="current-value">—</div>
           <div class="stat-hint" id="current-zone">—</div>
+        </div>
+        <div class="stat-card" style="border-color: #f472b6;">
+          <div class="stat-label" data-zh="AHR999（3D版）" data-en="AHR999 (3D)">AHR999（3D版）</div>
+          <div class="stat-value" id="current-value-3d" style="color: #f472b6;">—</div>
+          <div class="stat-hint" id="current-zone-3d">—</div>
         </div>
         <div class="stat-card">
           <div class="stat-label" data-zh="BTC 价格" data-en="BTC Price">BTC 价格</div>
@@ -58,13 +64,12 @@
           <div class="stat-value" id="current-cost" style="color: var(--purple); font-size: 16px;">—</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label" data-zh="拟合价格" data-en="Fitted Price">拟合价格</div>
+          <div class="stat-label" data-zh="拟合价格（Classic）" data-en="Fitted (Classic)">拟合价格（Classic）</div>
           <div class="stat-value" id="current-fitted" style="color: var(--cyan); font-size: 16px;">—</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label" data-zh="操作建议" data-en="Suggestion">操作建议</div>
-          <div class="stat-value" id="suggestion" style="font-size: 18px;">—</div>
-          <div class="stat-hint" data-zh="仅供参考" data-en="Reference only">仅供参考</div>
+          <div class="stat-label" data-zh="拟合价格（3D版）" data-en="Fitted (3D)">拟合价格（3D版）</div>
+          <div class="stat-value" id="current-fitted-v2" style="color: #f472b6; font-size: 16px;">—</div>
         </div>
       </div>
 
@@ -98,9 +103,13 @@
               <div class="legend-line dashed" style="color: #22c55e;"></div>
               <span>0.45</span>
             </div>
-            <div class="legend-item" data-series="ahr999" onclick="toggleSeries('ahr999')">
+            <div class="legend-item disabled" data-series="ahr999" onclick="toggleSeries('ahr999')">
               <div class="legend-line" style="background: #3b82f6;"></div>
-              <span>AHR999</span>
+              <span data-zh="AHR999·Classic" data-en="AHR999·Classic">AHR999·Classic</span>
+            </div>
+            <div class="legend-item" data-series="ahr999_3d" onclick="toggleSeries('ahr999_3d')">
+              <div class="legend-line" style="background: #f472b6;"></div>
+              <span data-zh="AHR999·3D" data-en="AHR999·3D">AHR999·3D</span>
             </div>
             <div class="legend-item disabled" data-series="price" onclick="toggleSeries('price')">
               <div class="legend-line" style="background: #f59e0b;"></div>
@@ -112,16 +121,25 @@
             </div>
             <div class="legend-item disabled" data-series="fitted" onclick="toggleSeries('fitted')">
               <div class="legend-line" style="background: #06b6d4;"></div>
-              <span data-zh="拟合价格" data-en="Fitted">拟合价格</span>
+              <span data-zh="拟合·Classic" data-en="Fit·Classic">拟合·Classic</span>
+            </div>
+            <div class="legend-item disabled" data-series="fittedV2" onclick="toggleSeries('fittedV2')">
+              <div class="legend-line" style="background: #f472b6;"></div>
+              <span data-zh="拟合·3D" data-en="Fit·3D">拟合·3D</span>
             </div>
           </div>
         </div>
         <div class="chart-wrapper" id="chart-container"></div>
         <div class="chart-tooltip" id="chart-tooltip">
           <div class="tooltip-date" id="tooltip-date">—</div>
+          <div class="tooltip-item" id="tooltip-ahr999_3d" style="display: none;">
+            <div class="tooltip-dot" style="background: #f472b6;"></div>
+            <span class="tooltip-label">3D:</span>
+            <span class="tooltip-value" id="tooltip-ahr999_3d-value">—</span>
+          </div>
           <div class="tooltip-item" id="tooltip-ahr999" style="display: none;">
             <div class="tooltip-dot" style="background: #3b82f6;"></div>
-            <span class="tooltip-label">AHR999:</span>
+            <span class="tooltip-label" data-zh="Classic:" data-en="Classic:">Classic:</span>
             <span class="tooltip-value" id="tooltip-ahr999-value">—</span>
           </div>
           <div class="tooltip-item" id="tooltip-price" style="display: none;">
@@ -136,38 +154,107 @@
           </div>
           <div class="tooltip-item" id="tooltip-fitted" style="display: none;">
             <div class="tooltip-dot" style="background: #06b6d4;"></div>
-            <span class="tooltip-label" data-zh="拟合:" data-en="Fit:">拟合:</span>
+            <span class="tooltip-label" data-zh="拟合·Classic:" data-en="Fit·Classic:">拟合·Classic:</span>
             <span class="tooltip-value" id="tooltip-fitted-value">—</span>
+          </div>
+          <div class="tooltip-item" id="tooltip-fittedV2" style="display: none;">
+            <div class="tooltip-dot" style="background: #f472b6;"></div>
+            <span class="tooltip-label" data-zh="拟合·3D:" data-en="Fit·3D:">拟合·3D:</span>
+            <span class="tooltip-value" id="tooltip-fittedV2-value">—</span>
           </div>
         </div>
         <div class="chart-hint" data-zh="💡 拖动平移 · 滚轮缩放 · 双击重置" data-en="💡 Drag to pan · Scroll to zoom · Double-click to reset">💡 拖动平移 · 滚轮缩放 · 双击重置</div>
       </div>
       <div class="data-update-time" id="data-update-time" data-zh="数据更新: —" data-en="Data updated: —">数据更新: —</div>
 
+      <!-- ==================== 指标说明 ==================== -->
       <div class="info-section">
         <h2 class="info-title" data-zh="指标说明" data-en="About AHR999">指标说明</h2>
         <div class="info-text">
-          <p data-zh="AHR999 是由「九神」提出的比特币长期估值指标，用于观察比特币现价与历史定投成本、长期估值之间的偏离程度。" 
-             data-en="AHR999 is a long-term Bitcoin valuation indicator proposed by '九神', used to observe the deviation between current price and historical DCA cost / long-term valuation.">
-            AHR999 是由「九神」提出的比特币长期估值指标，用于观察比特币现价与历史定投成本、长期估值之间的偏离程度。
+
+          <!-- 基本介绍 -->
+          <p data-zh="AHR999 是由「九神」于 2019 年前后提出的比特币长期估值指标。它将当前 BTC 价格同时与两个基准做比较——过去 200 天的定投成本和一条币龄拟合价格曲线——得出一个综合偏离度数值。"
+             data-en="AHR999 is a long-term Bitcoin valuation indicator proposed by '九神' around 2019. It compares the current BTC price against two benchmarks — the 200-day DCA cost and an age-fitted price curve — to produce a composite deviation score.">
+            AHR999 是由「九神」于 2019 年前后提出的比特币长期估值指标。它将当前 BTC 价格同时与两个基准做比较——过去 200 天的定投成本和一条币龄拟合价格曲线——得出一个综合偏离度数值。
           </p>
-          <div class="formula">AHR999 = (Price / 200日定投成本) × (Price / 币龄估值)</div>
-          <p data-zh="• 当 AHR999 < 0.45 时，处于抄底区，历史上是较好的买入时机" 
-             data-en="• When AHR999 < 0.45, it's in the buy zone, historically a good time to buy">
-            • 当 AHR999 < 0.45 时，处于抄底区，历史上是较好的买入时机
-          </p>
-          <p data-zh="• 当 0.45 ≤ AHR999 ≤ 1.2 时，处于定投区，适合定期定额投资" 
-             data-en="• When 0.45 ≤ AHR999 ≤ 1.2, it's in the DCA zone, suitable for regular investment">
-            • 当 0.45 ≤ AHR999 ≤ 1.2 时，处于定投区，适合定期定额投资
-          </p>
-          <p data-zh="• 当 AHR999 > 1.2 时，处于观望区，价格可能偏高" 
-             data-en="• When AHR999 > 1.2, it's in the wait zone, price may be overvalued">
-            • 当 AHR999 > 1.2 时，处于观望区，价格可能偏高
-          </p>
-          <div class="disclaimer" 
-               data-zh="⚠️ 没有永远有效的指标。AHR999 诞生于两个周期以前，在新的市场环境下可能存在一定局限性，请酌情参考，理性决策。"
-               data-en="⚠️ No indicator is forever effective. AHR999 was created two cycles ago and may have limitations in the current market environment. Please use it as a reference and make rational decisions.">
-            ⚠️ 没有永远有效的指标。AHR999 诞生于两个周期以前，在新的市场环境下可能存在一定局限性，请酌情参考，理性决策。
+          <div class="formula">AHR999 = (Price / 200日定投成本) × (Price / 币龄拟合价格)</div>
+
+          <!-- 区间 -->
+          <h3 style="margin-top: 20px; color: var(--text-primary);" data-zh="操作区间" data-en="Zones">操作区间</h3>
+          <p data-zh="• AHR999 < 0.45 → 抄底区：历史上是较好的买入时机"
+             data-en="• AHR999 < 0.45 → Buy Zone: historically a good time to buy">
+            • AHR999 < 0.45 → 抄底区：历史上是较好的买入时机</p>
+          <p data-zh="• 0.45 ≤ AHR999 ≤ 1.2 → 定投区：适合定期定额投资"
+             data-en="• 0.45 ≤ AHR999 ≤ 1.2 → DCA Zone: suitable for regular investment">
+            • 0.45 ≤ AHR999 ≤ 1.2 → 定投区：适合定期定额投资</p>
+          <p data-zh="• AHR999 > 1.2 → 观望区：价格可能偏高"
+             data-en="• AHR999 > 1.2 → Wait Zone: price may be overvalued">
+            • AHR999 > 1.2 → 观望区：价格可能偏高</p>
+
+          <!-- 拟合价格是什么 -->
+          <h3 style="margin-top: 20px; color: var(--text-primary);" data-zh="📐 什么是「拟合价格」" data-en="📐 What Is 'Fitted Price'">📐 什么是「拟合价格」</h3>
+          <p data-zh="公式中的「币龄拟合价格」是一条幂律回归线。幂律模型假设 BTC 价格与它的「年龄」（距 2009 年创世区块的天数）存在乘幂关系："
+             data-en="The 'age-fitted price' in the formula is a power-law regression line. The power-law model assumes BTC price has a power relationship with its 'age' (days since the 2009 genesis block):">
+            公式中的「币龄拟合价格」是一条幂律回归线。幂律模型假设 BTC 价格与它的「年龄」（距 2009 年创世区块的天数）存在乘幂关系：</p>
+          <div class="formula" data-zh="拟合价格 = 10^(a × log₁₀(币龄天数) + b)" data-en="Fitted Price = 10^(a × log₁₀(coin_age_days) + b)">拟合价格 = 10^(a × log₁₀(币龄天数) + b)</div>
+
+          <!-- 为什么用幂律 -->
+          <h3 style="margin-top: 20px; color: var(--text-primary);" data-zh="💡 为什么是幂律而不是其他模型" data-en="💡 Why Power Law">💡 为什么是幂律而不是其他模型</h3>
+          <p data-zh="我们对比了三种候选模型：标准幂律、带衰减的二次幂律、以及有价格上限的 S 曲线（逻辑函数）。"
+             data-en="We compared three candidate models: standard power law, quadratic power law with decay, and an S-curve (logistic function) with a price ceiling.">
+            我们对比了三种候选模型：标准幂律、带衰减的二次幂律、以及有价格上限的 S 曲线（逻辑函数）。</p>
+          <p data-zh="S 曲线假设 BTC 存在一个价格天花板——增长到一定程度就饱和。但用发展的眼光看，全球法币总量是「无限」的：各国央行持续印钞，货币在不断贬值，而比特币总量恒定 2100 万枚。用一个不断贬值的计价单位去衡量一个固定供给的资产，理论上没有天花板。因此幂律——一种增长率持续衰减但没有上限的模型——是更合理的选择。"
+             data-en="The S-curve assumes BTC has a price ceiling — growth saturates at some point. But from a long-term perspective, the global fiat supply is effectively 'unlimited': central banks keep printing, currencies keep depreciating, while Bitcoin's total supply is fixed at 21 million. Measuring a fixed-supply asset in a perpetually depreciating unit of account means there is theoretically no ceiling. Therefore, the power law — a model with decelerating but unbounded growth — is the more reasonable choice.">
+            S 曲线假设 BTC 存在一个价格天花板——增长到一定程度就饱和。但用发展的眼光看，全球法币总量是「无限」的：各国央行持续印钞，货币在不断贬值，而比特币总量恒定 2100 万枚。用一个不断贬值的计价单位去衡量一个固定供给的资产，理论上没有天花板。因此幂律——一种增长率持续衰减但没有上限的模型——是更合理的选择。</p>
+          <p data-zh="二次幂律的实测结果与标准幂律几乎一致（二次项为正而非负，说明 BTC 增长历史上并未减速），额外复杂度没有带来改进。最终我们沿用标准幂律。"
+             data-en="The quadratic power law produced nearly identical results to the standard version (the quadratic term was positive, not negative — meaning BTC growth has not decelerated historically), so the added complexity brought no improvement. We stick with the standard power law.">
+            二次幂律的实测结果与标准幂律几乎一致（二次项为正而非负，说明 BTC 增长历史上并未减速），额外复杂度没有带来改进。最终我们沿用标准幂律。</p>
+
+          <!-- Classic 参数的局限性 -->
+          <h3 style="margin-top: 20px; color: var(--text-primary);" data-zh="🔍 Classic 版参数的局限性" data-en="🔍 Limitations of Classic Parameters">🔍 Classic 版参数的局限性</h3>
+          <p data-zh="九神给出的参数是 a=5.84、b=-17.01，在那个时代是非常有价值的创新。但任何基于历史数据拟合的模型参数，都有其时效性——随着市场结构的演变和新数据的积累，参数需要与时俱进。"
+             data-en="九神's original parameters are a=5.84, b=-17.01, which was a valuable innovation at the time. But any model parameters fitted on historical data have a shelf life — as the market evolves and new data accumulates, parameters need to keep pace.">
+            九神给出的参数是 a=5.84、b=-17.01，在那个时代是非常有价值的创新。但任何基于历史数据拟合的模型参数，都有其时效性——随着市场结构的演变和新数据的积累，参数需要与时俱进。</p>
+          <p data-zh="我们用 2011-2026 年共 5,530 天的完整数据重新做对数回归，得到的最佳拟合参数是 a=5.5189、b=-15.8993。两组参数的差异，反映的是比特币从早期小众资产成长为万亿级资产的过程中，增长模式的自然变化。"
+             data-en="We re-ran the log regression on 5,530 days of 2011-2026 data, yielding best-fit parameters a=5.5189, b=-15.8993. The difference between the two parameter sets reflects the natural evolution of Bitcoin's growth pattern as it matured from a niche asset to a trillion-dollar asset class.">
+            我们用 2011-2026 年共 5,530 天的完整数据重新做对数回归，得到的最佳拟合参数是 a=5.5189、b=-15.8993。两组参数的差异，反映的是比特币从早期小众资产成长为万亿级资产的过程中，增长模式的自然变化。</p>
+          <p data-zh="随着时间推移，原版拟合线的增长速度逐渐快于实际市场。在近几年的行情中，BTC 价格与Classic 拟合线的差距越来越大——2022 年至 2026 年间，两者几乎没有交汇过。当一条估值参考线长期脱离实际价格，它的实用性就会打折扣。"
+             data-en="Over time, the classic fitted line has been growing faster than the actual market. In recent years, the gap between BTC price and the classic fitted line has widened — from 2022 to 2026, they barely intersected. When a valuation reference line stays detached from actual prices for too long, its practical usefulness diminishes.">
+            随着时间推移，原版拟合线的增长速度逐渐快于实际市场。在近几年的行情中，BTC 价格与Classic 拟合线的差距越来越大——2022 年至 2026 年间，两者几乎没有交汇过。当一条估值参考线长期脱离实际价格，它的实用性就会打折扣。</p>
+
+          <!-- 我们做了什么 -->
+          <h3 style="margin-top: 20px; color: var(--text-primary);" data-zh="🛠 Crypto3D 的做法" data-en="🛠 What Crypto3D Did">🛠 Crypto3D 的做法</h3>
+          <p data-zh="我们尝试了多种改进方案：滚动窗口拟合（每月用最近4年数据重算）、用 MA200 替代原始价格做拟合、不同长度的数据窗口等。结论是："
+             data-en="We tried multiple improvements: rolling window fitting (re-calculating monthly with 4 years of data), fitting MA200 instead of raw price, various data windows, etc. The conclusions:">
+            我们尝试了多种改进方案：滚动窗口拟合（每月用最近4年数据重算）、用 MA200 替代原始价格做拟合、不同长度的数据窗口等。结论是：</p>
+          <p data-zh="• 滚动窗口的参数剧烈波动（斜率在 1.1~7.8 之间震荡），牛市追涨、熊市滞后，在关键转折点信号严重失真"
+             data-en="• Rolling window parameters fluctuate wildly (slope oscillates between 1.1-7.8), chasing bulls and lagging bears, with severely distorted signals at key turning points">
+            • 滚动窗口的参数剧烈波动（斜率在 1.1~7.8 之间震荡），牛市追涨、熊市滞后，在关键转折点信号严重失真</p>
+          <p data-zh="• 用 MA200 拟合的 R² 更高，但参数窗口敏感度反而更差（不同时段差异达 21%），因为均线自身的滞后性放大了窗口偏差"
+             data-en="• MA200 fitting has higher R², but worse parameter stability (21% variance across periods), as the moving average's lag amplifies window bias">
+            • 用 MA200 拟合的 R² 更高，但参数窗口敏感度反而更差（不同时段差异达 21%），因为均线自身的滞后性放大了窗口偏差</p>
+          <p data-zh="• 全量数据的标准幂律回归（a=5.5189, b=-15.8993）是最稳定、最简洁的方案，R²=0.952"
+             data-en="• Full-data standard power-law regression (a=5.5189, b=-15.8993) is the most stable and simplest approach, R²=0.952">
+            • 全量数据的标准幂律回归（a=5.5189, b=-15.8993）是最稳定、最简洁的方案，R²=0.952</p>
+
+          <!-- 3D版 -->
+          <h3 style="margin-top: 20px; color: var(--text-primary);" data-zh="📊 AHR999 · 3D 版" data-en="📊 AHR999 · 3D Edition">📊 AHR999 · 3D 版</h3>
+          <p data-zh="基于以上分析，我们推出 AHR999 的 3D 版——公式结构与 Classic 版完全一致，唯一区别是拟合价格采用 Crypto3D 基于全量数据（2011-2026，5530天）重新回归的参数："
+             data-en="Based on the above analysis, we present the 3D edition of AHR999 — identical formula structure to the classic, with the only difference being that the fitted price uses Crypto3D's re-regressed parameters from full data (2011-2026, 5,530 days):">
+            基于以上分析，我们推出 AHR999 的 3D 版——公式结构与 Classic 版完全一致，唯一区别是拟合价格采用 Crypto3D 基于全量数据（2011-2026，5530天）重新回归的参数：</p>
+          <div class="formula" style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+            <span data-zh="Classic：a = 5.84, b = -17.01" data-en="Classic: a = 5.84, b = -17.01">Classic：a = 5.84, b = -17.01</span>
+            <span style="color: #f472b6; font-weight: 600;" data-zh="3D 版：a = 5.5189, b = -15.8993" data-en="3D Ed.: a = 5.5189, b = -15.8993">3D 版：a = 5.5189, b = -15.8993</span>
+          </div>
+          <p data-zh="3D 版拟合价格比 Classic 版低约 22%，与实际价格的交汇更频繁，作为估值参考更具实用性。Classic 版同时保留在图表中，方便与其他平台的数据进行对照。"
+             data-en="The 3D fitted price is ~22% lower than the classic, intersects with actual price more frequently, and is more practical as a valuation reference. The classic version is retained on the chart for cross-platform comparison.">
+            3D 版拟合价格比 Classic 版低约 22%，与实际价格的交汇更频繁，作为估值参考更具实用性。Classic 版同时保留在图表中，方便与其他平台的数据进行对照。</p>
+
+          <!-- 免责 -->
+          <div class="disclaimer"
+               data-zh="⚠️ 拟合价格是基于历史幂律的统计回归值，不是价格预测。AHR999 无论哪个版本都只是辅助参考指标，不应作为交易决策的唯一依据。市场有风险，投资需谨慎。"
+               data-en="⚠️ Fitted prices are statistical regression values based on historical power law, not price predictions. AHR999 in any version is only a supplementary reference indicator and should not be the sole basis for trading decisions. Markets carry risk; invest with caution.">
+            ⚠️ 拟合价格是基于历史幂律的统计回归值，不是价格预测。AHR999 无论哪个版本都只是辅助参考指标，不应作为交易决策的唯一依据。市场有风险，投资需谨慎。
           </div>
         </div>
       </div>
@@ -185,7 +272,7 @@
     let chart = null;
     let series = {};
     let zones = {};
-    let seriesVisible = { ahr999: true, price: false, cost: false, fitted: false };
+    let seriesVisible = { ahr999: false, ahr999_3d: true, price: false, cost: false, fitted: false, fittedV2: false };
     let isLogScale = true;
     let defaultRange = null;
     let historyData = {};
@@ -195,29 +282,17 @@
     function getZoneInfo(value) {
       const lang = LangUtils.get();
       if (value < 0.45) {
-        return { 
-          class: 'buy', 
-          zone: lang === 'zh' ? '抄底区' : 'Buy Zone',
-          suggestion: lang === 'zh' ? '🟢 抄底' : '🟢 Buy'
-        };
+        return { class: 'buy', zone: lang === 'zh' ? '抄底区' : 'Buy Zone', suggestion: lang === 'zh' ? '🟢 抄底' : '🟢 Buy' };
       } else if (value <= 1.2) {
-        return { 
-          class: 'dca', 
-          zone: lang === 'zh' ? '定投区' : 'DCA Zone',
-          suggestion: lang === 'zh' ? '🟡 定投' : '🟡 DCA'
-        };
+        return { class: 'dca', zone: lang === 'zh' ? '定投区' : 'DCA Zone', suggestion: lang === 'zh' ? '🟡 定投' : '🟡 DCA' };
       } else {
-        return { 
-          class: 'wait', 
-          zone: lang === 'zh' ? '观望区' : 'Wait Zone',
-          suggestion: lang === 'zh' ? '🔴 观望' : '🔴 Wait'
-        };
+        return { class: 'wait', zone: lang === 'zh' ? '观望区' : 'Wait Zone', suggestion: lang === 'zh' ? '🔴 观望' : '🔴 Wait' };
       }
     }
 
     // === Chart Controls ===
     function toggleSeries(name) {
-      toggleSeriesVisibility(series, seriesVisible, name, { ahr999: zones });
+      toggleSeriesVisibility(series, seriesVisible, name, { ahr999_3d: zones });
       const el = document.getElementById(`tooltip-${name}`);
       if (el) el.style.display = seriesVisible[name] ? 'flex' : 'none';
     }
@@ -234,15 +309,27 @@
     function updateDisplay() {
       if (!currentData) return;
       const current = currentData.current;
-      const zoneInfo = getZoneInfo(current.value);
 
+      // Classic版
+      const zoneInfo = getZoneInfo(current.value);
       document.getElementById('current-value').textContent = current.value.toFixed(4);
       document.getElementById('current-value').className = `stat-value ${zoneInfo.class}`;
       document.getElementById('current-zone').textContent = zoneInfo.zone;
+
+      // 3D版
+      if (current.ahr999_3d) {
+        const zone3d = getZoneInfo(current.ahr999_3d);
+        document.getElementById('current-value-3d').textContent = current.ahr999_3d.toFixed(4);
+        document.getElementById('current-zone-3d').textContent = zone3d.zone;
+        document.getElementById('current-zone-3d').className = 'stat-hint';
+      }
+
       document.getElementById('current-price').textContent = '$' + current.price.toLocaleString();
       document.getElementById('current-cost').textContent = '$' + current.cost_200d.toLocaleString();
       document.getElementById('current-fitted').textContent = '$' + current.fitted_price.toLocaleString();
-      document.getElementById('suggestion').textContent = zoneInfo.suggestion;
+      if (current.fitted_price_v2) {
+        document.getElementById('current-fitted-v2').textContent = '$' + current.fitted_price_v2.toLocaleString();
+      }
 
       if (currentData.updated_at) {
         const prefix = LangUtils.get() === 'zh' ? '数据更新: ' : 'Data updated: ';
@@ -268,94 +355,81 @@
 
       // Prepare data
       const ahr999Data = history.map(d => ({ time: d.date, value: d.ahr999 }));
+      const ahr999_3dData = history.filter(d => d.ahr999_3d).map(d => ({ time: d.date, value: d.ahr999_3d }));
       const priceData = history.map(d => ({ time: d.date, value: d.close }));
       const costData = history.map(d => ({ time: d.date, value: d.cost_200d }));
       const fittedData = history.map(d => ({ time: d.date, value: d.fitted_price }));
+      const fittedV2Data = history.filter(d => d.fitted_price_v2).map(d => ({ time: d.date, value: d.fitted_price_v2 }));
       historyData = buildHistoryLookup(history);
 
       const firstDate = history[0].date;
       const lastDate = history[history.length - 1].date;
 
-      // Zone backgrounds
-      zones.green = createZoneSeries(chart, 0.45, {
-        bottomFill1: 'rgba(34, 197, 94, 0.08)',
-        bottomFill2: 'rgba(34, 197, 94, 0.25)',
-      });
-      zones.green.setData(ahr999Data);
+      // Zone backgrounds (tied to 3D AHR999 — the default series)
+      zones.green = createZoneSeries(chart, 0.45, { bottomFill1: 'rgba(34, 197, 94, 0.08)', bottomFill2: 'rgba(34, 197, 94, 0.25)' });
+      zones.green.setData(ahr999_3dData);
+      zones.red = createZoneSeries(chart, 1.2, { topFill1: 'rgba(239, 68, 68, 0.08)', topFill2: 'rgba(239, 68, 68, 0.25)' });
+      zones.red.setData(ahr999_3dData);
 
-      zones.red = createZoneSeries(chart, 1.2, {
-        topFill1: 'rgba(239, 68, 68, 0.08)',
-        topFill2: 'rgba(239, 68, 68, 0.25)',
-      });
-      zones.red.setData(ahr999Data);
-
-      // AHR999 Series with whitespace
-      const ahr999WithWhitespace = addFutureWhitespace(ahr999Data, lastDate, 180);
-      series.ahr999 = chart.addLineSeries({
-        color: '#3b82f6',
-        lineWidth: 2,
-        priceScaleId: 'right',
+      // AHR999 3D (default, visible)
+      const ahr999_3dWithWs = addFutureWhitespace(ahr999_3dData, lastDate, 180);
+      series.ahr999_3d = chart.addLineSeries({
+        color: '#f472b6', lineWidth: 2, priceScaleId: 'right',
         priceFormat: { type: 'price', precision: 4, minMove: 0.0001 },
-        lastValueVisible: false,
-        priceLineVisible: false,
+        lastValueVisible: false, priceLineVisible: false,
       });
-      series.ahr999.setData(ahr999WithWhitespace);
+      series.ahr999_3d.setData(ahr999_3dWithWs);
 
-      // Threshold lines
-      createThresholdLine(series.ahr999, 0.45, '#22c55e');
-      createThresholdLine(series.ahr999, 1.2, '#ef4444');
+      // Threshold lines (on 3D series)
+      createThresholdLine(series.ahr999_3d, 0.45, '#22c55e');
+      createThresholdLine(series.ahr999_3d, 1.2, '#ef4444');
 
-      // Price Series (left axis, hidden)
+      // AHR999 Classic (hidden by default)
+      series.ahr999 = chart.addLineSeries({
+        color: '#3b82f6', lineWidth: 2, priceScaleId: 'right',
+        priceFormat: { type: 'price', precision: 4, minMove: 0.0001 },
+        lastValueVisible: false, priceLineVisible: false, visible: false,
+      });
+      series.ahr999.setData(ahr999Data);
+
+      // Price (left axis, hidden)
       series.price = chart.addLineSeries({
-        color: '#f59e0b',
-        lineWidth: 1.5,
-        priceScaleId: 'left',
+        color: '#f59e0b', lineWidth: 1.5, priceScaleId: 'left',
         priceFormat: { type: 'price', precision: 0, minMove: 1 },
-        lastValueVisible: false,
-        priceLineVisible: false,
-        visible: false,
+        lastValueVisible: false, priceLineVisible: false, visible: false,
       });
       series.price.setData(priceData);
 
-      // 200d Cost Series (left axis, hidden)
+      // 200d Cost (left axis, hidden)
       series.cost = chart.addLineSeries({
-        color: '#a855f7',
-        lineWidth: 1,
-        lineStyle: LightweightCharts.LineStyle.Dotted,
-        priceScaleId: 'left',
-        priceFormat: { type: 'price', precision: 0, minMove: 1 },
-        lastValueVisible: false,
-        priceLineVisible: false,
-        visible: false,
+        color: '#a855f7', lineWidth: 1, lineStyle: LightweightCharts.LineStyle.Dotted,
+        priceScaleId: 'left', priceFormat: { type: 'price', precision: 0, minMove: 1 },
+        lastValueVisible: false, priceLineVisible: false, visible: false,
       });
       series.cost.setData(costData);
 
-      // Fitted Price Series (left axis, hidden)
+      // Fitted Classic (left axis, hidden)
       series.fitted = chart.addLineSeries({
-        color: '#06b6d4',
-        lineWidth: 1,
-        lineStyle: LightweightCharts.LineStyle.Dotted,
-        priceScaleId: 'left',
-        priceFormat: { type: 'price', precision: 0, minMove: 1 },
-        lastValueVisible: false,
-        priceLineVisible: false,
-        visible: false,
+        color: '#06b6d4', lineWidth: 1, lineStyle: LightweightCharts.LineStyle.Dotted,
+        priceScaleId: 'left', priceFormat: { type: 'price', precision: 0, minMove: 1 },
+        lastValueVisible: false, priceLineVisible: false, visible: false,
       });
       series.fitted.setData(fittedData);
 
-      // Configure scales
-      chart.priceScale('left').applyOptions({
-        visible: true,
-        mode: LightweightCharts.PriceScaleMode.Logarithmic,
+      // Fitted 3D (left axis, hidden)
+      series.fittedV2 = chart.addLineSeries({
+        color: '#f472b6', lineWidth: 1.5, lineStyle: LightweightCharts.LineStyle.Dashed,
+        priceScaleId: 'left', priceFormat: { type: 'price', precision: 0, minMove: 1 },
+        lastValueVisible: false, priceLineVisible: false, visible: false,
       });
-      chart.priceScale('right').applyOptions({
-        mode: LightweightCharts.PriceScaleMode.Logarithmic,
-      });
+      series.fittedV2.setData(fittedV2Data);
 
-      // Default range
+      // Scales
+      chart.priceScale('left').applyOptions({ visible: true, mode: LightweightCharts.PriceScaleMode.Logarithmic });
+      chart.priceScale('right').applyOptions({ mode: LightweightCharts.PriceScaleMode.Logarithmic });
+
+      // Default range & double-click reset
       defaultRange = setDefaultRange(chart, firstDate, lastDate);
-
-      // Double-click reset
       document.getElementById('chart-container').addEventListener('dblclick', resetChart);
 
       // Tooltip
@@ -364,9 +438,11 @@
         dateElementId: 'tooltip-date',
         fields: [
           { key: 'ahr999', dataKey: 'ahr999', format: v => v.toFixed(4) },
+          { key: 'ahr999_3d', dataKey: 'ahr999_3d', format: v => v ? v.toFixed(4) : '—' },
           { key: 'price', dataKey: 'close', format: v => '$' + v.toLocaleString() },
           { key: 'cost', dataKey: 'cost_200d', format: v => '$' + v.toLocaleString() },
           { key: 'fitted', dataKey: 'fitted_price', format: v => '$' + v.toLocaleString() },
+          { key: 'fittedV2', dataKey: 'fitted_price_v2', format: v => v ? '$' + v.toLocaleString() : '—' },
         ],
       });
     }
