@@ -1037,36 +1037,31 @@ E. 事件驱动（重大新闻、治理提案、监管动态）
         msg = resp.get("choices", [{}])[0].get("message", {})
         content = (msg.get("content") or "").strip()
         if not content:
-            # GLM-5 sometimes puts output in reasoning_content when max_tokens is low
             print(f"[WARN] Empty content, finish_reason={resp.get('choices',[{}])[0].get('finish_reason','?')}")
-            print(f"[INFO] Retrying with MiniMax-M2.7...")
-            minimax_key = load_env_key("MINIMAX_API_KEY")
-            if not minimax_key:
-                print("[WARN] No MINIMAX_API_KEY, skip fallback")
-                return None
-            payload2 = json.dumps({
-                "model": "MiniMax-M2.7",
-                "messages": [{"role": "user", "content": prompt}],
-                "max_tokens": 4000,
-            }, ensure_ascii=False)
-            tmp2 = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8')
-            tmp2.write(payload2)
-            tmp2.close()
+            # Retry GLM-5.1 once more
+            print(f"[INFO] Retrying GLM-5.1...")
+            import time; time.sleep(3)
             try:
-                result2 = subprocess.run([
-                    'curl', '-s', 'https://api.minimax.chat/v1/text/chatcompletion_v2',
-                    '-H', f'Authorization: Bearer {minimax_key}',
-                    '-H', 'Content-Type: application/json',
-                    '-d', f'@{tmp2.name}',
-                    '--max-time', '180',
-                ], capture_output=True, text=True, timeout=200)
-            finally:
-                Path(tmp2.name).unlink(missing_ok=True)
-            if result2.returncode == 0:
-                resp2 = json.loads(result2.stdout)
-                content = (resp2.get("choices", [{}])[0].get("message", {}).get("content") or "").strip()
+                tmp_retry = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8')
+                tmp_retry.write(payload)
+                tmp_retry.close()
+                try:
+                    result2 = subprocess.run([
+                        'curl', '-s', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
+                        '-H', f'Authorization: Bearer {api_key}',
+                        '-H', 'Content-Type: application/json',
+                        '-d', f'@{tmp_retry.name}',
+                        '--max-time', '180',
+                    ], capture_output=True, text=True, timeout=200)
+                finally:
+                    Path(tmp_retry.name).unlink(missing_ok=True)
+                if result2.returncode == 0:
+                    resp2 = json.loads(result2.stdout)
+                    content = (resp2.get("choices", [{}])[0].get("message", {}).get("content") or "").strip()
+            except Exception as e2:
+                print(f"[WARN] Retry failed: {e2}")
             if not content:
-                print("[WARN] MiniMax fallback also empty")
+                print("[WARN] GLM-5.1 retry also empty")
                 return None
 
         # Parse title and body
@@ -1121,7 +1116,7 @@ Chinese version:
 
 {body}"""
         en_payload = json.dumps({
-            "model": "glm-4-flash",
+            "model": "glm-5.1",
             "messages": [{"role": "user", "content": en_prompt}],
             "temperature": 0.3,
             "max_tokens": 2000,
@@ -1131,7 +1126,7 @@ Chinese version:
         tmp_en.close()
         try:
             result_en = subprocess.run([
-                'curl', '-s', 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+                'curl', '-s', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp_en.name}',
