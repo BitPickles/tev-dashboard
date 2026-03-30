@@ -695,6 +695,182 @@ def save_to_archive(comment):
     COMMENTS_ARCHIVE.write_text(json.dumps(archive, ensure_ascii=False, indent=2))
 
 
+def build_trend_context():
+    """Build monthly trend (4 years) + weekly detail for all indicators.
+    Returns a string block to inject into the AI prompt."""
+    from collections import defaultdict
+
+    lines = []
+
+    # --- Helper: aggregate monthly from history ---
+    def monthly_agg(history, val_key, years=4):
+        cutoff = (datetime.now(TZ) - timedelta(days=years * 365)).strftime("%Y-%m")
+        months = defaultdict(list)
+        for h in history:
+            m = h["date"][:7]
+            if m >= cutoff:
+                v = h.get(val_key)
+                if v is not None:
+                    months[m].append(v)
+        result = []
+        for m in sorted(months):
+            vals = months[m]
+            result.append(f"{m}: avg={sum(vals)/len(vals):.2f}, min={min(vals):.2f}, max={max(vals):.2f}")
+        return result
+
+    def weekly_detail(history, val_key, n=7):
+        recent = history[-n:] if len(history) >= n else history
+        return [f"{h['date']}: {h.get(val_key, 'N/A')}" for h in recent]
+
+    # --- AHR999 ---
+    ahr = load_json(INDICATORS / "ahr999.json")
+    if ahr and ahr.get("history"):
+        h = ahr["history"]
+        lines.append("【AHR999 月度趋势（近4年）】")
+        lines.extend(monthly_agg(h, "ahr999"))
+        lines.append("【AHR999 近7天】")
+        lines.extend(weekly_detail(h, "ahr999"))
+        lines.append("")
+
+    # --- MVRV ---
+    mvrv = load_json(INDICATORS / "mvrv.json")
+    if mvrv and mvrv.get("history"):
+        h = mvrv["history"]
+        lines.append("【MVRV 月度趋势（近4年）】")
+        lines.extend(monthly_agg(h, "mvrv"))
+        lines.append("【MVRV 近7天】")
+        lines.extend(weekly_detail(h, "mvrv"))
+        lines.append("")
+
+    # --- BTC.D ---
+    btcd = load_json(INDICATORS / "btc-dominance.json")
+    if btcd and btcd.get("history"):
+        h = btcd["history"]
+        lines.append("【BTC.D 月度趋势（近4年）】")
+        lines.extend(monthly_agg(h, "value"))
+        lines.append("【BTC.D 近7天】")
+        lines.extend(weekly_detail(h, "value"))
+        lines.append("")
+
+    # --- BMRI ---
+    bmri = load_json(INDICATORS / "bmri.json")
+    if bmri:
+        # BMRI uses nested structure: 6m.history
+        bh = bmri.get("6m", {}).get("history", [])
+        if bh:
+            lines.append("【BMRI 月度趋势（近4年）】")
+            lines.extend(monthly_agg(bh, "risk"))
+            lines.append("【BMRI 近7天】")
+            lines.extend(weekly_detail(bh, "risk"))
+            lines.append("")
+
+    if not lines:
+        return ""
+    header = "\n\n历史趋势参考（请据此判断当前指标处于历史什么位置，避免把低位小幅反弹误判为上升趋势）：\n"
+    return header + "\n".join(lines)
+
+
+def self_check_comment(title, body, indicators_context, api_key):
+    """AI self-check: verify comment only uses provided data, no fabrication."""
+    import subprocess, tempfile
+
+    check_prompt = f"""你是一个严格的数据审核员。请检查以下 AI 生成的加密市场短评是否存在问题。
+
+【提供给 AI 的原始数据】
+{indicators_context}
+
+【AI 生成的短评】
+标题: {title}
+正文: {body}
+
+【检查项】
+1. 短评中引用的所有数字（价格、百分比、指标值）是否都能在原始数据中找到对应？
+2. 是否编造了原始数据中不存在的数据？（如矿工成本、交易所流入流出、巨鲸数据、期货持仓等）
+3. 对指标趋势的描述是否与原始数据一致？（如不能把低位说成高位、不能把微小波动说成大幅变化）
+4. 是否包含表情符号（标题中的🔥除外）？
+5. 是否包含网站链接？
+
+【输出格式】严格按以下 JSON 格式输出，不要输出其他内容：
+{{"pass": true}} 或 {{"pass": false, "reason": "具体问题描述"}}"""
+
+    payload = json.dumps({
+        "model": "glm-5.1",
+        "messages": [{"role": "user", "content": check_prompt}],
+        "temperature": 0.1,
+        "max_tokens": 500,
+    }, ensure_ascii=False)
+
+    try:
+        tmp = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8')
+        tmp.write(payload)
+        tmp.close()
+        try:
+            result = subprocess.run([
+                'curl', '-s', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
+                '-H', f'Authorization: Bearer {api_key}',
+                '-H', 'Content-Type: application/json',
+                '-d', f'@{tmp.name}',
+                '--max-time', '100',
+            ], capture_output=True, text=True, timeout=120)
+        finally:
+            Path(tmp.name).unlink(missing_ok=True)
+
+        if result.returncode == 0:
+            resp = json.loads(result.stdout)
+            content = (resp.get("choices", [{}])[0].get("message", {}).get("content") or "").strip()
+            # Extract JSON from response
+            import re
+            json_match = re.search(r'\{[^}]+\}', content)
+            if json_match:
+                return json.loads(json_match.group())
+        return {"pass": True}  # If check fails, don't block
+    except Exception as e:
+        print(f"  [WARN] Self-check error: {e}")
+        return {"pass": True}  # Don't block on error
+
+
+def retry_comment_with_feedback(original_prompt, feedback, api_key):
+    """Retry comment generation with self-check feedback."""
+    import subprocess, tempfile
+
+    retry_prompt = f"""{original_prompt}
+
+⚠️ 上一次生成的内容未通过审核，原因：{feedback}
+请严格修正以上问题，重新生成短评。记住：只能使用上面提供的数据，禁止编造任何未提供的数据。"""
+
+    payload = json.dumps({
+        "model": "glm-5.1",
+        "messages": [{"role": "user", "content": retry_prompt}],
+        "temperature": 0.7,
+        "max_tokens": 4000,
+        "do_sample": True,
+    }, ensure_ascii=False)
+
+    try:
+        tmp = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8')
+        tmp.write(payload)
+        tmp.close()
+        try:
+            result = subprocess.run([
+                'curl', '-s', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
+                '-H', f'Authorization: Bearer {api_key}',
+                '-H', 'Content-Type: application/json',
+                '-d', f'@{tmp.name}',
+                '--max-time', '100',
+            ], capture_output=True, text=True, timeout=120)
+        finally:
+            Path(tmp.name).unlink(missing_ok=True)
+
+        if result.returncode == 0:
+            resp = json.loads(result.stdout)
+            content = (resp.get("choices", [{}])[0].get("message", {}).get("content") or "").strip()
+            return content if content else None
+        return None
+    except Exception as e:
+        print(f"  [WARN] Retry failed: {e}")
+        return None
+
+
 def generate_comment(data):
     """Generate AI daily comment using GLM-5."""
     import subprocess, tempfile
@@ -778,7 +954,9 @@ def generate_comment(data):
         history_context = "\n\n你最近几天写的短评（保持风格连贯，但【必须换全新视角】）：\n" + "\n\n".join(lines)
         history_context += f"\n\n⚠️ 以上短评已用过的角度，今天【绝对禁止】再用类似主题。必须选一个完全不同的切入点。"
 
-    prompt = f"""{indicators}{gov_context}{news_context}{history_context}
+    trend_context = build_trend_context()
+
+    prompt = f"""{indicators}{trend_context}{gov_context}{news_context}{history_context}
 
 你是一个专业的加密市场研究员，擅长链上数据分析、周期判断和资金结构推演。你同时是 Crypto3D 数据站的首席评论员。
 
@@ -789,12 +967,11 @@ def generate_comment(data):
 空一行后：正文 **100-150字**（必须精简，适合推特发布）
 
 【视角轮换】每天必须从以下视角中选一个你最近3天没用过的：
-A. 链上估值（MVRV、已实现价格、持有者盈亏比）
+A. 链上估值（MVRV、200日成本线、AHR999区间判断）
 B. 宏观环境（BMRI、利率周期、美元流动性）
 C. 市场结构（BTC.D、资金轮动、山寨季信号）
-D. 周期定位（距减半天数、历史同期对比、200日成本线）
+D. 周期定位（距减半天数、历史同期对比、上轮同期MVRV）
 E. 事件驱动（重大新闻、治理提案、监管动态）
-F. 资金流向（交易所流入流出、巨鲸动向、期货持仓）
 选好后在正文中自然展开，不要标注你选了哪个。
 
 【结构要求】
@@ -819,15 +996,17 @@ F. 资金流向（交易所流入流出、巨鲸动向、期货持仓）
 【禁止】
 - ❌ 不要以拟合价格或拟合偏离度作为标题或核心论点（拟合价格只是模型参考值，不是市场真实数据）
 - ❌ 不要连续两天使用相同角度或相似标题结构
+- ❌ 只能引用上面提供的数据中出现的数字，严禁引用任何未提供的外部数据
+- ❌ 禁止提及矿工成本、交易所流入流出、巨鲸动向、期货持仓等本站未提供的链上/交易数据（我们没有这些数据，你不能编造）
+- ❌ 如果你想引用某个数字，先检查它是否出现在上面的数据中，没有就不要用
 - 不要使用空洞情绪词（"暗流涌动""机会来了""风暴前的宁静"）
 - 不要只提数据不解释意义
 - 不要用指标结论直接代替分析
 - 不要用 markdown 格式
-- 不要加任何网站链接
-- 引用数字必须和上面给出的完全一致，不要编造、不要混淆不同指标"""
+- 不要加任何网站链接"""
 
     payload = json.dumps({
-        "model": "glm-5",
+        "model": "glm-5.1",
         "messages": [{"role": "user", "content": prompt}],
         "temperature": 0.7,
         "max_tokens": 4000,
@@ -841,12 +1020,12 @@ F. 资金流向（交易所流入流出、巨鲸动向、期货持仓）
         tmp.close()
         try:
             result = subprocess.run([
-                'curl', '-s', 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+                'curl', '-s', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp.name}',
-                '--max-time', '90',
-            ], capture_output=True, text=True, timeout=100)
+                '--max-time', '100',
+            ], capture_output=True, text=True, timeout=120)
         finally:
             Path(tmp.name).unlink(missing_ok=True)
 
@@ -858,42 +1037,70 @@ F. 资金流向（交易所流入流出、巨鲸动向、期货持仓）
         msg = resp.get("choices", [{}])[0].get("message", {})
         content = (msg.get("content") or "").strip()
         if not content:
-            # GLM-5 sometimes puts output in reasoning_content when max_tokens is low
             print(f"[WARN] Empty content, finish_reason={resp.get('choices',[{}])[0].get('finish_reason','?')}")
-            print(f"[INFO] Retrying with MiniMax-M2.7...")
-            minimax_key = load_env_key("MINIMAX_API_KEY")
-            if not minimax_key:
-                print("[WARN] No MINIMAX_API_KEY, skip fallback")
-                return None
-            payload2 = json.dumps({
-                "model": "MiniMax-M2.7",
-                "messages": [{"role": "user", "content": prompt}],
-                "max_tokens": 4000,
-            }, ensure_ascii=False)
-            tmp2 = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8')
-            tmp2.write(payload2)
-            tmp2.close()
+            # Retry GLM-5.1 once more
+            print(f"[INFO] Retrying GLM-5.1...")
+            import time; time.sleep(3)
             try:
-                result2 = subprocess.run([
-                    'curl', '-s', 'https://api.minimax.chat/v1/text/chatcompletion_v2',
-                    '-H', f'Authorization: Bearer {minimax_key}',
-                    '-H', 'Content-Type: application/json',
-                    '-d', f'@{tmp2.name}',
-                    '--max-time', '90',
-                ], capture_output=True, text=True, timeout=100)
-            finally:
-                Path(tmp2.name).unlink(missing_ok=True)
-            if result2.returncode == 0:
-                resp2 = json.loads(result2.stdout)
-                content = (resp2.get("choices", [{}])[0].get("message", {}).get("content") or "").strip()
+                tmp_retry = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8')
+                tmp_retry.write(payload)
+                tmp_retry.close()
+                try:
+                    result2 = subprocess.run([
+                        'curl', '-s', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
+                        '-H', f'Authorization: Bearer {api_key}',
+                        '-H', 'Content-Type: application/json',
+                        '-d', f'@{tmp_retry.name}',
+                        '--max-time', '100',
+                    ], capture_output=True, text=True, timeout=120)
+                finally:
+                    Path(tmp_retry.name).unlink(missing_ok=True)
+                if result2.returncode == 0:
+                    resp2 = json.loads(result2.stdout)
+                    content = (resp2.get("choices", [{}])[0].get("message", {}).get("content") or "").strip()
+            except Exception as e2:
+                print(f"[WARN] Retry failed: {e2}")
             if not content:
-                print("[WARN] MiniMax fallback also empty")
+                print("[WARN] GLM-5.1 retry also empty")
                 return None
 
         # Parse title and body
         lines = content.split("\n")
         title = lines[0].strip()
         body = "\n".join(l for l in lines[1:] if l.strip()).strip()
+
+        # === Self-check loop ===
+        max_retries = 5
+        for attempt in range(max_retries):
+            check_result = self_check_comment(title, body, indicators, api_key)
+            if check_result["pass"]:
+                print(f"  ✅ 自检通过 (第{attempt+1}轮)")
+                break
+            else:
+                reason = check_result.get("reason", "未知原因")
+                print(f"  ❌ 自检未通过 (第{attempt+1}轮): {reason}")
+                if attempt < max_retries - 1:
+                    print(f"  🔄 重新生成...")
+                    retry_content = retry_comment_with_feedback(prompt, reason, api_key)
+                    if retry_content:
+                        r_lines = retry_content.split("\n")
+                        title = r_lines[0].strip()
+                        body = "\n".join(l for l in r_lines[1:] if l.strip()).strip()
+                    else:
+                        print(f"  [WARN] 重新生成失败，使用当前版本")
+                        break
+                else:
+                    # 5轮都失败，发 TG 通知
+                    print(f"  🚨 自检连续{max_retries}轮失败，发送 TG 通知")
+                    try:
+                        subprocess.run([
+                            'curl', '-s', '-X', 'POST',
+                            f'https://api.telegram.org/bot{load_env_key("TELEGRAM_BOT_TOKEN")}/sendMessage',
+                            '-d', f'chat_id=1311453837',
+                            '-d', f'text=⚠️ AI短评自检连续{max_retries}轮失败\n最后原因: {reason}\n标题: {title}\n请人工检查',
+                        ], timeout=10)
+                    except Exception as e:
+                        print(f"  [WARN] TG 通知失败: {e}")
 
         comment = {"title": title, "body": body, "date": data["date"].strftime("%Y-%m-%d")}
 
@@ -909,7 +1116,7 @@ Chinese version:
 
 {body}"""
         en_payload = json.dumps({
-            "model": "glm-4-flash",
+            "model": "glm-5.1",
             "messages": [{"role": "user", "content": en_prompt}],
             "temperature": 0.3,
             "max_tokens": 2000,
@@ -919,12 +1126,12 @@ Chinese version:
         tmp_en.close()
         try:
             result_en = subprocess.run([
-                'curl', '-s', 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+                'curl', '-s', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp_en.name}',
-                '--max-time', '30',
-            ], capture_output=True, text=True, timeout=35)
+                '--max-time', '60',
+            ], capture_output=True, text=True, timeout=70)
             if result_en.returncode == 0:
                 resp_en = json.loads(result_en.stdout)
                 en_content = (resp_en.get("choices", [{}])[0].get("message", {}).get("content") or "").strip()
