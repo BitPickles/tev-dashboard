@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-03-30T01:04:15.229218+00:00",
-  "total": 246,
-  "active_count": 32,
-  "passed_count": 214,
-  "tev_related": 63,
+  "updated_at": "2026-03-31T10:08:07.166156+00:00",
+  "total": 251,
+  "active_count": 39,
+  "passed_count": 212,
+  "tev_related": 66,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -130,6 +130,34 @@
     }
   },
   "proposals": [
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[ARFC] sGHO Launch Configuration",
+      "status": "active",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0xb9e9b01efcf6151bade78546d0f51f11d7961939b649fb7717e82ea3d43d4f47",
+      "created": 1774858629,
+      "end": 1775204229,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "This publication provides an overview of the new native on-chain yield-accruing sGHO savings product upgrade. Within, we define the initial parameter configuration, present the migration process from the current sGHO (stkGHO rebranded), and introduce",
+      "summary_zh": "[ARFC] sGHO上线配置概览。介绍新原生链上收益累积的sGHO储蓄产品升级，定义初始参数配置，展示从当前sGHO（stkGHO更名）的迁移流程，并引入相关治理细节。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[ARFC] Update Signers and SAFE Configuration March 2026",
+      "status": "active",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0x5e3f5f1fc2e455a78fddd7b3b2906b75754f33039c0e88c868dd4a8a61029995",
+      "created": 1774858110,
+      "end": 1775203710,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "This publication proposes updates to the Budget SAFE signer configuration to improve transaction execution reliability, signer availability, and operational efficiency.",
+      "summary_zh": "This publication proposes updates to the Budget SAFE signer configuration to improve transaction execution reliability, signer availability, and operational efficiency.",
+      "analysis_zh": ""
+    },
     {
       "source": "Snapshot",
       "protocol": "Aave",
@@ -2365,6 +2393,48 @@
     {
       "source": "Snapshot",
       "protocol": "Spark",
+      "title": "[Ethereum] Spark Savings - Raise Deposit Caps for spUSDC, spUSDT, and spETH",
+      "status": "active",
+      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x6a98246ef66c49c5c6c231536b75b155d05e9f14b18a6362caddc7e200d5e324",
+      "created": 1774886205,
+      "end": 1775145405,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "> \n> - spUSDT\n>   - Deposit cap: 10 billion\n> - spUSDC\n>   - Deposit cap: 10 billion\n> - spETH\n>   - Deposit cap: 1 million.",
+      "summary_zh": "Spark协议治理提案：[Ethereum] Spark储蓄 - 提高spUSDC、spUSDT和spETH存款上限\n- spUSDT：存款上限10亿\n- spUSDC：存款上限10亿\n- spETH：存款上限100万",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Spark",
+      "title": "[Ethereum, Arbitrum, Base] Update Rate Limits",
+      "status": "active",
+      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x6c889e7be8fba52d9cac4bd2e89c9bcb4ee1952afb40b555e87bf09062cb837f",
+      "created": 1774886069,
+      "end": 1775145269,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": ">\n> - Fluid Ethereum sUSDS\n>   - Deposits\n>     - maxAmount: 0\n>   - Withdrawals\n>     - maxAmount: 0\n> - Aave Prime USDS\n>   - Deposits\n>     - maxAmount: 0\n>   - Withdrawals\n>     - maxAmount: 0\n> - Aave Core USDS\n>   - Deposits\n>     - maxAmount: ",
+      "summary_zh": "Spark协议治理提案：2023年11月1日，更新Ethereum、Arbitrum、Base网络下Fluid Ethereum sUSDS、Aave Prime USDS、Aave Core USDS的存款和提款额度上限，均设为0。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Spark",
+      "title": "SAEP-14: Update Offchain Collateralized Lending Artifact Section",
+      "status": "active",
+      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x4cf6c7e714ae765c02bf2cc345bc343f651d912eb4db2f928d91bc278f7e0900",
+      "created": 1774885878,
+      "end": 1775145078,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": ">\n> This proposal is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 of the Spark Artifact. The proposal recommends that Spark governance update offchain collateralized lending paramete",
+      "summary_zh": "Spark协议SAEP-14提案：由Phoenix Labs提交，建议更新Spark治理中关于离链抵押贷款参数的部分。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Spark",
       "title": "[Ethereum] Spark Blue Chip USDT Morpho Vault v2 Adjustments",
       "status": "passed",
       "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x44e61cf16177e1dc6c486790db8c7d09d097d7aa0c0cde910ef01fc8242f0f07",
@@ -2836,8 +2906,40 @@
     {
       "source": "dYdX Cosmos",
       "protocol": "dYdX",
-      "title": "Fee Holiday for BTC & BONK markets - April 2026",
+      "title": " Utilise Insurance Fund for DAO Funding",
       "status": "active",
+      "link": "https://www.mintscan.io/dydx/proposals/372",
+      "created": "2026-03-30T05:44:38.926928114Z",
+      "end": "2026-04-02T05:44:38.926928114Z",
+      "tev_related": true,
+      "tev_keywords": [
+        "treasury"
+      ],
+      "summary_en": "This proposal seeks community approval to transfer 10M USDC from the dYdX Chain Insurance Fund to three separate entities: 2.5M USDC to the dYdX Operations SubDAO for operational runway, 5M USDC to the dYdX Treasury SubDAO for discretionary reserves,",
+      "summary_zh": "本提案请求社区批准将1000万美元USDC从dYdX链保险基金划拨给三个独立实体：250万美元用于dYdX运营子DAO的运营资金，500万美元用于dYdX财政子DAO的自主储备金。",
+      "analysis_zh": "从保险基金划转 1000 万 USDC 资助运营，安全缓冲仅剩 700 万 USDC 引发担忧。\n\ndYdX 提议从 Insurance Fund 划转 1000 万 USDC 分配给 Operations SubDAO、Treasury SubDAO 及 Foundation，虽缓解了运营资金压力，但将安全缓冲削减至 700 万 USDC。面对高达 $158.7M 的 TVL，仅保留不足 5% 的资金作为风险储备显得过于激进，这种“拆东墙补西墙”的策略在极端行情下可能无法有效覆盖穿仓损失，牺牲了协议核心的安全边际来换取行政续航，无疑增加了用户的资金风险，社区应审慎评估安全垫变薄的长期隐患。"
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
+      "title": "dYdX Treasury SubDAO Director Change",
+      "status": "active",
+      "link": "https://www.mintscan.io/dydx/proposals/371",
+      "created": "2026-03-30T05:28:57.600689127Z",
+      "end": "2026-04-02T05:28:57.600689127Z",
+      "tev_related": true,
+      "tev_keywords": [
+        "treasury"
+      ],
+      "summary_en": "Proposal to ratify dYdX Treasury SubDAO Articles of Association and to replace one dYdX Treasury SubDAO Foundation Class B Director. Forum Post",
+      "summary_zh": "dYdX协议治理提案：批准dYdX财政部子DAO章程并更换一名dYdX财政部子DAO基金会B类董事。论坛帖子",
+      "analysis_zh": "dYdX Treasury SubDAO 换帅并确立章程，治理层人事调整旨在保障 $11.3M 年分配效率。\n\n该提案提议批准 dYdX Treasury SubDAO 章程并更换一名 B 类董事，属于治理架构的常规维护。尽管 dYdX 拥有"
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
+      "title": "Fee Holiday for BTC & BONK markets - April 2026",
+      "status": "passed",
       "link": "https://www.mintscan.io/dydx/proposals/370",
       "created": "2026-03-27T02:39:49.125114071Z",
       "end": "2026-03-30T02:39:49.125114071Z",
@@ -2947,34 +3049,6 @@
       "tev_keywords": [],
       "summary_en": "Update CLOB Pair Tick Size for ETC-USD, ETHFI-USD, FIL-USD, FLOKI-USD, FLR-USD, GRT-USD, HBAR-USD, IOTA-USD, IOTX-USD, IP-USD, JASMY-USD, JTO-USD, KAS-USD, KOMA-USD, LDO-USD and LINEA-USD markets",
       "summary_zh": "更新 ETC-USD、ETHFI-USD、FIL-USD、FLOKI-USD 等 16 个市场的 CLOB 交易对 Tick Size，适配最新价格水平。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "dYdX Cosmos",
-      "protocol": "dYdX",
-      "title": "Update CLOB Pair Tick Size for 1INCH-USD, 2Z-USD, AERO-USD, AKT-USD, ALGO-USD, APT-USD, ARB-USD, ATH-USD, AVAX-USD, AXL-USD, BANANA-USD, DEGEN-USD, DRIFT-USD, DYDX-USD, DYM-USD and ENS-USD markets",
-      "status": "passed",
-      "link": "https://www.mintscan.io/dydx/proposals/362",
-      "created": "2026-03-11T08:36:14.849797262Z",
-      "end": "2026-03-13T08:36:14.849797262Z",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Update CLOB Pair Tick Size for 1INCH-USD, 2Z-USD, AERO-USD, AKT-USD, ALGO-USD, APT-USD, ARB-USD, ATH-USD, AVAX-USD, AXL-USD, BANANA-USD, DEGEN-USD, DRIFT-USD, DYDX-USD, DYM-USD and ENS-USD markets",
-      "summary_zh": "更新 1INCH-USD、AERO-USD、APT-USD、ARB-USD、AVAX-USD、DYDX-USD 等 16 个市场的 CLOB 交易对 Tick Size。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "dYdX Cosmos",
-      "protocol": "dYdX",
-      "title": "Wind down PROVE-USD, BRETT-USD, ES-USD, PROMPT-USD, TREE-USD, AERGO-USD, ID-USD, LUNC-USD, ENJ-USD, GALA-USD, THETA-USD, AIXBT-USD, XTZ-USD, STEEM-USD, GAS-USD and NOT-USD markets",
-      "status": "passed",
-      "link": "https://www.mintscan.io/dydx/proposals/361",
-      "created": "2026-03-11T06:21:22.673387027Z",
-      "end": "2026-03-13T06:21:22.673387027Z",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Wind down PROVE-USD, BRETT-USD, ES-USD, PROMPT-USD, TREE-USD, AERGO-USD, ID-USD, LUNC-USD, ENJ-USD, GALA-USD, THETA-USD, AIXBT-USD, XTZ-USD, STEEM-USD, GAS-USD and NOT-USD markets",
-      "summary_zh": "关闭 PROVE-USD、BRETT-USD、AIXBT-USD 等 16 个低活跃度市场，优化交易对列表和协议资源分配。",
       "analysis_zh": ""
     },
     {
@@ -3390,6 +3464,22 @@
     {
       "source": "Sky Polling",
       "protocol": "Sky (MakerDAO)",
+      "title": "Atlas Edit Weekly Cycle Proposal - March 30, 2026",
+      "status": "active",
+      "link": "https://vote.makerdao.com/polling/QmafyxBw",
+      "created": "2026-03-30T16:00:00",
+      "end": "2026-04-02T16:00:00",
+      "tev_related": true,
+      "tev_keywords": [
+        "distribution"
+      ],
+      "summary_en": "This Atlas edit proposal 1) updates the Emergency Response Article to the Agent Framework, 2) updates the Emergency Spells and Protego documents to the Agent Framework, 3) establishes a Demand Side Buffer for Distribution Reward and Integration Boost",
+      "summary_zh": "协议：Sky（MakerDAO）\n标题：Atlas编辑周循环提案 - 2026年3月30日\n摘要：本提案1）更新了紧急响应文章至代理框架，2）更新了紧急咒语和Protego文档至代理框架，3）设立需求侧缓冲区以分配奖励和集成提升。",
+      "analysis_zh": "Sky 升级应急响应至 Agent Framework 并设立支付缓冲，强化协议抗风险能力与激励稳定性。\n\nSky (MakerDAO) 此次 Atlas 修改提案将 Emergency Response 升级至 Agent Framework，标志着协议自动化治理迈出关键一步。尽管当前 TVL 高达 $6.77B 且年收入 $251.4M，但复杂的系统架构"
+    },
+    {
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
       "title": "Atlas Edit Weekly Cycle Proposal - March 23, 2026",
       "status": "passed",
       "link": "https://vote.makerdao.com/polling/QmVbqw1G",
@@ -3444,20 +3534,6 @@
       "summary_en": "This Atlas Edit 1) reduces SKY buybacks, 2) removes JAAA from Sky Direct Exposure, 3) adds sanctioned locations to Full Block List, 4) updates RRC dashboard references, 5) corrects LayerZero multisig signers, 6) corrects Safe Harbor addresses and par",
       "summary_zh": "本 Atlas 编辑提案削减 SKY 回购规模，移除 JAAA 的 Sky 直接敞口，将受制裁地点加入全面封锁名单，更新 RRC 仪表盘引用，修正 LayerZero 多签签名者和 Safe Harbor 地址参数。",
       "analysis_zh": "Sky 削减 SKY 回购规模，代币通缩支撑力度减弱。\n\n本次 Atlas Edit 提议减少 SKY 回购，直接冲击当前 6.21% 的 TEV Yield 表现，削弱了 Smart Burn Engine 带来的通缩叙事。尽管协议年收入高达 $250.8M，但削减回购意味着流向二级市场的买盘力量减弱，对于看重现金流回馈的持有者而言是明显利空。同时，移除 Sky Direct Exposure 中的 JAAA 并更新 Full Block List，显示出 DAO 在资产配置上的避险转向及合规收紧，虽然技术层面的 LayerZero 多签更正属于常规维护，但核心经济模型的调整无疑让市值 $1.70B 的 SKY 短期承压。"
-    },
-    {
-      "source": "Sky Polling",
-      "protocol": "Sky (MakerDAO)",
-      "title": "Atlas Edit Weekly Cycle Proposal - February 23, 2026",
-      "status": "passed",
-      "link": "https://vote.makerdao.com/polling/QmWXGHpC",
-      "created": "2026-02-23T16:00:00",
-      "end": "2026-02-26T16:00:00",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "This Atlas Edit 1) updates references to Amatsu GovOps to Soter Labs, 2) adds Governance Accessibility Reward Instances to the Skybase Artifact, 3) removes references to StarkNet in Safe Harbor documentation, 4) aligns GitHub and Portal versions of t",
-      "summary_zh": "本 Atlas 编辑提案将 Amatsu GovOps 引用更新为 Soter Labs，向 Skybase Artifact 添加治理可访问性奖励实例，移除 Safe Harbor 文档中的 StarkNet 引用，对齐 GitHub 和 Portal 版本的 Atlas。",
-      "analysis_zh": ""
     },
     {
       "source": "Mantle Forum",
