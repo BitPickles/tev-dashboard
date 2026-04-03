@@ -794,7 +794,7 @@ def self_check_comment(title, body, indicators_context, api_key):
 {{"pass": true}} 或 {{"pass": false, "reason": "具体问题描述"}}"""
 
     payload = json.dumps({
-        "model": "glm-5.1",
+        "model": "glm-4.6",
         "messages": [{"role": "user", "content": check_prompt}],
         "temperature": 0.1,
         "max_tokens": 500,
@@ -810,8 +810,8 @@ def self_check_comment(title, body, indicators_context, api_key):
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp.name}',
-                '--max-time', '180',
-            ], capture_output=True, text=True, timeout=200)
+                '--max-time', '60',
+            ], capture_output=True, text=True, timeout=80)
         finally:
             Path(tmp.name).unlink(missing_ok=True)
 
@@ -839,7 +839,7 @@ def retry_comment_with_feedback(original_prompt, feedback, api_key):
 请严格修正以上问题，重新生成短评。记住：只能使用上面提供的数据，禁止编造任何未提供的数据。"""
 
     payload = json.dumps({
-        "model": "glm-5.1",
+        "model": "glm-4.6",
         "messages": [{"role": "user", "content": retry_prompt}],
         "temperature": 0.7,
         "max_tokens": 4000,
@@ -856,8 +856,8 @@ def retry_comment_with_feedback(original_prompt, feedback, api_key):
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp.name}',
-                '--max-time', '180',
-            ], capture_output=True, text=True, timeout=200)
+                '--max-time', '60',
+            ], capture_output=True, text=True, timeout=80)
         finally:
             Path(tmp.name).unlink(missing_ok=True)
 
@@ -1006,7 +1006,7 @@ E. 事件驱动（重大新闻、治理提案、监管动态）
 - 不要加任何网站链接"""
 
     payload = json.dumps({
-        "model": "glm-5.1",
+        "model": "glm-4.6",
         "messages": [{"role": "user", "content": prompt}],
         "temperature": 0.7,
         "max_tokens": 4000,
@@ -1024,8 +1024,8 @@ E. 事件驱动（重大新闻、治理提案、监管动态）
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp.name}',
-                '--max-time', '180',
-            ], capture_output=True, text=True, timeout=200)
+                '--max-time', '60',
+            ], capture_output=True, text=True, timeout=80)
         finally:
             Path(tmp.name).unlink(missing_ok=True)
 
@@ -1051,8 +1051,8 @@ E. 事件驱动（重大新闻、治理提案、监管动态）
                         '-H', f'Authorization: Bearer {api_key}',
                         '-H', 'Content-Type: application/json',
                         '-d', f'@{tmp_retry.name}',
-                        '--max-time', '180',
-                    ], capture_output=True, text=True, timeout=200)
+                        '--max-time', '60',
+                    ], capture_output=True, text=True, timeout=80)
                 finally:
                     Path(tmp_retry.name).unlink(missing_ok=True)
                 if result2.returncode == 0:
@@ -1116,7 +1116,7 @@ Chinese version:
 
 {body}"""
         en_payload = json.dumps({
-            "model": "glm-5.1",
+            "model": "glm-4.6",
             "messages": [{"role": "user", "content": en_prompt}],
             "temperature": 0.3,
             "max_tokens": 2000,
