@@ -806,12 +806,12 @@ def self_check_comment(title, body, indicators_context, api_key):
         tmp.close()
         try:
             result = subprocess.run([
-                'curl', '-s', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
+                'curl', '-s', '--proxy', 'http://127.0.0.1:7890', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp.name}',
-                '--max-time', '100',
-            ], capture_output=True, text=True, timeout=120)
+                '--max-time', '180',
+            ], capture_output=True, text=True, timeout=200)
         finally:
             Path(tmp.name).unlink(missing_ok=True)
 
@@ -852,12 +852,12 @@ def retry_comment_with_feedback(original_prompt, feedback, api_key):
         tmp.close()
         try:
             result = subprocess.run([
-                'curl', '-s', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
+                'curl', '-s', '--proxy', 'http://127.0.0.1:7890', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp.name}',
-                '--max-time', '100',
-            ], capture_output=True, text=True, timeout=120)
+                '--max-time', '180',
+            ], capture_output=True, text=True, timeout=200)
         finally:
             Path(tmp.name).unlink(missing_ok=True)
 
@@ -1020,12 +1020,12 @@ E. 事件驱动（重大新闻、治理提案、监管动态）
         tmp.close()
         try:
             result = subprocess.run([
-                'curl', '-s', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
+                'curl', '-s', '--proxy', 'http://127.0.0.1:7890', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp.name}',
-                '--max-time', '100',
-            ], capture_output=True, text=True, timeout=120)
+                '--max-time', '180',
+            ], capture_output=True, text=True, timeout=200)
         finally:
             Path(tmp.name).unlink(missing_ok=True)
 
@@ -1047,12 +1047,12 @@ E. 事件驱动（重大新闻、治理提案、监管动态）
                 tmp_retry.close()
                 try:
                     result2 = subprocess.run([
-                        'curl', '-s', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
+                        'curl', '-s', '--proxy', 'http://127.0.0.1:7890', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
                         '-H', f'Authorization: Bearer {api_key}',
                         '-H', 'Content-Type: application/json',
                         '-d', f'@{tmp_retry.name}',
-                        '--max-time', '100',
-                    ], capture_output=True, text=True, timeout=120)
+                        '--max-time', '180',
+                    ], capture_output=True, text=True, timeout=200)
                 finally:
                     Path(tmp_retry.name).unlink(missing_ok=True)
                 if result2.returncode == 0:
@@ -1126,7 +1126,7 @@ Chinese version:
         tmp_en.close()
         try:
             result_en = subprocess.run([
-                'curl', '-s', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
+                'curl', '-s', '--proxy', 'http://127.0.0.1:7890', 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions',
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp_en.name}',
