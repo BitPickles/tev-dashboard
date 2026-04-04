@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-04-03T13:10:25.715693+00:00",
-  "total": 235,
-  "active_count": 37,
+  "updated_at": "2026-04-04T01:07:50.768953+00:00",
+  "total": 236,
+  "active_count": 38,
   "passed_count": 198,
   "tev_related": 60,
   "monitored_protocols": 19,
@@ -130,6 +130,20 @@
     }
   },
   "proposals": [
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[ARFC] Continued Deprecation Steps of Aave V2 Markets",
+      "status": "active",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0xe06819c7ae25039499d44b1d921c04fc601a3dd0221798969852b589243ab775",
+      "created": 1775157052,
+      "end": 1775502652,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Given the current state of the Aave V2 instance, Chaos Labs conducted a detailed evaluation of the oracle configurations and risk parameters across all listed assets. The objective of this analysis is to identify assets whose oracle setups and risk p",
+      "summary_zh": "[ARFC] Aave V2 市场逐步停用方案持续进行\n鉴于 Aave V2 实例当前状态，Chaos Labs 对所有上市资产的 oracle 配置和风险参数进行了详细评估。分析目标为识别那些 oracle 设置和风险参数存在问题的资产。",
+      "analysis_zh": ""
+    },
     {
       "source": "Snapshot",
       "protocol": "Aave",
@@ -2701,7 +2715,8 @@
         "fee"
       ],
       "summary_en": "Refund BTC and BONK fees incurred from March 30, 2026 02:39:49 UTC to March 31st, 2026, 23:59:59 UTC. Forum Post",
-      "summary_zh": "dYdX治理提案：退还2026年3月30日02:39:49 UTC至3月31日23:59:59 UTC产生的BTC和BONK费用。论坛帖子"
+      "summary_zh": "dYdX治理提案：退还2026年3月30日02:39:49 UTC至3月31日23:59:59 UTC产生的BTC和BONK费用。论坛帖子",
+      "analysis_zh": "dYdX 提案退还特定时段 BTC 和 BONK 交易手续费，短期让利以提振交易活跃度。\n\n该提案针对 2026 年 3 月底的特定时段退还 BTC 和 BONK 交易手续费，虽然名义上"
     },
     {
       "source": "dYdX Cosmos",
