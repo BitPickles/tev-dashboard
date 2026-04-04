@@ -794,7 +794,7 @@ def self_check_comment(title, body, indicators_context, api_key):
 {{"pass": true}} 或 {{"pass": false, "reason": "具体问题描述"}}"""
 
     payload = json.dumps({
-        "model": "glm-4.6",
+        "model": "glm-4.5-air",
         "messages": [{"role": "user", "content": check_prompt}],
         "temperature": 0.1,
         "max_tokens": 500,
@@ -839,7 +839,7 @@ def retry_comment_with_feedback(original_prompt, feedback, api_key):
 请严格修正以上问题，重新生成短评。记住：只能使用上面提供的数据，禁止编造任何未提供的数据。"""
 
     payload = json.dumps({
-        "model": "glm-4.6",
+        "model": "glm-4.5-air",
         "messages": [{"role": "user", "content": retry_prompt}],
         "temperature": 0.7,
         "max_tokens": 4000,
@@ -1006,7 +1006,7 @@ E. 事件驱动（重大新闻、治理提案、监管动态）
 - 不要加任何网站链接"""
 
     payload = json.dumps({
-        "model": "glm-4.6",
+        "model": "glm-4.5-air",
         "messages": [{"role": "user", "content": prompt}],
         "temperature": 0.7,
         "max_tokens": 4000,
@@ -1116,7 +1116,7 @@ Chinese version:
 
 {body}"""
         en_payload = json.dumps({
-            "model": "glm-4.6",
+            "model": "glm-4.5-air",
             "messages": [{"role": "user", "content": en_prompt}],
             "temperature": 0.3,
             "max_tokens": 2000,
