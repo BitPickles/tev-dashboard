@@ -797,8 +797,8 @@ def self_check_comment(title, body, indicators_context, api_key):
         "model": "glm-4.6",
         "messages": [{"role": "user", "content": check_prompt}],
         "temperature": 0.1,
-        "max_tokens": 500,
-        "thinking": {"type": "disabled"},
+        "max_tokens": 4000,
+        "thinking": {"type": "enabled"},
     }, ensure_ascii=False)
 
     try:
@@ -811,8 +811,8 @@ def self_check_comment(title, body, indicators_context, api_key):
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp.name}',
-                '--max-time', '60',
-            ], capture_output=True, text=True, timeout=80)
+                '--max-time', '120',
+            ], capture_output=True, text=True, timeout=150)
         finally:
             Path(tmp.name).unlink(missing_ok=True)
 
@@ -843,8 +843,8 @@ def retry_comment_with_feedback(original_prompt, feedback, api_key):
         "model": "glm-4.6",
         "messages": [{"role": "user", "content": retry_prompt}],
         "temperature": 0.7,
-        "max_tokens": 4000,
-        "thinking": {"type": "disabled"},
+        "max_tokens": 16000,
+        "thinking": {"type": "enabled"},
         "do_sample": True,
     }, ensure_ascii=False)
 
@@ -858,8 +858,8 @@ def retry_comment_with_feedback(original_prompt, feedback, api_key):
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp.name}',
-                '--max-time', '60',
-            ], capture_output=True, text=True, timeout=80)
+                '--max-time', '120',
+            ], capture_output=True, text=True, timeout=150)
         finally:
             Path(tmp.name).unlink(missing_ok=True)
 
@@ -1011,8 +1011,8 @@ E. 事件驱动（重大新闻、治理提案、监管动态）
         "model": "glm-4.6",
         "messages": [{"role": "user", "content": prompt}],
         "temperature": 0.7,
-        "max_tokens": 4000,
-        "thinking": {"type": "disabled"},
+        "max_tokens": 16000,
+        "thinking": {"type": "enabled"},
         "do_sample": True,
     }, ensure_ascii=False)
 
@@ -1027,8 +1027,8 @@ E. 事件驱动（重大新闻、治理提案、监管动态）
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp.name}',
-                '--max-time', '60',
-            ], capture_output=True, text=True, timeout=80)
+                '--max-time', '120',
+            ], capture_output=True, text=True, timeout=150)
         finally:
             Path(tmp.name).unlink(missing_ok=True)
 
@@ -1054,8 +1054,8 @@ E. 事件驱动（重大新闻、治理提案、监管动态）
                         '-H', f'Authorization: Bearer {api_key}',
                         '-H', 'Content-Type: application/json',
                         '-d', f'@{tmp_retry.name}',
-                        '--max-time', '60',
-                    ], capture_output=True, text=True, timeout=80)
+                        '--max-time', '120',
+                    ], capture_output=True, text=True, timeout=150)
                 finally:
                     Path(tmp_retry.name).unlink(missing_ok=True)
                 if result2.returncode == 0:
@@ -1122,8 +1122,8 @@ Chinese version:
             "model": "glm-4.6",
             "messages": [{"role": "user", "content": en_prompt}],
             "temperature": 0.3,
-            "max_tokens": 2000,
-            "thinking": {"type": "disabled"},
+            "max_tokens": 8000,
+            "thinking": {"type": "enabled"},
         }, ensure_ascii=False)
         tmp_en = tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8')
         tmp_en.write(en_payload)
@@ -1134,7 +1134,7 @@ Chinese version:
                 '-H', f'Authorization: Bearer {api_key}',
                 '-H', 'Content-Type: application/json',
                 '-d', f'@{tmp_en.name}',
-                '--max-time', '60',
+                '--max-time', '120',
             ], capture_output=True, text=True, timeout=70)
             if result_en.returncode == 0:
                 resp_en = json.loads(result_en.stdout)
