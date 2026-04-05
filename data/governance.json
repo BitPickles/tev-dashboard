@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-04-04T13:05:07.194253+00:00",
-  "total": 236,
-  "active_count": 36,
+  "updated_at": "2026-04-05T01:04:11.349478+00:00",
+  "total": 235,
+  "active_count": 35,
   "passed_count": 200,
   "tev_related": 60,
   "monitored_protocols": 19,
@@ -162,7 +162,7 @@
       "source": "Snapshot",
       "protocol": "Aave",
       "title": "[ARFC] Aave Will Win Framework",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/aavedao.eth/proposal/0x35901c1a7cd2baf56dfd120024793b30dd73c52e1c0a9810ff78efbca3b5fbcb",
       "created": 1774991995,
       "end": 1775337595,
@@ -415,20 +415,6 @@
       "tev_keywords": [],
       "summary_en": "This ARFC  is the continuation of TEMP CHECK Focussing the Aave V3 Multichain Strategy , after successfully passed the TC Snapshot.",
       "summary_zh": "聚焦 Aave V3 多链策略第一阶段 ARFC 提案，是此前通过温度检查的延续。拟收缩低效链部署，集中资源在核心链上。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Aave",
-      "title": "[ARFC] Deficit Realization Risk Oracle: Forcing Timely Bad-Debt Recognition via Dust-Collateral Cleanup",
-      "status": "passed",
-      "link": "https://snapshot.org/#/aavedao.eth/proposal/0xd187826a4f0ac86466f1241dc906aa39fd398c1de37b5047aafb6e321d95d39f",
-      "created": 1769094062,
-      "end": 1769439662,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "This document develops a formal framework for timely deficit realization on Aave by introducing an autonomous Risk Oracle that detects and deterministically resolves a specific liquidation failure mode: accounts with minimal remaining collateral (“du",
-      "summary_zh": "引入自主风险预言机，自动检测并处理「灰尘抵押品」清算失败问题。当账户仅剩极少抵押品无法被正常清算时，该预言机确保坏账被及时确认和处理。",
       "analysis_zh": ""
     },
     {
