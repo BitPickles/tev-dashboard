@@ -542,20 +542,19 @@
       </div>
     </div>
     <a href="./bmri/" class="risk-viz">
-      <div class="risk-val mono" style="color:var(--amber)">45</div>
-      <div class="risk-zone" style="color:var(--amber);background:var(--amber-d)" data-zh="中性" data-en="Neutral">中性</div>
+      <div class="risk-val mono" id="risk-main-value" style="color:var(--amber)">—</div>
+      <div class="risk-zone" id="risk-main-zone" style="color:var(--amber);background:var(--amber-d)" data-zh="加载中" data-en="Loading">加载中</div>
       <div class="gauge">
-        <div class="gauge-fill" style="width:45%;background:linear-gradient(90deg,var(--green),var(--amber))">
-          <div class="gauge-dot" style="background:var(--amber)"></div>
+        <div class="gauge-fill" id="risk-gauge-fill" style="width:0%;background:linear-gradient(90deg,var(--green),var(--amber))">
+          <div class="gauge-dot" id="risk-gauge-dot" style="background:var(--amber)"></div>
         </div>
       </div>
       <div class="gauge-labels"><span data-zh="低风险" data-en="Low Risk">低风险</span><span data-zh="中性" data-en="Neutral">中性</span><span data-zh="高风险" data-en="High Risk">高风险</span></div>
       <div class="risk-spark"><svg id="sp-r" width="100%" height="80" viewBox="0 0 300 80" preserveAspectRatio="none"></svg></div>
       <div style="display:flex;justify-content:space-between;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
-        <div style="text-align:center"><div class="mono" style="font-size:13px;font-weight:700">4.32%</div><div style="font-size:10px;color:var(--text-3);margin-top:2px" data-zh="10Y 美债" data-en="10Y Treasury">10Y 美债</div></div>
-        <div style="text-align:center"><div class="mono" style="font-size:13px;font-weight:700;color:var(--green)">21.8T</div><div style="font-size:10px;color:var(--text-3);margin-top:2px" data-zh="全球 M2" data-en="Global M2">全球 M2</div></div>
-        <div style="text-align:center"><div class="mono" style="font-size:13px;font-weight:700">16.2</div><div style="font-size:10px;color:var(--text-3);margin-top:2px">VIX</div></div>
-        <div style="text-align:center"><div class="mono" style="font-size:13px;font-weight:700;color:var(--amber)">104.3</div><div style="font-size:10px;color:var(--text-3);margin-top:2px">DXY</div></div>
+        <div style="text-align:center"><div class="mono" id="risk-rates" style="font-size:13px;font-weight:700">—</div><div style="font-size:10px;color:var(--text-3);margin-top:2px" data-zh="Rates" data-en="Rates">Rates</div></div>
+        <div style="text-align:center"><div class="mono" id="risk-liq" style="font-size:13px;font-weight:700;color:var(--green)">—</div><div style="font-size:10px;color:var(--text-3);margin-top:2px" data-zh="Liquidity" data-en="Liquidity">Liquidity</div></div>
+        <div style="text-align:center"><div class="mono" id="risk-risk" style="font-size:13px;font-weight:700">—</div><div style="font-size:10px;color:var(--text-3);margin-top:2px">Risk</div></div>
       </div>
     </a>
   </div>
@@ -625,14 +624,60 @@ sp('sp-a',[.38,.37,.35,.34,.35,.36,.36],'#60a5fa');
 sp('sp-m',[1.35,1.33,1.30,1.28,1.27,1.29,1.29],'#a78bfa');
 sp('sp-d',[57.5,57.8,58.0,57.9,58.1,58.3,58.2],'#38bdf8');
 
-/* Risk sparkline */
+/* Risk section data sync with BMRI page */
 (function(){
-  const s=document.getElementById('sp-r');if(!s)return;
-  const data=[52,50,48,47,46,44,43,42,43,44,45,46,45],w=300,h=80,p=8;
-  const mn=Math.min(...data),mx=Math.max(...data),r=mx-mn||1;
-  const pts=data.map((v,i)=>[p+i/(data.length-1)*(w-p*2),h-p-(v-mn)/r*(h-p*2)]);
-  const ln=pts.map(p=>p.join(',')).join(' '),la=pts[pts.length-1];
-  s.innerHTML=`<defs><linearGradient id="rg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fbbf24" stop-opacity=".15"/><stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/></linearGradient></defs><polygon fill="url(#rg)" points="${p},${h-p} ${ln} ${w-p},${h-p}"/><polyline fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="${ln}"/><circle cx="${la[0]}" cy="${la[1]}" r="3" fill="#fbbf24"/>`;
+  const regimeMap = {
+    RISK_ON: { zh: 'Risk-On', en: 'Risk-On', color: 'var(--green)', bg: 'var(--green-d)', gradient: 'linear-gradient(90deg,var(--green),var(--green))' },
+    NEUTRAL: { zh: '中性', en: 'Neutral', color: 'var(--amber)', bg: 'var(--amber-d)', gradient: 'linear-gradient(90deg,var(--green),var(--amber))' },
+    RISK_OFF: { zh: 'Risk-Off', en: 'Risk-Off', color: 'var(--red)', bg: 'rgba(248,113,113,0.08)', gradient: 'linear-gradient(90deg,var(--amber),var(--red))' }
+  };
+
+  function renderRiskSpark(history) {
+    const s = document.getElementById('sp-r'); if (!s || !history?.length) return;
+    const data = history.slice(-13).map(d => d.bmri);
+    const w = 300, h = 80, p = 8;
+    const mn = Math.min(...data), mx = Math.max(...data), r = mx - mn || 1;
+    const pts = data.map((v,i)=>[p+i/(data.length-1)*(w-p*2),h-p-(v-mn)/r*(h-p*2)]);
+    const ln = pts.map(p=>p.join(',')).join(' '), la = pts[pts.length-1];
+    s.innerHTML = `<defs><linearGradient id="rg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fbbf24" stop-opacity=".15"/><stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/></linearGradient></defs><polygon fill="url(#rg)" points="${p},${h-p} ${ln} ${w-p},${h-p}"/><polyline fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="${ln}"/><circle cx="${la[0]}" cy="${la[1]}" r="3" fill="#fbbf24"/>`;
+  }
+
+  async function loadRiskSection() {
+    try {
+      const res = await fetch('./indicators/data/bmri.json');
+      if (!res.ok) return;
+      const data = await res.json();
+      const current = data?.['6m']?.current;
+      const history = data?.['6m']?.history;
+      if (!current) return;
+
+      const regime = regimeMap[current.regime] || regimeMap.NEUTRAL;
+      const value = Number(current.value);
+      document.getElementById('risk-main-value').textContent = Number.isFinite(value) ? value.toFixed(1) : '—';
+      document.getElementById('risk-main-value').style.color = regime.color;
+
+      const zoneEl = document.getElementById('risk-main-zone');
+      zoneEl.textContent = document.documentElement.lang === 'zh-CN' ? regime.zh : regime.en;
+      zoneEl.style.color = regime.color;
+      zoneEl.style.background = regime.bg;
+
+      const gaugeFill = document.getElementById('risk-gauge-fill');
+      const gaugeDot = document.getElementById('risk-gauge-dot');
+      gaugeFill.style.width = `${Math.max(0, Math.min(100, value))}%`;
+      gaugeFill.style.background = regime.gradient;
+      gaugeDot.style.background = regime.color;
+
+      document.getElementById('risk-rates').textContent = current.rates != null ? current.rates.toFixed(1) : '—';
+      document.getElementById('risk-liq').textContent = current.liq != null ? current.liq.toFixed(1) : '—';
+      document.getElementById('risk-risk').textContent = current.risk != null ? current.risk.toFixed(1) : '—';
+
+      renderRiskSpark(history);
+    } catch (e) {
+      console.error('Failed to load BMRI risk section data', e);
+    }
+  }
+
+  loadRiskSection();
 })();
 </script>
 <script src="./js/theme.js"></script>
