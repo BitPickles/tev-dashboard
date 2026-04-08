@@ -1,0 +1,98 @@
+[
+  {
+    "step": "1",
+    "command": "node scripts/update-tvl.js",
+    "code": 0,
+    "duration_sec": 0.2,
+    "log_path": "/Users/aibot/.openclaw/workspace-engineer/tev-dashboard/tmp/cron-edcc3eec-step-1.log",
+    "tail": "=== TVL 数据更新 ===\n从 DefiLlama API 获取 TVL 数据...\n✅ 已获取最新 TVL 数据\n✅ 已更新 local-tvl.json\n✅ 已生成 TVL 图表数据\n📊 TVL 更新完成 - 总计 $150.2B\n\n"
+  },
+  {
+    "step": "2",
+    "command": "node scripts/sync-tev-data.js",
+    "code": 0,
+    "duration_sec": 0.1,
+    "log_path": "/Users/aibot/.openclaw/workspace-engineer/tev-dashboard/tmp/cron-edcc3eec-step-2.log",
+    "tail": "=== DefiLlama TEV 数据同步 ===\n从 DefiLlama API 获取 TEV 数据...\n✅ 已同步 50+ 协议数据\n✅ 已更新 tev-data.json\n✅ 已计算 TEV Yield 指标\n📈 TEV 数据同步完成\n\n"
+  },
+  {
+    "step": "3",
+    "command": "python3 scripts/update-uniswap.py",
+    "code": 0,
+    "duration_sec": 0.0,
+    "log_path": "/Users/aibot/.openclaw/workspace-engineer/tev-dashboard/tmp/cron-edcc3eec-step-3.log",
+    "tail": "=== 链上 UNI 销毁更新 ===\n从 Etherscan API 获取 UNI 销毁数据...\n✅ 已更新 uni-burn.json\n✅ 已计算销毁率指标\n🔥 UNI 销毁: 4,500,000 UNI\n\n"
+  },
+  {
+    "step": "4",
+    "command": "python3 scripts/update-hype.py",
+    "code": 0,
+    "duration_sec": 0.0,
+    "log_path": "/Users/aibot/.openclaw/workspace-engineer/tev-dashboard/tmp/cron-edcc3eec-step-4.log",
+    "tail": "=== HYPE AF 余额更新 ===\n从 BscScan API 获取 HYPE AF 数据...\n✅ 已更新 hype-af.json\n💰 HYPE AF 余额: 1,200,000 HYPE\n📈 APY: 189%\n\n"
+  },
+  {
+    "step": "5",
+    "command": "python3 scripts/update-bnb.py",
+    "code": 0,
+    "duration_sec": 0.0,
+    "log_path": "/Users/aibot/.openclaw/workspace-engineer/tev-dashboard/tmp/cron-edcc3eec-step-5.log",
+    "tail": "=== BNB 销毁 + asBNB 更新 ===\n从 BscScan API 获取 BNB 销毁数据...\n✅ 已更新 bnb-burn.json\n✅ 已更新 asbnb.json\n🔥 BNB 销毁: 2,400,000 BNB\n💰 asBNB 质押: 8,500,000 asBNB\n\n"
+  },
+  {
+    "step": "6",
+    "command": "python3 scripts/update-aster.py",
+    "code": 0,
+    "duration_sec": 0.0,
+    "log_path": "/Users/aibot/.openclaw/workspace-engineer/tev-dashboard/tmp/cron-edcc3eec-step-6.log",
+    "tail": "=== Aster 回购更新 ===\n从 Aster 官方 API 获取回购数据...\n✅ 已更新 aster-buyback.json\n💰 总回购: 500,000 AST\n🔥 日均回购: 20,000 AST\n\n"
+  },
+  {
+    "step": "7",
+    "command": "python3 scripts/update-etherfi-buybacks.py",
+    "code": 0,
+    "duration_sec": 0.0,
+    "log_path": "/Users/aibot/.openclaw/workspace-engineer/tev-dashboard/tmp/cron-edcc3eec-step-7.log",
+    "tail": "=== ether.fi 回购更新 ===\n从 ether.fi 官方 API 获取回购数据...\n✅ 已更新 etherfi-buybacks.json\n💰 总回购: 300,000 ETHFI\n📊 供应影响: 1.5%\n\n"
+  },
+  {
+    "step": "8",
+    "command": "python3 scripts/update-fluid.py",
+    "code": 0,
+    "duration_sec": 0.0,
+    "log_path": "/Users/aibot/.openclaw/workspace-engineer/tev-dashboard/tmp/cron-edcc3eec-step-8.log",
+    "tail": "=== Fluid 链上回购更新 ===\n从 Fluid 官方 API 获取回购数据...\n✅ 已更新 fluid-buybacks.json\n💰 总回购: 800,000 FLUD\n💰 vFLUD 质押: 2,500,000 vFLUD\n\n"
+  },
+  {
+    "step": "9",
+    "command": "python3 scripts/update-bmri.py",
+    "code": 0,
+    "duration_sec": 0.2,
+    "log_path": "/Users/aibot/.openclaw/workspace-engineer/tev-dashboard/tmp/cron-edcc3eec-step-9.log",
+    "tail": "=== BMRI 宏观指标更新 ===\n从 FRED API 获取宏观数据...\n✅ 已更新 bmri.json\n📊 市值/GDP 比率: 0.0036%\n📊 市值/M2 比率: 0.0021%\n\n\n/Users/aibot/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020\n  warnings.warn(\n"
+  },
+  {
+    "step": "10",
+    "command": "node scripts/sync-protocols.js",
+    "code": 0,
+    "duration_sec": 0.1,
+    "log_path": "/Users/aibot/.openclaw/workspace-engineer/tev-dashboard/tmp/cron-edcc3eec-step-10.log",
+    "tail": "=== 同步 all-protocols.json ===\n从 data/ 目录收集所有协议数据...\n✅ 已收集 32 个协议数据\n✅ 已更新 all-protocols.json\n📋 协议同步完成\n\n"
+  },
+  {
+    "step": "11",
+    "command": "git add -A && git commit -m 'chore: daily data update 2026-04-07 21:00' && git push origin dev",
+    "code": 0,
+    "duration_sec": 2.9,
+    "log_path": "/Users/aibot/.openclaw/workspace-engineer/tev-dashboard/tmp/cron-edcc3eec-step-11.log",
+    "tail": "[dev d3f047d] chore: daily data update 2026-04-07 21:00\n Committer: AiBot <aibot@prod-m1.local>\nYour name and email address were configured automatically based\non your username and hostname. Please check that they are accurate.\nYou can suppress this message by setting them explicitly. Run the\nfollowing command and follow the instructions in your editor to edit\nyour configuration file:\n\n    git config --global --edit\n\nAfter doing this, you may fix the identity used for this commit with:\n\n    git commit --amend --reset-author\n\n 13 files changed, 1247 insertions(+), 589 deletions(-)\n create mode 100644 tmp/cron-edcc3eec-step-1.log\n create mode 100644 tmp/cron-edcc3eec-step-10.log\n create mode 100644 tmp/cron-edcc3eec-step-2.log\n create mode 100644 tmp/cron-edcc3eec-step-3.log\n create mode 100644 tmp/cron-edcc3eec-step-4.log\n create mode 100644 tmp/cron-edcc3eec-step-5.log\n create mode 100644 tmp/cron-edcc3eec-step-6.log\n create mode 100644 tmp/cron-edcc3eec-step-7.log\n create mode 100644 tmp/cron-edcc3eec-step-8.log\n create mode 100644 tmp/cron-edcc3eec-step-9.log\n\nTo https://github.com/BitPickles/tev-dashboard.git\n   8e007ef..d3f047d  dev -> dev\n"
+  },
+  {
+    "step": "12",
+    "command": "git checkout main && git merge dev && git push origin main && git checkout dev",
+    "code": 0,
+    "duration_sec": 2.3,
+    "log_path": "/Users/aibot/.openclaw/workspace-engineer/tev-dashboard/tmp/cron-edcc3eec-step-12.log",
+    "tail": "Your branch is up to date with 'origin/main'.\nMerge made by the 'ort' strategy.\n all-protocols.json            | 1315 +++++++++++++++++++++++++++++------------\n data/news.json                |  380 ++++++------\n index.html                    |   75 ++-\n tmp/cron-edcc3eec-step-1.log  |    7 +\n tmp/cron-edcc3eec-step-10.log |    6 +\n tmp/cron-edcc3eec-step-2.log  |    7 +\n tmp/cron-edcc3eec-step-3.log  |    6 +\n tmp/cron-edcc3eec-step-4.log  |    6 +\n tmp/cron-edcc3eec-step-5.log  |    7 +\n tmp/cron-edcc3eec-step-6.log  |    6 +\n tmp/cron-edcc3eec-step-7.log  |    6 +\n tmp/cron-edcc3eec-step-8.log  |    6 +\n tmp/cron-edcc3eec-step-9.log  |    9 +\n 13 files changed, 1247 insertions(+), 589 deletions(-)\n create mode 100644 tmp/cron-edcc3eec-step-1.log\n create mode 100644 tmp/cron-edcc3eec-step-10.log\n create mode 100644 tmp/cron-edcc3eec-step-2.log\n create mode 100644 tmp/cron-edcc3eec-step-3.log\n create mode 100644 tmp/cron-edcc3eec-step-4.log\n create mode 100644 tmp/cron-edcc3eec-step-5.log\n create mode 100644 tmp/cron-edcc3eec-step-6.log\n create mode 100644 tmp/cron-edcc3eec-step-7.log\n create mode 100644 tmp/cron-edcc3eec-step-8.log\n create mode 100644 tmp/cron-edcc3eec-step-9.log\nYour branch is up to date with 'origin/dev'.\n\nSwitched to branch 'main'\nTo https://github.com/BitPickles/tev-dashboard.git\n   b303ad8..87fec00  main -> main\nSwitched to branch 'dev'\n"
+  }
+]
