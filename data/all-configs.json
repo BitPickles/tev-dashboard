@@ -70,10 +70,10 @@
     "notes": "Aave 在 2024 年通过 Aavenomics 升级开启了代币回购机制，每周从协议收入中拿出一部分回购 AAVE。Safety Module 也是重要的 TEV 来源。",
     "last_updated": "2026-02-02",
     "market_data": {
-      "price_usd": 94.9,
-      "market_cap": 1438813652,
-      "volume_24h": 431666602,
-      "price_change_24h": 2.33845,
+      "price_usd": 94.25,
+      "market_cap": 1430512489,
+      "volume_24h": 392206884,
+      "price_change_24h": 8.67478,
       "fees_30d": 45805835,
       "revenue_30d": 0,
       "tvl": [
@@ -8674,11 +8674,15 @@
           "totalLiquidityUSD": 24224311448
         },
         {
-          "date": 1775575967,
-          "totalLiquidityUSD": 24101825950
+          "date": 1775606400,
+          "totalLiquidityUSD": 25282726431
+        },
+        {
+          "date": 1775661563,
+          "totalLiquidityUSD": 25091335142
         }
       ],
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama"
     },
     "tevStatus": "active",
@@ -8782,17 +8786,17 @@
       "primary_value_accrual": "协议收入 → ASTER 回购"
     },
     "market_data": {
-      "price_usd": 0.679503,
+      "price_usd": 0.672866,
       "circulating_market_cap": 1346353083,
       "total_supply": 8000000000,
       "tvl_usd": 1091092274,
       "volume_24h_usd": 236804925,
       "mcap_to_tvl_ratio": 1.23,
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama",
-      "market_cap": 1670661371,
-      "volume_24h": 103998342,
-      "price_change_24h": 2.16523
+      "market_cap": 1655392412,
+      "volume_24h": 118059321,
+      "price_change_24h": 1.85215
     },
     "calculated_tev": {
       "tev_yield_percent": null,
@@ -8938,14 +8942,14 @@
       "primary_value_accrual": "回购销毁 - 季度用平台收入回购销毁 BGB"
     },
     "market_data": {
-      "price_usd": 1.86,
+      "price_usd": 1.9,
       "circulating_market_cap": 1888393751,
       "total_supply": 2000000000,
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama",
-      "market_cap": 1301431646,
-      "volume_24h": 35571638,
-      "price_change_24h": 0.5374
+      "market_cap": 1329212509,
+      "volume_24h": 49775513,
+      "price_change_24h": 3.33509
     },
     "calculated_tev": {
       "tev_yield_percent": null,
@@ -9057,19 +9061,19 @@
       "primary_value_accrual": "销毁 - 通过持续销毁减少总供应量，目标 100M BNB"
     },
     "market_data": {
-      "price_usd": 613.65,
-      "circulating_supply": 136356768.06,
+      "price_usd": 605.52,
+      "circulating_supply": 136356737.62,
       "circulating_market_cap": 85309283181,
       "target_supply": 100000000,
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama",
-      "market_cap": 83675208807,
-      "volume_24h": 1304485137,
-      "price_change_24h": 2.44333,
-      "tvl": 5456637016.770814,
+      "market_cap": 82572836078,
+      "volume_24h": 1495528642,
+      "price_change_24h": 0.96327,
+      "tvl": 5424798638.385147,
       "tvl_note": "BNB Chain 全链 TVL (DefiLlama)",
-      "total_supply": 136356768.06,
-      "total_burned": 63643231.94
+      "total_supply": 136356737.62,
+      "total_burned": 63643262.379999995
     },
     "calculated_tev": {
       "tev_yield_percent": null,
@@ -9186,11 +9190,11 @@
     "notes": "Compound 作为 DeFi 借贷的先驱，COMP 代币开创了治理代币模式。尽管协议收入可观，但 COMP 始终是纯治理代币，费用开关从未开启。社区多次讨论过开启费用分配但未通过。",
     "last_updated": "2026-02-04",
     "market_data": {
-      "price_usd": 17.61,
-      "market_cap": 170243483,
-      "volume_24h": 14442068,
-      "price_change_24h": 5.69185,
-      "snapshot_date": "2026-04-08",
+      "price_usd": 18.36,
+      "market_cap": 177478677,
+      "volume_24h": 30448031,
+      "price_change_24h": 10.94346,
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama"
     },
     "tevStatus": "none",
@@ -9258,15 +9262,15 @@
       ]
     },
     "market_data": {
-      "price_usd": 0.223008,
+      "price_usd": 0.220959,
       "circulating_supply": 1461799676,
       "circulating_market_cap": 355558659,
       "total_supply": 2349219713,
       "holders": 97359,
-      "snapshot_date": "2026-04-08",
-      "market_cap": 333431900,
-      "volume_24h": 73331176,
-      "price_change_24h": 6.56749,
+      "snapshot_date": "2026-04-09",
+      "market_cap": 330483830,
+      "volume_24h": 74084055,
+      "price_change_24h": 9.17765,
       "fees_30d": 3480758,
       "revenue_30d": 0,
       "tvl": [
@@ -18243,8 +18247,12 @@
           "totalLiquidityUSD": 1790100613
         },
         {
-          "date": 1775570675,
-          "totalLiquidityUSD": 1787341367
+          "date": 1775606400,
+          "totalLiquidityUSD": 1810526761
+        },
+        {
+          "date": 1775659295,
+          "totalLiquidityUSD": 1816878317
         }
       ],
       "data_source": "CoinGecko + DefiLlama"
@@ -18325,14 +18333,14 @@
       "primary_value_accrual": "回购 - 75% 协议净收入用于 DYDX 回购"
     },
     "market_data": {
-      "price_usd": 0.102916,
+      "price_usd": 0.099161,
       "circulating_market_cap": 90016535,
       "total_supply": 1000000000,
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama",
-      "market_cap": 85828471,
-      "volume_24h": 7869988,
-      "price_change_24h": 9.41184,
+      "market_cap": 82813169,
+      "volume_24h": 11790610,
+      "price_change_24h": 8.29226,
       "fees_30d": 300588,
       "revenue_30d": 0,
       "tvl": [
@@ -26245,8 +26253,8 @@
           "totalLiquidityUSD": 147798558
         },
         {
-          "date": 1775620823,
-          "totalLiquidityUSD": 147880204
+          "date": 1775659907,
+          "totalLiquidityUSD": 147821957
         }
       ]
     },
@@ -26326,10 +26334,10 @@
     "notes": "EigenLayer 作为再质押基础设施，当前 EIGEN 代币仅有治理功能。协议收入（AVS 费用）目前未分配给代币持有者。未来可能通过治理开启费用开关。",
     "last_updated": "2026-02-04",
     "market_data": {
-      "price_usd": 0.167301,
-      "market_cap": 115522516,
-      "volume_24h": 18562135,
-      "price_change_24h": 9.70481,
+      "price_usd": 0.165334,
+      "market_cap": 114218373,
+      "volume_24h": 22259734,
+      "price_change_24h": 9.28355,
       "fees_30d": 1466872,
       "revenue_30d": 0,
       "tvl": [
@@ -30454,11 +30462,11 @@
           "totalLiquidityUSD": 9109202794
         },
         {
-          "date": 1775617955,
-          "totalLiquidityUSD": 9119065467
+          "date": 1775658803,
+          "totalLiquidityUSD": 9111010596
         }
       ],
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama"
     },
     "tevStatus": "none",
@@ -30552,10 +30560,10 @@
     "notes": "Ethena 是 2024-2025 年增长最快的协议之一。⚠️ 收入分配复杂且不完全公开：大部分收入分配给 sUSDe 持有者（质押收益），剩余部分进入风险储备基金(Reserve Fund)。sENA 质押可获得治理权和部分收益分配。sUSDe APY ~7.83%，USDe 总供应 $14.55B。协议担保率 100.57%，储备金 $62M。Foundation Multisig: 0x3B0AAf6e6fCd4a7cEEf8c92C32DFeA9E64dC1862。",
     "last_updated": "2026-02-05",
     "market_data": {
-      "price_usd": 0.089516,
-      "market_cap": 784133806,
-      "volume_24h": 145877427,
-      "price_change_24h": 10.16023,
+      "price_usd": 0.091112,
+      "market_cap": 798170320,
+      "volume_24h": 176407242,
+      "price_change_24h": 11.72306,
       "fees_30d": 17911164,
       "revenue_30d": 0,
       "tvl": [
@@ -33940,11 +33948,11 @@
           "totalLiquidityUSD": 5834151615
         },
         {
-          "date": 1775618123,
-          "totalLiquidityUSD": 5833528827
+          "date": 1775660087,
+          "totalLiquidityUSD": 5832681937
         }
       ],
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama"
     },
     "tevStatus": "none",
@@ -34048,10 +34056,10 @@
     "notes": "ether.fi 拥有完善的 TEV 体系：(1) 100% 提现收入回购 ETHFI 分配给质押者；(2) $50M 国库回购额度。多个 DAO 提案通过，链上完全透明。⚠️ TEV Yield 计算说明：年化回购约 $15M / 代币市值约 $6亿 ≈ 2.5%（非67.48%，原数据计算错误）。Foundation Multisig: 0x7A6A41F353B3002751d94118aA7f4935dA39bB53。",
     "last_updated": "2026-02-05",
     "market_data": {
-      "price_usd": 0.457921,
-      "market_cap": 360087417,
-      "volume_24h": 35665294,
-      "price_change_24h": 3.62117,
+      "price_usd": 0.45113,
+      "market_cap": 355232406,
+      "volume_24h": 32683775,
+      "price_change_24h": 1.90532,
       "fees_30d": 15124237,
       "revenue_30d": 0,
       "tvl": [
@@ -38585,18 +38593,18 @@
         },
         {
           "date": 1775520000,
-          "totalLiquidityUSD": 5224142749.02544
+          "totalLiquidityUSD": 5230708763.552231
         },
         {
           "date": 1775606400,
-          "totalLiquidityUSD": 5581378556.615479
+          "totalLiquidityUSD": 5537285649.840389
         },
         {
-          "date": 1775620079,
-          "totalLiquidityUSD": 5610527754.528669
+          "date": 1775661563,
+          "totalLiquidityUSD": 5494090762.14093
         }
       ],
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama"
     },
     "tevStatus": "active",
@@ -38644,15 +38652,15 @@
       "primary_value_accrual": "分红 - 质押 GMX 获得 ETH/AVAX 分红"
     },
     "market_data": {
-      "price_usd": 6.05,
+      "price_usd": 6.01,
       "circulating_supply": 10386388,
       "circulating_market_cap": 61633069,
       "total_supply": 10685596,
       "holders": 300830,
-      "snapshot_date": "2026-04-08",
-      "market_cap": 62896148,
-      "volume_24h": 6767998,
-      "price_change_24h": 0.9351,
+      "snapshot_date": "2026-04-09",
+      "market_cap": 62399505,
+      "volume_24h": 5421696,
+      "price_change_24h": 0.96457,
       "fees_30d": 2490334,
       "revenue_30d": 0,
       "tvl": [
@@ -45381,8 +45389,8 @@
           "totalLiquidityUSD": 272334785
         },
         {
-          "date": 1775619839,
-          "totalLiquidityUSD": 271573486
+          "date": 1775660027,
+          "totalLiquidityUSD": 270523598
         }
       ],
       "data_source": "CoinGecko + DefiLlama"
@@ -45471,13 +45479,13 @@
       "primary_value_accrual": "回购销毁 - Assistance Fund 使用约90%费用回购并销毁 HYPE"
     },
     "market_data": {
-      "price_usd": 38.29,
+      "price_usd": 38.91,
       "circulating_market_cap": 7762595982,
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama",
-      "market_cap": 9127021349,
-      "volume_24h": 288289295,
-      "price_change_24h": 5.07445
+      "market_cap": 9268758487,
+      "volume_24h": 381401900,
+      "price_change_24h": 7.72043
     },
     "calculated_tev": {
       "tev_yield_percent": 12.29,
@@ -45587,10 +45595,10 @@
     "notes": "Jito 是 Solana MEV 基础设施的领导者。JTO 代币目前主要用于治理，协议的 MEV 收益直接流向 JitoSOL 持有者（更高的 APY），而非 JTO 持有者。未来可能引入 JTO staking 收入分成。",
     "last_updated": "2026-02-02",
     "market_data": {
-      "price_usd": 0.280719,
-      "market_cap": 128064596,
-      "volume_24h": 10892113,
-      "price_change_24h": 4.35414,
+      "price_usd": 0.278818,
+      "market_cap": 127263095,
+      "volume_24h": 10225932,
+      "price_change_24h": 5.16093,
       "fees_30d": 9134081,
       "revenue_30d": 0,
       "tvl": [
@@ -50523,11 +50531,11 @@
           "totalLiquidityUSD": 954739939.83842
         },
         {
-          "date": 1775620943,
-          "totalLiquidityUSD": 943000020.68731
+          "date": 1775659415,
+          "totalLiquidityUSD": 934947513.82884
         }
       ],
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama"
     },
     "tevStatus": "none",
@@ -50602,13 +50610,13 @@
     "notes": "⚠️ 维持 PARTIAL，原因：(1) JST staking 机制缺乏透明文档，无法确认具体分配比例；(2) TRON 生态整体透明度较低，缺少 Dune 等独立数据分析工具；(3) DefiLlama 无 tokenRights 数据；(4) JST 代币跨多个 JUST 产品使用，实际 TEV 归属不清；(5) 与 Justin Sun 团队关联，中心化程度较高。如需进一步确认，建议通过浏览器直接操作 JustLend DApp 验证 staking 功能。",
     "last_updated": "2026-02-05",
     "market_data": {
-      "price_usd": 0.064079,
-      "market_cap": 564822479,
-      "volume_24h": 27638171,
-      "price_change_24h": -0.81324,
+      "price_usd": 0.065019,
+      "market_cap": 573198093,
+      "volume_24h": 31251993,
+      "price_change_24h": 1.99699,
       "fees_30d": 581757,
       "revenue_30d": 0,
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama",
       "tvl": [
         {
@@ -57088,8 +57096,8 @@
           "totalLiquidityUSD": 3459116106
         },
         {
-          "date": 1775617775,
-          "totalLiquidityUSD": 3465725568
+          "date": 1775660027,
+          "totalLiquidityUSD": 3462298884
         }
       ]
     },
@@ -57159,11 +57167,11 @@
     "notes": "⚠️ 从 PARTIAL 降级为 NONE。经深入调研确认：KMNO staking 不是协议收入分配，而是 farming 奖励加成（boost）机制。具体：(1) 新质押者起始 3% boost，每天 +0.1%；(2) 每 1 KMNO 质押对 $1 仓位施加 boost；(3) Season 奖励每 3 月最多 100M KMNO，来自代币国库（inflation），非协议费用；(4) 有 6 个月 vesting 期。Kamino 是优秀的 Solana 借贷协议（$3.34B AUM，零坏账），但 KMNO 代币目前无真正的 fee distribution 机制。2026 路线图专注机构产品（固定利率、链下抵押品），未来可能引入真正的 TEV。",
     "last_updated": "2026-02-05",
     "market_data": {
-      "price_usd": 0.01945263,
-      "market_cap": 84137312,
-      "volume_24h": 13347539,
-      "price_change_24h": 7.74791,
-      "fees_30d": 4363241,
+      "price_usd": 0.01936188,
+      "market_cap": 84050627,
+      "volume_24h": 10392951,
+      "price_change_24h": 7.27138,
+      "fees_30d": 4672043,
       "revenue_30d": 0,
       "tvl": [
         {
@@ -62415,11 +62423,11 @@
           "totalLiquidityUSD": 1769214977
         },
         {
-          "date": 1775618195,
-          "totalLiquidityUSD": 1757801590
+          "date": 1775658863,
+          "totalLiquidityUSD": 1812378527
         }
       ],
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama"
     },
     "tevStatus": "none",
@@ -62466,10 +62474,10 @@
     "notes": "【收入规模】年化协议费用约 $677M，DAO 分成（10%费率的50%）约 $34M/年。尽管 Lido 是最大的 DeFi 协议之一（TVL $22B+），但 LDO 代币不分享任何协议收入（fee switch OFF）。协议收入完全归 DAO 国库控制。若未来开启 fee switch，潜在 TEV 基数较大。",
     "last_updated": "2026-02-04",
     "market_data": {
-      "price_usd": 0.327887,
-      "market_cap": 278464598,
-      "volume_24h": 33223632,
-      "price_change_24h": 5.81712,
+      "price_usd": 0.323629,
+      "market_cap": 274850226,
+      "volume_24h": 32552248,
+      "price_change_24h": 5.41242,
       "fees_30d": 44272978,
       "revenue_30d": 0,
       "tvl": [
@@ -70218,11 +70226,11 @@
           "totalLiquidityUSD": 20901391598
         },
         {
-          "date": 1775620943,
-          "totalLiquidityUSD": 20918780155
+          "date": 1775661683,
+          "totalLiquidityUSD": 20590893622
         }
       ],
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama"
     },
     "tevStatus": "none",
@@ -70288,10 +70296,10 @@
     "notes": "【数据说明】MIP-019 提案于 2024 年通过（25% 协议收入回购 SYRUP），但实际 TEV 数据从 2025-11 才开始记录（DefiLlama dailyHoldersRevenue）。Maple 于 2024 年将代币从 MPL 迁移到 SYRUP，新代币经济模型强化了收入分配机制。作为机构借贷协议，收入主要来自贷款利差。",
     "last_updated": "2026-02-05",
     "market_data": {
-      "price_usd": 0.223924,
-      "market_cap": 259571459,
-      "volume_24h": 9457660,
-      "price_change_24h": 4.15644,
+      "price_usd": 0.223656,
+      "market_cap": 259035285,
+      "volume_24h": 7647885,
+      "price_change_24h": 3.97826,
       "fees_30d": 9370326,
       "revenue_30d": 0,
       "tvl": [
@@ -77428,11 +77436,11 @@
           "totalLiquidityUSD": 1802893665
         },
         {
-          "date": 1775620331,
-          "totalLiquidityUSD": 1809696368
+          "date": 1775661623,
+          "totalLiquidityUSD": 1850487484
         }
       ],
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama"
     },
     "tevStatus": "active",
@@ -77487,15 +77495,15 @@
       "primary_value_accrual": "待确认 - Gas 消耗 + 潜在的质押奖励"
     },
     "market_data": {
-      "price_usd": 0.672756,
+      "price_usd": 0.675691,
       "circulating_supply": 3252944056,
       "circulating_market_cap": 1981231322,
       "total_supply": 6219316794,
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama",
-      "market_cap": 2205293450,
-      "volume_24h": 44612256,
-      "price_change_24h": 3.90167
+      "market_cap": 2213266513,
+      "volume_24h": 46676659,
+      "price_change_24h": 4.69242
     },
     "calculated_tev": {
       "tev_yield_percent": null,
@@ -77609,9 +77617,9 @@
     "last_updated": "2026-02-04",
     "market_data": {
       "price_usd": 1.72,
-      "market_cap": 952264489,
-      "volume_24h": 26591387,
-      "price_change_24h": 8.59572,
+      "market_cap": 949997279,
+      "volume_24h": 18375923,
+      "price_change_24h": 5.46171,
       "fees_30d": 11473506,
       "revenue_30d": 0,
       "tvl": [
@@ -82928,11 +82936,15 @@
           "totalLiquidityUSD": 7001367054
         },
         {
-          "date": 1775577155,
-          "totalLiquidityUSD": 6936259463
+          "date": 1775606400,
+          "totalLiquidityUSD": 7278105631
+        },
+        {
+          "date": 1775658803,
+          "totalLiquidityUSD": 7232483069
         }
       ],
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama"
     },
     "tevStatus": "none",
@@ -82982,14 +82994,14 @@
       "primary_value_accrual": "回购销毁 - 季度用 30% 收入回购销毁 OKB"
     },
     "market_data": {
-      "price_usd": 84.62,
+      "price_usd": 83.9,
       "circulating_supply": 21000000,
       "circulating_market_cap": 1503276222,
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama",
-      "market_cap": 1776770426,
-      "volume_24h": 17334311,
-      "price_change_24h": 2.69676
+      "market_cap": 1761339036,
+      "volume_24h": 20719671,
+      "price_change_24h": 2.36724
     },
     "calculated_tev": {
       "tev_yield_percent": null,
@@ -83137,10 +83149,10 @@
     "notes": "【重要更新】veCAKE 于 2025年4月23日 (UTC) 正式结束（Tokenomics 3.0）。Revenue Sharing (5%) 于 2025年5月7日结束，原分成收入现全部转为回购销毁，burn rate 从 10% 提升至 15%。当前 TEV 机制：全额回购销毁，无 ve 分红。",
     "last_updated": "2026-02-04",
     "market_data": {
-      "price_usd": 1.51,
-      "market_cap": 496849039,
-      "volume_24h": 42081516,
-      "price_change_24h": 6.35154,
+      "price_usd": 1.49,
+      "market_cap": 490360994,
+      "volume_24h": 37421337,
+      "price_change_24h": 3.46237,
       "fees_30d": 12051413,
       "revenue_30d": 0,
       "tvl": [
@@ -90393,11 +90405,15 @@
           "totalLiquidityUSD": 2028909454
         },
         {
-          "date": 1775576735,
-          "totalLiquidityUSD": 2025187704
+          "date": 1775606400,
+          "totalLiquidityUSD": 2064938451
+        },
+        {
+          "date": 1775659907,
+          "totalLiquidityUSD": 2053610868
         }
       ],
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama"
     },
     "tevStatus": "active",
@@ -90472,10 +90488,10 @@
     "notes": "【机制说明】Pendle 于 2026-01-29 从 vePENDLE 切换至 sPENDLE 模式，80% 协议收入回购 PENDLE 并分配给 sPENDLE 持有者。sPENDLE 有 14天解锁冷却期，或支付 5% 费用即时赎回。是 TEV 表现最好的协议之一。",
     "last_updated": "2026-02-05",
     "market_data": {
-      "price_usd": 1.068,
-      "market_cap": 178010965,
-      "volume_24h": 40831070,
-      "price_change_24h": 6.41411,
+      "price_usd": 1.048,
+      "market_cap": 174748242,
+      "volume_24h": 35605215,
+      "price_change_24h": 5.42452,
       "fees_30d": 635790,
       "revenue_30d": 0,
       "tvl": [
@@ -97396,11 +97412,15 @@
           "totalLiquidityUSD": 1934474499
         },
         {
-          "date": 1775576675,
-          "totalLiquidityUSD": 1958989731
+          "date": 1775606400,
+          "totalLiquidityUSD": 1955708813
+        },
+        {
+          "date": 1775658983,
+          "totalLiquidityUSD": 2002588401
         }
       ],
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama"
     },
     "tevStatus": "active",
@@ -97474,11 +97494,11 @@
     "notes": "Radiant 是 TEV 机制设计较好的协议：锁定 RDNT-ETH LP 获得平台收入分成，且以蓝筹资产 (BTC, ETH, USDC) 而非协议代币支付，避免了代币抛压。但 2023 年遭遇两次安全事件后 TVL 大幅下降。",
     "last_updated": "2026-02-04",
     "market_data": {
-      "price_usd": 0.00236466,
-      "market_cap": 3065492,
-      "volume_24h": 1351543,
-      "price_change_24h": -2.46983,
-      "fees_30d": 1904,
+      "price_usd": 0.00238431,
+      "market_cap": 3081603,
+      "volume_24h": 1436064,
+      "price_change_24h": 3.03615,
+      "fees_30d": 1972,
       "revenue_30d": 0,
       "tvl": [
         {
@@ -102898,11 +102918,11 @@
           "totalLiquidityUSD": 2082309
         },
         {
-          "date": 1775621075,
-          "totalLiquidityUSD": 2071170
+          "date": 1775658983,
+          "totalLiquidityUSD": 2058462
         }
       ],
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama"
     }
   },
@@ -102969,9 +102989,9 @@
     "last_updated": "2026-02-02",
     "market_data": {
       "price_usd": 0.077643,
-      "market_cap": 1797424207,
-      "volume_24h": 14187769,
-      "price_change_24h": 2.89041,
+      "market_cap": 1799259443,
+      "volume_24h": 21010118,
+      "price_change_24h": 4.70326,
       "fees_30d": 34506582,
       "revenue_30d": 0,
       "tvl": [
@@ -113584,11 +113604,11 @@
           "totalLiquidityUSD": 6345332934
         },
         {
-          "date": 1775620331,
-          "totalLiquidityUSD": 6352895038
+          "date": 1775661215,
+          "totalLiquidityUSD": 6356630026
         }
       ],
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama"
     },
     "tevStatus": "active",
@@ -113649,11 +113669,11 @@
     "notes": "Spark 是 Sky 生态的 SubDAO，SPK 代币于 2024 年 Q3 启动。作为新代币，TEV 机制仍在发展中。协议收入主要流向 Sky 主 DAO，通过 Smart Burn Engine 回购 MKR。",
     "last_updated": "2026-02-02",
     "market_data": {
-      "price_usd": 0.02032857,
-      "market_cap": 51368134,
-      "volume_24h": 15163144,
-      "price_change_24h": -0.14962,
-      "fees_30d": 11860130,
+      "price_usd": 0.02064481,
+      "market_cap": 52130088,
+      "volume_24h": 11746070,
+      "price_change_24h": 5.05103,
+      "fees_30d": 12239625,
       "revenue_30d": 0,
       "tvl": [
         {
@@ -117953,7 +117973,7 @@
           "totalLiquidityUSD": 3843557154.15964
         }
       ],
-      "snapshot_date": "2026-04-08",
+      "snapshot_date": "2026-04-09",
       "data_source": "CoinGecko + DefiLlama"
     },
     "tevStatus": "none",
@@ -118053,15 +118073,15 @@
       "primary_value_accrual": "多源 UNI 销毁 - 协议费 + Sequencer 收入 + PFDA + Aggregator hooks"
     },
     "market_data": {
-      "price_usd": 3.21,
+      "price_usd": 3.17,
       "circulating_supply": 634247278,
       "circulating_market_cap": 2292835462,
       "total_supply": 1000000000,
       "holders": 387973,
-      "snapshot_date": "2026-04-08",
-      "market_cap": 2034207382,
-      "volume_24h": 226184937,
-      "price_change_24h": 4.17196,
+      "snapshot_date": "2026-04-09",
+      "market_cap": 2008694055,
+      "volume_24h": 215052378,
+      "price_change_24h": 4.51624,
       "fees_30d": 21218416,
       "revenue_30d": 0,
       "tvl": [
@@ -125198,8 +125218,12 @@
           "totalLiquidityUSD": 1625117225
         },
         {
-          "date": 1775575787,
-          "totalLiquidityUSD": 1615194653
+          "date": 1775606400,
+          "totalLiquidityUSD": 1688784366
+        },
+        {
+          "date": 1775661563,
+          "totalLiquidityUSD": 1668687522
         }
       ],
       "data_source": "CoinGecko + DefiLlama"
