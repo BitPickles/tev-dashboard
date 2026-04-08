@@ -1,0 +1,182 @@
+{
+  "project": "what-to-mine-v2",
+  "created": "2026-03-25T02:56:00+08:00",
+  "tasks": [
+    {
+      "id": "p1-e1-01",
+      "name": "Schema 新增字段 + db push",
+      "assignee": "engineer",
+      "phase": 1,
+      "status": "created",
+      "acceptance": "prisma schema 包含 yieldBreakdown/capacityUsed/capacityTotal/countdownEnabled/bossTags，db push 成功"
+    },
+    {
+      "id": "p1-e1-02",
+      "name": "Session maxAge 7天→30天",
+      "assignee": "engineer",
+      "phase": 1,
+      "status": "created",
+      "acceptance": "session.ts maxAge 改为 30 天，build 通过"
+    },
+    {
+      "id": "p1-e1-03",
+      "name": "路由重构：取消 (auth) 包裹，无需登录可浏览",
+      "assignee": "engineer",
+      "phase": 1,
+      "status": "created",
+      "acceptance": "首页/详情页/复盘页无需钱包即可访问，收藏等功能仍需登录"
+    },
+    {
+      "id": "p1-e1-04",
+      "name": "导航栏结构：6个菜单，预留灰显",
+      "assignee": "engineer",
+      "phase": 1,
+      "status": "created",
+      "acceptance": "导航栏显示矿田/短债/策略/复盘/公告雷达/日历，预留项灰显+即将上线标签"
+    },
+    {
+      "id": "p1-e1-05",
+      "name": "API 支持新字段+筛选参数",
+      "assignee": "engineer",
+      "phase": 1,
+      "status": "created",
+      "acceptance": "GET /api/opportunities 支持 channel/token/capacity/duration/sort 参数"
+    },
+    {
+      "id": "p1-e2-01",
+      "name": "新版 OpportunityCard 组件",
+      "assignee": "engineer2",
+      "phase": 1,
+      "status": "created",
+      "acceptance": "卡片一行一条，含 APR大字/收益构成/容量进度条/倒计时/角标/标签"
+    },
+    {
+      "id": "p1-e2-02",
+      "name": "筛选栏组件",
+      "assignee": "engineer2",
+      "phase": 1,
+      "status": "created",
+      "acceptance": "渠道多选/币种多选/容量范围/持续时间/APR排序，默认只显示进行中"
+    },
+    {
+      "id": "p1-e2-03",
+      "name": "角标系统组件",
+      "assignee": "engineer2",
+      "phase": 1,
+      "status": "created",
+      "acceptance": "5种角标：新(绿)/热门(橙)/即将结束(红脉冲)/即将开始(蓝)/即将满额(黄)"
+    },
+    {
+      "id": "p1-d-01",
+      "name": "整体设计方案+卡片设计",
+      "assignee": "designer",
+      "phase": 1,
+      "status": "created",
+      "acceptance": "暗色主题卡片布局设计稿(桌面+移动)，信息层级清晰，输出为可用 CSS/Tailwind"
+    },
+    {
+      "id": "p1-d-02",
+      "name": "角标视觉+导航栏设计",
+      "assignee": "designer",
+      "phase": 1,
+      "status": "created",
+      "acceptance": "5种角标样式+导航栏含灰显态，输出 Tailwind 类名或 CSS"
+    },
+    {
+      "id": "p2-e1-01",
+      "name": "详情页 API 数据结构",
+      "assignee": "engineer",
+      "phase": 2,
+      "status": "created",
+      "acceptance": "详情接口返回参与指南/Boss评价/动态更新流数据"
+    },
+    {
+      "id": "p2-e1-02",
+      "name": "后台排序管理+快速切状态接口",
+      "assignee": "engineer",
+      "phase": 2,
+      "status": "created",
+      "acceptance": "sortOrder 批量更新接口 + status 快速切换接口可用"
+    },
+    {
+      "id": "p2-e1-03",
+      "name": "/all 页面 API（全状态筛选）",
+      "assignee": "engineer",
+      "phase": 2,
+      "status": "created",
+      "acceptance": "支持 status=all/active/ended/upcoming 筛选"
+    },
+    {
+      "id": "p2-e2-01",
+      "name": "首页矿田完整集成",
+      "assignee": "engineer2",
+      "phase": 2,
+      "status": "created",
+      "acceptance": "卡片+筛选+排序+底部查看全部按钮，真实数据渲染"
+    },
+    {
+      "id": "p2-e2-02",
+      "name": "详情页重构",
+      "assignee": "engineer2",
+      "phase": 2,
+      "status": "created",
+      "acceptance": "5个区块：概览/参与指南/Boss评价/更新流/侧边信息"
+    },
+    {
+      "id": "p2-e2-03",
+      "name": "/all 全部机会页面",
+      "assignee": "engineer2",
+      "phase": 2,
+      "status": "created",
+      "acceptance": "全状态展示，已结束灰显+实际收益，状态筛选可用"
+    },
+    {
+      "id": "p2-e2-04",
+      "name": "收益计算器集成到详情页",
+      "assignee": "engineer2",
+      "phase": 2,
+      "status": "created",
+      "acceptance": "输入金额估算到期收益，复用现有 YieldCalculator"
+    },
+    {
+      "id": "p2-d-01",
+      "name": "详情页布局设计",
+      "assignee": "designer",
+      "phase": 2,
+      "status": "created",
+      "acceptance": "5区块布局设计稿(桌面+移动)，输出可用样式"
+    },
+    {
+      "id": "p2-d-02",
+      "name": "移动端适配+动画效果",
+      "assignee": "designer",
+      "phase": 2,
+      "status": "created",
+      "acceptance": "卡片/详情/筛选移动端适配+倒计时/进度条/脉冲动画"
+    },
+    {
+      "id": "p3-e1-01",
+      "name": "后台表单适配新字段+排序拖拽+标签管理",
+      "assignee": "engineer",
+      "phase": 3,
+      "status": "created",
+      "acceptance": "后台可编辑所有新字段，拖拽排序可用，角标可管理"
+    },
+    {
+      "id": "p3-e2-01",
+      "name": "前后端联调+边界处理+页面跳转",
+      "assignee": "engineer2",
+      "phase": 3,
+      "status": "created",
+      "acceptance": "全流程联调通过，空数据/加载/错误态正常，导航跳转正确"
+    },
+    {
+      "id": "p3-d-01",
+      "name": "全站走查+视觉一致性+微交互",
+      "assignee": "designer",
+      "phase": 3,
+      "status": "created",
+      "acceptance": "全站视觉一致，hover/点击/过渡效果，空状态/加载态设计"
+    }
+  ]
+}

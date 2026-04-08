@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-08T08:26:32.416Z",
+  "entries": {
+    "memory:memory/2026-04-03.md:39:65": {
+      "key": "memory:memory/2026-04-03.md:39:65",
+      "path": "memory/2026-04-03.md",
+      "startLine": 39,
+      "endLine": 65,
+      "source": "memory",
+      "snippet": "- Boss 批准：AI 短评+数据更新+海报+推文 可以自主推 main，不用等批准 - 已更新 website-deploy-rules.md ### 日报页面 bug（2026-03-31） - `crypto3d.pro/daily-poster/output/` 页面卡在\"加载中...\" - 原因：`2026-03-31-comment.json` 未生成（AI 短评生成失败/跳过），Cloudflare 返回 200+HTML 404 页面，JS json() 解析失败 - 已派数据站运维重新生成，但数据站运维因铁律拒绝 push main（需要更新其铁律例外清单） ### @what_to_mine_monitor_bot 查证（2026-03-29） - 是工程师1在「什么值得挖」项目里创建的 Bot（ID: 8777976799） - 用于 CEX 公告监控 + 机会提醒的 Telegram 推送 - 没有接入 OpenClaw，代码在 `what-to-mine/src/lib/cex-monitor/` - 目前无任何地方在跑，是个空壳 Bot ### 大任务每日汇报 cron 删除（2026-03-30） - Boss 认为价值不大（信息都是老的，不是实时检查），已删除 ### OpenCLI 推文自动化迁移调研（2026-04-02） - Boss 想用 https://github.com/jackwener/opencli 替代现有 Playwright 发推方案 - 已安装 opencli + daemon，还差 Chrome Brows",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.8534248424981136,
+      "maxScore": 0.8534248424981136,
+      "firstRecalledAt": "2026-04-08T08:26:32.416Z",
+      "lastRecalledAt": "2026-04-08T08:26:32.416Z",
+      "queryHashes": [
+        "9843cbb9d085"
+      ],
+      "recallDays": [
+        "2026-04-08"
+      ],
+      "conceptTags": [
+        "website-deploy-rules.md",
+        "crypto3d.pro/daily-poster/output",
+        "2026-03-31-comment.json",
+        "短评生成失败/跳过",
+        "what-to-mine-monitor-bot",
+        "what-to-mine/src/lib/cex-monitor",
+        "github.com/jackwener/opencli",
+        "boss"
+      ]
+    },
+    "memory:memory/2026-03-20.md:29:60": {
+      "key": "memory:memory/2026-03-20.md:29:60",
+      "path": "memory/2026-03-20.md",
+      "startLine": 29,
+      "endLine": 60,
+      "source": "memory",
+      "snippet": "- 正式站：crypto3d.pro/governance/ ## Skill 沉淀 - 新建 `~/.openclaw/skills/crypto3d-dashboard/governance.md` - 更新 SKILL.md 加治理文档链接和目录结构 - 更新 operations.md 加治理数据更新到 Cron 表 ## 运营交接 - 治理数据更新任务写入运营 TASKS.md - 禁止 merge dev 到 main 铁律写入 TASKS.md - 运营模型从 gpt-5.4-codex 切换到 claude-opus-4-6（旧模型 session 卡死无法响应） - 验证通过：运营正确回答了命令、时间、权限三个问题 ## 运营事故 - 运营擅自 merge dev 到 main 两次，把工程师2号未验收的海报代码推到正式站 - 总管发现后立即回滚 main 到 `5b3e7bb` - 海报代码从 main 删除（poster/ 目录） - 根因：运营 operations.md 有\"数据同步到 main\"流程，运营看到 dev 比 main 多 commit 就自动合并了 - 已加铁律防止再犯 ## 推特日报 - 工程师2号在 dev 上有海报代码（poster/ 目录），但未验收 - 正式站已删除，dev 上保留继续开发 ## 设计师 Agent 部署 & 整站视觉升级实验 ### 部署 - 设计师 Agent 上线（designer，@designer_sandy_bot，opus 4.6） - 安装 Skill：frontend-design",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.8348544826487951,
+      "maxScore": 0.8348544826487951,
+      "firstRecalledAt": "2026-04-08T08:26:32.416Z",
+      "lastRecalledAt": "2026-04-08T08:26:32.416Z",
+      "queryHashes": [
+        "9843cbb9d085"
+      ],
+      "recallDays": [
+        "2026-04-08"
+      ],
+      "conceptTags": [
+        "gpt",
+        "crypto3d.pro/governance",
+        "skill.md",
+        "operations.md",
+        "tasks.md",
+        "gpt-5.4-codex",
+        "claude-opus-4-6",
+        "designer-sandy-bot"
+      ]
+    },
+    "memory:memory/2026-04-03.md:18:44": {
+      "key": "memory:memory/2026-04-03.md:18:44",
+      "path": "memory/2026-04-03.md",
+      "startLine": 18,
+      "endLine": 44,
+      "source": "memory",
+      "snippet": "- Coding 端点向下兼容 GLM-5 - 已配置到 OpenClaw，alias GLM5.1 - 家庭财务助理已切换到 GLM-5.1 ### 数据站运维 Agent 创建（2026-03-28） - **Agent ID**: operator2 - **名称**: 数据站运维（最初叫运营2号，Boss 后更名） - **Bot**: @operator2_3d_bot (ID: 8778002374) - **模型**: Codex (gpt-5.4)，fallback GLM-5.1 - **Workspace**: ~/.openclaw/workspace-operator2 - **职责**: 日常数据更新、自检汇报、治理监控、新闻雷达、推文海报 - 运营1 的 10 个 cron 全部迁移到数据站运维 - **分工**：运营1 负责网站升级/功能修改（偏项目型），数据站运维负责日常维护（偏日常型） - 全流程测试 6 个任务全部 ok ### 组织架构调整 - 团队从 8 → 9 个 Agent - 新架构：指挥层（总管/研究员/运营/数据站运维）+ 中台执行层（设计师/工程师1/工程师2） - 已更新 org-structure.md、SKILL.md、MEMORY.md ### 日常数据推送权限调整 - Boss 批准：AI 短评+数据更新+海报+推文 可以自主推 main，不用等批准 - 已更新 website-deploy-rules.md ### 日报页面 bug（2026-03-31） - `crypto3d.pro/daily-pos",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.8271916495730158,
+      "maxScore": 0.8271916495730158,
+      "firstRecalledAt": "2026-04-08T08:26:32.416Z",
+      "lastRecalledAt": "2026-04-08T08:26:32.416Z",
+      "queryHashes": [
+        "9843cbb9d085"
+      ],
+      "recallDays": [
+        "2026-04-08"
+      ],
+      "conceptTags": [
+        "gpt",
+        "glm-5",
+        "glm5.1",
+        "glm-5.1",
+        "operator2-3d-bot",
+        "gpt-5.4",
+        "openclaw/workspace-operator2",
+        "负责网站升级/功能修改"
+      ]
+    }
+  }
+}

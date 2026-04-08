@@ -1,0 +1,38 @@
+{
+  "github_repos": {
+    "name": "Uniswap V3 Core",
+    "url": "https://github.com/Uniswap/v3-core",
+    "language": "Solidity",
+    "description": "Uniswap V3 核心智能合约",
+    "key_contracts": [
+      "UniswapV3Factory",
+      "UniswapV3Pool",
+      "UniswapV3SwapRouter",
+      "NonfungiblePositionManager",
+      "UniswapV3Oracle"
+    ],
+    "branches": {
+      "main": "主分支 (稳定版)",
+      "deployments": "部署分支",
+      "audit": "审计报告分支"
+    }
+  },
+  "periphery_repo": {
+    "name": "Uniswap V3 Periphery",
+    "url": "https://github.com/Uniswap/v3-periphery",
+    "language": "Solidity",
+    "description": "Uniswap V3 外围合约（辅助功能）",
+    "key_contracts": [
+      "Quoter",
+      "TickLens",
+      "SwapRouter",
+      "Multicall",
+      "LiquidityAmounts"
+    ],
+    "languages": {
+      "solidity": "智能合约",
+      "typescript": "前端交互库",
+      "python": "示例脚本"
+    }
+  }
+}

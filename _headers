@@ -1,27 +1,26 @@
-# Cloudflare Pages 缓存配置
+# Cloudflare Pages 安全与缓存配置
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; frame-src https://www.youtube.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+
 # HTML 文件不缓存，确保每次获取最新版本
 /*.html
   Cache-Control: no-cache, no-store, must-revalidate
 
-/indicators/*
-  Cache-Control: no-cache, no-store, must-revalidate
-
-/tev/*
-  Cache-Control: no-cache, no-store, must-revalidate
-
-# JSON 数据文件短缓存（5分钟）
+# JSON 数据短缓存，兼顾更新和性能
 /data/*.json
   Cache-Control: public, max-age=300
 
 /indicators/data/*.json
   Cache-Control: public, max-age=300
 
-# 静态资源长缓存（1天）
+# 静态资源长缓存
 /*.css
   Cache-Control: public, max-age=86400
 
 /*.js
-  Cache-Control: public, max-age=86400
-
-/images/*
   Cache-Control: public, max-age=86400

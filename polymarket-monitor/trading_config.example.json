@@ -1,0 +1,40 @@
+# Polymarket Trading Configuration
+# 复制此文件为 trading_config.json 并填入你的私钥
+
+{
+  # EVM 私钥（不要提交到 Git！）
+  "private_key": "YOUR_PRIVATE_KEY_HERE",
+
+  # 交易设置
+  "trading": {
+    # 是否启用自动交易
+    "enabled": false,
+
+    # 单笔交易金额（USDC）
+    "default_amount": 100,
+
+    # 最大单笔交易金额
+    "max_amount": 1000,
+
+    # 订单有效期（小时）
+    "order_expiry_hours": 1,
+
+    # 是否启用自动套利交易
+    "auto_arbitrage": false,
+
+    # 套利最小利润率（%）- 低于此利润不执行
+    "min_profit_threshold": 0.5
+  },
+
+  # 风险控制
+  "risk_control": {
+    # 每日最大交易次数
+    "max_daily_trades": 50,
+
+    # 每日最大交易金额（USDC）
+    "max_daily_volume": 5000,
+
+    # 单个市场最大仓位
+    "max_position_per_market": 500
+  }
+}
