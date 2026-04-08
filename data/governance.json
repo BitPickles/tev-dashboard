@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-04-07T13:05:34.317976+00:00",
+  "updated_at": "2026-04-08T01:04:31.166199+00:00",
   "total": 241,
-  "active_count": 39,
-  "passed_count": 202,
+  "active_count": 40,
+  "passed_count": 201,
   "tev_related": 62,
   "monitored_protocols": 19,
   "protocols_meta": {
@@ -2762,6 +2762,20 @@
     {
       "source": "dYdX Cosmos",
       "protocol": "dYdX",
+      "title": "Update CLOB Pair Tick Size for WTI CLOB Pair",
+      "status": "active",
+      "link": "https://www.mintscan.io/dydx/proposals/377",
+      "created": "2026-04-07T15:49:50.735376184Z",
+      "end": "2026-04-09T03:49:50.735376184Z",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Proposal to reduce step base quantums (and therefore step size) for WTI CLOB Pair.",
+      "summary_zh": "dYdX治理提案：更新WTI CLOB对基点增量（及步长大小）。提议降低WTI CLOB对基点基数（因此步长）。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
       "title": "dYdX Surge Program - Season 12 Distribution",
       "status": "passed",
       "link": "https://www.mintscan.io/dydx/proposals/376",
@@ -2878,20 +2892,6 @@
       "tev_keywords": [],
       "summary_en": "Appoint the following eight validators as the new designated proposer set: RHINO, Kiln, Kingnodes, Keplr, PRO Delegators, Crosnest, TTT VN, and CryptoCrew X Defi Dojo. Forum Post",
       "summary_zh": "任命以下八名验证者为新的指定提案人集合：RHINO、Kiln、Kingnodes、Keplr、PRO Delegators、Crosnest、TTT VN和CryptoCrew X Defi Dojo。论坛帖子",
-      "analysis_zh": ""
-    },
-    {
-      "source": "dYdX Cosmos",
-      "protocol": "dYdX",
-      "title": "Update Governance Parameters on dYdX Chain",
-      "status": "passed",
-      "link": "https://www.mintscan.io/dydx/proposals/367",
-      "created": "2026-03-16T08:41:55.623305094Z",
-      "end": "2026-03-18T08:41:55.623305094Z",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Update Governance Parameters on the x/gov module. Forum Post",
-      "summary_zh": "更新 dYdX Chain x/gov 模块的治理参数，调整投票期限、法定人数等核心治理设置。",
       "analysis_zh": ""
     },
     {
