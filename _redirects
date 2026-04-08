@@ -12,3 +12,7 @@
 # homepage 目录兼容
 /homepage           /                   301
 /homepage/          /                   301
+
+# 明确拦截不存在的历史/伪下载入口，避免错误回退到首页
+/download           /404.html           404
+/download/          /404.html           404
