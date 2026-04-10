@@ -1,18 +1,40 @@
 # Crypto3D 路由重定向
-# 兼容旧路径
+# 兼容旧路径 + 收口测试/调试页面
+
+# 调试/测试页面直接收口到首页
+/tev/debug                 /                      301
+/tev/debug.html            /                      301
+/tev/final-debug           /                      301
+/tev/final-debug.html      /                      301
+/tev/simple-debug          /                      301
+/tev/simple-debug.html     /                      301
+/tev/simple-test           /                      301
+/tev/simple-test.html      /                      301
+/tev/test-proto            /                      301
+/tev/test-proto.html       /                      301
+/tev/test-tevratio         /                      301
+/tev/test-tevratio.html    /                      301
+/tev/test_fetch            /                      301
+/tev/test_fetch.html       /                      301
+/review                    /                      301
+/review/*                  /                      301
+/poster                    /                      301
+/poster/*                  /                      301
+/web                       /tev                   301
+/web/                      /tev                   301
+/web/*                     /tev/:splat            301
+/daily-poster/output/comments.html  /daily-poster/output/  301
+/daily-poster/output/comments.json  /daily-poster/output/  301
 
 # 旧路径 → 新路径 (301 永久重定向)
-/web                /tev                301
-/web/               /tev                301
-/web/*              /tev/:splat         301
-/indicators/ahr999.html  /ahr999        301
-/indicators/mvrv.html    /mvrv          301
-/indicators/bmri.html    /bmri          301
+/indicators/ahr999.html    /ahr999                301
+/indicators/mvrv.html      /mvrv                  301
+/indicators/bmri.html      /bmri                  301
 
 # homepage 目录兼容
-/homepage           /                   301
-/homepage/          /                   301
+/homepage                  /                      301
+/homepage/                 /                      301
 
 # 明确拦截不存在的历史/伪下载入口，避免错误回退到首页
-/download           /404.html           404
-/download/          /404.html           404
+/download                  /404.html              404
+/download/                 /404.html              404
