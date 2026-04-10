@@ -23,15 +23,39 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        
+
+      - name: Prepare clean publish directory
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          rsync -av ./ ./_site/ \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude '_site/' \
+            --exclude 'tmp/' \
+            --exclude 'review/' \
+            --exclude 'poster/' \
+            --exclude 'web/' \
+            --exclude '**/*.bak' \
+            --exclude 'debug-report.md' \
+            --exclude 'tev/debug.html' \
+            --exclude 'tev/final-debug.html' \
+            --exclude 'tev/simple-debug.html' \
+            --exclude 'tev/simple-test.html' \
+            --exclude 'tev/test-proto.html' \
+            --exclude 'tev/test-tevratio.html' \
+            --exclude 'tev/test_fetch.html' \
+            --exclude 'daily-poster/output/comments.html' \
+            --exclude 'daily-poster/output/comments.json'
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
-          
+          path: './_site'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
