@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-04-09",
+  "updated_at": "2026-04-10",
   "1m": {
     "current": {
-      "value": 67.96,
-      "date": "2026-04-09",
-      "rates": 65.2,
-      "liq": 86.4,
-      "risk": 52.3,
-      "regime": "NEUTRAL"
+      "value": 73.16,
+      "date": "2026-04-10",
+      "rates": 69.7,
+      "liq": 91.3,
+      "risk": 58.5,
+      "regime": "RISK_OFF"
     },
     "thresholds": {
       "on": 30,
@@ -27421,28 +27421,35 @@
       },
       {
         "date": "2026-04-08",
-        "bmri": 69.23,
-        "rates": 65.9,
-        "liq": 86.4,
-        "risk": 55.4
+        "bmri": 73.23,
+        "rates": 69.0,
+        "liq": 91.2,
+        "risk": 59.4
       },
       {
         "date": "2026-04-09",
-        "bmri": 67.96,
-        "rates": 65.2,
-        "liq": 86.4,
-        "risk": 52.3
+        "bmri": 72.99,
+        "rates": 69.7,
+        "liq": 91.2,
+        "risk": 58.1
+      },
+      {
+        "date": "2026-04-10",
+        "bmri": 73.16,
+        "rates": 69.7,
+        "liq": 91.3,
+        "risk": 58.5
       }
     ]
   },
   "6m": {
     "current": {
-      "value": 67.96,
-      "date": "2026-04-09",
-      "rates": 65.2,
-      "liq": 86.4,
-      "risk": 52.3,
-      "regime": "NEUTRAL"
+      "value": 73.16,
+      "date": "2026-04-10",
+      "rates": 69.7,
+      "liq": 91.3,
+      "risk": 58.5,
+      "regime": "RISK_OFF"
     },
     "thresholds": {
       "on": 30,
@@ -32021,11 +32028,11 @@
         "risk": 53.2
       },
       {
-        "date": "2026-04-09",
-        "bmri": 67.96,
-        "rates": 65.2,
-        "liq": 86.4,
-        "risk": 52.3
+        "date": "2026-04-10",
+        "bmri": 73.16,
+        "rates": 69.7,
+        "liq": 91.3,
+        "risk": 58.5
       }
     ]
   }
