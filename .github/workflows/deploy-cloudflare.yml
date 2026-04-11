@@ -1,0 +1,68 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare clean publish directory
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          rsync -av ./ ./_site/ \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude '_site/' \
+            --exclude 'tmp/' \
+            --exclude 'review/' \
+            --exclude 'poster/' \
+            --exclude 'web/' \
+            --exclude 'memory/' \
+            --exclude 'logs/' \
+            --exclude 'projects/' \
+            --exclude 'tasks/' \
+            --exclude 'skills/' \
+            --exclude 'archive/' \
+            --exclude 'canvas/' \
+            --exclude 'polymarket-monitor/' \
+            --exclude '.openclaw/' \
+            --exclude '.clawdhub/' \
+            --exclude '.clawhub/' \
+            --exclude '**/*.bak' \
+            --exclude '**/*.stub' \
+            --exclude '.DS_Store' \
+            --exclude 'debug-report.md' \
+            --exclude 'SOUL.md' \
+            --exclude 'IDENTITY.md' \
+            --exclude 'HEARTBEAT.md' \
+            --exclude 'TOOLS.md' \
+            --exclude 'USER.md' \
+            --exclude 'AGENTS.md' \
+            --exclude 'MEMORY.md' \
+            --exclude 'show_portfolio.py' \
+            --exclude 'buyback_candidates.csv' \
+            --exclude 'tev/debug.html' \
+            --exclude 'tev/final-debug.html' \
+            --exclude 'tev/simple-debug.html' \
+            --exclude 'tev/simple-test.html' \
+            --exclude 'tev/test-proto.html' \
+            --exclude 'tev/test-tevratio.html' \
+            --exclude 'tev/test_fetch.html' \
+            --exclude 'daily-poster/output/comments.html' \
+            --exclude 'daily-poster/output/comments.json'
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy ./_site --project-name=tev-dashboard --branch=main --commit-dirty=true
