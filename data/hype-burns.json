@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-04-11 22:42:52",
+  "updated_at": "2026-04-12 09:11:12",
   "source": "Hyperliquid API (api.hyperliquid.xyz)",
   "total_supply": 1000000000.0,
-  "current_supply": 999259405.1609312,
-  "circulating_supply": 299071404.07105064,
-  "total_burned": 740594.8390687704,
+  "current_supply": 999259288.137869,
+  "circulating_supply": 299056901.1193742,
+  "total_burned": 740711.8621309996,
   "burn_percentage": 0.0741,
-  "burned_value_usd": 30993153.42,
-  "current_price": 41.849,
+  "burned_value_usd": 31685431.33,
+  "current_price": 42.777,
   "mechanism": {
     "type": "fee_buyback_burn",
     "description": "99% 交易费用用于回购销毁 HYPE",
@@ -44,6 +44,11 @@
       "date": "2026-04-11",
       "total_burned": 739995.02,
       "price_avg": 41.829
+    },
+    {
+      "date": "2026-04-12",
+      "total_burned": 740711.86,
+      "price_avg": 42.777
     }
   ],
   "notes": "数据通过 Hyperliquid 官方 API 自动获取。销毁量 = maxSupply - totalSupply。"
