@@ -171,10 +171,14 @@ async function getDefillamaRevenue(slug) {
   try {
     const data = await fetchJson(`https://api.llama.fi/summary/fees/${slug}?dataType=dailyRevenue`);
     const chart = data.totalDataChart || [];
-    const last365 = chart.slice(-365);
-    const total365 = last365.reduce((sum, d) => sum + (d[1] || 0), 0);
-    const total30 = chart.slice(-30).reduce((sum, d) => sum + (d[1] || 0), 0);
-    return { revenue365d: total365, revenue30d: total30 };
+    const sumSlice = (n) => chart.slice(-n).reduce((s, d) => s + (d[1] || 0), 0);
+    return {
+      revenue7d:   chart.length >= 7   ? sumSlice(7)   : null,
+      revenue30d:  chart.length >= 7   ? sumSlice(30)  : null,
+      revenue90d:  chart.length >= 30  ? sumSlice(90)  : null,
+      revenue365d: sumSlice(365),
+      chartLength: chart.length,
+    };
   } catch (e) {
     console.warn(`  ⚠️ DefiLlama ${slug}: ${e.message}`);
     return null;
@@ -338,22 +342,37 @@ async function main() {
       tev365d = tevYield * marketCap / 100;
     }
     
-    // 计算 TEV Yield
+    // 计算多维度年化 TEV Yield
+    const calcYield = (revenue, days) => {
+      if (revenue == null || !marketCap) return null;
+      const annualized = revenue * (365 / days);
+      const tev = config.fixedTevUsd ? config.fixedTevUsd : annualized * (config.tevRatio || 0);
+      return Math.round(tev / marketCap * 10000) / 100;
+    };
+
     const tevYield = marketCap > 0 ? (tev365d / marketCap * 100) : 0;
-    
+    const tevYield7d  = config.fixedTevUsd ? tevYield : calcYield(revenueData.revenue7d, 7);
+    const tevYield30d = config.fixedTevUsd ? tevYield : calcYield(revenueData.revenue30d, 30);
+    const tevYield90d = config.fixedTevUsd ? tevYield : calcYield(revenueData.revenue90d, 90);
+
     // 更新数据
     if (!protocol.metrics) protocol.metrics = {};
-    
+
     const oldMcap = protocol.market_cap_usd;
     const oldRevenue = protocol.metrics.trailing_365d_revenue_usd;
     const oldTevYield = protocol.tev_yield_percent;
-    
+
     protocol.market_cap_usd = marketCap;
     protocol.metrics.current_market_cap_usd = marketCap;
-    protocol.metrics.trailing_365d_revenue_usd = revenueData.revenue365d;
+    protocol.metrics.trailing_7d_revenue_usd = revenueData.revenue7d;
     protocol.metrics.trailing_30d_revenue_usd = revenueData.revenue30d;
+    protocol.metrics.trailing_90d_revenue_usd = revenueData.revenue90d;
+    protocol.metrics.trailing_365d_revenue_usd = revenueData.revenue365d;
     protocol.metrics.trailing_365d_tev_usd = tev365d;
     protocol.metrics.trailing_30d_tev_usd = tev365d / 12;
+    protocol.metrics.tev_yield_7d_ann = tevYield7d;
+    protocol.metrics.tev_yield_30d_ann = tevYield30d;
+    protocol.metrics.tev_yield_90d_ann = tevYield90d;
     protocol.tev_yield_percent = Math.round(tevYield * 100) / 100;
     
     // 输出变化

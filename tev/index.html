@@ -27,6 +27,11 @@
     [data-tip] { cursor: help; }
     .tip-trigger { font-size: 11px; color: #52525b; margin-left: 2px; vertical-align: middle; cursor: help; }
 
+    .yield-period-btns { display: inline-flex; gap: 2px; margin-left: 6px; vertical-align: middle; }
+    .yield-btn { background: transparent; border: 1px solid var(--border, #333); color: var(--text-secondary, #888); font-size: 10px; padding: 1px 5px; border-radius: 4px; cursor: pointer; font-family: 'JetBrains Mono', monospace; }
+    .yield-btn.active { background: #22c55e; color: #000; border-color: #22c55e; font-weight: 600; }
+    .yield-btn:hover { border-color: #22c55e; }
+
   </style>
   <link rel="stylesheet" href="../css/theme-override.css">
 </head>
@@ -90,7 +95,7 @@
                 <th class="text-right sortable" data-sort="tevRatio" data-i18n="th.tevRatio" data-zh="分配比例" data-en="Distribution Ratio">分配比例</th>
                 <th class="text-right sortable" data-sort="mcap" data-i18n="th.mcap" data-zh="市值" data-en="Market Cap">市值</th>
                 <th class="text-right sortable" data-sort="earningYield" data-i18n="th.earningYield" data-zh="收益率" data-en="Earning Yield">收益率</th>
-                <th class="text-right sortable" data-sort="tevYield" data-i18n="th.yield">TEV Yield</th>
+                <th class="text-right sortable" data-sort="tevYield" data-i18n="th.yield">TEV Yield <span class="yield-period-btns"><button class="yield-btn" data-period="7d">7D</button><button class="yield-btn" data-period="30d">30D</button><button class="yield-btn" data-period="90d">90D</button><button class="yield-btn active" data-period="365d">1Y</button></span></th>
                 <th class="text-right" data-i18n="th.confidence">可信度</th>
               </tr>
             </thead>
@@ -308,6 +313,7 @@
     })();
 
     let currentSort = { field: 'tevStatus', dir: 'desc' };
+    let currentYieldPeriod = '365d';
     let currentFilter = 'all';
     const TEV_STATUS_ORDER = { active: 3, partial: 2, none: 1 };
 
@@ -407,7 +413,14 @@
 
       filtered.forEach((p, i) => {
         // 直接使用 all-protocols.json 中的预计算值
-        const tevYield = p.tev_yield_percent || 0;
+        const m = p.metrics || {};
+        const yieldMap = {
+          '7d': m.tev_yield_7d_ann,
+          '30d': m.tev_yield_30d_ann,
+          '90d': m.tev_yield_90d_ann,
+          '365d': p.tev_yield_percent || 0,
+        };
+        const tevYield = yieldMap[currentYieldPeriod] != null ? yieldMap[currentYieldPeriod] : (p.tev_yield_percent || 0);
         const earningYield = p.earning_yield_percent || 0;
         const tevStatus = p.tevStatus || 'none';
         const tevRatio = p.tevRatio || 0;
@@ -481,7 +494,18 @@
         document.getElementById('table-loading').innerHTML = `<div style="color:var(--danger);">Failed to load data</div><div style="margin-top:8px;font-size:12px;">${e.message}</div>`;
       }
     }
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', () => {
+      init();
+      document.querySelectorAll('.yield-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          document.querySelectorAll('.yield-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentYieldPeriod = btn.dataset.period;
+          renderTable();
+        });
+      });
+    });
   </script>
 <script src="../js/theme.js"></script>
 <script src="../js/lang.js"></script>

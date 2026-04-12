@@ -120,6 +120,52 @@
       .tev-grid-compact { grid-template-columns: repeat(2, 1fr); }
       #tokenomics-grid { grid-template-columns: 1fr !important; }
     }
+
+    /* TEV 算法透明区块 */
+    .tev-calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      font-size: 14px;
+    }
+    .tev-calc-row {
+      display: contents;
+    }
+    .tev-calc-label {
+      padding: 10px 16px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border);
+    }
+    .tev-calc-value {
+      padding: 10px 16px;
+      text-align: right;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--border);
+    }
+    .tev-calc-derived .tev-calc-label {
+      color: #22c55e;
+      font-weight: 600;
+    }
+    .tev-calc-derived .tev-calc-value {
+      color: #22c55e;
+      font-weight: 600;
+    }
+    .tev-calc-footer {
+      padding: 12px 16px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .tev-calc-footer span {
+      display: inline-block;
+      margin-right: 16px;
+    }
+    @media (max-width: 640px) {
+      .tev-calc-grid { font-size: 13px; }
+      .tev-calc-label, .tev-calc-value { padding: 8px 12px; }
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -183,6 +229,13 @@
           <div class="tev-summary-item"><div class="tev-summary-label">Burns<br><span class="label-zh" data-zh="销毁" data-en="Burn">销毁</span></div><div class="tev-summary-value" id="summary-burns">—</div></div>
           <div class="tev-summary-item"><div class="tev-summary-label">Confidence<br><span class="label-zh">可信度</span></div><div class="tev-summary-value" id="summary-confidence">—</div></div>
         </div>
+      </div>
+
+      <!-- TEV 算法透明区块 -->
+      <div class="section" id="tev-calc-section" style="display:none;">
+        <div class="section-title"><span class="icon">🔬</span><span data-zh="TEV 计算逻辑" data-en="TEV Calculation Logic">TEV 计算逻辑</span></div>
+        <div class="tev-calc-grid" id="tev-calc-content"></div>
+        <div class="tev-calc-footer" id="tev-calc-footer"></div>
       </div>
 
       <div class="section chart-section" id="tev-chart-section">
@@ -997,11 +1050,80 @@
         if (['bnb', 'hype', 'uniswap', 'sky'].includes(pid)) loadBurnsChart(pid);
         loadGovernance(pid);
         loadTokenomics(pid);
+        renderTevCalc(pid);
         // Aster 已有 tev-records，优先展示 TEV 历史图
         // if (['aster'].includes(pid)) loadBuybackData(pid);
       } catch (e) {
         console.error('Failed:', e);
         document.getElementById('loading').innerHTML = `<div style="color:var(--danger);">Failed to load protocol</div><div style="margin-top:8px;font-size:12px;">${e.message}</div><div style="margin-top:16px;"><a href="index.html" style="color:var(--blue);">← Back</a></div>`;
+      }
+    }
+
+    async function renderTevCalc(pid) {
+      try {
+        const resp = await fetch('../data/all-protocols.json');
+        if (!resp.ok) return;
+        const allData = await resp.json();
+        const p = (allData.protocols || {})[pid];
+        if (!p || !p.metrics) return;
+
+        const m = p.metrics;
+        const fmt = (n) => n != null ? '$' + Math.round(n).toLocaleString() : '—';
+        const pct = (n) => n != null ? (n * 100).toFixed(1) + '%' : '—';
+        const yld = (n) => n != null ? n.toFixed(2) + '%' : '—';
+
+        const revenue = m.trailing_365d_revenue_usd;
+        const tevRatio = p.tevRatio;
+        const tev = m.trailing_365d_tev_usd;
+        const mcap = m.current_market_cap_usd;
+        const tevYield = p.tev_yield_percent;
+
+        const rows = [
+          { label: currentLang === 'zh' ? '年收入 (DefiLlama)' : 'Annual Revenue (DefiLlama)', value: fmt(revenue) },
+          { label: currentLang === 'zh' ? 'TEV 比例' : 'TEV Ratio', value: tevRatio != null ? pct(tevRatio) : '—' },
+          { label: currentLang === 'zh' ? '→ 年 TEV' : '→ Annual TEV', value: fmt(tev), derived: true },
+          { label: '', value: '', spacer: true },
+          { label: currentLang === 'zh' ? '当前市值' : 'Market Cap', value: fmt(mcap) },
+          { label: '→ TEV Yield (1Y)', value: yld(tevYield), derived: true },
+        ];
+
+        // 多维度 yield
+        const y7 = m.tev_yield_7d_ann, y30 = m.tev_yield_30d_ann, y90 = m.tev_yield_90d_ann;
+        if (y7 != null || y30 != null || y90 != null) {
+          rows.push({ label: '', value: '', spacer: true });
+          rows.push({ label: currentLang === 'zh' ? '多维度年化 TEV Yield' : 'Multi-period TEV Yield (Annualized)', value: '', header: true });
+          rows.push({ label: '7D', value: yld(y7) });
+          rows.push({ label: '30D', value: yld(y30) });
+          rows.push({ label: '90D', value: yld(y90) });
+          rows.push({ label: '365D', value: yld(tevYield), derived: true });
+        }
+
+        const container = document.getElementById('tev-calc-content');
+        container.innerHTML = rows.map(r => {
+          if (r.spacer) return '<div class="tev-calc-row" style="display:contents"><div style="padding:6px;border:none" colspan="2"></div><div style="padding:6px;border:none"></div></div>';
+          if (r.header) return `<div class="tev-calc-row" style="display:contents"><div class="tev-calc-label" style="grid-column:1/-1;color:var(--text-primary);font-weight:600;font-size:13px;">${r.label}</div></div>`;
+          const cls = r.derived ? ' tev-calc-derived' : '';
+          return `<div class="tev-calc-row${cls}" style="display:contents"><div class="tev-calc-label">${r.label}</div><div class="tev-calc-value">${r.value}</div></div>`;
+        }).join('');
+
+        // Footer
+        const footer = document.getElementById('tev-calc-footer');
+        const note = p.tevRatioNote || '';
+        const conf = p.confidence || 'medium';
+        const confLabel = currentLang === 'zh'
+          ? { high: '高', medium: '中', low: '低' }[conf] || conf
+          : conf;
+        const updatedAt = allData.generated_at ? allData.generated_at.split('T')[0] : '—';
+        footer.innerHTML = [
+          `<span>${currentLang === 'zh' ? '数据来源' : 'Source'}: DefiLlama Revenue API</span>`,
+          note ? `<span>${currentLang === 'zh' ? 'TEV 比例依据' : 'Ratio basis'}: ${note}</span>` : '',
+          `<span>${currentLang === 'zh' ? '置信度' : 'Confidence'}: ${confLabel}</span>`,
+          `<span>${currentLang === 'zh' ? '更新' : 'Updated'}: ${updatedAt}</span>`,
+        ].filter(Boolean).join('');
+
+        document.getElementById('tev-calc-section').style.display = 'block';
+      } catch (e) {
+        console.warn('TEV calc render failed:', e);
       }
     }
 
