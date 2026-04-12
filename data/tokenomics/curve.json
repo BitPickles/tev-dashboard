@@ -1,0 +1,53 @@
+{
+  "protocol": "curve",
+  "token": "CRV",
+  "total_supply": 3030303031,
+  "allocation": [
+    {
+      "category": "Community (LP rewards)",
+      "percent": 62,
+      "amount": 1878787879,
+      "color": "#0000FF"
+    },
+    {
+      "category": "Shareholders (team & investors)",
+      "percent": 30,
+      "amount": 909090909,
+      "color": "#FF6B6B"
+    },
+    {
+      "category": "Employees",
+      "percent": 3,
+      "amount": 90909091,
+      "color": "#4ECDC4"
+    },
+    {
+      "category": "Community Reserve",
+      "percent": 5,
+      "amount": 151515152,
+      "color": "#45B7D1"
+    }
+  ],
+  "unlock_schedule": [
+    {
+      "date": "2020-08-13",
+      "amount": 151515152,
+      "category": "Initial distribution",
+      "cumulative_percent": 5.0
+    },
+    {
+      "date": "2024-08-13",
+      "amount": 1500000000,
+      "category": "4yr vesting + emissions",
+      "cumulative_percent": 49.5
+    },
+    {
+      "date": "2026-08-13",
+      "amount": 2200000000,
+      "category": "Ongoing emissions",
+      "cumulative_percent": 72.6
+    }
+  ],
+  "source": "Curve DAO Documentation",
+  "updated_at": "2026-04-13"
+}

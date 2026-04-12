@@ -1,0 +1,54 @@
+{
+  "protocol": "gmx",
+  "token": "GMX",
+  "total_supply": 13250000,
+  "allocation": [
+    {
+      "category": "Floor Price Fund",
+      "percent": 26.0,
+      "amount": 3445000,
+      "color": "#2D42FC"
+    },
+    {
+      "category": "esGMX Reserves",
+      "percent": 22.6,
+      "amount": 2000000,
+      "color": "#45B7D1"
+    },
+    {
+      "category": "Migration (XVIX/GMT)",
+      "percent": 45.3,
+      "amount": 6000000,
+      "color": "#4ECDC4"
+    },
+    {
+      "category": "Marketing / Community",
+      "percent": 6.1,
+      "amount": 805000,
+      "color": "#FFA07A"
+    }
+  ],
+  "unlock_schedule": [
+    {
+      "date": "2021-09-01",
+      "amount": 6000000,
+      "category": "Migration",
+      "cumulative_percent": 45.3
+    },
+    {
+      "date": "2023-01-01",
+      "amount": 10000000,
+      "category": "esGMX vesting",
+      "cumulative_percent": 75.5
+    },
+    {
+      "date": "2025-01-01",
+      "amount": 13250000,
+      "category": "Fully diluted",
+      "cumulative_percent": 100.0
+    }
+  ],
+  "source": "GMX Documentation",
+  "updated_at": "2026-04-13",
+  "circulating_supply": 10383597.528002843
+}

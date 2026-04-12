@@ -1,0 +1,66 @@
+{
+  "protocol": "dydx",
+  "token": "DYDX",
+  "total_supply": 1000000000,
+  "allocation": [
+    {
+      "category": "Community Treasury",
+      "percent": 26.1,
+      "amount": 261000000,
+      "color": "#6966FF"
+    },
+    {
+      "category": "Trading Rewards",
+      "percent": 25,
+      "amount": 250000000,
+      "color": "#45B7D1"
+    },
+    {
+      "category": "Investors",
+      "percent": 27.7,
+      "amount": 277000000,
+      "color": "#4ECDC4"
+    },
+    {
+      "category": "Team & Founders",
+      "percent": 15.3,
+      "amount": 153000000,
+      "color": "#FF6B6B"
+    },
+    {
+      "category": "Liquidity & Safety",
+      "percent": 5.9,
+      "amount": 59000000,
+      "color": "#FFA07A"
+    }
+  ],
+  "unlock_schedule": [
+    {
+      "date": "2021-08-03",
+      "amount": 75000000,
+      "category": "TGE",
+      "cumulative_percent": 7.5
+    },
+    {
+      "date": "2023-02-03",
+      "amount": 300000000,
+      "category": "Cliff unlock",
+      "cumulative_percent": 30.0
+    },
+    {
+      "date": "2024-08-03",
+      "amount": 700000000,
+      "category": "Major vesting",
+      "cumulative_percent": 70.0
+    },
+    {
+      "date": "2026-06-01",
+      "amount": 1000000000,
+      "category": "Fully vested",
+      "cumulative_percent": 100.0
+    }
+  ],
+  "source": "dYdX Foundation Docs",
+  "updated_at": "2026-04-13",
+  "circulating_supply": 835145568.8070294
+}

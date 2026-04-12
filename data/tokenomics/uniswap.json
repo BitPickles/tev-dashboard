@@ -1,0 +1,66 @@
+{
+  "protocol": "uniswap",
+  "token": "UNI",
+  "total_supply": 1000000000,
+  "allocation": [
+    {
+      "category": "Community",
+      "percent": 60,
+      "amount": 600000000,
+      "color": "#FF007A"
+    },
+    {
+      "category": "Team",
+      "percent": 21.27,
+      "amount": 212660000,
+      "color": "#FF6B6B"
+    },
+    {
+      "category": "Investors",
+      "percent": 18.04,
+      "amount": 180440000,
+      "color": "#4ECDC4"
+    },
+    {
+      "category": "Advisors",
+      "percent": 0.69,
+      "amount": 6900000,
+      "color": "#45B7D1"
+    }
+  ],
+  "unlock_schedule": [
+    {
+      "date": "2020-09-17",
+      "amount": 150000000,
+      "category": "TGE (Community Airdrop)",
+      "cumulative_percent": 15.0
+    },
+    {
+      "date": "2021-09-17",
+      "amount": 400000000,
+      "category": "Year 1 vesting",
+      "cumulative_percent": 40.0
+    },
+    {
+      "date": "2022-09-17",
+      "amount": 650000000,
+      "category": "Year 2 vesting",
+      "cumulative_percent": 65.0
+    },
+    {
+      "date": "2023-09-17",
+      "amount": 830000000,
+      "category": "Year 3 vesting",
+      "cumulative_percent": 83.0
+    },
+    {
+      "date": "2024-09-17",
+      "amount": 1000000000,
+      "category": "Fully vested",
+      "cumulative_percent": 100.0
+    }
+  ],
+  "source": "Uniswap Blog / Governance Docs",
+  "updated_at": "2026-04-13",
+  "circulating_supply": 637397562.7465303
+}
