@@ -1,0 +1,42 @@
+{
+  "protocol": "aave",
+  "token": "AAVE",
+  "total_supply": 16000000,
+  "allocation": [
+    {
+      "category": "Ecosystem Reserve",
+      "percent": 62.5,
+      "amount": 10000000,
+      "color": "#45B7D1"
+    },
+    {
+      "category": "Team & Founders",
+      "percent": 18.75,
+      "amount": 3000000,
+      "color": "#FF6B6B"
+    },
+    {
+      "category": "Investors (Migration)",
+      "percent": 18.75,
+      "amount": 3000000,
+      "color": "#4ECDC4"
+    }
+  ],
+  "unlock_schedule": [
+    {
+      "date": "2020-10-01",
+      "amount": 13000000,
+      "category": "Migration + Reserve",
+      "cumulative_percent": 81.25
+    },
+    {
+      "date": "2023-07-01",
+      "amount": 16000000,
+      "category": "Fully vested",
+      "cumulative_percent": 100.0
+    }
+  ],
+  "source": "Aave Documentation",
+  "updated_at": "2026-04-13",
+  "circulating_supply": 15384811.988111796
+}

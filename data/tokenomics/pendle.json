@@ -1,0 +1,72 @@
+{
+  "protocol": "pendle",
+  "token": "PENDLE",
+  "total_supply": 258446028,
+  "allocation": [
+    {
+      "category": "Incentives & Ecosystem",
+      "percent": 49.3,
+      "amount": 127500000,
+      "color": "#00F0FF"
+    },
+    {
+      "category": "Team",
+      "percent": 22,
+      "amount": 56858000,
+      "color": "#FF6B6B"
+    },
+    {
+      "category": "Investors",
+      "percent": 15.7,
+      "amount": 40576000,
+      "color": "#4ECDC4"
+    },
+    {
+      "category": "Liquidity Bootstrapping",
+      "percent": 7,
+      "amount": 18091000,
+      "color": "#45B7D1"
+    },
+    {
+      "category": "Ecosystem Fund",
+      "percent": 6,
+      "amount": 15507000,
+      "color": "#FFA07A"
+    }
+  ],
+  "unlock_schedule": [
+    {
+      "date": "2021-04-28",
+      "amount": 37000000,
+      "category": "TGE + IDO",
+      "cumulative_percent": 14.3
+    },
+    {
+      "date": "2022-04-28",
+      "amount": 97000000,
+      "category": "Year 1 emissions",
+      "cumulative_percent": 37.5
+    },
+    {
+      "date": "2023-04-28",
+      "amount": 143000000,
+      "category": "Year 2 emissions",
+      "cumulative_percent": 55.3
+    },
+    {
+      "date": "2024-04-28",
+      "amount": 200000000,
+      "category": "Year 3 + team cliff",
+      "cumulative_percent": 77.4
+    },
+    {
+      "date": "2026-04-28",
+      "amount": 258446028,
+      "category": "Fully vested (est.)",
+      "cumulative_percent": 100.0
+    }
+  ],
+  "source": "Pendle Documentation",
+  "updated_at": "2026-04-13",
+  "circulating_supply": 166776651.5626601
+}
