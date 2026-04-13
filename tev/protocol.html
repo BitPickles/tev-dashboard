@@ -1087,7 +1087,19 @@
           { label: '→ TEV Yield (1Y)', value: yld(tevYield), derived: true },
         ];
 
-        // 多维度 yield
+        // 多维度年化 Earning Yield
+        const ey7 = m.earning_yield_7d_ann, ey30 = m.earning_yield_30d_ann, ey90 = m.earning_yield_90d_ann;
+        const earningYield = p.earning_yield_percent;
+        if (ey7 != null || ey30 != null || ey90 != null) {
+          rows.push({ label: '', value: '', spacer: true });
+          rows.push({ label: currentLang === 'zh' ? '多维度年化收益率 (Earning Yield)' : 'Multi-period Earning Yield (Annualized)', value: '', header: true });
+          rows.push({ label: '7D', value: yld(ey7) });
+          rows.push({ label: '30D', value: yld(ey30) });
+          rows.push({ label: '90D', value: yld(ey90) });
+          rows.push({ label: '365D', value: yld(earningYield), derived: true });
+        }
+
+        // 多维度年化 TEV Yield
         const y7 = m.tev_yield_7d_ann, y30 = m.tev_yield_30d_ann, y90 = m.tev_yield_90d_ann;
         if (y7 != null || y30 != null || y90 != null) {
           rows.push({ label: '', value: '', spacer: true });
