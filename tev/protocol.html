@@ -996,7 +996,8 @@
         const statusText = document.getElementById('tev-status-text');
         statusText.textContent = tevStatus === 'active' ? 'TEV ACTIVE' : tevStatus === 'partial' ? 'TEV PARTIAL' : 'NO TEV';
         statusText.className = `tev-status ${tevStatus}`;
-        document.getElementById('primary-value').textContent = cfg.tev_summary?.fee_switch === 'ON' ? '✓ ON' : cfg.tev_summary?.fee_switch === 'PARTIAL' ? '~ PARTIAL' : '✗ OFF';
+        const feeSwitch = cfg.tev_summary?.fee_switch;
+        document.getElementById('primary-value').textContent = tevStatus === 'active' ? '✓ ON' : tevStatus === 'partial' ? '~ PARTIAL' : feeSwitch === 'N/A' ? 'N/A' : '✗ OFF';
         document.getElementById('primary-label').textContent = cfg.tev_summary?.primary_value_accrual || '—';
 
         // TEV 概览 - 新增字段
