@@ -390,7 +390,15 @@
     function updateSortIndicators() {
       document.querySelectorAll('th.sortable').forEach(th => {
         th.classList.remove('sorted', 'asc', 'desc');
-        th.textContent = t(th.dataset.i18n || th.getAttribute('data-i18n'));
+        // Preserve child elements (like yield period buttons) — only update text node
+        const btnSpan = th.querySelector('.yield-period-btns');
+        if (btnSpan) {
+          // Update text before the button span
+          const textNode = th.firstChild;
+          if (textNode && textNode.nodeType === 3) textNode.textContent = t(th.dataset.i18n || th.getAttribute('data-i18n')) + ' ';
+        } else {
+          th.textContent = t(th.dataset.i18n || th.getAttribute('data-i18n'));
+        }
       });
       const active = document.querySelector(`th[data-sort="${currentSort.field}"]`);
       if (active) active.classList.add('sorted', currentSort.dir);
