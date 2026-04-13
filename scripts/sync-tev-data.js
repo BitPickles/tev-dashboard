@@ -78,8 +78,8 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'pancakeswap', 
     coingeckoId: 'pancakeswap-token',
     cmcSlug: 'pancakeswap',
-    tevRatio: 0.58,
-    note: '58% 回购销毁 (44-72% 按费率取中间值)'
+    tevRatio: 0.15,
+    note: '15% 收入用于 CAKE 销毁 (veCAKE 已于 2025-04-23 停止, Tokenomics 3.0 转为 100% burn 模式)'
   },
   pendle: { 
     defillamaSlug: 'pendle', 
