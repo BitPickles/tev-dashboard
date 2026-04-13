@@ -374,6 +374,16 @@ async function main() {
     protocol.metrics.tev_yield_30d_ann = tevYield30d;
     protocol.metrics.tev_yield_90d_ann = tevYield90d;
     protocol.tev_yield_percent = Math.round(tevYield * 100) / 100;
+
+    // 多维度年化 Earning Yield = annualized revenue / market_cap
+    const calcEarningYield = (revenue, days) => {
+      if (revenue == null || !marketCap) return null;
+      return Math.round(revenue * (365 / days) / marketCap * 10000) / 100;
+    };
+    protocol.metrics.earning_yield_7d_ann = calcEarningYield(revenueData.revenue7d, 7);
+    protocol.metrics.earning_yield_30d_ann = calcEarningYield(revenueData.revenue30d, 30);
+    protocol.metrics.earning_yield_90d_ann = calcEarningYield(revenueData.revenue90d, 90);
+    protocol.earning_yield_percent = calcEarningYield(revenueData.revenue365d, 365) || protocol.earning_yield_percent;
     
     // 输出变化
     console.log(`  市值: $${(oldMcap/1e6).toFixed(1)}M → $${(marketCap/1e6).toFixed(1)}M`);
