@@ -1,12 +1,12 @@
 {
   "id": "bgb",
   "hidden": true,
-  "hidden_reason": "CEX \u6570\u636e\u4e0d\u900f\u660e",
+  "hidden_reason": "CEX 数据不透明",
   "name": "Bitget Token",
   "ticker": "BGB",
   "icon": "https://coin-images.coingecko.com/coins/images/11610/large/Bitget_logo.png",
   "category": "cex_token",
-  "description": "Bitget \u4ea4\u6613\u6240\u5e73\u53f0\u5e01",
+  "description": "Bitget 交易所平台币",
   "website": "https://www.bitget.com",
   "docs": "https://www.bitget.com/bgb",
   "token": {
@@ -14,31 +14,31 @@
     "chain": "Ethereum",
     "coingecko_id": "bitget-token",
     "total_supply": 2000000000,
-    "note": "\u5408\u7ea6\u652f\u6301 burn \u529f\u80fd"
+    "note": "合约支持 burn 功能"
   },
   "tev_mechanisms": [
     {
       "type": "buyback_burn",
       "name": "Quarterly Buy-Back & Burn",
-      "description": "Bitget \u7528\u5e73\u53f0\u6536\u5165\u56de\u8d2d\u5e76\u9500\u6bc1 BGB",
+      "description": "Bitget 用平台收入回购并销毁 BGB",
       "status": "active",
       "frequency": "quarterly",
       "source": {
         "type": "official",
         "title": "BGB Buy-Back & Burn",
         "url": "https://www.bitget.com/bgb",
-        "note": "\u5b98\u7f51\u88ab Cloudflare \u62e6\u622a\uff0c\u9700\u8981\u786e\u8ba4\u5177\u4f53\u6bd4\u4f8b"
+        "note": "官网被 Cloudflare 拦截，需要确认具体比例"
       }
     }
   ],
   "tev_summary": {
     "fee_switch": "N/A",
-    "fee_switch_details": "CEX \u6536\u5165\u4e0d\u76f4\u63a5\u94fe\u4e0a\u5206\u914d",
+    "fee_switch_details": "CEX 收入不直接链上分配",
     "buybacks": "ACTIVE",
     "dividends": "UNKNOWN",
     "burns": "ACTIVE",
-    "burn_details": "\u5b63\u5ea6\u56de\u8d2d\u9500\u6bc1\uff08\u5177\u4f53\u6bd4\u4f8b\u5f85\u786e\u8ba4\uff09",
-    "primary_value_accrual": "\u56de\u8d2d\u9500\u6bc1 - \u5b63\u5ea6\u7528\u5e73\u53f0\u6536\u5165\u56de\u8d2d\u9500\u6bc1 BGB"
+    "burn_details": "季度回购销毁（具体比例待确认）",
+    "primary_value_accrual": "回购销毁 - 季度用平台收入回购销毁 BGB"
   },
   "market_data": {
     "price_usd": 2.7,
@@ -50,24 +50,24 @@
   "calculated_tev": {
     "tev_yield_percent": null,
     "calculation_status": "UNABLE_TO_CALCULATE",
-    "reason": "Bitget \u4e0d\u516c\u5f00\u8d22\u52a1\u6570\u636e\uff0c\u65e0\u6cd5\u83b7\u53d6\u51c6\u786e\u7684\u9500\u6bc1\u91d1\u989d",
-    "note": "\u9700\u8981\u6574\u7406\u5386\u53f2\u5b63\u5ea6\u9500\u6bc1\u516c\u544a\u6765\u4f30\u7b97"
+    "reason": "Bitget 不公开财务数据，无法获取准确的销毁金额",
+    "note": "需要整理历史季度销毁公告来估算"
   },
   "data_gaps": [
     {
-      "item": "\u5b63\u5ea6\u9500\u6bc1\u91d1\u989d",
-      "status": "\u9700\u8981\u8865\u5145",
-      "note": "\u9700\u8981\u4ece Bitget \u516c\u544a\u6574\u7406\u5386\u53f2\u6570\u636e"
+      "item": "季度销毁金额",
+      "status": "需要补充",
+      "note": "需要从 Bitget 公告整理历史数据"
     },
     {
-      "item": "\u9500\u6bc1\u6bd4\u4f8b",
-      "status": "\u9700\u8981\u786e\u8ba4",
-      "note": "\u5e73\u53f0\u6536\u5165\u7684\u591a\u5c11\u6bd4\u4f8b\u7528\u4e8e\u56de\u8d2d\u9500\u6bc1"
+      "item": "销毁比例",
+      "status": "需要确认",
+      "note": "平台收入的多少比例用于回购销毁"
     },
     {
-      "item": "Bitget \u6536\u5165",
-      "status": "\u4e0d\u516c\u5f00",
-      "note": "\u79c1\u8425\u516c\u53f8\u4e0d\u62ab\u9732\u8d22\u52a1\u6570\u636e"
+      "item": "Bitget 收入",
+      "status": "不公开",
+      "note": "私营公司不披露财务数据"
     }
   ],
   "confidence": "low",
@@ -93,26 +93,27 @@
       ]
     }
   ],
-  "analyst_notes": "\u30102026-02-05 \u521d\u6b65\u8c03\u7814\u3011\n\n## BGB TEV \u8bc4\u4f30\n\n### \u5df2\u77e5\u4fe1\u606f\n1. **Bitget \u5e73\u53f0\u5e01**\uff1a\u7c7b\u4f3c BNB/OKB \u7684 CEX token\n2. **\u5b63\u5ea6\u56de\u8d2d\u9500\u6bc1**\uff1a\u6709\u6b64\u673a\u5236\uff0c\u4f46\u5177\u4f53\u6bd4\u4f8b\u5f85\u786e\u8ba4\n3. **\u5408\u7ea6\u652f\u6301\u9500\u6bc1**\uff1aEtherscan \u9a8c\u8bc1\u5408\u7ea6\u6709 burn \u529f\u80fd\n\n### \u6570\u636e\u9650\u5236\n1. \u274c Bitget \u7f51\u7ad9\u88ab Cloudflare \u62e6\u622a\n2. \u274c \u65e0\u6cd5\u83b7\u53d6\u5b98\u65b9\u6587\u6863\n3. \u26a0\ufe0f \u9700\u8981\u901a\u8fc7\u516c\u544a\u6574\u7406\u9500\u6bc1\u6570\u636e\n\n### \u4e0e\u540c\u7c7b\u5bf9\u6bd4\n| \u5e73\u53f0\u5e01 | \u9500\u6bc1\u673a\u5236 | \u6570\u636e\u900f\u660e\u5ea6 |\n|--------|----------|------------|\n| BNB | Auto-Burn | \u4e2d |\n| OKB | 30% \u6536\u5165 | \u4f4e |\n| BGB | \u5f85\u786e\u8ba4 | \u4f4e |\n\n### \u9700\u8981\u8865\u5145\n1. BGB \u9500\u6bc1\u6bd4\u4f8b\n2. \u5386\u53f2\u5b63\u5ea6\u9500\u6bc1\u6570\u636e\n3. \u5176\u4ed6\u4ee3\u5e01\u6743\u76ca\uff08Launchpad \u7b49\uff09",
+  "analyst_notes": "【2026-02-05 初步调研】\n\n## BGB TEV 评估\n\n### 已知信息\n1. **Bitget 平台币**：类似 BNB/OKB 的 CEX token\n2. **季度回购销毁**：有此机制，但具体比例待确认\n3. **合约支持销毁**：Etherscan 验证合约有 burn 功能\n\n### 数据限制\n1. ❌ Bitget 网站被 Cloudflare 拦截\n2. ❌ 无法获取官方文档\n3. ⚠️ 需要通过公告整理销毁数据\n\n### 与同类对比\n| 平台币 | 销毁机制 | 数据透明度 |\n|--------|----------|------------|\n| BNB | Auto-Burn | 中 |\n| OKB | 30% 收入 | 低 |\n| BGB | 待确认 | 低 |\n\n### 需要补充\n1. BGB 销毁比例\n2. 历史季度销毁数据\n3. 其他代币权益（Launchpad 等）",
   "questions_for_boss": [
-    "BGB \u9500\u6bc1\u6bd4\u4f8b\u662f\u591a\u5c11\uff1f",
-    "\u662f\u5426\u6709\u5176\u4ed6 TEV \u673a\u5236\uff08\u5982 Launchpad \u53c2\u4e0e\u6743\uff09\uff1f"
+    "BGB 销毁比例是多少？",
+    "是否有其他 TEV 机制（如 Launchpad 参与权）？"
   ],
   "last_updated": "2026-02-14",
   "tev_data": {
     "has_tev": true,
     "tev_yield_percent": 0,
-    "annual_tev_usd": 0,
-    "calculation_date": "2026-02-14",
-    "note": "\u9500\u6bc1\u673a\u5236\uff0c\u900f\u660e\u5ea6\u4f4e",
-    "sources": []
+    "calculation_date": "2026-04-13",
+    "note": "销毁机制，透明度低",
+    "sources": [],
+    "market_cap_usd": 1888393751
   },
   "tevStatus": "partial",
   "confidence_reason": {
-    "zh": "CEX \u5185\u90e8\u9500\u6bc1\uff0c\u65e0\u94fe\u4e0a\u8bc1\u636e\uff0c\u4ec5\u5b98\u65b9\u516c\u544a",
+    "zh": "CEX 内部销毁，无链上证据，仅官方公告",
     "en": "CEX internal burn, no on-chain proof, announcement only"
   },
-  "tevRatio": 0.0,
-  "earning_yield_percent": 0.0,
-  "market_cap_usd": 1888393751
+  "tevRatio": 0,
+  "earning_yield_percent": 0,
+  "market_cap_usd": 1888393751,
+  "tev_yield_percent": 0
 }

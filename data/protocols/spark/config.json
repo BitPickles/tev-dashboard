@@ -53,7 +53,9 @@
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "note": "无持续 TEV"
+    "note": "无持续 TEV",
+    "market_cap_usd": 55337406.77,
+    "calculation_date": "2026-04-13"
   },
   "market_data": {
     "tvl": 5328898278.33737,
@@ -65,6 +67,22 @@
     "en": "SPK token is new, revenue goes to Sky DAO, distribution mechanism still under governance discussion"
   },
   "tevRatio": 0,
-  "earning_yield_percent": 46.77,
-  "market_cap_usd": 49017114.84
+  "earning_yield_percent": 45.31,
+  "market_cap_usd": 55337406.77,
+  "tev_yield_percent": 0,
+  "metrics": {
+    "trailing_365d_revenue_usd": 25075508,
+    "trailing_30d_revenue_usd": 543892,
+    "current_market_cap_usd": 55337406.77,
+    "trailing_365d_tev_usd": 0,
+    "trailing_30d_tev_usd": 0,
+    "trailing_7d_revenue_usd": 135324,
+    "trailing_90d_revenue_usd": 3852692,
+    "tev_yield_7d_ann": 0,
+    "tev_yield_30d_ann": 0,
+    "tev_yield_90d_ann": 0,
+    "earning_yield_7d_ann": 12.75,
+    "earning_yield_30d_ann": 11.96,
+    "earning_yield_90d_ann": 28.24
+  }
 }

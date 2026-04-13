@@ -57,7 +57,9 @@
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "note": "无持续 TEV"
+    "note": "无持续 TEV",
+    "market_cap_usd": 147452443.61,
+    "calculation_date": "2026-04-13"
   },
   "market_data": {
     "tvl": 1092767451.87587,
@@ -69,6 +71,22 @@
     "en": "No TEV mechanism, JitoSOL yields go to stakers not JTO holders, limited data relevance"
   },
   "tevRatio": 0,
-  "earning_yield_percent": 20.3,
-  "market_cap_usd": 125726633.69
+  "earning_yield_percent": 21.78,
+  "market_cap_usd": 147452443.61,
+  "tev_yield_percent": 0,
+  "metrics": {
+    "trailing_365d_revenue_usd": 32112037,
+    "trailing_30d_revenue_usd": 347088,
+    "current_market_cap_usd": 147452443.61,
+    "trailing_365d_tev_usd": 0,
+    "trailing_30d_tev_usd": 0,
+    "trailing_7d_revenue_usd": 67435,
+    "trailing_90d_revenue_usd": 1298586,
+    "tev_yield_7d_ann": 0,
+    "tev_yield_30d_ann": 0,
+    "tev_yield_90d_ann": 0,
+    "earning_yield_7d_ann": 2.38,
+    "earning_yield_30d_ann": 2.86,
+    "earning_yield_90d_ann": 3.57
+  }
 }

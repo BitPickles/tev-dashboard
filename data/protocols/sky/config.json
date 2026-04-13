@@ -67,10 +67,10 @@
   "last_updated": "2026-02-14",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 6.21,
-    "annual_tev_usd": 99103164,
-    "market_cap_usd": 1595994273,
-    "calculation_date": "2026-02-14",
+    "tev_yield_percent": 0.8,
+    "annual_tev_usd": 13724000,
+    "market_cap_usd": 1719743562.67,
+    "calculation_date": "2026-04-13",
     "sources": [
       {
         "name": "DefiLlama holdersRevenue",
@@ -143,6 +143,24 @@
     }
   },
   "tevRatio": 0.7,
-  "earning_yield_percent": 15.62,
-  "market_cap_usd": 1595994273
+  "earning_yield_percent": 14.59,
+  "market_cap_usd": 1719743562.67,
+  "tev_yield_percent": 0.8,
+  "metrics": {
+    "current_market_cap_usd": 1719743562.67,
+    "trailing_365d_revenue_usd": 250852670,
+    "trailing_30d_revenue_usd": 14382915,
+    "trailing_365d_tev_usd": 13724000,
+    "trailing_30d_tev_usd": 1143666.6666666667,
+    "trailing_365d_holders_revenue_usd": 135679512,
+    "trailing_30d_holders_revenue_usd": 5565701,
+    "trailing_7d_revenue_usd": 3291741,
+    "trailing_90d_revenue_usd": 50505052,
+    "tev_yield_7d_ann": 0.7980259556077481,
+    "tev_yield_30d_ann": 0.7980259556077481,
+    "tev_yield_90d_ann": 0.7980259556077481,
+    "earning_yield_7d_ann": 9.98,
+    "earning_yield_30d_ann": 10.18,
+    "earning_yield_90d_ann": 11.91
+  }
 }

@@ -406,8 +406,7 @@
   "tev_data": {
     "has_tev": true,
     "tev_yield_percent": 11.27,
-    "annual_tev_usd": 9662202040,
-    "calculation_date": "2026-03-27",
+    "calculation_date": "2026-04-13",
     "methodology": "Burn APY (链上销毁) + asBNB APY (Aster 综合持有收益)",
     "validation": {
       "method": "Burn APY + asBNB APY (Aster)",
@@ -472,7 +471,8 @@
       "asBNB 不包含 Burn 的供给收缩价值（与 Burn APY 无重叠）",
       "slisBNB 仅含 Staking 收益，不适合作为 BNB 全部 TEV 的 proxy",
       "CEX 财务不公开，Holder Perks 部分依赖 Aster 聚合数据"
-    ]
+    ],
+    "market_cap_usd": 85528916981
   },
   "confidence": "high",
   "data_sources": [
@@ -522,7 +522,7 @@
   "analyst_notes": "【2026-03-01 更新 - Burn + asBNB 双源验证】\n\n## BNB TEV 计算方法\n\n采用 **Burn APY + asBNB APY** 双源独立计算，替代之前的 slisBNB 单一 proxy。\n\n### 为什么不再用 slisBNB？\n- slisBNB 仅反映 **Staking 收益**，不含 Launchpool/HODLer/Megadrop\n- 会**低估** BNB 的综合持有收益\n\n### 数据源拆分\n\n| 来源 | APY | 年化 USD | 说明 |\n|------|-----|---------|------|\n| Auto-Burn | 4.40% | $3.75B | 季度销毁，公式 B=N×1000/P |\n| BEP-95 | ~0.01% | $10.2M | 实时 gas fee 销毁 |\n| asBNB 持有收益 | 6.87% | $5.88B | Staking + Launchpool/HODLer/Megadrop |\n| **合计** | **11.27%** | **$9.64B** | |\n\n### 关键结论\n- **TEV Yield: 11.27%**（Burn 4.4% + 持有收益 6.87%）\n- Burn 与 asBNB 无重叠（Burn = 供给收缩，asBNB = 收益分配）\n- 链上黑洞地址累计余额：13,299,471 BNB（可验证）\n- 数据来源：bnbburn.info + Aster 官方",
   "last_updated": "2026-03-02",
   "burn_progress": {
-    "total_burned": 13300851.0,
+    "total_burned": 13300851,
     "initial_supply": 200000000,
     "target_supply": 100000000,
     "target": 100000000,
@@ -539,7 +539,7 @@
       {
         "label": "BEP-95 实时销毁",
         "label_en": "BEP-95 Real-time Burn",
-        "amount": -49142133.0,
+        "amount": -49142133,
         "color": "rgba(240,185,11,0.4)"
       }
     ]
@@ -551,5 +551,6 @@
   },
   "tevRatio": 0,
   "earning_yield_percent": 0,
-  "market_cap_usd": 85528916981
+  "market_cap_usd": 85528916981,
+  "tev_yield_percent": 11.27
 }

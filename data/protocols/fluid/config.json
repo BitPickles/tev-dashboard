@@ -88,10 +88,10 @@
   "tev_data": {
     "has_tev": true,
     "trailing_365d_tev_usd": 4613558,
-    "tev_yield_percent": 2.58,
-    "market_cap_usd": 178886148,
+    "tev_yield_percent": 3.55,
+    "market_cap_usd": 124866997.33,
     "price_usd": 2.28,
-    "calculation_date": "2026-03-01",
+    "calculation_date": "2026-04-13",
     "methodology": "链上回购追踪（Etherscan FLUID→储备钱包），DefiLlama 交叉验证",
     "sources": [
       {
@@ -106,7 +106,8 @@
       "defillama_total_usd": 4637397,
       "diff_pct": 0.5
     },
-    "last_updated": "2026-03-20"
+    "last_updated": "2026-03-20",
+    "annual_tev_usd": 4426621.85
   },
   "buyback_data": {
     "total_bought": 1094934,
@@ -138,6 +139,22 @@
     "tvl_updated": "2026-03-27T01:00:50.616Z"
   },
   "tevRatio": 0.35,
-  "earning_yield_percent": 6.73,
-  "market_cap_usd": 167507396
+  "earning_yield_percent": 10.13,
+  "market_cap_usd": 124866997.33,
+  "tev_yield_percent": 3.55,
+  "metrics": {
+    "current_market_cap_usd": 124866997.33,
+    "trailing_365d_revenue_usd": 12647491,
+    "trailing_30d_revenue_usd": 643126,
+    "trailing_365d_tev_usd": 4426621.85,
+    "trailing_30d_tev_usd": 368885.1541666666,
+    "trailing_7d_revenue_usd": 135698,
+    "trailing_90d_revenue_usd": 2568139,
+    "tev_yield_7d_ann": 1.98,
+    "tev_yield_30d_ann": 2.19,
+    "tev_yield_90d_ann": 2.92,
+    "earning_yield_7d_ann": 5.67,
+    "earning_yield_30d_ann": 6.27,
+    "earning_yield_90d_ann": 8.34
+  }
 }

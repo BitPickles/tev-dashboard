@@ -409,6 +409,32 @@ async function main() {
     allData.generated_at = new Date().toISOString();
     fs.writeFileSync(DATA_FILE, JSON.stringify(allData, null, 2));
     console.log(`\n✅ 已更新 ${updated} 个协议`);
+
+    // 同步回写每个协议的 config.json，保持首页与详情页数据一致
+    for (const [pid, protocol] of Object.entries(allData.protocols)) {
+      const configPath = path.join(__dirname, `../data/protocols/${pid}/config.json`);
+      if (!fs.existsSync(configPath)) continue;
+      try {
+        const cfg = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+        // 同步动态计算字段
+        cfg.market_cap_usd = protocol.market_cap_usd;
+        cfg.tev_yield_percent = protocol.tev_yield_percent;
+        cfg.earning_yield_percent = protocol.earning_yield_percent;
+        cfg.tevRatio = protocol.tevRatio;
+        if (!cfg.tev_data) cfg.tev_data = {};
+        cfg.tev_data.tev_yield_percent = protocol.tev_yield_percent;
+        cfg.tev_data.market_cap_usd = protocol.market_cap_usd;
+        cfg.tev_data.annual_tev_usd = (protocol.metrics || {}).trailing_365d_tev_usd;
+        cfg.tev_data.calculation_date = new Date().toISOString().split('T')[0];
+        if (protocol.metrics) {
+          cfg.metrics = { ...cfg.metrics, ...protocol.metrics };
+        }
+        fs.writeFileSync(configPath, JSON.stringify(cfg, null, 2));
+      } catch (e) {
+        console.warn(`  ⚠️ 回写 ${pid}/config.json 失败: ${e.message}`);
+      }
+    }
+    console.log(`📋 已同步 config.json`);
   } else if (dryRun) {
     console.log(`\n🔍 预览完成，${updated} 个协议将被更新`);
   }
