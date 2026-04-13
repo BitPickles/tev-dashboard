@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-04-13T01:05:55.129554+00:00",
+  "updated_at": "2026-04-13T13:05:46.729452+00:00",
   "total": 240,
-  "active_count": 37,
-  "passed_count": 203,
+  "active_count": 38,
+  "passed_count": 202,
   "tev_related": 62,
   "monitored_protocols": 19,
   "protocols_meta": {
@@ -2883,6 +2883,34 @@
     {
       "source": "GitHub BEP",
       "protocol": "BNB Chain",
+      "title": "BEP-667.md：update finality analysis",
+      "status": "active",
+      "link": "https://github.com/bnb-chain/BEPs/pull/676",
+      "created": "2026-04-13T12:37:38",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Finality was computed under BEP-126's header-based justification, inflating L to 2N·BI / (3N-j)·BI and giving 1000-1250ms at N=2/BI=250 (worse than today's 900ms). Apply BEP-648's rule on the voting block subsequence so L = N·BI + (2·OWD + T_import) ",
+      "summary_zh": "协议：BNB Chain\n标题：BEP-667.md：更新最终性分析\n摘要：基于BEP-126的头部验证计算最终性，将L扩展至2N·BI / (3N-j)·BI，在N=2/BI=250时，耗时1000-1250ms（低于当前900ms）。应用BEP-648规则于投票区块子序列，使L=N·BI + (2·OWD + T_import)。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
+      "title": "BEP-675: Builder-Proposed Block with Validator Blind Signing",
+      "status": "active",
+      "link": "https://github.com/bnb-chain/BEPs/pull/675",
+      "created": "2026-04-13T10:08:38",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "BEP-675: Builder-Proposed Block with Validator Blind Signing",
+      "summary_zh": "BEP-675：由构建者提出的带有验证者盲签名的区块提案",
+      "analysis_zh": ""
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
       "title": "BAP-674: Privacy-Preserving Token Transfer Protocol",
       "status": "active",
       "link": "https://github.com/bnb-chain/BEPs/pull/674",
@@ -2990,34 +3018,6 @@
       "tev_keywords": [],
       "summary_en": "https://github.com/zlacfzy/BEPs/blob/BEP_667/BEPs/BEP-667.md",
       "summary_zh": "BEP-667：引入投票间隔（Vote Interval）机制，放宽快速最终性共识约束，在保持安全性的同时提升验证者效率。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "Tt",
-      "status": "active",
-      "link": "https://github.com/bnb-chain/BEPs/issues/666",
-      "created": "2026-02-01T11:13:51",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "_Originally posted by @renataveganoriega12-blip in 333_",
-      "summary_zh": "社区帖子转发——非正式治理内容。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "feat: support bep-652 analysis doc",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/665",
-      "created": "2026-01-28T08:52:11",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "feat: support bep-652 analysis doc",
-      "summary_zh": "添加 BEP-652 分析文档支持，为该提案提供详细的技术分析说明。",
       "analysis_zh": ""
     },
     {
