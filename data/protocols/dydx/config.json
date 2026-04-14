@@ -87,10 +87,10 @@
   "last_updated": "2026-02-22",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 5.33,
-    "annual_tev_usd": 4793064,
-    "market_cap_usd": 89864094,
-    "calculation_date": "2026-02-14",
+    "tev_yield_percent": 13.9,
+    "annual_tev_usd": 10823904.9,
+    "market_cap_usd": 77853641.4,
+    "calculation_date": "2026-04-13",
     "sources": [
       {
         "name": "DefiLlama holdersRevenue",
@@ -107,6 +107,22 @@
     "en": "dYdX Chain distributes 100% fees to validators/stakers, fully on-chain verifiable"
   },
   "tevRatio": 0.75,
-  "earning_yield_percent": 14.86,
-  "market_cap_usd": 90016535
+  "earning_yield_percent": 15.45,
+  "market_cap_usd": 77853641.4,
+  "tev_yield_percent": 13.9,
+  "metrics": {
+    "current_market_cap_usd": 77853641.4,
+    "trailing_365d_revenue_usd": 12026561,
+    "trailing_30d_revenue_usd": 286933,
+    "trailing_365d_tev_usd": 10823904.9,
+    "trailing_30d_tev_usd": 901992.0750000001,
+    "trailing_7d_revenue_usd": 60240,
+    "trailing_90d_revenue_usd": 980866,
+    "tev_yield_7d_ann": 3.63,
+    "tev_yield_30d_ann": 4.04,
+    "tev_yield_90d_ann": 4.6,
+    "earning_yield_7d_ann": 4.03,
+    "earning_yield_30d_ann": 4.48,
+    "earning_yield_90d_ann": 5.11
+  }
 }

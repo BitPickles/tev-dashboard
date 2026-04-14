@@ -61,7 +61,9 @@
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "note": "无持续 TEV"
+    "note": "无持续 TEV",
+    "market_cap_usd": 90086503.13,
+    "calculation_date": "2026-04-13"
   },
   "market_data": {
     "tvl": 2058177618.5805178,
@@ -73,6 +75,22 @@
     "en": "No TEV mechanism, governance-only, transparent data"
   },
   "tevRatio": 0,
-  "earning_yield_percent": 21.54,
-  "market_cap_usd": 93690384.64
+  "earning_yield_percent": 19.1,
+  "market_cap_usd": 90086503.13,
+  "tev_yield_percent": 0,
+  "metrics": {
+    "trailing_365d_revenue_usd": 17210912,
+    "trailing_30d_revenue_usd": 750199,
+    "current_market_cap_usd": 90086503.13,
+    "trailing_365d_tev_usd": 0,
+    "trailing_30d_tev_usd": 0,
+    "trailing_7d_revenue_usd": 167103,
+    "trailing_90d_revenue_usd": 2526348,
+    "tev_yield_7d_ann": 0,
+    "tev_yield_30d_ann": 0,
+    "tev_yield_90d_ann": 0,
+    "earning_yield_7d_ann": 9.67,
+    "earning_yield_30d_ann": 10.13,
+    "earning_yield_90d_ann": 11.37
+  }
 }

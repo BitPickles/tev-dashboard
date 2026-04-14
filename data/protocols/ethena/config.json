@@ -149,7 +149,9 @@
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "note": "无持续 TEV"
+    "note": "无持续 TEV",
+    "market_cap_usd": 840828158.62,
+    "calculation_date": "2026-04-13"
   },
   "tevStatus": "none",
   "confidence_reason": {
@@ -157,6 +159,22 @@
     "en": "Buyback funded from reserve fund not protocol revenue, mechanism opaque"
   },
   "tevRatio": 0,
-  "earning_yield_percent": 1.35,
-  "market_cap_usd": 940091116.6
+  "earning_yield_percent": 1.51,
+  "market_cap_usd": 840828158.62,
+  "tev_yield_percent": 0,
+  "metrics": {
+    "current_market_cap_usd": 840828158.62,
+    "trailing_365d_revenue_usd": 12693906,
+    "trailing_30d_revenue_usd": 71865,
+    "trailing_365d_tev_usd": 0,
+    "trailing_30d_tev_usd": 0,
+    "trailing_7d_revenue_usd": 5528,
+    "trailing_90d_revenue_usd": 541141,
+    "tev_yield_7d_ann": 0,
+    "tev_yield_30d_ann": 0,
+    "tev_yield_90d_ann": 0,
+    "earning_yield_7d_ann": 0.03,
+    "earning_yield_30d_ann": 0.1,
+    "earning_yield_90d_ann": 0.26
+  }
 }

@@ -131,9 +131,8 @@
   "tev_data": {
     "has_tev": true,
     "tev_yield_percent": 1.47,
-    "annual_tev_usd": 35217943,
     "market_cap_usd": 2393472958,
-    "calculation_date": "2026-03-02",
+    "calculation_date": "2026-04-13",
     "sources": [
       {
         "name": "On-chain Firepit burns",
@@ -143,11 +142,11 @@
       }
     ],
     "calculation": "$35.2M / $2.39B = 1.47%",
-    "trailing_365d_tev_usd": 31503243.0,
+    "trailing_365d_tev_usd": 31503243,
     "last_updated": "2026-03-27"
   },
   "burn_progress": {
-    "total_burned": 101870003.0,
+    "total_burned": 101870003,
     "target": 1000000000,
     "ticker": "UNI",
     "note": "含 1 亿枚一次性国库销毁 + Firepit 持续销毁。占总供应 10 亿的 10.1%。",
@@ -164,7 +163,7 @@
         "label_en": "Firepit Burns",
         "amount": 1493580,
         "color": "rgba(239,68,68,0.85)",
-        "value": 1870003.0,
+        "value": 1870003,
         "pct": 0.19
       }
     ],
@@ -177,5 +176,6 @@
   },
   "tevRatio": 1,
   "earning_yield_percent": 1.47,
-  "market_cap_usd": 2393472958
+  "market_cap_usd": 2393472958,
+  "tev_yield_percent": 1.47
 }

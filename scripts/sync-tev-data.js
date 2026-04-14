@@ -28,16 +28,16 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'aave', 
     coingeckoId: 'aave',
     cmcSlug: 'aave',
-    tevRatio: null,  // 特殊：固定年度回购 $50M
-    fixedTevUsd: 50000000,
-    note: '年度回购 $50M + Safety Module'
+    tevRatio: null,  // 特殊：固定年度回购预算
+    fixedTevUsd: 30000000,
+    note: '年度回购 $30M (2026-03 治理投票从 $50M 下调, 99.37% 通过)'
   },
-  curve: { 
-    defillamaSlug: 'curve-dex', 
+  curve: {
+    defillamaSlug: 'curve-dex',
     coingeckoId: 'curve-dao-token',
     cmcSlug: 'curve-dao-token',
-    tevRatio: 0.5,
-    note: 'veCRV 分红 50%'
+    tevRatio: 0.45,
+    note: '50% fees → veCRV, 但 10% 归 Treasury (2025-06 治理), 实际 ~45% 到持有人'
   },
   dydx: { 
     defillamaSlug: 'dydx', 
@@ -46,12 +46,12 @@ const PROTOCOL_CONFIG = {
     tevRatio: 0.90,
     note: '90% TEV (75% 回购 + 15% 质押)'
   },
-  etherfi: { 
-    defillamaSlug: 'ether.fi', 
+  etherfi: {
+    defillamaSlug: 'ether.fi',
     coingeckoId: 'ether-fi',
     cmcSlug: 'ether-fi',
-    tevRatio: null,  // 从 TEV Yield 反推
-    note: '提现收入回购'
+    tevRatio: 0.25,
+    note: '25% 协议收入回购 ETHFI → sETHFI (DAO Proposal #11, 正式治理通过)'
   },
   fluid: {
     defillamaSlug: 'fluid',
@@ -60,19 +60,19 @@ const PROTOCOL_CONFIG = {
     tevRatio: 0.35,
     note: '35% Revenue 用于 Treasury 回购'
   },
-  gmx: { 
-    defillamaSlug: 'gmx', 
+  gmx: {
+    defillamaSlug: 'gmx',
     coingeckoId: 'gmx',
     cmcSlug: 'gmx',
     tevRatio: 0.27,
-    note: '27% 费用分红 (docs.gmx.io)'
+    note: '27% 费用回购分配 (V2), staking 奖励暂停至 GMX>$90 后恢复'
   },
   maple: { 
     defillamaSlug: 'maple', 
     coingeckoId: 'maple',
     cmcSlug: 'maple-finance',
     tevRatio: 0.25,
-    note: '25% 协议收入回购 SYRUP (MIP-018)'
+    note: '25% 协议收入 → SSF 回购 SYRUP (MIP-019 通过, MIP-020 延续至 H1 2026)'
   },
   pancakeswap: { 
     defillamaSlug: 'pancakeswap', 
@@ -81,19 +81,20 @@ const PROTOCOL_CONFIG = {
     tevRatio: 0.15,
     note: '15% 收入用于 CAKE 销毁 (veCAKE 已于 2025-04-23 停止, Tokenomics 3.0 转为 100% burn 模式)'
   },
-  pendle: { 
-    defillamaSlug: 'pendle', 
+  pendle: {
+    defillamaSlug: 'pendle',
     coingeckoId: 'pendle',
     cmcSlug: 'pendle',
     tevRatio: 0.8,
-    note: '80% 协议收入回购分配'
+    note: '80% 协议收入回购 → sPENDLE (2026-01 从 vePENDLE 迁移到 sPENDLE, 比例不变)'
   },
-  sky: { 
-    defillamaSlug: 'sky', 
+  sky: {
+    defillamaSlug: 'sky',
     coingeckoId: 'maker',
     cmcSlug: 'sky',
-    tevRatio: 0.5,
-    note: '50% Smart Burn Engine 回购销毁'
+    tevRatio: null,
+    fixedTevUsd: 13724000,  // $37,600/天 × 365 = $13.724M (2026-03 治理大幅下调, 原 $30万/天)
+    note: 'Smart Burn Engine 日回购 $37,600 (2026-03 治理投票下调 87.5%)'
   },
   // 以下协议无 TEV (tevStatus=none)，仅获取市值
   compound: {
@@ -117,12 +118,19 @@ const PROTOCOL_CONFIG = {
     tevRatio: 0,
     note: '纯治理代币'
   },
+  justlend: {
+    defillamaSlug: 'justlend',
+    coingeckoId: 'just',
+    cmcSlug: 'justlend',
+    tevRatio: 0.30,
+    note: '30% 平台收入回购烧毁 JST (2025-10 治理通过, $41.42M 储备至 Q4 2026)'
+  },
   jito: {
     defillamaSlug: 'jito',
     coingeckoId: 'jito-governance-token',
     cmcSlug: 'jito',
     tevRatio: 0,
-    note: '纯治理代币'
+    note: 'MEV 收益归 JitoSOL, JTO 纯治理'
   },
   kamino: {
     defillamaSlug: 'kamino',
@@ -299,9 +307,39 @@ async function main() {
     // 跳过未指定的协议
     if (targetProtocols.length > 0 && !targetProtocols.includes(key)) continue;
     
-    // 跳过特殊协议
+    // 特殊协议：不更新市值和年度TEV（有独立数据源），但仍拉 DefiLlama 收入计算多维度 yield
     if (SKIP_PROTOCOLS.includes(key)) {
-      console.log(`⏭️  ${key}: 跳过（需手动更新）`);
+      const protocol = protocols[key];
+      if (!protocol) continue;
+      if (!config.defillamaSlug) { console.log(`⏭️  ${key}: 跳过（无 DefiLlama slug）`); continue; }
+      console.log(`📊 ${key}... (多维度 yield only)`);
+      const revenueData = await getDefillamaRevenue(config.defillamaSlug);
+      if (revenueData) {
+        const marketCap = protocol.market_cap_usd || 0;
+        if (!protocol.metrics) protocol.metrics = {};
+        protocol.metrics.trailing_7d_revenue_usd = revenueData.revenue7d;
+        protocol.metrics.trailing_30d_revenue_usd = revenueData.revenue30d;
+        protocol.metrics.trailing_90d_revenue_usd = revenueData.revenue90d;
+        // 多维度年化 TEV Yield（用现有 tevRatio 或从现有 yield 反推）
+        const tevRatio = config.tevRatio || (marketCap > 0 && revenueData.revenue365d > 0 ? (protocol.tev_yield_percent / 100 * marketCap) / (revenueData.revenue365d * 365 / 365) / 1 : 0);
+        const calcY = (rev, days) => {
+          if (rev == null || !marketCap || !tevRatio) return null;
+          return Math.round(rev * (365 / days) * tevRatio / marketCap * 10000) / 100;
+        };
+        const calcEY = (rev, days) => {
+          if (rev == null || !marketCap) return null;
+          return Math.round(rev * (365 / days) / marketCap * 10000) / 100;
+        };
+        protocol.metrics.tev_yield_7d_ann = calcY(revenueData.revenue7d, 7);
+        protocol.metrics.tev_yield_30d_ann = calcY(revenueData.revenue30d, 30);
+        protocol.metrics.tev_yield_90d_ann = calcY(revenueData.revenue90d, 90);
+        protocol.metrics.earning_yield_7d_ann = calcEY(revenueData.revenue7d, 7);
+        protocol.metrics.earning_yield_30d_ann = calcEY(revenueData.revenue30d, 30);
+        protocol.metrics.earning_yield_90d_ann = calcEY(revenueData.revenue90d, 90);
+        updated++;
+        console.log(`  rev 7d=$${((revenueData.revenue7d||0)/1e6).toFixed(2)}M, yield 7d=${protocol.metrics.tev_yield_7d_ann || 'null'}%`);
+      }
+      await new Promise(r => setTimeout(r, 2000));
       continue;
     }
     
@@ -351,6 +389,7 @@ async function main() {
     };
 
     const tevYield = marketCap > 0 ? (tev365d / marketCap * 100) : 0;
+    // fixedTevUsd 协议：TEV Yield 各周期相同（预算固定），但 Earning Yield 仍反映收入波动
     const tevYield7d  = config.fixedTevUsd ? tevYield : calcYield(revenueData.revenue7d, 7);
     const tevYield30d = config.fixedTevUsd ? tevYield : calcYield(revenueData.revenue30d, 30);
     const tevYield90d = config.fixedTevUsd ? tevYield : calcYield(revenueData.revenue90d, 90);
@@ -401,6 +440,32 @@ async function main() {
     allData.generated_at = new Date().toISOString();
     fs.writeFileSync(DATA_FILE, JSON.stringify(allData, null, 2));
     console.log(`\n✅ 已更新 ${updated} 个协议`);
+
+    // 同步回写每个协议的 config.json，保持首页与详情页数据一致
+    for (const [pid, protocol] of Object.entries(allData.protocols)) {
+      const configPath = path.join(__dirname, `../data/protocols/${pid}/config.json`);
+      if (!fs.existsSync(configPath)) continue;
+      try {
+        const cfg = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+        // 同步动态计算字段
+        cfg.market_cap_usd = protocol.market_cap_usd;
+        cfg.tev_yield_percent = protocol.tev_yield_percent;
+        cfg.earning_yield_percent = protocol.earning_yield_percent;
+        cfg.tevRatio = protocol.tevRatio;
+        if (!cfg.tev_data) cfg.tev_data = {};
+        cfg.tev_data.tev_yield_percent = protocol.tev_yield_percent;
+        cfg.tev_data.market_cap_usd = protocol.market_cap_usd;
+        cfg.tev_data.annual_tev_usd = (protocol.metrics || {}).trailing_365d_tev_usd;
+        cfg.tev_data.calculation_date = new Date().toISOString().split('T')[0];
+        if (protocol.metrics) {
+          cfg.metrics = { ...cfg.metrics, ...protocol.metrics };
+        }
+        fs.writeFileSync(configPath, JSON.stringify(cfg, null, 2));
+      } catch (e) {
+        console.warn(`  ⚠️ 回写 ${pid}/config.json 失败: ${e.message}`);
+      }
+    }
+    console.log(`📋 已同步 config.json`);
   } else if (dryRun) {
     console.log(`\n🔍 预览完成，${updated} 个协议将被更新`);
   }
