@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-14T01:06:11.053603+00:00",
+  "updated_at": "2026-04-14T13:05:56.610828+00:00",
   "total": 234,
   "active_count": 33,
   "passed_count": 201,
@@ -2795,8 +2795,22 @@
     {
       "source": "GitHub BEP",
       "protocol": "BNB Chain",
-      "title": "BEP-667.md：update finality analysis",
+      "title": "BEP-677: Implement EIP-8056 Scaled UI Amount",
       "status": "active",
+      "link": "https://github.com/bnb-chain/BEPs/pull/677",
+      "created": "2026-04-14T08:52:12",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "- Adds BEP-676 proposing implementation of EIP-8056 (Scaled UI Amount) on BSC\n- Defines an updatable UI multiplier extension for ERC-20 tokens, enabling token projects to adjust display amounts without modifying on-chain balances\n- Includes BSC-speci",
+      "summary_zh": "协议：BNB Chain\n标题：BEP-677：实施EIP-8056缩放UI金额\n摘要：- 在BSC上提出实施EIP-8056（缩放UI金额）\n- 为ERC-20代币定义一个可更新的UI乘数扩展，允许代币项目调整显示金额而无需修改链上余额\n- 包含BSC特定",
+      "analysis_zh": ""
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
+      "title": "BEP-667.md：update finality analysis",
+      "status": "passed",
       "link": "https://github.com/bnb-chain/BEPs/pull/676",
       "created": "2026-04-13T12:37:38",
       "end": "",
@@ -2916,20 +2930,6 @@
       "tev_keywords": [],
       "summary_en": "BEP-668: BSC Pre-confirmation for Prop AMM",
       "summary_zh": "BEP-668：BSC 预确认机制——为 Prop AMM（比例自动做市商）引入预确认功能，提升 DEX 交易的确定性和速度。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BEP-667: Introduce Vote Interval to Relax Fast Finality Consensus Constraint",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/667",
-      "created": "2026-03-02T07:15:54",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "https://github.com/zlacfzy/BEPs/blob/BEP_667/BEPs/BEP-667.md",
-      "summary_zh": "BEP-667：引入投票间隔（Vote Interval）机制，放宽快速最终性共识约束，在保持安全性的同时提升验证者效率。",
       "analysis_zh": ""
     },
     {
