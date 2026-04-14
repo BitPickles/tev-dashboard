@@ -160,10 +160,39 @@ const PROTOCOL_CONFIG = {
     tevRatio: 0,
     note: '收入归 Sky DAO'
   },
+  // SKIP_PROTOCOLS: 市值/年度TEV由独立脚本维护，但 DefiLlama 收入用于多维度 yield 计算
+  aster: {
+    defillamaSlug: null,  // DefiLlama 无可用数据
+    coingeckoId: 'aster-2',
+    cmcSlug: 'aster',
+    tevRatio: 0.7,
+    note: '70% 交易费回购销毁 (独立链上追踪)'
+  },
+  bnb: {
+    defillamaSlug: 'bsc',
+    coingeckoId: 'binancecoin',
+    cmcSlug: 'bnb',
+    tevRatio: 0,
+    note: 'Auto-Burn + BEP-95 + StakeHub (独立链上追踪)'
+  },
+  hype: {
+    defillamaSlug: 'hyperliquid',
+    coingeckoId: 'hyperliquid',
+    cmcSlug: 'hyperliquid',
+    tevRatio: 1.0,
+    note: '100% Assistance Fund 回购烧毁 (独立追踪)'
+  },
+  uniswap: {
+    defillamaSlug: 'uniswap',
+    coingeckoId: 'uniswap',
+    cmcSlug: 'uniswap',
+    tevRatio: 1.0,
+    note: '100% 协议费 Firepit 烧毁 + Unichain (独立链上追踪)'
+  },
 };
 
-// 不自动更新的协议
-const SKIP_PROTOCOLS = ['aster', 'hype', 'hyperliquid', 'bnb', 'uniswap', 'bgb', 'okb'];
+// 不更新市值/年度TEV的协议（有独立数据源），但仍拉 DefiLlama 收入算多维度 yield
+const SKIP_PROTOCOLS = ['aster', 'hype', 'bnb', 'uniswap', 'bgb', 'okb'];
 
 const DATA_FILE = path.join(__dirname, '../data/all-protocols.json');
 

@@ -406,7 +406,7 @@
   "tev_data": {
     "has_tev": true,
     "tev_yield_percent": 11.27,
-    "calculation_date": "2026-04-13",
+    "calculation_date": "2026-04-14",
     "methodology": "Burn APY (链上销毁) + asBNB APY (Aster 综合持有收益)",
     "validation": {
       "method": "Burn APY + asBNB APY (Aster)",
@@ -552,5 +552,16 @@
   "tevRatio": 0,
   "earning_yield_percent": 0,
   "market_cap_usd": 85528916981,
-  "tev_yield_percent": 11.27
+  "tev_yield_percent": 11.27,
+  "metrics": {
+    "trailing_7d_revenue_usd": 265445,
+    "trailing_30d_revenue_usd": 842118,
+    "trailing_90d_revenue_usd": 3364197,
+    "tev_yield_7d_ann": 7.02,
+    "tev_yield_30d_ann": 5.2,
+    "tev_yield_90d_ann": 6.92,
+    "earning_yield_7d_ann": 0.02,
+    "earning_yield_30d_ann": 0.01,
+    "earning_yield_90d_ann": 0.02
+  }
 }
