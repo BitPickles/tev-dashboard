@@ -307,9 +307,39 @@ async function main() {
     // 跳过未指定的协议
     if (targetProtocols.length > 0 && !targetProtocols.includes(key)) continue;
     
-    // 跳过特殊协议
+    // 特殊协议：不更新市值和年度TEV（有独立数据源），但仍拉 DefiLlama 收入计算多维度 yield
     if (SKIP_PROTOCOLS.includes(key)) {
-      console.log(`⏭️  ${key}: 跳过（需手动更新）`);
+      const protocol = protocols[key];
+      if (!protocol) continue;
+      if (!config.defillamaSlug) { console.log(`⏭️  ${key}: 跳过（无 DefiLlama slug）`); continue; }
+      console.log(`📊 ${key}... (多维度 yield only)`);
+      const revenueData = await getDefillamaRevenue(config.defillamaSlug);
+      if (revenueData) {
+        const marketCap = protocol.market_cap_usd || 0;
+        if (!protocol.metrics) protocol.metrics = {};
+        protocol.metrics.trailing_7d_revenue_usd = revenueData.revenue7d;
+        protocol.metrics.trailing_30d_revenue_usd = revenueData.revenue30d;
+        protocol.metrics.trailing_90d_revenue_usd = revenueData.revenue90d;
+        // 多维度年化 TEV Yield（用现有 tevRatio 或从现有 yield 反推）
+        const tevRatio = config.tevRatio || (marketCap > 0 && revenueData.revenue365d > 0 ? (protocol.tev_yield_percent / 100 * marketCap) / (revenueData.revenue365d * 365 / 365) / 1 : 0);
+        const calcY = (rev, days) => {
+          if (rev == null || !marketCap || !tevRatio) return null;
+          return Math.round(rev * (365 / days) * tevRatio / marketCap * 10000) / 100;
+        };
+        const calcEY = (rev, days) => {
+          if (rev == null || !marketCap) return null;
+          return Math.round(rev * (365 / days) / marketCap * 10000) / 100;
+        };
+        protocol.metrics.tev_yield_7d_ann = calcY(revenueData.revenue7d, 7);
+        protocol.metrics.tev_yield_30d_ann = calcY(revenueData.revenue30d, 30);
+        protocol.metrics.tev_yield_90d_ann = calcY(revenueData.revenue90d, 90);
+        protocol.metrics.earning_yield_7d_ann = calcEY(revenueData.revenue7d, 7);
+        protocol.metrics.earning_yield_30d_ann = calcEY(revenueData.revenue30d, 30);
+        protocol.metrics.earning_yield_90d_ann = calcEY(revenueData.revenue90d, 90);
+        updated++;
+        console.log(`  rev 7d=$${((revenueData.revenue7d||0)/1e6).toFixed(2)}M, yield 7d=${protocol.metrics.tev_yield_7d_ann || 'null'}%`);
+      }
+      await new Promise(r => setTimeout(r, 2000));
       continue;
     }
     
@@ -359,6 +389,7 @@ async function main() {
     };
 
     const tevYield = marketCap > 0 ? (tev365d / marketCap * 100) : 0;
+    // fixedTevUsd 协议：TEV Yield 各周期相同（预算固定），但 Earning Yield 仍反映收入波动
     const tevYield7d  = config.fixedTevUsd ? tevYield : calcYield(revenueData.revenue7d, 7);
     const tevYield30d = config.fixedTevUsd ? tevYield : calcYield(revenueData.revenue30d, 30);
     const tevYield90d = config.fixedTevUsd ? tevYield : calcYield(revenueData.revenue90d, 90);
