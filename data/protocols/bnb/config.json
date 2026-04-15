@@ -405,8 +405,8 @@
   },
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 11.27,
-    "calculation_date": "2026-04-14",
+    "tev_yield_percent": 11.29,
+    "calculation_date": "2026-04-15",
     "methodology": "Burn APY (链上销毁) + asBNB APY (Aster 综合持有收益)",
     "validation": {
       "method": "Burn APY + asBNB APY (Aster)",
@@ -550,18 +550,18 @@
     "en": "Auto-Burn fully verifiable on-chain (0xdead + BEP-95), asBNB from on-chain StakeHub contract"
   },
   "tevRatio": 0,
-  "earning_yield_percent": 0,
+  "earning_yield_percent": 0.03,
   "market_cap_usd": 85528916981,
-  "tev_yield_percent": 11.27,
+  "tev_yield_percent": 11.29,
   "metrics": {
     "trailing_7d_revenue_usd": 265445,
     "trailing_30d_revenue_usd": 842118,
     "trailing_90d_revenue_usd": 3364197,
-    "tev_yield_7d_ann": 7.02,
-    "tev_yield_30d_ann": 5.2,
-    "tev_yield_90d_ann": 6.92,
-    "earning_yield_7d_ann": 0.02,
-    "earning_yield_30d_ann": 0.01,
-    "earning_yield_90d_ann": 0.02
+    "tev_yield_7d_ann": 6.9,
+    "tev_yield_30d_ann": 6.9,
+    "tev_yield_90d_ann": 6.9,
+    "earning_yield_7d_ann": 0.03,
+    "earning_yield_30d_ann": 0.03,
+    "earning_yield_90d_ann": 0.03
   }
 }
