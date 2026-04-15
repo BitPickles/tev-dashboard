@@ -336,7 +336,68 @@ async function main() {
     // 跳过未指定的协议
     if (targetProtocols.length > 0 && !targetProtocols.includes(key)) continue;
     
-    // 特殊协议：不更新市值和年度TEV（有独立数据源），但仍拉 DefiLlama 收入计算多维度 yield
+    // BNB 专属计算：Auto-Burn（按窗口年化）+ asBNB 固定 APY
+    if (key === 'bnb') {
+      const protocol = protocols[key];
+      if (!protocol) continue;
+      console.log(`📊 bnb... (专属 TEV 计算)`);
+      if (!protocol.metrics) protocol.metrics = {};
+      const marketCap = protocol.market_cap_usd || 0;
+      const bnbPrice = marketCap / 136357344;  // circulating supply ~136.36M
+
+      // 读取烧毁历史
+      const burnHistPath = path.join(__dirname, '../data/protocols/bnb/burn-history.json');
+      let burnHist = { quarterly_burns: [], asbnb_apy_percent: 6.87, bep95_weekly_bnb: 720.64 };
+      try { burnHist = JSON.parse(fs.readFileSync(burnHistPath, 'utf8')); } catch {}
+
+      const asbnbApy = burnHist.asbnb_apy_percent || 6.87;
+      const bep95WeeklyBnb = burnHist.bep95_weekly_bnb || 720.64;
+      const burns = burnHist.quarterly_burns || [];
+      const now = new Date();
+
+      // 计算各窗口内的 Auto-Burn 年化
+      const calcBurnYield = (days) => {
+        const cutoff = new Date(now.getTime() - days * 86400000);
+        let totalBurnUsd = 0;
+        for (const b of burns) {
+          if (new Date(b.date) >= cutoff) {
+            totalBurnUsd += b.bnb_burned * bnbPrice;  // 用当前价格重估
+          }
+        }
+        // 加上 BEP-95: 日均 = bep95_weekly_bnb / 7
+        totalBurnUsd += (bep95WeeklyBnb / 7) * days * bnbPrice;
+        // 年化
+        if (!marketCap) return null;
+        return Math.round(totalBurnUsd * (365 / days) / marketCap * 10000) / 100;
+      };
+
+      const burnYield7d = calcBurnYield(7);
+      const burnYield30d = calcBurnYield(30);
+      const burnYield90d = calcBurnYield(90);
+      const burnYield365d = calcBurnYield(365);
+
+      // TEV Yield = Auto-Burn 年化 + asBNB 固定 APY
+      protocol.metrics.tev_yield_7d_ann = Math.round((burnYield7d + asbnbApy) * 100) / 100;
+      protocol.metrics.tev_yield_30d_ann = Math.round((burnYield30d + asbnbApy) * 100) / 100;
+      protocol.metrics.tev_yield_90d_ann = Math.round((burnYield90d + asbnbApy) * 100) / 100;
+      protocol.tev_yield_percent = Math.round((burnYield365d + asbnbApy) * 100) / 100;
+
+      // Earning Yield: BEP-95 gas 费年化（BSC 链上收入）
+      const bep95AnnualUsd = (bep95WeeklyBnb / 7) * 365 * bnbPrice;
+      protocol.earning_yield_percent = marketCap > 0 ? Math.round(bep95AnnualUsd / marketCap * 10000) / 100 : 0;
+      protocol.metrics.earning_yield_7d_ann = protocol.earning_yield_percent;
+      protocol.metrics.earning_yield_30d_ann = protocol.earning_yield_percent;
+      protocol.metrics.earning_yield_90d_ann = protocol.earning_yield_percent;
+
+      console.log(`  BNB price: $${bnbPrice.toFixed(0)}`);
+      console.log(`  Burn yield: 7D=${burnYield7d}% 30D=${burnYield30d}% 90D=${burnYield90d}% 1Y=${burnYield365d}%`);
+      console.log(`  asBNB APY: ${asbnbApy}%`);
+      console.log(`  TEV Yield: 7D=${protocol.metrics.tev_yield_7d_ann}% 30D=${protocol.metrics.tev_yield_30d_ann}% 90D=${protocol.metrics.tev_yield_90d_ann}% 1Y=${protocol.tev_yield_percent}%`);
+      updated++;
+      continue;
+    }
+
+    // 其他特殊协议：不更新市值和年度TEV，但拉 DefiLlama 收入计算多维度 yield
     if (SKIP_PROTOCOLS.includes(key)) {
       const protocol = protocols[key];
       if (!protocol) continue;
