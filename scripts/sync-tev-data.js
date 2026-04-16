@@ -382,16 +382,18 @@ async function main() {
       protocol.metrics.tev_yield_90d_ann = Math.round((burnYield90d + asbnbApy) * 100) / 100;
       protocol.tev_yield_percent = Math.round((burnYield365d + asbnbApy) * 100) / 100;
 
-      // Earning Yield: BEP-95 gas 费年化（BSC 链上收入）
-      const bep95AnnualUsd = (bep95WeeklyBnb / 7) * 365 * bnbPrice;
-      protocol.earning_yield_percent = marketCap > 0 ? Math.round(bep95AnnualUsd / marketCap * 10000) / 100 : 0;
-      protocol.metrics.earning_yield_7d_ann = protocol.earning_yield_percent;
-      protocol.metrics.earning_yield_30d_ann = protocol.earning_yield_percent;
-      protocol.metrics.earning_yield_90d_ann = protocol.earning_yield_percent;
+      // Earning Yield: BEP-95 gas 费年化 + asBNB 固定 APY
+      const bep95AnnualYield = marketCap > 0 ? Math.round((bep95WeeklyBnb / 7) * 365 * bnbPrice / marketCap * 10000) / 100 : 0;
+      const earningYieldBase = Math.round((bep95AnnualYield + asbnbApy) * 100) / 100;
+      protocol.earning_yield_percent = earningYieldBase;
+      protocol.metrics.earning_yield_7d_ann = earningYieldBase;
+      protocol.metrics.earning_yield_30d_ann = earningYieldBase;
+      protocol.metrics.earning_yield_90d_ann = earningYieldBase;
 
       console.log(`  BNB price: $${bnbPrice.toFixed(0)}`);
       console.log(`  Burn yield: 7D=${burnYield7d}% 30D=${burnYield30d}% 90D=${burnYield90d}% 1Y=${burnYield365d}%`);
       console.log(`  asBNB APY: ${asbnbApy}%`);
+      console.log(`  Earning Yield: ${earningYieldBase}% (BEP-95 ${bep95AnnualYield}% + asBNB ${asbnbApy}%)`);
       console.log(`  TEV Yield: 7D=${protocol.metrics.tev_yield_7d_ann}% 30D=${protocol.metrics.tev_yield_30d_ann}% 90D=${protocol.metrics.tev_yield_90d_ann}% 1Y=${protocol.tev_yield_percent}%`);
       updated++;
       continue;
