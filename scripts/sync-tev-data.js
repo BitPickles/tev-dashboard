@@ -465,15 +465,19 @@ async function main() {
         protocol.metrics.trailing_7d_revenue_usd = revenueData.revenue7d;
         protocol.metrics.trailing_30d_revenue_usd = revenueData.revenue30d;
         protocol.metrics.trailing_90d_revenue_usd = revenueData.revenue90d;
+        protocol.metrics.trailing_365d_revenue_usd = revenueData.revenue365d;
         // 多维度年化 TEV Yield（用现有 tevRatio 或从现有 yield 反推）
         const tevRatio = config.tevRatio || (marketCap > 0 && revenueData.revenue365d > 0 ? (protocol.tev_yield_percent / 100 * marketCap) / (revenueData.revenue365d * 365 / 365) / 1 : 0);
         const calcY = (rev, days) => {
           if (rev == null || !marketCap || !tevRatio) return null;
-          return Math.round(rev * (365 / days) * tevRatio / marketCap * 10000) / 100;
+          // 365d 不需要年化（已是 365 天累计）
+          const annFactor = days >= 365 ? 1 : (365 / days);
+          return Math.round(rev * annFactor * tevRatio / marketCap * 10000) / 100;
         };
         const calcEY = (rev, days) => {
           if (rev == null || !marketCap) return null;
-          return Math.round(rev * (365 / days) / marketCap * 10000) / 100;
+          const annFactor = days >= 365 ? 1 : (365 / days);
+          return Math.round(rev * annFactor / marketCap * 10000) / 100;
         };
         protocol.metrics.tev_yield_7d_ann = calcY(revenueData.revenue7d, 7);
         protocol.metrics.tev_yield_30d_ann = calcY(revenueData.revenue30d, 30);
@@ -481,8 +485,14 @@ async function main() {
         protocol.metrics.earning_yield_7d_ann = calcEY(revenueData.revenue7d, 7);
         protocol.metrics.earning_yield_30d_ann = calcEY(revenueData.revenue30d, 30);
         protocol.metrics.earning_yield_90d_ann = calcEY(revenueData.revenue90d, 90);
+        // 新增：365d 顶层字段（之前 SKIP 分支漏算，导致 365d yield 停留在手写值）
+        const tev365 = calcY(revenueData.revenue365d, 365);
+        const earning365 = calcEY(revenueData.revenue365d, 365);
+        if (tev365 != null) protocol.tev_yield_percent = tev365;
+        if (earning365 != null) protocol.earning_yield_percent = earning365;
         updated++;
-        console.log(`  rev 7d=$${((revenueData.revenue7d||0)/1e6).toFixed(2)}M, yield 7d=${protocol.metrics.tev_yield_7d_ann || 'null'}%`);
+        console.log(`  rev 7d=$${((revenueData.revenue7d||0)/1e6).toFixed(2)}M, 365d=$${((revenueData.revenue365d||0)/1e6).toFixed(2)}M`);
+        console.log(`  yield 7d=${protocol.metrics.tev_yield_7d_ann}% 30d=${protocol.metrics.tev_yield_30d_ann}% 90d=${protocol.metrics.tev_yield_90d_ann}% 365d=${protocol.tev_yield_percent}%`);
       }
       await new Promise(r => setTimeout(r, 2000));
       continue;
