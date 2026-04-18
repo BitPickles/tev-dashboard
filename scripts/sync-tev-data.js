@@ -355,46 +355,52 @@ async function main() {
       const burns = burnHist.quarterly_burns || [];
       const now = new Date();
 
-      // 计算各窗口内的 Auto-Burn 年化
-      const calcBurnYield = (days) => {
-        const cutoff = new Date(now.getTime() - days * 86400000);
-        let totalBurnUsd = 0;
-        for (const b of burns) {
-          if (new Date(b.date) >= cutoff) {
-            totalBurnUsd += b.bnb_burned * bnbPrice;  // 用当前价格重估
-          }
-        }
-        // 加上 BEP-95: 日均 = bep95_weekly_bnb / 7
-        totalBurnUsd += (bep95WeeklyBnb / 7) * days * bnbPrice;
-        // 年化
-        if (!marketCap) return null;
-        return Math.round(totalBurnUsd * (365 / days) / marketCap * 10000) / 100;
-      };
+      // BNB 的 Auto-Burn 是季度事件（一年 4 次），滚动窗口会严重低估
+      // 统一口径：最近 4 次 burn 合计（~过去 12 个月）×当前价 + BEP-95 年化 + asBNB APY
+      // 所有周期（7/30/90/365d）返回同一个值，反映"稳定态年化"而非"滚动实测"
+      const recent4Burns = burns.slice(-4);
+      const recent4BurnBnb = recent4Burns.reduce((s, b) => s + (b.bnb_burned || 0), 0);
+      const recent4BurnUsd = recent4BurnBnb * bnbPrice;  // 用当前价重估
+      const bep95AnnualBnb = (bep95WeeklyBnb / 7) * 365;
+      const bep95AnnualUsd = bep95AnnualBnb * bnbPrice;
+      const stableBurnYield = marketCap > 0
+        ? Math.round((recent4BurnUsd + bep95AnnualUsd) / marketCap * 10000) / 100
+        : 0;
 
-      const burnYield7d = calcBurnYield(7);
-      const burnYield30d = calcBurnYield(30);
-      const burnYield90d = calcBurnYield(90);
-      const burnYield365d = calcBurnYield(365);
-
-      // TEV Yield = Auto-Burn 年化 + asBNB 固定 APY
-      protocol.metrics.tev_yield_7d_ann = Math.round((burnYield7d + asbnbApy) * 100) / 100;
-      protocol.metrics.tev_yield_30d_ann = Math.round((burnYield30d + asbnbApy) * 100) / 100;
-      protocol.metrics.tev_yield_90d_ann = Math.round((burnYield90d + asbnbApy) * 100) / 100;
-      protocol.tev_yield_percent = Math.round((burnYield365d + asbnbApy) * 100) / 100;
+      // TEV Yield（所有周期统一）= 稳定 Burn 年化 + asBNB 固定 APY
+      const tevYield = Math.round((stableBurnYield + asbnbApy) * 100) / 100;
+      protocol.metrics.tev_yield_7d_ann = tevYield;
+      protocol.metrics.tev_yield_30d_ann = tevYield;
+      protocol.metrics.tev_yield_90d_ann = tevYield;
+      protocol.tev_yield_percent = tevYield;
+      // BNB 无 fee 分润机制，tevRatio 不适用（前端渲染会显示 '—'）
+      protocol.tevRatio = null;
 
       // Earning Yield: BEP-95 gas 费年化 + asBNB 固定 APY
-      const bep95AnnualYield = marketCap > 0 ? Math.round((bep95WeeklyBnb / 7) * 365 * bnbPrice / marketCap * 10000) / 100 : 0;
+      const bep95AnnualYield = marketCap > 0 ? Math.round(bep95AnnualUsd / marketCap * 10000) / 100 : 0;
       const earningYieldBase = Math.round((bep95AnnualYield + asbnbApy) * 100) / 100;
       protocol.earning_yield_percent = earningYieldBase;
       protocol.metrics.earning_yield_7d_ann = earningYieldBase;
       protocol.metrics.earning_yield_30d_ann = earningYieldBase;
       protocol.metrics.earning_yield_90d_ann = earningYieldBase;
 
+      // 同步 validation 字段（保持与主表一致）
+      if (!protocol.validation) protocol.validation = {};
+      protocol.validation.method = 'Burn APY (近 4 季稳定态) + asBNB APY (Aster)';
+      protocol.validation.burn_apy_percent = stableBurnYield;
+      protocol.validation.asbnb_apy_percent = asbnbApy;
+      protocol.validation.total_apy_percent = tevYield;
+      protocol.validation.total_annual_burn_bnb = Math.round(recent4BurnBnb + bep95AnnualBnb);
+      protocol.validation.bep95_annual_bnb = Math.round(bep95AnnualBnb);
+      protocol.validation.bnb_price_usd = Math.round(bnbPrice * 100) / 100;
+      protocol.validation.market_cap_usd = marketCap;
+      protocol.validation.burn_source = `Auto-Burn (近 4 季 ${recent4BurnBnb.toLocaleString()} BNB, $${(recent4BurnUsd/1e9).toFixed(2)}B) + BEP-95 (~${Math.round(bep95AnnualBnb).toLocaleString()} BNB/年, $${(bep95AnnualUsd/1e6).toFixed(1)}M)`;
+
       console.log(`  BNB price: $${bnbPrice.toFixed(0)}`);
-      console.log(`  Burn yield: 7D=${burnYield7d}% 30D=${burnYield30d}% 90D=${burnYield90d}% 1Y=${burnYield365d}%`);
+      console.log(`  Stable Burn yield (近4季+BEP-95 年化): ${stableBurnYield}%`);
       console.log(`  asBNB APY: ${asbnbApy}%`);
       console.log(`  Earning Yield: ${earningYieldBase}% (BEP-95 ${bep95AnnualYield}% + asBNB ${asbnbApy}%)`);
-      console.log(`  TEV Yield: 7D=${protocol.metrics.tev_yield_7d_ann}% 30D=${protocol.metrics.tev_yield_30d_ann}% 90D=${protocol.metrics.tev_yield_90d_ann}% 1Y=${protocol.tev_yield_percent}%`);
+      console.log(`  TEV Yield (all periods): ${tevYield}%`);
       updated++;
       continue;
     }
@@ -549,6 +555,10 @@ async function main() {
         cfg.tev_data.market_cap_usd = protocol.market_cap_usd;
         cfg.tev_data.annual_tev_usd = (protocol.metrics || {}).trailing_365d_tev_usd;
         cfg.tev_data.calculation_date = new Date().toISOString().split('T')[0];
+        // 同步 validation 到 tev_data.validation，避免详情页显示旧值
+        if (protocol.validation) {
+          cfg.tev_data.validation = { ...(cfg.tev_data.validation || {}), ...protocol.validation };
+        }
         if (protocol.metrics) {
           cfg.metrics = { ...cfg.metrics, ...protocol.metrics };
         }
