@@ -291,3 +291,15 @@ data/protocols/<id>/
 ## 附录：BNB 和 HYPE 的具体实现
 
 详见 `data/protocols/bnb/README.md` 和 `data/protocols/hype/README.md`。
+
+---
+
+## 十一、部署日志
+
+| 日期 | 协议 | 变更 | commit | 状态 |
+|---|---|---|---|---|
+| 2026-04-19 | BNB | TEV 周期口径修正 + BEP-95 日时间序列 + 自动更新脚本 + 文档 | `2a7bfc4` | ✅ 已上 main（正式站） |
+| 2026-04-19 | Hyperliquid | AF 口径修正（不是 burn）+ 365d bug 修复 + 链上校验 + 文档 | `02c6747` | ✅ 已上 main（正式站） |
+| 2026-04-19 | — | 新增 TEV 总规范文档 | `4be0332` | ✅ 已上 main |
+
+每次协议上线后应在本表追加一行，形成可追溯的 changelog。
