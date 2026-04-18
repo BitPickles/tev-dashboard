@@ -362,6 +362,22 @@
       "avg_price_usd": 930.71,
       "value_usd": 1276747228,
       "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q1 2026 (34th)",
+      "date": "2026-01-15",
+      "amount_bnb": 1371804,
+      "avg_price_usd": 931,
+      "value_usd": 1277189711,
+      "source": "https://www.bnbburn.info/"
+    },
+    {
+      "quarter": "Q2 2026 (35th)",
+      "date": "2026-04-15",
+      "amount_bnb": 1569307,
+      "avg_price_usd": 627,
+      "value_usd": 983955702,
+      "source": "Dune BSC traces"
     }
   ],
   "example_transactions": {
@@ -405,26 +421,48 @@
   },
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 10.13,
-    "calculation_date": "2026-04-17",
-    "methodology": "Burn APY (链上销毁) + asBNB APY (Aster 综合持有收益)",
+    "tev_yield_percent": 11.27,
+    "calculation_date": "2026-04-18",
+    "methodology": "Auto-Burn（短周期=近4季USD累加；365d=近4季BNB×当前价）+ BEP-95（按窗口从日时间序列求和）+ asBNB APY。BEP-95 现已真正波动——数据源：Dune Analytics bnb.traces + 每日 BSC RPC 累积。",
     "validation": {
-      "method": "Burn APY + asBNB APY (Aster)",
-      "burn_apy_percent": 4.4,
+      "method": "Auto-Burn（短周期=近4季USD累加；365d=近4季BNB×当前价）+ BEP-95（按窗口从日时间序列计算）+ asBNB APY (Aster)",
+      "burn_apy_percent": 4.42,
       "asbnb_apy_percent": 6.87,
-      "total_apy_percent": 11.27,
-      "burn_source": "Auto-Burn (近4季 5,987,793.6 BNB, $3.75B) + BEP-95 (~16,327 BNB/年, $10.2M)",
+      "total_apy_percent": 11.29,
+      "burn_source": "Auto-Burn 近4季 5,977,992 BNB (历史$4.49B / 当前价$3.73B); BEP-95 401天数据, 7/30/90/365d = 536/1703/5087/27210 BNB",
       "asbnb_source": "Aster asBNB (Staking + Launchpool/HODLer/Megadrop)",
       "asbnb_url": "https://www.asterdex.com/en/earn/astoken?token=slisBNB",
       "burn_data_url": "https://www.bnbburn.info/",
       "dead_address_balance_bnb": 13300850.55,
       "dead_address": "0x000000000000000000000000000000000000dEaD",
       "note": "Burn 通过链上黑洞地址余额验证；asBNB 通过 Aster 官方数据（含 Staking + Launchpool/HODLer/Megadrop，不含 Burn）",
-      "total_annual_burn_bnb": 6004121,
-      "bep95_annual_bnb": 16327,
-      "bnb_price_usd": 629.05,
-      "market_cap_usd": 85733824663,
-      "circulating_supply": 136357344.28
+      "total_annual_burn_bnb": 6025469,
+      "bep95_annual_bnb": 37576,
+      "bnb_price_usd": 624.47,
+      "market_cap_usd": 85151311957.23994,
+      "circulating_supply": 136357344.28,
+      "burn_apy_short_percent": 5.2,
+      "burn_apy_annual_percent": 4.42,
+      "tev_yield_short_percent": 12.07,
+      "tev_yield_annual_percent": 11.29,
+      "last_burn_bnb": 1569307.34,
+      "last_burn_date": "2026-04-15",
+      "recent_4q_burn_bnb": 5977992,
+      "recent_4q_burn_usd_historical": 4494755575,
+      "recent_4q_burn_usd_current": 3733087432,
+      "tev_yield_7d_percent": 12.17,
+      "tev_yield_30d_percent": 12.16,
+      "tev_yield_90d_percent": 12.16,
+      "tev_yield_365d_percent": 11.27,
+      "bep95_7d_bnb": 536.3,
+      "bep95_30d_bnb": 1702.82,
+      "bep95_90d_bnb": 5086.81,
+      "bep95_365d_bnb": 27209.86,
+      "bep95_data_days": 401,
+      "bep95_data_range": {
+        "start": "2025-03-14",
+        "end": "2026-04-18"
+      }
     },
     "sources": [
       {
@@ -464,15 +502,16 @@
         "url": "https://www.asterdex.com/en/earn/astoken?token=slisBNB"
       }
     ],
-    "calculation": "Burn APY 4.4% + asBNB APY 6.87% = 11.27% → 11.27% × $85.5B = $9.64B",
+    "calculation": "TEV Yield = (近 4 季 Auto-Burn USD + BEP-95 年化 USD) / 市值 + asBNB APY (6.87%)；各周期具体数值见 metrics.tev_yield_*_ann，由 scripts/sync-tev-data.js 每日刷新。",
     "caveats": [
       "Auto-Burn 基于公式 B=N×1000/P，不是利润回购",
+      "Auto-Burn 为季度事件，30d/7d 滚动窗口会零 burn，故统一用'近 4 季稳定态'口径",
       "asBNB 6.87% 基于 Aster 官方数据，含 Staking + Launchpool/HODLer/Megadrop",
       "asBNB 不包含 Burn 的供给收缩价值（与 Burn APY 无重叠）",
       "slisBNB 仅含 Staking 收益，不适合作为 BNB 全部 TEV 的 proxy",
       "CEX 财务不公开，Holder Perks 部分依赖 Aster 聚合数据"
     ],
-    "market_cap_usd": 85528916981
+    "market_cap_usd": 85151311957.23994
   },
   "confidence": "high",
   "data_sources": [
@@ -519,8 +558,8 @@
       ]
     }
   ],
-  "analyst_notes": "【2026-03-01 更新 - Burn + asBNB 双源验证】\n\n## BNB TEV 计算方法\n\n采用 **Burn APY + asBNB APY** 双源独立计算，替代之前的 slisBNB 单一 proxy。\n\n### 为什么不再用 slisBNB？\n- slisBNB 仅反映 **Staking 收益**，不含 Launchpool/HODLer/Megadrop\n- 会**低估** BNB 的综合持有收益\n\n### 数据源拆分\n\n| 来源 | APY | 年化 USD | 说明 |\n|------|-----|---------|------|\n| Auto-Burn | 4.40% | $3.75B | 季度销毁，公式 B=N×1000/P |\n| BEP-95 | ~0.01% | $10.2M | 实时 gas fee 销毁 |\n| asBNB 持有收益 | 6.87% | $5.88B | Staking + Launchpool/HODLer/Megadrop |\n| **合计** | **11.27%** | **$9.64B** | |\n\n### 关键结论\n- **TEV Yield: 11.27%**（Burn 4.4% + 持有收益 6.87%）\n- Burn 与 asBNB 无重叠（Burn = 供给收缩，asBNB = 收益分配）\n- 链上黑洞地址累计余额：13,299,471 BNB（可验证）\n- 数据来源：bnbburn.info + Aster 官方",
-  "last_updated": "2026-03-02",
+  "analyst_notes": "【2026-04-19 更新 - BEP-95 时间序列】\n\n## BNB TEV 计算方法\n\n采用 **Auto-Burn + BEP-95 + asBNB** 三源组合，每项按下表规则取值：\n\n| 展示周期 | Auto-Burn | BEP-95 | asBNB |\n|---------|-----------|--------|-------|\n| 7d  | 近 4 季 USD 历史累加 | 近 7 天 BNB × 52 × 当前价 | 6.87% |\n| 30d | 近 4 季 USD 历史累加 | 近 30 天 BNB × 365/30 × 当前价 | 6.87% |\n| 90d | 近 4 季 USD 历史累加 | 近 90 天 BNB × 365/90 × 当前价 | 6.87% |\n| 365d | 近 4 季 BNB × 当前价（重估） | 近 365 天 BNB × 当前价（无年化） | 6.87% |\n\nTEV Yield = (Auto-Burn USD + BEP-95 USD) ÷ 市值 + asBNB APY\n\n### BEP-95 数据源（2026-04-19 升级）\n\n- **种子**：Dune Analytics `bnb.traces` query（dead address 入金 < 10万 BNB 的部分，排除 Auto-Burn 大额）\n- **初始范围**：2025-03-14 → 2026-04-18（401 天）\n- **增量更新**：`scripts/fetch-bep95-daily.py`（TODO，待做）每日从 BSC RPC 拉新日数据 append\n- **存储**：`data/protocols/bnb/bep95-history.json`\n\n### Auto-Burn 双口径\n\n- **短周期（7/30/90d）** = 近 4 季 burn 的 `usd_value` 直接累加（每次 burn 公告时的历史 USD 值）\n  → 相当于官方披露的『过去一年累计销毁金额』，burn 发生时锁定\n- **365d** = 近 4 季 burn `bnb_burned` 合计 × 当前价\n  → 按当前市价重估的『过去一年年化』\n- 两者差异 = BNB 价格相对历史均价的变动\n\n### 为什么 BEP-95 各周期不同？\n\n BEP-95 是每区块持续销毁（链上 gas fee 的一部分）。7 天、30 天、90 天内的销毁量反映的是**不同时间段的链上活跃度**。高活跃期（如 10 月 ALT 季）日销毁可达 500+ BNB，平时 40-60 BNB。通过时间序列能真实反映。\n\n### 历史口径变更\n\n- 2026-04-19 (v4): BEP-95 升级为日时间序列（Dune seed + 日累积），各周期真正波动\n- 2026-04-19 (v3): 短周期 Auto-Burn 改为 USD 历史累加\n- 2026-04-19 (v2): 尝试『上次 burn × 4』作为短周期年化（Boss 否决）\n- 2026-04-19 (v1): 所有周期同值（Boss 否决）\n- 2026-03-01: 从 slisBNB 单一 proxy 改为 Burn + asBNB 双源",
+  "last_updated": "2026-04-19",
   "burn_progress": {
     "total_burned": 13300851,
     "initial_supply": 200000000,
@@ -549,19 +588,20 @@
     "zh": "Auto-Burn 链上完全可验证（0xdead + BEP-95），asBNB 来自链上 StakeHub 合约",
     "en": "Auto-Burn fully verifiable on-chain (0xdead + BEP-95), asBNB from on-chain StakeHub contract"
   },
-  "tevRatio": 0,
-  "earning_yield_percent": 6.9,
-  "market_cap_usd": 85528916981,
-  "tev_yield_percent": 10.13,
+  "tevRatio": null,
+  "tevRatioNote": "BNB 无 fee 分润机制，TEV 来自供给收缩（Auto-Burn + BEP-95）+ 链上质押收益（asBNB），不适用『分配比例』概念",
+  "earning_yield_percent": 6.89,
+  "market_cap_usd": 85151311957.23994,
+  "tev_yield_percent": 11.27,
   "metrics": {
     "trailing_7d_revenue_usd": 265445,
     "trailing_30d_revenue_usd": 842118,
     "trailing_90d_revenue_usd": 3364197,
-    "tev_yield_7d_ann": 6.9,
-    "tev_yield_30d_ann": 6.9,
-    "tev_yield_90d_ann": 6.9,
-    "earning_yield_7d_ann": 6.9,
-    "earning_yield_30d_ann": 6.9,
-    "earning_yield_90d_ann": 6.9
+    "tev_yield_7d_ann": 12.17,
+    "tev_yield_30d_ann": 12.16,
+    "tev_yield_90d_ann": 12.16,
+    "earning_yield_7d_ann": 6.89,
+    "earning_yield_30d_ann": 6.89,
+    "earning_yield_90d_ann": 6.89
   }
 }

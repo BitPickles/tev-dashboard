@@ -327,7 +327,8 @@
     // === Formatting ===
     const formatCurrency = (v, d = 0) => { if (v == null) return '—'; if (v >= 1e9) return '$' + (v / 1e9).toFixed(2) + 'B'; if (v >= 1e6) return '$' + (v / 1e6).toFixed(2) + 'M'; if (v >= 1e3) return '$' + (v / 1e3).toFixed(1) + 'K'; return '$' + v.toFixed(d); };
     // formatPercent: v 已经是百分比（如 6.21 表示 6.21%），直接格式化即可
-    const formatPercent = v => v == null ? '—' : v.toFixed(2) + '%';
+    // precision 参数：可选，默认 2；BNB 等 BEP-95 占比极小的协议可传 3 以显示细微波动
+    const formatPercent = (v, precision = 2) => v == null ? '—' : v.toFixed(precision) + '%';
 
     // === Data Loading ===
     async function loadProtocolData() {
@@ -438,6 +439,7 @@
         const tevStatus = p.tevStatus || 'none';
         const tevRatio = p.tevRatio || 0;
         const mcap = p.market_cap_usd || 0;
+        const precision = p.display_precision || 2;
 
         // tevRatio 显示：处理 'dynamic' 字符串和数字
         let tevRatioDisplay = '—';
@@ -459,8 +461,8 @@
           <td class="text-right"><span class="badge badge-${tevStatus === 'active' ? 'active' : tevStatus === 'partial' ? 'partial' : 'none'}">${tevStatus === 'active' ? '✓' : tevStatus === 'partial' ? '~' : '✗'} ${t('tevStatus.' + tevStatus)}</span></td>
           <td class="text-right"><span class="value ${tevRatio >= 0.5 ? 'value-highlight' : tevRatio > 0 ? '' : 'value-zero'}">${tevRatioDisplay}</span></td>
           <td class="text-right"><span class="value">${formatCurrency(mcap)}</span></td>
-          <td class="text-right"><span class="value ${earningYield > 0.1 ? 'value-highlight' : earningYield === 0 ? 'value-zero' : ''}">${earningYield > 0 ? formatPercent(earningYield) : '—'}</span></td>
-          <td class="text-right"><span class="value ${tevYield > 10 ? 'value-highlight' : tevYield === 0 ? 'value-zero' : ''}">${formatPercent(tevYield)}</span></td>
+          <td class="text-right"><span class="value ${earningYield > 0.1 ? 'value-highlight' : earningYield === 0 ? 'value-zero' : ''}">${earningYield > 0 ? formatPercent(earningYield, precision) : '—'}</span></td>
+          <td class="text-right"><span class="value ${tevYield > 10 ? 'value-highlight' : tevYield === 0 ? 'value-zero' : ''}">${formatPercent(tevYield, precision)}</span></td>
           <td class="text-right"><span class="badge badge-${p.confidence === 'high' ? 'high' : p.confidence === 'medium' ? 'medium' : 'low'}" data-tip="${(p.confidence_reason && p.confidence_reason[currentLang]) || ''}">${p.confidence === 'high' ? '✓' : '!'} ${t('confidence.' + p.confidence)}</span></td>
         `;
         tbody.appendChild(row);
