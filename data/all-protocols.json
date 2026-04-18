@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-18T17:29:23.471Z",
+  "generated_at": "2026-04-18T18:12:29.749Z",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -83,17 +83,17 @@
         "en": "Auto-Burn fully verifiable on-chain (0xdead + BEP-95), asBNB from on-chain StakeHub contract"
       },
       "tevStatus": "active",
-      "tev_yield_percent": 11.29,
+      "tev_yield_percent": 11.27,
       "market_cap_usd": 85528916981,
       "tvl": 5387604237.313377,
       "tevRatio": null,
-      "earning_yield_percent": 6.9,
+      "earning_yield_percent": 6.89,
       "validation": {
-        "method": "Burn APY（短周期=近4季USD累加；365d=近4季BNB×当前价）+ asBNB APY (Aster)",
+        "method": "Auto-Burn（短周期=近4季USD累加；365d=近4季BNB×当前价）+ BEP-95（按窗口从日时间序列计算）+ asBNB APY (Aster)",
         "burn_apy_percent": 4.42,
         "asbnb_apy_percent": 6.87,
         "total_apy_percent": 11.29,
-        "burn_source": "近 4 季 5,987,893 BNB: 历史 USD 累计 $4.43B (短周期) / 当前价重估 $3.76B (365d); BEP-95 ~37,576 BNB/年",
+        "burn_source": "Auto-Burn 近4季 5,977,992 BNB (历史$4.49B / 当前价$3.75B); BEP-95 401天数据, 7/30/90/365d = 536/1703/5087/27210 BNB",
         "asbnb_source": "Aster asBNB (Staking + Launchpool/HODLer/Megadrop)",
         "asbnb_url": "https://www.asterdex.com/en/earn/astoken?token=slisBNB",
         "burn_data_url": "https://www.bnbburn.info/",
@@ -109,23 +109,36 @@
         "burn_apy_annual_percent": 4.42,
         "tev_yield_short_percent": 12.07,
         "tev_yield_annual_percent": 11.29,
-        "last_burn_bnb": 1371803.77,
-        "last_burn_date": "2026-01-15",
-        "recent_4q_burn_bnb": 5987893,
-        "recent_4q_burn_usd_historical": 4426740350,
-        "recent_4q_burn_usd_current": 3755851800
+        "last_burn_bnb": 1569307.34,
+        "last_burn_date": "2026-04-15",
+        "recent_4q_burn_bnb": 5977992,
+        "recent_4q_burn_usd_historical": 4494755575,
+        "recent_4q_burn_usd_current": 3749641876,
+        "tev_yield_7d_percent": 12.15,
+        "tev_yield_30d_percent": 12.14,
+        "tev_yield_90d_percent": 12.14,
+        "tev_yield_365d_percent": 11.27,
+        "bep95_7d_bnb": 536.3,
+        "bep95_30d_bnb": 1702.82,
+        "bep95_90d_bnb": 5086.81,
+        "bep95_365d_bnb": 27209.86,
+        "bep95_data_days": 401,
+        "bep95_data_range": {
+          "start": "2025-03-14",
+          "end": "2026-04-18"
+        }
       },
       "tevRatioNote": "供给收缩 + 链上质押收益（非 CEX 利润分润模式）",
       "metrics": {
         "trailing_7d_revenue_usd": 265445,
         "trailing_30d_revenue_usd": 842118,
         "trailing_90d_revenue_usd": 3364197,
-        "tev_yield_7d_ann": 12.07,
-        "tev_yield_30d_ann": 12.07,
-        "tev_yield_90d_ann": 12.07,
-        "earning_yield_7d_ann": 6.9,
-        "earning_yield_30d_ann": 6.9,
-        "earning_yield_90d_ann": 6.9
+        "tev_yield_7d_ann": 12.15,
+        "tev_yield_30d_ann": 12.14,
+        "tev_yield_90d_ann": 12.14,
+        "earning_yield_7d_ann": 6.89,
+        "earning_yield_30d_ann": 6.89,
+        "earning_yield_90d_ann": 6.89
       }
     },
     "compound": {
