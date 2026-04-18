@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-04-18T01:06:03.336039+00:00",
-  "total": 237,
-  "active_count": 31,
+  "updated_at": "2026-04-18T13:05:45.349620+00:00",
+  "total": 235,
+  "active_count": 29,
   "passed_count": 206,
-  "tev_related": 62,
+  "tev_related": 60,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -1237,7 +1237,7 @@
       "source": "Snapshot",
       "protocol": "Lido",
       "title": "Mystery Box | LIDO x Snapshot",
-      "status": "active",
+      "status": "closed",
       "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0xdc853ea0d1057cb9504e721936e79fe9008e41f6086669b6a28495e3b6cf1804",
       "created": 1776253075,
       "end": 1776512275,
@@ -1251,7 +1251,7 @@
       "source": "Snapshot",
       "protocol": "Lido",
       "title": "Муsterу Box | LIDO x Snapshot",
-      "status": "active",
+      "status": "closed",
       "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0x61f7ef1b04d69004209ad1ceab93896c76e9245cd0377fae24c077d213fbc48c",
       "created": 1776217120,
       "end": 1776476320,
@@ -1521,38 +1521,6 @@
       "summary_en": "does not request any funds from Lido DAO and does not involve any budget allocation. It solely seeks governance approval for Lido DAO to adopt the SEAL Whitehat Safe Harbor Agreement.",
       "summary_zh": "本提案不涉及任何资金，仅寻求治理批准 Lido DAO 采纳 SEAL 白帽安全港协议，为安全研究者提供法律保护框架。",
       "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Lido",
-      "title": "Curated Module Fee Changes",
-      "status": "passed",
-      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0x3a5d10fcd3fad6d5ccf05f5bd49244046600ad9cbed9a5e07845200b3ae97e09",
-      "created": 1763993282,
-      "end": 1764604800,
-      "tev_related": true,
-      "tev_keywords": [
-        "fee"
-      ],
-      "summary_en": "This proposal seeks to adjust the fee structure for Node Operators in the current Curated Module (CM or CMv1) of the protocol in light of two key factors: (1) proposed changes that will be brought by Staking Router v3 and Curated Module v2 (see “Cont",
-      "summary_zh": "调整 Curated Module 节点运营商费用结构，为即将到来的 Staking Router v3 和 Curated Module v2 升级做准备。",
-      "analysis_zh": "Lido 调整 Node Operators 费用结构以应对市场竞争与技术升级，巩固 TVL 优势。\n\nLido DAO 提议调整 Curated Module 中 Node Operators 的费用结构，旨在应对以太坊质押市场竞争加剧及 Staking Router v3 升级带来的挑战。虽然协议坐拥 $21.48B TVL 和 $78.6M 年收入，但 LDO 作为治理代币并不分享收益，此次调整更多是为了平衡 Node Operators 利益与协议竞争力，防止市场份额流失。面对新兴竞争对手的挤压，合理的费率改革是维持其流动性质押龙头地位的关键，若能平滑过渡至 CMv2，将有助于长期巩固护城河，而非短期刺激代币价格。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Lido",
-      "title": "Conversion of Treasury Stablecoins into sUSDS or TMMFs",
-      "status": "passed",
-      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0x4dd947f5e73377b074fd393148b377558179f22ea923d584dd3c718f3bab0687",
-      "created": 1763991570,
-      "end": 1764604800,
-      "tev_related": true,
-      "tev_keywords": [
-        "treasury"
-      ],
-      "summary_en": "This proposal requests the DAO’s approval to execute the TMC-6 strategy and handle the related operations to allow the DAO to generate returns on its stablecoin holdings.",
-      "summary_zh": "批准执行 TMC-6 国库策略，将 DAO 稳定币持仓转换为 sUSDS 或代币化货币市场基金（TMMF），为国库资产产生收益。",
-      "analysis_zh": "Lido 国库拟盘活 3000 万美元闲置稳定币，通过 sUSDS 和 TMMFs 创收\n\nLido DAO 提议执行 TMC-6 策略，将国库约 3000 万美元闲置稳定币转换为 sUSDS 或 TMMFs 以赚取收益。尽管协议坐拥 $21.48B TVL 和 $78.6M 年收入，LDO 代币目前 TEV Yield 仍为 0%，不享受分红。此次调整仅是财库管理的优化，旨在利用低风险资产增值而非改变代币经济学。对于市值 $264.1M 的 LDO 而言，这是提升国库可持续性的务实之举，但投资者切勿误读为分红信号。"
     },
     {
       "source": "Snapshot",
