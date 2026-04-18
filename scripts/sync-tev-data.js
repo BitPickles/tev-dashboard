@@ -402,13 +402,20 @@ async function main() {
       // BNB 无 fee 分润机制，tevRatio 不适用（前端渲染会显示 '—'）
       protocol.tevRatio = null;
 
-      // Earning Yield: BEP-95 年化（365d 口径）+ asBNB 固定 APY
-      const bep95_365d_yield_only = marketCap > 0 ? Math.round(bep95_365d_usd / marketCap * 10000) / 100 : 0;
-      const earningYieldBase = Math.round((bep95_365d_yield_only + asbnbApy) * 100) / 100;
-      protocol.earning_yield_percent = earningYieldBase;
-      protocol.metrics.earning_yield_7d_ann = earningYieldBase;
-      protocol.metrics.earning_yield_30d_ann = earningYieldBase;
-      protocol.metrics.earning_yield_90d_ann = earningYieldBase;
+      // Earning Yield = BEP-95（按窗口年化）+ asBNB APY
+      // 各周期用对应窗口的 BEP-95 值，与 TEV Yield 的周期口径保持一致
+      const bep95Yield = (usd) => marketCap > 0 ? usd / marketCap * 100 : 0;
+      const ey_7d   = Math.round((bep95Yield(bep95_7d_usd)   + asbnbApy) * 100) / 100;
+      const ey_30d  = Math.round((bep95Yield(bep95_30d_usd)  + asbnbApy) * 100) / 100;
+      const ey_90d  = Math.round((bep95Yield(bep95_90d_usd)  + asbnbApy) * 100) / 100;
+      const ey_365d = Math.round((bep95Yield(bep95_365d_usd) + asbnbApy) * 100) / 100;
+      protocol.earning_yield_percent        = ey_365d;
+      protocol.metrics.earning_yield_7d_ann  = ey_7d;
+      protocol.metrics.earning_yield_30d_ann = ey_30d;
+      protocol.metrics.earning_yield_90d_ann = ey_90d;
+
+      // BNB 的 BEP-95 占 yield 比例极小 (~0.02%)，需用 3 位小数才能看出周期差异
+      protocol.display_precision = 3;
 
       // 同步 validation 字段（各周期独立，反映 BEP-95 波动）
       if (!protocol.validation) protocol.validation = {};
