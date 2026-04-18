@@ -415,13 +415,13 @@
     "has_tev": true,
     "tev_yield_percent": 11.29,
     "calculation_date": "2026-04-18",
-    "methodology": "Burn APY + asBNB APY (Aster 综合持有收益)。因 Auto-Burn 是季度事件，采用双口径：7d/30d/90d 显示『上次公布的 burn × 4』年化；365d 显示过去 4 季度合计年化。",
+    "methodology": "Burn APY + asBNB APY (Aster 综合持有收益)。Auto-Burn 为季度事件，采用双口径：7d/30d/90d = 近 4 季 burn USD 历史累加（官方公布口径，固定到下次 burn）；365d = 近 4 季 burn BNB × 当前价（按市价重估）。",
     "validation": {
-      "method": "Burn APY（短周期=上次burn×4；365d=近4季）+ asBNB APY (Aster)",
+      "method": "Burn APY（短周期=近4季USD累加；365d=近4季BNB×当前价）+ asBNB APY (Aster)",
       "burn_apy_percent": 4.42,
       "asbnb_apy_percent": 6.87,
       "total_apy_percent": 11.29,
-      "burn_source": "上次 burn 1,371,803.77 BNB (2026-01-15) × 4 → 短周期; 近4季 5,987,893 BNB → 365d; BEP-95 ~37,576 BNB/年",
+      "burn_source": "近 4 季 5,987,893 BNB: 历史 USD 累计 $4.43B (短周期) / 当前价重估 $3.76B (365d); BEP-95 ~37,576 BNB/年",
       "asbnb_source": "Aster asBNB (Staking + Launchpool/HODLer/Megadrop)",
       "asbnb_url": "https://www.asterdex.com/en/earn/astoken?token=slisBNB",
       "burn_data_url": "https://www.bnbburn.info/",
@@ -433,13 +433,15 @@
       "bnb_price_usd": 627.24,
       "market_cap_usd": 85528916981,
       "circulating_supply": 136357344.28,
-      "burn_apy_short_percent": 4.05,
+      "burn_apy_short_percent": 5.2,
       "burn_apy_annual_percent": 4.42,
-      "tev_yield_short_percent": 10.92,
+      "tev_yield_short_percent": 12.07,
       "tev_yield_annual_percent": 11.29,
       "last_burn_bnb": 1371803.77,
       "last_burn_date": "2026-01-15",
-      "recent_4q_burn_bnb": 5987893
+      "recent_4q_burn_bnb": 5987893,
+      "recent_4q_burn_usd_historical": 4426740350,
+      "recent_4q_burn_usd_current": 3755851800
     },
     "sources": [
       {
@@ -535,7 +537,7 @@
       ]
     }
   ],
-  "analyst_notes": "【2026-04-19 更新 - 双口径展示】\n\n## BNB TEV 计算方法\n\n采用 **Burn APY + asBNB APY** 双源独立计算。因 Auto-Burn 为季度事件（一年 4 次），滚动窗口无意义，故采用**双口径展示**：\n\n| 展示周期 | Burn 口径 | 含义 |\n|---------|----------|------|\n| 7d / 30d / 90d | 上一次公布 burn × 4 × 当前价 | 反映最近一次季度数据的年化 |\n| 365d | 过去 4 次 burn 合计 × 当前价 | 过去 12 个月真实发生的年化 |\n\n两者在稳定态下接近；若最近一次 burn 异于前几次，两个口径会有差异，供用户判断趋势。\n\n### 为什么不再用 slisBNB？\n- slisBNB 仅反映 **Staking 收益**，不含 Launchpool/HODLer/Megadrop\n- 会**低估** BNB 的综合持有收益\n\n### 数据源拆分\n\n| 来源 | 口径 | 说明 |\n|------|------|------|\n| Auto-Burn | 见上表 | 季度销毁，公式 B=N×1000/P |\n| BEP-95 | 周均 × 52 × 当前价 | 实时 gas fee 销毁，数据源 `burn-history.json.bep95_weekly_bnb` |\n| asBNB 持有收益 | 固定 6.87% APY | Staking + Launchpool/HODLer/Megadrop（Aster 官方） |\n\n### 关键结论\n- **TEV Yield** 每日由 `scripts/sync-tev-data.js` 重算，当前值见主表和 `metrics.tev_yield_*_ann`。\n- Burn 与 asBNB 无重叠（Burn = 供给收缩，asBNB = 收益分配）。\n- 链上黑洞地址：`0x000000000000000000000000000000000000dEaD`（BscScan 可验证）\n- 数据来源：`data/protocols/bnb/burn-history.json` + Aster 官方 asBNB APY\n\n### 历史口径变更\n\n- 2026-04-19 (晚): 改为双口径——短周期用上次 burn × 4，365d 用近 4 季\n- 2026-04-19 (早): 从滚动窗口改为稳定态（所有周期同值，被 Boss 否决）\n- 2026-03-01: 从 slisBNB 单一 proxy 改为 Burn + asBNB 双源",
+  "analyst_notes": "【2026-04-19 更新 - 双口径展示】\n\n## BNB TEV 计算方法\n\n采用 **Burn APY + asBNB APY** 双源独立计算。因 Auto-Burn 为季度事件（一年 4 次），滚动窗口无意义，故采用**双口径展示**：\n\n| 展示周期 | Burn 口径 | 含义 |\n|---------|----------|------|\n| 7d / 30d / 90d | 近 4 季 burn USD 累加（每次 burn 公告时的历史 USD） | 官方披露的『过去一年累计销毁金额』，固定到下次 burn |\n| 365d | 近 4 季 burn BNB 合计 × 当前价 | 按当前市价重估的『过去一年年化』|\n\n两者差异 = BNB 价格变动的影响。当前价低于历史均价时，短周期 > 365d；反之短周期 < 365d。用户可对比两者判断趋势。\n\n### 为什么不再用 slisBNB？\n- slisBNB 仅反映 **Staking 收益**，不含 Launchpool/HODLer/Megadrop\n- 会**低估** BNB 的综合持有收益\n\n### 数据源拆分\n\n| 来源 | 口径 | 说明 |\n|------|------|------|\n| Auto-Burn (短周期) | `quarterly_burns[-4..].usd_value` 累加 | 每季度公告的历史 USD 值 |\n| Auto-Burn (365d) | `quarterly_burns[-4..].bnb_burned` × 当前价 | 按当前市值重估 |\n| BEP-95 | 周均 × 52 × 当前价 | 实时 gas fee 销毁（两个口径都用当前价） |\n| asBNB 持有收益 | 固定 6.87% APY | Staking + Launchpool/HODLer/Megadrop（Aster 官方） |\n\n### 关键结论\n- **TEV Yield** 每日由 `scripts/sync-tev-data.js` 重算。\n- Burn 与 asBNB 无重叠（Burn = 供给收缩，asBNB = 收益分配）。\n- 链上黑洞地址：`0x000000000000000000000000000000000000dEaD`（BscScan 可验证）\n- 数据来源：`data/protocols/bnb/burn-history.json` + Aster 官方 asBNB APY\n\n### 历史口径变更\n\n- 2026-04-19 (v3): 短周期改用历史 USD 累加（官方公布口径），365d 保持当前价重估\n- 2026-04-19 (v2): 尝试『上次 burn × 4』作为短周期年化（被 Boss 否决）\n- 2026-04-19 (v1): 所有周期同值（稳定态，被 Boss 否决）\n- 2026-03-01: 从 slisBNB 单一 proxy 改为 Burn + asBNB 双源",
   "last_updated": "2026-04-19",
   "burn_progress": {
     "total_burned": 13300851,
@@ -574,9 +576,9 @@
     "trailing_7d_revenue_usd": 265445,
     "trailing_30d_revenue_usd": 842118,
     "trailing_90d_revenue_usd": 3364197,
-    "tev_yield_7d_ann": 10.92,
-    "tev_yield_30d_ann": 10.92,
-    "tev_yield_90d_ann": 10.92,
+    "tev_yield_7d_ann": 12.07,
+    "tev_yield_30d_ann": 12.07,
+    "tev_yield_90d_ann": 12.07,
     "earning_yield_7d_ann": 6.9,
     "earning_yield_30d_ann": 6.9,
     "earning_yield_90d_ann": 6.9

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-18T17:19:55.982Z",
+  "generated_at": "2026-04-18T17:29:23.471Z",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -89,11 +89,11 @@
       "tevRatio": null,
       "earning_yield_percent": 6.9,
       "validation": {
-        "method": "Burn APY（短周期=上次burn×4；365d=近4季）+ asBNB APY (Aster)",
+        "method": "Burn APY（短周期=近4季USD累加；365d=近4季BNB×当前价）+ asBNB APY (Aster)",
         "burn_apy_percent": 4.42,
         "asbnb_apy_percent": 6.87,
         "total_apy_percent": 11.29,
-        "burn_source": "上次 burn 1,371,803.77 BNB (2026-01-15) × 4 → 短周期; 近4季 5,987,893 BNB → 365d; BEP-95 ~37,576 BNB/年",
+        "burn_source": "近 4 季 5,987,893 BNB: 历史 USD 累计 $4.43B (短周期) / 当前价重估 $3.76B (365d); BEP-95 ~37,576 BNB/年",
         "asbnb_source": "Aster asBNB (Staking + Launchpool/HODLer/Megadrop)",
         "asbnb_url": "https://www.asterdex.com/en/earn/astoken?token=slisBNB",
         "burn_data_url": "https://www.bnbburn.info/",
@@ -105,22 +105,24 @@
         "bnb_price_usd": 627.24,
         "market_cap_usd": 85528916981,
         "circulating_supply": 136357344.28,
-        "burn_apy_short_percent": 4.05,
+        "burn_apy_short_percent": 5.2,
         "burn_apy_annual_percent": 4.42,
-        "tev_yield_short_percent": 10.92,
+        "tev_yield_short_percent": 12.07,
         "tev_yield_annual_percent": 11.29,
         "last_burn_bnb": 1371803.77,
         "last_burn_date": "2026-01-15",
-        "recent_4q_burn_bnb": 5987893
+        "recent_4q_burn_bnb": 5987893,
+        "recent_4q_burn_usd_historical": 4426740350,
+        "recent_4q_burn_usd_current": 3755851800
       },
       "tevRatioNote": "供给收缩 + 链上质押收益（非 CEX 利润分润模式）",
       "metrics": {
         "trailing_7d_revenue_usd": 265445,
         "trailing_30d_revenue_usd": 842118,
         "trailing_90d_revenue_usd": 3364197,
-        "tev_yield_7d_ann": 10.92,
-        "tev_yield_30d_ann": 10.92,
-        "tev_yield_90d_ann": 10.92,
+        "tev_yield_7d_ann": 12.07,
+        "tev_yield_30d_ann": 12.07,
+        "tev_yield_90d_ann": 12.07,
         "earning_yield_7d_ann": 6.9,
         "earning_yield_30d_ann": 6.9,
         "earning_yield_90d_ann": 6.9
