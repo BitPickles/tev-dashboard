@@ -14,10 +14,20 @@
 
 数据源优先级：**链上 > 官方治理 > 估算 > DefiLlama**
 
-- 所有 TEV 计算统一为「过去 365 天」口径
-- Revenue 用 DefiLlama `dailyRevenue`，不是 `dailyFees`
-- TEV Ratio 变更必须有治理提案或官方文档支撑
-- 核心公式不可更改，参见 `docs/skill/tev-data-layer.md`
+- **每个协议的 TEV 机制独立，不能套通用公式**。BNB / HYPE / Aster / Uniswap 等需要专属分支。详见 `docs/skill/tev-data-layer.md`
+- **DefiLlama 口径需逐个协议验证**：`dailyRevenue` 是否等于归属 token 持有人部分，部分协议（如 Hyperliquid）上 `dailyRevenue == dailyHoldersRevenue`，其他协议未必
+- **TEV Yield 365d 是主口径**；短周期（7/30/90d）根据机制特性选择算法：
+  - 滚动窗口年化（通用 fee 分润协议）
+  - 近 4 季度稳定态（BNB 的 Auto-Burn 季度事件）
+  - 时间序列窗口求和（BNB 的 BEP-95 日频波动）
+  - 历史 USD 累加 vs 当前价重估（BNB 的短周期 vs 365d 双口径）
+- **TEV Ratio 变更**必须有治理提案或官方文档支撑
+  - `null` = 协议无 fee 分润机制（如 BNB），前端渲染 `—`
+  - `0` = 有 fee 但 0% 归持有人（如 Lido / Compound）
+  - 数字 = 明确分润比例（如 Pendle 0.8、Curve 0.5）
+- **前端两个数据源必须同步**：主表 `/tev/index.html` 读 `data/all-protocols.json`，详情页 `/tev/protocol.html` 读 `data/protocols/<id>/config.json`，改动要两边核对
+- **显示精度**：默认 2 位小数；协议 TEV 某部分贡献 <0.1%（如 BNB 的 BEP-95 ~0.02%）时，在 config 里标 `display_precision: 3`
+- **核心规范（schema / 新协议工作流 / 已踩坑清单）**见 `docs/skill/tev-data-layer.md`，公式不可擅自更改
 
 ## 分支纪律
 
