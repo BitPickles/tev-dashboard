@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-21T01:06:14.437268+00:00",
+  "updated_at": "2026-04-21T13:06:05.230019+00:00",
   "total": 236,
   "active_count": 31,
   "passed_count": 205,
@@ -2819,6 +2819,34 @@
     {
       "source": "GitHub BEP",
       "protocol": "BNB Chain",
+      "title": "BAP-578 executeAction Defines Interface Semantics but Lacks Security Constraints for Safe Multi-User Interoperability",
+      "status": "active",
+      "link": "https://github.com/bnb-chain/BEPs/issues/681",
+      "created": "2026-04-21T12:00:21",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "BAP-578 currently provides interface-level action semantics(`executeAction`), but lacks implementation-level security constraints for multi-user shared execution, making safe interoperability difficult in practice.",
+      "summary_zh": "BAP-578定义了`executeAction`接口语义，但缺少多用户共享执行的安全约束，实际应用中安全互操作性困难。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
+      "title": "feat: add improve bep-675 perforamce analysiså",
+      "status": "passed",
+      "link": "https://github.com/bnb-chain/BEPs/pull/680",
+      "created": "2026-04-21T04:29:48",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "improve bep-675 analysis on performance",
+      "summary_zh": "Binance Smart Chain治理提案：feat: 优化BEP-675性能分析\n摘要：提升BEP-675性能分析质量",
+      "analysis_zh": ""
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
       "title": "introduce BEPs in Pasteur",
       "status": "passed",
       "link": "https://github.com/bnb-chain/BEPs/pull/679",
@@ -2926,34 +2954,6 @@
       "tev_keywords": [],
       "summary_en": "update status of mendel beps",
       "summary_zh": "更新 Mendel 硬分叉相关 BEP 的状态标记，将已实施的提案标记为已完成。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BAP-671: Agent Task Escrow with Outcome Token Settlement",
-      "status": "active",
-      "link": "https://github.com/bnb-chain/BEPs/pull/671",
-      "created": "2026-03-05T00:38:04",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "BAP-671: Agent Task Escrow with Outcome Token Settlement",
-      "summary_zh": "BAP-671：AI Agent 任务托管与结果代币结算方案。定义链上 AI Agent 任务的资金托管和基于结果的代币结算机制。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BEP-670: Short Block Interval Phase Four: 250ms",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/670",
-      "created": "2026-03-04T07:47:08",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "https://github.com/zlacfzy/BEPs/blob/BEP-670/BEPs/BEP-670.md",
-      "summary_zh": "BEP-670：BSC 短出块时间第四阶段——将出块间隔缩短至 250 毫秒，进一步提升 BSC 链的交易确认速度。",
       "analysis_zh": ""
     },
     {
