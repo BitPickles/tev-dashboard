@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-04-20T13:05:49.489022+00:00",
-  "total": 235,
-  "active_count": 29,
-  "passed_count": 206,
-  "tev_related": 60,
+  "updated_at": "2026-04-21T01:06:14.437268+00:00",
+  "total": 236,
+  "active_count": 31,
+  "passed_count": 205,
+  "tev_related": 61,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -1520,6 +1520,20 @@
       "tev_keywords": [],
       "summary_en": "does not request any funds from Lido DAO and does not involve any budget allocation. It solely seeks governance approval for Lido DAO to adopt the SEAL Whitehat Safe Harbor Agreement.",
       "summary_zh": "本提案不涉及任何资金，仅寻求治理批准 Lido DAO 采纳 SEAL 白帽安全港协议，为安全研究者提供法律保护框架。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Morpho",
+      "title": "MIP 130 - MORPHO Incentives on Tempo",
+      "status": "active",
+      "link": "https://snapshot.org/#/morpho.eth/proposal/0x3ed6d533b88987d59eea43a0cb320cb3386b863f27e5764e600302bbfe15f16a",
+      "created": 1776700744,
+      "end": 1776959944,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "MIP 130 - MORPHO Incentives on Tempo",
+      "summary_zh": "MIP 130 - 在 Tempo 上实施 Morpho 激励计划",
       "analysis_zh": ""
     },
     {
@@ -3215,6 +3229,21 @@
     {
       "source": "Sky Polling",
       "protocol": "Sky (MakerDAO)",
+      "title": "Atlas Edit Weekly Cycle Proposal - April 20, 2026",
+      "status": "active",
+      "link": "https://vote.makerdao.com/polling/QmNXSS7H",
+      "created": "2026-04-20T16:00:00",
+      "end": "2026-04-23T16:00:00",
+      "tev_related": true,
+      "tev_keywords": [
+        "fee"
+      ],
+      "summary_en": "This Atlas edit proposal 1) reorders the loss absorption sequence so the Genesis Capital Backstop is applied before the SKY Backstop, 2) collapses ecosystem upkeep to a uniform 50 bps fee, 3) adds documentation for the Plasma SkyLink Bridge, 4) remov",
+      "summary_zh": "协议：Sky（MakerDAO）\n标题：Atlas 编辑每周周期提案 - 2026年4月20日\n摘要：本提案1）调整损失吸收顺序，使创世资本后备基金先于SKY后备基金应用，2）将生态系统维护费率统一为50个基点，3）添加Plasma SkyLink桥的文档，4）移除"
+    },
+    {
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
       "title": "Atlas Edit Weekly Cycle Proposal - April 13, 2026",
       "status": "passed",
       "link": "https://vote.makerdao.com/polling/QmVAKhR6",
@@ -3271,20 +3300,6 @@
       "tev_keywords": [],
       "summary_en": "This Atlas edit proposal 1) removes Governance poll requirement for SparkLend parameter changes, 2) removes Signal Requests and Non-Standard Weekly Polls from the Atlas, 3) clarifies Facilitator authority to update Atlas after spell execution, 4) add",
       "summary_zh": "协议：Sky（MakerDAO）\n标题：Atlas 编辑每周周期提案 - 2026年3月23日\n摘要：本提案1）取消SparkLend参数变更的治理投票要求，2）从Atlas中移除信号请求和非标准每周投票，3）明确执行咒语后更新Atlas的协调员权限，4）添加...",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Sky Polling",
-      "protocol": "Sky (MakerDAO)",
-      "title": "SparkLend Mainnet - Reactivate WBTC - March 23, 2026",
-      "status": "passed",
-      "link": "https://vote.makerdao.com/polling/QmX7MC2S",
-      "created": "2026-03-23T16:00:00",
-      "end": "2026-03-26T16:00:00",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Signal your support or opposition to reactivating WBTC with the listed parameters on SparkLend Mainnet.",
-      "summary_zh": "Signal your support or opposition to reactivating WBTC with the listed parameters on SparkLend Mainnet.",
       "analysis_zh": ""
     },
     {
