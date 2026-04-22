@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T14:02:05.739Z",
+  "generated_at": "2026-04-22T14:09:48.981Z",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -787,7 +787,11 @@
         "burn_365d_usd": 120897624,
         "burn_daily_avg_30d_usd": 37536,
         "note": "2026-03 Splitter burn 参数大幅下调（日均从 ~$300k 降至 ~$37.6k，-87.5%）。365d 窗口包含下调前高峰，所以短周期 < 365d。"
-      }
+      },
+      "tevRatio_7d": 0.0789,
+      "tevRatio_30d": 0.079,
+      "tevRatio_90d": 0.3193,
+      "tevRatio_365d": 0.483
     },
     "spark": {
       "name": "Spark",

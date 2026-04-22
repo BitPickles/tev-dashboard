@@ -510,9 +510,14 @@ async function main() {
         protocol.earning_yield_percent         = calcY(revenueData.revenue365d, 365);
       }
 
-      // tevRatio 动态反映 Splitter 的 burn 比例
-      if (holdersData && revenueData && revenueData.revenue365d > 0) {
-        protocol.tevRatio = Math.round(holdersData.sum365d / revenueData.revenue365d * 10000) / 10000;
+      // tevRatio 动态反映 Splitter 的 burn 比例 —— 按各周期独立算
+      if (holdersData && revenueData) {
+        const calcRatio = (h, r) => (r > 0 && h != null ? Math.round(h / r * 10000) / 10000 : null);
+        protocol.tevRatio_7d   = calcRatio(holdersData.sum7d,   revenueData.revenue7d);
+        protocol.tevRatio_30d  = calcRatio(holdersData.sum30d,  revenueData.revenue30d);
+        protocol.tevRatio_90d  = calcRatio(holdersData.sum90d,  revenueData.revenue90d);
+        protocol.tevRatio_365d = calcRatio(holdersData.sum365d, revenueData.revenue365d);
+        protocol.tevRatio = protocol.tevRatio_365d;  // 顶层保持 365d
       }
 
       protocol.validation = protocol.validation || {};
