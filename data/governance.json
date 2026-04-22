@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-04-22T01:06:12.180988+00:00",
+  "updated_at": "2026-04-22T13:06:08.238201+00:00",
   "total": 235,
-  "active_count": 31,
-  "passed_count": 204,
+  "active_count": 32,
+  "passed_count": 203,
   "tev_related": 61,
   "monitored_protocols": 19,
   "protocols_meta": {
@@ -1251,7 +1251,7 @@
       "source": "Snapshot",
       "protocol": "Lido",
       "title": "Mystery Box | LIDO x Snapshot",
-      "status": "closed",
+      "status": "passed",
       "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0xf4704fdf3599107511336ff04b3b398069a7b15c50431c4c061d7e8a7dc18564",
       "created": 1776213215,
       "end": 1776472415,
@@ -2670,6 +2670,20 @@
     {
       "source": "dYdX Cosmos",
       "protocol": "dYdX",
+      "title": "Upgrade XAG-USD market from ISOLATED to CROSS and/or change liquidity tier",
+      "status": "active",
+      "link": "https://www.mintscan.io/dydx/proposals/379",
+      "created": "2026-04-22T08:13:52.526322328Z",
+      "end": "2026-04-25T08:13:52.526322328Z",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Upgrade XAG-USD market from ISOLATED to CROSS and/or change liquidity tier",
+      "summary_zh": "将 XAG-USD 市场从隔离模式升级至交叉模式，以及/或更改流动性层级。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
       "title": "Upgrade WTI-USD market from ISOLATED to CROSS and/or change liquidity tier",
       "status": "passed",
       "link": "https://www.mintscan.io/dydx/proposals/378",
@@ -2789,17 +2803,17 @@
       "analysis_zh": "dYdX 对 BTC 和 BONK 实施免交易费至 2026 年，短期收入锐减将直接冲击 DYDX 回购支撑。\n\n该提案针对 BTC-USD 和 BONK-USD 市场实施 100% 费用折扣直至 2026 年 4 月，这无疑是一场激进的以收入换流量的博弈。当前年收入仅 $12.5M，其中 $11.3M 用于回购支撑着 5.33% 的 TEV Yield，免交易费政策将切断这部分核心收入来源，直接削弱 DYDX 的价值捕获能力。虽然长期看可能通过提升 TVL（现 $158.7M）和市场份额来反哺生态，但在市值仅 $75.0M 的背景下，长达两年的“造血”缺失对质押者并不友好，短期抛压风险显著上升。"
     },
     {
-      "source": "dYdX Cosmos",
-      "protocol": "dYdX",
-      "title": "Re-enable Permissionless Market Listings",
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
+      "title": "BEP-682.md: Enforce Unique Validators in CometBFT Light Block Validator on Precompile",
       "status": "passed",
-      "link": "https://www.mintscan.io/dydx/proposals/369",
-      "created": "2026-03-26T13:31:52.182092372Z",
-      "end": "2026-03-29T13:31:52.182092372Z",
+      "link": "https://github.com/bnb-chain/BEPs/pull/682",
+      "created": "2026-04-22T08:25:33",
+      "end": "",
       "tev_related": false,
       "tev_keywords": [],
-      "summary_en": "Set the markets hard cap to 500 to re-enable permissionless listings.",
-      "summary_zh": "协议：dYdX\n标题：恢复无权限市场列表\n摘要：将市场硬顶设置为500以恢复无权限列表。",
+      "summary_en": "https://github.com/zlacfzy/BEPs/blob/15204dc5b4e7af36fadadbbdaebadd3b4f9889f5/BEPs/BEP-682.md",
+      "summary_zh": "Binance智能链（BNB Chain）于2023年2月1日实施BEP-682提案，强制在CometBFT轻节点验证器中实施唯一验证者机制。",
       "analysis_zh": ""
     },
     {
@@ -2926,20 +2940,6 @@
       "tev_keywords": [],
       "summary_en": "https://github.com/allformless/BEPs/blob/define-Pasteur-beps/BEPs/BEP-673.md",
       "summary_zh": "BEP-673：Pasteur 硬分叉元提案。定义 BSC Pasteur 硬分叉包含的所有 BEP 升级清单和激活时间表。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "update status of mendel beps",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/672",
-      "created": "2026-03-06T07:54:22",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "update status of mendel beps",
-      "summary_zh": "更新 Mendel 硬分叉相关 BEP 的状态标记，将已实施的提案标记为已完成。",
       "analysis_zh": ""
     },
     {
