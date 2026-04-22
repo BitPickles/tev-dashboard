@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-18T19:19:29.629Z",
+  "generated_at": "2026-04-22T13:45:01.468Z",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -822,22 +822,38 @@
         "en": "Firepit burn UNI→0xdead fully on-chain trackable (Etherscan)"
       },
       "tevStatus": "active",
-      "tev_yield_percent": 1.47,
-      "market_cap_usd": 2393472958,
+      "tev_yield_percent": 0.54,
+      "market_cap_usd": 2159183633.96182,
       "tvl": 3091182140.0588913,
       "tevRatio": 1,
-      "earning_yield_percent": 1.47,
+      "earning_yield_percent": 0.54,
       "tevRatioNote": "协议费 + Unichain Sequencer 收入 → Firepit 销毁 UNI",
       "metrics": {
-        "trailing_7d_revenue_usd": 617995,
-        "trailing_30d_revenue_usd": 3276053,
-        "trailing_90d_revenue_usd": 7632966,
-        "tev_yield_7d_ann": 1.35,
-        "tev_yield_30d_ann": 1.67,
-        "tev_yield_90d_ann": 1.29,
-        "earning_yield_7d_ann": 1.35,
-        "earning_yield_30d_ann": 1.67,
-        "earning_yield_90d_ann": 1.29
+        "trailing_7d_revenue_usd": 1179171,
+        "trailing_30d_revenue_usd": 4382700,
+        "trailing_90d_revenue_usd": 10428507,
+        "tev_yield_7d_ann": 2.85,
+        "tev_yield_30d_ann": 2.47,
+        "tev_yield_90d_ann": 1.96,
+        "earning_yield_7d_ann": 2.85,
+        "earning_yield_30d_ann": 2.47,
+        "earning_yield_90d_ann": 1.96,
+        "trailing_365d_revenue_usd": 11621322
+      },
+      "validation": {
+        "method": "A 口径：365d UNI 转入 0xdead（链上）减去 >=10M UNI 一次性事件",
+        "burn_7d_uni": 346000,
+        "burn_30d_uni": 1286000,
+        "burn_90d_uni": 3060000,
+        "burn_365d_uni": 3410003,
+        "retro_events_count": 1,
+        "retro_total_uni": 100000000,
+        "uni_price_usd": 3.41,
+        "data_days": 118,
+        "data_range": {
+          "start": "2025-06-07",
+          "end": "2026-04-22"
+        }
       }
     }
   }

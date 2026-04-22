@@ -452,6 +452,81 @@ async function main() {
       continue;
     }
 
+    // Uniswap 专属：TEV 只看链上 UNI 转入 0xdead（A 口径，Boss 2026-04-22 定）
+    // 排除 >=10M UNI 的一次性治理事件（如 2025-12-27 Timelock 100M retroactive burn）
+    if (key === 'uniswap') {
+      const protocol = protocols[key];
+      if (!protocol) continue;
+      console.log(`📊 uniswap... (链上 0xdead burn 口径)`);
+      const burnHistPath = path.join(__dirname, '../data/protocols/uniswap/burn-history.json');
+      let burnHist = { daily: [], retro_events: [] };
+      try { burnHist = JSON.parse(fs.readFileSync(burnHistPath, 'utf8')); } catch (e) {
+        console.warn(`  ⚠️ burn-history.json 读取失败: ${e.message}`);
+      }
+      const marketCap = protocol.market_cap_usd || 0;
+      const circulatingSupply = 633561603;  // CoinGecko circulating，近似值，可后续改为动态
+      const uniPrice = marketCap > 0 && circulatingSupply > 0 ? marketCap / circulatingSupply : 0;
+
+      // 按 N 天窗口求和持续 burn（排除 retro）
+      const today = new Date();
+      const sumBurn = (days) => {
+        const cutoff = new Date(today.getTime() - days * 86400000).toISOString().slice(0, 10);
+        return (burnHist.daily || []).filter(r => r.date > cutoff).reduce((s, r) => s + (r.uni || 0), 0);
+      };
+      const burn7d_uni   = sumBurn(7);
+      const burn30d_uni  = sumBurn(30);
+      const burn90d_uni  = sumBurn(90);
+      const burn365d_uni = sumBurn(365);
+
+      const usd = (uni) => uni * uniPrice;
+      const calcY = (usdVal, days) => {
+        if (!marketCap) return 0;
+        const ann = days >= 365 ? 1 : (365 / days);
+        return Math.round(usdVal * ann / marketCap * 10000) / 100;
+      };
+      const tev_7d   = calcY(usd(burn7d_uni),   7);
+      const tev_30d  = calcY(usd(burn30d_uni),  30);
+      const tev_90d  = calcY(usd(burn90d_uni),  90);
+      const tev_365d = calcY(usd(burn365d_uni), 365);
+
+      if (!protocol.metrics) protocol.metrics = {};
+      protocol.metrics.tev_yield_7d_ann  = tev_7d;
+      protocol.metrics.tev_yield_30d_ann = tev_30d;
+      protocol.metrics.tev_yield_90d_ann = tev_90d;
+      protocol.tev_yield_percent         = tev_365d;
+      // Earning = TEV for uniswap (tevRatio=1.0，所有 burn 归 token holder)
+      protocol.metrics.earning_yield_7d_ann  = tev_7d;
+      protocol.metrics.earning_yield_30d_ann = tev_30d;
+      protocol.metrics.earning_yield_90d_ann = tev_90d;
+      protocol.earning_yield_percent         = tev_365d;
+      // revenue 字段用 burn USD 填（反映 token holder 实得）
+      protocol.metrics.trailing_7d_revenue_usd   = Math.round(usd(burn7d_uni));
+      protocol.metrics.trailing_30d_revenue_usd  = Math.round(usd(burn30d_uni));
+      protocol.metrics.trailing_90d_revenue_usd  = Math.round(usd(burn90d_uni));
+      protocol.metrics.trailing_365d_revenue_usd = Math.round(usd(burn365d_uni));
+
+      protocol.validation = protocol.validation || {};
+      protocol.validation.method = 'A 口径：365d UNI 转入 0xdead（链上）减去 >=10M UNI 一次性事件';
+      protocol.validation.burn_7d_uni   = Math.round(burn7d_uni);
+      protocol.validation.burn_30d_uni  = Math.round(burn30d_uni);
+      protocol.validation.burn_90d_uni  = Math.round(burn90d_uni);
+      protocol.validation.burn_365d_uni = Math.round(burn365d_uni);
+      protocol.validation.retro_events_count = (burnHist.retro_events || []).length;
+      protocol.validation.retro_total_uni = Math.round((burnHist.retro_events || []).reduce((s, r) => s + (r.amount || 0), 0));
+      protocol.validation.uni_price_usd = Math.round(uniPrice * 100) / 100;
+      protocol.validation.data_days = (burnHist.daily || []).length;
+      protocol.validation.data_range = burnHist.daily && burnHist.daily.length
+        ? { start: burnHist.daily[0].date, end: burnHist.daily[burnHist.daily.length-1].date }
+        : null;
+
+      console.log(`  UNI price: $${uniPrice.toFixed(2)} (marketCap $${(marketCap/1e9).toFixed(2)}B ÷ ${(circulatingSupply/1e6).toFixed(0)}M supply)`);
+      console.log(`  Burn UNI: 7d=${Math.round(burn7d_uni).toLocaleString()} / 30d=${Math.round(burn30d_uni).toLocaleString()} / 90d=${Math.round(burn90d_uni).toLocaleString()} / 365d=${Math.round(burn365d_uni).toLocaleString()}`);
+      console.log(`  Retro 排除: ${(burnHist.retro_events || []).length} 次, 共 ${Math.round((burnHist.retro_events || []).reduce((s, r) => s + (r.amount || 0), 0)/1e6)}M UNI`);
+      console.log(`  TEV Yield: 7d=${tev_7d}% 30d=${tev_30d}% 90d=${tev_90d}% 365d=${tev_365d}%`);
+      updated++;
+      continue;
+    }
+
     // 其他特殊协议：不更新市值和年度TEV，但拉 DefiLlama 收入计算多维度 yield
     if (SKIP_PROTOCOLS.includes(key)) {
       const protocol = protocols[key];
