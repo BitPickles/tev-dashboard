@@ -301,5 +301,6 @@ data/protocols/<id>/
 | 2026-04-19 | BNB | TEV 周期口径修正 + BEP-95 日时间序列 + 自动更新脚本 + 文档 | `2a7bfc4` | ✅ 已上 main（正式站） |
 | 2026-04-19 | Hyperliquid | AF 口径修正（不是 burn）+ 365d bug 修复 + 链上校验 + 文档 | `02c6747` | ✅ 已上 main（正式站） |
 | 2026-04-19 | — | 新增 TEV 总规范文档 | `4be0332` | ✅ 已上 main |
+| 2026-04-22 | Uniswap | 切换到链上直查 0xdead burn（A 口径）+ 链上数据核实（余额对账 + Retro 源头确认 Timelock）+ 每日增量脚本 + 文档 | — | 🚧 dev，待验收 |
 
 每次协议上线后应在本表追加一行，形成可追溯的 changelog。
