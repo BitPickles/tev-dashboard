@@ -222,6 +222,25 @@ async function getDefillamaRevenue(slug) {
   }
 }
 
+// 通用 DefiLlama fees/revenue/holdersRevenue 拉取
+async function getDefillamaFees(slug, dataType) {
+  try {
+    const data = await fetchJson(`https://api.llama.fi/summary/fees/${slug}?dataType=${dataType}`);
+    const chart = data.totalDataChart || [];
+    const sumSlice = (n) => chart.slice(-n).reduce((s, d) => s + (d[1] || 0), 0);
+    return {
+      sum7d:   sumSlice(7),
+      sum30d:  sumSlice(30),
+      sum90d:  sumSlice(90),
+      sum365d: sumSlice(365),
+      chartLength: chart.length,
+    };
+  } catch (e) {
+    console.warn(`  ⚠️ DefiLlama ${slug}/${dataType}: ${e.message}`);
+    return null;
+  }
+}
+
 // 获取 CoinGecko 市值（带重试）
 async function getCoingeckoMarketCap(id, retries = 2) {
   for (let i = 0; i < retries; i++) {
@@ -448,6 +467,75 @@ async function main() {
       console.log(`  Auto-Burn USD: 近4季历史累加=$${(recent4BurnUsdHistorical/1e9).toFixed(2)}B / 当前价重估=$${(recent4BurnUsdCurrent/1e9).toFixed(2)}B`);
       console.log(`  asBNB APY: ${asbnbApy}%`);
       console.log(`  TEV Yield: 7d=${tevYield_7d}% 30d=${tevYield_30d}% 90d=${tevYield_90d}% 365d=${tevYield_365d}%`);
+      updated++;
+      continue;
+    }
+
+    // Sky 专属：TEV 用 DefiLlama dailyHoldersRevenue（Splitter 的 burn 部分，即 SBE 真实支出）
+    // 原代码使用 fixedTevUsd: $13.724M（治理公告值），但实际每日波动，应动态拉取
+    // Splitter 的 farm 部分（给 SKY stakers）不算 TEV（新铸造的 SKY + USDS yield，非市场回购）
+    if (key === 'sky') {
+      const protocol = protocols[key];
+      if (!protocol) continue;
+      console.log(`📊 sky... (DefiLlama dailyHoldersRevenue 口径)`);
+      const marketCap = protocol.market_cap_usd || 0;
+      if (!protocol.metrics) protocol.metrics = {};
+
+      // 拉 holdersRevenue（TEV）和 revenue（Earning）两个口径
+      const [holdersData, revenueData] = await Promise.all([
+        getDefillamaFees('sky', 'dailyHoldersRevenue'),
+        getDefillamaRevenue('sky'),
+      ]);
+
+      const calcY = (sum, days) => {
+        if (sum == null || !marketCap) return null;
+        const ann = days >= 365 ? 1 : (365 / days);
+        return Math.round(sum * ann / marketCap * 10000) / 100;
+      };
+
+      if (holdersData) {
+        protocol.metrics.tev_yield_7d_ann  = calcY(holdersData.sum7d,   7);
+        protocol.metrics.tev_yield_30d_ann = calcY(holdersData.sum30d,  30);
+        protocol.metrics.tev_yield_90d_ann = calcY(holdersData.sum90d,  90);
+        protocol.tev_yield_percent         = calcY(holdersData.sum365d, 365);
+      }
+      if (revenueData) {
+        protocol.metrics.trailing_7d_revenue_usd   = revenueData.revenue7d;
+        protocol.metrics.trailing_30d_revenue_usd  = revenueData.revenue30d;
+        protocol.metrics.trailing_90d_revenue_usd  = revenueData.revenue90d;
+        protocol.metrics.trailing_365d_revenue_usd = revenueData.revenue365d;
+        protocol.metrics.earning_yield_7d_ann  = calcY(revenueData.revenue7d,  7);
+        protocol.metrics.earning_yield_30d_ann = calcY(revenueData.revenue30d, 30);
+        protocol.metrics.earning_yield_90d_ann = calcY(revenueData.revenue90d, 90);
+        protocol.earning_yield_percent         = calcY(revenueData.revenue365d, 365);
+      }
+
+      // tevRatio 动态反映 Splitter 的 burn 比例
+      if (holdersData && revenueData && revenueData.revenue365d > 0) {
+        protocol.tevRatio = Math.round(holdersData.sum365d / revenueData.revenue365d * 10000) / 10000;
+      }
+
+      protocol.validation = protocol.validation || {};
+      protocol.validation.method = 'DefiLlama dailyHoldersRevenue = Splitter burn (SBE 真实支出) / dailyRevenue = 协议总归属';
+      protocol.validation.tev_source = 'DefiLlama dailyHoldersRevenue (slug=sky)';
+      protocol.validation.earning_source = 'DefiLlama dailyRevenue (slug=sky)';
+      if (holdersData) {
+        protocol.validation.burn_7d_usd   = Math.round(holdersData.sum7d);
+        protocol.validation.burn_30d_usd  = Math.round(holdersData.sum30d);
+        protocol.validation.burn_90d_usd  = Math.round(holdersData.sum90d);
+        protocol.validation.burn_365d_usd = Math.round(holdersData.sum365d);
+      }
+      if (holdersData && holdersData.sum30d) {
+        protocol.validation.burn_daily_avg_30d_usd = Math.round(holdersData.sum30d / 30);
+      }
+      protocol.validation.note = '2026-03 Splitter burn 参数大幅下调（日均从 ~$300k 降至 ~$37.6k，-87.5%）。365d 窗口包含下调前高峰，所以短周期 < 365d。';
+
+      console.log(`  marketCap: $${(marketCap/1e9).toFixed(2)}B`);
+      if (holdersData) console.log(`  HoldersRevenue: 7d=$${(holdersData.sum7d/1e6).toFixed(2)}M 30d=$${(holdersData.sum30d/1e6).toFixed(2)}M 90d=$${(holdersData.sum90d/1e6).toFixed(2)}M 365d=$${(holdersData.sum365d/1e6).toFixed(2)}M`);
+      if (revenueData) console.log(`  Revenue:        7d=$${(revenueData.revenue7d/1e6).toFixed(2)}M 30d=$${(revenueData.revenue30d/1e6).toFixed(2)}M 90d=$${(revenueData.revenue90d/1e6).toFixed(2)}M 365d=$${(revenueData.revenue365d/1e6).toFixed(2)}M`);
+      console.log(`  TEV Yield: 7d=${protocol.metrics.tev_yield_7d_ann}% 30d=${protocol.metrics.tev_yield_30d_ann}% 90d=${protocol.metrics.tev_yield_90d_ann}% 365d=${protocol.tev_yield_percent}%`);
+      console.log(`  Earning:   7d=${protocol.metrics.earning_yield_7d_ann}% 30d=${protocol.metrics.earning_yield_30d_ann}% 90d=${protocol.metrics.earning_yield_90d_ann}% 365d=${protocol.earning_yield_percent}%`);
+      console.log(`  tevRatio (dynamic): ${protocol.tevRatio}`);
       updated++;
       continue;
     }

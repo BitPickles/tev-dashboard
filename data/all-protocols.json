@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T13:45:01.468Z",
+  "generated_at": "2026-04-22T14:02:05.739Z",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -754,28 +754,39 @@
         "en": "Smart Burn Engine contract on-chain trackable + DefiLlama validated"
       },
       "tevStatus": "active",
-      "tev_yield_percent": 0.76,
+      "tev_yield_percent": 6.66,
       "market_cap_usd": 1814725241.45,
       "tvl": 6773732996.1381645,
-      "tevRatio": 0.7,
-      "earning_yield_percent": 13.81,
+      "tevRatio": 0.483,
+      "earning_yield_percent": 13.79,
       "tevRatioNote": "回购 - Smart Burn Engine 使用协议盈余回购 MKR 并添加流动性",
       "metrics": {
         "current_market_cap_usd": 1814725241.45,
-        "trailing_365d_revenue_usd": 250598750,
-        "trailing_30d_revenue_usd": 14246615,
+        "trailing_365d_revenue_usd": 250281491,
+        "trailing_30d_revenue_usd": 14247128,
         "trailing_365d_tev_usd": 13724000,
         "trailing_30d_tev_usd": 1143666.6666666667,
         "trailing_365d_holders_revenue_usd": 135679512,
         "trailing_30d_holders_revenue_usd": 5565701,
-        "trailing_7d_revenue_usd": 3198636,
-        "trailing_90d_revenue_usd": 49728085,
-        "tev_yield_7d_ann": 0.7562577345887503,
-        "tev_yield_30d_ann": 0.7562577345887503,
-        "tev_yield_90d_ann": 0.7562577345887503,
-        "earning_yield_7d_ann": 9.19,
+        "trailing_7d_revenue_usd": 3341899,
+        "trailing_90d_revenue_usd": 48952697,
+        "tev_yield_7d_ann": 0.76,
+        "tev_yield_30d_ann": 0.75,
+        "tev_yield_90d_ann": 3.49,
+        "earning_yield_7d_ann": 9.6,
         "earning_yield_30d_ann": 9.55,
-        "earning_yield_90d_ann": 11.11
+        "earning_yield_90d_ann": 10.94
+      },
+      "validation": {
+        "method": "DefiLlama dailyHoldersRevenue = Splitter burn (SBE 真实支出) / dailyRevenue = 协议总归属",
+        "tev_source": "DefiLlama dailyHoldersRevenue (slug=sky)",
+        "earning_source": "DefiLlama dailyRevenue (slug=sky)",
+        "burn_7d_usd": 263666,
+        "burn_30d_usd": 1126066,
+        "burn_90d_usd": 15629523,
+        "burn_365d_usd": 120897624,
+        "burn_daily_avg_30d_usd": 37536,
+        "note": "2026-03 Splitter burn 参数大幅下调（日均从 ~$300k 降至 ~$37.6k，-87.5%）。365d 窗口包含下调前高峰，所以短周期 < 365d。"
       }
     },
     "spark": {
