@@ -471,6 +471,94 @@ async function main() {
       continue;
     }
 
+    // Aave 专属：TEV = 固定年度 Buyback 预算 + Safety Module holders revenue（动态，按窗口）
+    // 决策（Boss 2026-04-22 定）：
+    //   1. Buyback $30M/年（2026-03 治理从 $50M 下调）——算 TEV，但是 treasury-accumulated 非真 burn
+    //   2. Safety Module（Umbrella）按 DefiLlama dailyHoldersRevenue 窗口累加年化（方案 A）
+    //   3. 最近 50+ 天 SM = $0 可能是 Umbrella 迁移期，暂信 DefiLlama
+    if (key === 'aave') {
+      const protocol = protocols[key];
+      if (!protocol) continue;
+      console.log(`📊 aave... (双源：固定 Buyback $30M + 动态 Safety Module holdersRevenue)`);
+      const marketCap = protocol.market_cap_usd || 0;
+      const fixedBuybackUsd = config.fixedTevUsd || 30_000_000;  // 2026-03 治理后 $30M
+
+      const [holdersData, revenueData] = await Promise.all([
+        getDefillamaFees('aave', 'dailyHoldersRevenue'),
+        getDefillamaRevenue('aave'),
+      ]);
+
+      if (!protocol.metrics) protocol.metrics = {};
+
+      // TEV = buyback + SM annualized，各周期独立
+      const calcTev = (smSum, days) => {
+        if (!marketCap) return 0;
+        const ann = days >= 365 ? 1 : (365 / days);
+        const smUsd = (smSum || 0) * ann;
+        return Math.round((fixedBuybackUsd + smUsd) / marketCap * 10000) / 100;
+      };
+      const calcEarn = (revSum, days) => {
+        if (!marketCap) return 0;
+        const ann = days >= 365 ? 1 : (365 / days);
+        return Math.round((revSum || 0) * ann / marketCap * 10000) / 100;
+      };
+
+      if (holdersData && revenueData) {
+        const tev_7d   = calcTev(holdersData.sum7d,   7);
+        const tev_30d  = calcTev(holdersData.sum30d,  30);
+        const tev_90d  = calcTev(holdersData.sum90d,  90);
+        const tev_365d = calcTev(holdersData.sum365d, 365);
+        const ey_7d   = calcEarn(revenueData.revenue7d,   7);
+        const ey_30d  = calcEarn(revenueData.revenue30d,  30);
+        const ey_90d  = calcEarn(revenueData.revenue90d,  90);
+        const ey_365d = calcEarn(revenueData.revenue365d, 365);
+
+        protocol.metrics.tev_yield_7d_ann  = tev_7d;
+        protocol.metrics.tev_yield_30d_ann = tev_30d;
+        protocol.metrics.tev_yield_90d_ann = tev_90d;
+        protocol.tev_yield_percent         = tev_365d;
+        protocol.metrics.earning_yield_7d_ann  = ey_7d;
+        protocol.metrics.earning_yield_30d_ann = ey_30d;
+        protocol.metrics.earning_yield_90d_ann = ey_90d;
+        protocol.earning_yield_percent         = ey_365d;
+        protocol.metrics.trailing_7d_revenue_usd   = revenueData.revenue7d;
+        protocol.metrics.trailing_30d_revenue_usd  = revenueData.revenue30d;
+        protocol.metrics.trailing_90d_revenue_usd  = revenueData.revenue90d;
+        protocol.metrics.trailing_365d_revenue_usd = revenueData.revenue365d;
+
+        // tevRatio 按周期
+        const calcRatio = (t, e) => (e > 0 ? Math.round(t / e * 10000) / 10000 : null);
+        protocol.tevRatio_7d   = calcRatio(tev_7d,   ey_7d);
+        protocol.tevRatio_30d  = calcRatio(tev_30d,  ey_30d);
+        protocol.tevRatio_90d  = calcRatio(tev_90d,  ey_90d);
+        protocol.tevRatio_365d = calcRatio(tev_365d, ey_365d);
+        protocol.tevRatio = protocol.tevRatio_365d;
+
+        protocol.validation = protocol.validation || {};
+        protocol.validation.method = 'TEV = 固定 Buyback $30M/年（2026-03 治理）+ Safety Module (Umbrella) DefiLlama dailyHoldersRevenue 按窗口年化';
+        protocol.validation.fixed_buyback_usd_annual = fixedBuybackUsd;
+        protocol.validation.sm_7d_usd   = Math.round(holdersData.sum7d);
+        protocol.validation.sm_30d_usd  = Math.round(holdersData.sum30d);
+        protocol.validation.sm_90d_usd  = Math.round(holdersData.sum90d);
+        protocol.validation.sm_365d_usd = Math.round(holdersData.sum365d);
+        protocol.validation.caveats = [
+          'Buyback 是 treasury-accumulated，不是真 burn（买入 AAVE → Ecosystem Reserve，治理可 redistribute）',
+          'Safety Module 分发是脉冲式（每 1-2 周一次大包），短周期窗口可能为 0',
+          '最近 50+ 天 SM = $0，可能 Umbrella 新合约 DefiLlama 追踪滞后，或真的暂停分发',
+          '链上 AAVE @ 0xdead 365d = 0.0001 AAVE（没有真销毁，符合 treasury buyback 模式）',
+        ];
+
+        console.log(`  marketCap: $${(marketCap/1e9).toFixed(2)}B, 固定 Buyback: $${fixedBuybackUsd/1e6}M`);
+        console.log(`  SM holdersRevenue: 7d=$${(holdersData.sum7d/1e6).toFixed(2)}M 30d=$${(holdersData.sum30d/1e6).toFixed(2)}M 90d=$${(holdersData.sum90d/1e6).toFixed(2)}M 365d=$${(holdersData.sum365d/1e6).toFixed(2)}M`);
+        console.log(`  Revenue:           7d=$${(revenueData.revenue7d/1e6).toFixed(2)}M 30d=$${(revenueData.revenue30d/1e6).toFixed(2)}M 90d=$${(revenueData.revenue90d/1e6).toFixed(2)}M 365d=$${(revenueData.revenue365d/1e6).toFixed(2)}M`);
+        console.log(`  TEV Yield:     7d=${tev_7d}% 30d=${tev_30d}% 90d=${tev_90d}% 365d=${tev_365d}%`);
+        console.log(`  Earning:       7d=${ey_7d}% 30d=${ey_30d}% 90d=${ey_90d}% 365d=${ey_365d}%`);
+        console.log(`  tevRatio (各周期): 7d=${protocol.tevRatio_7d} 30d=${protocol.tevRatio_30d} 90d=${protocol.tevRatio_90d} 365d=${protocol.tevRatio_365d}`);
+      }
+      updated++;
+      continue;
+    }
+
     // Sky 专属：TEV 用 DefiLlama dailyHoldersRevenue（Splitter 的 burn 部分，即 SBE 真实支出）
     // 原代码使用 fixedTevUsd: $13.724M（治理公告值），但实际每日波动，应动态拉取
     // Splitter 的 farm 部分（给 SKY stakers）不算 TEV（新铸造的 SKY + USDS yield，非市场回购）
