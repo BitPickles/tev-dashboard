@@ -527,8 +527,13 @@
       try {
         const resp = await fetch(`../data/protocols/${pid}/tev-records.json`);
         if (!resp.ok) return;
-        const { records } = await resp.json();
+        let { records } = await resp.json();
         if (!records?.length) { const sec=document.getElementById('tev-chart-section'); if (sec) sec.style.display='none'; return; }
+        // BNB 特例：staking_reward 是衍生稳定态（6.87% APY × 市值 / 4），不是事件流，和季度 burn 混画会失真
+        // 只保留 burn 事件画图；staking 部分在 "深度分析 → 计算逻辑" 里单独说明
+        if (pid === 'bnb') {
+          records = records.filter(r => r.type !== 'staking_reward');
+        }
         records.sort((a, b) => new Date(a.date) - new Date(b.date));
         const types = [...new Set(records.map(r => r.type))];
         const isDaily = records.every(r => /^\d{4}-\d{2}-\d{2}$/.test(r.date));
@@ -1277,42 +1282,17 @@
         const mcap = m.current_market_cap_usd;
         const tevYield = p.tev_yield_percent;
 
+        // 精简：只保留核心 5 行推导。多周期 yield 在概览 KPI + 周期 tab 已展示，不重复。
         const rows = [
-          { label: currentLang === 'zh' ? '年收入 (DefiLlama)' : 'Annual Revenue (DefiLlama)', value: fmt(revenue) },
+          { label: currentLang === 'zh' ? '365D 协议收入' : '365D Revenue', value: fmt(revenue) },
           { label: currentLang === 'zh' ? 'TEV 比例' : 'TEV Ratio', value: tevRatio != null ? pct(tevRatio) : '—' },
-          { label: currentLang === 'zh' ? '→ 年 TEV' : '→ Annual TEV', value: fmt(tev), derived: true },
-          { label: '', value: '', spacer: true },
-          { label: currentLang === 'zh' ? '当前市值' : 'Market Cap', value: fmt(mcap) },
-          { label: '→ TEV Yield (1Y)', value: yld(tevYield), derived: true },
+          { label: currentLang === 'zh' ? '365D TEV' : '365D TEV', value: fmt(tev), derived: true },
+          { label: currentLang === 'zh' ? '市值' : 'Market Cap', value: fmt(mcap) },
+          { label: 'TEV Yield', value: yld(tevYield), derived: true },
         ];
-
-        // 多维度年化 Earning Yield
-        const ey7 = m.earning_yield_7d_ann, ey30 = m.earning_yield_30d_ann, ey90 = m.earning_yield_90d_ann;
-        const earningYield = p.earning_yield_percent;
-        if (ey7 != null || ey30 != null || ey90 != null) {
-          rows.push({ label: '', value: '', spacer: true });
-          rows.push({ label: currentLang === 'zh' ? '多维度年化收益率 (Earning Yield)' : 'Multi-period Earning Yield (Annualized)', value: '', header: true });
-          rows.push({ label: '7D', value: yld(ey7) });
-          rows.push({ label: '30D', value: yld(ey30) });
-          rows.push({ label: '90D', value: yld(ey90) });
-          rows.push({ label: '365D', value: yld(earningYield), derived: true });
-        }
-
-        // 多维度年化 TEV Yield
-        const y7 = m.tev_yield_7d_ann, y30 = m.tev_yield_30d_ann, y90 = m.tev_yield_90d_ann;
-        if (y7 != null || y30 != null || y90 != null) {
-          rows.push({ label: '', value: '', spacer: true });
-          rows.push({ label: currentLang === 'zh' ? '多维度年化 TEV Yield' : 'Multi-period TEV Yield (Annualized)', value: '', header: true });
-          rows.push({ label: '7D', value: yld(y7) });
-          rows.push({ label: '30D', value: yld(y30) });
-          rows.push({ label: '90D', value: yld(y90) });
-          rows.push({ label: '365D', value: yld(tevYield), derived: true });
-        }
 
         const container = document.getElementById('tev-calc-content');
         container.innerHTML = rows.map(r => {
-          if (r.spacer) return '<div class="tev-calc-row" style="display:contents"><div style="padding:6px;border:none" colspan="2"></div><div style="padding:6px;border:none"></div></div>';
-          if (r.header) return `<div class="tev-calc-row" style="display:contents"><div class="tev-calc-label" style="grid-column:1/-1;color:var(--text-primary);font-weight:600;font-size:13px;">${r.label}</div></div>`;
           const cls = r.derived ? ' tev-calc-derived' : '';
           return `<div class="tev-calc-row${cls}" style="display:contents"><div class="tev-calc-label">${r.label}</div><div class="tev-calc-value">${r.value}</div></div>`;
         }).join('');
