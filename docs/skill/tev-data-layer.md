@@ -236,6 +236,26 @@ data/protocols/<id>/
 | `null` | `—` | 不适用（协议无 fee 分润机制，如 BNB） |
 | `0` | `—` | 有 fee 但 0% 给持有人（但前端当前和 null 一样处理）|
 
+### tevRatio 按周期独立
+
+分配率（tevRatio = TEV ÷ Earning）**应该随周期变化**，如果 TEV 和 Earning 用独立 signal。主表切换周期时需同步变。
+
+对 `TEV = Earning × 固定 ratio` 的协议（Pendle/Curve/dYdX 等），四个周期 ratio 数学上就相等，不用特别处理。
+
+对 `TEV` 和 `Earning` 用独立 signal 的协议（Sky 用 holdersRevenue vs revenue；Aave 用固定 $30M vs 动态 fee；BNB 用 burn+asBNB vs fee 等）——需在主表 entry 里写四个字段：
+
+```json
+{
+  "tevRatio_7d":   0.0789,
+  "tevRatio_30d":  0.0790,
+  "tevRatio_90d":  0.3193,
+  "tevRatio_365d": 0.4830,
+  "tevRatio": 0.4830  // 顶层保留，= tevRatio_365d，向后兼容
+}
+```
+
+前端 `tev/index.html` 按当前周期 fallback 到 `tevRatio_Xd`，未填的字段 fallback 到顶层 `tevRatio`。
+
 ---
 
 ## 八、新增协议工作流
