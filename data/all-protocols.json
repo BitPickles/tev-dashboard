@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T14:09:48.981Z",
+  "generated_at": "2026-04-22T14:32:35.158Z",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -12,28 +12,46 @@
         "en": "AIP-1 governance proposal with fixed annual buyback budget, on-chain trackable"
       },
       "tevStatus": "active",
-      "tev_yield_percent": 1.67,
+      "tev_yield_percent": 3.91,
       "market_cap_usd": 1799059173.84,
       "tvl": 24631521067.11426,
-      "tevRatio": 0.7766,
-      "earning_yield_percent": 6.81,
+      "tevRatio": 0.5658,
+      "earning_yield_percent": 6.91,
       "tevRatioNote": "回购 ($50M/年) + Safety Module 质押奖励",
       "metrics": {
         "current_market_cap_usd": 1799059173.84,
-        "trailing_365d_revenue_usd": 122536017,
-        "trailing_30d_revenue_usd": 6085411,
+        "trailing_365d_revenue_usd": 124351047,
+        "trailing_30d_revenue_usd": 7660874,
         "trailing_365d_tev_usd": 30000000,
         "trailing_30d_tev_usd": 2500000,
         "trailing_365d_holders_revenue_usd": 42212267,
         "trailing_30d_holders_revenue_usd": 6155965,
-        "trailing_7d_revenue_usd": 1467836,
-        "trailing_90d_revenue_usd": 24058958,
-        "tev_yield_7d_ann": 1.6675382575641762,
-        "tev_yield_30d_ann": 1.6675382575641762,
-        "tev_yield_90d_ann": 1.6675382575641762,
-        "earning_yield_7d_ann": 4.25,
-        "earning_yield_30d_ann": 4.12,
-        "earning_yield_90d_ann": 5.42
+        "trailing_7d_revenue_usd": 2982821,
+        "trailing_90d_revenue_usd": 24970908,
+        "tev_yield_7d_ann": 1.67,
+        "tev_yield_30d_ann": 1.67,
+        "tev_yield_90d_ann": 3.19,
+        "earning_yield_7d_ann": 8.65,
+        "earning_yield_30d_ann": 5.18,
+        "earning_yield_90d_ann": 5.63
+      },
+      "tevRatio_7d": 0.1931,
+      "tevRatio_30d": 0.3224,
+      "tevRatio_90d": 0.5666,
+      "tevRatio_365d": 0.5658,
+      "validation": {
+        "method": "TEV = 固定 Buyback $30M/年（2026-03 治理）+ Safety Module (Umbrella) DefiLlama dailyHoldersRevenue 按窗口年化",
+        "fixed_buyback_usd_annual": 30000000,
+        "sm_7d_usd": 0,
+        "sm_30d_usd": 0,
+        "sm_90d_usd": 6749677,
+        "sm_365d_usd": 40288100,
+        "caveats": [
+          "Buyback 是 treasury-accumulated，不是真 burn（买入 AAVE → Ecosystem Reserve，治理可 redistribute）",
+          "Safety Module 分发是脉冲式（每 1-2 周一次大包），短周期窗口可能为 0",
+          "最近 50+ 天 SM = $0，可能 Umbrella 新合约 DefiLlama 追踪滞后，或真的暂停分发",
+          "链上 AAVE @ 0xdead 365d = 0.0001 AAVE（没有真销毁，符合 treasury buyback 模式）"
+        ]
       }
     },
     "aster": {

@@ -322,6 +322,8 @@ data/protocols/<id>/
 | 2026-04-19 | Hyperliquid | AF 口径修正（不是 burn）+ 365d bug 修复 + 链上校验 + 文档 | `02c6747` | ✅ 已上 main（正式站） |
 | 2026-04-19 | — | 新增 TEV 总规范文档 | `4be0332` | ✅ 已上 main |
 | 2026-04-22 | Uniswap | 切换到链上直查 0xdead burn（A 口径）+ 链上数据核实 + 每日增量脚本 + 文档 | `c2bff2e1` | ✅ 已上 main |
-| 2026-04-22 | Sky (MakerDAO) | 切换到 DefiLlama `dailyHoldersRevenue` 口径（= Splitter burn 部分）；链上核实 MKR/SKY@0xdead 几乎为 0（SBE burn LP token 非 MKR 本身）；动态 tevRatio 替代写死 fixedTevUsd；文档 | — | 🚧 dev，待验收 |
+| 2026-04-22 | Sky (MakerDAO) | 切换到 DefiLlama `dailyHoldersRevenue` 口径（= Splitter burn 部分）；链上核实 MKR/SKY@0xdead 几乎为 0；动态 tevRatio 替代写死 fixedTevUsd；文档 | `66129bc5` | ✅ 已上 main |
+| 2026-04-22 | 前端 | 分配率按周期独立显示（tevRatio_7d/30d/90d/365d），覆盖 Sky 类"TEV/Earning 独立 signal"协议；其他协议 fallback 顶层 tevRatio | `66129bc5` | ✅ 已上 main |
+| 2026-04-22 | Aave | 双源 TEV（$30M 固定 Buyback + DefiLlama dailyHoldersRevenue Safety Module）；各周期独立；明确 buyback 是 treasury 非 burn（类似 Hyperliquid AF）；tevRatio 按周期；文档 | — | 🚧 dev，待验收 |
 
 每次协议上线后应在本表追加一行，形成可追溯的 changelog。
