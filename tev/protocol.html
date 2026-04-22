@@ -529,11 +529,6 @@
         if (!resp.ok) return;
         let { records } = await resp.json();
         if (!records?.length) { const sec=document.getElementById('tev-chart-section'); if (sec) sec.style.display='none'; return; }
-        // BNB 特例：staking_reward 是衍生稳定态（6.87% APY × 市值 / 4），不是事件流，和季度 burn 混画会失真
-        // 只保留 burn 事件画图；staking 部分在 "深度分析 → 计算逻辑" 里单独说明
-        if (pid === 'bnb') {
-          records = records.filter(r => r.type !== 'staking_reward');
-        }
         records.sort((a, b) => new Date(a.date) - new Date(b.date));
         const types = [...new Set(records.map(r => r.type))];
         const isDaily = records.every(r => /^\d{4}-\d{2}-\d{2}$/.test(r.date));
@@ -592,13 +587,44 @@
             }
           });
         } else {
-          // Monthly/category mode (original logic for aave etc.)
+          // Monthly/category mode — grouped bar（各 type 并排，不 stack，避免视觉混淆）
           const allLabels = records.map(r => r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }));
           const labels = [...new Set(allLabels)];
-          const barDs = types.map(type => { const c = TEV_COLORS[type] || { bg: 'rgba(161,161,170,0.5)', border: '#a1a1aa' }; const dataByLabel = {}; records.filter(r => r.type === type).forEach(r => { const lbl = r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }); dataByLabel[lbl] = (dataByLabel[lbl] || 0) + r.amount_usd; }); return { label: getMechLabel(type), data: labels.map(l => dataByLabel[l] || 0), backgroundColor: c.bg, borderColor: c.border, borderWidth: 1, borderRadius: 4, type: 'bar', yAxisID: 'y', stack: 'tev', order: 2 }; });
-          let cum = 0; const cumByLabel = {}; records.forEach(r => { const lbl = r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }); cumByLabel[lbl] = (cumByLabel[lbl] || 0) + r.amount_usd; }); const cumData = labels.map(l => { cum += (cumByLabel[l] || 0); return cum; });
+          const barDs = types.map(type => {
+            const c = TEV_COLORS[type] || { bg: 'rgba(161,161,170,0.5)', border: '#a1a1aa' };
+            const dataByLabel = {};
+            records.filter(r => r.type === type).forEach(r => {
+              const lbl = r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' });
+              dataByLabel[lbl] = (dataByLabel[lbl] || 0) + r.amount_usd;
+            });
+            return { label: getMechLabel(type), data: labels.map(l => dataByLabel[l] || 0), backgroundColor: c.bg, borderColor: c.border, borderWidth: 1, borderRadius: 4, type: 'bar', yAxisID: 'y', order: 2 };
+          });
+          let cum = 0;
+          const cumByLabel = {};
+          records.forEach(r => {
+            const lbl = r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' });
+            cumByLabel[lbl] = (cumByLabel[lbl] || 0) + r.amount_usd;
+          });
+          const cumData = labels.map(l => { cum += (cumByLabel[l] || 0); return cum; });
           const lineDs = { label: t('chart.cumulative'), data: cumData, borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.1)', borderWidth: 2, pointRadius: 3, fill: true, type: 'line', yAxisID: 'y2', tension: 0.3, order: 1 };
-          tevChart = new Chart(ctx, { data: { labels, datasets: [...barDs, lineDs] }, options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { position: 'top', labels: { color: '#a1a1aa', font: { size: 11 }, boxWidth: 12, padding: 16 } }, tooltip: { backgroundColor: '#18181b', titleColor: '#fafafa', bodyColor: '#a1a1aa', borderColor: '#27272a', borderWidth: 1, callbacks: { label: ctx => ctx.raw === 0 ? null : ` ${ctx.dataset.label}: ${fmtCurrency(ctx.raw)}` }, filter: i => i.raw !== 0 } }, scales: { x: { stacked: true, grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', font: { size: 11 } } }, y: { stacked: true, position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => fmtCurrency(v) }, title: { display: true, text: currentLang === 'zh' ? '单期 TEV' : 'Period TEV', color: '#71717a' } }, y2: { position: 'right', grid: { display: false }, ticks: { color: '#f59e0b', callback: v => fmtCurrency(v) }, title: { display: true, text: t('chart.cumulative'), color: '#f59e0b' } } } } });
+          tevChart = new Chart(ctx, {
+            data: { labels, datasets: [...barDs, lineDs] },
+            options: {
+              responsive: true, maintainAspectRatio: false,
+              interaction: { mode: 'index', intersect: false },
+              plugins: {
+                legend: { position: 'top', labels: { color: '#a1a1aa', font: { size: 11 }, boxWidth: 12, padding: 16 } },
+                tooltip: { backgroundColor: '#18181b', titleColor: '#fafafa', bodyColor: '#a1a1aa', borderColor: '#27272a', borderWidth: 1,
+                  callbacks: { label: ctx => ctx.raw === 0 ? null : ` ${ctx.dataset.label}: ${fmtCurrency(ctx.raw)}` },
+                  filter: i => i.raw !== 0 }
+              },
+              scales: {
+                x: { grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', font: { size: 11 } } },
+                y: { position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => fmtCurrency(v) }, title: { display: true, text: currentLang === 'zh' ? '单期 TEV' : 'Period TEV', color: '#71717a' } },
+                y2: { position: 'right', grid: { display: false }, ticks: { color: '#f59e0b', callback: v => fmtCurrency(v) }, title: { display: true, text: t('chart.cumulative'), color: '#f59e0b' } }
+              }
+            }
+          });
         }
         
         const total = records.reduce((s, r) => s + r.amount_usd, 0);
