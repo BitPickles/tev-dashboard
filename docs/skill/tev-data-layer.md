@@ -236,6 +236,26 @@ data/protocols/<id>/
 | `null` | `—` | 不适用（协议无 fee 分润机制，如 BNB） |
 | `0` | `—` | 有 fee 但 0% 给持有人（但前端当前和 null 一样处理）|
 
+### tevRatio 按周期独立
+
+分配率（tevRatio = TEV ÷ Earning）**应该随周期变化**，如果 TEV 和 Earning 用独立 signal。主表切换周期时需同步变。
+
+对 `TEV = Earning × 固定 ratio` 的协议（Pendle/Curve/dYdX 等），四个周期 ratio 数学上就相等，不用特别处理。
+
+对 `TEV` 和 `Earning` 用独立 signal 的协议（Sky 用 holdersRevenue vs revenue；Aave 用固定 $30M vs 动态 fee；BNB 用 burn+asBNB vs fee 等）——需在主表 entry 里写四个字段：
+
+```json
+{
+  "tevRatio_7d":   0.0789,
+  "tevRatio_30d":  0.0790,
+  "tevRatio_90d":  0.3193,
+  "tevRatio_365d": 0.4830,
+  "tevRatio": 0.4830  // 顶层保留，= tevRatio_365d，向后兼容
+}
+```
+
+前端 `tev/index.html` 按当前周期 fallback 到 `tevRatio_Xd`，未填的字段 fallback 到顶层 `tevRatio`。
+
 ---
 
 ## 八、新增协议工作流
@@ -301,6 +321,7 @@ data/protocols/<id>/
 | 2026-04-19 | BNB | TEV 周期口径修正 + BEP-95 日时间序列 + 自动更新脚本 + 文档 | `2a7bfc4` | ✅ 已上 main（正式站） |
 | 2026-04-19 | Hyperliquid | AF 口径修正（不是 burn）+ 365d bug 修复 + 链上校验 + 文档 | `02c6747` | ✅ 已上 main（正式站） |
 | 2026-04-19 | — | 新增 TEV 总规范文档 | `4be0332` | ✅ 已上 main |
-| 2026-04-22 | Uniswap | 切换到链上直查 0xdead burn（A 口径）+ 链上数据核实（余额对账 + Retro 源头确认 Timelock）+ 每日增量脚本 + 文档 | — | 🚧 dev，待验收 |
+| 2026-04-22 | Uniswap | 切换到链上直查 0xdead burn（A 口径）+ 链上数据核实 + 每日增量脚本 + 文档 | `c2bff2e1` | ✅ 已上 main |
+| 2026-04-22 | Sky (MakerDAO) | 切换到 DefiLlama `dailyHoldersRevenue` 口径（= Splitter burn 部分）；链上核实 MKR/SKY@0xdead 几乎为 0（SBE burn LP token 非 MKR 本身）；动态 tevRatio 替代写死 fixedTevUsd；文档 | — | 🚧 dev，待验收 |
 
 每次协议上线后应在本表追加一行，形成可追溯的 changelog。
