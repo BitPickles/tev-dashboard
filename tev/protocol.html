@@ -265,7 +265,8 @@
     details.extra-section > .extra-body { padding: 0 18px 18px; }
 
     /* Calc Pipeline（端到端计算逻辑）*/
-    .calc-pipeline { display: flex; flex-direction: column; gap: 10px; }
+    .calc-pipeline-wrap { display: block !important; }
+    .calc-pipeline { display: flex; flex-direction: column; gap: 10px; grid-column: 1 / -1; width: 100%; }
     .calc-step {
       position: relative; padding: 12px 14px 12px 18px;
       background: var(--bg-secondary); border: 1px solid var(--border);
@@ -1366,6 +1367,9 @@
     // 渲染 calc_pipeline 端到端推导步骤（按当前概览的周期 tab 读取对应值）
     function renderCalcPipeline(pipeline, proto) {
       const container = document.getElementById('tev-calc-content');
+      // 外层是 .tev-calc-grid（2 列 grid），pipeline 用 block/flex 布局，需移除 grid 类
+      container.classList.remove('tev-calc-grid');
+      container.classList.add('calc-pipeline-wrap');
       const currentPeriod = document.querySelector('#period-tabs .period-tab.active')?.dataset.period || '365d';
       let html = '<div class="calc-pipeline">';
       for (const s of pipeline) {
