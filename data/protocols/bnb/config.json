@@ -422,7 +422,7 @@
   "tev_data": {
     "has_tev": true,
     "tev_yield_percent": 11.27,
-    "calculation_date": "2026-04-18",
+    "calculation_date": "2026-04-22",
     "methodology": "Auto-Burn（短周期=近4季USD累加；365d=近4季BNB×当前价）+ BEP-95（按窗口从日时间序列求和）+ asBNB APY。BEP-95 现已真正波动——数据源：Dune Analytics bnb.traces + 每日 BSC RPC 累积。",
     "validation": {
       "method": "Auto-Burn（短周期=近4季USD累加；365d=近4季BNB×当前价）+ BEP-95（按窗口从日时间序列计算）+ asBNB APY (Aster)",
@@ -511,7 +511,7 @@
       "slisBNB 仅含 Staking 收益，不适合作为 BNB 全部 TEV 的 proxy",
       "CEX 财务不公开，Holder Perks 部分依赖 Aster 聚合数据"
     ],
-    "market_cap_usd": 85151311957.23994
+    "market_cap_usd": 86819874220.74867
   },
   "confidence": "high",
   "data_sources": [
@@ -591,7 +591,7 @@
   "tevRatio": null,
   "tevRatioNote": "BNB 无 fee 分润机制，TEV 来自供给收缩（Auto-Burn + BEP-95）+ 链上质押收益（asBNB），不适用『分配比例』概念",
   "earning_yield_percent": 6.89,
-  "market_cap_usd": 85151311957.23994,
+  "market_cap_usd": 86819874220.74867,
   "tev_yield_percent": 11.27,
   "metrics": {
     "trailing_7d_revenue_usd": 265445,
