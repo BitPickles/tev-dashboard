@@ -633,6 +633,82 @@ async function main() {
       continue;
     }
 
+    // Aster 专属：TEV = Stage5/6 buyback wallet 的 ASTER 累积 × 当前价（类似 Hyperliquid AF）
+    // 数据源：data/aster-onchain.json（由 update-aster-tev.py 每日维护，Moralis API）
+    if (key === 'aster') {
+      const protocol = protocols[key];
+      if (!protocol) continue;
+      console.log(`📊 aster... (Stage5/6 buyback treasury 口径)`);
+      const onchainPath = path.join(__dirname, '../data/aster-onchain.json');
+      let onchain = [];
+      try { onchain = JSON.parse(fs.readFileSync(onchainPath, 'utf8')); } catch (e) {
+        console.warn(`  ⚠️ aster-onchain.json 读取失败: ${e.message}`);
+      }
+      const marketCap = protocol.market_cap_usd || 0;
+      const circulatingSupply = 2_460_000_000;  // Aster 流通量近似
+      const asterPrice = marketCap > 0 ? marketCap / circulatingSupply : 0;
+
+      // 按 N 天窗口汇总 ASTER inflow
+      const today = new Date();
+      const sumAster = (days) => {
+        const cutoff = new Date(today.getTime() - days * 86400000).toISOString().slice(0, 10);
+        return (onchain || []).filter(r => r.date > cutoff).reduce((s, r) => s + (r.aster || 0), 0);
+      };
+      const buy7d_aster   = sumAster(7);
+      const buy30d_aster  = sumAster(30);
+      const buy90d_aster  = sumAster(90);
+      const buy365d_aster = sumAster(365);
+
+      const calcYield = (aster_sum, days) => {
+        if (!marketCap || !asterPrice) return 0;
+        const usd = aster_sum * asterPrice;
+        const ann = days >= 365 ? 1 : (365 / days);
+        return Math.round(usd * ann / marketCap * 10000) / 100;
+      };
+      const tev_7d   = calcYield(buy7d_aster,   7);
+      const tev_30d  = calcYield(buy30d_aster,  30);
+      const tev_90d  = calcYield(buy90d_aster,  90);
+      const tev_365d = calcYield(buy365d_aster, 365);
+
+      if (!protocol.metrics) protocol.metrics = {};
+      protocol.metrics.tev_yield_7d_ann  = tev_7d;
+      protocol.metrics.tev_yield_30d_ann = tev_30d;
+      protocol.metrics.tev_yield_90d_ann = tev_90d;
+      protocol.tev_yield_percent         = tev_365d;
+      // Aster 的 TEV = Earning（100% 买回 → stage 合约，用 treasury buyback 口径，等同 100% 分润）
+      protocol.metrics.earning_yield_7d_ann  = tev_7d;
+      protocol.metrics.earning_yield_30d_ann = tev_30d;
+      protocol.metrics.earning_yield_90d_ann = tev_90d;
+      protocol.earning_yield_percent         = tev_365d;
+      protocol.metrics.trailing_7d_revenue_usd   = Math.round(buy7d_aster * asterPrice);
+      protocol.metrics.trailing_30d_revenue_usd  = Math.round(buy30d_aster * asterPrice);
+      protocol.metrics.trailing_90d_revenue_usd  = Math.round(buy90d_aster * asterPrice);
+      protocol.metrics.trailing_365d_revenue_usd = Math.round(buy365d_aster * asterPrice);
+
+      protocol.validation = protocol.validation || {};
+      protocol.validation.method = 'A 口径：Stage5/6 buyback wallet 累积 ASTER × 当前价（treasury buyback，非真 burn）';
+      protocol.validation.buy_7d_aster   = Math.round(buy7d_aster);
+      protocol.validation.buy_30d_aster  = Math.round(buy30d_aster);
+      protocol.validation.buy_90d_aster  = Math.round(buy90d_aster);
+      protocol.validation.buy_365d_aster = Math.round(buy365d_aster);
+      protocol.validation.aster_price_usd = Math.round(asterPrice * 10000) / 10000;
+      protocol.validation.data_days = (onchain || []).length;
+      protocol.validation.data_range = onchain && onchain.length
+        ? { start: onchain[0].date, end: onchain[onchain.length - 1].date }
+        : null;
+      protocol.validation.caveats = [
+        'Stage5/6 是 treasury buyback（wallet 持仓），部分 burn 部分给 community rewards，不全是真销毁',
+        '2026-03-30 tokenomics 改革后新增 staking rewards（暂不计入 TEV）',
+        'Moralis 免费 tier 可能滞后几天',
+      ];
+
+      console.log(`  ASTER price: $${asterPrice.toFixed(4)} (marketCap $${(marketCap/1e9).toFixed(2)}B ÷ ${(circulatingSupply/1e9).toFixed(2)}B supply)`);
+      console.log(`  Buyback ASTER: 7d=${Math.round(buy7d_aster).toLocaleString()} / 30d=${Math.round(buy30d_aster).toLocaleString()} / 90d=${Math.round(buy90d_aster).toLocaleString()} / 365d=${Math.round(buy365d_aster).toLocaleString()}`);
+      console.log(`  TEV Yield: 7d=${tev_7d}% 30d=${tev_30d}% 90d=${tev_90d}% 365d=${tev_365d}%`);
+      updated++;
+      continue;
+    }
+
     // Uniswap 专属：TEV 只看链上 UNI 转入 0xdead（A 口径，Boss 2026-04-22 定）
     // 排除 >=10M UNI 的一次性治理事件（如 2025-12-27 Timelock 100M retroactive burn）
     if (key === 'uniswap') {

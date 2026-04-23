@@ -263,6 +263,44 @@
     details.extra-section[open] > summary::after { transform: rotate(90deg); }
     details.extra-section > summary:hover { background: var(--bg-tertiary); }
     details.extra-section > .extra-body { padding: 0 18px 18px; }
+
+    /* Calc Pipeline（端到端计算逻辑）*/
+    .calc-pipeline { display: flex; flex-direction: column; gap: 10px; }
+    .calc-step {
+      position: relative; padding: 12px 14px 12px 18px;
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 8px; border-left: 3px solid #3b82f6;
+    }
+    .calc-step-derived { border-left-color: #22c55e; background: rgba(34,197,94,0.04); }
+    .calc-step-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+    .calc-step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--bg-tertiary); color: var(--text-secondary);
+      font-size: 11px; font-weight: 700; font-family: 'JetBrains Mono', monospace;
+    }
+    .calc-step-derived .calc-step-num { background: #22c55e; color: #fff; }
+    .calc-step-label { font-size: 14px; font-weight: 600; color: var(--text-primary); flex: 1; }
+    .calc-step-value {
+      font-family: 'JetBrains Mono', monospace; font-size: 14px;
+      font-weight: 600; color: var(--text-primary);
+    }
+    .calc-step-derived .calc-step-value { color: #22c55e; }
+    .calc-step-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin: 4px 0; }
+    .calc-step-formula {
+      margin: 8px 0; padding: 8px 10px; background: var(--bg-tertiary);
+      border-radius: 6px; font-size: 12px; overflow-x: auto;
+    }
+    .calc-step-formula code { font-family: 'JetBrains Mono', monospace; color: var(--text-primary); background: none; }
+    .calc-step-inputs { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: var(--text-secondary); margin-top: 6px; }
+    .calc-step-inputs strong { color: var(--text-primary); font-weight: 500; }
+    .calc-step-addrs { font-size: 11px; color: var(--text-secondary); margin-top: 6px; line-height: 1.8; }
+    .calc-step-addrs code { font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 1px 5px; background: var(--bg-tertiary); border-radius: 3px; color: var(--text-primary); }
+    .calc-step-meta {
+      font-size: 11px; color: var(--text-tertiary); margin-top: 8px;
+      padding-top: 8px; border-top: 1px dashed var(--border);
+    }
+    .calc-step-meta code { font-family: 'JetBrains Mono', monospace; font-size: 10px; }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -1244,6 +1282,8 @@
             document.querySelectorAll('#period-tabs .period-tab').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             renderKPI(btn.dataset.period);
+            // 周期变化时，计算逻辑 tab 的 pipeline 各 step 的 value 也要刷新
+            renderTevCalc(pid);
           });
         });
 
@@ -1299,14 +1339,118 @@
       }
     }
 
+    // 按点路径从对象里读取（a.b.c.d → obj.a.b.c.d）
+    function getPath(obj, path) {
+      if (!path) return null;
+      return path.split('.').reduce((o, k) => (o != null ? o[k] : null), obj);
+    }
+
+    // 格式化：按 unit 格式化值
+    function formatPipelineValue(v, unit) {
+      if (v == null) return '—';
+      if (unit === 'USD') {
+        if (Math.abs(v) >= 1e9) return '$' + (v/1e9).toFixed(2) + 'B';
+        if (Math.abs(v) >= 1e6) return '$' + (v/1e6).toFixed(2) + 'M';
+        if (Math.abs(v) >= 1e3) return '$' + (v/1e3).toFixed(1) + 'K';
+        return '$' + v.toFixed(0);
+      }
+      if (unit === '%') return (typeof v === 'number' ? v.toFixed(2) : v) + '%';
+      if (typeof v === 'number') {
+        if (Math.abs(v) >= 1e6) return (v/1e6).toFixed(2) + 'M';
+        if (Math.abs(v) >= 1e3) return v.toLocaleString();
+        return v.toString();
+      }
+      return String(v);
+    }
+
+    // 渲染 calc_pipeline 端到端推导步骤（按当前概览的周期 tab 读取对应值）
+    function renderCalcPipeline(pipeline, proto) {
+      const container = document.getElementById('tev-calc-content');
+      const currentPeriod = document.querySelector('#period-tabs .period-tab.active')?.dataset.period || '365d';
+      let html = '<div class="calc-pipeline">';
+      for (const s of pipeline) {
+        html += '<div class="calc-step' + (s.derived ? ' calc-step-derived' : '') + '">';
+        html += '  <div class="calc-step-head">';
+        html += '    <span class="calc-step-num">' + s.step + '</span>';
+        html += '    <span class="calc-step-label">' + (s.label || '') + '</span>';
+        // 右侧当前值
+        let val = null, unit = s.unit || '';
+        if (s.value_fields_by_period) {
+          val = getPath(proto, s.value_fields_by_period[currentPeriod]);
+        } else if (s.value_field) {
+          val = getPath(proto, s.value_field);
+        }
+        if (val != null) {
+          const suffix = s.value_suffix || '';
+          html += '    <span class="calc-step-value">' + formatPipelineValue(val, unit) + suffix + '</span>';
+        }
+        html += '  </div>';
+        if (s.description) html += '  <div class="calc-step-desc">' + s.description + '</div>';
+        if (s.formula) html += '  <div class="calc-step-formula"><code>' + s.formula + '</code></div>';
+        // inputs（可能有 field 引用，替换为实际值）
+        if (s.inputs) {
+          html += '  <div class="calc-step-inputs">';
+          for (const [k, v] of Object.entries(s.inputs)) {
+            let display = v;
+            if (typeof v === 'string' && v.includes('.')) {
+              const resolved = getPath(proto, v);
+              if (resolved != null) display = formatPipelineValue(resolved, '');
+            }
+            html += '    <span><strong>' + k + '</strong>: ' + display + '</span>';
+          }
+          html += '  </div>';
+        }
+        // addresses
+        if (s.addresses) {
+          html += '  <div class="calc-step-addrs">';
+          for (const [name, addr] of Object.entries(s.addresses)) {
+            html += '    <div><strong>' + name + '</strong>: <code>' + addr + '</code></div>';
+          }
+          html += '  </div>';
+        }
+        // meta: source_url, output_file, updated_by
+        const metaBits = [];
+        if (s.source_url) metaBits.push('🔗 ' + s.source_url);
+        if (s.source_note) metaBits.push(s.source_note);
+        if (s.output_file) metaBits.push('→ <code>' + s.output_file + '</code>');
+        if (s.updated_by) metaBits.push('维护脚本: <code>' + s.updated_by + '</code>');
+        if (metaBits.length) html += '  <div class="calc-step-meta">' + metaBits.join(' · ') + '</div>';
+        html += '</div>';
+      }
+      html += '</div>';
+      container.innerHTML = html;
+    }
+
+    function renderCalcFooter(p, allData) {
+      const footer = document.getElementById('tev-calc-footer');
+      if (!footer) return;
+      const conf = p.confidence || 'medium';
+      const confLabel = currentLang === 'zh' ? { high: '高', medium: '中', low: '低' }[conf] || conf : conf;
+      const updatedAt = allData.generated_at ? allData.generated_at.split('T')[0] : '—';
+      footer.innerHTML = [
+        `<span>${currentLang === 'zh' ? '置信度' : 'Confidence'}: ${confLabel}</span>`,
+        `<span>${currentLang === 'zh' ? '数据更新' : 'Updated'}: ${updatedAt}</span>`,
+      ].join('');
+    }
+
     async function renderTevCalc(pid) {
       try {
         const resp = await fetch('../data/all-protocols.json');
         if (!resp.ok) return;
         const allData = await resp.json();
         const p = (allData.protocols || {})[pid];
-        if (!p || !p.metrics) return;
+        if (!p) return;
 
+        // ===== 新：如果 config 里有 calc_pipeline，渲染端到端推导流程 =====
+        const pipeline = protocolConfig?.calc_pipeline;
+        if (Array.isArray(pipeline) && pipeline.length) {
+          renderCalcPipeline(pipeline, p);
+          renderCalcFooter(p, allData);
+          return;
+        }
+
+        // ===== 兼容旧版：没有 calc_pipeline 时用原 5 行表格 =====
+        if (!p.metrics) return;
         const m = p.metrics;
         const fmt = (n) => n != null ? '$' + Math.round(n).toLocaleString() : '—';
         const pct = (n) => n != null ? (n * 100).toFixed(1) + '%' : '—';
