@@ -590,6 +590,9 @@
           // Monthly/category mode — grouped bar（各 type 并排，不 stack，避免视觉混淆）
           const allLabels = records.map(r => r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }));
           const labels = [...new Set(allLabels)];
+          // 事件类型（burn / buyback / buyback_burn）用 bar；稳态类型（staking_reward / ve_reward / holders_revenue 等）用 line
+          // 避免 bar 和 bar grouped 时，稀疏数据集被挤压/遮挡
+          const stableTypes = new Set(['staking_reward', 've_reward', 'holders_revenue', 'dividend']);
           const barDs = types.map(type => {
             const c = TEV_COLORS[type] || { bg: 'rgba(161,161,170,0.5)', border: '#a1a1aa' };
             const dataByLabel = {};
@@ -597,7 +600,12 @@
               const lbl = r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' });
               dataByLabel[lbl] = (dataByLabel[lbl] || 0) + r.amount_usd;
             });
-            return { label: getMechLabel(type), data: labels.map(l => dataByLabel[l] || 0), backgroundColor: c.bg, borderColor: c.border, borderWidth: 1, borderRadius: 4, type: 'bar', yAxisID: 'y', order: 2 };
+            const values = labels.map(l => dataByLabel[l] || null);  // null 让 line 不连到 0 点
+            const isStable = stableTypes.has(type);
+            if (isStable) {
+              return { label: getMechLabel(type), data: values, borderColor: c.border, backgroundColor: c.bg, borderWidth: 2, pointRadius: 4, pointBackgroundColor: c.border, fill: false, tension: 0.3, spanGaps: true, type: 'line', yAxisID: 'y', order: 1 };
+            }
+            return { label: getMechLabel(type), data: values.map(v => v || 0), backgroundColor: c.bg, borderColor: c.border, borderWidth: 1, borderRadius: 4, type: 'bar', yAxisID: 'y', order: 2 };
           });
           let cum = 0;
           const cumByLabel = {};
