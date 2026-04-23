@@ -590,6 +590,8 @@
           // Monthly/category mode — grouped bar（各 type 并排，不 stack，避免视觉混淆）
           const allLabels = records.map(r => r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }));
           const labels = [...new Set(allLabels)];
+          // Stacked bar：每种 TEV 类型（burn / staking / buyback 等）都是同一根柱子里的一段
+          // 视觉表达"TEV 由多部分构成"，颜色区分不同类型
           const barDs = types.map(type => {
             const c = TEV_COLORS[type] || { bg: 'rgba(161,161,170,0.5)', border: '#a1a1aa' };
             const dataByLabel = {};
@@ -597,7 +599,7 @@
               const lbl = r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' });
               dataByLabel[lbl] = (dataByLabel[lbl] || 0) + r.amount_usd;
             });
-            return { label: getMechLabel(type), data: labels.map(l => dataByLabel[l] || 0), backgroundColor: c.bg, borderColor: c.border, borderWidth: 1, borderRadius: 4, type: 'bar', yAxisID: 'y', order: 2 };
+            return { label: getMechLabel(type), data: labels.map(l => dataByLabel[l] || 0), backgroundColor: c.bg, borderColor: c.border, borderWidth: 1, borderRadius: 4, type: 'bar', yAxisID: 'y', stack: 'tev', order: 2 };
           });
           let cum = 0;
           const cumByLabel = {};
@@ -619,8 +621,8 @@
                   filter: i => i.raw !== 0 }
               },
               scales: {
-                x: { grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', font: { size: 11 } } },
-                y: { position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => fmtCurrency(v) }, title: { display: true, text: currentLang === 'zh' ? '单期 TEV' : 'Period TEV', color: '#71717a' } },
+                x: { stacked: true, grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', font: { size: 11 } } },
+                y: { stacked: true, position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => fmtCurrency(v) }, title: { display: true, text: currentLang === 'zh' ? '单期 TEV' : 'Period TEV', color: '#71717a' } },
                 y2: { position: 'right', grid: { display: false }, ticks: { color: '#f59e0b', callback: v => fmtCurrency(v) }, title: { display: true, text: t('chart.cumulative'), color: '#f59e0b' } }
               }
             }
