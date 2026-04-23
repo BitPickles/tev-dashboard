@@ -166,6 +166,103 @@
       .tev-calc-grid { font-size: 13px; }
       .tev-calc-label, .tev-calc-value { padding: 8px 12px; }
     }
+
+    /* ===== Redesigned Detail Page (2026-04-22, 方案 B) ===== */
+    /* 周期切换 tab */
+    .period-tabs {
+      display: inline-flex; gap: 2px; padding: 3px;
+      background: var(--bg-tertiary); border-radius: 8px;
+      margin-bottom: 14px;
+    }
+    .period-tab {
+      padding: 5px 14px; border: none; background: transparent;
+      color: var(--text-secondary); font-size: 12px; font-weight: 500;
+      border-radius: 6px; cursor: pointer; transition: all .15s;
+      font-family: inherit; letter-spacing: 0.3px;
+    }
+    .period-tab:hover { color: var(--text-primary); }
+    .period-tab.active { background: var(--bg-primary); color: var(--text-primary); box-shadow: 0 1px 2px rgba(0,0,0,.15); }
+
+    /* TEV 概览 Hero + KPI */
+    .tev-overview-hero {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 16px; margin-bottom: 16px;
+    }
+    .tev-hero-primary { flex: 1 1 260px; }
+    .tev-hero-label { font-size: 10px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .tev-hero-value { font-size: 17px; color: var(--text-primary); font-weight: 600; line-height: 1.4; }
+    .tev-kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .tev-kpi-item {
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px;
+    }
+    .tev-kpi-label {
+      font-size: 10px; color: var(--text-tertiary);
+      text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px;
+    }
+    .tev-kpi-value {
+      font-size: 20px; font-weight: 700; color: var(--text-primary);
+      font-family: 'JetBrains Mono', monospace; line-height: 1.15;
+    }
+    .tev-kpi-value.value-on { color: #22c55e; }
+    .tev-kpi-value.value-partial { color: #f59e0b; }
+    .tev-kpi-sub { font-size: 11px; color: var(--text-tertiary); margin-top: 3px; }
+    @media (max-width: 640px) { .tev-kpi-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* 状态徽章小组（Buybacks/Dividends/Burns/Confidence）*/
+    .tev-status-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; font-size: 12px; }
+    .tev-status-chip {
+      padding: 4px 10px; border-radius: 6px;
+      background: var(--bg-tertiary); color: var(--text-secondary);
+    }
+    .tev-status-chip strong { color: var(--text-primary); font-weight: 600; }
+
+    /* Caveats 警示卡 */
+    .caveats-card {
+      margin-top: 14px; padding: 12px 14px;
+      background: rgba(251,146,60,0.08); border: 1px solid rgba(251,146,60,0.25);
+      border-left: 3px solid rgb(251,146,60); border-radius: 8px;
+    }
+    .caveats-title { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: rgb(234,88,12); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.4px; }
+    .caveats-list { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin: 0; padding-left: 20px; }
+    .caveats-list li { margin: 4px 0; }
+
+    /* 深度分析 tabs */
+    .deep-tabs {
+      display: flex; gap: 0; margin-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .deep-tab {
+      padding: 10px 18px; border: none; background: transparent;
+      color: var(--text-secondary); font-size: 14px; font-weight: 500;
+      cursor: pointer; border-bottom: 2px solid transparent;
+      margin-bottom: -1px; font-family: inherit; transition: all .15s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .deep-tab:hover { color: var(--text-primary); }
+    .deep-tab.active { color: var(--text-primary); border-bottom-color: #22c55e; }
+    .deep-panel { display: none; }
+    .deep-panel.active { display: block; }
+
+    /* 附加内容 accordion */
+    details.extra-section {
+      margin-bottom: 8px; background: var(--bg-secondary);
+      border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+    }
+    details.extra-section > summary {
+      list-style: none; padding: 12px 18px; cursor: pointer;
+      display: flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 600; color: var(--text-primary);
+      transition: background .15s;
+    }
+    details.extra-section > summary::-webkit-details-marker { display: none; }
+    details.extra-section > summary::after {
+      content: '▸'; margin-left: auto; color: var(--text-tertiary);
+      transition: transform .2s; font-family: monospace;
+    }
+    details.extra-section[open] > summary::after { transform: rotate(90deg); }
+    details.extra-section > summary:hover { background: var(--bg-tertiary); }
+    details.extra-section > .extra-body { padding: 0 18px 18px; }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -197,6 +294,7 @@
     <div id="loading" class="loading"><div class="loading-spinner"></div><div data-i18n="loading">加载中...</div></div>
 
     <div id="content" style="display: none;">
+      <!-- Header -->
       <div class="protocol-header">
         <div class="protocol-title">
           <div class="protocol-icon-lg" id="protocol-icon">🔮</div>
@@ -217,32 +315,58 @@
         </div>
       </div>
 
+      <!-- 1. TEV 概览（紧凑版 + 周期切换 + Caveats）-->
       <div class="section">
         <div class="section-title"><span class="icon">📊</span><span data-i18n="section.tevSummary">TEV 概览</span></div>
-        <div class="tev-summary-grid tev-grid-compact">
-          <div class="tev-summary-item"><div class="tev-summary-label">TEV Ratio<br><span class="label-zh" data-zh="分配比例" data-en="Distribution Ratio">分配比例</span></div><div class="tev-summary-value" id="summary-tevratio">—</div></div>
-          <div class="tev-summary-item"><div class="tev-summary-label">Market Cap<br><span class="label-zh" data-zh="市值" data-en="Market Cap">市值</span></div><div class="tev-summary-value" id="summary-marketcap">—</div></div>
-          <div class="tev-summary-item"><div class="tev-summary-label">Earnings Yield<br><span class="label-zh" data-zh="收益率" data-en="Earning Yield">收益率</span></div><div class="tev-summary-value" id="summary-earningsyield">—</div></div>
-          <div class="tev-summary-item"><div class="tev-summary-label">TEV Yield<br><span class="label-zh">TEV 收益率</span></div><div class="tev-summary-value" id="summary-tevyield">—</div></div>
-          <div class="tev-summary-item"><div class="tev-summary-label">Buybacks<br><span class="label-zh" data-zh="回购" data-en="Buyback">回购</span></div><div class="tev-summary-value" id="summary-buybacks">—</div></div>
-          <div class="tev-summary-item"><div class="tev-summary-label">Dividends<br><span class="label-zh" data-zh="分红" data-en="Dividend">分红</span></div><div class="tev-summary-value" id="summary-dividends">—</div></div>
-          <div class="tev-summary-item"><div class="tev-summary-label">Burns<br><span class="label-zh" data-zh="销毁" data-en="Burn">销毁</span></div><div class="tev-summary-value" id="summary-burns">—</div></div>
-          <div class="tev-summary-item"><div class="tev-summary-label">Confidence<br><span class="label-zh">可信度</span></div><div class="tev-summary-value" id="summary-confidence">—</div></div>
+        <div class="tev-overview-hero">
+          <div class="tev-hero-primary">
+            <div class="tev-hero-label" data-zh="价值捕获方式" data-en="Primary Value Accrual">价值捕获方式</div>
+            <div class="tev-hero-value" id="hero-primary-accrual">—</div>
+          </div>
+          <div class="period-tabs" id="period-tabs" role="tablist">
+            <button class="period-tab" data-period="7d">7D</button>
+            <button class="period-tab" data-period="30d">30D</button>
+            <button class="period-tab" data-period="90d">90D</button>
+            <button class="period-tab active" data-period="365d">365D</button>
+          </div>
+        </div>
+        <div class="tev-kpi-grid">
+          <div class="tev-kpi-item">
+            <div class="tev-kpi-label" data-zh="市值" data-en="Market Cap">市值 / Market Cap</div>
+            <div class="tev-kpi-value" id="kpi-marketcap">—</div>
+          </div>
+          <div class="tev-kpi-item">
+            <div class="tev-kpi-label">TEV Yield</div>
+            <div class="tev-kpi-value" id="kpi-tevyield">—</div>
+          </div>
+          <div class="tev-kpi-item">
+            <div class="tev-kpi-label" data-zh="收益率" data-en="Earning Yield">Earning Yield</div>
+            <div class="tev-kpi-value" id="kpi-earningyield">—</div>
+          </div>
+          <div class="tev-kpi-item">
+            <div class="tev-kpi-label" data-zh="分配比例" data-en="Distribution Ratio">分配比例 / Ratio</div>
+            <div class="tev-kpi-value" id="kpi-tevratio">—</div>
+          </div>
+        </div>
+        <div class="tev-status-chips">
+          <div class="tev-status-chip"><span data-zh="回购" data-en="Buyback">回购</span>: <strong id="chip-buybacks">—</strong></div>
+          <div class="tev-status-chip"><span data-zh="销毁" data-en="Burn">销毁</span>: <strong id="chip-burns">—</strong></div>
+          <div class="tev-status-chip"><span data-zh="分红" data-en="Dividend">分红</span>: <strong id="chip-dividends">—</strong></div>
+          <div class="tev-status-chip"><span data-zh="置信度" data-en="Confidence">置信度</span>: <strong id="chip-confidence">—</strong></div>
+        </div>
+        <div class="caveats-card" id="caveats-card" style="display:none;">
+          <div class="caveats-title">⚠️ <span data-zh="关键注意事项" data-en="Key Caveats">关键注意事项</span></div>
+          <ul class="caveats-list" id="caveats-list"></ul>
         </div>
       </div>
 
-      <!-- TEV 算法透明区块 -->
-      <div class="section" id="tev-calc-section" style="display:none;">
-        <div class="section-title"><span class="icon">🔬</span><span data-zh="TEV 计算逻辑" data-en="TEV Calculation Logic">TEV 计算逻辑</span></div>
-        <div class="tev-calc-grid" id="tev-calc-content"></div>
-        <div class="tev-calc-footer" id="tev-calc-footer"></div>
-      </div>
-
+      <!-- 2. TEV 历史记录（上位）-->
       <div class="section chart-section" id="tev-chart-section">
         <div class="section-title"><span class="icon">📈</span><span data-i18n="section.tevHistory">TEV 历史记录</span></div>
         <div class="chart-container"><div class="chart-canvas-wrap"><canvas id="tev-history-chart"></canvas></div><div class="chart-stats" id="chart-stats"></div></div>
       </div>
 
+      <!-- 3. 代币销毁 -->
       <div class="section" id="token-burns-section" style="display: none;">
         <div class="section-title"><span class="icon">🔥</span><span id="burns-section-title">销毁记录</span></div>
         <div class="burn-progress-container">
@@ -261,14 +385,12 @@
         </div>
       </div>
 
+      <!-- 4. 回购数据 -->
       <div class="section" id="buyback-chart-section" style="display: none;">
         <div class="section-title"><span class="icon">💰</span><span data-i18n="section.buybackData">回购数据</span></div>
         <div class="chart-container" style="height:400px;"><div class="chart-canvas-wrap"><canvas id="buyback-activity-chart"></canvas></div></div>
-        <div class="chart-legend" id="buyback-legend" style="display:flex;justify-content:center;gap:24px;margin-top:12px;font-size:12px;">
-          <!-- 动态根据协议填充 -->
-        </div>
+        <div class="chart-legend" id="buyback-legend" style="display:flex;justify-content:center;gap:24px;margin-top:12px;font-size:12px;"></div>
         <div class="chart-hint" style="text-align:center;color:var(--text-tertiary);font-size:11px;margin-top:8px;" data-i18n="chart.zoomHint">🖱️ 滚轮缩放 · 拖动平移 · 双击重置</div>
-        
         <div class="buyback-progress-container" id="buyback-progress-section" style="margin-top:24px;">
           <div class="burn-progress-header"><span data-i18n="buyback.progress">回购进度</span><span id="buyback-progress-text">—</span></div>
           <div class="burn-progress-bar"><div class="burn-progress-fill" id="buyback-progress-fill" style="background:linear-gradient(90deg,#22c55e,#16a34a);"></div></div>
@@ -282,34 +404,69 @@
         </div>
       </div>
 
-      <div class="section"><div class="section-title"><span class="icon">⚙️</span><span data-i18n="section.tevMechanisms" data-zh="TEV 机制详情" data-en="TEV Mechanism Details">TEV 机制详情</span></div><div id="mechanisms-container"></div></div>
-      <div class="section" id="references-section" style="display: none;"><div class="section-title"><span class="icon">📚</span><span data-i18n="section.references" data-zh="参考资料" data-en="References">参考资料</span></div><div class="references-list" id="references-container"></div></div>
-      <div class="section" id="notes-section" style="display: none;"><div class="section-title"><span class="icon">📝</span><span data-i18n="section.notes" data-zh="分析师备注" data-en="Analyst Notes">分析师备注</span></div><div class="protocol-notes" id="protocol-notes"></div></div>
-      <!-- Governance Section -->
-      <div class="section" id="governance-section" style="display:none;">
-        <div class="section-title"><span class="icon">🏛️</span><span data-zh="TEV 治理动态" data-en="TEV Governance Feed">TEV 治理动态</span></div>
-        <div id="governance-list" style="display:flex;flex-direction:column;gap:8px;"></div>
-        <div id="governance-more" style="margin-top:12px;text-align:right;"></div>
-      </div>
-
-      <!-- Tokenomics Section: Unlock Curve + Allocation Pie -->
-      <div class="section" id="tokenomics-section" style="display:none;">
-        <div class="section-title"><span class="icon">🧩</span><span data-zh="代币经济学" data-en="Tokenomics">代币经济学</span></div>
-        <div style="display:grid;grid-template-columns:2fr 1fr;gap:24px;align-items:start;" id="tokenomics-grid">
-          <div>
-            <h4 style="font-size:14px;color:var(--text-secondary);margin:0 0 12px;" id="unlock-chart-title" data-zh="代币释放曲线" data-en="Token Unlock Schedule">代币释放曲线</h4>
-            <div class="chart-canvas-wrap" style="height:320px;"><canvas id="unlock-curve-chart"></canvas></div>
-          </div>
-          <div>
-            <h4 style="font-size:14px;color:var(--text-secondary);margin:0 0 12px;" id="allocation-chart-title" data-zh="筹码分布" data-en="Token Allocation">筹码分布</h4>
-            <div class="chart-canvas-wrap" style="height:320px;display:flex;align-items:center;justify-content:center;"><canvas id="allocation-pie-chart"></canvas></div>
-          </div>
+      <!-- 5. 深度分析（机制 / 计算 / 备注 合并 tab）-->
+      <div class="section" id="deep-analysis-section">
+        <div class="section-title"><span class="icon">🔬</span><span data-zh="深度分析" data-en="Deep Analysis">深度分析</span></div>
+        <div class="deep-tabs" role="tablist">
+          <button class="deep-tab active" data-deep-tab="mechanisms">⚙️ <span data-zh="机制详情" data-en="Mechanisms">机制详情</span></button>
+          <button class="deep-tab" data-deep-tab="calc">🔬 <span data-zh="计算逻辑" data-en="Calculation">计算逻辑</span></button>
+          <button class="deep-tab" data-deep-tab="notes">📝 <span data-zh="分析师备注" data-en="Analyst Notes">分析师备注</span></button>
         </div>
-        <div id="tokenomics-no-data" style="display:none;text-align:center;padding:40px 20px;color:var(--text-tertiary);font-size:14px;" data-zh="暂无 Tokenomics 数据" data-en="No Tokenomics data available">暂无 Tokenomics 数据</div>
-        <div style="text-align:right;font-size:11px;color:var(--text-tertiary);margin-top:8px;" id="tokenomics-source"></div>
+        <div class="deep-panel active" id="deep-panel-mechanisms">
+          <div id="mechanisms-container"></div>
+        </div>
+        <div class="deep-panel" id="deep-panel-calc">
+          <div class="tev-calc-grid" id="tev-calc-content"></div>
+          <div class="tev-calc-footer" id="tev-calc-footer"></div>
+        </div>
+        <div class="deep-panel" id="deep-panel-notes">
+          <div class="protocol-notes" id="protocol-notes"></div>
+        </div>
       </div>
 
-      <div class="section"><div class="section-title"><span class="icon">🔗</span><span data-i18n="section.dataSources" data-zh="数据来源" data-en="Data Source">数据来源</span></div><div class="sources-list" id="sources-container"></div></div>
+      <!-- 6. 附加内容（折叠）-->
+      <details class="extra-section" id="extra-governance" style="display:none;">
+        <summary><span class="icon">🏛️</span><span data-zh="TEV 治理动态" data-en="TEV Governance Feed">TEV 治理动态</span></summary>
+        <div class="extra-body">
+          <div id="governance-list" style="display:flex;flex-direction:column;gap:8px;"></div>
+          <div id="governance-more" style="margin-top:12px;text-align:right;"></div>
+        </div>
+      </details>
+
+      <details class="extra-section" id="extra-tokenomics" style="display:none;">
+        <summary><span class="icon">🧩</span><span data-zh="代币经济学" data-en="Tokenomics">代币经济学</span></summary>
+        <div class="extra-body">
+          <div style="display:grid;grid-template-columns:2fr 1fr;gap:24px;align-items:start;" id="tokenomics-grid">
+            <div>
+              <h4 style="font-size:14px;color:var(--text-secondary);margin:0 0 12px;" id="unlock-chart-title" data-zh="代币释放曲线" data-en="Token Unlock Schedule">代币释放曲线</h4>
+              <div class="chart-canvas-wrap" style="height:320px;"><canvas id="unlock-curve-chart"></canvas></div>
+            </div>
+            <div>
+              <h4 style="font-size:14px;color:var(--text-secondary);margin:0 0 12px;" id="allocation-chart-title" data-zh="筹码分布" data-en="Token Allocation">筹码分布</h4>
+              <div class="chart-canvas-wrap" style="height:320px;display:flex;align-items:center;justify-content:center;"><canvas id="allocation-pie-chart"></canvas></div>
+            </div>
+          </div>
+          <div id="tokenomics-no-data" style="display:none;text-align:center;padding:40px 20px;color:var(--text-tertiary);font-size:14px;" data-zh="暂无 Tokenomics 数据" data-en="No Tokenomics data available">暂无 Tokenomics 数据</div>
+          <div style="text-align:right;font-size:11px;color:var(--text-tertiary);margin-top:8px;" id="tokenomics-source"></div>
+        </div>
+      </details>
+
+      <details class="extra-section" id="extra-sources">
+        <summary><span class="icon">🔗</span><span data-i18n="section.dataSources" data-zh="数据来源" data-en="Data Source">数据来源</span></summary>
+        <div class="extra-body"><div class="sources-list" id="sources-container"></div></div>
+      </details>
+
+      <details class="extra-section" id="extra-references" style="display:none;">
+        <summary><span class="icon">📚</span><span data-i18n="section.references" data-zh="参考资料" data-en="References">参考资料</span></summary>
+        <div class="extra-body"><div class="references-list" id="references-container"></div></div>
+      </details>
+
+      <!-- 旧字段兼容（前端 JS 仍可能引用）-->
+      <span id="tev-calc-section" style="display:none;"></span>
+      <span id="notes-section" style="display:none;"></span>
+      <span id="references-section" style="display:none;"></span>
+      <span id="governance-section" style="display:none;"></span>
+      <span id="tokenomics-section" style="display:none;"></span>
     </div>
   </main>
 
@@ -358,8 +515,9 @@
     }
 
     function renderReferences(refs) {
-      const section = document.getElementById('references-section');
+      const section = document.getElementById('extra-references');
       const c = document.getElementById('references-container');
+      if (!section) return;
       if (!refs?.length) { section.style.display = 'none'; return; }
       section.style.display = 'block';
       c.innerHTML = refs.map(r => `<div class="source-item"><div><span class="source-name">${r.title}</span>${r.date ? `<span class="source-type">${r.date}</span>` : ''}</div>${r.url ? `<a href="${r.url}" class="source-link" target="_blank">Open →</a>` : ''}</div>`).join('');
@@ -369,7 +527,7 @@
       try {
         const resp = await fetch(`../data/protocols/${pid}/tev-records.json`);
         if (!resp.ok) return;
-        const { records } = await resp.json();
+        let { records } = await resp.json();
         if (!records?.length) { const sec=document.getElementById('tev-chart-section'); if (sec) sec.style.display='none'; return; }
         records.sort((a, b) => new Date(a.date) - new Date(b.date));
         const types = [...new Set(records.map(r => r.type))];
@@ -429,13 +587,44 @@
             }
           });
         } else {
-          // Monthly/category mode (original logic for aave etc.)
+          // Monthly/category mode — grouped bar（各 type 并排，不 stack，避免视觉混淆）
           const allLabels = records.map(r => r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }));
           const labels = [...new Set(allLabels)];
-          const barDs = types.map(type => { const c = TEV_COLORS[type] || { bg: 'rgba(161,161,170,0.5)', border: '#a1a1aa' }; const dataByLabel = {}; records.filter(r => r.type === type).forEach(r => { const lbl = r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }); dataByLabel[lbl] = (dataByLabel[lbl] || 0) + r.amount_usd; }); return { label: getMechLabel(type), data: labels.map(l => dataByLabel[l] || 0), backgroundColor: c.bg, borderColor: c.border, borderWidth: 1, borderRadius: 4, type: 'bar', yAxisID: 'y', stack: 'tev', order: 2 }; });
-          let cum = 0; const cumByLabel = {}; records.forEach(r => { const lbl = r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' }); cumByLabel[lbl] = (cumByLabel[lbl] || 0) + r.amount_usd; }); const cumData = labels.map(l => { cum += (cumByLabel[l] || 0); return cum; });
+          const barDs = types.map(type => {
+            const c = TEV_COLORS[type] || { bg: 'rgba(161,161,170,0.5)', border: '#a1a1aa' };
+            const dataByLabel = {};
+            records.filter(r => r.type === type).forEach(r => {
+              const lbl = r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' });
+              dataByLabel[lbl] = (dataByLabel[lbl] || 0) + r.amount_usd;
+            });
+            return { label: getMechLabel(type), data: labels.map(l => dataByLabel[l] || 0), backgroundColor: c.bg, borderColor: c.border, borderWidth: 1, borderRadius: 4, type: 'bar', yAxisID: 'y', order: 2 };
+          });
+          let cum = 0;
+          const cumByLabel = {};
+          records.forEach(r => {
+            const lbl = r.period || new Date(r.date).toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'short' });
+            cumByLabel[lbl] = (cumByLabel[lbl] || 0) + r.amount_usd;
+          });
+          const cumData = labels.map(l => { cum += (cumByLabel[l] || 0); return cum; });
           const lineDs = { label: t('chart.cumulative'), data: cumData, borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.1)', borderWidth: 2, pointRadius: 3, fill: true, type: 'line', yAxisID: 'y2', tension: 0.3, order: 1 };
-          tevChart = new Chart(ctx, { data: { labels, datasets: [...barDs, lineDs] }, options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { position: 'top', labels: { color: '#a1a1aa', font: { size: 11 }, boxWidth: 12, padding: 16 } }, tooltip: { backgroundColor: '#18181b', titleColor: '#fafafa', bodyColor: '#a1a1aa', borderColor: '#27272a', borderWidth: 1, callbacks: { label: ctx => ctx.raw === 0 ? null : ` ${ctx.dataset.label}: ${fmtCurrency(ctx.raw)}` }, filter: i => i.raw !== 0 } }, scales: { x: { stacked: true, grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', font: { size: 11 } } }, y: { stacked: true, position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => fmtCurrency(v) }, title: { display: true, text: currentLang === 'zh' ? '单期 TEV' : 'Period TEV', color: '#71717a' } }, y2: { position: 'right', grid: { display: false }, ticks: { color: '#f59e0b', callback: v => fmtCurrency(v) }, title: { display: true, text: t('chart.cumulative'), color: '#f59e0b' } } } } });
+          tevChart = new Chart(ctx, {
+            data: { labels, datasets: [...barDs, lineDs] },
+            options: {
+              responsive: true, maintainAspectRatio: false,
+              interaction: { mode: 'index', intersect: false },
+              plugins: {
+                legend: { position: 'top', labels: { color: '#a1a1aa', font: { size: 11 }, boxWidth: 12, padding: 16 } },
+                tooltip: { backgroundColor: '#18181b', titleColor: '#fafafa', bodyColor: '#a1a1aa', borderColor: '#27272a', borderWidth: 1,
+                  callbacks: { label: ctx => ctx.raw === 0 ? null : ` ${ctx.dataset.label}: ${fmtCurrency(ctx.raw)}` },
+                  filter: i => i.raw !== 0 }
+              },
+              scales: {
+                x: { grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', font: { size: 11 } } },
+                y: { position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => fmtCurrency(v) }, title: { display: true, text: currentLang === 'zh' ? '单期 TEV' : 'Period TEV', color: '#71717a' } },
+                y2: { position: 'right', grid: { display: false }, ticks: { color: '#f59e0b', callback: v => fmtCurrency(v) }, title: { display: true, text: t('chart.cumulative'), color: '#f59e0b' } }
+              }
+            }
+          });
         }
         
         const total = records.reduce((s, r) => s + r.amount_usd, 0);
@@ -753,7 +942,7 @@
 
         if (!tevProposals.length) return;
 
-        document.getElementById('governance-section').style.display = '';
+        document.getElementById('extra-governance').style.display = '';
         const list = document.getElementById('governance-list');
 
         list.innerHTML = tevProposals.map(p => {
@@ -803,13 +992,13 @@
 
         if (!hasAllocation && !hasSchedule) {
           // Show "no data" message
-          document.getElementById('tokenomics-section').style.display = '';
+          document.getElementById('extra-tokenomics').style.display = '';
           document.getElementById('tokenomics-grid').style.display = 'none';
           document.getElementById('tokenomics-no-data').style.display = '';
           return;
         }
 
-        document.getElementById('tokenomics-section').style.display = '';
+        document.getElementById('extra-tokenomics').style.display = '';
         document.getElementById('tokenomics-grid').style.display = '';
         document.getElementById('tokenomics-no-data').style.display = 'none';
 
@@ -998,52 +1187,92 @@
         statusText.className = `tev-status ${tevStatus}`;
         const feeSwitch = cfg.tev_summary?.fee_switch;
         document.getElementById('primary-value').textContent = tevStatus === 'active' ? '✓ ON' : tevStatus === 'partial' ? '~ PARTIAL' : feeSwitch === 'N/A' ? 'N/A' : '✗ OFF';
-        document.getElementById('primary-label').textContent = cfg.tev_summary?.primary_value_accrual || '—';
+        const primaryAccrual = cfg.tev_summary?.primary_value_accrual || '—';
+        document.getElementById('primary-label').textContent = primaryAccrual;
+        document.getElementById('hero-primary-accrual').textContent = primaryAccrual;
 
-        // TEV 概览 - 新增字段
-        const tevRatioEl = document.getElementById('summary-tevratio');
-        const marketCapEl = document.getElementById('summary-marketcap');
-        const earningsYieldEl = document.getElementById('summary-earningsyield');
-        const tevYieldEl = document.getElementById('summary-tevyield');
+        // ===== 新概览：KPI + 周期切换 =====
+        // 拉主表数据以获得按周期字段（tevRatio_Xd / metrics.*_yield_Nd_ann / validation.caveats）
+        let allTable = null;
+        try {
+          const _r = await fetch('../data/all-protocols.json');
+          if (_r.ok) { const _d = await _r.json(); allTable = (_d.protocols || {})[pid] || null; }
+        } catch {}
+        const proto = allTable || cfg;
+        const marketCap = proto.market_cap_usd || cfg.market_cap_usd || cfg.tev_data?.market_cap_usd || 0;
+        const metrics = (allTable && allTable.metrics) || {};
+        const displayPrecision = (allTable && allTable.display_precision) || cfg.display_precision || 2;
 
-        // 使用 config.json 中的值（直接读取，无需 fetch）
-        // FIX 2026-03-03: 不再从 all-protocols.json fetch，直接使用 cfg
-        const tevRatio = cfg.tevRatio;
-        const marketCap = cfg.market_cap_usd || cfg.tev_data?.market_cap_usd || 0;
-        const earningsYield = cfg.earning_yield_percent || 0;
-        const tevYield = cfg.tev_data?.tev_yield_percent || 0;
+        function periodKPI(period) {
+          const tevMap = { '7d': metrics.tev_yield_7d_ann, '30d': metrics.tev_yield_30d_ann, '90d': metrics.tev_yield_90d_ann, '365d': proto.tev_yield_percent };
+          const earnMap = { '7d': metrics.earning_yield_7d_ann, '30d': metrics.earning_yield_30d_ann, '90d': metrics.earning_yield_90d_ann, '365d': proto.earning_yield_percent };
+          const ratioMap = { '7d': proto.tevRatio_7d, '30d': proto.tevRatio_30d, '90d': proto.tevRatio_90d, '365d': proto.tevRatio_365d != null ? proto.tevRatio_365d : proto.tevRatio };
+          return {
+            tev:   tevMap[period]   != null ? tevMap[period]   : proto.tev_yield_percent,
+            earn:  earnMap[period]  != null ? earnMap[period]  : proto.earning_yield_percent,
+            ratio: ratioMap[period] != null ? ratioMap[period] : proto.tevRatio,
+          };
+        }
+        function formatPct(v, p) { return v == null ? '—' : v.toFixed(p) + '%'; }
+        function formatRatio(v) {
+          if (typeof v === 'string') return v;
+          if (v == null || v <= 0) return '—';
+          return (v * 100).toFixed(1) + '%';
+        }
+        function renderKPI(period) {
+          const k = periodKPI(period);
+          document.getElementById('kpi-marketcap').textContent = marketCap ? '$' + (marketCap / 1e9).toFixed(2) + 'B' : '—';
+          const tevEl = document.getElementById('kpi-tevyield');
+          tevEl.textContent = formatPct(k.tev, displayPrecision);
+          tevEl.className = 'tev-kpi-value ' + ((k.tev || 0) > 5 ? 'value-on' : (k.tev || 0) > 0 ? 'value-partial' : '');
+          document.getElementById('kpi-earningyield').textContent = formatPct(k.earn, displayPrecision);
+          document.getElementById('kpi-tevratio').textContent = formatRatio(k.ratio);
+        }
+        renderKPI('365d');
+        document.querySelectorAll('#period-tabs .period-tab').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.querySelectorAll('#period-tabs .period-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderKPI(btn.dataset.period);
+          });
+        });
 
-        console.log('TEV Summary values:', { tevRatio, marketCap, earningsYield, tevYield });
+        // 状态 chips
+        const s = cfg.tev_summary || {};
+        ['buybacks', 'burns', 'dividends'].forEach(k => {
+          const el = document.getElementById('chip-' + k);
+          if (el) el.textContent = t('status.' + (s[k] || 'NONE'));
+        });
+        document.getElementById('chip-confidence').textContent = t('confidence.' + (cfg.confidence || 'medium'));
 
-        // 分配比例
-        if (typeof tevRatio === 'string') {
-          tevRatioEl.textContent = tevRatio;
-        } else if (tevRatio > 0) {
-          tevRatioEl.textContent = `${(tevRatio * 100).toFixed(0)}%`;
-        } else {
-          tevRatioEl.textContent = '—';
+        // Caveats 警示卡
+        const caveats = (cfg.tev_data && cfg.tev_data.caveats) || (allTable && allTable.validation && allTable.validation.caveats) || null;
+        if (Array.isArray(caveats) && caveats.length) {
+          document.getElementById('caveats-card').style.display = 'block';
+          document.getElementById('caveats-list').innerHTML = caveats.map(c => `<li>${c}</li>`).join('');
         }
 
-        // 市值
-        marketCapEl.textContent = marketCap ? `$${(marketCap / 1e9).toFixed(2)}B` : '—';
+        // 深度分析 tab 切换
+        document.querySelectorAll('.deep-tab').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const key = btn.dataset.deepTab;
+            document.querySelectorAll('.deep-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.deep-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById('deep-panel-' + key).classList.add('active');
+          });
+        });
 
-        // 收益率
-        earningsYieldEl.textContent = earningsYield ? `${earningsYield.toFixed(2)}%` : '—';
-
-        // TEV Yield
-        tevYieldEl.textContent = tevYield ? `${tevYield.toFixed(2)}%` : '—';
-        tevYieldEl.className = `tev-summary-value ${tevYield > 5 ? 'value-on' : tevYield > 0 ? 'value-partial' : ''}`;
-        
-        const s = cfg.tev_summary || {};
-        ['buybacks', 'dividends', 'burns'].forEach(k => { const el = document.getElementById(`summary-${k}`); const v = s[k] || 'NONE'; el.textContent = t('status.' + v); el.className = `tev-summary-value ${getValueClass(v)}`; });
-        const confEl = document.getElementById('summary-confidence');
-        confEl.textContent = t('confidence.' + (cfg.confidence || 'medium'));
-        confEl.className = `tev-summary-value ${cfg.confidence === 'high' ? 'value-on' : cfg.confidence === 'low' ? 'value-off' : 'value-partial'}`;
+        // 渲染 mechanisms / sources / references / notes
         renderMechanisms(cfg.tev_mechanisms);
         renderSources(cfg.data_sources);
         renderReferences(cfg.references);
         const notes = cfg.analyst_notes || cfg.notes;
-        if (notes) { document.getElementById('notes-section').style.display = 'block'; document.getElementById('protocol-notes').innerHTML = marked.parse ? marked.parse(notesToMarkdown(notes)) : notes.replace(/\n/g, '<br>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\|(.+)\|/g, '<span style="font-family:monospace">$1</span>'); }
+        if (notes) {
+          document.getElementById('protocol-notes').innerHTML = marked.parse ? marked.parse(notesToMarkdown(notes)) : notes.replace(/\n/g, '<br>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\|(.+)\|/g, '<span style="font-family:monospace">$1</span>');
+        } else {
+          document.getElementById('protocol-notes').innerHTML = '<p style="color:var(--text-tertiary);font-size:13px;" data-zh="暂无分析师备注" data-en="No analyst notes yet">暂无分析师备注</p>';
+        }
         document.getElementById('last-updated').textContent = cfg.last_updated || '—';
         document.getElementById('loading').style.display = 'none';
         document.getElementById('content').style.display = 'block';
@@ -1079,42 +1308,17 @@
         const mcap = m.current_market_cap_usd;
         const tevYield = p.tev_yield_percent;
 
+        // 精简：只保留核心 5 行推导。多周期 yield 在概览 KPI + 周期 tab 已展示，不重复。
         const rows = [
-          { label: currentLang === 'zh' ? '年收入 (DefiLlama)' : 'Annual Revenue (DefiLlama)', value: fmt(revenue) },
+          { label: currentLang === 'zh' ? '365D 协议收入' : '365D Revenue', value: fmt(revenue) },
           { label: currentLang === 'zh' ? 'TEV 比例' : 'TEV Ratio', value: tevRatio != null ? pct(tevRatio) : '—' },
-          { label: currentLang === 'zh' ? '→ 年 TEV' : '→ Annual TEV', value: fmt(tev), derived: true },
-          { label: '', value: '', spacer: true },
-          { label: currentLang === 'zh' ? '当前市值' : 'Market Cap', value: fmt(mcap) },
-          { label: '→ TEV Yield (1Y)', value: yld(tevYield), derived: true },
+          { label: currentLang === 'zh' ? '365D TEV' : '365D TEV', value: fmt(tev), derived: true },
+          { label: currentLang === 'zh' ? '市值' : 'Market Cap', value: fmt(mcap) },
+          { label: 'TEV Yield', value: yld(tevYield), derived: true },
         ];
-
-        // 多维度年化 Earning Yield
-        const ey7 = m.earning_yield_7d_ann, ey30 = m.earning_yield_30d_ann, ey90 = m.earning_yield_90d_ann;
-        const earningYield = p.earning_yield_percent;
-        if (ey7 != null || ey30 != null || ey90 != null) {
-          rows.push({ label: '', value: '', spacer: true });
-          rows.push({ label: currentLang === 'zh' ? '多维度年化收益率 (Earning Yield)' : 'Multi-period Earning Yield (Annualized)', value: '', header: true });
-          rows.push({ label: '7D', value: yld(ey7) });
-          rows.push({ label: '30D', value: yld(ey30) });
-          rows.push({ label: '90D', value: yld(ey90) });
-          rows.push({ label: '365D', value: yld(earningYield), derived: true });
-        }
-
-        // 多维度年化 TEV Yield
-        const y7 = m.tev_yield_7d_ann, y30 = m.tev_yield_30d_ann, y90 = m.tev_yield_90d_ann;
-        if (y7 != null || y30 != null || y90 != null) {
-          rows.push({ label: '', value: '', spacer: true });
-          rows.push({ label: currentLang === 'zh' ? '多维度年化 TEV Yield' : 'Multi-period TEV Yield (Annualized)', value: '', header: true });
-          rows.push({ label: '7D', value: yld(y7) });
-          rows.push({ label: '30D', value: yld(y30) });
-          rows.push({ label: '90D', value: yld(y90) });
-          rows.push({ label: '365D', value: yld(tevYield), derived: true });
-        }
 
         const container = document.getElementById('tev-calc-content');
         container.innerHTML = rows.map(r => {
-          if (r.spacer) return '<div class="tev-calc-row" style="display:contents"><div style="padding:6px;border:none" colspan="2"></div><div style="padding:6px;border:none"></div></div>';
-          if (r.header) return `<div class="tev-calc-row" style="display:contents"><div class="tev-calc-label" style="grid-column:1/-1;color:var(--text-primary);font-weight:600;font-size:13px;">${r.label}</div></div>`;
           const cls = r.derived ? ' tev-calc-derived' : '';
           return `<div class="tev-calc-row${cls}" style="display:contents"><div class="tev-calc-label">${r.label}</div><div class="tev-calc-value">${r.value}</div></div>`;
         }).join('');
@@ -1134,7 +1338,8 @@
           `<span>${currentLang === 'zh' ? '更新' : 'Updated'}: ${updatedAt}</span>`,
         ].filter(Boolean).join('');
 
-        document.getElementById('tev-calc-section').style.display = 'block';
+        // tev-calc-section 已迁移到深度分析 tab 的 deep-panel-calc，tab 本身总是可见
+        // 保持兼容：老 span#tev-calc-section 显示与否无视觉影响
       } catch (e) {
         console.warn('TEV calc render failed:', e);
       }
