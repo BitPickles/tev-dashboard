@@ -236,6 +236,86 @@ data/protocols/<id>/
 | `null` | `—` | 不适用（协议无 fee 分润机制，如 BNB） |
 | `0` | `—` | 有 fee 但 0% 给持有人（但前端当前和 null 一样处理）|
 
+### TEV 历史图表（tev-records.json）规范
+
+详情页的"TEV 历史记录"图表读 `data/protocols/<id>/tev-records.json`。下面是避免视觉 bug 的必守规则。
+
+#### records 数据结构
+
+```jsonc
+{
+  "protocol": "bnb",
+  "updated_at": "2026-04-22",
+  "data_source": "...",
+  "records": [
+    {
+      "id": "...",                    // 唯一标识
+      "date": "2026-01-15",           // YYYY-MM-DD（事件发生日期）
+      "type": "burn",                 // 见下方类型约定
+      "mechanism": "...",             // 机制名称（tooltip 显示）
+      "amount_usd": 1277189711,       // 金额（USD）
+      "period": "Q1 2026",            // 可选 — 聚合标签，见下
+      "source": { ... }
+    }
+  ]
+}
+```
+
+#### period 字段决定图表渲染模式（**关键规则**）
+
+前端 `loadTevChart` 按以下逻辑判定 **Daily Mode vs Monthly Mode**：
+
+```js
+const isDaily = records.every(r => {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(r.date)) return false;
+  if (!r.period) return true;           // 无 period → daily
+  return r.period === r.date;           // period = date → 冗余 daily 标签
+});
+```
+
+| 数据性质 | `period` 写法 | 渲染模式 |
+|---|---|---|
+| **日频事件**（如 Uniswap 每日 Firepit burn） | 省略 `period`，或 `period == date` | **Daily Mode**（time axis + bar 宽度按天自动） |
+| **月/季度聚合**（如 BNB 季度 Auto-Burn、Sky 月度 SBE 支出） | `period: "Q4 2025"` / `period: "2025-03"`（≠ date） | **Monthly Mode**（category axis + stacked bar） |
+
+**❌ 错误示例（BNB 2026-04-22 之前的 bug）**：
+- BNB records 都是季度数据（每条 period="Qx YYYY"），但 date 格式也是 YYYY-MM-DD
+- 旧判断 `isDaily = date 是 YYYY-MM-DD` 把它误判为 Daily
+- 38 条季度数据塞入 8.5 年 time axis → 每根柱子 width <1 px → **完全看不见**
+
+**✅ 正确做法**：
+- 如果数据是聚合（一条 record 代表一个月/季度的汇总），**必须填 period** 且 period 值**不等于** date
+- 如果数据是真实日频（一条 record 代表一天），**不填 period** 或 `period == date`
+
+#### Stacked vs Grouped Bar
+
+- **多种 TEV type 同时存在时**（如 BNB 的 burn + staking_reward），使用 **stacked bar**
+- 视觉表达 "TEV 由多部分构成"：下段 burn 红 + 上段 staking 蓝 = 总 TEV
+- 在 Monthly Mode 代码里已配置 `stack: 'tev'` + `scales.x/y.stacked: true`
+- **不要**改成 grouped（并排）或混用 line + bar，除非有特殊语义理由
+
+#### type 类型约定
+
+现有 TEV_COLORS 已支持：
+- `burn` / `buyback_burn` / `buyback` — 销毁 / 回购（红色 / 绿色系）
+- `staking_reward` — 质押奖励（蓝色）
+- `holders_revenue` — 持有人收入（绿色）
+- `ve_reward` / `direct_distribution` / `fee_sharing` / `dividend` / `airdrop` 等
+
+新增 type 时在 `tev/protocol.html` 的 `TEV_COLORS` 表加一条颜色配置。
+
+#### 新协议接入 TEV 历史图的自检清单
+
+- [ ] records 数组按 date 升序（不强制，前端会 sort，但建议预排序）
+- [ ] 每条 record 有 `date`、`type`、`amount_usd`
+- [ ] 如果是聚合数据（月/季度），每条填 `period` 且 `period ≠ date`
+- [ ] 如果是日频事件，省略 `period` 或设 `period == date`
+- [ ] 打开详情页 `tev/protocol.html?id=<new_pid>` 肉眼验证：
+  - x 轴 ticks 是否符合预期（日期格式 vs 季度标签）
+  - 柱子是否可见（不是细到看不见）
+  - 多种 type 是否正确 stacked
+- [ ] 在 `data/protocols/<id>/README.md` 记录数据性质（日频 vs 月/季度）
+
 ### tevRatio 按周期独立
 
 分配率（tevRatio = TEV ÷ Earning）**应该随周期变化**，如果 TEV 和 Earning 用独立 signal。主表切换周期时需同步变。
@@ -324,6 +404,8 @@ data/protocols/<id>/
 | 2026-04-22 | Uniswap | 切换到链上直查 0xdead burn（A 口径）+ 链上数据核实 + 每日增量脚本 + 文档 | `c2bff2e1` | ✅ 已上 main |
 | 2026-04-22 | Sky (MakerDAO) | 切换到 DefiLlama `dailyHoldersRevenue` 口径（= Splitter burn 部分）；链上核实 MKR/SKY@0xdead 几乎为 0；动态 tevRatio 替代写死 fixedTevUsd；文档 | `66129bc5` | ✅ 已上 main |
 | 2026-04-22 | 前端 | 分配率按周期独立显示（tevRatio_7d/30d/90d/365d），覆盖 Sky 类"TEV/Earning 独立 signal"协议；其他协议 fallback 顶层 tevRatio | `66129bc5` | ✅ 已上 main |
-| 2026-04-22 | Aave | 双源 TEV（$30M 固定 Buyback + DefiLlama dailyHoldersRevenue Safety Module）；各周期独立；明确 buyback 是 treasury 非 burn（类似 Hyperliquid AF）；tevRatio 按周期；文档 | — | 🚧 dev，待验收 |
+| 2026-04-22 | Aave | 双源 TEV（$30M 固定 Buyback + DefiLlama dailyHoldersRevenue Safety Module）；各周期独立；明确 buyback 是 treasury 非 burn（类似 Hyperliquid AF）；tevRatio 按周期；文档 | `5e013f9f` | ✅ 已上 main |
+| 2026-04-22 | 详情页 | 大重构（方案 B）：section 顺序重排 + 深度分析 tab 合并 + 周期切换 + Caveats + 附加折叠 | — | 🚧 dev |
+| 2026-04-23 | 图表修复 | BNB/HYPE 等原本有 period 字段的季度/月度数据被误判为 Daily → 38 条季度数据塞入 8.5 年 time axis 柱子看不见；修 isDaily 判断（period≠date 时走 Monthly） | — | 🚧 dev |
 
 每次协议上线后应在本表追加一行，形成可追溯的 changelog。

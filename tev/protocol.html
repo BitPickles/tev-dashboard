@@ -531,9 +531,15 @@
         if (!records?.length) { const sec=document.getElementById('tev-chart-section'); if (sec) sec.style.display='none'; return; }
         records.sort((a, b) => new Date(a.date) - new Date(b.date));
         const types = [...new Set(records.map(r => r.type))];
-        // Daily Mode 仅在全部 records 都是日频（每天一条 + 无 period 字段）时启用
-        // 如果 records 有 period 字段（如 "Q4 2017"），说明是季度/月度数据，走 Monthly Mode
-        const isDaily = records.every(r => /^\d{4}-\d{2}-\d{2}$/.test(r.date) && !r.period);
+        // Daily Mode 仅在全部 records 都是日频时启用
+        // - 无 period 字段：daily
+        // - period 字段等于 date（冗余的日级别 period 标签）：仍视为 daily
+        // 如果 period 是聚合标签（"Q4 2017" / "2025-03" 等，≠ date），说明是月/季度数据，走 Monthly Mode
+        const isDaily = records.every(r => {
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(r.date)) return false;
+          if (!r.period) return true;
+          return r.period === r.date;
+        });
         
         const ctx = document.getElementById('tev-history-chart').getContext('2d');
         if (tevChart) tevChart.destroy();
