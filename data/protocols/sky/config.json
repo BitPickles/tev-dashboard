@@ -64,13 +64,13 @@
     }
   ],
   "notes": "MakerDAO (现 Sky) 是最早实现代币回购销毁的 DeFi 协议之一。Smart Burn Engine 机制确保协议盈余持续回馈给 MKR 持有者。",
-  "last_updated": "2026-04-22",
+  "last_updated": "2026-04-24",
   "tev_data": {
     "has_tev": true,
     "tev_yield_percent": 6.66,
     "annual_tev_usd": 13724000,
     "market_cap_usd": 1814725241.45,
-    "calculation_date": "2026-04-22",
+    "calculation_date": "2026-04-23",
     "sources": [
       {
         "name": "DefiLlama holdersRevenue",
@@ -79,7 +79,7 @@
         "note": "Smart Burn Engine 回购"
       }
     ],
-    "calculation": "TEV Yield = DefiLlama dailyHoldersRevenue (365d) / marketCap；Earning Yield = DefiLlama dailyRevenue / marketCap；由 sync-tev-data.js Sky 专属分支每日刷新",
+    "calculation": "详见 calc_pipeline 数组（6 steps 端到端推导）",
     "validation": {
       "method": "DefiLlama dailyHoldersRevenue = Splitter burn (SBE 真实支出) / dailyRevenue = 协议总归属",
       "tev_source": "DefiLlama dailyHoldersRevenue (slug=sky)",
@@ -122,5 +122,60 @@
     "earning_yield_7d_ann": 9.6,
     "earning_yield_30d_ann": 9.55,
     "earning_yield_90d_ann": 10.94
-  }
+  },
+  "calc_pipeline": [
+    {
+      "step": 1,
+      "label": "原始数据源",
+      "description": "DefiLlama dailyHoldersRevenue = Splitter 的 burn 部分（SBE 真实支出）。DefiLlama 方法学已剥离给 DSR/SKY stakers 的 farm 部分，精准对应归 MKR/SKY 持有人的真实 burn 金额。近 30d 日均 $37.5k 与 2026-03 治理公告（$37.6k/天）吻合。",
+      "source_url": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue"
+    },
+    {
+      "step": 2,
+      "label": "补充：Earning 口径对照",
+      "description": "dailyRevenue（协议总归属，含 farm 部分）用于 Earning Yield。差值 = Splitter 的 farm 部分（给 SKY stakers 的新铸造 SKY + USDS yield，不算 TEV，是协议支出而非市场回购）。",
+      "source_url": "https://api.llama.fi/summary/fees/sky?dataType=dailyRevenue"
+    },
+    {
+      "step": 3,
+      "label": "链上 SBE 机制说明",
+      "description": "Sky Surplus Buffer → Splitter → (burn | farm)。burn 部分进 Smart Burn Engine 经 FlapperUniV2 买 MKR 配对 DAI 做 LP → LP token 销毁（MKR 永久锁在 pool）。链上 MKR @ 0xdead 365d 只有 0.0001 MKR（确认不 burn MKR 本身）。",
+      "addresses": {
+        "MKR": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
+        "SKY": "0x56072C95FAA701256059aa122697B133aDEd9279"
+      }
+    },
+    {
+      "step": 4,
+      "label": "按周期累加 HoldersRevenue",
+      "formula": "Σ dailyHoldersRevenue 过去 N 天",
+      "value_fields_by_period": {
+        "7d": "validation.burn_7d_usd",
+        "30d": "validation.burn_30d_usd",
+        "90d": "validation.burn_90d_usd",
+        "365d": "validation.burn_365d_usd"
+      },
+      "unit": "USD"
+    },
+    {
+      "step": 5,
+      "label": "年化 + 除以市值",
+      "formula": "USD × (365/N) ÷ market_cap × 100%",
+      "inputs": {
+        "market_cap": "market_cap_usd"
+      }
+    },
+    {
+      "step": 6,
+      "label": "最终 TEV Yield",
+      "derived": true,
+      "value_fields_by_period": {
+        "7d": "metrics.tev_yield_7d_ann",
+        "30d": "metrics.tev_yield_30d_ann",
+        "90d": "metrics.tev_yield_90d_ann",
+        "365d": "tev_yield_percent"
+      },
+      "unit": "%"
+    }
+  ]
 }
