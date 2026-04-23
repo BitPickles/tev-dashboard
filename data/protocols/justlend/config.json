@@ -17,27 +17,29 @@
   },
   "tev_mechanisms": [
     {
-      "type": "staking_reward",
-      "name": "JST Staking (未确认)",
-      "description": "JST 声称有质押分红机制，但具体分配比例、合约地址、执行记录均不透明。JST 同时服务于 JUST 生态多个产品（JustLend、JustStable 等），实际 TEV 归属不明确",
-      "status": "unverified",
-      "start_date": "2020-08-01",
+      "type": "buyback_burn",
+      "name": "JustLend DAO Quarterly Buyback & Burn",
+      "description": "JustLend DAO 将净收入（JustLend 借贷利差 + USDD 多链收益超 $10M 部分）用于市场买 JST，发到 TRON Black Hole 永久销毁。2025-10-22 治理通过，已执行 3 次（Oct 2025 / Jan 2026 / Apr 2026），累计销毁 1.356B JST = 13.70% 供应。",
+      "status": "active",
+      "start_date": "2025-10-23",
       "source": {
-        "type": "documentation",
-        "title": "JustLend 官方文档",
-        "url": "https://docs.justlend.org"
+        "type": "governance",
+        "title": "Proposal on JST Buyback & Burn Program",
+        "url": "https://forum.justlend.org/t/proposal-on-jst-buyback-burn-program/774",
+        "approved_at": "2025-10-22"
       }
     }
   ],
   "tev_summary": {
-    "fee_switch": "PARTIAL",
-    "fee_switch_details": "声称有协议收入分配给 JST stakers，但缺乏可验证数据",
-    "buybacks": "NONE",
-    "dividends": "PARTIAL",
-    "burns": "NONE",
-    "primary_value_accrual": "未确认 — 声称有 staking 分红但透明度极低"
+    "fee_switch": "ON",
+    "fee_switch_details": "JustLend DAO 净收入 + USDD 多链收益超 $10M → 市场买 JST 销毁",
+    "buybacks": "ACTIVE",
+    "dividends": "NONE",
+    "burns": "ACTIVE",
+    "primary_value_accrual": "季度 Buyback & Burn（已执行 3 次 / 累计 13.70% 供应销毁）",
+    "tevRatio_note": "不是固定 %，而是净收入全额（短期有 $41.42M 储备启动）"
   },
-  "confidence": "low",
+  "confidence": "high",
   "data_sources": [
     {
       "name": "JustLend Official",
@@ -62,42 +64,122 @@
     }
   ],
   "notes": "⚠️ 维持 PARTIAL，原因：(1) JST staking 机制缺乏透明文档，无法确认具体分配比例；(2) TRON 生态整体透明度较低，缺少 Dune 等独立数据分析工具；(3) DefiLlama 无 tokenRights 数据；(4) JST 代币跨多个 JUST 产品使用，实际 TEV 归属不清；(5) 与 Justin Sun 团队关联，中心化程度较高。如需进一步确认，建议通过浏览器直接操作 JustLend DApp 验证 staking 功能。",
-  "last_updated": "2026-02-14",
+  "last_updated": "2026-04-24",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 0.03,
+    "tev_yield_percent": 15.88,
     "annual_tev_usd": 149440.19999999998,
-    "calculation_date": "2026-04-22",
+    "calculation_date": "2026-04-23",
     "note": "JST 质押奖励，透明度低",
     "sources": [],
-    "market_cap_usd": 558330511.4309741
+    "market_cap_usd": 706451111.9025865,
+    "validation": {
+      "method": "A 口径：JST → TRON Black Hole (过滤到 JustLend DAO executor TZJVQuU3...) × 当前价 / 市值",
+      "burn_7d_jst": 0,
+      "burn_30d_jst": 271337579,
+      "burn_90d_jst": 271337579,
+      "burn_365d_jst": 1356228332,
+      "jst_price_usd": 0.082723,
+      "total_burned_jst": 1356228332,
+      "burn_events": 3,
+      "caveats": [
+        "JST burn 是季度事件（2025-10 / 2026-01 / 2026-04 已完成 3 次），短周期窗口可能 0 或极高",
+        "DefiLlama 严重低估（只算 interest spread 不算 USDD/USDJ/stTRX 其他收入来源）",
+        "TRON 链 TRONGrid API 可用但免费 tier 有 rate limit"
+      ]
+    },
+    "methodology": "A 口径链上直查：TRONGrid → TRON Black Hole → JST incoming（过滤 JustLend DAO Executor），× 当前 JST 价 / 市值",
+    "calculation": "详见 calc_pipeline 数组"
   },
   "market_data": {
     "tvl": 3292346561.2761326,
     "tvl_updated": "2026-03-27T01:01:03.555Z"
   },
-  "tevStatus": "partial",
+  "tevStatus": "active",
   "confidence_reason": {
-    "zh": "TRON 生态透明度低，JST 质押奖励无公开 API，依赖官方声明",
-    "en": "TRON ecosystem low transparency, JST staking rewards no public API, relies on official statements"
+    "zh": "2025-10 治理提案 + 链上 TRON Black Hole 3 次 burn 已验证（1.356B JST）",
+    "en": "Governance proposal (Oct 2025) + on-chain TRON Black Hole 3 burns verified (1.356B JST)"
   },
-  "tevRatio": 0,
-  "earning_yield_percent": 0.09,
-  "market_cap_usd": 558330511.4309741,
-  "tev_yield_percent": 0.03,
+  "tevRatio": "dynamic",
+  "earning_yield_percent": 15.88,
+  "market_cap_usd": 706451111.9025865,
+  "tev_yield_percent": 15.88,
   "metrics": {
     "current_market_cap_usd": 558330511.4309741,
-    "trailing_7d_revenue_usd": 10178,
-    "trailing_30d_revenue_usd": 40572,
-    "trailing_90d_revenue_usd": 126428,
-    "trailing_365d_revenue_usd": 498134,
+    "trailing_7d_revenue_usd": 0,
+    "trailing_30d_revenue_usd": 22445753,
+    "trailing_90d_revenue_usd": 22445753,
+    "trailing_365d_revenue_usd": 112190751,
     "trailing_365d_tev_usd": 149440.19999999998,
     "trailing_30d_tev_usd": 12453.349999999999,
-    "tev_yield_7d_ann": 0.03,
-    "tev_yield_30d_ann": 0.03,
-    "tev_yield_90d_ann": 0.03,
-    "earning_yield_7d_ann": 0.1,
-    "earning_yield_30d_ann": 0.09,
-    "earning_yield_90d_ann": 0.09
-  }
+    "tev_yield_7d_ann": 0,
+    "tev_yield_30d_ann": 38.66,
+    "tev_yield_90d_ann": 12.89,
+    "earning_yield_7d_ann": 0,
+    "earning_yield_30d_ann": 38.66,
+    "earning_yield_90d_ann": 12.89
+  },
+  "calc_pipeline": [
+    {
+      "step": 1,
+      "label": "原始数据源",
+      "description": "TRONGrid 免费 API 监听 TRON Black Hole 地址的 JST incoming transfers。JustLend DAO 定期从 Buyback Executor 合约（TZJVQuU3...）转 JST 到 Black Hole 完成销毁。",
+      "source_url": "https://api.trongrid.io/v1/accounts/{BURN_ADDR}/transactions/trc20",
+      "addresses": {
+        "JST (TRC-20)": "TCFLL5dx5ZJdKnWuesXxi1VPwjLVmWZZy9",
+        "TRON Black Hole": "T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb",
+        "JustLend DAO Buyback Executor": "TZJVQuU3CJqBScwoxhRtkxQ7JjsNNrpEag"
+      }
+    },
+    {
+      "step": 2,
+      "label": "过滤噪声",
+      "description": "TRON 链上的 ERC-20 approval 事件会被 TRONGrid 报告成 transfer（金额 2^256 近似），过滤 amount > 10B JST 的数据；同时只保留 from=Buyback Executor 的 burn，排除用户随机销毁。",
+      "formula": "from == 'TZJVQuU3...' AND 0 < amount < 10^10 JST",
+      "output_file": "data/protocols/justlend/burn-history.json",
+      "updated_by": "~/crypto3d-updater/scripts/update-justlend-tev.py"
+    },
+    {
+      "step": 3,
+      "label": "按周期窗口求和（JST 数量）",
+      "formula": "Σ(JST burned) 过去 N 天",
+      "value_fields_by_period": {
+        "7d": "validation.burn_7d_jst",
+        "30d": "validation.burn_30d_jst",
+        "90d": "validation.burn_90d_jst",
+        "365d": "validation.burn_365d_jst"
+      },
+      "unit": "JST"
+    },
+    {
+      "step": 4,
+      "label": "按当前价重估（USD）",
+      "formula": "JST_sum × JST_price",
+      "inputs": {
+        "JST price": "validation.jst_price_usd",
+        "source": "CoinGecko 'just'"
+      }
+    },
+    {
+      "step": 5,
+      "label": "年化 + 除以市值",
+      "formula": "USD × (365/N) ÷ market_cap × 100%",
+      "inputs": {
+        "market_cap": "market_cap_usd"
+      }
+    },
+    {
+      "step": 6,
+      "label": "最终 TEV Yield",
+      "derived": true,
+      "value_fields_by_period": {
+        "7d": "metrics.tev_yield_7d_ann",
+        "30d": "metrics.tev_yield_30d_ann",
+        "90d": "metrics.tev_yield_90d_ann",
+        "365d": "tev_yield_percent"
+      },
+      "unit": "%"
+    }
+  ],
+  "analyst_notes": "【2026-04-24 更新 - 从 unverified 升级到 confirmed】\n\n## 重大变更\n\n之前 config 标注 \"JST Staking (未确认)\" + confidence=low + tevStatus=partial。\n调研 + 链上数据双确认后：**机制真实存在，已执行 3 次**。\n\n## TEV 机制（JustLend DAO 2025-10-22 治理通过）\n\n- **funding**: 100% JustLend DAO 净收入 + USDD 多链收益超 $10M 部分\n- **mechanics**: 市场买 JST → 发到 TRON Black Hole 永久销毁（非 burn() 函数，是 transfer 到 dead address）\n- **初始储备**: $41.42M（通过 Q4 2026 分 4 次 burn 完成）\n- **执行记录（已验证链上）**：\n\n| Burn | Date | JST | USD（官方公告）| 累计 % |\n|------|------|-----|----------------|--------|\n| #1 | 2025-10-19 | 559.89M | $17.7M | 5.66% |\n| #2 | 2026-01-14 | 525.00M | $21.0M | 11.00% |\n| #3 | 2026-04-15 | 271.34M | $21.3M | **13.70%** |\n| #4+ | 2026-05 起（3 轮 150M JST/轮 from stability fee reserves）| 计划中 |\n\n累计 = **1,356,228,332 JST = 13.70% of 9.9B supply**\n\n## 为什么 DefiLlama 严重低估\n\nDefiLlama `justlend` slug 只统计 **lending interest spread**（$16k/天 fees，$1.2k/天 revenue），完全没有：\n- USDD 稳定币收益\n- stTRX 流动性质押 yield\n- JustStable/USDJ CDP fees\n- \"ecosystem profits > $10M USDD\" 部分\n\n**实际年化 ~$80-120M（DefiLlama 的 ~100 倍）**。所以我们不用 DefiLlama，直接链上追 burn。\n\n## 链上合约\n\n- **JST (TRC-20)**: `TCFLL5dx5ZJdKnWuesXxi1VPwjLVmWZZy9`\n- **TRON Black Hole**: `T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb`（持仓 1.356B JST 即累计 burn）\n- **JustLend DAO Buyback Executor**: `TZJVQuU3CJqBScwoxhRtkxQ7JjsNNrpEag`（3 次 burn 都从这个地址发起）\n\n## 数据源\n\n- **TRONGrid API**（免费无 key）：`/v1/accounts/{addr}/transactions/trc20?only_to=true&contract_address=...`\n- 每日由 `update-justlend-tev.py` 刷新\n- 噪声过滤：amount > 10B JST 的伪 transfer（TRON approval 事件被 TRONGrid 错误 echo），以及 from != Executor 的零星用户 burn\n\n## 已知局限\n\n1. **季度事件**：和 BNB Auto-Burn 一样，短周期窗口会 0 burn 或极高 yield\n2. **TRONGrid rate limit**：免费 tier 可能要更小心调用频率\n3. **初始 $41.42M 储备已耗尽**（累计 ~$60M 已 burn），后续 burn 由新季度收入支撑\n\n## 历史变更\n\n- 2026-04-24: 链上核实 + A 口径接入；confidence low→high；tevStatus partial→active\n- 2025-10-22: JustLend DAO 治理通过 JST Buyback & Burn Program\n"
 }

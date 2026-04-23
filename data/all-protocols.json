@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-23T16:09:20.396Z",
+  "generated_at": "2026-04-23T17:37:37.876Z",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -529,32 +529,47 @@
       "ticker": "JST",
       "icon": "https://coin-images.coingecko.com/coins/images/11095/large/JUST.jpg",
       "category": "lending",
-      "confidence": "low",
+      "confidence": "high",
       "confidence_reason": {
         "zh": "TRON 生态透明度低，JST 质押奖励无公开 API，依赖官方声明",
         "en": "TRON ecosystem low transparency, JST staking rewards no public API, relies on official statements"
       },
-      "tevStatus": "partial",
-      "tev_yield_percent": 0.03,
-      "market_cap_usd": 558330511.4309741,
+      "tevStatus": "active",
+      "tev_yield_percent": 15.88,
+      "market_cap_usd": 706451111.9025865,
       "tvl": 3292346561.2761326,
       "tevRatio": 0,
-      "earning_yield_percent": 0.09,
+      "earning_yield_percent": 15.88,
       "tevRatioNote": "未确认 — 声称有 staking 分红但透明度极低",
       "metrics": {
         "current_market_cap_usd": 558330511.4309741,
-        "trailing_7d_revenue_usd": 10178,
-        "trailing_30d_revenue_usd": 40572,
-        "trailing_90d_revenue_usd": 126428,
-        "trailing_365d_revenue_usd": 498134,
+        "trailing_7d_revenue_usd": 0,
+        "trailing_30d_revenue_usd": 22445753,
+        "trailing_90d_revenue_usd": 22445753,
+        "trailing_365d_revenue_usd": 112190751,
         "trailing_365d_tev_usd": 149440.19999999998,
         "trailing_30d_tev_usd": 12453.349999999999,
-        "tev_yield_7d_ann": 0.03,
-        "tev_yield_30d_ann": 0.03,
-        "tev_yield_90d_ann": 0.03,
-        "earning_yield_7d_ann": 0.1,
-        "earning_yield_30d_ann": 0.09,
-        "earning_yield_90d_ann": 0.09
+        "tev_yield_7d_ann": 0,
+        "tev_yield_30d_ann": 38.66,
+        "tev_yield_90d_ann": 12.89,
+        "earning_yield_7d_ann": 0,
+        "earning_yield_30d_ann": 38.66,
+        "earning_yield_90d_ann": 12.89
+      },
+      "validation": {
+        "method": "A 口径：JST → TRON Black Hole (过滤到 JustLend DAO executor TZJVQuU3...) × 当前价 / 市值",
+        "burn_7d_jst": 0,
+        "burn_30d_jst": 271337579,
+        "burn_90d_jst": 271337579,
+        "burn_365d_jst": 1356228332,
+        "jst_price_usd": 0.082723,
+        "total_burned_jst": 1356228332,
+        "burn_events": 3,
+        "caveats": [
+          "JST burn 是季度事件（2025-10 / 2026-01 / 2026-04 已完成 3 次），短周期窗口可能 0 或极高",
+          "DefiLlama 严重低估（只算 interest spread 不算 USDD/USDJ/stTRX 其他收入来源）",
+          "TRON 链 TRONGrid API 可用但免费 tier 有 rate limit"
+        ]
       }
     },
     "kamino": {
