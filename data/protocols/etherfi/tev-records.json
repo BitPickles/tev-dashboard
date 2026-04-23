@@ -1,1727 +1,399 @@
 {
   "protocol": "etherfi",
-  "updated_at": "2026-03-03T07:40:56.528929Z",
-  "data_source": "Etherscan API (ETHFI transfers to buyback addresses)",
-  "data_source_note": "追踪 ETHFI 代币流入官方回购地址",
-  "summary": {
-    "total_records": 107,
-    "total_buyback_usd": 14883171.910000002,
-    "total_buyback_ethfi": 17316483.140000004,
-    "first_date": "2025-05-09",
-    "last_date": "2026-03-01"
-  },
+  "updated_at": "2026-04-23T14:10:50.942Z",
+  "data_source": "DefiLlama API (dailyHoldersRevenue)",
+  "data_source_url": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
   "records": [
     {
-      "id": "etherfi-buyback-2025-05-09",
-      "date": "2025-05-09",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2024-07",
+      "date": "2024-07-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 309465.64,
-      "token_amount": 437014.15,
-      "token_price": 0.7081,
-      "txs": 25,
+      "amount_usd": 129000,
+      "period": "2024-07",
+      "days_with_data": 1,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 1 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-05-16",
-      "date": "2025-05-16",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2024-08",
+      "date": "2024-08-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 269299.64,
-      "token_amount": 186903.52,
-      "token_price": 1.4408,
-      "txs": 16,
+      "amount_usd": 110000,
+      "period": "2024-08",
+      "days_with_data": 1,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 1 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-05-19",
-      "date": "2025-05-19",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2024-09",
+      "date": "2024-09-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 2261.01,
-      "token_amount": 1681.14,
-      "token_price": 1.3449,
-      "txs": 1,
+      "amount_usd": 85000,
+      "period": "2024-09",
+      "days_with_data": 1,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 1 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-05-23",
-      "date": "2025-05-23",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2024-10",
+      "date": "2024-10-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 279568.21,
-      "token_amount": 205507.38,
-      "token_price": 1.3604,
-      "txs": 14,
+      "amount_usd": 118000,
+      "period": "2024-10",
+      "days_with_data": 1,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 1 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-05-30",
-      "date": "2025-05-30",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2024-11",
+      "date": "2024-11-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 292194.89,
-      "token_amount": 218582.1,
-      "token_price": 1.3368,
-      "txs": 9,
+      "amount_usd": 175000,
+      "period": "2024-11",
+      "days_with_data": 1,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 1 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-06-06",
-      "date": "2025-06-06",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2024-12",
+      "date": "2024-12-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 104442.3,
-      "token_amount": 98174.29,
-      "token_price": 1.0638,
-      "txs": 5,
+      "amount_usd": 180000,
+      "period": "2024-12",
+      "days_with_data": 1,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 1 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-06-13",
-      "date": "2025-06-13",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2025-01",
+      "date": "2025-01-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 124837.92,
-      "token_amount": 110928.96,
-      "token_price": 1.1254,
-      "txs": 5,
+      "amount_usd": 165000,
+      "period": "2025-01",
+      "days_with_data": 1,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 1 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-06-20",
-      "date": "2025-06-20",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2025-02",
+      "date": "2025-02-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 123482.1,
-      "token_amount": 123101.7,
-      "token_price": 1.0031,
-      "txs": 5,
+      "amount_usd": 120000,
+      "period": "2025-02",
+      "days_with_data": 1,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 1 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-06-27",
-      "date": "2025-06-27",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2025-03",
+      "date": "2025-03-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 119942.43,
-      "token_amount": 129442.26,
-      "token_price": 0.9266,
-      "txs": 5,
+      "amount_usd": 105000,
+      "period": "2025-03",
+      "days_with_data": 1,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 1 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-07-04",
-      "date": "2025-07-04",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2025-04",
+      "date": "2025-04-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 133140.86,
-      "token_amount": 133994.38,
-      "token_price": 0.9936,
-      "txs": 5,
+      "amount_usd": 120000,
+      "period": "2025-04",
+      "days_with_data": 1,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 1 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-07-12",
-      "date": "2025-07-12",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2025-05",
+      "date": "2025-05-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 155841.08,
-      "token_amount": 137398.72,
-      "token_price": 1.1342,
-      "txs": 5,
+      "amount_usd": 1115150,
+      "period": "2025-05",
+      "days_with_data": 4,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 4 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-07-18",
-      "date": "2025-07-18",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2025-06",
+      "date": "2025-06-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 178938.51,
-      "token_amount": 134892.47,
-      "token_price": 1.3265,
-      "txs": 5,
+      "amount_usd": 473926,
+      "period": "2025-06",
+      "days_with_data": 4,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 4 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-07-25",
-      "date": "2025-07-25",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2025-07",
+      "date": "2025-07-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 168511.79,
-      "token_amount": 150863.92,
-      "token_price": 1.117,
-      "txs": 5,
+      "amount_usd": 627813,
+      "period": "2025-07",
+      "days_with_data": 4,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 4 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-08-02",
-      "date": "2025-08-02",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2025-08",
+      "date": "2025-08-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 183754.51,
-      "token_amount": 193944.64,
-      "token_price": 0.9475,
-      "txs": 5,
+      "amount_usd": 2246459,
+      "period": "2025-08",
+      "days_with_data": 5,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 5 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-08-08",
-      "date": "2025-08-08",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2025-09",
+      "date": "2025-09-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 436400.86,
-      "token_amount": 397587.16,
-      "token_price": 1.0976,
-      "txs": 12,
+      "amount_usd": 1378489,
+      "period": "2025-09",
+      "days_with_data": 4,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 4 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-08-15",
-      "date": "2025-08-15",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2025-10",
+      "date": "2025-10-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 404722.31,
-      "token_amount": 341789.21,
-      "token_price": 1.1841,
-      "txs": 8,
+      "amount_usd": 576865,
+      "period": "2025-10",
+      "days_with_data": 5,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 5 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-08-24",
-      "date": "2025-08-24",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2025-11",
+      "date": "2025-11-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 331296.84,
-      "token_amount": 259501.92,
-      "token_price": 1.2767,
-      "txs": 7,
+      "amount_usd": 3163535,
+      "period": "2025-11",
+      "days_with_data": 24,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 24 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-08-29",
-      "date": "2025-08-29",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 879929.28,
-      "token_amount": 774538.18,
-      "token_price": 1.1361,
-      "txs": 20,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-09-05",
-      "date": "2025-09-05",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 291330.63,
-      "token_amount": 263241.9,
-      "token_price": 1.1067,
-      "txs": 8,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-09-13",
-      "date": "2025-09-13",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 356963.36,
-      "token_amount": 246985.3,
-      "token_price": 1.4453,
-      "txs": 8,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-09-19",
-      "date": "2025-09-19",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 510580.85,
-      "token_amount": 317822.86,
-      "token_price": 1.6065,
-      "txs": 12,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-09-27",
-      "date": "2025-09-27",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 200966.64,
-      "token_amount": 126595.0,
-      "token_price": 1.5875,
-      "txs": 5,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-10-04",
-      "date": "2025-10-04",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 194774.91,
-      "token_amount": 107778.93,
-      "token_price": 1.8072,
-      "txs": 6,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-10-11",
-      "date": "2025-10-11",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 152671.46,
-      "token_amount": 128159.37,
-      "token_price": 1.1913,
-      "txs": 4,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-10-17",
-      "date": "2025-10-17",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 77546.86,
-      "token_amount": 70107.13,
-      "token_price": 1.1061,
-      "txs": 4,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-10-18",
-      "date": "2025-10-18",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 38525.86,
-      "token_amount": 35750.26,
-      "token_price": 1.0776,
-      "txs": 2,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-10-24",
-      "date": "2025-10-24",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 104659.94,
-      "token_amount": 107711.75,
-      "token_price": 0.9717,
-      "txs": 3,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-03",
-      "date": "2025-11-03",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 110697.37,
-      "token_amount": 111038.75,
-      "token_price": 0.9969,
-      "txs": 3,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-04",
-      "date": "2025-11-04",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 57202.67,
-      "token_amount": 66342.81,
-      "token_price": 0.8622,
-      "txs": 11,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-05",
-      "date": "2025-11-05",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 326731.54,
-      "token_amount": 395898.46,
-      "token_price": 0.8253,
-      "txs": 40,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-06",
-      "date": "2025-11-06",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 268648.0,
-      "token_amount": 308697.58,
-      "token_price": 0.8703,
-      "txs": 28,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-07",
-      "date": "2025-11-07",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 191514.1,
-      "token_amount": 223403.57,
-      "token_price": 0.8573,
-      "txs": 20,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-08",
-      "date": "2025-11-08",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 9775.61,
-      "token_amount": 9961.53,
-      "token_price": 0.9813,
-      "txs": 1,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-09",
-      "date": "2025-11-09",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 199508.72,
-      "token_amount": 207335.57,
-      "token_price": 0.9623,
-      "txs": 20,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-10",
-      "date": "2025-11-10",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 98723.45,
-      "token_amount": 99248.43,
-      "token_price": 0.9947,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-11",
-      "date": "2025-11-11",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 104666.15,
-      "token_amount": 103013.44,
-      "token_price": 1.016,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-12",
-      "date": "2025-11-12",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 100146.7,
-      "token_amount": 105679.86,
-      "token_price": 0.9476,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-13",
-      "date": "2025-11-13",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 59476.22,
-      "token_amount": 63992.6,
-      "token_price": 0.9294,
-      "txs": 6,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-14",
-      "date": "2025-11-14",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 262727.37,
-      "token_amount": 270235.63,
-      "token_price": 0.9722,
-      "txs": 27,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-15",
-      "date": "2025-11-15",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 97506.34,
-      "token_amount": 108039.28,
-      "token_price": 0.9025,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-16",
-      "date": "2025-11-16",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 104323.95,
-      "token_amount": 112456.13,
-      "token_price": 0.9277,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-17",
-      "date": "2025-11-17",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 104110.78,
-      "token_amount": 116265.91,
-      "token_price": 0.8955,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-18",
-      "date": "2025-11-18",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 91548.77,
-      "token_amount": 108757.66,
-      "token_price": 0.8418,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-19",
-      "date": "2025-11-19",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 105817.85,
-      "token_amount": 115050.74,
-      "token_price": 0.9197,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-21",
-      "date": "2025-11-21",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 109882.32,
-      "token_amount": 134754.25,
-      "token_price": 0.8154,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-24",
-      "date": "2025-11-24",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 88981.36,
-      "token_amount": 131365.9,
-      "token_price": 0.6774,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-25",
-      "date": "2025-11-25",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 30750.0,
-      "token_amount": 40185.77,
-      "token_price": 0.7652,
-      "txs": 3,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-26",
-      "date": "2025-11-26",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 99852.87,
-      "token_amount": 131335.99,
-      "token_price": 0.7603,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-27",
-      "date": "2025-11-27",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 94619.83,
-      "token_amount": 122633.13,
-      "token_price": 0.7716,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-28",
-      "date": "2025-11-28",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 96915.29,
-      "token_amount": 120903.66,
-      "token_price": 0.8016,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-11-30",
-      "date": "2025-11-30",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 98338.88,
-      "token_amount": 121125.73,
-      "token_price": 0.8119,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-01",
+      "id": "etherfi-buyback-accumulate-2025-12",
       "date": "2025-12-01",
-      "type": "buyback",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 322710.95,
-      "token_amount": 398250.44,
-      "token_price": 0.8103,
-      "txs": 30,
+      "amount_usd": 2610692,
+      "period": "2025-12",
+      "days_with_data": 25,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 25 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-12-02",
-      "date": "2025-12-02",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2026-01",
+      "date": "2026-01-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 87713.68,
-      "token_amount": 117278.5,
-      "token_price": 0.7479,
-      "txs": 10,
+      "amount_usd": 1399491,
+      "period": "2026-01",
+      "days_with_data": 15,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 15 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-12-03",
-      "date": "2025-12-03",
-      "type": "buyback",
+      "id": "etherfi-buyback-accumulate-2026-02",
+      "date": "2026-02-01",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 100779.47,
-      "token_amount": 119280.6,
-      "token_price": 0.8449,
-      "txs": 10,
+      "amount_usd": 1349685,
+      "period": "2026-02",
+      "days_with_data": 14,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 14 days of data"
     },
     {
-      "id": "etherfi-buyback-2025-12-04",
-      "date": "2025-12-04",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 103119.95,
-      "token_amount": 121123.52,
-      "token_price": 0.8514,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-05",
-      "date": "2025-12-05",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 205850.13,
-      "token_amount": 250764.2,
-      "token_price": 0.8209,
-      "txs": 20,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-06",
-      "date": "2025-12-06",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 96042.64,
-      "token_amount": 123365.12,
-      "token_price": 0.7785,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-07",
-      "date": "2025-12-07",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 195364.11,
-      "token_amount": 244309.65,
-      "token_price": 0.7997,
-      "txs": 20,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-08",
-      "date": "2025-12-08",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 92943.91,
-      "token_amount": 118659.13,
-      "token_price": 0.7833,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-09",
-      "date": "2025-12-09",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 47655.68,
-      "token_amount": 57061.59,
-      "token_price": 0.8352,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-10",
-      "date": "2025-12-10",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 40768.76,
-      "token_amount": 46498.67,
-      "token_price": 0.8768,
-      "txs": 4,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-11",
-      "date": "2025-12-11",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 41664.78,
-      "token_amount": 49496.39,
-      "token_price": 0.8418,
-      "txs": 4,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-12",
-      "date": "2025-12-12",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 101902.55,
-      "token_amount": 124149.21,
-      "token_price": 0.8208,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-13",
-      "date": "2025-12-13",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 49354.33,
-      "token_amount": 61436.54,
-      "token_price": 0.8033,
-      "txs": 5,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-14",
-      "date": "2025-12-14",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 39578.59,
-      "token_amount": 49015.21,
-      "token_price": 0.8075,
-      "txs": 4,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-15",
-      "date": "2025-12-15",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 91797.66,
-      "token_amount": 116520.71,
-      "token_price": 0.7878,
-      "txs": 9,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-16",
-      "date": "2025-12-16",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 99496.8,
-      "token_amount": 127073.56,
-      "token_price": 0.783,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-17",
-      "date": "2025-12-17",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 106253.33,
-      "token_amount": 136097.73,
-      "token_price": 0.7807,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-22",
-      "date": "2025-12-22",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 99851.79,
-      "token_amount": 138741.43,
-      "token_price": 0.7197,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-23",
-      "date": "2025-12-23",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 100749.15,
-      "token_amount": 139746.32,
-      "token_price": 0.7209,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-24",
-      "date": "2025-12-24",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 101445.22,
-      "token_amount": 143275.35,
-      "token_price": 0.708,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-25",
-      "date": "2025-12-25",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 99852.29,
-      "token_amount": 142563.3,
-      "token_price": 0.7004,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-26",
-      "date": "2025-12-26",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 95111.74,
-      "token_amount": 143284.22,
-      "token_price": 0.6638,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-27",
-      "date": "2025-12-27",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 98143.54,
-      "token_amount": 140645.16,
-      "token_price": 0.6978,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-28",
-      "date": "2025-12-28",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 99600.97,
-      "token_amount": 139454.01,
-      "token_price": 0.7142,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2025-12-30",
-      "date": "2025-12-30",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 96985.92,
-      "token_amount": 140827.97,
-      "token_price": 0.6887,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-01-03",
-      "date": "2026-01-03",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 108299.97,
-      "token_amount": 140399.96,
-      "token_price": 0.7714,
-      "txs": 11,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-01-04",
-      "date": "2026-01-04",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 88411.13,
-      "token_amount": 115266.01,
-      "token_price": 0.767,
-      "txs": 9,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-01-05",
-      "date": "2026-01-05",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 97291.66,
-      "token_amount": 125826.8,
-      "token_price": 0.7732,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-01-06",
-      "date": "2026-01-06",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 99797.79,
-      "token_amount": 124873.26,
-      "token_price": 0.7992,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-01-08",
-      "date": "2026-01-08",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 99355.4,
-      "token_amount": 131253.41,
-      "token_price": 0.757,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-01-10",
-      "date": "2026-01-10",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 98311.92,
-      "token_amount": 132636.24,
-      "token_price": 0.7412,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-01-12",
-      "date": "2026-01-12",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 97733.98,
-      "token_amount": 132392.16,
-      "token_price": 0.7382,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-01-13",
-      "date": "2026-01-13",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 97789.4,
-      "token_amount": 135409.1,
-      "token_price": 0.7222,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-01-15",
-      "date": "2026-01-15",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 105085.21,
-      "token_amount": 134845.09,
-      "token_price": 0.7793,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-01-16",
-      "date": "2026-01-16",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 100182.93,
-      "token_amount": 134956.86,
-      "token_price": 0.7423,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-01-18",
-      "date": "2026-01-18",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 99456.92,
-      "token_amount": 134144.21,
-      "token_price": 0.7414,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-01-20",
-      "date": "2026-01-20",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 105411.95,
-      "token_amount": 162521.61,
-      "token_price": 0.6486,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-01-24",
-      "date": "2026-01-24",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 99308.94,
-      "token_amount": 163762.39,
-      "token_price": 0.6064,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-01-25",
-      "date": "2026-01-25",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 53076.06,
-      "token_amount": 87590.06,
-      "token_price": 0.606,
-      "txs": 5,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-01-29",
-      "date": "2026-01-29",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 107309.0,
-      "token_amount": 173125.73,
-      "token_price": 0.6198,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-01-31",
-      "date": "2026-01-31",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 49483.35,
-      "token_amount": 90387.32,
-      "token_price": 0.5475,
-      "txs": 5,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-02-02",
-      "date": "2026-02-02",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 67384.63,
-      "token_amount": 138868.83,
-      "token_price": 0.4852,
-      "txs": 7,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-02-04",
-      "date": "2026-02-04",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 96425.16,
-      "token_amount": 194022.74,
-      "token_price": 0.497,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-02-05",
-      "date": "2026-02-05",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 100746.46,
-      "token_amount": 200216.89,
-      "token_price": 0.5032,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-02-06",
-      "date": "2026-02-06",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 146468.21,
-      "token_amount": 340118.59,
-      "token_price": 0.4306,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-02-08",
-      "date": "2026-02-08",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 197626.65,
-      "token_amount": 421426.38,
-      "token_price": 0.4689,
-      "txs": 20,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-02-09",
-      "date": "2026-02-09",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 69041.08,
-      "token_amount": 150704.36,
-      "token_price": 0.4581,
-      "txs": 7,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-02-11",
-      "date": "2026-02-11",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 98592.92,
-      "token_amount": 227550.43,
-      "token_price": 0.4333,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-02-13",
-      "date": "2026-02-13",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 100937.19,
-      "token_amount": 218529.68,
-      "token_price": 0.4619,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-02-20",
-      "date": "2026-02-20",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 96878.61,
-      "token_amount": 211434.45,
-      "token_price": 0.4582,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-02-22",
-      "date": "2026-02-22",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 170528.1,
-      "token_amount": 372324.71,
-      "token_price": 0.458,
-      "txs": 17,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-02-23",
-      "date": "2026-02-23",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 48636.37,
-      "token_amount": 109442.46,
-      "token_price": 0.4444,
-      "txs": 5,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-02-25",
-      "date": "2026-02-25",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 94272.99,
-      "token_amount": 189138.08,
-      "token_price": 0.4984,
-      "txs": 10,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-02-26",
-      "date": "2026-02-26",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 29990.81,
-      "token_amount": 58149.4,
-      "token_price": 0.5158,
-      "txs": 3,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-02-27",
-      "date": "2026-02-27",
-      "type": "buyback",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 10220.55,
-      "token_amount": 20135.49,
-      "token_price": 0.5076,
-      "txs": 1,
-      "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
-    },
-    {
-      "id": "etherfi-buyback-2026-03-01",
+      "id": "etherfi-buyback-accumulate-2026-03",
       "date": "2026-03-01",
-      "type": "buyback",
+      "type": "aggregate",
       "mechanism": "ETHFI Buyback",
-      "amount_usd": 95861.8,
-      "token_amount": 188390.93,
-      "token_price": 0.5088,
-      "txs": 10,
+      "amount_usd": 429982,
+      "period": "2026-03",
+      "days_with_data": 9,
       "source": {
-        "type": "onchain",
-        "provider": "Etherscan",
-        "data_type": "daily",
-        "note": "ETHFI 流入回购地址"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 9 days of data"
+    },
+    {
+      "id": "etherfi-buyback-accumulate-2026-04",
+      "date": "2026-04-01",
+      "type": "aggregate",
+      "mechanism": "ETHFI Buyback",
+      "amount_usd": 29998,
+      "period": "2026-04",
+      "days_with_data": 1,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
+      },
+      "notes": "Monthly aggregate from 1 days of data"
     }
-  ]
+  ],
+  "summary": {
+    "total_tev_usd": 16709085,
+    "total_30d_usd": 99949,
+    "by_mechanism": {
+      "buyback_accumulate": 16709085
+    },
+    "by_period": {
+      "2024-Q3": 324000,
+      "2024-Q4": 473000,
+      "2025-Q1": 390000,
+      "2025-Q2": 1709076,
+      "2025-Q3": 4252761,
+      "2025-Q4": 6351092,
+      "2026-Q1": 3179158,
+      "2026-Q2": 29998
+    }
+  }
 }

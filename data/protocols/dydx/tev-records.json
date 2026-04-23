@@ -1,13 +1,13 @@
 {
   "protocol": "dydx",
-  "updated_at": "2026-02-13T20:05:37.648Z",
+  "updated_at": "2026-04-23T14:10:38.056Z",
   "data_source": "DefiLlama API (dailyHoldersRevenue)",
   "data_source_url": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
   "records": [
     {
       "id": "dydx-staking-reward-2023-11",
       "date": "2023-11-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 28813,
       "period": "2023-11",
@@ -24,7 +24,7 @@
     {
       "id": "dydx-staking-reward-2023-12",
       "date": "2023-12-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 1365294,
       "period": "2023-12",
@@ -41,7 +41,7 @@
     {
       "id": "dydx-staking-reward-2024-01",
       "date": "2024-01-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 2801623,
       "period": "2024-01",
@@ -58,7 +58,7 @@
     {
       "id": "dydx-staking-reward-2024-02",
       "date": "2024-02-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 4570756,
       "period": "2024-02",
@@ -75,7 +75,7 @@
     {
       "id": "dydx-staking-reward-2024-03",
       "date": "2024-03-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 6753878,
       "period": "2024-03",
@@ -92,7 +92,7 @@
     {
       "id": "dydx-staking-reward-2024-04",
       "date": "2024-04-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 5070850,
       "period": "2024-04",
@@ -109,7 +109,7 @@
     {
       "id": "dydx-staking-reward-2024-05",
       "date": "2024-05-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 5039525,
       "period": "2024-05",
@@ -126,7 +126,7 @@
     {
       "id": "dydx-staking-reward-2024-06",
       "date": "2024-06-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 3102340,
       "period": "2024-06",
@@ -143,7 +143,7 @@
     {
       "id": "dydx-staking-reward-2024-07",
       "date": "2024-07-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 3774997,
       "period": "2024-07",
@@ -160,7 +160,7 @@
     {
       "id": "dydx-staking-reward-2024-08",
       "date": "2024-08-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 3913292,
       "period": "2024-08",
@@ -177,7 +177,7 @@
     {
       "id": "dydx-staking-reward-2024-09",
       "date": "2024-09-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 1013654,
       "period": "2024-09",
@@ -194,7 +194,7 @@
     {
       "id": "dydx-staking-reward-2024-10",
       "date": "2024-10-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 1544824,
       "period": "2024-10",
@@ -211,7 +211,7 @@
     {
       "id": "dydx-staking-reward-2024-11",
       "date": "2024-11-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 3146365,
       "period": "2024-11",
@@ -228,7 +228,7 @@
     {
       "id": "dydx-staking-reward-2024-12",
       "date": "2024-12-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 3472779,
       "period": "2024-12",
@@ -245,7 +245,7 @@
     {
       "id": "dydx-staking-reward-2025-01",
       "date": "2025-01-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 2177209,
       "period": "2025-01",
@@ -262,7 +262,7 @@
     {
       "id": "dydx-staking-reward-2025-02",
       "date": "2025-02-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 1288153,
       "period": "2025-02",
@@ -279,7 +279,7 @@
     {
       "id": "dydx-staking-reward-2025-03",
       "date": "2025-03-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 1293912,
       "period": "2025-03",
@@ -296,7 +296,7 @@
     {
       "id": "dydx-staking-reward-2025-04",
       "date": "2025-04-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 983351,
       "period": "2025-04",
@@ -313,7 +313,7 @@
     {
       "id": "dydx-staking-reward-2025-05",
       "date": "2025-05-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 1212412,
       "period": "2025-05",
@@ -330,7 +330,7 @@
     {
       "id": "dydx-staking-reward-2025-06",
       "date": "2025-06-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 1054502,
       "period": "2025-06",
@@ -347,7 +347,7 @@
     {
       "id": "dydx-staking-reward-2025-07",
       "date": "2025-07-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 1777898,
       "period": "2025-07",
@@ -364,7 +364,7 @@
     {
       "id": "dydx-staking-reward-2025-08",
       "date": "2025-08-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 1822831,
       "period": "2025-08",
@@ -381,7 +381,7 @@
     {
       "id": "dydx-staking-reward-2025-09",
       "date": "2025-09-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 1269768,
       "period": "2025-09",
@@ -398,7 +398,7 @@
     {
       "id": "dydx-staking-reward-2025-10",
       "date": "2025-10-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 1742294,
       "period": "2025-10",
@@ -415,7 +415,7 @@
     {
       "id": "dydx-staking-reward-2025-11",
       "date": "2025-11-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 1136429,
       "period": "2025-11",
@@ -432,7 +432,7 @@
     {
       "id": "dydx-staking-reward-2025-12",
       "date": "2025-12-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 427896,
       "period": "2025-12",
@@ -449,7 +449,7 @@
     {
       "id": "dydx-staking-reward-2026-01",
       "date": "2026-01-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
       "amount_usd": 309724,
       "period": "2026-01",
@@ -466,11 +466,11 @@
     {
       "id": "dydx-staking-reward-2026-02",
       "date": "2026-02-01",
-      "type": "fee_sharing",
+      "type": "aggregate",
       "mechanism": "DYDX Staker Fee Distribution",
-      "amount_usd": 226700,
+      "amount_usd": 356213,
       "period": "2026-02",
-      "days_with_data": 12,
+      "days_with_data": 28,
       "source": {
         "type": "api",
         "provider": "DefiLlama",
@@ -478,14 +478,48 @@
         "data_type": "dailyHoldersRevenue",
         "methodology": "Fees going to governance token holders"
       },
-      "notes": "Monthly aggregate from 12 days of data"
+      "notes": "Monthly aggregate from 28 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2026-03",
+      "date": "2026-03-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 327152,
+      "period": "2026-03",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "dydx-staking-reward-2026-04",
+      "date": "2026-04-01",
+      "type": "aggregate",
+      "mechanism": "DYDX Staker Fee Distribution",
+      "amount_usd": 188071,
+      "period": "2026-04",
+      "days_with_data": 22,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/dydx?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "Fees going to governance token holders"
+      },
+      "notes": "Monthly aggregate from 22 days of data"
     }
   ],
   "summary": {
-    "total_tev_usd": 62322069,
-    "total_30d_usd": 406977,
+    "total_tev_usd": 62966805,
+    "total_30d_usd": 272375,
     "by_mechanism": {
-      "staking_reward": 62322069
+      "staking_reward": 62966805
     },
     "by_period": {
       "2023-Q4": 1394107,
@@ -497,7 +531,8 @@
       "2025-Q2": 3250265,
       "2025-Q3": 4870497,
       "2025-Q4": 3306619,
-      "2026-Q1": 536424
+      "2026-Q1": 993089,
+      "2026-Q2": 188071
     }
   }
 }

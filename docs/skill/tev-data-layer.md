@@ -407,5 +407,17 @@ const isDaily = records.every(r => {
 | 2026-04-22 | Aave | 双源 TEV（$30M 固定 Buyback + DefiLlama dailyHoldersRevenue Safety Module）；各周期独立；明确 buyback 是 treasury 非 burn（类似 Hyperliquid AF）；tevRatio 按周期；文档 | `5e013f9f` | ✅ 已上 main |
 | 2026-04-22 | 详情页 | 大重构（方案 B）：section 顺序重排 + 深度分析 tab 合并 + 周期切换 + Caveats + 附加折叠 | — | 🚧 dev |
 | 2026-04-23 | 图表修复 | BNB/HYPE 等原本有 period 字段的季度/月度数据被误判为 Daily → 38 条季度数据塞入 8.5 年 time axis 柱子看不见；修 isDaily 判断（period≠date 时走 Monthly） | — | 🚧 dev |
+| 2026-04-23 | tev-records 停更全修 | 5 个已优化协议的 tev-records.json 之前全部停更（最久 98 天）；扩展 update-bnb-tev.py / update-hype-tev.py / update-uni-tev.py 每日刷新 records；fetch-tev-history.js 加入 update.sh 每日跑（覆盖 sky/aave 等 10 协议）| — | 🚧 dev |
+
+### tev-records.json 维护脚本归属（防止以后又停更）
+
+| 协议 | 维护脚本 | 数据源 | 频率 |
+|---|---|---|---|
+| BNB | `~/crypto3d-updater/scripts/update-bnb-tev.py` | config.json.burn_history + asBNB APY | 日 |
+| HYPE | `~/crypto3d-updater/scripts/update-hype-tev.py` | DefiLlama dailyRevenue 日频 | 日 |
+| Uniswap | `~/crypto3d-updater/scripts/update-uni-tev.py` | burn-history.json (Etherscan) | 日 |
+| Sky / Aave / Pendle / Curve / GMX / dYdX / Maple / PancakeSwap / Radiant / etherfi / Ethena | `scripts/fetch-tev-history.js` | DefiLlama holdersRevenue 月聚合 | 日（update.sh Step 4.5） |
+
+**新协议接入时**：选其一，并加到 update.sh 的相应 step；不加则 tev-records 永远不会更新，详情页图表会慢慢变旧。
 
 每次协议上线后应在本表追加一行，形成可追溯的 changelog。
