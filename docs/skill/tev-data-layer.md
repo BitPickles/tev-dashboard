@@ -420,4 +420,52 @@ const isDaily = records.every(r => {
 
 **新协议接入时**：选其一，并加到 update.sh 的相应 step；不加则 tev-records 永远不会更新，详情页图表会慢慢变旧。
 
+### 每日自动更新的保证机制
+
+完整链路（LaunchAgent → update.sh → 验证 → git push）：
+
+```
+┌─ 调度：LaunchAgent com.crypto3d.data-updater
+│   StartCalendarInterval: 9:03 / 21:03 UTC+8 每日两次
+│   日志：~/crypto3d-updater/logs/launchd-stdout.log / launchd-stderr.log
+│
+├─ 执行：~/crypto3d-updater/update.sh
+│   Step 1  sync-sources.py                       （FRED 等宏观）
+│   Step 2  AHR999 / MVRV / BMRI                  （BTC 指标）
+│   Step 3  fetch-tev-market / fetch-bnb-data
+│           update-bnb-tev.py     ← BNB tev-records
+│           update-hype-tev.py    ← HYPE tev-records
+│           update-uni-tev.py     ← Uniswap tev-records
+│           sync-btcd.py
+│   Step 4  sync-tev-data.js                      （全协议 yield 聚合）
+│   Step 4.5 fetch-tev-history.js                 ← 其他 10 协议 tev-records
+│   Step 5  validate.py                           （主数据自检）
+│   Step 5b validate-tev-records.py               ← TEV-records 新鲜度 (>26h 告警)
+│   Step 6  git commit + push dev & main
+│
+└─ 监控：
+    • 每日 stderr 是否有新内容（有内容 = 某 step 失败）
+    • launchctl list com.crypto3d.data-updater 看 LastExitStatus
+    • 手动跑 validate-tev-records.py 直接查 13 个协议新鲜度
+```
+
+### 快速健康检查命令（Boss 随时用）
+
+```bash
+# 1. 最近一次运行是否成功？
+launchctl list com.crypto3d.data-updater | grep LastExitStatus
+# 0 = 成功；非 0 = 某步失败，看 launchd-stderr.log
+
+# 2. 今天数据是否更新了？
+python3 ~/crypto3d-updater/scripts/validate-tev-records.py
+# 全部 < 26h = 健康
+
+# 3. 看最近一次 step 失败原因
+tail -60 ~/crypto3d-updater/logs/launchd-stderr.log
+```
+
+### 已发现并修复的坑
+
+- **2026-04-23 21:10 LaunchAgent 跑挂**：LaunchAgent 默认 PATH 不含 `/opt/homebrew/bin` → `node: command not found` → sync-tev-data.js / fetch-tev-history.js 全部跑不起来。已在 update.sh 开头加 `export PATH="/opt/homebrew/bin:/usr/local/bin:...:$PATH"` 修复。
+
 每次协议上线后应在本表追加一行，形成可追溯的 changelog。
