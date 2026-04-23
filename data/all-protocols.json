@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T14:32:35.158Z",
+  "generated_at": "2026-04-23T16:09:20.396Z",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -65,12 +65,42 @@
         "en": "On-chain buyback wallets trackable (Moralis + BscScan)"
       },
       "tevStatus": "active",
-      "tev_yield_percent": 9.55,
-      "market_cap_usd": 1501563922,
+      "tev_yield_percent": 1.47,
+      "market_cap_usd": 1660824921.1264842,
       "tvl": 820487118.1176946,
       "tevRatio": 0.7,
-      "earning_yield_percent": 13.64,
-      "tevRatioNote": "手续费回购 (60-80%)"
+      "earning_yield_percent": 1.47,
+      "tevRatioNote": "手续费回购 (60-80%)",
+      "metrics": {
+        "tev_yield_7d_ann": 0,
+        "tev_yield_30d_ann": 0.22,
+        "tev_yield_90d_ann": 3.44,
+        "earning_yield_7d_ann": 0,
+        "earning_yield_30d_ann": 0.22,
+        "earning_yield_90d_ann": 3.44,
+        "trailing_7d_revenue_usd": 0,
+        "trailing_30d_revenue_usd": 296902,
+        "trailing_90d_revenue_usd": 14083797,
+        "trailing_365d_revenue_usd": 24440570
+      },
+      "validation": {
+        "method": "A 口径：Stage5/6 buyback wallet 累积 ASTER × 当前价（treasury buyback，非真 burn）",
+        "buy_7d_aster": 0,
+        "buy_30d_aster": 439768,
+        "buy_90d_aster": 20860803,
+        "buy_365d_aster": 36201168,
+        "aster_price_usd": 0.6751,
+        "data_days": 95,
+        "data_range": {
+          "start": "2025-12-23",
+          "end": "2026-03-27"
+        },
+        "caveats": [
+          "Stage5/6 是 treasury buyback（wallet 持仓），部分 burn 部分给 community rewards，不全是真销毁",
+          "2026-03-30 tokenomics 改革后新增 staking rewards（暂不计入 TEV）",
+          "Moralis 免费 tier 可能滞后几天"
+        ]
+      }
     },
     "bgb": {
       "name": "Bitget Token",
@@ -102,7 +132,7 @@
       },
       "tevStatus": "active",
       "tev_yield_percent": 11.27,
-      "market_cap_usd": 85649647682.97423,
+      "market_cap_usd": 85804967825.75316,
       "tvl": 5387604237.313377,
       "tevRatio": null,
       "earning_yield_percent": 6.89,
@@ -856,7 +886,7 @@
       },
       "tevStatus": "active",
       "tev_yield_percent": 0.54,
-      "market_cap_usd": 2065675790.8464553,
+      "market_cap_usd": 2072972956.8337038,
       "tvl": 3091182140.0588913,
       "tevRatio": 1,
       "earning_yield_percent": 0.54,

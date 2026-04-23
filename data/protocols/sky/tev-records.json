@@ -1,31 +1,65 @@
 {
   "protocol": "sky",
-  "updated_at": "2026-03-02T16:45:19.195129Z",
+  "updated_at": "2026-04-23T14:10:26.245Z",
   "data_source": "DefiLlama API (dailyHoldersRevenue)",
   "data_source_url": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue",
   "records": [
     {
-      "id": "sky-holders-2025-03",
-      "date": "2025-03-01",
-      "type": "holders_revenue",
-      "mechanism": "Smart Burn Engine + Staking Rewards",
-      "amount_usd": 17130286,
-      "period": "2025-03",
-      "days_with_data": 30,
+      "id": "sky-buyback-burn-2024-11",
+      "date": "2024-11-01",
+      "type": "aggregate",
+      "mechanism": "Smart Burn Engine",
+      "amount_usd": 366417,
+      "period": "2024-11",
+      "days_with_data": 5,
       "source": {
         "type": "api",
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue",
         "data_type": "dailyHoldersRevenue",
-        "methodology": "SKY token buybacks + staking rewards (自动适配 burn 比例变化)"
+        "methodology": "SKY token buybacks + staking rewards for sky stakers"
       },
-      "notes": "Monthly aggregate from 30 days"
+      "notes": "Monthly aggregate from 5 days of data"
     },
     {
-      "id": "sky-holders-2025-04",
+      "id": "sky-buyback-burn-2025-02",
+      "date": "2025-02-01",
+      "type": "aggregate",
+      "mechanism": "Smart Burn Engine",
+      "amount_usd": 4386760,
+      "period": "2025-02",
+      "days_with_data": 5,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "SKY token buybacks + staking rewards for sky stakers"
+      },
+      "notes": "Monthly aggregate from 5 days of data"
+    },
+    {
+      "id": "sky-buyback-burn-2025-03",
+      "date": "2025-03-01",
+      "type": "aggregate",
+      "mechanism": "Smart Burn Engine",
+      "amount_usd": 18122987,
+      "period": "2025-03",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "SKY token buybacks + staking rewards for sky stakers"
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "sky-buyback-burn-2025-04",
       "date": "2025-04-01",
-      "type": "holders_revenue",
-      "mechanism": "Smart Burn Engine + Staking Rewards",
+      "type": "aggregate",
+      "mechanism": "Smart Burn Engine",
       "amount_usd": 17437733,
       "period": "2025-04",
       "days_with_data": 30,
@@ -34,15 +68,15 @@
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue",
         "data_type": "dailyHoldersRevenue",
-        "methodology": "SKY token buybacks + staking rewards (自动适配 burn 比例变化)"
+        "methodology": "SKY token buybacks + staking rewards for sky stakers"
       },
-      "notes": "Monthly aggregate from 30 days"
+      "notes": "Monthly aggregate from 30 days of data"
     },
     {
-      "id": "sky-holders-2025-05",
+      "id": "sky-buyback-burn-2025-05",
       "date": "2025-05-01",
-      "type": "holders_revenue",
-      "mechanism": "Smart Burn Engine + Staking Rewards",
+      "type": "aggregate",
+      "mechanism": "Smart Burn Engine",
       "amount_usd": 15082088,
       "period": "2025-05",
       "days_with_data": 31,
@@ -51,15 +85,15 @@
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue",
         "data_type": "dailyHoldersRevenue",
-        "methodology": "SKY token buybacks + staking rewards (自动适配 burn 比例变化)"
+        "methodology": "SKY token buybacks + staking rewards for sky stakers"
       },
-      "notes": "Monthly aggregate from 31 days"
+      "notes": "Monthly aggregate from 31 days of data"
     },
     {
-      "id": "sky-holders-2025-06",
+      "id": "sky-buyback-burn-2025-06",
       "date": "2025-06-01",
-      "type": "holders_revenue",
-      "mechanism": "Smart Burn Engine + Staking Rewards",
+      "type": "aggregate",
+      "mechanism": "Smart Burn Engine",
       "amount_usd": 14458833,
       "period": "2025-06",
       "days_with_data": 30,
@@ -68,15 +102,15 @@
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue",
         "data_type": "dailyHoldersRevenue",
-        "methodology": "SKY token buybacks + staking rewards (自动适配 burn 比例变化)"
+        "methodology": "SKY token buybacks + staking rewards for sky stakers"
       },
-      "notes": "Monthly aggregate from 30 days"
+      "notes": "Monthly aggregate from 30 days of data"
     },
     {
-      "id": "sky-holders-2025-07",
+      "id": "sky-buyback-burn-2025-07",
       "date": "2025-07-01",
-      "type": "holders_revenue",
-      "mechanism": "Smart Burn Engine + Staking Rewards",
+      "type": "aggregate",
+      "mechanism": "Smart Burn Engine",
       "amount_usd": 12298858,
       "period": "2025-07",
       "days_with_data": 31,
@@ -85,15 +119,15 @@
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue",
         "data_type": "dailyHoldersRevenue",
-        "methodology": "SKY token buybacks + staking rewards (自动适配 burn 比例变化)"
+        "methodology": "SKY token buybacks + staking rewards for sky stakers"
       },
-      "notes": "Monthly aggregate from 31 days"
+      "notes": "Monthly aggregate from 31 days of data"
     },
     {
-      "id": "sky-holders-2025-08",
+      "id": "sky-buyback-burn-2025-08",
       "date": "2025-08-01",
-      "type": "holders_revenue",
-      "mechanism": "Smart Burn Engine + Staking Rewards",
+      "type": "aggregate",
+      "mechanism": "Smart Burn Engine",
       "amount_usd": 12271588,
       "period": "2025-08",
       "days_with_data": 31,
@@ -102,15 +136,15 @@
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue",
         "data_type": "dailyHoldersRevenue",
-        "methodology": "SKY token buybacks + staking rewards (自动适配 burn 比例变化)"
+        "methodology": "SKY token buybacks + staking rewards for sky stakers"
       },
-      "notes": "Monthly aggregate from 31 days"
+      "notes": "Monthly aggregate from 31 days of data"
     },
     {
-      "id": "sky-holders-2025-09",
+      "id": "sky-buyback-burn-2025-09",
       "date": "2025-09-01",
-      "type": "holders_revenue",
-      "mechanism": "Smart Burn Engine + Staking Rewards",
+      "type": "aggregate",
+      "mechanism": "Smart Burn Engine",
       "amount_usd": 11826544,
       "period": "2025-09",
       "days_with_data": 30,
@@ -119,15 +153,15 @@
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue",
         "data_type": "dailyHoldersRevenue",
-        "methodology": "SKY token buybacks + staking rewards (自动适配 burn 比例变化)"
+        "methodology": "SKY token buybacks + staking rewards for sky stakers"
       },
-      "notes": "Monthly aggregate from 30 days"
+      "notes": "Monthly aggregate from 30 days of data"
     },
     {
-      "id": "sky-holders-2025-10",
+      "id": "sky-buyback-burn-2025-10",
       "date": "2025-10-01",
-      "type": "holders_revenue",
-      "mechanism": "Smart Burn Engine + Staking Rewards",
+      "type": "aggregate",
+      "mechanism": "Smart Burn Engine",
       "amount_usd": 12105384,
       "period": "2025-10",
       "days_with_data": 31,
@@ -136,15 +170,15 @@
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue",
         "data_type": "dailyHoldersRevenue",
-        "methodology": "SKY token buybacks + staking rewards (自动适配 burn 比例变化)"
+        "methodology": "SKY token buybacks + staking rewards for sky stakers"
       },
-      "notes": "Monthly aggregate from 31 days"
+      "notes": "Monthly aggregate from 31 days of data"
     },
     {
-      "id": "sky-holders-2025-11",
+      "id": "sky-buyback-burn-2025-11",
       "date": "2025-11-01",
-      "type": "holders_revenue",
-      "mechanism": "Smart Burn Engine + Staking Rewards",
+      "type": "aggregate",
+      "mechanism": "Smart Burn Engine",
       "amount_usd": 8502417,
       "period": "2025-11",
       "days_with_data": 30,
@@ -153,15 +187,15 @@
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue",
         "data_type": "dailyHoldersRevenue",
-        "methodology": "SKY token buybacks + staking rewards (自动适配 burn 比例变化)"
+        "methodology": "SKY token buybacks + staking rewards for sky stakers"
       },
-      "notes": "Monthly aggregate from 30 days"
+      "notes": "Monthly aggregate from 30 days of data"
     },
     {
-      "id": "sky-holders-2025-12",
+      "id": "sky-buyback-burn-2025-12",
       "date": "2025-12-01",
-      "type": "holders_revenue",
-      "mechanism": "Smart Burn Engine + Staking Rewards",
+      "type": "aggregate",
+      "mechanism": "Smart Burn Engine",
       "amount_usd": 8486131,
       "period": "2025-12",
       "days_with_data": 31,
@@ -170,15 +204,15 @@
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue",
         "data_type": "dailyHoldersRevenue",
-        "methodology": "SKY token buybacks + staking rewards (自动适配 burn 比例变化)"
+        "methodology": "SKY token buybacks + staking rewards for sky stakers"
       },
-      "notes": "Monthly aggregate from 31 days"
+      "notes": "Monthly aggregate from 31 days of data"
     },
     {
-      "id": "sky-holders-2026-01",
+      "id": "sky-buyback-burn-2026-01",
       "date": "2026-01-01",
-      "type": "holders_revenue",
-      "mechanism": "Smart Burn Engine + Staking Rewards",
+      "type": "aggregate",
+      "mechanism": "Smart Burn Engine",
       "amount_usd": 8496415,
       "period": "2026-01",
       "days_with_data": 31,
@@ -187,15 +221,15 @@
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue",
         "data_type": "dailyHoldersRevenue",
-        "methodology": "SKY token buybacks + staking rewards (自动适配 burn 比例变化)"
+        "methodology": "SKY token buybacks + staking rewards for sky stakers"
       },
-      "notes": "Monthly aggregate from 31 days"
+      "notes": "Monthly aggregate from 31 days of data"
     },
     {
-      "id": "sky-holders-2026-02",
+      "id": "sky-buyback-burn-2026-02",
       "date": "2026-02-01",
-      "type": "holders_revenue",
-      "mechanism": "Smart Burn Engine + Staking Rewards",
+      "type": "aggregate",
+      "mechanism": "Smart Burn Engine",
       "amount_usd": 7719025,
       "period": "2026-02",
       "days_with_data": 28,
@@ -204,48 +238,59 @@
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue",
         "data_type": "dailyHoldersRevenue",
-        "methodology": "SKY token buybacks + staking rewards (自动适配 burn 比例变化)"
+        "methodology": "SKY token buybacks + staking rewards for sky stakers"
       },
-      "notes": "Monthly aggregate from 28 days"
+      "notes": "Monthly aggregate from 28 days of data"
     },
     {
-      "id": "sky-holders-2026-03",
+      "id": "sky-buyback-burn-2026-03",
       "date": "2026-03-01",
-      "type": "holders_revenue",
-      "mechanism": "Smart Burn Engine + Staking Rewards",
-      "amount_usd": 275554,
+      "type": "aggregate",
+      "mechanism": "Smart Burn Engine",
+      "amount_usd": 4391519,
       "period": "2026-03",
-      "days_with_data": 1,
+      "days_with_data": 31,
       "source": {
         "type": "api",
         "provider": "DefiLlama",
         "endpoint": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue",
         "data_type": "dailyHoldersRevenue",
-        "methodology": "SKY token buybacks + staking rewards (自动适配 burn 比例变化)"
+        "methodology": "SKY token buybacks + staking rewards for sky stakers"
       },
-      "notes": "Monthly aggregate from 1 days"
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "sky-buyback-burn-2026-04",
+      "date": "2026-04-01",
+      "type": "aggregate",
+      "mechanism": "Smart Burn Engine",
+      "amount_usd": 827568,
+      "period": "2026-04",
+      "days_with_data": 22,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/sky?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "SKY token buybacks + staking rewards for sky stakers"
+      },
+      "notes": "Monthly aggregate from 22 days of data"
     }
   ],
   "summary": {
-    "total_tev_usd": 146090856,
-    "total_30d_usd": 8259480,
+    "total_tev_usd": 156780267,
+    "total_30d_usd": 1124808,
     "by_mechanism": {
-      "holders_revenue": 146090856
+      "buyback_burn": 156780267
     },
     "by_period": {
-      "2025-Q4": 15082088,
-      "2026-Q2": 275554,
-      "2025-Q5": 14458833,
-      "2025-Q6": 12298858,
-      "2025-Q2": 17130286,
-      "2025-Q7": 12271588,
-      "2025-Q9": 12105384,
-      "2025-Q11": 8486131,
-      "2025-Q3": 17437733,
-      "2025-Q10": 8502417,
-      "2025-Q8": 11826544,
-      "2026-Q1": 7719025,
-      "2026-Q0": 8496415
+      "2024-Q4": 366417,
+      "2025-Q1": 22509747,
+      "2025-Q2": 46978654,
+      "2025-Q3": 36396990,
+      "2025-Q4": 29093932,
+      "2026-Q1": 20606959,
+      "2026-Q2": 827568
     }
   }
 }

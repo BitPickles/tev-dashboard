@@ -1,82 +1,122 @@
 {
   "protocol": "maple",
-  "updated_at": "2026-03-03T02:22:23.355183",
-  "data_source": "Maple Governance MIP Proposals",
-  "data_source_url": "https://maple.finance/governance/proposals",
-  "notes": "数据基于 MIP 提案披露。Q3、Q4 美元花费需要链上核实补充。",
-  "summary": {
-    "total_buyback_usd": 1565000,
-    "total_buyback_syrup": 2000000,
-    "records_count": 4,
-    "periods": [
-      "2025-Q1",
-      "2025-H1",
-      "2025-Q3",
-      "2025-Q4"
-    ]
-  },
+  "updated_at": "2026-04-23T14:10:40.808Z",
+  "data_source": "DefiLlama API (dailyHoldersRevenue)",
+  "data_source_url": "https://api.llama.fi/summary/fees/maple?dataType=dailyHoldersRevenue",
   "records": [
     {
-      "id": "maple-buyback-2025q1",
-      "date": "2025-03-31",
-      "type": "buyback",
-      "mechanism": "MIP-013 Fee Buyback",
-      "amount_usd": 235000,
-      "period": "2025-Q1",
-      "days_with_data": 90,
+      "id": "maple-staking-reward-2025-11",
+      "date": "2025-11-01",
+      "type": "aggregate",
+      "mechanism": "SYRUP Staking Fee Share",
+      "amount_usd": 299865,
+      "period": "2025-11",
+      "days_with_data": 30,
       "source": {
-        "type": "governance",
-        "provider": "Maple Governance",
-        "mip": "MIP-016",
-        "note": "MIP-016 披露 Q1 回购使用约 235k USDC"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/maple?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "25% of protocol revenue used to buy back SYRUP tokens from MIP-019 (starting Nov 2025)."
+      },
+      "notes": "Monthly aggregate from 30 days of data"
     },
     {
-      "id": "maple-buyback-2025h1",
-      "date": "2025-06-30",
-      "type": "buyback",
-      "mechanism": "MIP-016 Continuation",
-      "amount_usd": 830000,
-      "period": "2025-H1",
-      "days_with_data": 181,
+      "id": "maple-staking-reward-2025-12",
+      "date": "2025-12-01",
+      "type": "aggregate",
+      "mechanism": "SYRUP Staking Fee Share",
+      "amount_usd": 315543,
+      "period": "2025-12",
+      "days_with_data": 31,
       "source": {
-        "type": "governance",
-        "provider": "Maple Governance",
-        "mip": "MIP-018",
-        "note": "MIP-018 披露 H1 累计回购约 830k USDC、3.5M SYRUP"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/maple?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "25% of protocol revenue used to buy back SYRUP tokens from MIP-019 (starting Nov 2025)."
+      },
+      "notes": "Monthly aggregate from 31 days of data"
     },
     {
-      "id": "maple-buyback-2025q3",
-      "date": "2025-09-30",
-      "type": "buyback",
-      "mechanism": "MIP-018 Increased Ratio",
-      "amount_usd": 500000,
-      "period": "2025-Q3",
-      "ratio": 0.25,
-      "days_with_data": 92,
+      "id": "maple-staking-reward-2026-01",
+      "date": "2026-01-01",
+      "type": "aggregate",
+      "mechanism": "SYRUP Staking Fee Share",
+      "amount_usd": 287554,
+      "period": "2026-01",
+      "days_with_data": 31,
       "source": {
-        "type": "governance",
-        "provider": "Maple Governance",
-        "mip": "MIP-018",
-        "note": "比例从 20% 提升到 25%，美元花费需链上核实"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/maple?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "25% of protocol revenue used to buy back SYRUP tokens from MIP-019 (starting Nov 2025)."
+      },
+      "notes": "Monthly aggregate from 31 days of data"
     },
     {
-      "id": "maple-ssf-2025q4",
-      "date": "2025-12-31",
-      "type": "buyback",
-      "mechanism": "Syrup Strategic Fund (SSF)",
-      "period": "2025-Q4",
-      "ratio": 0.25,
-      "syrup_amount": 2000000,
-      "ssf_cash": 1200000,
+      "id": "maple-staking-reward-2026-02",
+      "date": "2026-02-01",
+      "type": "aggregate",
+      "mechanism": "SYRUP Staking Fee Share",
+      "amount_usd": 317323,
+      "period": "2026-02",
+      "days_with_data": 28,
       "source": {
-        "type": "governance",
-        "provider": "Maple Governance",
-        "mip": "MIP-020",
-        "note": "MIP-020 披露 Q4 SSF 回购约 2M SYRUP，配置约 $1.2M 现金到 SSF"
-      }
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/maple?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "25% of protocol revenue used to buy back SYRUP tokens from MIP-019 (starting Nov 2025)."
+      },
+      "notes": "Monthly aggregate from 28 days of data"
+    },
+    {
+      "id": "maple-staking-reward-2026-03",
+      "date": "2026-03-01",
+      "type": "aggregate",
+      "mechanism": "SYRUP Staking Fee Share",
+      "amount_usd": 334672,
+      "period": "2026-03",
+      "days_with_data": 31,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/maple?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "25% of protocol revenue used to buy back SYRUP tokens from MIP-019 (starting Nov 2025)."
+      },
+      "notes": "Monthly aggregate from 31 days of data"
+    },
+    {
+      "id": "maple-staking-reward-2026-04",
+      "date": "2026-04-01",
+      "type": "aggregate",
+      "mechanism": "SYRUP Staking Fee Share",
+      "amount_usd": 251546,
+      "period": "2026-04",
+      "days_with_data": 22,
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama",
+        "endpoint": "https://api.llama.fi/summary/fees/maple?dataType=dailyHoldersRevenue",
+        "data_type": "dailyHoldersRevenue",
+        "methodology": "25% of protocol revenue used to buy back SYRUP tokens from MIP-019 (starting Nov 2025)."
+      },
+      "notes": "Monthly aggregate from 22 days of data"
     }
-  ]
+  ],
+  "summary": {
+    "total_tev_usd": 1806503,
+    "total_30d_usd": 340892,
+    "by_mechanism": {
+      "staking_reward": 1806503
+    },
+    "by_period": {
+      "2025-Q4": 615408,
+      "2026-Q1": 939549,
+      "2026-Q2": 251546
+    }
+  }
 }

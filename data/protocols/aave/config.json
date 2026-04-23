@@ -75,13 +75,13 @@
     "tvl_updated": "2026-03-27T01:00:14.491Z"
   },
   "notes": "Aave 在 2024 年通过 Aavenomics 升级开启了代币回购机制。TEV 来源：Safety Module 质押奖励 + 年度回购。",
-  "last_updated": "2026-04-22",
+  "last_updated": "2026-04-24",
   "tev_data": {
     "has_tev": true,
     "tev_yield_percent": 3.91,
     "annual_tev_usd": 30000000,
     "market_cap_usd": 1799059173.84,
-    "calculation_date": "2026-04-22",
+    "calculation_date": "2026-04-23",
     "sources": [
       {
         "name": "Annual Buyback Program",
@@ -96,7 +96,7 @@
         "note": "Safety Module staking rewards"
       }
     ],
-    "calculation": "TEV = $30M 固定 Buyback + DefiLlama dailyHoldersRevenue (Safety Module) 按窗口年化；各周期独立",
+    "calculation": "详见 calc_pipeline 数组（6 steps 端到端推导）",
     "validation": {
       "method": "TEV = 固定 Buyback $30M/年（2026-03 治理）+ Safety Module (Umbrella) DefiLlama dailyHoldersRevenue 按窗口年化",
       "fixed_buyback_usd_annual": 30000000,
@@ -139,5 +139,64 @@
     "earning_yield_7d_ann": 8.65,
     "earning_yield_30d_ann": 5.18,
     "earning_yield_90d_ann": 5.63
-  }
+  },
+  "calc_pipeline": [
+    {
+      "step": 1,
+      "label": "数据源 A：固定年度 Buyback（$30M/年）",
+      "description": "AIP-73 Aavenomics Part 1 (2024-07) 设立年度 AAVE 回购预算。2026-03 治理从 $50M 下调至 $30M（99.37% 通过）。AFC multisig 用 DAO 财库 USDC/GHO 市场买 AAVE 存 Ecosystem Reserve。⚠️ Treasury-accumulated 非真 burn，治理可 redistribute（链上 AAVE @ 0xdead 365d = 0.0001 AAVE 确认不销毁）。",
+      "source_url": "https://aave.tokenlogic.xyz",
+      "value_field": "validation.fixed_buyback_usd_annual",
+      "addresses": {
+        "AAVE": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
+        "Ecosystem Reserve": "0x25F2226B597E8F9514B3F68F00f494cF4f286491",
+        "Collector": "0x464C71f6c2F760DdA6093dCB91C24c39e5d6e18c"
+      },
+      "unit": "USD"
+    },
+    {
+      "step": 2,
+      "label": "数据源 B：Safety Module (Umbrella) holders revenue",
+      "description": "DefiLlama dailyHoldersRevenue，来自 Aave 协议 reserve factor + liquidation fees，分配给 Umbrella stakers。脉冲式分发（每 1-2 周一次大包 $200k~$6M）。⚠️ 最近 50+ 天 SM = $0，可能 Umbrella 迁移期 DefiLlama 追踪滞后。",
+      "source_url": "https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue"
+    },
+    {
+      "step": 3,
+      "label": "按周期累加 SM（USD）",
+      "formula": "Σ dailyHoldersRevenue 过去 N 天",
+      "value_fields_by_period": {
+        "7d": "validation.sm_7d_usd",
+        "30d": "validation.sm_30d_usd",
+        "90d": "validation.sm_90d_usd",
+        "365d": "validation.sm_365d_usd"
+      },
+      "unit": "USD"
+    },
+    {
+      "step": 4,
+      "label": "双源合成 → 年化 TEV USD",
+      "description": "短周期：$30M 常数 + SM_sum × (365/N)；365d：$30M + SM_365d_sum（已是年度累计不再年化）",
+      "formula": "fixedBuyback + sm_sum × annFactor(N)"
+    },
+    {
+      "step": 5,
+      "label": "除以市值",
+      "formula": "TEV_USD ÷ market_cap × 100%",
+      "inputs": {
+        "market_cap": "market_cap_usd"
+      }
+    },
+    {
+      "step": 6,
+      "label": "最终 TEV Yield",
+      "derived": true,
+      "value_fields_by_period": {
+        "7d": "metrics.tev_yield_7d_ann",
+        "30d": "metrics.tev_yield_30d_ann",
+        "90d": "metrics.tev_yield_90d_ann",
+        "365d": "tev_yield_percent"
+      },
+      "unit": "%"
+    }
+  ]
 }

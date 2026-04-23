@@ -39,6 +39,8 @@ jobs:
             --exclude 'review/' \
             --exclude 'poster/' \
             --exclude 'web/' \
+            --exclude '**/node_modules/' \
+            --exclude 'skills/' \
             --exclude '**/*.bak' \
             --exclude 'debug-report.md' \
             --exclude 'tev/debug.html' \

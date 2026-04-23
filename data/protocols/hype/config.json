@@ -147,7 +147,7 @@
     }
   ],
   "analyst_notes": "## Hyperliquid TEV 机制（更新：2026-04-19）\n\n### 1. 核心结论（重要修正）\n\n过去版本说 'AF 买入即销毁'——**不准确**。真相是：\n- **AF 买入的 HYPE 留在 AF 地址（0xfefe...fefe），不是销毁**\n- AF 是 **treasury buyback**，理论上可被 validator consensus 动用于救灾/清算补偿/用户补偿\n- 历史上尚未发生 AF 大规模动用（JELLY 事件 2025-03 是 HLP 补的），但可能性存在\n- 真正的永久销毁只有 **spot 交易 HYPE 手续费销毁**（~745k HYPE，约占供应 0.075%）\n\n因此 TEV 的保守口径应该是 **AF 净累积 + spot burn**，而不是 '全部视为销毁'。\n\n### 2. 机制路径\n\n用户手续费 → 扣除 (referral + builder + deployer)\n  → 余下部分：\n    - **HLP share**（做市/清算收益，约 40-46% perp net fee）→ 归 HLP LP，不归 HYPE 持有人\n    - **AF share**（剩下大头）→ 用 USDC 市价买 HYPE 存 AF\n    - **Spot 手续费（HYPE 计价部分）** → 直接销毁\n\n### 3. DefiLlama 口径验证\n\n已验证：DefiLlama `dailyRevenue` 和 `dailyHoldersRevenue` 对 Hyperliquid 完全相等，都 = AF 买入金额（已剥离 HLP/builder/referral）。数值与链上 AF `entryNtl` 吻合（误差 <5%）。\n\n### 4. 当前数字（2026-04-19 快照）\n\n- 链上 AF 持仓：~43.4M HYPE, entry_ntl ~$1.065B（累计买入成本）\n- Spot burn 累计：~745k HYPE（真正永久销毁）\n- 365d AF 买入：~$942M（DefiLlama）≈ AF net accumulation\n- TEV Yield 365d ≈ $942M / $7.37B = **12.78%**\n\n### 5. Caveats（向用户展示）\n\n- **AF 可被动用风险**：若 validator consensus 决议动用，这部分 TEV 会瞬间归零\n- **HLP 不归 HYPE 持有人**：DefiLlama `dailyFees` 减去 `dailyRevenue` 就是 HLP 部分\n- **Funding 不计入 TEV**：多空点对点支付，平台不收取\n\n### 6. 自动化\n\n- 日度：`sync-tev-data.js` 拉 DefiLlama `dailyRevenue`，算 7/30/90/365d yield\n- 日度校验：`update-hype-tev.py` 拉链上 AF `entryNtl`，与 DefiLlama delta 对比，偏差 >15% 告警\n\n### 7. 历史口径变更\n\n- 2026-04-19: 修正 'AF 买入即销毁' 错误描述；365d 字段改为 sync-tev-data.js 每日刷新；加入链上校验\n- 2026-03-01: 初版 AF 口径\n",
-  "last_updated": "2026-04-19",
+  "last_updated": "2026-04-24",
   "buyback_data": {
     "enabled": true,
     "data_file": "hype-buybacks.json",
@@ -159,7 +159,7 @@
     "has_tev": true,
     "tev_yield_percent": 12.78,
     "market_cap_usd": 7368065201,
-    "calculation_date": "2026-04-22",
+    "calculation_date": "2026-04-23",
     "sources": [
       {
         "name": "DefiLlama holdersRevenue",
@@ -168,7 +168,7 @@
         "note": "Assistance Fund 回购销毁（已与链上 AF 余额交叉验证）"
       }
     ],
-    "calculation": "TEV Yield = 过去 365 天 DefiLlama dailyRevenue 累加 ÷ 当前市值；由 sync-tev-data.js 每日刷新；链上校验由 update-hype-tev.py 每日对比 AF entry_ntl delta",
+    "calculation": "详见 calc_pipeline 数组（5 steps 端到端推导）",
     "trailing_365d_tev_usd": 926166161,
     "last_updated": "2026-03-26"
   },
@@ -202,5 +202,55 @@
     "earning_yield_30d_ann": 9.14,
     "earning_yield_90d_ann": 10.51,
     "trailing_365d_revenue_usd": 941960011
-  }
+  },
+  "calc_pipeline": [
+    {
+      "step": 1,
+      "label": "原始数据源",
+      "description": "DefiLlama dailyRevenue (对 Hyperliquid = dailyHoldersRevenue，已剥离 HLP/builder/referral/deployer)，精确对应 AF 买入金额。DefiLlama 方法学已验证。",
+      "source_url": "https://api.llama.fi/summary/fees/hyperliquid?dataType=dailyRevenue"
+    },
+    {
+      "step": 2,
+      "label": "链上校验（Assistance Fund）",
+      "description": "每日从 Hyperliquid API 查 AF 地址的 HYPE 余额 + entry_ntl（累计买入 USD），对比 DefiLlama 同期 revenue 差异 >15% 告警。⚠️ AF 理论上可被 validator consensus 动用（treasury buyback，非真 burn）。",
+      "source_url": "https://api.hyperliquid.xyz/info (spotClearinghouseState)",
+      "updated_by": "~/crypto3d-updater/scripts/update-hype-tev.py",
+      "addresses": {
+        "Assistance Fund": "0xfefefefefefefefefefefefefefefefefefefefe"
+      }
+    },
+    {
+      "step": 3,
+      "label": "按周期累加（USD）",
+      "formula": "Σ dailyRevenue 过去 N 天",
+      "value_fields_by_period": {
+        "7d": "metrics.trailing_7d_revenue_usd",
+        "30d": "metrics.trailing_30d_revenue_usd",
+        "90d": "metrics.trailing_90d_revenue_usd",
+        "365d": "metrics.trailing_365d_revenue_usd"
+      },
+      "unit": "USD"
+    },
+    {
+      "step": 4,
+      "label": "年化 + 除以市值",
+      "formula": "USD × (365/N) ÷ market_cap × 100%",
+      "inputs": {
+        "market_cap": "market_cap_usd"
+      }
+    },
+    {
+      "step": 5,
+      "label": "最终 TEV Yield",
+      "derived": true,
+      "value_fields_by_period": {
+        "7d": "metrics.tev_yield_7d_ann",
+        "30d": "metrics.tev_yield_30d_ann",
+        "90d": "metrics.tev_yield_90d_ann",
+        "365d": "tev_yield_percent"
+      },
+      "unit": "%"
+    }
+  ]
 }
