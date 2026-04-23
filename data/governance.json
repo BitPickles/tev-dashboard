@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-04-23T01:06:09.476412+00:00",
-  "total": 235,
+  "updated_at": "2026-04-23T13:06:08.540715+00:00",
+  "total": 219,
   "active_count": 32,
-  "passed_count": 203,
-  "tev_related": 61,
+  "passed_count": 187,
+  "tev_related": 54,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -416,230 +416,6 @@
       "summary_en": "Umbrella makes deficit handling explicit and mechanically enforceable. Once a reserve deficit is realized on-chain, the protocol applies a senior, DAO-backed first-loss layer (the deficitOffset) before any impairment is passed through to Umbrella sta",
       "summary_zh": "Umbrella 机制使坏账处理显式化且可自动执行。链上确认储备赤字后，协议优先使用 DAO 担保的 deficitOffset（优先损失层），再将剩余损失传递给 Umbrella 质押者。",
       "analysis_zh": "Umbrella 引入收入挂钩的赤字抵消机制，强化 DAO 权益缓冲以保护质押者。\n\nAave 提案旨在改革 Umbrella 的赤字处理机制，将 deficitOffset 与协议实际收入挂钩，解决当前校准缺乏系统性的问题。目前年收入达 $122.1M，TVL 高达 $26.71B，巨大的资金体量要求更精准的风险缓冲。新机制明确了 DAO 承担首损的“权益缓冲”角色，在赤字传递给"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "[RFC] Governance Process Upgrade: Establishing a Statute of Limitations for Temperature Checks",
-      "status": "passed",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x48e56786fd4ab27c5b089b45be1e914d4a3a0f9d067ac51eff0b26a882e49bde",
-      "created": 1772515720,
-      "end": 1772978400,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "This proposal seeks to establish a formal \"Statute of Limitations\" for Uniswap Governance proposals. Specifically, it mandates that any proposal which passes a \"Temperature Check\" (Snapshot vote) must proceed to an on-chain vote within 90 days.",
-      "summary_zh": "为 Uniswap 治理设立「时效性」规则：通过温度检查（Snapshot 投票）的提案必须在 90 天内推进至链上投票，否则过期失效，防止提案无限期搁置。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "[Temp Check] Protocol Fee Expansion: Eight More Chains and Remaining Mainnet V3 Pools",
-      "status": "passed",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x0242a914c60945d25873d2a98c6abd9f69cb889c6616e27f3c0ab759f9e8d783",
-      "created": 1771446335,
-      "end": 1771878335,
-      "tev_related": true,
-      "tev_keywords": [
-        "fee"
-      ],
-      "summary_en": "to use the new governance process_ _approved_ _in UNIfication. The new process only applies to fee parameter updates, where proposals can bypass the RFC stage and go directly to a five-day Snapshot followed by an onchain vote.",
-      "summary_zh": "将协议费用扩展至另外八条链及 Mainnet V3 剩余池。采用 UNIfication 批准的新治理流程——费用参数更新可跳过 RFC 阶段，直接进行五天 Snapshot 投票后链上投票。",
-      "analysis_zh": "Uniswap 启用新治理流程加速费率扩张，协议费覆盖范围显著扩大。\n\nUniswap 提议将协议费扩展至 8 条新链及主网剩余 V3 池，并首次应用 UNIfication 治理新规，跳过 RFC 阶段直接进入 Snapshot 投票，显著提升了治理效率。此举打破了过往费率调整的僵局，若费率开关全面开启，配合当前 $3.33B 的 TVL，有望显著提升协议收入并增厚 TEV Yield（现报 1.47%）。虽然新"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "Strategic Renewal of Gnosis, Linea, and Mantle Deployments",
-      "status": "passed",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x1086839122667be04c0eec25ba224fe4ac1b990383ddfe05b80ce201a06b4abf",
-      "created": 1764690474,
-      "end": 1765122474,
-      "tev_related": true,
-      "tev_keywords": [
-        "fee"
-      ],
-      "summary_en": "on the forum this summer and has been hoping that the quorum/delegation situation would improve. It seems to have improved thanks to the Unification initiative.",
-      "summary_zh": "战略性续期 Gnosis、Linea 和 Mantle 三条链上的 Uniswap 部署。得益于 Unification 倡议，法定人数和委托参与率已有改善。",
-      "analysis_zh": "Uniswap 拟重启 Gnosis、Linea 及 Mantle 三条过期部署，借治理激活修复协议版图。\n\nGFX Labs 提议续期 Linea、Mantle 和 Gnosis 三个已过期的 V3 部署，旨在利用 Uni-fication 倡议带来的委托改善契机，解决此前因法定人数不足导致的治理瘫痪。其中 Mantle 拥有 $325M 的 TVL 且即将上线 Aave，战略价值显著，放弃将直接导致市场份额流失。此举不仅修复了协议覆盖范围，也为未来通过 Firepit 销毁机制捕获 TEV 收益奠定了基础，是治理复苏后的务实扩张，避免了因行政停滞造成的生态萎缩。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "UNIfication",
-      "status": "passed",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x58d854c1f2468db6b67baab026cca1329c7bcaa5bf834146aa7563a5b45ad09f",
-      "created": 1763431262,
-      "end": 1763863262,
-      "tev_related": true,
-      "tev_keywords": [
-        "fee"
-      ],
-      "summary_en": "Uniswap Labs and the Uniswap Foundation have created a joint proposal that activates the protocol fee and aligns incentives across the Uniswap ecosystem.",
-      "summary_zh": "Uniswap Labs 和 Uniswap Foundation 联合提案「UNIfication」，激活协议费用开关并在整个 Uniswap 生态中统一激励机制，是 Uniswap 收入机制的里程碑事件。",
-      "analysis_zh": "Uniswap 协议费激活叠加 Unichain 收入销毁，UNI 正式开启价值捕获模式。\n\nUniswap Labs 与 Foundation 联合提案激活 Protocol Fee，并将 Unichain Sequencer 收入注入 Firepit 销毁 UNI，彻底打通了价值闭环。面对 $3.33B 的 TVL 和 $2.39B 市值，此举将协议收入直接转化为代币通缩动力，让 TEV Yield 从理论走向现实。这不仅解决了长期以来的“价值捕获缺失”痛点，更通过 Unichain 生态扩张将 Layer2 收益回馈持币者，实现了 Labs 与 DAO 的利益深度绑定，是对 UNI 估值模型的重构，极具里程碑意义。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "Grow Uniswap on Plasma",
-      "status": "passed",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x5edf7f0dccce2bbd3be792c5b9dd23f15f6dc66117510ef67ef0d3951373b504",
-      "created": 1759845949,
-      "end": 1760277948,
-      "tev_related": true,
-      "tev_keywords": [
-        "treasury"
-      ],
-      "summary_en": "Voting Options: Allocate $250k, Don’t Allocate, Abstain",
-      "summary_zh": "关于是否在 Plasma 网络上扩展 Uniswap 的投票。选项：分配 25 万美元用于激励、不分配、弃权。",
-      "analysis_zh": "Uniswap 拟动用国库 $250k 激励 Plasma 链扩张，联手 UAC 预算总激励达 $500k。\n\nUniswap DAO 正就向 Plasma 部署提供 $250k 国库激励进行投票，若通过，叠加 UAC 已承诺的 $250k 自由预算，总激励规模将达 $500k。此举旨在通过真金白银推动 Uniswap 在 Plasma 生态的早期扩张，抢占流动性先机。虽然金额相对 Uniswap 体量较小，但这标志着 DAO 正积极利用资金杠杆撬动新兴链市场份额，不过需警惕激励期过后的流动性留存问题，毕竟单纯的补贴难以构建长期的护城河，关键在于能否形成可持续的交易深度。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "GLI — Incentivized Delegation Vaults",
-      "status": "passed",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x1423731999c4ddd17568ac01b1b0f64f12c26138f0c3f9284dd688fa1d665989",
-      "created": 1756837421,
-      "end": 1757269421,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Incentivized Delegation Vaults: Multiple delegates recognized that it is not healthy for the governance ecosystem if the entirety of the votable supply is sustained by treasury delegations alone. As such, encouraging community delegations is essentia",
-      "summary_zh": "提出激励型委托金库方案。多位代表认为仅依靠国库委托维持全部可投票供应不健康，需鼓励社区主动委托以提升治理去中心化。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "GLI — Treasury delegation Round 2",
-      "status": "passed",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x0d56ae30379b00f3862b3e13ef44ce628f3d19609984b8fcfcf90e48b35842e8",
-      "created": 1756833661,
-      "end": 1757265661,
-      "tev_related": true,
-      "tev_keywords": [
-        "treasury"
-      ],
-      "summary_en": "Treasury delegations have received nearly universal support, given their direct method of addressing the votable supply shortfall and proven historical precedent and track record. In fact, today, half of the remaining votable supply is directly sourc",
-      "summary_zh": "Uniswap 国库委托第二轮提案，直接解决可投票供应不足问题。当前约一半可投票供应已来源于国库委托，该机制已有成功先例。",
-      "analysis_zh": "Uniswap 推进国库授权第二轮，旨在化解可投票供应短缺引发的治理瘫痪风险。\n\nUAC 识别出可投票供应量仅剩约 4100 万 UNI，逼近 4000 万 UNI 的法定人数红线，治理面临系统性风险。GLI 提案通过国库授权直接填补缺口，鉴于目前半数可投票供应源于此机制，此举不仅是解决供应短缺的最直接手段，更是维持 DAO 正常运转的“救命稻草”。虽然这是对国库资金的被动利用，但在治理参与度低迷的背景下，通过授权将“沉睡资产”转化为治理动能，是防止决策瘫痪的必要之举。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "Launching Uniswap v3 on Ronin with co-incentives",
-      "status": "passed",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0xfc6edc8b64e1fa8eef46d187557969b14ca24ac58b8b6d6b302ea27a2213849d",
-      "created": 1756700379,
-      "end": 1757167200,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "This proposal advocates for an official UniswapV3 deployment on Ronin along with a co-incentivization campaign to establish UniswapV3 as a primary DEX in the Ronin Ecosystem.",
-      "summary_zh": "提案在 Ronin（Axie Infinity 生态链）上正式部署 UniswapV3，并通过联合激励活动使其成为 Ronin 生态主要 DEX。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "Establish Uniswap Governance as “DUNI,” a Wyoming DUNA",
-      "status": "passed",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0xf9f99fe0f9425c2b2e624185860bcc38ac00bda6abe330e9c123f5c5c29dfbac",
-      "created": 1756079271,
-      "end": 1756562400,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "The Uniswap Foundation (“UF”) proposes that Uniswap Governance adopt a Wyoming-registered Decentralized Unincorporated Nonprofit Association (“DUNA”) as the legal structure for the Uniswap Governance Protocol. This new legal entity, called “DUNI”, wi",
-      "summary_zh": "Uniswap Foundation 提议采用怀俄明州 DUNA（去中心化非法人非营利协会）作为 Uniswap 治理协议的法律实体，命名为「DUNI」，为 DAO 提供法律保护。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "Uniswap Delegate Reward Initiative - Cycle 4",
-      "status": "passed",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0xea4a1505c96ce4ef5c1f88e6cc3ec89d63f3d88219aa97af97b8384d006a5f92",
-      "created": 1755091100,
-      "end": 1755523100,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "This proposal outlines the Uniswap Delegate Reward Initiative—Cycle 4, a compensation program designed to improve and sustain the participation quality and dedication among Uniswap delegates following the conclusion of Cycle 1, 2, and 3.",
-      "summary_zh": "Uniswap 委托人奖励计划第四期，延续前三期成果，通过补偿机制提升委托人参与治理的质量和投入度。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "Uniswap Unichain - USDS and sUSDS Co-Incentives Growth Management Plan",
-      "status": "passed",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x537a301c4c94c1ec0b972bab558e2e36b1fa1111f0cbc4d5a59b0465f505c9ab",
-      "created": 1750168677,
-      "end": 1750600677,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Unichain is currently the main focus of Uniswap’s growth strategy, presenting a significant opportunity for collaborative growth. The launch of USDS and sUSDS opens doors for close collaboration among two of the premier DeFi protocols Uniswap and Sky",
-      "summary_zh": "Unichain 是 Uniswap 增长战略核心。USDS 和 sUSDS 的上线为 Uniswap 与 Sky（MakerDAO）两大 DeFi 协议在 Unichain 上的深度合作开辟机会。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "Four Chains for Analytics Hub for Uniswap’s Revitalization and Growth Program",
-      "status": "passed",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0xd0e154ab11dfeed1fb652c4a4db011937ffa7dd3333847936c09a668b5e5e804",
-      "created": 1746120649,
-      "end": 1746552649,
-      "tev_related": true,
-      "tev_keywords": [
-        "fee"
-      ],
-      "summary_en": "is for chain selection feedback for the ongoing proposal.",
-      "summary_zh": "为 Uniswap 振兴与增长计划中的分析中心选定四条目标链的反馈投票。",
-      "analysis_zh": "Uniswap 振兴计划启动四链筛选，Unichain 仅作兴趣测试不计入最终名额。\n\nUniswap DAO 推进“Analytics Hub 振兴计划”，旨在通过 Snapshot 投票选出 4 条目标链以集中资源。值得玩味的是，Unichain 虽被列入选项以测试社区热度，但即便进入前四也会被“跳过”，名额顺延给下一条链。这种“只看不算”的机制设计，暗示了 Uniswap 对自家 L2 有着独立且更宏大的激励规划，不愿在此处挤占其他生态的资源和曝光，体现了 DAO 在资源分配上的精细化管理，避免了“既得利益者”通吃局面，确保了多链扩张的公平性。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "[Temp Check] Analytics Hub for Uniswap’s Revitalization and Growth Program",
-      "status": "passed",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x675c9697cc6c8d1cab27e1cffab3fdc7740b3e978eb37d8b6dcce76d1726670f",
-      "created": 1746119608,
-      "end": 1746551608,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "This proposal seeks to utilize Forse to help analyze the effectiveness of the four other chains the Uniswap community chooses as part of the Uniswap Revitalization and Growth Program.",
-      "summary_zh": "提案利用 Forse 分析工具，评估 Uniswap 振兴与增长计划中社区选择的四条链上的部署效果。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "[TEMP CHECK] Scaling V4 and Supporting Unichain",
-      "status": "passed",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x58f16ed9e140551bb80d265ea9b958e96c542a7d7afc081610f72506a4f7cb05",
-      "created": 1745952062,
-      "end": 1746384062,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "passing. Post launch, Oku will continue to improve the V4 interface and iterate based on feedback.",
-      "summary_zh": "支持 Oku 团队开发 Uniswap V4 前端界面和 Unichain 生态工具。通过后 Oku 将持续优化 V4 界面并根据反馈迭代。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "[Temp Check/Revised] Treasury Delegation Round 2",
-      "status": "passed",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x46fef087a43555e156db287d370151a76e19e1e2cd7d36f442409987f93d4215",
-      "created": 1745511662,
-      "end": 1745943662,
-      "tev_related": true,
-      "tev_keywords": [
-        "treasury"
-      ],
-      "summary_en": "We propose allocating up to 15 million UNI of total amount as the treasury delegation, distributing into selected delegates.",
-      "summary_zh": "提议分配最多 1500 万 UNI 作为国库委托总量，分配给选定的委托人以增强治理参与度和可投票供应。",
-      "analysis_zh": "Uniswap 拟委托 1500 万 UNI 助力代表，治理格局或迎结构性优化。\n\nUniswap DAO 推出国库委托第二轮提案，计划分配高达 1500 万 UNI 给选定的代表，旨在打破治理僵局。相比初版，此次修订版将总额缩减并引入 Election Snapshot 机制筛选“杰出”代表，显示出对治理权力分配的审慎态度。虽然短期委托期限限制了代表的长期控制权，但承诺在 Unistaker 实施等重大变局时重新评估，体现了灵活应变的治理智慧。此举若能落实，将有效激活沉睡的治理代币，提升决策效率，但需警惕大户通过委托过度集中投票权的风险。"
     },
     {
       "source": "Snapshot",
@@ -1231,20 +1007,6 @@
       "tev_keywords": [],
       "summary_en": "Here’s a quick recap of veCAKE’s utility:.",
       "summary_zh": "提议在 Base 链上线 veCAKE 功能，扩展 PancakeSwap 跨链治理覆盖。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Lido",
-      "title": "Mystery Box | LIDO x Snapshot",
-      "status": "closed",
-      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0xdc853ea0d1057cb9504e721936e79fe9008e41f6086669b6a28495e3b6cf1804",
-      "created": 1776253075,
-      "end": 1776512275,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "We are officially announcing the launch of Lido Finance Mystery Boxes with Snapshot support!",
-      "summary_zh": "Lido协议与Snapshot合作，正式推出Lido Finance Mystery Boxes！",
       "analysis_zh": ""
     },
     {
@@ -2805,6 +2567,34 @@
     {
       "source": "GitHub BEP",
       "protocol": "BNB Chain",
+      "title": "BEP-684.md: Decouple consensus voting from block execution by allowing validators to vote upon header verification, removing execution from the critical voting path.",
+      "status": "active",
+      "link": "https://github.com/bnb-chain/BEPs/pull/684",
+      "created": "2026-04-23T09:14:22",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "BEP-684.md: Decouple consensus voting from block execution by allowing validators to vote upon header verification, removing execution from the critic",
+      "summary_zh": "协议：BNB Chain\n标题：BEP-684.md：通过允许验证者在验证区块头时进行投票，将共识投票与区块执行解耦，将执行过程从关键投票路径中移除。\n摘要：BEP-684.md：允许验证者在区块头验证时投票，实现共识投票与区块执行的解耦，将执行阶段从核心投票路径中去除。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
+      "title": "fix: improve system txn check design ",
+      "status": "passed",
+      "link": "https://github.com/bnb-chain/BEPs/pull/683",
+      "created": "2026-04-23T07:04:51",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "fix: improve system txn check design ",
+      "summary_zh": "修复：优化系统交易检查设计",
+      "analysis_zh": ""
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
       "title": "BEP-682.md: Enforce Unique Validators in CometBFT Light Block Validator on Precompile",
       "status": "passed",
       "link": "https://github.com/bnb-chain/BEPs/pull/682",
@@ -2912,34 +2702,6 @@
       "tev_keywords": [],
       "summary_en": "BEP-675: Builder-Proposed Block with Validator Blind Signing",
       "summary_zh": "BEP-675：由构建者提出的带有验证者盲签名的区块提案",
-      "analysis_zh": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BAP-674: Privacy-Preserving Token Transfer Protocol",
-      "status": "active",
-      "link": "https://github.com/bnb-chain/BEPs/pull/674",
-      "created": "2026-03-24T01:31:52",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "BAP-674 specifies a standard interface for privacy-preserving token transfers on BNB Chain, enabling deposit, transfer, and withdraw of BEP-20 tokens (and native BNB) with on-chain confidentiality using a UTXO-based model and zk-SNARK (Groth16) proof",
-      "summary_zh": "BAP-674规定在BNB Chain上隐私保护代币转账的标准接口，允许使用基于UTXO模型和Groth16证明的链上隐私，进行BEP-20代币（及原生BNB）的存取转操作。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BEP-673: Hardfork Meta-Pasteur",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/673",
-      "created": "2026-03-06T09:00:49",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "https://github.com/allformless/BEPs/blob/define-Pasteur-beps/BEPs/BEP-673.md",
-      "summary_zh": "BEP-673：Pasteur 硬分叉元提案。定义 BSC Pasteur 硬分叉包含的所有 BEP 升级清单和激活时间表。",
       "analysis_zh": ""
     },
     {
