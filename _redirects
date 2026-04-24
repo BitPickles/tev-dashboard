@@ -31,6 +31,12 @@
 /indicators/mvrv.html      /mvrv                  301
 /indicators/bmri.html      /bmri                  301
 
+# 合规页面 pretty-URL（Cloudflare Pages 静态默认不去 .html）
+/privacy                   /privacy.html          200
+/terms                     /terms.html            200
+/disclaimer                /disclaimer.html       200
+/about                     /about.html            200
+
 # homepage 目录兼容
 /homepage                  /                      301
 /homepage/                 /                      301

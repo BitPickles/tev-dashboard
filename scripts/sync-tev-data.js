@@ -633,80 +633,68 @@ async function main() {
       continue;
     }
 
-    // JustLend 专属：TEV 用链上 TRON 直查（DefiLlama 严重低估，只算 interest spread 不算 USDD/USDJ/stTRX）
-    // 数据源：update-justlend-tev.py 从 TRONGrid 拉 Black Hole 的 incoming JST，过滤到 JustLend DAO executor
+    // JustLend 专属：TEV 归零（2026-04-25 链上核实 + Boss 决策）
+    // 链上发现 burn 的 JST 全部来自孙宇晨生态金库 TFTWNgDB...（持有 HTX/WIN/TUSD 系他的代币），
+    // 属 pocket-to-pocket 做账式销毁（从项目方自持里拿出来转 Black Hole），不是市场 buyback，
+    // 对流通量和价格无实际支撑。按方法论不算真 TEV。
     if (key === 'justlend') {
       const protocol = protocols[key];
       if (!protocol) continue;
-      console.log(`📊 justlend... (TRON 链上 JST burn, A 口径)`);
+      console.log(`📊 justlend... (pocket-to-pocket 做账销毁，TEV 归零)`);
       const burnHistPath = path.join(__dirname, '../data/protocols/justlend/burn-history.json');
       let burnHist = { burns: [] };
-      try { burnHist = JSON.parse(fs.readFileSync(burnHistPath, 'utf8')); } catch (e) {
-        console.warn(`  ⚠️ justlend burn-history.json 读取失败: ${e.message}`);
-      }
+      try { burnHist = JSON.parse(fs.readFileSync(burnHistPath, 'utf8')); } catch {}
       const burns = burnHist.burns || [];
       const marketCap = protocol.market_cap_usd || 0;
-      // JST 价格从市值 ÷ 流通量反推（流通约 8.54B）
       const circulatingSupply = 8_540_000_000;
       const jstPrice = marketCap > 0 ? marketCap / circulatingSupply : 0;
 
+      if (!protocol.metrics) protocol.metrics = {};
+      // TEV 全部归零
+      protocol.metrics.tev_yield_7d_ann  = 0;
+      protocol.metrics.tev_yield_30d_ann = 0;
+      protocol.metrics.tev_yield_90d_ann = 0;
+      protocol.tev_yield_percent         = 0;
+      protocol.metrics.earning_yield_7d_ann  = 0;
+      protocol.metrics.earning_yield_30d_ann = 0;
+      protocol.metrics.earning_yield_90d_ann = 0;
+      protocol.earning_yield_percent         = 0;
+      protocol.metrics.trailing_7d_revenue_usd   = 0;
+      protocol.metrics.trailing_30d_revenue_usd  = 0;
+      protocol.metrics.trailing_90d_revenue_usd  = 0;
+      protocol.metrics.trailing_365d_revenue_usd = 0;
+
+      protocol.tevStatus = 'none';
+      protocol.confidence = 'low';
+      protocol.tevRatio = null;
+
+      // 保留 burn 事件数据作为"供给侧事实"证据，不作为 TEV 来源
       const today = new Date();
       const sumJst = (days) => {
         const cutoff = new Date(today.getTime() - days * 86400000).toISOString().slice(0, 10);
         return burns.filter(b => b.date > cutoff).reduce((s, b) => s + (b.jst || 0), 0);
       };
-      const burn7d   = sumJst(7);
-      const burn30d  = sumJst(30);
-      const burn90d  = sumJst(90);
-      const burn365d = sumJst(365);
-
-      const calcYield = (jst_sum, days) => {
-        if (!marketCap || !jstPrice) return 0;
-        const usd = jst_sum * jstPrice;
-        const ann = days >= 365 ? 1 : (365 / days);
-        return Math.round(usd * ann / marketCap * 10000) / 100;
-      };
-      const tev_7d   = calcYield(burn7d,   7);
-      const tev_30d  = calcYield(burn30d,  30);
-      const tev_90d  = calcYield(burn90d,  90);
-      const tev_365d = calcYield(burn365d, 365);
-
-      if (!protocol.metrics) protocol.metrics = {};
-      protocol.metrics.tev_yield_7d_ann  = tev_7d;
-      protocol.metrics.tev_yield_30d_ann = tev_30d;
-      protocol.metrics.tev_yield_90d_ann = tev_90d;
-      protocol.tev_yield_percent         = tev_365d;
-      // JustLend 100% 买回销毁（没有 staking 分润），TEV = Earning
-      protocol.metrics.earning_yield_7d_ann  = tev_7d;
-      protocol.metrics.earning_yield_30d_ann = tev_30d;
-      protocol.metrics.earning_yield_90d_ann = tev_90d;
-      protocol.earning_yield_percent         = tev_365d;
-      protocol.metrics.trailing_7d_revenue_usd   = Math.round(burn7d * jstPrice);
-      protocol.metrics.trailing_30d_revenue_usd  = Math.round(burn30d * jstPrice);
-      protocol.metrics.trailing_90d_revenue_usd  = Math.round(burn90d * jstPrice);
-      protocol.metrics.trailing_365d_revenue_usd = Math.round(burn365d * jstPrice);
-
-      protocol.tevStatus = 'active';  // 确认了，从 partial 升级
-      protocol.confidence = 'high';   // 机制 + 链上数据双确认
-
       protocol.validation = protocol.validation || {};
-      protocol.validation.method = 'A 口径：JST → TRON Black Hole (过滤到 JustLend DAO executor TZJVQuU3...) × 当前价 / 市值';
-      protocol.validation.burn_7d_jst   = Math.round(burn7d);
-      protocol.validation.burn_30d_jst  = Math.round(burn30d);
-      protocol.validation.burn_90d_jst  = Math.round(burn90d);
-      protocol.validation.burn_365d_jst = Math.round(burn365d);
+      protocol.validation.method = 'TEV 归零（pocket-to-pocket 做账销毁，非真市场 buyback）';
+      protocol.validation.burn_7d_jst   = Math.round(sumJst(7));
+      protocol.validation.burn_30d_jst  = Math.round(sumJst(30));
+      protocol.validation.burn_90d_jst  = Math.round(sumJst(90));
+      protocol.validation.burn_365d_jst = Math.round(sumJst(365));
       protocol.validation.jst_price_usd = Math.round(jstPrice * 1e6) / 1e6;
       protocol.validation.total_burned_jst = burnHist.total_burned_jst;
       protocol.validation.burn_events = burns.length;
+      protocol.validation.tev_zero_reason = 'burn JST 源头是孙宇晨生态金库（TFTWNgDB... 持 HTX/WIN/TUSD 等），非协议收入买入，不构成真 TEV';
       protocol.validation.caveats = [
-        'JST burn 是季度事件（2025-10 / 2026-01 / 2026-04 已完成 3 次），短周期窗口可能 0 或极高',
-        'DefiLlama 严重低估（只算 interest spread 不算 USDD/USDJ/stTRX 其他收入来源）',
-        'TRON 链 TRONGrid API 可用但免费 tier 有 rate limit',
+        '所有 burn 的 JST 来自同一地址 TFTWNgDBkQ5wQoP8RXpRznnHvAVV8x5jLu，该地址持仓包含 HTX/WIN/TUSD 等孙宇晨生态代币，基本可认定为项目方金库',
+        '没有观察到对应 USDT/USDD 流出（协议收入换 JST）的证据，不是真市场 buyback',
+        '对流通量和价格无实际支撑（本来就不在流通），不符合 TEV = token 持有人真实价值捕获 的定义',
+        'DefiLlama justlend slug 只报 ~$500k/年 revenue（interest spread），侧面佐证协议真实对外分发收入很少',
+        '如果未来发现 executor 真正从市场买 JST（看到 USDT/USDD 流出换取 JST 的链上证据），可重新评估',
       ];
 
-      console.log(`  JST price: $${jstPrice.toFixed(6)} (mcap $${(marketCap/1e6).toFixed(1)}M ÷ ${(circulatingSupply/1e9).toFixed(2)}B supply)`);
-      console.log(`  Burn JST: 7d=${Math.round(burn7d).toLocaleString()} / 30d=${Math.round(burn30d).toLocaleString()} / 90d=${Math.round(burn90d).toLocaleString()} / 365d=${Math.round(burn365d).toLocaleString()}`);
-      console.log(`  TEV Yield: 7d=${tev_7d}% 30d=${tev_30d}% 90d=${tev_90d}% 365d=${tev_365d}%`);
+      console.log(`  JST price: $${jstPrice.toFixed(6)} (mcap $${(marketCap/1e6).toFixed(1)}M)`);
+      console.log(`  链上 burn 事件数: ${burns.length} (仅作供给侧事实记录)`);
+      console.log(`  TEV Yield: 0% (pocket-to-pocket 做账销毁，不计入)`);
       updated++;
       continue;
     }

@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Verified bots 全开，避免 Cloudflare 误伤
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# 调试 / 中间目录不索引
+Disallow: /daily-poster/output/
+Disallow: /logs/
+Disallow: /skills/
+Disallow: /projects/
+Disallow: /memory/
+Disallow: /output/
+Disallow: /archive/
+
+Sitemap: https://crypto3d.pro/sitemap.xml

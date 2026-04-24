@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-24T13:11:16.195Z",
+  "generated_at": "2026-04-24T16:19:37.291Z",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -529,35 +529,35 @@
       "ticker": "JST",
       "icon": "https://coin-images.coingecko.com/coins/images/11095/large/JUST.jpg",
       "category": "lending",
-      "confidence": "high",
+      "confidence": "low",
       "confidence_reason": {
         "zh": "TRON 生态透明度低，JST 质押奖励无公开 API，依赖官方声明",
         "en": "TRON ecosystem low transparency, JST staking rewards no public API, relies on official statements"
       },
-      "tevStatus": "active",
-      "tev_yield_percent": 15.88,
+      "tevStatus": "none",
+      "tev_yield_percent": 0,
       "market_cap_usd": 681112265.0226243,
       "tvl": 3292346561.2761326,
-      "tevRatio": 0,
-      "earning_yield_percent": 15.88,
+      "tevRatio": null,
+      "earning_yield_percent": 0,
       "tevRatioNote": "未确认 — 声称有 staking 分红但透明度极低",
       "metrics": {
         "current_market_cap_usd": 558330511.4309741,
         "trailing_7d_revenue_usd": 0,
-        "trailing_30d_revenue_usd": 21640674,
-        "trailing_90d_revenue_usd": 21640674,
-        "trailing_365d_revenue_usd": 108166716,
+        "trailing_30d_revenue_usd": 0,
+        "trailing_90d_revenue_usd": 0,
+        "trailing_365d_revenue_usd": 0,
         "trailing_365d_tev_usd": 149440.19999999998,
         "trailing_30d_tev_usd": 12453.349999999999,
         "tev_yield_7d_ann": 0,
-        "tev_yield_30d_ann": 38.66,
-        "tev_yield_90d_ann": 12.89,
+        "tev_yield_30d_ann": 0,
+        "tev_yield_90d_ann": 0,
         "earning_yield_7d_ann": 0,
-        "earning_yield_30d_ann": 38.66,
-        "earning_yield_90d_ann": 12.89
+        "earning_yield_30d_ann": 0,
+        "earning_yield_90d_ann": 0
       },
       "validation": {
-        "method": "A 口径：JST → TRON Black Hole (过滤到 JustLend DAO executor TZJVQuU3...) × 当前价 / 市值",
+        "method": "TEV 归零（pocket-to-pocket 做账销毁，非真市场 buyback）",
         "burn_7d_jst": 0,
         "burn_30d_jst": 271337579,
         "burn_90d_jst": 271337579,
@@ -566,10 +566,13 @@
         "total_burned_jst": 1356228332,
         "burn_events": 3,
         "caveats": [
-          "JST burn 是季度事件（2025-10 / 2026-01 / 2026-04 已完成 3 次），短周期窗口可能 0 或极高",
-          "DefiLlama 严重低估（只算 interest spread 不算 USDD/USDJ/stTRX 其他收入来源）",
-          "TRON 链 TRONGrid API 可用但免费 tier 有 rate limit"
-        ]
+          "所有 burn 的 JST 来自同一地址 TFTWNgDBkQ5wQoP8RXpRznnHvAVV8x5jLu，该地址持仓包含 HTX/WIN/TUSD 等孙宇晨生态代币，基本可认定为项目方金库",
+          "没有观察到对应 USDT/USDD 流出（协议收入换 JST）的证据，不是真市场 buyback",
+          "对流通量和价格无实际支撑（本来就不在流通），不符合 TEV = token 持有人真实价值捕获 的定义",
+          "DefiLlama justlend slug 只报 ~$500k/年 revenue（interest spread），侧面佐证协议真实对外分发收入很少",
+          "如果未来发现 executor 真正从市场买 JST（看到 USDT/USDD 流出换取 JST 的链上证据），可重新评估"
+        ],
+        "tev_zero_reason": "burn JST 源头是孙宇晨生态金库（TFTWNgDB... 持 HTX/WIN/TUSD 等），非协议收入买入，不构成真 TEV"
       }
     },
     "kamino": {

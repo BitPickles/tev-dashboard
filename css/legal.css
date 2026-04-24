@@ -1,0 +1,72 @@
+/* Crypto3D — 合规/说明页共享样式
+ * 用于 /privacy /terms /disclaimer /about 等只读文字页
+ * 跟主站色板保持一致（暗 default，支持 light 切换） */
+
+:root {
+  --bg-0: #050507;
+  --bg-1: #0a0a0e;
+  --bg-2: #101015;
+  --bg-3: #16161c;
+  --text-1: #e8e8ec;
+  --text-2: #7a7a88;
+  --text-3: #4a4a56;
+  --border: rgba(255,255,255,0.06);
+  --border-h: rgba(255,255,255,0.12);
+  --accent: #60a5fa;
+  --amber: #fbbf24;
+  --header-bg: rgba(5,5,7,0.9);
+}
+[data-theme="light"] {
+  --bg-0: #fafafa;
+  --bg-1: #ffffff;
+  --bg-2: #f3f3f6;
+  --bg-3: #eaeaef;
+  --text-1: #111118;
+  --text-2: #5a5a6e;
+  --text-3: #9090a0;
+  --border: rgba(0,0,0,0.06);
+  --border-h: rgba(0,0,0,0.12);
+  --accent: #2563eb;
+  --amber: #d97706;
+  --header-bg: rgba(250,250,250,0.92);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg-0);color:var(--text-1);font-family:'Inter','Noto Sans SC',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.65}
+
+header{position:sticky;top:0;z-index:10;background:var(--header-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.hd{max-width:900px;margin:0 auto;padding:14px 32px;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:10px;color:var(--text-1);text-decoration:none;font-weight:700;font-size:16px;letter-spacing:-0.01em}
+.logo-img{width:26px;height:26px;border-radius:4px}
+.hd-nav{display:flex;gap:24px}
+.hd-nav a{color:var(--text-2);text-decoration:none;font-size:14px;font-weight:500;transition:color .15s}
+.hd-nav a:hover{color:var(--text-1)}
+@media(max-width:640px){.hd{padding:14px 20px}.hd-nav{gap:16px}.hd-nav a{font-size:13px}}
+
+main.legal{max-width:760px;margin:0 auto;padding:56px 32px 80px}
+main.legal h1{font-size:32px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px}
+main.legal p.meta{color:var(--text-3);font-size:13px;margin-bottom:36px}
+main.legal section{margin:0 0 32px}
+main.legal h2{font-size:18px;font-weight:600;margin-bottom:12px;color:var(--text-1)}
+main.legal h3{font-size:15px;font-weight:600;margin:16px 0 8px;color:var(--text-1)}
+main.legal p{color:var(--text-2);font-size:15px;margin:0 0 12px}
+main.legal ul,main.legal ol{color:var(--text-2);font-size:15px;padding-left:22px;margin:0 0 12px}
+main.legal li{margin:4px 0}
+main.legal strong{color:var(--text-1);font-weight:600}
+main.legal code{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:13px;background:var(--bg-2);border:1px solid var(--border);padding:1px 6px;border-radius:4px;color:var(--text-1)}
+main.legal a{color:var(--accent);text-decoration:none}
+main.legal a:hover{text-decoration:underline}
+main.legal .callout{background:var(--bg-2);border:1px solid var(--border);border-left:3px solid var(--amber);padding:14px 18px;border-radius:8px;margin:12px 0;font-size:14px;color:var(--text-2)}
+main.legal .callout strong{color:var(--amber)}
+
+@media(max-width:640px){
+  main.legal{padding:36px 20px 60px}
+  main.legal h1{font-size:26px}
+}
+
+footer{border-top:1px solid var(--border);padding:32px 0;margin-top:40px}
+.ft{max-width:900px;margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text-3);flex-wrap:wrap;gap:12px}
+.ft-links{display:flex;gap:16px;flex-wrap:wrap}
+.ft-links a{color:var(--text-3);text-decoration:none;transition:color .15s}
+.ft-links a:hover{color:var(--text-1)}
+@media(max-width:640px){.ft{flex-direction:column;text-align:center;padding:0 20px}}
