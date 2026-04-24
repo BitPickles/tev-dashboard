@@ -416,6 +416,8 @@ const isDaily = records.every(r => {
 | BNB | `~/crypto3d-updater/scripts/update-bnb-tev.py` | config.json.burn_history + asBNB APY | 日 |
 | HYPE | `~/crypto3d-updater/scripts/update-hype-tev.py` | DefiLlama dailyRevenue 日频 | 日 |
 | Uniswap | `~/crypto3d-updater/scripts/update-uni-tev.py` | burn-history.json (Etherscan) | 日 |
+| Aster | `~/crypto3d-updater/scripts/update-aster-tev.py` | Moralis API (BSC, Stage5/6 wallet) | 日 |
+| JustLend | `~/crypto3d-updater/scripts/update-justlend-tev.py` | TRONGrid API (TRON Black Hole) | 日 |
 | Sky / Aave / Pendle / Curve / GMX / dYdX / Maple / PancakeSwap / Radiant / etherfi / Ethena | `scripts/fetch-tev-history.js` | DefiLlama holdersRevenue 月聚合 | 日（update.sh Step 4.5） |
 
 **新协议接入时**：选其一，并加到 update.sh 的相应 step；不加则 tev-records 永远不会更新，详情页图表会慢慢变旧。
