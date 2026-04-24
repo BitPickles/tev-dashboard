@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-04-24T01:06:22.590563+00:00",
+  "updated_at": "2026-04-24T13:06:26.716076+00:00",
   "total": 235,
-  "active_count": 32,
-  "passed_count": 203,
+  "active_count": 33,
+  "passed_count": 202,
   "tev_related": 62,
   "monitored_protocols": 19,
   "protocols_meta": {
@@ -2657,6 +2657,21 @@
     {
       "source": "dYdX Cosmos",
       "protocol": "dYdX",
+      "title": "Fee Holiday for BTC & BONK markets - May 2026",
+      "status": "active",
+      "link": "https://www.mintscan.io/dydx/proposals/380",
+      "created": "2026-04-24T03:41:50.301829872Z",
+      "end": "2026-04-27T03:41:50.301829872Z",
+      "tev_related": true,
+      "tev_keywords": [
+        "fee"
+      ],
+      "summary_en": "100% fee discount (free trading) for BTC-USD and BONK-USD perpetual markets through May 2026.",
+      "summary_zh": "dYdX协议治理提案：BTC & BONK市场免佣期——2026年5月。BTC-USD和BONK-USD永续市场自2026年5月起享受100%费率折扣（免费交易）。"
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
       "title": "Upgrade XAG-USD market from ISOLATED to CROSS and/or change liquidity tier",
       "status": "active",
       "link": "https://www.mintscan.io/dydx/proposals/379",
@@ -2772,22 +2787,6 @@
       "summary_en": "This proposal seeks community approval to transfer 10M USDC from the dYdX Chain Insurance Fund to three separate entities: 2.5M USDC to the dYdX Operations SubDAO for operational runway, 5M USDC to the dYdX Treasury SubDAO for discretionary reserves,",
       "summary_zh": "本提案请求社区批准将1000万美元USDC从dYdX链保险基金划拨给三个独立实体：250万美元用于dYdX运营子DAO的运营资金，500万美元用于dYdX财政子DAO的自主储备金。",
       "analysis_zh": "从保险基金划转 1000 万 USDC 资助运营，安全缓冲仅剩 700 万 USDC 引发担忧。\n\ndYdX 提议从 Insurance Fund 划转 1000 万 USDC 分配给 Operations SubDAO、Treasury SubDAO 及 Foundation，虽缓解了运营资金压力，但将安全缓冲削减至 700 万 USDC。面对高达 $158.7M 的 TVL，仅保留不足 5% 的资金作为风险储备显得过于激进，这种“拆东墙补西墙”的策略在极端行情下可能无法有效覆盖穿仓损失，牺牲了协议核心的安全边际来换取行政续航，无疑增加了用户的资金风险，社区应审慎评估安全垫变薄的长期隐患。"
-    },
-    {
-      "source": "dYdX Cosmos",
-      "protocol": "dYdX",
-      "title": "Fee Holiday for BTC & BONK markets - April 2026",
-      "status": "passed",
-      "link": "https://www.mintscan.io/dydx/proposals/370",
-      "created": "2026-03-27T02:39:49.125114071Z",
-      "end": "2026-03-30T02:39:49.125114071Z",
-      "tev_related": true,
-      "tev_keywords": [
-        "fee"
-      ],
-      "summary_en": "100% fee discount (free trading) for BTC-USD and BONK-USD perpetual markets through April 2026.",
-      "summary_zh": "协议：dYdX\n标题：BTC & BONK市场费用假期 - 2026年4月\n摘要：2026年4月前，BTC-USD和BONK-USD永续市场提供100%费用减免（免费交易）。",
-      "analysis_zh": "dYdX 对 BTC 和 BONK 实施免交易费至 2026 年，短期收入锐减将直接冲击 DYDX 回购支撑。\n\n该提案针对 BTC-USD 和 BONK-USD 市场实施 100% 费用折扣直至 2026 年 4 月，这无疑是一场激进的以收入换流量的博弈。当前年收入仅 $12.5M，其中 $11.3M 用于回购支撑着 5.33% 的 TEV Yield，免交易费政策将切断这部分核心收入来源，直接削弱 DYDX 的价值捕获能力。虽然长期看可能通过提升 TVL（现 $158.7M）和市场份额来反哺生态，但在市值仅 $75.0M 的背景下，长达两年的“造血”缺失对质押者并不友好，短期抛压风险显著上升。"
     },
     {
       "source": "GitHub BEP",
