@@ -31,11 +31,8 @@
 /indicators/mvrv.html      /mvrv                  301
 /indicators/bmri.html      /bmri                  301
 
-# 合规页面 pretty-URL（Cloudflare Pages 静态默认不去 .html）
-/privacy                   /privacy.html          200
-/terms                     /terms.html            200
-/disclaimer                /disclaimer.html       200
-/about                     /about.html            200
+# 合规页面由 Cloudflare Pages 自带 clean-URL 处理 (/privacy.html ↔ /privacy)
+# 这里不需要显式规则；如果加了 200 rewrite 会和 clean-URL 形成 308 循环
 
 # homepage 目录兼容
 /homepage                  /                      301
