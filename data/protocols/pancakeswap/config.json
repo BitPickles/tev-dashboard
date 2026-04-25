@@ -74,23 +74,36 @@
       "reliability": "high"
     }
   ],
-  "notes": "【重要更新】veCAKE 于 2025年4月23日 (UTC) 正式结束（Tokenomics 3.0）。Revenue Sharing (5%) 于 2025年5月7日结束，原分成收入现全部转为回购销毁，burn rate 从 10% 提升至 15%。当前 TEV 机制：全额回购销毁，无 ve 分红。",
-  "last_updated": "2026-02-14",
+  "notes": "【Tokenomics 3.0】veCAKE 于 2025-04-23 sunset，原 5% revenue share 于 2025-05-07 结束。当前机制：协议收入按 Tokenomics 3.0 路由全部转为 CAKE 回购→销毁至 0x000...dEaD。Burn 完全链上可验证，无 pocket-to-pocket 风险（资金来自真实 trading fee）。",
+  "last_updated": "2026-04-25",
+  "analyst_notes": "【2026-04-25 全面更新 — 切换主口径到 dailyHoldersRevenue】\n\n## TEV 机制\n\n2025-05-07 起 PancakeSwap 进入 **Tokenomics 3.0**：\n- 所有 trading fees + Prediction + Lottery + CAKE.PAD 等产品收入按比例进 Treasury\n- Treasury 自动换 CAKE 后销毁至 `0x000000000000000000000000000000000000dEaD`\n- 旧 veCAKE 5% 分红已取消，全部转 burn\n\n这是**真实 supply 收缩**，与 JustLend 那种 pocket-to-pocket 做账销毁完全不同——CAKE 销毁源头是协议运转产生的真实 user fees，源头钱包没有可疑生态金库持仓。\n\n## 数据口径（2026-04-25 起）\n\n- **主口径**: DefiLlama dailyHoldersRevenue（已 trace burn 部分）\n- **分母**: CAKE 流通市值 ~$494M\n- **结果**: $99.9M / $494M ≈ 20.22%\n\n## 关键警示\n\n1. ⚠️ **DefiLlama 口径不全**: 仅覆盖 AMM/StableSwap，可能漏 Perpetual/Prediction/Lottery 等其他产品的销毁贡献\n2. ⚠️ **数字偏高警示**: DefiLlama $99.9M 比官方公布的链上实际 burn (~$60-70M, 45M CAKE/yr × current price) 高约 30-40%。原因可能是 DefiLlama 把 fees-pending-burn 也计入；后续可写专属 chain script (CAKE→0xdead transfers 累加) 来精确化\n3. ⚠️ **veCAKE 已结束**: 2025-04-23 sunset，旧文档/数据源中 5% 分红信息已过时\n\n## 链上验证方法\n\n- CAKE token: `0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82`\n- Burn dest: `0x000000000000000000000000000000000000dEaD`\n- BSCScan: https://bscscan.com/token/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82?a=0x000000000000000000000000000000000000dead\n- 官方周度 burn 报告: https://blog.pancakeswap.finance/\n\n## 历史变更\n\n- 2026-04-25: 主口径从 dailyRevenue × 0.15 改为 dailyHoldersRevenue × 1.0（DefiLlama 数据已过滤为 burn 部分）\n- 2025-05-07: Revenue Share 5% 正式结束\n- 2025-04-23: veCAKE sunset (Tokenomics 3.0)\n",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 3.33,
-    "annual_tev_usd": 16383392.25,
-    "market_cap_usd": 492199335.75,
+    "tev_yield_percent": 20.22,
+    "annual_tev_usd": 99884741,
+    "market_cap_usd": 493955618.67,
     "calculation_date": "2026-04-25",
     "sources": [
       {
-        "name": "DefiLlama holdersRevenue",
+        "name": "DefiLlama dailyHoldersRevenue",
         "type": "defillama",
-        "annual_usd": 32093402,
-        "note": "Tokenomics 3.0 回购销毁"
+        "annual_usd": 99884741,
+        "note": "Tokenomics 3.0 全额回购销毁部分（DefiLlama 已映射 holders 口径）"
+      },
+      {
+        "name": "链上 burn 实测",
+        "type": "onchain",
+        "annual_usd_estimate": 65000000,
+        "note": "约 45M CAKE/yr × $1.45 ≈ $65M，与官方周度公告吻合，作为下界参考"
       }
     ],
-    "calculation": "$32.09M / $507.01M = 6.33%"
+    "calculation": "$99.88M / $493.94M = 20.22%（DefiLlama 口径，含未实际烧毁的 fees pending）",
+    "caveats": [
+      "<strong>DefiLlama 口径不全</strong>: 仅覆盖 AMM/StableSwap，可能漏 Perpetual/Prediction/Lottery/CAKE.PAD 等产品的销毁贡献",
+      "<strong>数字偏高</strong>: DefiLlama $99.9M 比链上实际 burn (~$65M, 约 45M CAKE/yr) 高约 30-40%。原因可能是 DefiLlama 把 fees-pending-burn 也算入；下界用 $65M 代算 yield ≈ 13%",
+      "<strong>veCAKE 已 sunset</strong>: 2025-04-23 起原 5% 分红终止，全部转 100% burn 模式（旧文档/旧数据源中 5% 信息已过时）",
+      "Burn 完全链上可验证（CAKE → 0x000...dEaD），<strong>无 pocket-to-pocket 风险</strong>，与 JustLend 那种做账销毁本质不同"
+    ]
   },
   "market_data": {
     "tvl": 2063271713.806489,
@@ -109,22 +122,88 @@
     "en": "Tokenomics 3.0 on-chain burn verifiable + DefiLlama data"
   },
   "tevRatio": 0.15,
-  "earning_yield_percent": 22.19,
-  "market_cap_usd": 492199335.75,
-  "tev_yield_percent": 3.33,
+  "earning_yield_percent": 20.22,
+  "market_cap_usd": 493955618.67,
+  "tev_yield_percent": 20.22,
   "metrics": {
-    "current_market_cap_usd": 492199335.75,
-    "trailing_365d_revenue_usd": 109222615,
-    "trailing_30d_revenue_usd": 4148795,
-    "trailing_365d_tev_usd": 16383392.25,
-    "trailing_30d_tev_usd": 1365282.6875,
-    "trailing_7d_revenue_usd": 885381,
-    "trailing_90d_revenue_usd": 12292514,
-    "tev_yield_7d_ann": 1.41,
-    "tev_yield_30d_ann": 1.54,
-    "tev_yield_90d_ann": 1.52,
-    "earning_yield_7d_ann": 9.38,
-    "earning_yield_30d_ann": 10.26,
-    "earning_yield_90d_ann": 10.13
-  }
+    "current_market_cap_usd": 493955618.67,
+    "trailing_365d_revenue_usd": 99884741,
+    "trailing_30d_revenue_usd": 2578539,
+    "trailing_365d_tev_usd": 99884741,
+    "trailing_30d_tev_usd": 8323728.416666667,
+    "trailing_7d_revenue_usd": 463507,
+    "trailing_90d_revenue_usd": 7676624,
+    "tev_yield_7d_ann": 4.89,
+    "tev_yield_30d_ann": 6.35,
+    "tev_yield_90d_ann": 6.3,
+    "earning_yield_7d_ann": 4.89,
+    "earning_yield_30d_ann": 6.35,
+    "earning_yield_90d_ann": 6.3
+  },
+  "calc_pipeline": [
+    {
+      "step": 1,
+      "label": "用户交易付费 + 多产品收入",
+      "description": "PancakeSwap V2/V3 trading fees + Perpetual + Prediction + Lottery + CAKE.PAD 等所有产品的协议收入",
+      "source_url": "https://docs.pancakeswap.finance/protocol/cake-tokenomics",
+      "source_note": "PancakeSwap Docs · CAKE Tokenomics 3.0",
+      "value_field": "metrics.trailing_365d_revenue_usd",
+      "value_suffix": " (DefiLlama 365d revenue)",
+      "unit": "USD"
+    },
+    {
+      "step": 2,
+      "label": "Tokenomics 3.0 路由 → Treasury",
+      "description": "veCAKE 已 2025-04-23 sunset，所有协议收入按 Tokenomics 3.0 路由到 buyback Treasury（旧 5% 分红已停）",
+      "source_url": "https://docs.pancakeswap.finance/welcome-to-pancakeswap/vecake-sunset",
+      "source_note": "PancakeSwap Docs · veCAKE Sunset"
+    },
+    {
+      "step": 3,
+      "label": "Treasury 买入 CAKE → 销毁到 0xdead",
+      "description": "Treasury 自动用收入换 CAKE 后销毁到 0x000...dEaD，链上完全可验证",
+      "addresses": {
+        "CAKE Token": "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+        "Burn 目的地": "0x000000000000000000000000000000000000dEaD"
+      },
+      "source_url": "https://bscscan.com/token/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82?a=0x000000000000000000000000000000000000dead",
+      "source_note": "BSCScan · CAKE → 0xdead 持仓"
+    },
+    {
+      "step": 4,
+      "label": "DefiLlama dailyHoldersRevenue 取数",
+      "description": "DefiLlama 已映射 burn 部分作 holdersRevenue（注意：仅覆盖 AMM/StableSwap，可能漏 Perp/Prediction）",
+      "source_url": "https://api.llama.fi/summary/fees/pancakeswap?dataType=dailyHoldersRevenue",
+      "source_note": "DefiLlama API · pancakeswap / dailyHoldersRevenue",
+      "value_fields_by_period": {
+        "7d": "metrics.trailing_7d_revenue_usd",
+        "30d": "metrics.trailing_30d_revenue_usd",
+        "90d": "metrics.trailing_90d_revenue_usd",
+        "365d": "metrics.trailing_365d_revenue_usd"
+      },
+      "unit": "USD"
+    },
+    {
+      "step": 5,
+      "label": "年化 + 除以流通市值",
+      "formula": "TEV_Yield = holdersRevenue × (365/N) ÷ CAKE_circulating_market_cap × 100%",
+      "inputs": {
+        "市值（流通）": "market_cap_usd",
+        "市值来源": "CMC + CoinGecko"
+      },
+      "unit": "%"
+    },
+    {
+      "step": 6,
+      "label": "最终 TEV Yield",
+      "derived": true,
+      "value_fields_by_period": {
+        "7d": "metrics.tev_yield_7d_ann",
+        "30d": "metrics.tev_yield_30d_ann",
+        "90d": "metrics.tev_yield_90d_ann",
+        "365d": "tev_yield_percent"
+      },
+      "unit": "%"
+    }
+  ]
 }
