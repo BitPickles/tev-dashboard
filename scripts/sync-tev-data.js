@@ -36,8 +36,9 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'curve-dex',
     coingeckoId: 'curve-dao-token',
     cmcSlug: 'curve-dao-token',
-    tevRatio: 0.45,
-    note: '50% fees → veCRV, 但 10% 归 Treasury (2025-06 治理), 实际 ~45% 到持有人'
+    defillamaDataType: 'dailyHoldersRevenue',
+    tevRatio: 1.0,
+    note: 'DefiLlama dailyHoldersRevenue 已映射 FeeAllocator 90%→veCRV (2025-06-27 起). 注意：仅 veCRV 持有人捕获，裸 CRV ≈ 0，前端 Caveat 必须标注'
   },
   dydx: { 
     defillamaSlug: 'dydx', 
@@ -74,12 +75,13 @@ const PROTOCOL_CONFIG = {
     tevRatio: 0.25,
     note: '25% 协议收入 → SSF 回购 SYRUP (MIP-019 通过, MIP-020 延续至 H1 2026)'
   },
-  pancakeswap: { 
-    defillamaSlug: 'pancakeswap', 
+  pancakeswap: {
+    defillamaSlug: 'pancakeswap',
     coingeckoId: 'pancakeswap-token',
     cmcSlug: 'pancakeswap',
-    tevRatio: 0.15,
-    note: '15% 收入用于 CAKE 销毁 (veCAKE 已于 2025-04-23 停止, Tokenomics 3.0 转为 100% burn 模式)'
+    defillamaDataType: 'dailyHoldersRevenue',
+    tevRatio: 1.0,
+    note: 'CAKE 销毁: veCAKE 已 2025-04-23 sunset, Tokenomics 3.0 转 100% burn → 0xdead. DefiLlama holdersRevenue 已是 burn 部分, 但仅覆盖 AMM/StableSwap, 漏 Perpetual/Prediction/Lottery (前端 Caveat 标注)'
   },
   pendle: {
     defillamaSlug: 'pendle',
@@ -204,9 +206,11 @@ async function fetchJson(url) {
 }
 
 // 获取 DefiLlama Revenue
-async function getDefillamaRevenue(slug) {
+// dataType: 'dailyRevenue' (默认, 协议总收入) | 'dailyHoldersRevenue' (已是持有人捕获的部分)
+// 选 'dailyHoldersRevenue' 时，PROTOCOL_CONFIG 的 tevRatio 应设为 1.0（数据本身就是 TEV）
+async function getDefillamaRevenue(slug, dataType = 'dailyRevenue') {
   try {
-    const data = await fetchJson(`https://api.llama.fi/summary/fees/${slug}?dataType=dailyRevenue`);
+    const data = await fetchJson(`https://api.llama.fi/summary/fees/${slug}?dataType=${dataType}`);
     const chart = data.totalDataChart || [];
     const sumSlice = (n) => chart.slice(-n).reduce((s, d) => s + (d[1] || 0), 0);
     return {
@@ -215,9 +219,10 @@ async function getDefillamaRevenue(slug) {
       revenue90d:  chart.length >= 30  ? sumSlice(90)  : null,
       revenue365d: sumSlice(365),
       chartLength: chart.length,
+      dataType,
     };
   } catch (e) {
-    console.warn(`  ⚠️ DefiLlama ${slug}: ${e.message}`);
+    console.warn(`  ⚠️ DefiLlama ${slug}/${dataType}: ${e.message}`);
     return null;
   }
 }
@@ -905,8 +910,8 @@ async function main() {
       continue;
     }
     
-    // 获取 Revenue
-    const revenueData = await getDefillamaRevenue(config.defillamaSlug);
+    // 获取 Revenue（部分协议指定 dailyHoldersRevenue，搭配 tevRatio: 1.0）
+    const revenueData = await getDefillamaRevenue(config.defillamaSlug, config.defillamaDataType || 'dailyRevenue');
     if (!revenueData) {
       errors++;
       continue;
