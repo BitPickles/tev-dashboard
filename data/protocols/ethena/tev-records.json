@@ -1,6 +1,6 @@
 {
   "protocol": "ethena",
-  "updated_at": "2026-04-24T13:11:48.632Z",
+  "updated_at": "2026-04-25T01:12:51.677Z",
   "data_source": "DefiLlama API (dailyHoldersRevenue)",
   "data_source_url": "https://api.llama.fi/summary/fees/ethena?dataType=dailyRevenue",
   "records": [
@@ -502,7 +502,7 @@
       "date": "2026-04-01",
       "type": "aggregate",
       "mechanism": "sENA Revenue Share",
-      "amount_usd": 163962,
+      "amount_usd": 161601,
       "period": "2026-04",
       "days_with_data": 23,
       "source": {
@@ -516,10 +516,10 @@
     }
   ],
   "summary": {
-    "total_tev_usd": 331931118,
-    "total_30d_usd": 210534,
+    "total_tev_usd": 331928757,
+    "total_30d_usd": 210572,
     "by_mechanism": {
-      "staking_reward": 331931118
+      "staking_reward": 331928757
     },
     "by_period": {
       "2023-Q4": 85192548,
@@ -532,7 +532,7 @@
       "2025-Q3": 10183965,
       "2025-Q4": 463262,
       "2026-Q1": 655422,
-      "2026-Q2": 163962
+      "2026-Q2": 161601
     }
   }
 }

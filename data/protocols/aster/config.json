@@ -79,8 +79,8 @@
   "tev_data": {
     "has_tev": true,
     "tev_yield_percent": 1.47,
-    "market_cap_usd": 1651340777.0222797,
-    "calculation_date": "2026-04-24",
+    "market_cap_usd": 1642302949.0262399,
+    "calculation_date": "2026-04-25",
     "sources": [
       {
         "name": "DefiLlama holdersRevenue",
@@ -93,10 +93,10 @@
     "validation": {
       "method": "A 口径：Stage5/6 buyback wallet 累积 ASTER × 当前价（treasury buyback，非真 burn）",
       "buy_7d_aster": 0,
-      "buy_30d_aster": 262249,
-      "buy_90d_aster": 20425842,
+      "buy_30d_aster": 142089,
+      "buy_90d_aster": 20183714,
       "buy_365d_aster": 36201168,
-      "aster_price_usd": 0.6713,
+      "aster_price_usd": 0.6676,
       "data_days": 95,
       "data_range": {
         "start": "2025-12-23",
@@ -121,19 +121,19 @@
   },
   "tevRatio": 0.7,
   "earning_yield_percent": 1.47,
-  "market_cap_usd": 1651340777.0222797,
+  "market_cap_usd": 1642302949.0262399,
   "tev_yield_percent": 1.47,
   "metrics": {
     "tev_yield_7d_ann": 0,
-    "tev_yield_30d_ann": 0.13,
-    "tev_yield_90d_ann": 3.37,
+    "tev_yield_30d_ann": 0.07,
+    "tev_yield_90d_ann": 3.33,
     "earning_yield_7d_ann": 0,
-    "earning_yield_30d_ann": 0.13,
-    "earning_yield_90d_ann": 3.37,
+    "earning_yield_30d_ann": 0.07,
+    "earning_yield_90d_ann": 3.33,
     "trailing_7d_revenue_usd": 0,
-    "trailing_30d_revenue_usd": 176041,
-    "trailing_90d_revenue_usd": 13711393,
-    "trailing_365d_revenue_usd": 24301002
+    "trailing_30d_revenue_usd": 94859,
+    "trailing_90d_revenue_usd": 13474705,
+    "trailing_365d_revenue_usd": 24168002
   },
   "calc_pipeline": [
     {
