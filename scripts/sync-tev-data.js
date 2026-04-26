@@ -902,12 +902,14 @@ async function main() {
       continue;
     }
 
-    // ether.fi 专属：链上 sETHFI 入金（上界口径，含用户 stake）
-    // 数据源：data/protocols/etherfi/buyback-history.json (update-etherfi-tev.py 维护)
+    // ether.fi 专属：链上 buyback 路径无法识别 → TEV 归零（unverified）
+    // Boss 2026-04-26 决策：类似 JustLend，链上看不到协议宣传的 buyback
+    // 链上事实：Foundation Multisig 0x7A6A 365d 0 inflow，sETHFI 入金混入用户 stake，
+    //           Uni V3 主池没有大单 buyback 模式，多 Gnosis Safe 间内部腾挪非市场买入
     if (key === 'etherfi') {
       const protocol = protocols[key];
       if (!protocol) continue;
-      console.log(`📊 etherfi... (链上 sETHFI inflow 上界口径)`);
+      console.log(`📊 etherfi... (链上 buyback 路径不可识别 → TEV unverified)`);
       const histPath = path.join(__dirname, '../data/protocols/etherfi/buyback-history.json');
       let hist = null;
       try { hist = JSON.parse(fs.readFileSync(histPath, 'utf8')); } catch (e) {
@@ -918,35 +920,43 @@ async function main() {
       if (!protocol.metrics) protocol.metrics = {};
       protocol.market_cap_usd = mcap;
       protocol.metrics.current_market_cap_usd = mcap;
-      protocol.metrics.tev_yield_7d_ann   = sm['7d']?.yield_pct ?? 0;
-      protocol.metrics.tev_yield_30d_ann  = sm['30d']?.yield_pct ?? 0;
-      protocol.metrics.tev_yield_90d_ann  = sm['90d']?.yield_pct ?? 0;
-      protocol.tev_yield_percent          = sm['365d']?.yield_pct ?? 0;
-      protocol.earning_yield_percent      = protocol.tev_yield_percent;
-      protocol.metrics.earning_yield_7d_ann  = protocol.metrics.tev_yield_7d_ann;
-      protocol.metrics.earning_yield_30d_ann = protocol.metrics.tev_yield_30d_ann;
-      protocol.metrics.earning_yield_90d_ann = protocol.metrics.tev_yield_90d_ann;
-      protocol.metrics.trailing_7d_revenue_usd   = sm['7d']?.usd ?? 0;
-      protocol.metrics.trailing_30d_revenue_usd  = sm['30d']?.usd ?? 0;
-      protocol.metrics.trailing_90d_revenue_usd  = sm['90d']?.usd ?? 0;
-      protocol.metrics.trailing_365d_revenue_usd = sm['365d']?.usd ?? 0;
-      protocol.metrics.trailing_365d_tev_usd     = sm['365d']?.usd ?? 0;
-      protocol.tevStatus = 'active';
-      protocol.tevRatio = 1.0;
-      protocol.confidence = 'medium';  // upper bound, 含用户 stake
+      // TEV 全部归零（unverified）
+      protocol.metrics.tev_yield_7d_ann   = 0;
+      protocol.metrics.tev_yield_30d_ann  = 0;
+      protocol.metrics.tev_yield_90d_ann  = 0;
+      protocol.tev_yield_percent          = 0;
+      protocol.earning_yield_percent      = 0;
+      protocol.metrics.earning_yield_7d_ann  = 0;
+      protocol.metrics.earning_yield_30d_ann = 0;
+      protocol.metrics.earning_yield_90d_ann = 0;
+      protocol.metrics.trailing_7d_revenue_usd   = 0;
+      protocol.metrics.trailing_30d_revenue_usd  = 0;
+      protocol.metrics.trailing_90d_revenue_usd  = 0;
+      protocol.metrics.trailing_365d_revenue_usd = 0;
+      protocol.metrics.trailing_365d_tev_usd     = 0;
+      protocol.tevStatus = 'none';
+      protocol.tevRatio = null;
+      protocol.confidence = 'low';
+      // 保留全部链上调研事实作为"供给侧记录"，未来如发现真实 executor 可恢复
       protocol.validation = protocol.validation || {};
-      protocol.validation.method = 'sETHFI inflow upper bound (含用户 stake)';
-      protocol.validation.sethfi_inflow_7d_ethfi   = sm['7d']?.ethfi;
-      protocol.validation.sethfi_inflow_30d_ethfi  = sm['30d']?.ethfi;
-      protocol.validation.sethfi_inflow_90d_ethfi  = sm['90d']?.ethfi;
-      protocol.validation.sethfi_inflow_365d_ethfi = sm['365d']?.ethfi;
-      protocol.validation.foundation_multisig_365d = hist.foundation_multisig_365d_inflow_ethfi;
+      protocol.validation.method = 'TEV unverified (链上 buyback 路径不可识别)';
+      protocol.validation.sethfi_inflow_365d_ethfi_upper = sm['365d']?.ethfi;
+      protocol.validation.sethfi_inflow_365d_usd_upper   = sm['365d']?.usd;
+      protocol.validation.foundation_multisig_365d_inflow = hist.foundation_multisig_365d_inflow_ethfi;
       protocol.validation.foundation_multisig_status = hist.foundation_multisig_status;
       protocol.validation.ethfi_price_usd = hist.ethfi_price_usd;
-      protocol.validation.caveats = hist.caveats || [];
-      console.log(`  sETHFI 入金 365d: ${(sm['365d']?.ethfi || 0).toLocaleString()} ETHFI = $${((sm['365d']?.usd||0)/1e6).toFixed(1)}M`);
-      console.log(`  Foundation Multisig 365d: ${hist.foundation_multisig_365d_inflow_ethfi || 0} ETHFI (${hist.foundation_multisig_status})`);
-      console.log(`  TEV Yield (上界): 7d=${sm['7d']?.yield_pct}% 30d=${sm['30d']?.yield_pct}% 90d=${sm['90d']?.yield_pct}% 365d=${sm['365d']?.yield_pct}%`);
+      protocol.validation.tev_unverified_reason = 'DAO Proposal #11 宣称的 Withdrawal Revenue Buyback 链上不可识别：Foundation Multisig 0x7A6A41F353B3002751d94118aA7f4935dA39bB53 365d 入金=0；sETHFI 合约 365d 入金 128M ETHFI 含用户 stake 无法分离；Uni V3 主池无大单 buyback 模式；Foundation 出账只见 Gnosis Safe 间内部腾挪（非市场买入）';
+      protocol.validation.caveats = [
+        'Foundation Multisig 0x7A6A41F353B3002751d94118aA7f4935dA39bB53 过去 365 天 ETHFI 入金 = 0（链上确证）',
+        'sETHFI 合约 0x86B5780b606940Eb59A062aA85a07959518c0161 365d 入金 128M ETHFI from 420 unique senders，包含 (a) 用户自主 stake (b) 协议侧 distribution (c) LayerZero 跨链 bridge - 无法分离三者',
+        'ETHFI/WETH Uni V3 池 (0x06f00544...) 30d top 买家是 routing bot (0xbdb3ba9f, 745 笔小单, 持仓 ~2k ETHFI), 不是 buyback executor',
+        'Foundation Multisig → 0x5ec5e6b4... → 0xa000244b... → 0x8f08b704... 多个 Gnosis Safe 间转账 = 内部 treasury 腾挪, 非协议市场 buyback',
+        '可能解释: (a) buyback 实际未执行; (b) 在 Arbitrum/Base L2 执行; (c) 路径混入 sETHFI 入金中无法识别. 我们倾向 (a) 或 (c)',
+        '如果未来发现真实 buyback executor 地址 (协议团队公开 / 链上模式变化), 可立即恢复 TEV 计算',
+      ];
+      console.log(`  Foundation Multisig 365d 入金: 0 ETHFI ← 与研究指向不符`);
+      console.log(`  sETHFI 上界 (含用户 stake) 365d: ${(sm['365d']?.ethfi || 0).toLocaleString()} ETHFI = $${((sm['365d']?.usd||0)/1e6).toFixed(1)}M`);
+      console.log(`  TEV Yield: 0% (unverified, 链上 buyback 路径不可识别)`);
       updated++;
       continue;
     }
