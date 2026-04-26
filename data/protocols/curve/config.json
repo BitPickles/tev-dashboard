@@ -148,9 +148,9 @@
   "last_updated": "2026-04-25",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 2.58,
-    "annual_tev_usd": 8661176,
-    "market_cap_usd": 335828736.06,
+    "tev_yield_percent": 2.56,
+    "annual_tev_usd": 8658523,
+    "market_cap_usd": 338485704.49,
     "calculation_date": "2026-04-26",
     "sources": [
       {
@@ -160,7 +160,7 @@
         "note": "FeeAllocator 90% → veCRV (Fee Distributor 0xA464...8922Dc 周度分发)"
       }
     ],
-    "calculation": "$8.66M / $340.36M = 2.55%",
+    "calculation": "$8.66M / $335.83M = 2.58%",
     "caveats": [
       "<strong>veCRV-only</strong>：本 TEV 仅 veCRV（锁仓 CRV）持有人捕获，裸 CRV 持有人 ≈ 0",
       "Bribes（Convex / Stake DAO 投票贿选）<strong>不计入</strong>本 TEV——那是来自外部协议买票，非 Curve 自身分润",
@@ -174,38 +174,35 @@
     "en": "veCRV fee distribution contract on-chain verifiable + DefiLlama validated"
   },
   "tevRatio": 0.9,
-  "earning_yield_percent": 2.58,
-  "market_cap_usd": 335828736.06,
+  "earning_yield_percent": 2.56,
+  "market_cap_usd": 338485704.49,
   "metrics": {
     "trailing_365d_fees_usd": 55189562,
-    "trailing_365d_revenue_usd": 8661176,
+    "trailing_365d_revenue_usd": 8658523,
     "trailing_365d_holders_revenue_usd": 13304425,
     "trailing_30d_fees_usd": 4978284,
-    "trailing_30d_revenue_usd": 504740,
+    "trailing_30d_revenue_usd": 495708,
     "trailing_30d_holders_revenue_usd": 691740,
-    "current_market_cap_usd": 335828736.06,
-    "trailing_365d_tev_usd": 8661176,
-    "trailing_30d_tev_usd": 721764.6666666666,
-    "trailing_7d_revenue_usd": 220387,
-    "trailing_90d_revenue_usd": 1600872,
-    "tev_yield_7d_ann": 3.42,
-    "tev_yield_30d_ann": 1.83,
-    "tev_yield_90d_ann": 1.93,
-    "earning_yield_7d_ann": 3.42,
-    "earning_yield_30d_ann": 1.83,
-    "earning_yield_90d_ann": 1.93
+    "current_market_cap_usd": 338485704.49,
+    "trailing_365d_tev_usd": 8658523,
+    "trailing_30d_tev_usd": 721543.5833333334,
+    "trailing_7d_revenue_usd": 164945,
+    "trailing_90d_revenue_usd": 1595597,
+    "tev_yield_7d_ann": 2.54,
+    "tev_yield_30d_ann": 1.78,
+    "tev_yield_90d_ann": 1.91,
+    "earning_yield_7d_ann": 2.54,
+    "earning_yield_30d_ann": 1.78,
+    "earning_yield_90d_ann": 1.91
   },
-  "tev_yield_percent": 2.58,
+  "tev_yield_percent": 2.56,
   "calc_pipeline": [
     {
       "step": 1,
-      "label": "用户交易付费",
-      "description": "Curve 各池 trading fee 收取，约 50% 给 LP / 50% 进 DAO（admin fee）",
+      "label": "Trading fees → admin fee",
+      "description": "Curve 各池 trading fee 收取后，50% 给 LP / 50% 作为 admin fee 进 DAO。具体数字看后面 DefiLlama 取数步骤。",
       "source_url": "https://resources.curve.finance/vecrv/fee-collection-distribution/",
-      "source_note": "Curve Resources · Fee Collection &amp; Distribution",
-      "value_field": "metrics.trailing_365d_fees_usd",
-      "value_suffix": " (365d total fees)",
-      "unit": "USD"
+      "source_note": "Curve Resources · Fee Collection &amp; Distribution"
     },
     {
       "step": 2,

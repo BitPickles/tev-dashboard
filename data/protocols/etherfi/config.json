@@ -88,9 +88,9 @@
   "analyst_notes": "【2026-04-25 全面更新】\n\n## TEV 机制（仅 ETHFI 持有人捕获的部分）\n\nether.fi 价值流必须先画清楚：\n\n```\nUser eETH 提现 → 提现费\n              → Foundation Multisig (0x7A6A...)\n              → 月度回购 ETHFI（市场买入）\n              → 分配给 sETHFI 质押者\n```\n\n关键：只有 stake ETHFI 拿 sETHFI 才接收回购，裸 ETHFI 不直接拿。\n\n## 数据口径\n\n- **主口径**: DefiLlama dailyRevenue × tevRatio 0.25\n  - 365d revenue $55.7M × 0.25 = $13.9M\n- **DefiLlama dailyHoldersRevenue 校验**: $15.5M（接近）\n- **分母**: ETHFI 流通市值 ~$729M（用流通而非 FDV，因解锁仍在）\n- **结果**: $13.9M / $729M ≈ 1.9%\n\n## 警示\n\n1. ⚠️ eETH 收益 ≠ ETHFI TEV：易混淆\n2. ⚠️ $50M Treasury Buyback: pocket-to-pocket 嫌疑，需定期核 Multisig 链上是否真转出执行\n3. ⚠️ 裸 ETHFI 不参与：必须 stake → sETHFI\n4. ⚠️ 流通 vs FDV：本估值用流通；若 FDV $1.04B，yield 会降到 1.3%\n\n## 链上验证方法\n\n- Foundation Multisig: 0x7A6A41F353B3002751d94118aA7f4935dA39bB53（看 ETH/USDT 转出 + ETHFI 流入）\n- 月度 buyback tx：在 Etherscan 看 Multisig outgoing\n- $50M Treasury 是否启动：核国库地址有无大额 USDC/USDT 转出\n\n## 历史变更\n\n- 2026-04-25: tev_yield 修正到 1.9%（之前一度算成 67.48%——分母用了 $343M 旧市值）；加 Caveats\n- 2025-10-30: $50M Treasury Buyback 提案通过\n- 2025-04-25: Withdrawal Revenue Buyback 启动（DAO Proposal #11）\n",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 1.79,
-    "annual_tev_usd": 13911604.75,
-    "market_cap_usd": 775715537.54,
+    "tev_yield_percent": 1.84,
+    "annual_tev_usd": 13898431.25,
+    "market_cap_usd": 756156203.5,
     "calculation_date": "2026-04-26",
     "sources": [
       {
@@ -106,7 +106,7 @@
         "note": "DefiLlama 自身标注的持有人部分（独立校验，与上方接近）"
       }
     ],
-    "calculation": "$13.91M / $731.54M = 1.90%",
+    "calculation": "$13.91M / $775.72M = 1.79%",
     "caveats": [
       "<strong>eETH staking 收益 ≠ ETHFI TEV</strong>：eETH 持有人拿 ~3.2% ETH 原生收益，ETHFI TEV 是 sETHFI 质押者从月度回购分到的部分，不要混淆",
       "<strong>$50M Treasury Buyback</strong>（价格&lt;$3 启用）资金来自 Foundation 国库，pocket-to-pocket 嫌疑——需定期核 Multisig 链上是否真转出执行",
@@ -124,23 +124,23 @@
     "en": "Buyback transactions on-chain trackable, but ratio only from blog posts, no governance mandate"
   },
   "tevRatio": 0.302,
-  "earning_yield_percent": 7.17,
-  "market_cap_usd": 775715537.54,
-  "tev_yield_percent": 1.79,
+  "earning_yield_percent": 7.35,
+  "market_cap_usd": 756156203.5,
+  "tev_yield_percent": 1.84,
   "metrics": {
-    "current_market_cap_usd": 775715537.54,
-    "trailing_365d_revenue_usd": 55646419,
-    "trailing_30d_revenue_usd": 2232870,
-    "trailing_365d_tev_usd": 13911604.75,
-    "trailing_30d_tev_usd": 1159300.3958333333,
-    "trailing_7d_revenue_usd": 239173,
-    "trailing_90d_revenue_usd": 9006311,
-    "tev_yield_7d_ann": 0.4,
-    "tev_yield_30d_ann": 0.88,
-    "tev_yield_90d_ann": 1.18,
-    "earning_yield_7d_ann": 1.61,
-    "earning_yield_30d_ann": 3.5,
-    "earning_yield_90d_ann": 4.71
+    "current_market_cap_usd": 756156203.5,
+    "trailing_365d_revenue_usd": 55593725,
+    "trailing_30d_revenue_usd": 2158436,
+    "trailing_365d_tev_usd": 13898431.25,
+    "trailing_30d_tev_usd": 1158202.6041666667,
+    "trailing_7d_revenue_usd": 244117,
+    "trailing_90d_revenue_usd": 8887872,
+    "tev_yield_7d_ann": 0.42,
+    "tev_yield_30d_ann": 0.87,
+    "tev_yield_90d_ann": 1.19,
+    "earning_yield_7d_ann": 1.68,
+    "earning_yield_30d_ann": 3.47,
+    "earning_yield_90d_ann": 4.77
   },
   "calc_pipeline": [
     {
