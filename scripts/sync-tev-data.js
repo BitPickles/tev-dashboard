@@ -194,7 +194,8 @@ const PROTOCOL_CONFIG = {
 };
 
 // 不更新市值/年度TEV的协议（有独立数据源），但仍拉 DefiLlama 收入算多维度 yield
-const SKIP_PROTOCOLS = ['aster', 'hype', 'bnb', 'uniswap', 'bgb', 'okb'];
+// 2026-04-26: pancakeswap/etherfi/curve 改链上口径，不再走 generic DefiLlama
+const SKIP_PROTOCOLS = ['aster', 'hype', 'bnb', 'uniswap', 'bgb', 'okb', 'pancakeswap', 'etherfi', 'curve'];
 
 const DATA_FILE = path.join(__dirname, '../data/all-protocols.json');
 
@@ -851,6 +852,152 @@ async function main() {
       console.log(`  Burn UNI: 7d=${Math.round(burn7d_uni).toLocaleString()} / 30d=${Math.round(burn30d_uni).toLocaleString()} / 90d=${Math.round(burn90d_uni).toLocaleString()} / 365d=${Math.round(burn365d_uni).toLocaleString()}`);
       console.log(`  Retro 排除: ${(burnHist.retro_events || []).length} 次, 共 ${Math.round((burnHist.retro_events || []).reduce((s, r) => s + (r.amount || 0), 0)/1e6)}M UNI`);
       console.log(`  TEV Yield: 7d=${tev_7d}% 30d=${tev_30d}% 90d=${tev_90d}% 365d=${tev_365d}%`);
+      updated++;
+      continue;
+    }
+
+    // PancakeSwap 专属：链上 net deflation 口径 (totalSupply - dead snapshot diff)
+    // 数据源：data/protocols/pancakeswap/burn-history.json (update-pancakeswap-tev.py 维护)
+    if (key === 'pancakeswap') {
+      const protocol = protocols[key];
+      if (!protocol) continue;
+      console.log(`📊 pancakeswap... (链上 net deflation 口径)`);
+      const histPath = path.join(__dirname, '../data/protocols/pancakeswap/burn-history.json');
+      let hist = null;
+      try { hist = JSON.parse(fs.readFileSync(histPath, 'utf8')); } catch (e) {
+        console.warn(`  ⚠️ burn-history.json 读取失败: ${e.message}`); continue;
+      }
+      // 注意：PancakeSwap script 里键名是 net_burns 且 key 用数字 "7","30","90","365"
+      const sm = hist.net_burns || {};
+      const mcap = hist.market_cap_usd || protocol.market_cap_usd || 0;
+      if (!protocol.metrics) protocol.metrics = {};
+      protocol.market_cap_usd = mcap;
+      protocol.metrics.current_market_cap_usd = mcap;
+      protocol.metrics.tev_yield_7d_ann   = sm['7']?.yield_pct ?? 0;
+      protocol.metrics.tev_yield_30d_ann  = sm['30']?.yield_pct ?? 0;
+      protocol.metrics.tev_yield_90d_ann  = sm['90']?.yield_pct ?? 0;
+      protocol.tev_yield_percent          = sm['365']?.yield_pct ?? 0;
+      protocol.earning_yield_percent      = protocol.tev_yield_percent;
+      protocol.metrics.earning_yield_7d_ann  = protocol.metrics.tev_yield_7d_ann;
+      protocol.metrics.earning_yield_30d_ann = protocol.metrics.tev_yield_30d_ann;
+      protocol.metrics.earning_yield_90d_ann = protocol.metrics.tev_yield_90d_ann;
+      protocol.metrics.trailing_7d_revenue_usd   = sm['7']?.usd ?? 0;
+      protocol.metrics.trailing_30d_revenue_usd  = sm['30']?.usd ?? 0;
+      protocol.metrics.trailing_90d_revenue_usd  = sm['90']?.usd ?? 0;
+      protocol.metrics.trailing_365d_revenue_usd = sm['365']?.usd ?? 0;
+      protocol.metrics.trailing_365d_tev_usd     = sm['365']?.usd ?? 0;
+      protocol.tevStatus = 'active';
+      protocol.tevRatio = 1.0;
+      protocol.confidence = 'high';
+      protocol.validation = protocol.validation || {};
+      protocol.validation.method = 'snapshot diff (totalSupply - dead) for net deflation';
+      protocol.validation.net_burn_7d_cake   = sm['7']?.net_cake;
+      protocol.validation.net_burn_30d_cake  = sm['30']?.net_cake;
+      protocol.validation.net_burn_90d_cake  = sm['90']?.net_cake;
+      protocol.validation.net_burn_365d_cake = sm['365']?.net_cake;
+      protocol.validation.cake_price_usd = hist.cake_price_usd;
+      console.log(`  net deflation 365d: ${(sm['365']?.net_cake || 0).toLocaleString()} CAKE = $${((sm['365']?.usd||0)/1e6).toFixed(1)}M`);
+      console.log(`  TEV Yield: 7d=${sm['7']?.yield_pct}% 30d=${sm['30']?.yield_pct}% 90d=${sm['90']?.yield_pct}% 365d=${sm['365']?.yield_pct}%`);
+      updated++;
+      continue;
+    }
+
+    // ether.fi 专属：链上 sETHFI 入金（上界口径，含用户 stake）
+    // 数据源：data/protocols/etherfi/buyback-history.json (update-etherfi-tev.py 维护)
+    if (key === 'etherfi') {
+      const protocol = protocols[key];
+      if (!protocol) continue;
+      console.log(`📊 etherfi... (链上 sETHFI inflow 上界口径)`);
+      const histPath = path.join(__dirname, '../data/protocols/etherfi/buyback-history.json');
+      let hist = null;
+      try { hist = JSON.parse(fs.readFileSync(histPath, 'utf8')); } catch (e) {
+        console.warn(`  ⚠️ buyback-history.json 读取失败: ${e.message}`); continue;
+      }
+      const sm = hist.summary || {};
+      const mcap = hist.market_cap_usd || protocol.market_cap_usd || 0;
+      if (!protocol.metrics) protocol.metrics = {};
+      protocol.market_cap_usd = mcap;
+      protocol.metrics.current_market_cap_usd = mcap;
+      protocol.metrics.tev_yield_7d_ann   = sm['7d']?.yield_pct ?? 0;
+      protocol.metrics.tev_yield_30d_ann  = sm['30d']?.yield_pct ?? 0;
+      protocol.metrics.tev_yield_90d_ann  = sm['90d']?.yield_pct ?? 0;
+      protocol.tev_yield_percent          = sm['365d']?.yield_pct ?? 0;
+      protocol.earning_yield_percent      = protocol.tev_yield_percent;
+      protocol.metrics.earning_yield_7d_ann  = protocol.metrics.tev_yield_7d_ann;
+      protocol.metrics.earning_yield_30d_ann = protocol.metrics.tev_yield_30d_ann;
+      protocol.metrics.earning_yield_90d_ann = protocol.metrics.tev_yield_90d_ann;
+      protocol.metrics.trailing_7d_revenue_usd   = sm['7d']?.usd ?? 0;
+      protocol.metrics.trailing_30d_revenue_usd  = sm['30d']?.usd ?? 0;
+      protocol.metrics.trailing_90d_revenue_usd  = sm['90d']?.usd ?? 0;
+      protocol.metrics.trailing_365d_revenue_usd = sm['365d']?.usd ?? 0;
+      protocol.metrics.trailing_365d_tev_usd     = sm['365d']?.usd ?? 0;
+      protocol.tevStatus = 'active';
+      protocol.tevRatio = 1.0;
+      protocol.confidence = 'medium';  // upper bound, 含用户 stake
+      protocol.validation = protocol.validation || {};
+      protocol.validation.method = 'sETHFI inflow upper bound (含用户 stake)';
+      protocol.validation.sethfi_inflow_7d_ethfi   = sm['7d']?.ethfi;
+      protocol.validation.sethfi_inflow_30d_ethfi  = sm['30d']?.ethfi;
+      protocol.validation.sethfi_inflow_90d_ethfi  = sm['90d']?.ethfi;
+      protocol.validation.sethfi_inflow_365d_ethfi = sm['365d']?.ethfi;
+      protocol.validation.foundation_multisig_365d = hist.foundation_multisig_365d_inflow_ethfi;
+      protocol.validation.foundation_multisig_status = hist.foundation_multisig_status;
+      protocol.validation.ethfi_price_usd = hist.ethfi_price_usd;
+      protocol.validation.caveats = hist.caveats || [];
+      console.log(`  sETHFI 入金 365d: ${(sm['365d']?.ethfi || 0).toLocaleString()} ETHFI = $${((sm['365d']?.usd||0)/1e6).toFixed(1)}M`);
+      console.log(`  Foundation Multisig 365d: ${hist.foundation_multisig_365d_inflow_ethfi || 0} ETHFI (${hist.foundation_multisig_status})`);
+      console.log(`  TEV Yield (上界): 7d=${sm['7d']?.yield_pct}% 30d=${sm['30d']?.yield_pct}% 90d=${sm['90d']?.yield_pct}% 365d=${sm['365d']?.yield_pct}%`);
+      updated++;
+      continue;
+    }
+
+    // Curve 专属：链上 Community Fund Treasury × 9 推算 + veCRV TVL
+    // 数据源：data/protocols/curve/fee-history.json (update-curve-tev.py 维护)
+    if (key === 'curve') {
+      const protocol = protocols[key];
+      if (!protocol) continue;
+      console.log(`📊 curve... (链上 FeeAllocator × 9 推算口径)`);
+      const histPath = path.join(__dirname, '../data/protocols/curve/fee-history.json');
+      let hist = null;
+      try { hist = JSON.parse(fs.readFileSync(histPath, 'utf8')); } catch (e) {
+        console.warn(`  ⚠️ fee-history.json 读取失败: ${e.message}`); continue;
+      }
+      const sm = hist.summary || {};
+      const mcap = hist.crv_market_cap_usd || protocol.market_cap_usd || 0;
+      if (!protocol.metrics) protocol.metrics = {};
+      protocol.market_cap_usd = mcap;
+      protocol.metrics.current_market_cap_usd = mcap;
+      // 默认主表显示 nominal yield (CRV 全市值分母)
+      protocol.metrics.tev_yield_7d_ann   = sm['7d']?.yield_pct_nominal ?? 0;
+      protocol.metrics.tev_yield_30d_ann  = sm['30d']?.yield_pct_nominal ?? 0;
+      protocol.metrics.tev_yield_90d_ann  = sm['90d']?.yield_pct_nominal ?? 0;
+      protocol.tev_yield_percent          = sm['365d']?.yield_pct_nominal ?? 0;
+      protocol.earning_yield_percent      = protocol.tev_yield_percent;
+      protocol.metrics.earning_yield_7d_ann  = protocol.metrics.tev_yield_7d_ann;
+      protocol.metrics.earning_yield_30d_ann = protocol.metrics.tev_yield_30d_ann;
+      protocol.metrics.earning_yield_90d_ann = protocol.metrics.tev_yield_90d_ann;
+      protocol.metrics.trailing_7d_revenue_usd   = sm['7d']?.vecrv_tev_usd ?? 0;
+      protocol.metrics.trailing_30d_revenue_usd  = sm['30d']?.vecrv_tev_usd ?? 0;
+      protocol.metrics.trailing_90d_revenue_usd  = sm['90d']?.vecrv_tev_usd ?? 0;
+      protocol.metrics.trailing_365d_revenue_usd = sm['365d']?.vecrv_tev_usd ?? 0;
+      protocol.metrics.trailing_365d_tev_usd     = sm['365d']?.vecrv_tev_usd ?? 0;
+      protocol.tevStatus = 'active';
+      protocol.tevRatio = 0.9;  // FeeAllocator 90% to veCRV
+      protocol.confidence = 'high';
+      protocol.validation = protocol.validation || {};
+      protocol.validation.method = 'Community Fund Treasury crvUSD inflow × 9 (FeeAllocator 90/10)';
+      protocol.validation.crv_locked_in_vecrv = hist.crv_locked_in_vecrv;
+      protocol.validation.vecrv_tvl_usd = hist.vecrv_tvl_usd;
+      protocol.validation.lock_ratio_pct = hist.lock_ratio_pct;
+      // 双口径：nominal vs veCRV-only
+      protocol.validation.yield_vecrv_only_7d  = sm['7d']?.yield_pct_vecrv_only;
+      protocol.validation.yield_vecrv_only_30d = sm['30d']?.yield_pct_vecrv_only;
+      protocol.validation.yield_vecrv_only_90d = sm['90d']?.yield_pct_vecrv_only;
+      protocol.validation.yield_vecrv_only_365d = sm['365d']?.yield_pct_vecrv_only;
+      protocol.validation.caveats = hist.caveats || [];
+      console.log(`  veCRV TEV 365d: $${((sm['365d']?.vecrv_tev_usd||0)/1e6).toFixed(2)}M (Treasury × 9)`);
+      console.log(`  CRV 锁仓: ${(hist.crv_locked_in_vecrv||0).toLocaleString()} (${hist.lock_ratio_pct}% of circulating)`);
+      console.log(`  TEV Yield: nominal 365d=${sm['365d']?.yield_pct_nominal}% / veCRV-only=${sm['365d']?.yield_pct_vecrv_only}%`);
       updated++;
       continue;
     }

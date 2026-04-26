@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-26T07:49:19.572Z",
+  "generated_at": "2026-04-26T08:29:40.007Z",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -234,28 +234,45 @@
         "en": "veCRV fee distribution contract on-chain verifiable + DefiLlama validated"
       },
       "tevStatus": "active",
-      "tev_yield_percent": 2.56,
-      "market_cap_usd": 338485704.49,
+      "tev_yield_percent": 2.41,
+      "market_cap_usd": 341077593.2286072,
       "tvl": 1808019756.5740514,
       "tevRatio": 0.9,
-      "earning_yield_percent": 2.56,
+      "earning_yield_percent": 2.41,
       "tevRatioNote": "DAO 收入分配：约 90% -> veCRV, 10% -> Treasury（FeeAllocator），scrvUSD 流向比例动态 5%-50%（FeeSplitter）",
       "metrics": {
-        "trailing_365d_revenue_usd": 8658523,
+        "trailing_365d_revenue_usd": 8226027,
         "trailing_365d_holders_revenue_usd": 13304425,
-        "trailing_30d_revenue_usd": 495708,
+        "trailing_30d_revenue_usd": 372315,
         "trailing_30d_holders_revenue_usd": 691740,
-        "current_market_cap_usd": 338485704.49,
-        "trailing_365d_tev_usd": 8658523,
+        "current_market_cap_usd": 341077593.2286072,
+        "trailing_365d_tev_usd": 8226027,
         "trailing_30d_tev_usd": 721543.5833333334,
-        "trailing_7d_revenue_usd": 164945,
-        "trailing_90d_revenue_usd": 1595597,
-        "tev_yield_7d_ann": 2.54,
-        "tev_yield_30d_ann": 1.78,
-        "tev_yield_90d_ann": 1.91,
-        "earning_yield_7d_ann": 2.54,
-        "earning_yield_30d_ann": 1.78,
-        "earning_yield_90d_ann": 1.91
+        "trailing_7d_revenue_usd": 177527,
+        "trailing_90d_revenue_usd": 1970764,
+        "tev_yield_7d_ann": 2.71,
+        "tev_yield_30d_ann": 1.33,
+        "tev_yield_90d_ann": 2.34,
+        "earning_yield_7d_ann": 2.71,
+        "earning_yield_30d_ann": 1.33,
+        "earning_yield_90d_ann": 2.34
+      },
+      "validation": {
+        "method": "Community Fund Treasury crvUSD inflow × 9 (FeeAllocator 90/10)",
+        "crv_locked_in_vecrv": 855952221.7179456,
+        "vecrv_tvl_usd": 193755056.8125176,
+        "lock_ratio_pct": 56.8,
+        "yield_vecrv_only_7d": 4.78,
+        "yield_vecrv_only_30d": 2.34,
+        "yield_vecrv_only_90d": 4.13,
+        "yield_vecrv_only_365d": 4.25,
+        "caveats": [
+          "veCRV TEV 是反推: 直接观察 Community Fund Treasury (10%) crvUSD 入金 × 9 = 90% veCRV 分配",
+          "假设 FeeAllocator 90/10 比例不变（治理可改）",
+          "老 3CRV FeeDistributor 0xA464... 已基本停转, 现在 crvUSD 主导",
+          "yield_nominal = TEV / CRV 全市值（裸 CRV 持有人不参与, 此值低估 veCRV 真实 yield）",
+          "yield_vecrv_only = TEV / veCRV TVL（更接近实际锁仓持有人收益, 但 veCRV 无市价, 用 CRV × 锁仓量估算）"
+        ]
       }
     },
     "dydx": {
@@ -368,26 +385,40 @@
         "en": "Buyback transactions on-chain trackable, but ratio only from blog posts, no governance mandate"
       },
       "tevStatus": "active",
-      "tev_yield_percent": 1.84,
-      "market_cap_usd": 756156203.5,
+      "tev_yield_percent": 15.44,
+      "market_cap_usd": 369305651.15678495,
       "tvl": 5427960736.152121,
-      "tevRatio": 0.302,
-      "earning_yield_percent": 7.35,
+      "tevRatio": 1,
+      "earning_yield_percent": 15.44,
       "tevRatioNote": "回购分配 — 提现收入回购 ETHFI，年化约 $15M / 市值约 $600M ≈ 2.5%",
       "metrics": {
-        "current_market_cap_usd": 756156203.5,
-        "trailing_365d_revenue_usd": 55593725,
-        "trailing_30d_revenue_usd": 2158436,
-        "trailing_365d_tev_usd": 13898431.25,
+        "current_market_cap_usd": 369305651.15678495,
+        "trailing_365d_revenue_usd": 57011067,
+        "trailing_30d_revenue_usd": 5343931,
+        "trailing_365d_tev_usd": 57011067,
         "trailing_30d_tev_usd": 1158202.6041666667,
-        "trailing_7d_revenue_usd": 244117,
-        "trailing_90d_revenue_usd": 8887872,
-        "tev_yield_7d_ann": 0.42,
-        "tev_yield_30d_ann": 0.87,
-        "tev_yield_90d_ann": 1.19,
-        "earning_yield_7d_ann": 1.68,
-        "earning_yield_30d_ann": 3.47,
-        "earning_yield_90d_ann": 4.77
+        "trailing_7d_revenue_usd": 224210,
+        "trailing_90d_revenue_usd": 14399051,
+        "tev_yield_7d_ann": 3.17,
+        "tev_yield_30d_ann": 17.61,
+        "tev_yield_90d_ann": 15.81,
+        "earning_yield_7d_ann": 3.17,
+        "earning_yield_30d_ann": 17.61,
+        "earning_yield_90d_ann": 15.81
+      },
+      "validation": {
+        "method": "sETHFI inflow upper bound (含用户 stake)",
+        "sethfi_inflow_7d_ethfi": 505148,
+        "sethfi_inflow_30d_ethfi": 12039921,
+        "sethfi_inflow_90d_ethfi": 32441182,
+        "sethfi_inflow_365d_ethfi": 128446410,
+        "foundation_multisig_365d": 0,
+        "foundation_multisig_status": "no_buyback_executed_365d",
+        "ethfi_price_usd": 0.443851,
+        "caveats": [
+          "上界口径：sETHFI 合约入金同时包含 (a) 协议 buyback 投入 (b) 普通用户 stake，无法精确分离",
+          "研究指向的 Foundation Multisig 0x7A6A... 365d 实际 ETHFI 入金为 0——'Withdrawal Revenue Buyback' 程序可能已停或路径不明"
+        ]
       }
     },
     "fluid": {
@@ -754,26 +785,34 @@
         "en": "Tokenomics 3.0 on-chain burn verifiable + DefiLlama data"
       },
       "tevStatus": "active",
-      "tev_yield_percent": 20.17,
-      "market_cap_usd": 495261032.33,
+      "tev_yield_percent": 11.5,
+      "market_cap_usd": 495923873.1192213,
       "tvl": 2063271713.806489,
-      "tevRatio": 0.15,
-      "earning_yield_percent": 20.17,
+      "tevRatio": 1,
+      "earning_yield_percent": 11.5,
       "tevRatioNote": "回购销毁 - 协议收入 15% 用于 CAKE 回购销毁（veCAKE 分红已结束）",
       "metrics": {
-        "current_market_cap_usd": 495261032.33,
-        "trailing_365d_revenue_usd": 99914936,
-        "trailing_30d_revenue_usd": 2540884,
-        "trailing_365d_tev_usd": 99914936,
+        "current_market_cap_usd": 495923873.1192213,
+        "trailing_365d_revenue_usd": 57019368,
+        "trailing_30d_revenue_usd": 3202145,
+        "trailing_365d_tev_usd": 57019368,
         "trailing_30d_tev_usd": 8326244.666666667,
-        "trailing_7d_revenue_usd": 437246,
-        "trailing_90d_revenue_usd": 7647939,
-        "tev_yield_7d_ann": 4.6,
-        "tev_yield_30d_ann": 6.24,
-        "tev_yield_90d_ann": 6.26,
-        "earning_yield_7d_ann": 4.6,
-        "earning_yield_30d_ann": 6.24,
-        "earning_yield_90d_ann": 6.26
+        "trailing_7d_revenue_usd": 928946,
+        "trailing_90d_revenue_usd": 10221590,
+        "tev_yield_7d_ann": 9.77,
+        "tev_yield_30d_ann": 7.86,
+        "tev_yield_90d_ann": 8.36,
+        "earning_yield_7d_ann": 9.77,
+        "earning_yield_30d_ann": 7.86,
+        "earning_yield_90d_ann": 8.36
+      },
+      "validation": {
+        "method": "snapshot diff (totalSupply - dead) for net deflation",
+        "cake_price_usd": 1.51,
+        "net_burn_7d_cake": 615196,
+        "net_burn_30d_cake": 2120626,
+        "net_burn_90d_cake": 6769265,
+        "net_burn_365d_cake": 37761171
       }
     },
     "pendle": {
