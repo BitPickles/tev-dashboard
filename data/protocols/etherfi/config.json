@@ -84,35 +84,49 @@
     }
   ],
   "notes": "ether.fi TEV 来自两条线：(1) Withdrawal Revenue Buyback（提现收入按月回购 ETHFI 分配给 sETHFI 质押者，DAO Proposal #11，2025-04-25 启动）；(2) $50M Treasury Buyback（价格<$3 启用，资金来自 Foundation 国库，pocket-to-pocket 嫌疑，需链上验证）。Foundation Multisig: 0x7A6A41F353B3002751d94118aA7f4935dA39bB53。注意区分：eETH 持有人的 staking 收益 ≠ ETHFI 持有人的 TEV。",
-  "last_updated": "2026-04-25",
-  "analyst_notes": "【2026-04-25 全面更新】\n\n## TEV 机制（仅 ETHFI 持有人捕获的部分）\n\nether.fi 价值流必须先画清楚：\n\n```\nUser eETH 提现 → 提现费\n              → Foundation Multisig (0x7A6A...)\n              → 月度回购 ETHFI（市场买入）\n              → 分配给 sETHFI 质押者\n```\n\n关键：只有 stake ETHFI 拿 sETHFI 才接收回购，裸 ETHFI 不直接拿。\n\n## 数据口径\n\n- **主口径**: DefiLlama dailyRevenue × tevRatio 0.25\n  - 365d revenue $55.7M × 0.25 = $13.9M\n- **DefiLlama dailyHoldersRevenue 校验**: $15.5M（接近）\n- **分母**: ETHFI 流通市值 ~$729M（用流通而非 FDV，因解锁仍在）\n- **结果**: $13.9M / $729M ≈ 1.9%\n\n## 警示\n\n1. ⚠️ eETH 收益 ≠ ETHFI TEV：易混淆\n2. ⚠️ $50M Treasury Buyback: pocket-to-pocket 嫌疑，需定期核 Multisig 链上是否真转出执行\n3. ⚠️ 裸 ETHFI 不参与：必须 stake → sETHFI\n4. ⚠️ 流通 vs FDV：本估值用流通；若 FDV $1.04B，yield 会降到 1.3%\n\n## 链上验证方法\n\n- Foundation Multisig: 0x7A6A41F353B3002751d94118aA7f4935dA39bB53（看 ETH/USDT 转出 + ETHFI 流入）\n- 月度 buyback tx：在 Etherscan 看 Multisig outgoing\n- $50M Treasury 是否启动：核国库地址有无大额 USDC/USDT 转出\n\n## 历史变更\n\n- 2026-04-25: tev_yield 修正到 1.9%（之前一度算成 67.48%——分母用了 $343M 旧市值）；加 Caveats\n- 2025-10-30: $50M Treasury Buyback 提案通过\n- 2025-04-25: Withdrawal Revenue Buyback 启动（DAO Proposal #11）\n",
+  "last_updated": "2026-04-26",
+  "analyst_notes": "【2026-04-26 重写 — 链上口径替代 DefiLlama】\n\n## 链上调研发现\n\n研究简报指向 Foundation Multisig 0x7A6A41F353B3002751d94118aA7f4935dA39bB53 是 buyback 执行者。\n**链上事实: 该地址 365d 接收 ETHFI = 0**。\n\"Withdrawal Revenue Buyback Program\" (DAO Proposal #11) 看起来已停或路径不明 (可能用其他钱包路径, 我们未识别)。\n\n## 退而求其次的口径\n\n扫 sETHFI 合约 (0x86B5780b6069...) 的 365d ETHFI 入金 = 128M ETHFI = $57M。\n\n这个数字是**上界**——同时包含:\n- (a) 协议侧 buyback 转入（如果有的话）\n- (b) 普通用户自己 stake ETHFI 进 sETHFI 的转账\n\n无法精确分离。Caveat 标注。\n\n## 推荐\n\n如果未来发现真正的 buyback executor 地址, 改回那个地址做精确扫描。\n当前数字仅作 UPPER BOUND 提供给用户参考。\n\n## 数据源\n\n- Etherscan V2 chainid=1, ETHFI Transfer events to sETHFI contract (0x86B5780b606940Eb59A062aA85a07959518c0161)\n- CoinGecko ETHFI price + circulating mcap\n\n## 关键地址\n\n- ETHFI: 0xFe0c30065B384F05761f15d0CC899D4F9F9Cc0eB\n- sETHFI staking: 0x86B5780b606940Eb59A062aA85a07959518c0161 (持仓 ~97M ETHFI)\n- Foundation Multisig (待解): 0x7A6A41F353B3002751d94118aA7f4935dA39bB53\n\n## 历史变更\n\n- 2026-04-26: 切链上口径, 发现 Foundation Multisig 365d 0 inflow, 改用 sETHFI 合约入金作上界\n",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 1.79,
-    "annual_tev_usd": 13911604.75,
-    "market_cap_usd": 775715537.54,
+    "tev_yield_percent": 15.44,
+    "annual_tev_usd": 57011067,
+    "market_cap_usd": 369305651.15678495,
     "calculation_date": "2026-04-26",
     "sources": [
       {
-        "name": "DefiLlama dailyRevenue × tevRatio 0.25",
-        "type": "defillama",
-        "annual_usd": 13912314,
-        "note": "Withdrawal Revenue Buyback (DAO Proposal #11) 占协议收入约 25%"
+        "name": "链上 sETHFI 合约 ETHFI 入金（上界）",
+        "type": "onchain",
+        "annual_usd": 57011067,
+        "note": "365d 累计 128M ETHFI 入金 sETHFI 合约 (含用户 stake + 协议 buyback, 无法精确分离)"
       },
       {
-        "name": "DefiLlama dailyHoldersRevenue 校验",
-        "type": "defillama",
-        "annual_usd": 15522085,
-        "note": "DefiLlama 自身标注的持有人部分（独立校验，与上方接近）"
+        "name": "研究指向 Foundation Multisig 0x7A6A...",
+        "type": "onchain",
+        "annual_usd": 0,
+        "note": "⚠️ 365d 实际 ETHFI 入金 = 0, \"Withdrawal Revenue Buyback Program\" 路径不明"
       }
     ],
-    "calculation": "$13.91M / $731.54M = 1.90%",
+    "calculation": "$57.0M (上界) / $369.3M = 15.44% (上界口径)",
     "caveats": [
-      "<strong>eETH staking 收益 ≠ ETHFI TEV</strong>：eETH 持有人拿 ~3.2% ETH 原生收益，ETHFI TEV 是 sETHFI 质押者从月度回购分到的部分，不要混淆",
-      "<strong>$50M Treasury Buyback</strong>（价格&lt;$3 启用）资金来自 Foundation 国库，pocket-to-pocket 嫌疑——需定期核 Multisig 链上是否真转出执行",
-      "<strong>裸 ETHFI 不参与</strong>：必须 stake 换 sETHFI 才能接收回购分配",
-      "分母用流通市值 $729M（解锁仍在进行）；用 FDV $1.04B 会降到 ~1.3%"
-    ]
+      "<strong>上界口径</strong>: sETHFI 合约 365d ETHFI 入金 = 128M ETHFI 同时包含 (a) 协议侧 buyback 投入 (b) 普通用户 stake. 真实 buyback 部分大概率显著低于此",
+      "<strong>研究地址 0x ZEROd 365d 入金</strong>: Foundation Multisig 0x7A6A41F3... 在过去 365 天没收到任何 ETHFI 转入 — \"Withdrawal Revenue Buyback Program\" 可能已停或路径变更，需进一步核实",
+      "<strong>eETH 收益 ≠ ETHFI TEV</strong>: eETH 持有人拿 ~3.2% ETH 原生收益 (给 eETH 持有者), ETHFI TEV 是 sETHFI 质押者从协议收入分到的部分",
+      "<strong>$50M Treasury Buyback (pocket-to-pocket 嫌疑)</strong>: 2025-10 治理通过的额度仅在价格&lt;$3 时启用, 资金来自 Foundation 国库"
+    ],
+    "validation": {
+      "method": "sETHFI inflow upper bound (含用户 stake)",
+      "sethfi_inflow_7d_ethfi": 505148,
+      "sethfi_inflow_30d_ethfi": 12039921,
+      "sethfi_inflow_90d_ethfi": 32441182,
+      "sethfi_inflow_365d_ethfi": 128446410,
+      "foundation_multisig_365d": 0,
+      "foundation_multisig_status": "no_buyback_executed_365d",
+      "ethfi_price_usd": 0.443851,
+      "caveats": [
+        "上界口径：sETHFI 合约入金同时包含 (a) 协议 buyback 投入 (b) 普通用户 stake，无法精确分离",
+        "研究指向的 Foundation Multisig 0x7A6A... 365d 实际 ETHFI 入金为 0——'Withdrawal Revenue Buyback' 程序可能已停或路径不明"
+      ]
+    }
   },
   "market_data": {
     "tvl": 5427960736.152121,
@@ -120,45 +134,73 @@
   },
   "tevStatus": "active",
   "confidence_reason": {
-    "zh": "回购交易链上可追踪，但分配比例仅 Blog 公告，无治理提案约束",
-    "en": "Buyback transactions on-chain trackable, but ratio only from blog posts, no governance mandate"
+    "zh": "链上可观测 sETHFI 合约入金, 但研究指向地址 365d 零入金 + 上界口径含用户 stake, 精度受限",
+    "en": "sETHFI inflows visible on-chain, but research-claimed multisig has 0 inflow + upper-bound includes user stakes"
   },
-  "tevRatio": 0.302,
-  "earning_yield_percent": 7.17,
-  "market_cap_usd": 775715537.54,
-  "tev_yield_percent": 1.79,
+  "tevRatio": 1,
+  "earning_yield_percent": 15.44,
+  "market_cap_usd": 369305651.15678495,
+  "tev_yield_percent": 15.44,
   "metrics": {
-    "current_market_cap_usd": 775715537.54,
-    "trailing_365d_revenue_usd": 55646419,
-    "trailing_30d_revenue_usd": 2232870,
-    "trailing_365d_tev_usd": 13911604.75,
-    "trailing_30d_tev_usd": 1159300.3958333333,
-    "trailing_7d_revenue_usd": 239173,
-    "trailing_90d_revenue_usd": 9006311,
-    "tev_yield_7d_ann": 0.4,
-    "tev_yield_30d_ann": 0.88,
-    "tev_yield_90d_ann": 1.18,
-    "earning_yield_7d_ann": 1.61,
-    "earning_yield_30d_ann": 3.5,
-    "earning_yield_90d_ann": 4.71
+    "current_market_cap_usd": 369305651.15678495,
+    "trailing_365d_revenue_usd": 57011067,
+    "trailing_30d_revenue_usd": 5343931,
+    "trailing_365d_tev_usd": 57011067,
+    "trailing_30d_tev_usd": 1158202.6041666667,
+    "trailing_7d_revenue_usd": 224210,
+    "trailing_90d_revenue_usd": 14399051,
+    "tev_yield_7d_ann": 3.17,
+    "tev_yield_30d_ann": 17.61,
+    "tev_yield_90d_ann": 15.81,
+    "earning_yield_7d_ann": 3.17,
+    "earning_yield_30d_ann": 17.61,
+    "earning_yield_90d_ann": 15.81
   },
   "calc_pipeline": [
     {
       "step": 1,
-      "label": "用户 eETH 提现费",
-      "description": "ether.fi eETH 慢速提现的 staking yield 部分 + 0.3% 快速提现费，全部进入 Foundation Multisig",
-      "source_url": "https://docs.ether.fi/ether.fi-dao/dao-proposals/withdrawal-revenue-buyback",
-      "source_note": "ether.fi Docs · Withdrawal Revenue Buyback",
-      "addresses": {
-        "Foundation Multisig": "0x7A6A41F353B3002751d94118aA7f4935dA39bB53"
-      }
+      "label": "eETH 提现费 + 协议收入",
+      "description": "eETH 慢速提现 staking yield + 0.3% 快速提现费, 应该按 DAO #11 进 buyback",
+      "source_url": "https://governance.ether.fi/t/11-ether-fi-dao-proposal-withdrawal-revenue-buyback-program/2920"
     },
     {
       "step": 2,
-      "label": "DefiLlama 协议收入聚合",
-      "description": "DefiLlama 把 eETH 提现费等聚合为 dailyRevenue（按 365d 滚动）",
-      "source_url": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyRevenue",
-      "source_note": "DefiLlama API · ether.fi / dailyRevenue",
+      "label": "⚠️ 研究指向 Foundation Multisig 0x7A6A... 实际 0 inflow",
+      "description": "365d 检查无 ETHFI 流入该地址。Buyback Program 路径不明, 是 caveat 重点",
+      "addresses": {
+        "Foundation Multisig (无 inflow)": "0x7A6A41F353B3002751d94118aA7f4935dA39bB53"
+      }
+    },
+    {
+      "step": 3,
+      "label": "退而求其次: 扫 sETHFI 合约 ETHFI 入金",
+      "description": "所有 ETHFI 流入 sETHFI 合约, 无法精确分离 (a) 协议 buyback (b) 用户自 stake",
+      "addresses": {
+        "sETHFI Staking": "0x86B5780b606940Eb59A062aA85a07959518c0161",
+        "ETHFI Token": "0xFe0c30065B384F05761f15d0CC899D4F9F9Cc0eB"
+      },
+      "source_url": "https://api.etherscan.io/v2/api",
+      "source_note": "Etherscan V2 chainid=1 · eth_getLogs Transfer events"
+    },
+    {
+      "step": 4,
+      "label": "sETHFI 合约 365d 累计入金 (上界)",
+      "description": "该窗口内 ETHFI 流入 sETHFI 合约的总量",
+      "value_fields_by_period": {
+        "7d": "validation.sethfi_inflow_7d_ethfi",
+        "30d": "validation.sethfi_inflow_30d_ethfi",
+        "90d": "validation.sethfi_inflow_90d_ethfi",
+        "365d": "validation.sethfi_inflow_365d_ethfi"
+      },
+      "unit": "ETHFI"
+    },
+    {
+      "step": 5,
+      "label": "× 当前 ETHFI 价 = USD",
+      "formula": "TEV_USD (上界) = ETHFI_inflow × ethfi_price",
+      "inputs": {
+        "ETHFI 价": "validation.ethfi_price_usd"
+      },
       "value_fields_by_period": {
         "7d": "metrics.trailing_7d_revenue_usd",
         "30d": "metrics.trailing_30d_revenue_usd",
@@ -168,35 +210,9 @@
       "unit": "USD"
     },
     {
-      "step": 3,
-      "label": "tevRatio 0.25 取持有人捕获部分",
-      "description": "DAO Proposal #11 通过：约 25% 协议收入回购 ETHFI 分配给 sETHFI 质押者",
-      "formula": "ETHFI_TEV = revenue × 0.25",
-      "source_url": "https://governance.ether.fi/t/11-ether-fi-dao-proposal-withdrawal-revenue-buyback-program/2920",
-      "source_note": "Snapshot vote · DAO Proposal #11"
-    },
-    {
-      "step": 4,
-      "label": "月度回购执行",
-      "description": "Foundation Multisig 月度从市场买回 ETHFI，分配给 sETHFI 质押者",
-      "addresses": {
-        "ETHFI Token": "0xFe0c30065B384F05761f15d0CC899D4F9F9Cc0eB",
-        "Foundation Multisig": "0x7A6A41F353B3002751d94118aA7f4935dA39bB53"
-      }
-    },
-    {
-      "step": 5,
-      "label": "年化 + 除以流通市值",
-      "formula": "TEV_Yield = ETHFI_TEV × (365/N) ÷ ETHFI_circulating_market_cap × 100%",
-      "inputs": {
-        "市值（流通）": "market_cap_usd",
-        "市值来源": "CMC + CoinGecko"
-      },
-      "unit": "%"
-    },
-    {
       "step": 6,
-      "label": "最终 TEV Yield",
+      "label": "年化 / 流通市值 (上界 yield)",
+      "formula": "Yield = TEV × (365/N) ÷ circulating_market_cap × 100%",
       "derived": true,
       "value_fields_by_period": {
         "7d": "metrics.tev_yield_7d_ann",

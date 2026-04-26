@@ -144,92 +144,106 @@
       "reliability": "high"
     }
   ],
-  "analyst_notes": "【2026-04-25 更新 — 切换主口径到 dailyHoldersRevenue】\n\n## TEV 机制\n\nCurve 是 ve 模型代表，**只有锁仓换 veCRV 的持有人才捕获价值**，裸 CRV 持有人价值流向几乎为 0。\n\n## 价值路径\n\n1. Trading fees: 50% 给 LP / 50% admin fee（DAO）\n2. DAO 收入周度兑换为 crvUSD\n3. **FeeAllocator**（2025-06-27 激活）：90% → veCRV / 10% → Treasury\n4. **Fee Distributor** (`0xA464...8922Dc`) 按 veCRV 份额周度分发\n5. crvUSD borrow rate: 部分进 scrvUSD（5-50% 动态），部分进 veCRV\n\n## 数据口径（2026-04-25 起）\n\n- **主口径**: DefiLlama dailyHoldersRevenue（已映射 FeeAllocator 90%）\n- **分母**: CRV 流通市值 ~$340M（veCRV 无市价，无法独立估值）\n- **结果**: 365d holdersRevenue / circulating MC ≈ 2.5%\n\n## 警示（详见详情页 Caveats）\n\n1. ⚠️ veCRV-only: 裸 CRV 不参与分红\n2. ⚠️ Bribes 不计入: Convex/Stake DAO 买票收入是 veCRV 额外收益，非 Curve 自身分润\n3. ⚠️ 分母失真: 用 CRV 全市值会低估 veCRV 实际 yield\n4. ⚠️ crvUSD 利息流向比例可调（治理可改变 5-50%）\n\n## 历史口径变更\n\n- 2026-04-25: 主口径从 dailyRevenue × tevRatio 0.45 改为 dailyHoldersRevenue × 1.0（原乘 0.45 等于在 FeeAllocator 90% 之上又少算一半）\n- 2025-06-27: FeeAllocator 上线（90/10 split）\n",
-  "last_updated": "2026-04-25",
+  "analyst_notes": "【2026-04-26 重写 — 链上口径替代 DefiLlama】\n\n## 调研发现\n\n老 3CRV FeeDistributor 0xA464...8922Dc 当前 inflow ≈ 0, 已迁移。\n新 90% veCRV 部分流向尚未在单一合约上识别。\n\n## 解决方案 (FeeAllocator × 9 推算)\n\nFeeAllocator 把 admin fees 90/10 拆分:\n- 10% → Community Fund Treasury (0x6508ef65...)\n- 90% → veCRV 分发\n\n我们直接观察 Treasury inflow (10% 部分), × 9 反推 veCRV TEV (90% 部分)。\n这比直接找新 distributor 合约稳健 - 即使路径再变, 比例不变就能继续算。\n\n## 链上数据\n\n- Treasury 365d 入金: $0.91M crvUSD\n- 推算 veCRV TEV: $0.91M × 9 = $8.23M\n- CRV 锁仓: 855M (56.8% 流通)\n- veCRV TVL: $193.8M\n\n## 双口径\n\n- **nominal yield**: $8.23M / $341M (CRV 全市值) = 2.41%\n  - 主表显示, 但裸 CRV 持有人不参与, 这是\"如果所有 CRV 都锁仓\"的理论值\n- **veCRV-only yield**: $8.23M / $193.8M (锁仓 TVL) = 4.25%\n  - 实际锁仓持有人接近此 yield\n\n## 数据源\n\n- Etherscan V2 chainid=1 · crvUSD Transfer events to Community Fund\n- ETH public RPC eth_call · CRV.balanceOf(veCRV_lock)\n- CoinGecko CRV 价格 + 流通市值\n\n## 关键地址\n\n- CRV: 0xD533a949740bb3306d119CC777fa900bA034cd52\n- veCRV Lock: 0x5f3b5DfEb7B28CDbD7FAba78963EE202a494e2A2\n- Community Fund Treasury (10%): 0x6508ef65b0bd57eabd0f1d52685a70433b2d290b\n- Old 3CRV FeeDistributor: 0xA464e6DCda8AC41e03616F95f4BC98a13b8922Dc (已停转)\n\n## 历史变更\n\n- 2026-04-26: 切链上 Treasury × 9 推算口径, DefiLlama 弃用, 加 veCRV-only yield 双口径\n- 2025-06-27: FeeAllocator 上线\n",
+  "last_updated": "2026-04-26",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 2.58,
-    "annual_tev_usd": 8661176,
-    "market_cap_usd": 335828736.06,
+    "tev_yield_percent": 2.41,
+    "tev_yield_vecrv_only_percent": 4.25,
+    "annual_tev_usd": 8226027,
+    "market_cap_usd": 341077593.2286072,
+    "vecrv_tvl_usd": 193755056.8125176,
+    "crv_locked": 855952221.7179456,
     "calculation_date": "2026-04-26",
     "sources": [
       {
-        "name": "DefiLlama dailyHoldersRevenue",
-        "type": "defillama",
-        "annual_usd": 8663748,
-        "note": "FeeAllocator 90% → veCRV (Fee Distributor 0xA464...8922Dc 周度分发)"
+        "name": "链上 Community Fund Treasury × 9 推算",
+        "type": "onchain",
+        "annual_usd": 8226027,
+        "note": "FeeAllocator 90/10: 观察 10% Treasury inflow ($0.91M crvUSD) × 9 = $8.23M veCRV 部分"
+      },
+      {
+        "name": "CRV.balanceOf(veCRV_lock) 直查",
+        "type": "rpc",
+        "note": "链上 855M CRV 锁仓 (56.8% of circulating), veCRV TVL $193.8M"
       }
     ],
-    "calculation": "$8.66M / $340.36M = 2.55%",
+    "calculation": "nominal: $8.23M / $341.1M = 2.41% · veCRV-only: $8.23M / $193.8M = 4.25%",
     "caveats": [
-      "<strong>veCRV-only</strong>：本 TEV 仅 veCRV（锁仓 CRV）持有人捕获，裸 CRV 持有人 ≈ 0",
-      "Bribes（Convex / Stake DAO 投票贿选）<strong>不计入</strong>本 TEV——那是来自外部协议买票，非 Curve 自身分润",
-      "分母用 CRV 流通市值（$340M）会<strong>低估实际 yield</strong>——veCRV 锁仓子集才是真正的受益人，但 veCRV 无市价",
-      "crvUSD 借贷利息分配比例（5-50% 进 scrvUSD vs veCRV）由治理动态调整，未来可能变化"
-    ]
+      "<strong>双口径展示</strong>: nominal yield (CRV 全市值分母, 主表显示) + veCRV-only yield (锁仓 TVL 分母, 详情页另展示) - 实际锁仓持有人收益更接近 veCRV-only 口径",
+      "<strong>FeeAllocator × 9 推算</strong>: 老 3CRV FeeDistributor 0xA464... 已停转, 新 90% 流向尚未在单一合约上识别. 利用 10% Treasury (0x6508...) 入金作锚点 × 9 反推",
+      "<strong>假设 90/10 比例不变</strong>: 治理可改变此比例 (proposal-passed 2025-06-27), 比例变会影响推算精度",
+      "<strong>裸 CRV 不参与</strong>: 必须 lock 换 veCRV 才能拿到分红, 主表 nominal yield 是\"如果所有 CRV 都锁仓\"的理论值",
+      "Bribes (Convex / Stake DAO 投票贿选) 不计入 - 那是来自外部协议买票, 非 Curve 自身分润"
+    ],
+    "validation": {
+      "method": "Community Fund Treasury crvUSD inflow × 9 (FeeAllocator 90/10)",
+      "crv_locked_in_vecrv": 855952221.7179456,
+      "vecrv_tvl_usd": 193755056.8125176,
+      "lock_ratio_pct": 56.8,
+      "yield_vecrv_only_7d": 4.78,
+      "yield_vecrv_only_30d": 2.34,
+      "yield_vecrv_only_90d": 4.13,
+      "yield_vecrv_only_365d": 4.25,
+      "caveats": [
+        "veCRV TEV 是反推: 直接观察 Community Fund Treasury (10%) crvUSD 入金 × 9 = 90% veCRV 分配",
+        "假设 FeeAllocator 90/10 比例不变（治理可改）",
+        "老 3CRV FeeDistributor 0xA464... 已基本停转, 现在 crvUSD 主导",
+        "yield_nominal = TEV / CRV 全市值（裸 CRV 持有人不参与, 此值低估 veCRV 真实 yield）",
+        "yield_vecrv_only = TEV / veCRV TVL（更接近实际锁仓持有人收益, 但 veCRV 无市价, 用 CRV × 锁仓量估算）"
+      ]
+    }
   },
   "tevStatus": "active",
   "confidence_reason": {
-    "zh": "veCRV 费用分配合约链上可查 + DefiLlama 验证",
-    "en": "veCRV fee distribution contract on-chain verifiable + DefiLlama validated"
+    "zh": "Treasury inflow + veCRV 锁仓量都链上完全可验证, FeeAllocator 90/10 比例治理记录有据",
+    "en": "Treasury inflow + veCRV lock amount both fully on-chain, FeeAllocator 90/10 governance-documented"
   },
   "tevRatio": 0.9,
-  "earning_yield_percent": 2.58,
-  "market_cap_usd": 335828736.06,
+  "earning_yield_percent": 2.41,
+  "market_cap_usd": 341077593.2286072,
   "metrics": {
     "trailing_365d_fees_usd": 55189562,
-    "trailing_365d_revenue_usd": 8661176,
+    "trailing_365d_revenue_usd": 8226027,
     "trailing_365d_holders_revenue_usd": 13304425,
     "trailing_30d_fees_usd": 4978284,
-    "trailing_30d_revenue_usd": 504740,
+    "trailing_30d_revenue_usd": 372315,
     "trailing_30d_holders_revenue_usd": 691740,
-    "current_market_cap_usd": 335828736.06,
-    "trailing_365d_tev_usd": 8661176,
-    "trailing_30d_tev_usd": 721764.6666666666,
-    "trailing_7d_revenue_usd": 220387,
-    "trailing_90d_revenue_usd": 1600872,
-    "tev_yield_7d_ann": 3.42,
-    "tev_yield_30d_ann": 1.83,
-    "tev_yield_90d_ann": 1.93,
-    "earning_yield_7d_ann": 3.42,
-    "earning_yield_30d_ann": 1.83,
-    "earning_yield_90d_ann": 1.93
+    "current_market_cap_usd": 341077593.2286072,
+    "trailing_365d_tev_usd": 8226027,
+    "trailing_30d_tev_usd": 721543.5833333334,
+    "trailing_7d_revenue_usd": 177527,
+    "trailing_90d_revenue_usd": 1970764,
+    "tev_yield_7d_ann": 2.71,
+    "tev_yield_30d_ann": 1.33,
+    "tev_yield_90d_ann": 2.34,
+    "earning_yield_7d_ann": 2.71,
+    "earning_yield_30d_ann": 1.33,
+    "earning_yield_90d_ann": 2.34
   },
-  "tev_yield_percent": 2.58,
+  "tev_yield_percent": 2.41,
   "calc_pipeline": [
     {
       "step": 1,
-      "label": "用户交易付费",
-      "description": "Curve 各池 trading fee 收取，约 50% 给 LP / 50% 进 DAO（admin fee）",
+      "label": "用户 trading fee 进 admin (DAO)",
+      "description": "Curve 各池 trading fee 50% 给 LP / 50% admin 进 DAO",
       "source_url": "https://resources.curve.finance/vecrv/fee-collection-distribution/",
-      "source_note": "Curve Resources · Fee Collection &amp; Distribution",
-      "value_field": "metrics.trailing_365d_fees_usd",
-      "value_suffix": " (365d total fees)",
-      "unit": "USD"
+      "source_note": "Curve Resources · Fee Collection &amp; Distribution"
     },
     {
       "step": 2,
-      "label": "DAO 收入周度归集",
-      "description": "Admin fees 周度从各池收集、兑换为 crvUSD",
+      "label": "FeeAllocator 90/10 拆分 (2025-06-27 起)",
+      "description": "90% → veCRV 持有人 (新合约) / 10% → Community Fund Treasury",
       "addresses": {
-        "Fee Distributor": "0xA464e6DCda8AC41e03616F95f4BC98a13b8922Dc",
-        "Treasury (10% 分流)": "0x6508ef65b0bd57eabd0f1d52685a70433b2d290b"
-      }
+        "Community Fund Treasury": "0x6508ef65b0bd57eabd0f1d52685a70433b2d290b",
+        "veCRV Lock 合约": "0x5f3b5DfEb7B28CDbD7FAba78963EE202a494e2A2"
+      },
+      "source_url": "https://gov.curve.finance/t/activate-the-fee-allocator-and-redirect-10-of-revenue-to-community-fund/10676"
     },
     {
       "step": 3,
-      "label": "FeeAllocator 拆分（2025-06-27 起）",
-      "description": "90% → veCRV 持有人 (按锁仓份额) / 10% → Community Fund Treasury",
-      "formula": "veCRV_share = DAO_revenue × 0.90",
-      "source_url": "https://gov.curve.finance/t/activate-the-fee-allocator-and-redirect-10-of-revenue-to-community-fund/10676",
-      "source_note": "Curve Governance · FeeAllocator Proposal"
-    },
-    {
-      "step": 4,
-      "label": "DefiLlama dailyHoldersRevenue 取数",
-      "description": "DefiLlama 已正确映射 FeeAllocator 90% 流向，直接取作 TEV 数据源",
-      "source_url": "https://api.llama.fi/summary/fees/curve-dex?dataType=dailyHoldersRevenue",
-      "source_note": "DefiLlama API · curve-dex / dailyHoldersRevenue",
+      "label": "观察 Community Fund crvUSD 入金",
+      "description": "老 3CRV FeeDistributor 已停转, 改用观察 Community Fund (10%) 作锚点",
       "value_fields_by_period": {
         "7d": "metrics.trailing_7d_revenue_usd",
         "30d": "metrics.trailing_30d_revenue_usd",
@@ -239,18 +253,23 @@
       "unit": "USD"
     },
     {
+      "step": 4,
+      "label": "× 9 推算 veCRV 部分 (FeeAllocator 90%)",
+      "formula": "veCRV_TEV = Treasury_inflow × 9",
+      "description": "基于 90/10 拆分比例, 假设比例不变 (治理可改)"
+    },
+    {
       "step": 5,
-      "label": "年化 + 除以市值",
-      "formula": "TEV_Yield = holdersRevenue × (365/N) ÷ CRV_circulating_market_cap × 100%",
-      "inputs": {
-        "市值": "market_cap_usd",
-        "市值来源": "CMC + CoinGecko"
-      },
-      "unit": "%"
+      "label": "链上读 CRV 锁仓量",
+      "description": "eth_call CRV.balanceOf(veCRV_lock_contract)",
+      "value_field": "validation.crv_locked_in_vecrv",
+      "value_suffix": " CRV (锁仓)",
+      "unit": "CRV"
     },
     {
       "step": 6,
-      "label": "最终 TEV Yield",
+      "label": "双口径 yield",
+      "formula": "nominal: TEV / CRV 全市值 · veCRV-only: TEV / (locked_CRV × CRV_price)",
       "derived": true,
       "value_fields_by_period": {
         "7d": "metrics.tev_yield_7d_ann",
