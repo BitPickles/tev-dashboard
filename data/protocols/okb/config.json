@@ -104,40 +104,81 @@
       ]
     }
   ],
-  "analyst_notes": "【2026-03-03 更新】\n\n## OKB 机制变更摘要\n\n- **2025-08-13 一次性销毁** 65,256,712.097 OKB（来自历史回购+储备）\n- **总供应锁定** 21,000,000 OKB\n- **后续不再回购 / 增发 / 销毁**（no more buybacks, mints, or burns）\n- **合约升级** 移除 mint/burn，Ethereum L1 版本逐步停止支持，引导到 X Layer\n\n## 结论\n\n**2025-08 之后无持续 TEV**，平台利润不再通过回购/销毁回流至 OKB 持有者。",
+  "analyst_notes": "【2026-04-27 — OKB 永久停止 TEV (high confidence)】\n\n## 决议事实\n2025-08 OKX 一次性销毁 65.26M OKB → 供应永久锁定 21M (类比 BTC 限额).\n合约升级**移除 mint/burn 功能**, 防止未来扩展或销毁.\n\n## 与 GMX/JustLend 对比\n- GMX paused: 等触发条件可恢复\n- JustLend unverified: pocket-to-pocket 嫌疑\n- **OKB ended: 治理决议永久停止, 链上合约写死**, 这是明确的 TEV 退出\n\n## 链上证据\n- OKB 合约: 0x75231f58b43240c9718dd58b4967c5114342a86c\n- 合约 mint/burn 功能已移除\n- 365d burn = 0 (停止后)\n\n## 对持有人含义\n持有 OKB 不再有任何\"销毁通缩\"机制带来的价值捕获. 仅作 OKX 平台权益代币 (X Layer gas / 折扣等). 不构成真 TEV.\n\n## 历史\n- 2026-04-27: 标 0% high confidence (明确停止)\n- 2025-08: OKX 治理决议永久锁定供应\n",
   "questions_for_boss": [
     "OKB 30% 回购销毁比例是否为最新政策？",
     "是否需要整理历史季度销毁数据？"
   ],
-  "last_updated": "2026-03-03",
+  "last_updated": "2026-04-27",
   "tev_data": {
     "has_tev": false,
     "tev_yield_percent": 0,
+    "market_cap_usd": 1503276222,
     "calculation_date": "2026-04-26",
-    "note": "2025-08 后不再回购/销毁，供应锁定",
     "sources": [
       {
-        "name": "OKX Learn Burn Announcement (2025-08-13)",
-        "type": "official",
-        "url": "https://www.okx.com/zh-hans/learn/why-did-okb-burn",
-        "note": "One-time burn 65,256,712.097 OKB + supply locked to 21,000,000"
-      },
-      {
-        "name": "OKX Learn",
-        "type": "documentation",
-        "url": "https://www.okx.com/zh-hans/learn/why-did-okb-burn",
-        "note": "No more buybacks, mints, or burns"
+        "name": "OKX 2025-08 治理决议",
+        "type": "governance",
+        "note": "永久锁定 21M OKB 供应, 移除合约 mint/burn 功能"
       }
     ],
-    "market_cap_usd": 1503276222
+    "calculation": "0% (永久停止 — 治理决议明确, 非暂停)",
+    "caveats": [
+      "<strong>已永久停止</strong>: 2025-08 OKX 治理决议销毁 65.26M OKB 后永久锁定供应 21M, 合约 mint/burn 功能写死移除",
+      "与 GMX paused 状态不同: OKB 是<strong>明确退出 TEV 机制</strong>, 不是暂停等触发",
+      "OKB 仍是 OKX 平台权益代币 (X Layer L2 gas / 交易折扣), 但不构成 token 持有人通过销毁获得的价值捕获",
+      "历史 buyback 数据 (2025-08 之前) 不再延续, 不应外推作 TEV"
+    ]
   },
   "tevStatus": "none",
   "confidence_reason": {
-    "zh": "已停止回购销毁，历史数据仅官方公告",
-    "en": "Buyback & burn stopped, historical data from announcements only"
+    "zh": "2025-08 OKX 治理决议永久锁定 21M 供应, 移除合约 mint/burn 功能. 治理决议明确公开, 链上合约升级可验证.",
+    "en": "2025-08 governance decision permanently caps supply at 21M, mint/burn removed from contract. Clear governance + on-chain verifiable."
   },
   "earning_yield_percent": 0,
   "market_cap_usd": 1503276222,
   "tev_yield_percent": 0,
-  "tevRatio": 0
+  "tevRatio": 0,
+  "calc_pipeline": [
+    {
+      "step": 1,
+      "label": "OKB 历史: 季度 buyback&burn",
+      "description": "2025-08 之前, 官方称用收入 buyback 销毁"
+    },
+    {
+      "step": 2,
+      "label": "2025-08 OKX 治理决议",
+      "description": "一次性销毁 65.26M OKB → 永久锁定 21M (类 BTC 限额)",
+      "addresses": {
+        "OKB": "0x75231f58b43240c9718dd58b4967c5114342a86c"
+      }
+    },
+    {
+      "step": 3,
+      "label": "合约升级移除 mint/burn",
+      "description": "链上写死, 未来不可销毁也不可增发"
+    },
+    {
+      "step": 4,
+      "label": "⚠️ TEV 永久退出",
+      "description": "与 GMX paused 不同 — OKB 是明确治理决议永久停止, 不是暂停"
+    },
+    {
+      "step": 5,
+      "label": "OKB 当前作 OKX 平台权益代币",
+      "description": "X Layer L2 gas, 交易折扣等. 但无销毁通缩机制"
+    },
+    {
+      "step": 6,
+      "label": "TEV Yield: 0% (high confidence — 永久停止)",
+      "derived": true,
+      "value_fields_by_period": {
+        "7d": "metrics.tev_yield_7d_ann",
+        "30d": "metrics.tev_yield_30d_ann",
+        "90d": "metrics.tev_yield_90d_ann",
+        "365d": "tev_yield_percent"
+      },
+      "unit": "%"
+    }
+  ]
 }

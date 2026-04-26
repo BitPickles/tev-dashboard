@@ -24,7 +24,7 @@
     "burns": "NONE",
     "primary_value_accrual": "无 - LDO 仅为治理代币，不分享协议收入"
   },
-  "confidence": "high",
+  "confidence": "low",
   "data_sources": [
     {
       "name": "DefiLlama tokenRights",
@@ -34,14 +34,26 @@
     }
   ],
   "notes": "【收入规模】年化协议费用约 $677M，DAO 分成（10%费率的50%）约 $34M/年。尽管 Lido 是最大的 DeFi 协议之一（TVL $22B+），但 LDO 代币不分享任何协议收入（fee switch OFF）。协议收入完全归 DAO 国库控制。若未来开启 fee switch，潜在 TEV 基数较大。",
-  "last_updated": "2026-02-14",
+  "last_updated": "2026-04-27",
   "tev_data": {
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "note": "无持续 TEV",
-    "market_cap_usd": 364380861.1,
-    "calculation_date": "2026-04-26"
+    "market_cap_usd": 373699829.15,
+    "calculation_date": "2026-04-26",
+    "sources": [
+      {
+        "name": "协议机制",
+        "type": "governance",
+        "note": "纯治理代币. stETH 收益 (~3% ETH staking yield) 给 stETH 持有人, LDO 不分润"
+      }
+    ],
+    "calculation": "0% (governance-only)",
+    "caveats": [
+      "<strong>纯治理代币</strong>: 协议 fees 归 DAO 国库, LDO 持有人不分润",
+      "Lido 365d 协议 fees ~$78M (DefiLlama), 但 LDO holdersRevenue 0",
+      "若未来开启 fee switch 给 LDO, 潜在 TEV 较大"
+    ]
   },
   "market_data": {
     "tvl": 18986133323.106007,
@@ -49,17 +61,17 @@
   },
   "tevStatus": "none",
   "confidence_reason": {
-    "zh": "无 TEV 机制，纯治理代币，数据源透明",
-    "en": "No TEV mechanism, governance-only, transparent data"
+    "zh": "纯治理代币. stETH 收益 (~3% ETH staking yield) 给 stETH 持有人, LDO 不分润",
+    "en": "纯治理代币. stETH 收益 (~3% ETH staking yield) 给 stETH 持有人, LDO 不分润"
   },
   "tevRatio": 0,
-  "earning_yield_percent": 21.63,
-  "market_cap_usd": 364380861.1,
+  "earning_yield_percent": 21.09,
+  "market_cap_usd": 373699829.15,
   "tev_yield_percent": 0,
   "metrics": {
     "trailing_365d_revenue_usd": 78821353,
     "trailing_30d_revenue_usd": 4608406,
-    "current_market_cap_usd": 364380861.1,
+    "current_market_cap_usd": 373699829.15,
     "trailing_365d_tev_usd": 0,
     "trailing_30d_tev_usd": 0,
     "trailing_7d_revenue_usd": 1220132,
@@ -67,8 +79,33 @@
     "tev_yield_7d_ann": 0,
     "tev_yield_30d_ann": 0,
     "tev_yield_90d_ann": 0,
-    "earning_yield_7d_ann": 17.46,
-    "earning_yield_30d_ann": 15.39,
-    "earning_yield_90d_ann": 15.2
-  }
+    "earning_yield_7d_ann": 17.02,
+    "earning_yield_30d_ann": 15,
+    "earning_yield_90d_ann": 14.83
+  },
+  "analyst_notes": "【2026-04-27 governance-only 验证】\n\n## 现状\nLido 协议收入 ~$677M/年 (5% staking fee), 100% 进 Lido DAO Treasury. LDO 仅作治理投票, 不分红.\n\n## TEV: 0% (governance-only, low confidence)\n\n## 何时变化\n若未来治理提案启用 fee switch / buyback 给 token 持有人, 重新评估.\n\n## 类比\nLDO / COMP 等老牌纯治理代币模式.\n",
+  "calc_pipeline": [
+    {
+      "step": 1,
+      "label": "协议运转产生 fees",
+      "description": "Lido 协议收入 ~$677M/年 (5% staking fee), 100% 进 Lido DAO Treasury. LDO 仅作治理投票, 不分红...."
+    },
+    {
+      "step": 2,
+      "label": "⚠️ Fees 不分给 token 持有人",
+      "description": "纯治理代币. stETH 收益 (~3% ETH staking yield) 给 stETH 持有人, LDO 不分润"
+    },
+    {
+      "step": 3,
+      "label": "TEV Yield: 0% (governance-only)",
+      "derived": true,
+      "value_fields_by_period": {
+        "7d": "metrics.tev_yield_7d_ann",
+        "30d": "metrics.tev_yield_30d_ann",
+        "90d": "metrics.tev_yield_90d_ann",
+        "365d": "tev_yield_percent"
+      },
+      "unit": "%"
+    }
+  ]
 }

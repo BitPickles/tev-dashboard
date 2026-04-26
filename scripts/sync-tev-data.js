@@ -57,10 +57,11 @@ const PROTOCOL_CONFIG = {
   },
   fluid: {
     defillamaSlug: 'fluid',
-    coingeckoId: 'fluid',
+    coingeckoId: 'instadapp',
     cmcSlug: 'instadapp',
-    tevRatio: 0.35,
-    note: '35% Revenue 用于 Treasury 回购'
+    defillamaDataType: 'dailyHoldersRevenue',
+    tevRatio: 1.0,
+    note: '35% revenue → Treasury 回购. DefiLlama dailyHoldersRevenue 365d $4.75M (实测与官方 35% 一致). 链上 2 个 reserve 钱包: 0x3e6F.../0x9Afb..., 但回购后 FLUID 终极用途未公开 (caveat)'
   },
   gmx: {
     defillamaSlug: 'gmx',
@@ -69,12 +70,13 @@ const PROTOCOL_CONFIG = {
     tevRatio: 0,
     note: '⚠️ TEV PAUSED: 2026-03-04 起 ETH/AVAX 实时分红停, 改为 Treasury 累积 GMX 等待 GMX 价格 ≥ $90 触发分配. 当前 GMX ~$7, 触发条件远未达, staker 实际现金收益 = 0. yield 标 0% + caveat 说明暂停状态'
   },
-  maple: { 
-    defillamaSlug: 'maple', 
-    coingeckoId: 'maple',
+  maple: {
+    defillamaSlug: 'maple',
+    coingeckoId: 'syrup',
     cmcSlug: 'maple-finance',
-    tevRatio: 0.25,
-    note: '25% 协议收入 → SSF 回购 SYRUP (MIP-019 通过, MIP-020 延续至 H1 2026)'
+    defillamaDataType: 'dailyHoldersRevenue',
+    tevRatio: 1.0,
+    note: 'MIP-019/020 25% revenue → SSF 回购 SYRUP. DefiLlama dailyHoldersRevenue 365d $1.81M (6 个月外推). 风险: SSF 国库钱包未公开, burn vs reserve 比例未披露'
   },
   pancakeswap: {
     defillamaSlug: 'pancakeswap',
@@ -163,6 +165,27 @@ const PROTOCOL_CONFIG = {
     cmcSlug: 'spark',
     tevRatio: 0,
     note: '收入归 Sky DAO'
+  },
+  mnt: {
+    defillamaSlug: null,  // 无 mantle-mnt 协议级 fees
+    coingeckoId: 'mantle',
+    cmcSlug: 'mantle',
+    tevRatio: 0,
+    note: 'governance-only (类 LDO). Mantle L2 sequencer fees 不流向 MNT 持有人, mETH 收益给 mETH 持有人, Treasury Burn 提案讨论中未执行'
+  },
+  bgb: {
+    defillamaSlug: null,
+    coingeckoId: 'bitget-token',
+    cmcSlug: 'bitget-token',
+    tevRatio: 0,
+    note: '⚠️ BGB 销毁源头不可链上验证 (类 JustLend pocket-to-pocket 嫌疑). 官方称 20% 收入回购, 但销毁来源无市场对手方证据. yield 标 0% + low confidence'
+  },
+  okb: {
+    defillamaSlug: null,
+    coingeckoId: 'okb',
+    cmcSlug: 'okb',
+    tevRatio: 0,
+    note: '2025-08 永久锁定 21M 供应, 移除 mint/burn. 官方治理决议永久停止所有 TEV 机制. yield 0% high confidence (明确停止, 非 paused)'
   },
   // SKIP_PROTOCOLS: 市值/年度TEV由独立脚本维护，但 DefiLlama 收入用于多维度 yield 计算
   aster: {

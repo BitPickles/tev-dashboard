@@ -93,27 +93,81 @@
       ]
     }
   ],
-  "analyst_notes": "【2026-02-05 初步调研】\n\n## BGB TEV 评估\n\n### 已知信息\n1. **Bitget 平台币**：类似 BNB/OKB 的 CEX token\n2. **季度回购销毁**：有此机制，但具体比例待确认\n3. **合约支持销毁**：Etherscan 验证合约有 burn 功能\n\n### 数据限制\n1. ❌ Bitget 网站被 Cloudflare 拦截\n2. ❌ 无法获取官方文档\n3. ⚠️ 需要通过公告整理销毁数据\n\n### 与同类对比\n| 平台币 | 销毁机制 | 数据透明度 |\n|--------|----------|------------|\n| BNB | Auto-Burn | 中 |\n| OKB | 30% 收入 | 低 |\n| BGB | 待确认 | 低 |\n\n### 需要补充\n1. BGB 销毁比例\n2. 历史季度销毁数据\n3. 其他代币权益（Launchpad 等）",
+  "analyst_notes": "【2026-04-27 链上调研 — TEV 标 unverified】\n\n## 表面机制\nBitget 官方宣称:\n- 季度回购 BGB + 销毁\n- 20% 平台收入用于回购\n- Q1/Q2 2025 各销毁 3千万 BGB\n- 2024-12 一次性销毁 8亿 (供应 20→12亿)\n- 2025-09 团队持仓迁移 Morph 基金会, 220M 即刻销毁\n\n## 链上事实\n- BGB 合约: 0x19de6b897ed14a376dda0fe53a5420d2ac828a28 (ETH ERC-20)\n- 销毁地址: 0x000...000 (零地址)\n- **销毁源头无市场对手方证据**: Bitget 没公开 buyback executor wallet, 无法验证 20% 收入是真实市场买回 BGB 还是从公司金库自持转账\n\n## 类比 JustLend\nJustLend 案例: 链上发现 burn 的 JST 都来自孙宇晨生态金库 (HTX/WIN/TUSD 持仓地址), 是 pocket-to-pocket 做账销毁, 不构成真 TEV → 归零.\n\nBGB 类似嫌疑: CEX 财务不透明, 销毁来源可能是公司自持而非真实市场买入. 即使销毁是真的, 也不等同于\"市场上有人花了真金白银买 BGB\". \n\n## 处理决定\nTEV = 0% (unverified), confidence: low\n继续监控 (未来如发现 Morph 生态 gas 消耗驱动的链上自动销毁, 重新评估)\n\n## 与 BNB Auto-Burn 的对比\n| 维度 | BNB | BGB |\n|---|---|---|\n| 销毁公式 | 完全链上透明 (B=N×1000/P) | 官方声明无验证 |\n| 销毁源头 | 独立于币安运营 | 未知 (可能 Bitget 自持) |\n| pocket-to-pocket | 无 | 中等 |\n| 信心 | high | **low** |\n",
   "questions_for_boss": [
     "BGB 销毁比例是多少？",
     "是否有其他 TEV 机制（如 Launchpad 参与权）？"
   ],
-  "last_updated": "2026-02-14",
+  "last_updated": "2026-04-27",
   "tev_data": {
-    "has_tev": true,
+    "has_tev": false,
     "tev_yield_percent": 0,
+    "market_cap_usd": 1888393751,
     "calculation_date": "2026-04-26",
-    "note": "销毁机制，透明度低",
-    "sources": [],
-    "market_cap_usd": 1888393751
+    "sources": [
+      {
+        "name": "Bitget 官方公告",
+        "type": "governance",
+        "note": "20% 平台收入 buyback + 销毁, 但销毁源头钱包未公开"
+      }
+    ],
+    "calculation": "0% (unverified — 销毁源头无链上溯源)",
+    "caveats": [
+      "<strong>销毁源头不可验证</strong>: Bitget 官方宣称\"20% 平台收入回购销毁\", 但未公开 buyback executor 钱包, 无市场对手方证据 (类 JustLend pocket-to-pocket 嫌疑)",
+      "<strong>CEX 财务不透明</strong>: 销毁可能是 Bitget 公司金库自持转账到黑洞, 不构成 token 持有人真实价值捕获",
+      "<strong>对比 BNB</strong>: BNB Auto-Burn 公式化 (B=N×1000/P) 链上完全透明, BGB 销毁声称基于收入但无验证机制",
+      "<strong>Morph 迁移变量</strong>: 2025-09 BGB 部分迁移 Morph 基金会, 销毁机制未来可能变更"
+    ]
   },
-  "tevStatus": "partial",
+  "tevStatus": "none",
   "confidence_reason": {
-    "zh": "CEX 内部销毁，无链上证据，仅官方公告",
-    "en": "CEX internal burn, no on-chain proof, announcement only"
+    "zh": "销毁源头无链上溯源, 类似 JustLend pocket-to-pocket 嫌疑. Bitget 自持 BGB 转账到黑洞 vs 真实市场买入无市场对手方证据",
+    "en": "No on-chain source tracing for burns. Similar pocket-to-pocket suspicion as JustLend — no market counterparty evidence for \"20% revenue buyback\" claim"
   },
   "tevRatio": 0,
   "earning_yield_percent": 0,
   "market_cap_usd": 1888393751,
-  "tev_yield_percent": 0
+  "tev_yield_percent": 0,
+  "calc_pipeline": [
+    {
+      "step": 1,
+      "label": "Bitget 平台业务运转",
+      "description": "CEX 收入 (现货/合约/金融服务等)"
+    },
+    {
+      "step": 2,
+      "label": "官方称 20% 收入回购 BGB",
+      "description": "官方季度公告披露销毁数量, 但未公开执行钱包地址"
+    },
+    {
+      "step": 3,
+      "label": "⚠️ 销毁源头钱包未公开",
+      "description": "无法链上验证销毁的 BGB 是市场买回还是公司自持转账",
+      "addresses": {
+        "BGB": "0x19de6b897ed14a376dda0fe53a5420d2ac828a28"
+      }
+    },
+    {
+      "step": 4,
+      "label": "⚠️ pocket-to-pocket 嫌疑 (类 JustLend)",
+      "description": "CEX 自持销毁不构成真 TEV. 没有市场对手方花真金白银买 BGB 的证据"
+    },
+    {
+      "step": 5,
+      "label": "结论: TEV unverified",
+      "description": "保留监控. 如未来发现链上可验证的销毁机制 (类 BNB Auto-Burn 公式), 重新评估"
+    },
+    {
+      "step": 6,
+      "label": "当前 TEV Yield: 0% (low confidence)",
+      "derived": true,
+      "value_fields_by_period": {
+        "7d": "metrics.tev_yield_7d_ann",
+        "30d": "metrics.tev_yield_30d_ann",
+        "90d": "metrics.tev_yield_90d_ann",
+        "365d": "tev_yield_percent"
+      },
+      "unit": "%"
+    }
+  ]
 }

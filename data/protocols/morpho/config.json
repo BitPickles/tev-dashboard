@@ -24,7 +24,7 @@
     "burns": "NONE",
     "primary_value_accrual": "纯治理代币 - MORPHO 目前仅用于治理投票"
   },
-  "confidence": "high",
+  "confidence": "low",
   "data_sources": [
     {
       "name": "Morpho Docs",
@@ -40,14 +40,26 @@
     }
   ],
   "notes": "【收入确认】Morpho 当前无协议收入（fee switch OFF）。年化总借贷费用约 $180M，但 100% 归 LP，协议不抽成。DAO 可通过治理投票激活收费机制，但目前未启用。若启用收费（如10%），潜在年化协议收入约 $18M。",
-  "last_updated": "2026-02-14",
+  "last_updated": "2026-04-27",
   "tev_data": {
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "note": "无持续 TEV",
-    "market_cap_usd": 854819248.93,
-    "calculation_date": "2026-04-26"
+    "market_cap_usd": 854118118.38,
+    "calculation_date": "2026-04-26",
+    "sources": [
+      {
+        "name": "协议机制",
+        "type": "governance",
+        "note": "纯治理代币. Morpho 协议层不抽成, vault curators 自行设置 fee"
+      }
+    ],
+    "calculation": "0% (governance-only)",
+    "caveats": [
+      "<strong>纯治理代币</strong>: Morpho 协议层不抽成, fees 100% 给 vault LP / curator",
+      "若未来治理通过启用 protocol fee (10%), 潜在 ~$18M/年 TEV",
+      "MORPHO 当前价值仅在 Optimistic Rollup 升级 / 未来 fee switch 治理"
+    ]
   },
   "market_data": {
     "tvl": 6856802869.885637,
@@ -55,15 +67,15 @@
   },
   "tevStatus": "none",
   "confidence_reason": {
-    "zh": "无 TEV 机制，纯治理代币，数据源透明",
-    "en": "No TEV mechanism, governance-only, transparent data"
+    "zh": "纯治理代币. Morpho 协议层不抽成, vault curators 自行设置 fee",
+    "en": "纯治理代币. Morpho 协议层不抽成, vault curators 自行设置 fee"
   },
   "tevRatio": 0,
   "earning_yield_percent": 0,
-  "market_cap_usd": 854819248.93,
+  "market_cap_usd": 854118118.38,
   "tev_yield_percent": 0,
   "metrics": {
-    "current_market_cap_usd": 854819248.93,
+    "current_market_cap_usd": 854118118.38,
     "trailing_365d_revenue_usd": 0,
     "trailing_30d_revenue_usd": 0,
     "trailing_365d_tev_usd": 0,
@@ -76,5 +88,30 @@
     "earning_yield_7d_ann": 0,
     "earning_yield_30d_ann": 0,
     "earning_yield_90d_ann": 0
-  }
+  },
+  "analyst_notes": "【2026-04-27 governance-only 验证】\n\n## 现状\nMorpho Blue 是 immutable lending primitive, 协议层不收 fee. Vault curators (在 Morpho 上构建产品的开发者) 自定义抽成. MORPHO 仅治理\n\n## TEV: 0% (governance-only, low confidence)\n\n## 何时变化\n若未来治理提案启用 fee switch / buyback 给 token 持有人, 重新评估.\n\n## 类比\nLDO / COMP 等老牌纯治理代币模式.\n",
+  "calc_pipeline": [
+    {
+      "step": 1,
+      "label": "协议运转产生 fees",
+      "description": "Morpho Blue 是 immutable lending primitive, 协议层不收 fee. Vault curators (在 Morpho 上..."
+    },
+    {
+      "step": 2,
+      "label": "⚠️ Fees 不分给 token 持有人",
+      "description": "纯治理代币. Morpho 协议层不抽成, vault curators 自行设置 fee"
+    },
+    {
+      "step": 3,
+      "label": "TEV Yield: 0% (governance-only)",
+      "derived": true,
+      "value_fields_by_period": {
+        "7d": "metrics.tev_yield_7d_ann",
+        "30d": "metrics.tev_yield_30d_ann",
+        "90d": "metrics.tev_yield_90d_ann",
+        "365d": "tev_yield_percent"
+      },
+      "unit": "%"
+    }
+  ]
 }

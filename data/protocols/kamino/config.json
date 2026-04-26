@@ -24,7 +24,7 @@
     "burns": "NONE",
     "primary_value_accrual": "无 TEV — KMNO staking 仅提供 farming 奖励加成（boost），非协议收入分配。Season 奖励来自代币国库排放（激励），不是 fee distribution"
   },
-  "confidence": "high",
+  "confidence": "low",
   "data_sources": [
     {
       "name": "Kamino Season 5 公告",
@@ -56,14 +56,26 @@
     }
   ],
   "notes": "⚠️ 从 PARTIAL 降级为 NONE。经深入调研确认：KMNO staking 不是协议收入分配，而是 farming 奖励加成（boost）机制。具体：(1) 新质押者起始 3% boost，每天 +0.1%；(2) 每 1 KMNO 质押对 $1 仓位施加 boost；(3) Season 奖励每 3 月最多 100M KMNO，来自代币国库（inflation），非协议费用；(4) 有 6 个月 vesting 期。Kamino 是优秀的 Solana 借贷协议（$3.34B AUM，零坏账），但 KMNO 代币目前无真正的 fee distribution 机制。2026 路线图专注机构产品（固定利率、链下抵押品），未来可能引入真正的 TEV。",
-  "last_updated": "2026-02-14",
+  "last_updated": "2026-04-27",
   "tev_data": {
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "note": "无持续 TEV",
-    "market_cap_usd": 90013238.24,
-    "calculation_date": "2026-04-26"
+    "market_cap_usd": 91796327.4,
+    "calculation_date": "2026-04-26",
+    "sources": [
+      {
+        "name": "协议机制",
+        "type": "governance",
+        "note": "KMNO staking 是 farming reward boost, 不是协议 fee 分润"
+      }
+    ],
+    "calculation": "0% (governance-only)",
+    "caveats": [
+      "<strong>KMNO staking 非真 TEV</strong>: staking 提供 farming boost (3% → 100% 上限), 但 reward 来自 token 国库 inflation, 非协议 fee 分润",
+      "Kamino 借贷 ($3.34B AUM) fees 100% 给 LP",
+      "6 个月 vesting 期 + 季度 100M KMNO 排放, 是稀释 (negative TEV) 而非分润"
+    ]
   },
   "market_data": {
     "tvl": 2058177618.5805178,
@@ -71,17 +83,17 @@
   },
   "tevStatus": "none",
   "confidence_reason": {
-    "zh": "无 TEV 机制，纯治理代币，数据源透明",
-    "en": "No TEV mechanism, governance-only, transparent data"
+    "zh": "KMNO staking 是 farming reward boost, 不是协议 fee 分润",
+    "en": "KMNO staking 是 farming reward boost, 不是协议 fee 分润"
   },
   "tevRatio": 0,
-  "earning_yield_percent": 18.41,
-  "market_cap_usd": 90013238.24,
+  "earning_yield_percent": 18.05,
+  "market_cap_usd": 91796327.4,
   "tev_yield_percent": 0,
   "metrics": {
     "trailing_365d_revenue_usd": 16573587,
     "trailing_30d_revenue_usd": 758225,
-    "current_market_cap_usd": 90013238.24,
+    "current_market_cap_usd": 91796327.4,
     "trailing_365d_tev_usd": 0,
     "trailing_30d_tev_usd": 0,
     "trailing_7d_revenue_usd": 183796,
@@ -89,8 +101,33 @@
     "tev_yield_7d_ann": 0,
     "tev_yield_30d_ann": 0,
     "tev_yield_90d_ann": 0,
-    "earning_yield_7d_ann": 10.65,
-    "earning_yield_30d_ann": 10.25,
-    "earning_yield_90d_ann": 11.09
-  }
+    "earning_yield_7d_ann": 10.44,
+    "earning_yield_30d_ann": 10.05,
+    "earning_yield_90d_ann": 10.87
+  },
+  "analyst_notes": "【2026-04-27 governance-only 验证】\n\n## 现状\nKamino 借贷协议 ($3.34B AUM) fees 100% 给 LP. KMNO staking 提供 farming boost (起始 3% 每天 +0.1%), 但 reward 来自 token 国库 inflation (100M KMNO/3月 季度排放), 非协议收入\n\n## TEV: 0% (governance-only, low confidence)\n\n## 何时变化\n若未来治理提案启用 fee switch / buyback 给 token 持有人, 重新评估.\n\n## 类比\nLDO / COMP 等老牌纯治理代币模式.\n",
+  "calc_pipeline": [
+    {
+      "step": 1,
+      "label": "协议运转产生 fees",
+      "description": "Kamino 借贷协议 ($3.34B AUM) fees 100% 给 LP. KMNO staking 提供 farming boost (起始 3% 每天..."
+    },
+    {
+      "step": 2,
+      "label": "⚠️ Fees 不分给 token 持有人",
+      "description": "KMNO staking 是 farming reward boost, 不是协议 fee 分润"
+    },
+    {
+      "step": 3,
+      "label": "TEV Yield: 0% (governance-only)",
+      "derived": true,
+      "value_fields_by_period": {
+        "7d": "metrics.tev_yield_7d_ann",
+        "30d": "metrics.tev_yield_30d_ann",
+        "90d": "metrics.tev_yield_90d_ann",
+        "365d": "tev_yield_percent"
+      },
+      "unit": "%"
+    }
+  ]
 }

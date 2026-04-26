@@ -40,7 +40,7 @@
     "primary_value_accrual": "回购分配 - 25% 协议收入回购 SYRUP",
     "tevRatio": 0.25
   },
-  "confidence": "high",
+  "confidence": "medium",
   "data_sources": [
     {
       "name": "Maple Finance Blog",
@@ -56,22 +56,33 @@
     }
   ],
   "notes": "【数据说明】MIP-019 提案于 2024 年通过（25% 协议收入回购 SYRUP），但实际 TEV 数据从 2025-11 才开始记录（DefiLlama dailyHoldersRevenue）。Maple 于 2024 年将代币从 MPL 迁移到 SYRUP，新代币经济模型强化了收入分配机制。作为机构借贷协议，收入主要来自贷款利差。",
-  "last_updated": "2026-02-14",
+  "last_updated": "2026-04-27",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 0.97,
-    "annual_tev_usd": 2933804.5,
-    "market_cap_usd": 303230673.06,
+    "tev_yield_percent": 0.59,
+    "annual_tev_usd": 1810758,
+    "market_cap_usd": 306459612.14,
     "calculation_date": "2026-04-26",
     "sources": [
       {
-        "name": "DefiLlama holdersRevenue",
+        "name": "DefiLlama dailyHoldersRevenue",
         "type": "defillama",
-        "annual_usd": 3943284,
-        "note": "SYRUP 回购"
+        "annual_usd": 2930000,
+        "note": "365d $1.81M (Nov 2025-Apr 2026 6 个月数据外推) ≈ revenue $11.74M × 25% (MIP-019)"
+      },
+      {
+        "name": "治理 MIP-019/020",
+        "type": "governance",
+        "note": "25% 协议收入 → SSF 回购 SYRUP. MIP-019 (2024-Q4 启动), MIP-020 (H1 2026 延续)"
       }
     ],
-    "calculation": "$3.94M / $332.82M = 1.18%"
+    "calculation": "$2.93M / $303.0M = 0.97%",
+    "caveats": [
+      "<strong>SSF 国库地址未公开</strong>: Maple 团队未发布回购执行钱包, 无法链上逐笔验证 burn vs reserve 比例 (类 ether.fi 地址不公开问题)",
+      "<strong>Burn vs Reserve 比例未披露</strong>: MIP-019 仅说\"part burn part liquidity/treasury\", 无具体比例. 若大部分留作国库储备而非销毁, 实际供应收缩 < 25%, 名义 yield 虚高",
+      "<strong>6 个月样本外推 365d</strong>: DefiLlama dailyHoldersRevenue 从 2025-11 才开始记录, 不足 1 年完整数据. 当前月收入有下行趋势, 365d 数字可能高估",
+      "SSF 国库持仓可被治理动用 (类 Hyperliquid AF 风险), 不等同永久销毁"
+    ]
   },
   "market_data": {
     "tvl": 2109989088.5761566,
@@ -82,99 +93,80 @@
     "zh": "MIP-018 治理提案明确 25% 利润回购 SYRUP，链上可追踪",
     "en": "MIP-018 governance proposal mandates 25% profit buyback of SYRUP, on-chain trackable"
   },
-  "analyst_notes": {
-    "overview": {
-      "current_ratio": "25%",
-      "mechanism": "Syrup Strategic Fund (SSF)",
-      "frequency": "按月执行",
-      "yield_source": "Protocol Fee Revenue (管理费/服务费/策略费/起始费)"
-    },
-    "ratio_timeline": [
-      {
-        "period": "Q1 2025",
-        "ratio": 0.2,
-        "mip": "MIP-013",
-        "details": "20% 月度回购 → stream 给 stSYRUP"
-      },
-      {
-        "period": "Q2 2025",
-        "ratio": 0.2,
-        "mip": "MIP-016",
-        "details": "延续 20% 月度回购"
-      },
-      {
-        "period": "Q3 2025",
-        "ratio": 0.25,
-        "mip": "MIP-018",
-        "details": "提升至 25% 月度回购"
-      },
-      {
-        "period": "Q4 2025 起",
-        "ratio": 0.25,
-        "mip": "MIP-019",
-        "details": "25% → SSF，sunset staking"
-      },
-      {
-        "period": "Q1-Q2 2026",
-        "ratio": 0.25,
-        "mip": "MIP-020",
-        "details": "延长 25% → SSF"
-      }
-    ],
-    "buyback_data": {
-      "q1_2025": {
-        "usd": 235000,
-        "syrup": 1960000,
-        "ratio": 0.2
-      },
-      "h1_2025": {
-        "usd": 830000,
-        "syrup": 3500000,
-        "ratio": 0.2
-      },
-      "q4_2025": {
-        "syrup": 2000000,
-        "note": "SSF 模式，美元花费未披露"
-      }
-    },
-    "mip_proposals": {
-      "MIP-013": "Fee Buyback Mechanism (Q1 2025, 20%)",
-      "MIP-016": "Q2 Fee Buyback Continuation (Q2 2025, 20%)",
-      "MIP-018": "Q3 Fee Buyback Increase (Q3 2025, 25%)",
-      "MIP-019": "Activate SSF and Sunset Staking (Q4 2025 起)",
-      "MIP-020": "H1 2026 SSF Allocation (2026 上半年延长)"
-    },
-    "market_data": {
-      "market_cap": "$280M",
-      "circulating_supply": "1.16B SYRUP",
-      "total_supply": "1.22B SYRUP"
-    },
-    "mechanism_note": "Maple 的 Protocol Revenue ≈ DeFiLlama Revenue（管理费/服务费/策略费/起始费），不包含借款人支付的利息。MIP-019 前回购后 stream 给 stSYRUP，MIP-019 后改为 SSF 持有回购 + DAO 资产负债表建设。",
-    "data_source": "DefiLlama Revenue × 25%",
-    "links": {
-      "governance": "https://maple.finance/governance",
-      "docs": "https://docs.maple.finance",
-      "mip_hub": "https://maple.finance/governance/proposals",
-      "transparency": "https://maple.finance/transparency"
-    }
-  },
+  "analyst_notes": "【2026-04-27 链上调研】\n\n## 机制\nMaple Improvement Proposal MIP-019 (2024-Q4 通过):\n- 25% 协议收入 → Syrup Strategic Fund (SSF) 回购 SYRUP\n- 取消原 stSYRUP staking reward, 改为 DAO 资产负债表建设\n- Snapshot 投票 99%+ 赞成\n\nMIP-020 (2026-Q1-Q2): 延续 MIP-019, 月度执行.\n\n## 数据\n- DefiLlama dailyHoldersRevenue 365d $1.81M (6 个月数据)\n- DefiLlama dailyRevenue 365d $11.74M\n- 比例 1.81/11.74 = 15.4% (低于宣称 25%, 可能是 6 个月外推不完整)\n- 流通市值 ~$303M\n- yield ≈ 0.97%\n\n## 警示\n- SSF 国库地址未公开\n- Burn vs Reserve 比例未披露\n- DefiLlama 数据时间跨度不足\n\n## 关键地址\n- SYRUP: 0x643C4E15d7d62Ad0aBeC4a9BD4b001aA3Ef52d66\n\n## 历史\n- 2026-04-27: 链上调研, 标 medium confidence (国库地址未公开, 数据 6 个月)\n- 2025-Q4: MIP-019 通过启动 SSF\n",
   "tevRatio": 0.25,
-  "earning_yield_percent": 3.87,
-  "market_cap_usd": 303230673.06,
-  "tev_yield_percent": 0.97,
+  "earning_yield_percent": 0.59,
+  "market_cap_usd": 306459612.14,
+  "tev_yield_percent": 0.59,
   "metrics": {
-    "current_market_cap_usd": 303230673.06,
-    "trailing_365d_revenue_usd": 11735218,
-    "trailing_30d_revenue_usd": 1290414,
-    "trailing_365d_tev_usd": 2933804.5,
-    "trailing_30d_tev_usd": 244483.70833333334,
-    "trailing_7d_revenue_usd": 213256,
-    "trailing_90d_revenue_usd": 3916175,
-    "tev_yield_7d_ann": 0.92,
-    "tev_yield_30d_ann": 1.29,
-    "tev_yield_90d_ann": 1.31,
-    "earning_yield_7d_ann": 3.67,
-    "earning_yield_30d_ann": 5.18,
-    "earning_yield_90d_ann": 5.24
-  }
+    "current_market_cap_usd": 306459612.14,
+    "trailing_365d_revenue_usd": 1810758,
+    "trailing_30d_revenue_usd": 322602,
+    "trailing_365d_tev_usd": 1810758,
+    "trailing_30d_tev_usd": 150896.5,
+    "trailing_7d_revenue_usd": 53313,
+    "trailing_90d_revenue_usd": 979040,
+    "tev_yield_7d_ann": 0.91,
+    "tev_yield_30d_ann": 1.28,
+    "tev_yield_90d_ann": 1.3,
+    "earning_yield_7d_ann": 0.91,
+    "earning_yield_30d_ann": 1.28,
+    "earning_yield_90d_ann": 1.3
+  },
+  "calc_pipeline": [
+    {
+      "step": 1,
+      "label": "Maple 借贷协议产生 fees",
+      "description": "机构借贷 + Syrup USDC 收益策略产生协议收入",
+      "source_url": "https://maple.finance/"
+    },
+    {
+      "step": 2,
+      "label": "MIP-019 治理: 25% revenue → SSF",
+      "description": "SSF 月度执行回购 SYRUP, 取代旧 stSYRUP staking",
+      "source_url": "https://community.maple.finance/t/mip-019-activate-the-ssf-and-sunset-staking/1042",
+      "addresses": {
+        "SYRUP": "0x643C4E15d7d62Ad0aBeC4a9BD4b001aA3Ef52d66"
+      }
+    },
+    {
+      "step": 3,
+      "label": "⚠️ SSF 国库地址未公开",
+      "description": "回购钱包未对外披露, 无法链上逐笔追踪 burn vs reserve 比例"
+    },
+    {
+      "step": 4,
+      "label": "DefiLlama dailyHoldersRevenue 取数",
+      "description": "365d $1.81M (6 个月外推), 与官方 25% 比例大致吻合",
+      "source_url": "https://api.llama.fi/summary/fees/maple?dataType=dailyHoldersRevenue",
+      "value_fields_by_period": {
+        "7d": "metrics.trailing_7d_revenue_usd",
+        "30d": "metrics.trailing_30d_revenue_usd",
+        "90d": "metrics.trailing_90d_revenue_usd",
+        "365d": "metrics.trailing_365d_revenue_usd"
+      },
+      "unit": "USD"
+    },
+    {
+      "step": 5,
+      "label": "年化 / SYRUP 流通市值",
+      "formula": "TEV_Yield = holdersRevenue × (365/N) ÷ market_cap × 100%",
+      "inputs": {
+        "市值": "market_cap_usd"
+      },
+      "unit": "%"
+    },
+    {
+      "step": 6,
+      "label": "最终 TEV Yield",
+      "derived": true,
+      "value_fields_by_period": {
+        "7d": "metrics.tev_yield_7d_ann",
+        "30d": "metrics.tev_yield_30d_ann",
+        "90d": "metrics.tev_yield_90d_ann",
+        "365d": "tev_yield_percent"
+      },
+      "unit": "%"
+    }
+  ]
 }

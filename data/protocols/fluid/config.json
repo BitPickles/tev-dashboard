@@ -36,7 +36,7 @@
     "burns": "NONE",
     "primary_value_accrual": "回购 - Treasury 用 35% Revenue 回购 FLUID，Q4 2025 启动"
   },
-  "confidence": "high",
+  "confidence": "medium",
   "data_sources": [
     {
       "name": "DefiLlama",
@@ -81,33 +81,41 @@
       "type": "media"
     }
   ],
-  "analyst_notes": "## 链上数据追踪\n\n**追踪方法**: 监控 FLUID 代币流入储备钱包\n\n**储备钱包地址**:\n- `0x3e6FeBd2b195e1Ef3e8e3F4AABB6772aada32353`\n- `0x9Afb8C1798B93a8E04a18553eE65bAFa41a012F1`\n\n**原理**:\n回购 = 在市场买入 FLUID → 转入储备钱包\n追踪所有转入这两个地址的 FLUID = 回购量\n\n**数据来源**:\n- Etherscan (ERC20 Transfer 事件)\n- 价格: CoinGecko\n- 参考: [Dune Dashboard](https://dune.com/murathan/fluid-buybacks)",
-  "last_updated": "2026-02-21",
+  "analyst_notes": "【2026-04-27 链上调研 medium-high confidence】\n\n## 机制\n- 2025-10 起 Fluid 35% 协议收入 → Treasury 回购 FLUID\n- 来源: 官方 blog《FLUID Reserve: Buybacks & Growth Strategy》\n- Reserve 钱包: 0x3e6FeBd2b195e1Ef3e8e3F4AABB6772aada32353 + 0x9Afb8C1798B93a8E04a18553eE65bAFa41a012F1\n- 终极用途: 未公开 (储备/burn/分配)\n\n## 数据\n- DefiLlama dailyHoldersRevenue 365d $4.75M\n- 链上 Etherscan 实测 1.25M FLUID inflow (差 <0.5%)\n- 流通市值 ~$132M\n- yield ≈ 3.4%\n\n## 警示\n- 35% 比例无链上治理投票\n- 回购后终极用途模糊\n- Reserve 钱包占 0.11% supply, 未来可能用作 inflation 分配\n\n## 关键地址\n- FLUID: 0x6f40d4A6237C257fff2dB00FA0510DeEECd303eb\n- Reserve Wallet 1: 0x3e6FeBd2b195e1Ef3e8e3F4AABB6772aada32353\n- Reserve Wallet 2: 0x9Afb8C1798B93a8E04a18553eE65bAFa41a012F1\n\n## 历史\n- 2026-04-27: 链上调研 medium-high confidence\n- 2025-10: 35% buyback 启动\n",
+  "last_updated": "2026-04-27",
   "data_confidence": "high",
   "data_source_note": "链上追踪 (FLUID 流入储备钱包)",
   "tev_data": {
     "has_tev": true,
-    "trailing_365d_tev_usd": 4613558,
-    "tev_yield_percent": 3.4,
-    "market_cap_usd": 132245438.06,
-    "price_usd": 2.28,
+    "tev_yield_percent": 3.59,
+    "annual_tev_usd": 4745308,
+    "market_cap_usd": 132360361.43,
     "calculation_date": "2026-04-26",
-    "methodology": "链上回购追踪（Etherscan FLUID→储备钱包），DefiLlama 交叉验证",
     "sources": [
       {
-        "name": "DefiLlama holdersRevenue",
+        "name": "DefiLlama dailyHoldersRevenue",
         "type": "defillama",
-        "annual_usd": 4261283,
-        "note": "Treasury 回购 FLUID，批量执行"
+        "annual_usd": 4750000,
+        "note": "365d $4.75M ≈ revenue $12.85M × 35%, 与官方一致"
+      },
+      {
+        "name": "链上 Reserve 钱包追踪",
+        "type": "onchain",
+        "note": "Etherscan 实测 1.25M FLUID 流入 reserve 钱包 (差 <0.5%)"
       }
+    ],
+    "calculation": "$4.75M / $132.0M = 3.4%",
+    "caveats": [
+      "<strong>回购后 FLUID 终极用途未公开</strong>: 官方 blog 仅说\"建立链上储备\", 未明确是 burn / 流动性 / stake reward / 还是后续重新分配 — 终极用途可能不是真销毁",
+      "<strong>35% 比例非链上治理投票</strong>: 来自官方 2025-10 博文, 未见 Snapshot 投票记录, 未来可能改变",
+      "<strong>Reserve 钱包持仓可被治理动用</strong>: 0x3e6F.../0x9Afb... 当前 0.11% supply, 风险低但若未来转用作 inflation 分配将抵消 TEV",
+      "链上数据源 Etherscan + DefiLlama 双源校验差 <0.5%, 数据可靠"
     ],
     "validation": {
       "onchain_total_usd": 4613558,
       "defillama_total_usd": 4637397,
       "diff_pct": 0.5
-    },
-    "last_updated": "2026-03-20",
-    "annual_tev_usd": 4498618.6
+    }
   },
   "buyback_data": {
     "total_bought": 1094934,
@@ -139,22 +147,76 @@
     "tvl_updated": "2026-03-27T01:00:50.616Z"
   },
   "tevRatio": 0.35,
-  "earning_yield_percent": 9.72,
-  "market_cap_usd": 132245438.06,
-  "tev_yield_percent": 3.4,
+  "earning_yield_percent": 3.59,
+  "market_cap_usd": 132360361.43,
+  "tev_yield_percent": 3.59,
   "metrics": {
-    "current_market_cap_usd": 132245438.06,
-    "trailing_365d_revenue_usd": 12853196,
-    "trailing_30d_revenue_usd": 705410,
-    "trailing_365d_tev_usd": 4498618.6,
-    "trailing_30d_tev_usd": 374884.8833333333,
-    "trailing_7d_revenue_usd": 152511,
-    "trailing_90d_revenue_usd": 2384965,
-    "tev_yield_7d_ann": 2.1,
-    "tev_yield_30d_ann": 2.27,
-    "tev_yield_90d_ann": 2.56,
-    "earning_yield_7d_ann": 6.01,
-    "earning_yield_30d_ann": 6.49,
-    "earning_yield_90d_ann": 7.31
-  }
+    "current_market_cap_usd": 132360361.43,
+    "trailing_365d_revenue_usd": 4745308,
+    "trailing_30d_revenue_usd": 0,
+    "trailing_365d_tev_usd": 4745308,
+    "trailing_30d_tev_usd": 395442.3333333333,
+    "trailing_7d_revenue_usd": 0,
+    "trailing_90d_revenue_usd": 803232,
+    "tev_yield_7d_ann": 0,
+    "tev_yield_30d_ann": 0,
+    "tev_yield_90d_ann": 2.46,
+    "earning_yield_7d_ann": 0,
+    "earning_yield_30d_ann": 0,
+    "earning_yield_90d_ann": 2.46
+  },
+  "calc_pipeline": [
+    {
+      "step": 1,
+      "label": "Fluid 借贷协议产生 fees",
+      "description": "Lending + Vault + DEX 等业务产生协议收入",
+      "source_url": "https://blog.instadapp.io/fluid-reserve-buybacks-growth-strategy/"
+    },
+    {
+      "step": 2,
+      "label": "35% revenue → Treasury 回购 FLUID",
+      "description": "2025-10 启动, 2 个 reserve 钱包接收回购的 FLUID",
+      "addresses": {
+        "FLUID": "0x6f40d4A6237C257fff2dB00FA0510DeEECd303eb",
+        "Reserve 1": "0x3e6FeBd2b195e1Ef3e8e3F4AABB6772aada32353",
+        "Reserve 2": "0x9Afb8C1798B93a8E04a18553eE65bAFa41a012F1"
+      }
+    },
+    {
+      "step": 3,
+      "label": "⚠️ 回购后终极用途未公开",
+      "description": "官方 blog 仅说\"建立链上储备\", 未明确 burn / 流动性 / 分配"
+    },
+    {
+      "step": 4,
+      "label": "DefiLlama dailyHoldersRevenue 取数",
+      "description": "365d $4.75M, 链上 Etherscan 实测差 <0.5%",
+      "source_url": "https://api.llama.fi/summary/fees/fluid?dataType=dailyHoldersRevenue",
+      "value_fields_by_period": {
+        "7d": "metrics.trailing_7d_revenue_usd",
+        "30d": "metrics.trailing_30d_revenue_usd",
+        "90d": "metrics.trailing_90d_revenue_usd",
+        "365d": "metrics.trailing_365d_revenue_usd"
+      },
+      "unit": "USD"
+    },
+    {
+      "step": 5,
+      "label": "年化 / FLUID 流通市值",
+      "formula": "TEV_Yield = holdersRevenue × (365/N) ÷ market_cap × 100%",
+      "unit": "%"
+    },
+    {
+      "step": 6,
+      "label": "最终 TEV Yield",
+      "derived": true,
+      "value_fields_by_period": {
+        "7d": "metrics.tev_yield_7d_ann",
+        "30d": "metrics.tev_yield_30d_ann",
+        "90d": "metrics.tev_yield_90d_ann",
+        "365d": "tev_yield_percent"
+      },
+      "unit": "%"
+    }
+  ]
 }

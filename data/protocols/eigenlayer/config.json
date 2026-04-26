@@ -24,7 +24,7 @@
     "burns": "NONE",
     "primary_value_accrual": "纯治理代币 - EIGEN 目前仅用于治理，无收入分配机制"
   },
-  "confidence": "high",
+  "confidence": "low",
   "data_sources": [
     {
       "name": "DefiLlama TokenRights",
@@ -35,14 +35,26 @@
     }
   ],
   "notes": "EigenLayer 作为再质押基础设施，当前 EIGEN 代币仅有治理功能。协议收入（AVS 费用）目前未分配给代币持有者。未来可能通过治理开启费用开关。",
-  "last_updated": "2026-02-14",
+  "last_updated": "2026-04-27",
   "tev_data": {
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "note": "无持续 TEV",
-    "market_cap_usd": 125446053.02,
-    "calculation_date": "2026-04-26"
+    "market_cap_usd": 125782988.86,
+    "calculation_date": "2026-04-26",
+    "sources": [
+      {
+        "name": "协议机制",
+        "type": "governance",
+        "note": "纯治理代币. AVS 费用不分给 EIGEN 持有人, restaking rewards 全流向 validator"
+      }
+    ],
+    "calculation": "0% (governance-only)",
+    "caveats": [
+      "<strong>纯治理代币</strong>: AVS fees 流向 operator/restaker, 不给 EIGEN",
+      "EIGEN restaking 不创造 token 持有人收益, 只能用于 EIGEN 内部 slashing 治理",
+      "未来若推出 fee switch 给 EIGEN, 重新评估"
+    ]
   },
   "market_data": {
     "tvl": 8717705308.933592,
@@ -50,15 +62,15 @@
   },
   "tevStatus": "none",
   "confidence_reason": {
-    "zh": "无 TEV 机制，纯治理代币，数据源透明",
-    "en": "No TEV mechanism, governance-only, transparent data"
+    "zh": "纯治理代币. AVS 费用不分给 EIGEN 持有人, restaking rewards 全流向 validator",
+    "en": "纯治理代币. AVS 费用不分给 EIGEN 持有人, restaking rewards 全流向 validator"
   },
   "tevRatio": 0,
   "earning_yield_percent": 0,
-  "market_cap_usd": 125446053.02,
+  "market_cap_usd": 125782988.86,
   "tev_yield_percent": 0,
   "metrics": {
-    "current_market_cap_usd": 125446053.02,
+    "current_market_cap_usd": 125782988.86,
     "trailing_365d_revenue_usd": 0,
     "trailing_30d_revenue_usd": 0,
     "trailing_365d_tev_usd": 0,
@@ -71,5 +83,30 @@
     "earning_yield_7d_ann": 0,
     "earning_yield_30d_ann": 0,
     "earning_yield_90d_ann": 0
-  }
+  },
+  "analyst_notes": "【2026-04-27 governance-only 验证】\n\n## 现状\nEigenLayer AVS (Actively Validated Services) 收取 fees, 但 fee 分给 operator + restaker (持 ETH/LST), 不给 EIGEN 持有人\n\n## TEV: 0% (governance-only, low confidence)\n\n## 何时变化\n若未来治理提案启用 fee switch / buyback 给 token 持有人, 重新评估.\n\n## 类比\nLDO / COMP 等老牌纯治理代币模式.\n",
+  "calc_pipeline": [
+    {
+      "step": 1,
+      "label": "协议运转产生 fees",
+      "description": "EigenLayer AVS (Actively Validated Services) 收取 fees, 但 fee 分给 operator + restak..."
+    },
+    {
+      "step": 2,
+      "label": "⚠️ Fees 不分给 token 持有人",
+      "description": "纯治理代币. AVS 费用不分给 EIGEN 持有人, restaking rewards 全流向 validator"
+    },
+    {
+      "step": 3,
+      "label": "TEV Yield: 0% (governance-only)",
+      "derived": true,
+      "value_fields_by_period": {
+        "7d": "metrics.tev_yield_7d_ann",
+        "30d": "metrics.tev_yield_30d_ann",
+        "90d": "metrics.tev_yield_90d_ann",
+        "365d": "tev_yield_percent"
+      },
+      "unit": "%"
+    }
+  ]
 }

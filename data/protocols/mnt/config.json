@@ -81,7 +81,7 @@
       "note": "Mantle Treasury 的使用策略"
     }
   ],
-  "confidence": "medium",
+  "confidence": "low",
   "data_sources": [
     {
       "name": "CoinGecko",
@@ -107,28 +107,84 @@
       "reliability": "high"
     }
   ],
-  "analyst_notes": "【2026-02-05 初步调研】\n\n## MNT 特殊情况说明\n\nMNT 与 BNB/OKB 不同，它不是传统意义上的 CEX 平台币：\n\n### 背景\n1. **前身 BitDAO**：由 Bybit 支持创立\n2. **2023 年转型**：BitDAO → Mantle\n3. **定位变化**：从 DAO 治理代币 → L2 原生代币\n\n### TEV 评估挑战\n1. ⚠️ 不是直接的 Bybit 平台币\n2. ⚠️ TEV 机制不如 BNB/OKB 明确\n3. ⚠️ 主要价值来自 L2 生态而非交易所收入\n\n### 需要向 Boss 确认\n1. MNT 是否应该按「L2 代币」而非「平台币」评估？\n2. Bybit 收入与 MNT 的具体关联是什么？\n3. 是否有官方的 TEV 机制文档？",
+  "analyst_notes": "【2026-04-27 — MNT 标 governance-only (类 LDO)】\n\n## 调研结论\nMantle (MNT) 当前**无任何明确的 TEV 给持有人**:\n\n1. ✗ Mantle L2 sequencer fees 进 BaseFeeVault, **不自动 burn 给 MNT** (与 BNB BEP-95 不同)\n2. ✗ mETH (LST) 收益分给 mETH stakers + LSP + 节点运营商, **不流向 MNT**\n3. ✗ Treasury 4B+ 资产, 但**Treasury Burn 提案 (3-8% 供应, 12-24 个月) 仍在讨论, 未执行**\n4. ✗ Gas fees 流向 Sequencer 后需 DAO 投票才能 burn (流程不自动化)\n5. ✓ MNT staking 4-8% APY 来自新币发行 (inflation), 非协议收入分润 — 不算真 TEV\n\n## 类比\n- 类似 LDO (Lido): 协议收入归 DAO, token 持有人不直接捕获\n- 类似 OP / ARB: L2 native token 没 fee → token 设计\n\n## 何时变化\n若 Treasury Burn 提案通过执行, 重新评估为 active TEV:\n- 治理论坛: https://forum.mantle.xyz/\n\n## 关键地址\n- MNT (ETH L1): 0x3c3a81e81dc49a522a592e7622a7e711c06bf354\n- Treasury L1: 0x78605Df79524164911C144801f41e9811B7DB73D\n- Treasury L2: 0x94FEC56BBEcEaCC71c9e61623ACE9F8e1B1cf473\n\n## 历史\n- 2026-04-27: 加入主表标 governance-only (low confidence)\n",
   "questions_for_boss": [
     "MNT 是否应按 L2 代币而非平台币评估？",
     "Bybit 收入与 MNT 的具体关联？",
     "MNT 是否有明确的回购/销毁/分红机制？"
   ],
-  "last_updated": "2026-02-14",
+  "last_updated": "2026-04-27",
   "tev_data": {
     "has_tev": false,
     "tev_yield_percent": 0,
+    "market_cap_usd": 1981231322,
     "calculation_date": "2026-04-26",
-    "note": "纯治理代币",
-    "sources": [],
-    "market_cap_usd": 1981231322
+    "sources": [
+      {
+        "name": "协议机制",
+        "type": "governance",
+        "note": "Mantle L2 fees 不分给 MNT 持有人, mETH 收益独立, Treasury Burn 提案讨论中未执行"
+      }
+    ],
+    "calculation": "0% (governance-only, 类 LDO)",
+    "caveats": [
+      "<strong>L2 sequencer fees 不流向 MNT</strong>: Mantle v2 EIP-1559 风格 fee 进 BaseFeeVault, 但不自动 burn 给 MNT 持有人 (与 BNB BEP-95 实时 burn 不同)",
+      "<strong>mETH 收益独立</strong>: Mantle LST 收益分给 mETH stakers + LSP + 节点运营商, 与 MNT 持有人无关",
+      "<strong>Treasury Burn 提案未执行</strong>: 论坛讨论 3-8% 供应在 12-24 个月销毁的提案存在, 但未投票通过, 当前 0 影响",
+      "MNT staking 4-8% APY 来自新币发行 (inflation), 非协议收入分润, 不算真 TEV",
+      "若未来 Treasury Burn 提案通过执行, 重新评估"
+    ]
   },
   "tevStatus": "none",
   "confidence_reason": {
-    "zh": "虽无 TEV，但 Mantle Treasury 链上可查，BitDAO 治理透明",
-    "en": "No TEV, but Mantle Treasury on-chain verifiable, BitDAO governance transparent"
+    "zh": "Mantle L2 sequencer fees 不流向 MNT 持有人; mETH 收益给 mETH 持有人; Treasury Burn 提案讨论中未执行. 纯治理代币 (类 LDO)",
+    "en": "Mantle L2 sequencer fees do not flow to MNT holders; mETH rewards go to mETH holders; Treasury Burn proposal under discussion, not executed. Pure governance token (similar to LDO)"
   },
   "tevRatio": 0,
   "earning_yield_percent": 0,
   "market_cap_usd": 1981231322,
-  "tev_yield_percent": 0
+  "tev_yield_percent": 0,
+  "calc_pipeline": [
+    {
+      "step": 1,
+      "label": "Mantle L2 业务运转",
+      "description": "L2 sequencer 费 + DApp fees + mETH staking 收益"
+    },
+    {
+      "step": 2,
+      "label": "L2 fees → BaseFeeVault (不 burn 给 MNT)",
+      "description": "与 BNB BEP-95 不同, Mantle 的 base fee 累积到 vault, 由 DAO 投票决定用途",
+      "addresses": {
+        "MNT (ETH L1)": "0x3c3a81e81dc49a522a592e7622a7e711c06bf354",
+        "Treasury L1": "0x78605Df79524164911C144801f41e9811B7DB73D"
+      }
+    },
+    {
+      "step": 3,
+      "label": "mETH (LST) 收益不流向 MNT",
+      "description": "分给 mETH stakers + LSP + 节点运营商"
+    },
+    {
+      "step": 4,
+      "label": "Treasury Burn 提案讨论中, 未执行",
+      "description": "论坛提案 3-8% 供应在 12-24 个月销毁, 待治理投票"
+    },
+    {
+      "step": 5,
+      "label": "MNT staking APY 来自新币发行",
+      "description": "4-8% APY 但是 inflation, 非协议收入分润, 不算 TEV"
+    },
+    {
+      "step": 6,
+      "label": "TEV Yield: 0% (governance-only, 类 LDO)",
+      "derived": true,
+      "value_fields_by_period": {
+        "7d": "metrics.tev_yield_7d_ann",
+        "30d": "metrics.tev_yield_30d_ann",
+        "90d": "metrics.tev_yield_90d_ann",
+        "365d": "tev_yield_percent"
+      },
+      "unit": "%"
+    }
+  ]
 }

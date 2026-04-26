@@ -77,7 +77,7 @@
     "tvl": 6677560266.30153,
     "tvl_updated": "2026-03-27T01:00:33.623Z"
   },
-  "confidence": "medium",
+  "confidence": "low",
   "data_sources": [
     {
       "name": "DefiLlama Ethena USDe",
@@ -143,27 +143,40 @@
       "note": "回购安排、ENA 处置限制"
     }
   ],
-  "analyst_notes": "## Ethena TEV 分析\n\n### 结论：无持续 TEV\n\nEthena 的经营性收益主要服务于 **USDe/sUSDe 产品竞争力** 与 **系统安全垫（Reserve Fund）**。\n\n**ENA/sENA 目前没有持续的利润分配。**\n\n### Token Holder Income = $0\n\n按 DefiLlama 口径，协议收益不分配给 ENA/sENA 持有人。\n\n### 回购：资本运作，不算 TEV\n\n⚠️ 回购资金来源是 **PIPE 融资**，不是协议经营利润：\n- 资本运作驱动，非经营分红\n- 可持续性取决于后续融资安排\n- 不算持续 TEV\n\n### Fee Switch 状态\n\nFee switch 设计给 sENA，但尚未落地：\n- 分配比例待定\n- CEX adoption 条件未满足\n- 需要 legal engineering\n\n应视为**未来期权**，非当前现金流。\n\n### 收入去向\n\n| 去向 | 说明 |\n|------|------|\n| sUSDe Staking | 大部分收益 |\n| Reserve Fund | 系统安全垫 |\n| ENA/sENA | **$0** |\n\n### 数据来源\n\n- [DefiLlama](https://defillama.com/protocol/ethena-usde)\n- [Fee Switch Parameters](https://gov.ethenafoundation.com/t/ena-fee-switch-parameters/396)\n- [Governance Updates](https://gov.ethenafoundation.com)",
-  "last_updated": "2026-02-14",
+  "analyst_notes": "【2026-04-27 governance-only 验证】\n\n## 现状\nEthena 协议收入 = USDe staking yield (~7.83% APY) 全部给 sUSDe 持有人. ENA 仅治理代币. 2025 历次大额回购来自 StablecoinX PIPE 融资 (资本运作非利润分红)\n\n## TEV: 0% (governance-only, low confidence)\n\n## 何时变化\n若未来治理提案启用 fee switch / buyback 给 token 持有人, 重新评估.\n\n## 类比\nLDO / COMP 等老牌纯治理代币模式.\n",
+  "last_updated": "2026-04-27",
   "tev_data": {
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "note": "无持续 TEV",
-    "market_cap_usd": 956401508.61,
-    "calculation_date": "2026-04-26"
+    "market_cap_usd": 957347159.46,
+    "calculation_date": "2026-04-26",
+    "sources": [
+      {
+        "name": "协议机制",
+        "type": "governance",
+        "note": "机制复杂但 ENA 当前不分润. sUSDe 收益给 sUSDe 持有人, 不给 ENA/sENA"
+      }
+    ],
+    "calculation": "0% (governance-only)",
+    "caveats": [
+      "<strong>易混淆</strong>: sUSDe 收益是给 sUSDe 持有人的 (~7.83% APY), 不是给 ENA 持有人",
+      "<strong>2025 ENA 回购 ($570M) 是资本运作</strong>: 资金来自 StablecoinX PIPE 融资, 不是协议持续利润分红, 不算 TEV",
+      "sENA 分配比例至 2025-09 仍为 \"discretional\", 无持续协议级分润",
+      "Fee Switch 治理提案存在, 但分配比例待定"
+    ]
   },
   "tevStatus": "none",
   "confidence_reason": {
-    "zh": "回购资金来源为 reserve fund 而非协议利润，机制不透明",
-    "en": "Buyback funded from reserve fund not protocol revenue, mechanism opaque"
+    "zh": "机制复杂但 ENA 当前不分润. sUSDe 收益给 sUSDe 持有人, 不给 ENA/sENA",
+    "en": "机制复杂但 ENA 当前不分润. sUSDe 收益给 sUSDe 持有人, 不给 ENA/sENA"
   },
   "tevRatio": 0,
   "earning_yield_percent": 1.34,
-  "market_cap_usd": 956401508.61,
+  "market_cap_usd": 957347159.46,
   "tev_yield_percent": 0,
   "metrics": {
-    "current_market_cap_usd": 956401508.61,
+    "current_market_cap_usd": 957347159.46,
     "trailing_365d_revenue_usd": 12802472,
     "trailing_30d_revenue_usd": 204701,
     "trailing_365d_tev_usd": 0,
@@ -176,5 +189,29 @@
     "earning_yield_7d_ann": 0.3,
     "earning_yield_30d_ann": 0.26,
     "earning_yield_90d_ann": 0.2
-  }
+  },
+  "calc_pipeline": [
+    {
+      "step": 1,
+      "label": "协议运转产生 fees",
+      "description": "Ethena 协议收入 = USDe staking yield (~7.83% APY) 全部给 sUSDe 持有人. ENA 仅治理代币. 2025 历次大..."
+    },
+    {
+      "step": 2,
+      "label": "⚠️ Fees 不分给 token 持有人",
+      "description": "机制复杂但 ENA 当前不分润. sUSDe 收益给 sUSDe 持有人, 不给 ENA/sENA"
+    },
+    {
+      "step": 3,
+      "label": "TEV Yield: 0% (governance-only)",
+      "derived": true,
+      "value_fields_by_period": {
+        "7d": "metrics.tev_yield_7d_ann",
+        "30d": "metrics.tev_yield_30d_ann",
+        "90d": "metrics.tev_yield_90d_ann",
+        "365d": "tev_yield_percent"
+      },
+      "unit": "%"
+    }
+  ]
 }
