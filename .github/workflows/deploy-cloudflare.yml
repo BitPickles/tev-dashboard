@@ -33,6 +33,8 @@ jobs:
             --exclude 'skills/' \
             --exclude 'archive/' \
             --exclude 'canvas/' \
+            --exclude 'docs/' \
+            --exclude 'scripts/' \
             --exclude 'polymarket-monitor/' \
             --exclude '.openclaw/' \
             --exclude '.clawdhub/' \
@@ -48,6 +50,13 @@ jobs:
             --exclude 'USER.md' \
             --exclude 'AGENTS.md' \
             --exclude 'MEMORY.md' \
+            --exclude 'CLAUDE.md' \
+            --exclude 'VERSIONING.md' \
+            --exclude 'README.md' \
+            --exclude 'data/protocols/PROGRESS.md' \
+            --exclude 'data/protocols/README.md' \
+            --exclude 'data/protocols/**/README.md' \
+            --exclude 'data/protocols/**/*.md' \
             --exclude 'show_portfolio.py' \
             --exclude 'buyback_candidates.csv' \
             --exclude 'tev/debug.html' \

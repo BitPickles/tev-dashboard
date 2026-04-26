@@ -15,9 +15,15 @@ Allow: /
 Disallow: /daily-poster/output/
 Disallow: /logs/
 Disallow: /skills/
+Disallow: /scripts/
+Disallow: /docs/
 Disallow: /projects/
 Disallow: /memory/
 Disallow: /output/
 Disallow: /archive/
+Disallow: /CLAUDE.md
+Disallow: /VERSIONING.md
+Disallow: /README.md
+Disallow: /*.md$
 
 Sitemap: https://crypto3d.pro/sitemap.xml
