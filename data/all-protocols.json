@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-26T13:11:51.003Z",
+  "generated_at": "2026-04-26T13:19:47.703Z",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -379,35 +379,35 @@
       "ticker": "ETHFI",
       "icon": "https://coin-images.coingecko.com/coins/images/35958/large/etherfi.jpeg",
       "category": "liquid_staking",
-      "confidence": "medium",
+      "confidence": "low",
       "confidence_reason": {
         "zh": "回购交易链上可追踪，但分配比例仅 Blog 公告，无治理提案约束",
         "en": "Buyback transactions on-chain trackable, but ratio only from blog posts, no governance mandate"
       },
-      "tevStatus": "active",
-      "tev_yield_percent": 15.44,
+      "tevStatus": "none",
+      "tev_yield_percent": 0,
       "market_cap_usd": 369305651.15678495,
       "tvl": 5427960736.152121,
-      "tevRatio": 1,
-      "earning_yield_percent": 15.44,
+      "tevRatio": null,
+      "earning_yield_percent": 0,
       "tevRatioNote": "回购分配 — 提现收入回购 ETHFI，年化约 $15M / 市值约 $600M ≈ 2.5%",
       "metrics": {
         "current_market_cap_usd": 369305651.15678495,
-        "trailing_365d_revenue_usd": 57011067,
-        "trailing_30d_revenue_usd": 5343931,
-        "trailing_365d_tev_usd": 57011067,
+        "trailing_365d_revenue_usd": 0,
+        "trailing_30d_revenue_usd": 0,
+        "trailing_365d_tev_usd": 0,
         "trailing_30d_tev_usd": 1158202.6041666667,
-        "trailing_7d_revenue_usd": 224210,
-        "trailing_90d_revenue_usd": 14399051,
-        "tev_yield_7d_ann": 3.17,
-        "tev_yield_30d_ann": 17.61,
-        "tev_yield_90d_ann": 15.81,
-        "earning_yield_7d_ann": 3.17,
-        "earning_yield_30d_ann": 17.61,
-        "earning_yield_90d_ann": 15.81
+        "trailing_7d_revenue_usd": 0,
+        "trailing_90d_revenue_usd": 0,
+        "tev_yield_7d_ann": 0,
+        "tev_yield_30d_ann": 0,
+        "tev_yield_90d_ann": 0,
+        "earning_yield_7d_ann": 0,
+        "earning_yield_30d_ann": 0,
+        "earning_yield_90d_ann": 0
       },
       "validation": {
-        "method": "sETHFI inflow upper bound (含用户 stake)",
+        "method": "TEV unverified (链上 buyback 路径不可识别)",
         "sethfi_inflow_7d_ethfi": 505148,
         "sethfi_inflow_30d_ethfi": 12039921,
         "sethfi_inflow_90d_ethfi": 32441182,
@@ -416,9 +416,17 @@
         "foundation_multisig_status": "no_buyback_executed_365d",
         "ethfi_price_usd": 0.443851,
         "caveats": [
-          "上界口径：sETHFI 合约入金同时包含 (a) 协议 buyback 投入 (b) 普通用户 stake，无法精确分离",
-          "研究指向的 Foundation Multisig 0x7A6A... 365d 实际 ETHFI 入金为 0——'Withdrawal Revenue Buyback' 程序可能已停或路径不明"
-        ]
+          "Foundation Multisig 0x7A6A41F353B3002751d94118aA7f4935dA39bB53 过去 365 天 ETHFI 入金 = 0（链上确证）",
+          "sETHFI 合约 0x86B5780b606940Eb59A062aA85a07959518c0161 365d 入金 128M ETHFI from 420 unique senders，包含 (a) 用户自主 stake (b) 协议侧 distribution (c) LayerZero 跨链 bridge - 无法分离三者",
+          "ETHFI/WETH Uni V3 池 (0x06f00544...) 30d top 买家是 routing bot (0xbdb3ba9f, 745 笔小单, 持仓 ~2k ETHFI), 不是 buyback executor",
+          "Foundation Multisig → 0x5ec5e6b4... → 0xa000244b... → 0x8f08b704... 多个 Gnosis Safe 间转账 = 内部 treasury 腾挪, 非协议市场 buyback",
+          "可能解释: (a) buyback 实际未执行; (b) 在 Arbitrum/Base L2 执行; (c) 路径混入 sETHFI 入金中无法识别. 我们倾向 (a) 或 (c)",
+          "如果未来发现真实 buyback executor 地址 (协议团队公开 / 链上模式变化), 可立即恢复 TEV 计算"
+        ],
+        "sethfi_inflow_365d_ethfi_upper": 128446410,
+        "sethfi_inflow_365d_usd_upper": 57011067,
+        "foundation_multisig_365d_inflow": 0,
+        "tev_unverified_reason": "DAO Proposal #11 宣称的 Withdrawal Revenue Buyback 链上不可识别：Foundation Multisig 0x7A6A41F353B3002751d94118aA7f4935dA39bB53 365d 入金=0；sETHFI 合约 365d 入金 128M ETHFI 含用户 stake 无法分离；Uni V3 主池无大单 buyback 模式；Foundation 出账只见 Gnosis Safe 间内部腾挪（非市场买入）"
       }
     },
     "fluid": {
