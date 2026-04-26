@@ -79,10 +79,10 @@
   "analyst_notes": "【2026-04-25 全面更新 — 切换主口径到 dailyHoldersRevenue】\n\n## TEV 机制\n\n2025-05-07 起 PancakeSwap 进入 **Tokenomics 3.0**：\n- 所有 trading fees + Prediction + Lottery + CAKE.PAD 等产品收入按比例进 Treasury\n- Treasury 自动换 CAKE 后销毁至 `0x000000000000000000000000000000000000dEaD`\n- 旧 veCAKE 5% 分红已取消，全部转 burn\n\n这是**真实 supply 收缩**，与 JustLend 那种 pocket-to-pocket 做账销毁完全不同——CAKE 销毁源头是协议运转产生的真实 user fees，源头钱包没有可疑生态金库持仓。\n\n## 数据口径（2026-04-25 起）\n\n- **主口径**: DefiLlama dailyHoldersRevenue（已 trace burn 部分）\n- **分母**: CAKE 流通市值 ~$494M\n- **结果**: $99.9M / $494M ≈ 20.22%\n\n## 关键警示\n\n1. ⚠️ **DefiLlama 口径不全**: 仅覆盖 AMM/StableSwap，可能漏 Perpetual/Prediction/Lottery 等其他产品的销毁贡献\n2. ⚠️ **数字偏高警示**: DefiLlama $99.9M 比官方公布的链上实际 burn (~$60-70M, 45M CAKE/yr × current price) 高约 30-40%。原因可能是 DefiLlama 把 fees-pending-burn 也计入；后续可写专属 chain script (CAKE→0xdead transfers 累加) 来精确化\n3. ⚠️ **veCAKE 已结束**: 2025-04-23 sunset，旧文档/数据源中 5% 分红信息已过时\n\n## 链上验证方法\n\n- CAKE token: `0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82`\n- Burn dest: `0x000000000000000000000000000000000000dEaD`\n- BSCScan: https://bscscan.com/token/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82?a=0x000000000000000000000000000000000000dead\n- 官方周度 burn 报告: https://blog.pancakeswap.finance/\n\n## 历史变更\n\n- 2026-04-25: 主口径从 dailyRevenue × 0.15 改为 dailyHoldersRevenue × 1.0（DefiLlama 数据已过滤为 burn 部分）\n- 2025-05-07: Revenue Share 5% 正式结束\n- 2025-04-23: veCAKE sunset (Tokenomics 3.0)\n",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 20.26,
-    "annual_tev_usd": 99884840,
-    "market_cap_usd": 492977606.41,
-    "calculation_date": "2026-04-25",
+    "tev_yield_percent": 20.32,
+    "annual_tev_usd": 99899058,
+    "market_cap_usd": 491639921.85,
+    "calculation_date": "2026-04-26",
     "sources": [
       {
         "name": "DefiLlama dailyHoldersRevenue",
@@ -122,23 +122,23 @@
     "en": "Tokenomics 3.0 on-chain burn verifiable + DefiLlama data"
   },
   "tevRatio": 0.15,
-  "earning_yield_percent": 20.26,
-  "market_cap_usd": 492977606.41,
-  "tev_yield_percent": 20.26,
+  "earning_yield_percent": 20.32,
+  "market_cap_usd": 491639921.85,
+  "tev_yield_percent": 20.32,
   "metrics": {
-    "current_market_cap_usd": 492977606.41,
-    "trailing_365d_revenue_usd": 99884840,
-    "trailing_30d_revenue_usd": 2578638,
-    "trailing_365d_tev_usd": 99884840,
-    "trailing_30d_tev_usd": 8323736.666666667,
-    "trailing_7d_revenue_usd": 463606,
-    "trailing_90d_revenue_usd": 7676723,
-    "tev_yield_7d_ann": 4.9,
-    "tev_yield_30d_ann": 6.36,
-    "tev_yield_90d_ann": 6.32,
-    "earning_yield_7d_ann": 4.9,
-    "earning_yield_30d_ann": 6.36,
-    "earning_yield_90d_ann": 6.32
+    "current_market_cap_usd": 491639921.85,
+    "trailing_365d_revenue_usd": 99899058,
+    "trailing_30d_revenue_usd": 2592856,
+    "trailing_365d_tev_usd": 99899058,
+    "trailing_30d_tev_usd": 8324921.5,
+    "trailing_7d_revenue_usd": 477824,
+    "trailing_90d_revenue_usd": 7690941,
+    "tev_yield_7d_ann": 5.07,
+    "tev_yield_30d_ann": 6.42,
+    "tev_yield_90d_ann": 6.34,
+    "earning_yield_7d_ann": 5.07,
+    "earning_yield_30d_ann": 6.42,
+    "earning_yield_90d_ann": 6.34
   },
   "calc_pipeline": [
     {
