@@ -280,10 +280,10 @@
       "ticker": "DYDX",
       "icon": "https://coin-images.coingecko.com/coins/images/32594/large/dydx.png",
       "category": "perpetuals",
-      "confidence": "high",
+      "confidence": "medium",
       "confidence_reason": {
-        "zh": "dYdX Chain 100% 费用分配给验证者/质押者，完全链上可查",
-        "en": "dYdX Chain distributes 100% fees to validators/stakers, fully on-chain verifiable"
+        "zh": "DYDX Chain (Cosmos) 100% fees 给 staker 机制可信, 但 75% buyback (Proposal #313) 链上无公开 tracker, ethDYDX bridge 已关闭无法捕获",
+        "en": "100% fees-to-staker on dYdX Chain (Cosmos) is verifiable, but 75% buyback (Proposal #313) has no public on-chain tracker. ethDYDX bridge closed."
       },
       "tevStatus": "active",
       "tev_yield_percent": 8.73,
@@ -472,12 +472,12 @@
       "ticker": "GMX",
       "icon": "https://coin-images.coingecko.com/coins/images/18323/large/arbit.png",
       "category": "perp_dex",
-      "confidence": "high",
+      "confidence": "low",
       "confidence_reason": {
-        "zh": "质押分红合约链上透明，ETH/AVAX 实时可查 + DefiLlama",
-        "en": "Staking reward contract transparent on-chain, ETH/AVAX real-time + DefiLlama"
+        "zh": "2026-03-04 起 ETH/AVAX 实时分红停止, 改为 Treasury 累积 GMX 等价格 ≥ $90 才解锁分配. 当前 GMX ~$7, 触发条件远未达, staker 实际现金收益 = 0",
+        "en": "ETH/AVAX real-time distributions halted since 2026-03-04. Switched to Treasury GMX accumulation, awaiting GMX price ≥ $90 to trigger distribution. Currently ~$7, far from trigger."
       },
-      "tevStatus": "active",
+      "tevStatus": "partial",
       "tev_yield_percent": 0,
       "market_cap_usd": 75633854.32,
       "tvl": 256520219.69048157,
@@ -828,10 +828,10 @@
       "ticker": "PENDLE",
       "icon": "https://coin-images.coingecko.com/coins/images/15069/large/Pendle_Logo_Normal-03.png",
       "category": "yield",
-      "confidence": "high",
+      "confidence": "medium",
       "confidence_reason": {
-        "zh": "vePENDLE 费用分配合约链上可查 + DefiLlama 验证",
-        "en": "vePENDLE fee distribution contract on-chain verifiable + DefiLlama validated"
+        "zh": "DefiLlama dailyHoldersRevenue 实测 ($22.25M, 占 revenue 85%) 与官方 80% 比例吻合, 但多链架构无单一 buyback executor 可链上验证",
+        "en": "DefiLlama dailyHoldersRevenue ($22.25M, ~85% of revenue) aligns with official 80% claim, but no single on-chain executor traceable across 8+ chains"
       },
       "tevStatus": "active",
       "tev_yield_percent": 10.23,
