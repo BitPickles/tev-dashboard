@@ -40,12 +40,13 @@ const PROTOCOL_CONFIG = {
     tevRatio: 1.0,
     note: 'DefiLlama dailyHoldersRevenue 已映射 FeeAllocator 90%→veCRV (2025-06-27 起). 注意：仅 veCRV 持有人捕获，裸 CRV ≈ 0，前端 Caveat 必须标注'
   },
-  dydx: { 
-    defillamaSlug: 'dydx', 
+  dydx: {
+    defillamaSlug: 'dydx',
     coingeckoId: 'dydx-chain',
     cmcSlug: 'dydx-chain',
-    tevRatio: 0.90,
-    note: '90% TEV (75% 回购 + 15% 质押)'
+    defillamaDataType: 'dailyHoldersRevenue',
+    tevRatio: 1.0,
+    note: 'DefiLlama dailyHoldersRevenue 已是 holders 部分; 分母用 DYDX Chain native mcap (排除 ethDYDX bridge 关闭后的孤儿). 75% buyback 治理通过但 Cosmos 链 Treasury SubDAO 账户链上无公开 tracker, medium confidence'
   },
   etherfi: {
     defillamaSlug: 'ether.fi',
@@ -65,8 +66,8 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'gmx',
     coingeckoId: 'gmx',
     cmcSlug: 'gmx',
-    tevRatio: 0.27,
-    note: '27% 费用回购分配 (V2), staking 奖励暂停至 GMX>$90 后恢复'
+    tevRatio: 0,
+    note: '⚠️ TEV PAUSED: 2026-03-04 起 ETH/AVAX 实时分红停, 改为 Treasury 累积 GMX 等待 GMX 价格 ≥ $90 触发分配. 当前 GMX ~$7, 触发条件远未达, staker 实际现金收益 = 0. yield 标 0% + caveat 说明暂停状态'
   },
   maple: { 
     defillamaSlug: 'maple', 
@@ -87,8 +88,9 @@ const PROTOCOL_CONFIG = {
     defillamaSlug: 'pendle',
     coingeckoId: 'pendle',
     cmcSlug: 'pendle',
-    tevRatio: 0.8,
-    note: '80% 协议收入回购 → sPENDLE (2026-01 从 vePENDLE 迁移到 sPENDLE, 比例不变)'
+    defillamaDataType: 'dailyHoldersRevenue',
+    tevRatio: 1.0,
+    note: 'DefiLlama dailyHoldersRevenue 已是 sPENDLE 持有人份额(实测 365d $22M, 占 revenue $26M 的 85%, 与官方 80% 比例吻合). 但多链 buyback executor 未公开, sPENDLE 入金混杂用户 stake 无法链上分离, medium confidence'
   },
   sky: {
     defillamaSlug: 'sky',
@@ -1086,11 +1088,11 @@ async function main() {
     if (config.fixedTevUsd) {
       // 固定 TEV（如 Aave）
       tev365d = config.fixedTevUsd;
-    } else if (config.tevRatio) {
-      // 按比例计算
+    } else if (config.tevRatio !== undefined && config.tevRatio !== null) {
+      // 按比例计算（含 tevRatio=0 的明确归零，不再反推）
       tev365d = revenueData.revenue365d * config.tevRatio;
     } else {
-      // 从现有 TEV Yield 反推
+      // 从现有 TEV Yield 反推（仅 tevRatio 完全未定义时）
       const tevYield = protocol.tev_yield_percent || 0;
       tev365d = tevYield * marketCap / 100;
     }
