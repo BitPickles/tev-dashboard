@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-26T15:35:57.312Z",
+  "generated_at": "2026-04-26T16:39:06.090Z",
   "protocols": {
     "aave": {
       "name": "Aave",
@@ -20,22 +20,22 @@
       "tevRatioNote": "回购 ($50M/年) + Safety Module 质押奖励",
       "metrics": {
         "current_market_cap_usd": 1799059173.84,
-        "trailing_365d_revenue_usd": 125036125,
-        "trailing_30d_revenue_usd": 8135775,
+        "trailing_365d_revenue_usd": 125027510,
+        "trailing_30d_revenue_usd": 8127160,
         "trailing_365d_tev_usd": 30000000,
         "trailing_30d_tev_usd": 2500000,
         "trailing_365d_holders_revenue_usd": 42212267,
         "trailing_30d_holders_revenue_usd": 6155965,
-        "trailing_7d_revenue_usd": 2904518,
-        "trailing_90d_revenue_usd": 25055367,
+        "trailing_7d_revenue_usd": 2895903,
+        "trailing_90d_revenue_usd": 25046752,
         "tev_yield_7d_ann": 1.67,
         "tev_yield_30d_ann": 1.67,
         "tev_yield_90d_ann": 3.19,
-        "earning_yield_7d_ann": 8.42,
+        "earning_yield_7d_ann": 8.39,
         "earning_yield_30d_ann": 5.5,
         "earning_yield_90d_ann": 5.65
       },
-      "tevRatio_7d": 0.1983,
+      "tevRatio_7d": 0.199,
       "tevRatio_30d": 0.3036,
       "tevRatio_90d": 0.5646,
       "tevRatio_365d": 0.5583,
@@ -52,7 +52,42 @@
           "最近 50+ 天 SM = $0，可能 Umbrella 新合约 DefiLlama 追踪滞后，或真的暂停分发",
           "链上 AAVE @ 0xdead 365d = 0.0001 AAVE（没有真销毁，符合 treasury buyback 模式）"
         ]
-      }
+      },
+      "tev_mechanisms": [
+        {
+          "type": "buyback",
+          "name": "AAVE Buyback Program",
+          "description": "Aave DAO 每年拨出 $50M 预算用于回购 AAVE",
+          "status": "active",
+          "start_date": "2024-07-25",
+          "annual_budget_usd": 50000000,
+          "source": {
+            "type": "governance",
+            "title": "Aavenomics Update - Part 1",
+            "url": "https://governance.aave.com/t/arfc-aavenomics-implementation-part-one/18937",
+            "proposal_id": "AIP-73"
+          }
+        },
+        {
+          "type": "staking_reward",
+          "name": "Safety Module (Umbrella)",
+          "description": "质押 AAVE 到 Safety Module 获得协议收入分成作为风险补偿",
+          "status": "active",
+          "contract": "0x4da27a545c0c5B758a6BA100e3a049001de870f5",
+          "start_date": "2020-09-01"
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "ON",
+        "fee_switch_details": "$50M 年度回购预算",
+        "buybacks": "ACTIVE",
+        "dividends": "NONE",
+        "burns": "NONE",
+        "primary_value_accrual": "回购 ($50M/年) + Safety Module 质押奖励"
+      },
+      "analyst_notes": "【2026-04-22 更新 - 双源 TEV + 各周期独立】\n\n## TEV 机制（双源组合）\n\nAave 的 TEV 由两个独立机制组成，各周期独立累加：\n\n### 1. 年度 Buyback（$30M/年，2026-03 治理）\n\n- **来源**：AIP-73 \"Aavenomics Update Part 1\" 设立年度 AAVE 回购预算\n- **2026-03 治理**：从 $50M 下调至 $30M（99.37% 通过，需核实具体 AIP 号）\n- **执行**：TokenLogic / Aave Finance Committee 用 DAO 财库 USDC/GHO 市场买入 AAVE\n- **⚠️ 关键 caveats**：\n  - 买到的 AAVE 进入 **Ecosystem Reserve** (`0x25F2...6491`) 和 AFC multisig\n  - **不是真 burn，是 treasury accumulation**，类似 Hyperliquid AF\n  - 治理可 redistribute（一部分会用于 Umbrella stakers 激励 / contributor grants）\n  - 链上验证：过去 365d AAVE → 0xdead = 0.0001 AAVE（确认不 burn）\n\n### 2. Safety Module (Umbrella) holders revenue\n\n- **来源**：协议 reserve factor 收入 + liquidation fees 分成\n- **数据源**：DefiLlama `dailyHoldersRevenue`（近 365d 合计 $40.29M）\n- **特点**：**脉冲式分发**——每 1-2 周一次大包（$200k~$6M），其他天为 0\n- **Umbrella 迁移**：2025 年中 Umbrella 合约替代旧 stkAAVE (`0x4da2...70f5`)\n- **⚠️ 最近 50+ 天 SM = $0**：可能是 Umbrella 新合约 DefiLlama 追踪滞后，或真的暂停分发（需进一步核实）\n\n## TEV 公式（各周期独立）\n\n```\nTEV_Nd = $30M (固定 Buyback) + (DefiLlama holdersRevenue 近 N 天累加 × 365/N)\n      ÷ marketCap × 年化\n```\n\n- 7/30/90d：holdersRevenue 按窗口累加后年化\n- 365d：holdersRevenue 365d 直接累计（不需年化）\n\n## 方案 A 选择的代价\n\n短周期（7d/30d）窗口碰巧没抓到 SM 分发大包 → TEV 显示只剩 $30M buyback，yield 降至 1.67%。\n\n这**反映的是\"Safety Module 分发周期\"而非\"价值下降\"**。用户需理解：\n- Aave 的 SM 分发不是每天——是治理节奏\n- 最近 50 天没分发，可能正常（迁移期）也可能异常\n\n长周期（365d）能稳定反映全年实际分发总额，更接近\"稳态 TEV\"。\n\n## 当前数字（2026-04-22 快照）\n\n| 周期 | Buyback | SM | Total TEV | Yield | Earning Yield | 分配率 |\n|------|---------|-----|-----------|-------|---------------|--------|\n| 7d   | $30M    | $0  | $30M      | 1.67% | 8.65%         | 19%    |\n| 30d  | $30M    | $0  | $30M      | 1.67% | 5.18%         | 32%    |\n| 90d  | $30M    | $27.4M 年化 | $57M | 3.19% | 5.63%   | 57%    |\n| 365d | $30M    | $40.29M | $70M    | 3.91% | 6.91%         | 57%    |\n\n## 数据源\n\n- DefiLlama: `https://api.llama.fi/summary/fees/aave?dataType=dailyHoldersRevenue`（SM）\n- DefiLlama: `https://api.llama.fi/summary/fees/aave?dataType=dailyRevenue`（协议 reserve factor）\n- 官方 Buyback 仪表盘：https://aave.tokenlogic.xyz（手动核对用）\n- Buyback 执行合约：待核实（可能是 AFC Safe）\n\n## 历史口径变更\n\n- 2026-04-22: 从单一 fixedTevUsd $30M 改为双源组合（Buyback + SM holdersRevenue 按周期）；明确 buyback 是 treasury-accumulated 非 burn；加 caveats；tevRatio 按周期独立\n- 2026-03: 治理把 buyback 从 $50M → $30M\n- 2024-07-25: AIP-73 启动 Aavenomics buyback\n- 2020-09-01: Safety Module 上线（老 stkAAVE）",
+      "notes": "Aave 在 2024 年通过 Aavenomics 升级开启了代币回购机制。TEV 来源：Safety Module 质押奖励 + 年度回购。",
+      "last_updated": "2026-04-24"
     },
     "aster": {
       "name": "Aster (AsterDEX)",
@@ -100,7 +135,41 @@
           "2026-03-30 tokenomics 改革后新增 staking rewards（暂不计入 TEV）",
           "Moralis 免费 tier 可能滞后几天"
         ]
-      }
+      },
+      "tev_mechanisms": [
+        {
+          "type": "buyback",
+          "name": "协议回购",
+          "description": "平台手续费的大部分（约60-80%）用于回购 ASTER，包括每日自动回购和战略储备回购，回购后的代币进入协议储备或销毁",
+          "status": "active",
+          "fee_share_percentage": 70,
+          "source": {
+            "title": "Aster Tokenomics",
+            "url": "https://docs.asterdex.com/usdaster/tokenomics"
+          }
+        },
+        {
+          "type": "buyback_burn",
+          "name": "销毁机制",
+          "description": "部分回购的 ASTER 会被销毁至 0xdead 地址，减少流通供应",
+          "status": "active",
+          "source": {
+            "title": "BscScan Burn Address",
+            "url": "https://bscscan.com/token/0x000Ae314E2A2172a039B26378814C252734f556A?a=0x000000000000000000000000000000000000dead"
+          }
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "ON",
+        "buybacks": "ACTIVE",
+        "dividends": "NONE",
+        "burns": "ACTIVE",
+        "primary_value_accrual": "手续费回购 (60-80%)",
+        "tevRatio": 0.7
+      },
+      "analyst_notes": "【2026-04-24 更新 - A 口径 treasury buyback】\n\n## TEV 机制（类似 Hyperliquid AF）\n\nAster 协议 ~80% 平台 fee → 市场买 ASTER → 转入 **Stage5 / Stage6 buyback wallet**。\n这些 ASTER 部分 burn、部分留作 community rewards / treasury。\n\n**口径选择（Boss 2026-04-24 定，类似 HYPE/Aave 的 treasury buyback 视为 TEV）**：\n- 计算：所有进入 Stage5/6 wallet 的 ASTER 都视为 supply 收缩（treasury buyback 视同 TEV）\n- 不严格区分 \"burn\" vs \"rewards\"（需要进一步追踪各 wallet 的 outgoing flow 才能区分）\n\n## 数据源\n\n- 链上采集：Moralis API（BSC 链），每日调用 fetch-aster-moralis.py\n- 存储：`data/aster-onchain.json`（95 天，2025-12-23 → 2026-03-27）\n- 计算：`sync-tev-data.js` 的 Aster 专属分支按窗口求和\n\n## 合约地址\n\n- ASTER (BEP-20): `0x000Ae314E2A2172a039B26378814C252734f556A`\n- Stage5 buyback（已清算）: `0x4786927333c0bA8aB27CA41361ADF33148C5301E`\n- Stage6 buyback（当前）: `0x664827c71193018D7843f0D0F41A5D0D6dcEBE0F`\n- Stage6 当前持 ~15M ASTER (~$10.2M)\n\n## 已知局限（caveats）\n\n1. **Stage5/6 是 treasury buyback 非真 burn**：部分 burn 部分给 community rewards，治理可动用（类似 Hyperliquid AF 风险）\n2. **2026-03-30 tokenomics 改革**：emissions 砍 97%，新增 staking rewards（暂未计入 TEV）\n3. **Moralis 免费 tier 可能滞后**：当前数据截止 2026-03-27，最近 27 天窗口显示为 0，不是真的没有 buyback\n4. **Stage6 之后可能有 Stage7**：改革后 buyback 路径可能变，需人工 review 合约地址\n\n## 历史\n\n- 2026-04-24：A 口径上线；update-aster-tev.py 每日维护\n- 2026-03-30：Aster tokenomics 大改，emissions 砍 97%\n- 2025-12：Stage6 启用（之前是 Stage5）\n",
+      "notes": "**当前 TEV 情况**\n\nAster 将较大比例的协议收入（约60-80%）用于回购 ASTER，包含每日自动回购与战略回购储备。\n\n**历史数据：**\n- Stage 1-4 (2025.10-12): 依据公开报道的回购总量，按天均摩摘形成日度数据\n- Stage 5-6 (2025.12至今): 链上回购记录，可按日追踪\n\n**透明度**：回购钱包地址公开，可通过 BscScan 实时验证。\n\n**注意**：官方文档未披露精确回购比例分配，60-80% 为公开材料中的估算范围。",
+      "last_updated": "2026-04-24"
     },
     "bgb": {
       "name": "Bitget Token",
@@ -118,7 +187,33 @@
       "tvl": 0,
       "tevRatio": 0,
       "earning_yield_percent": 0,
-      "tevRatioNote": "回购销毁 - 季度用平台收入回购销毁 BGB"
+      "tevRatioNote": "回购销毁 - 季度用平台收入回购销毁 BGB",
+      "tev_mechanisms": [
+        {
+          "type": "buyback_burn",
+          "name": "Quarterly Buy-Back & Burn",
+          "description": "Bitget 用平台收入回购并销毁 BGB",
+          "status": "active",
+          "frequency": "quarterly",
+          "source": {
+            "type": "official",
+            "title": "BGB Buy-Back & Burn",
+            "url": "https://www.bitget.com/bgb",
+            "note": "官网被 Cloudflare 拦截，需要确认具体比例"
+          }
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "N/A",
+        "fee_switch_details": "CEX 收入不直接链上分配",
+        "buybacks": "ACTIVE",
+        "dividends": "UNKNOWN",
+        "burns": "ACTIVE",
+        "burn_details": "季度回购销毁（具体比例待确认）",
+        "primary_value_accrual": "回购销毁 - 季度用平台收入回购销毁 BGB"
+      },
+      "analyst_notes": "【2026-02-05 初步调研】\n\n## BGB TEV 评估\n\n### 已知信息\n1. **Bitget 平台币**：类似 BNB/OKB 的 CEX token\n2. **季度回购销毁**：有此机制，但具体比例待确认\n3. **合约支持销毁**：Etherscan 验证合约有 burn 功能\n\n### 数据限制\n1. ❌ Bitget 网站被 Cloudflare 拦截\n2. ❌ 无法获取官方文档\n3. ⚠️ 需要通过公告整理销毁数据\n\n### 与同类对比\n| 平台币 | 销毁机制 | 数据透明度 |\n|--------|----------|------------|\n| BNB | Auto-Burn | 中 |\n| OKB | 30% 收入 | 低 |\n| BGB | 待确认 | 低 |\n\n### 需要补充\n1. BGB 销毁比例\n2. 历史季度销毁数据\n3. 其他代币权益（Launchpad 等）",
+      "last_updated": "2026-02-14"
     },
     "bnb": {
       "name": "BNB",
@@ -188,7 +283,65 @@
         "earning_yield_30d_ann": 6.88,
         "earning_yield_90d_ann": 6.88
       },
-      "display_precision": 3
+      "display_precision": 3,
+      "tev_mechanisms": [
+        {
+          "type": "burn",
+          "name": "Quarterly Auto-Burn",
+          "description": "每季度根据 BNB 价格和区块数量自动销毁，目标将总供应量降至 100M BNB。与 Binance CEX 收入无关，公式透明可审计",
+          "status": "active",
+          "frequency": "quarterly",
+          "formula": "B = N × 1000 / P (B=销毁量, N=季度区块数, P=平均价格)",
+          "is_profit_based": false,
+          "note": "官方明确声明独立于 Binance CEX 收入",
+          "source": {
+            "type": "official",
+            "title": "33rd BNB Burn",
+            "url": "https://www.bnbchain.org/en/blog/33rd-bnb-burn"
+          }
+        },
+        {
+          "type": "burn",
+          "name": "Real-Time Burn (BEP-95)",
+          "description": "每个区块按验证人设定比例销毁部分 gas fee",
+          "status": "active",
+          "frequency": "per_block",
+          "is_profit_based": false,
+          "note": "链上可验证，类似 ETH EIP-1559",
+          "source": {
+            "type": "bep",
+            "title": "BEP-95",
+            "url": "https://github.com/bnb-chain/BEPs/blob/master/BEPs/BEP95.md"
+          }
+        },
+        {
+          "type": "staking",
+          "name": "BNB Staking Rewards",
+          "description": "通过 StakeHub 合约质押/委托获取 BNB 收益，来源于链上手续费分配",
+          "status": "active",
+          "frequency": "continuous",
+          "contract": "0x0000000000000000000000000000000000002002",
+          "source": {
+            "type": "contract",
+            "title": "StakeHub Contract",
+            "url": "https://bscscan.com/address/0x0000000000000000000000000000000000002002"
+          }
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "N/A",
+        "fee_switch_details": "CEX 收入不直接链上分配",
+        "buybacks": "NONE",
+        "buyback_details": "Auto-Burn 不是利润回购，是公式计算的供给收缩",
+        "dividends": "NONE",
+        "burns": "ACTIVE",
+        "burn_details": "季度 Auto-Burn（公式计算）+ 实时 BEP-95（gas fee）",
+        "staking": "ACTIVE",
+        "staking_details": "StakeHub 质押收益（BNB 计价，来自链上手续费）",
+        "primary_value_accrual": "供给收缩 + 链上质押收益（非 CEX 利润分润模式）"
+      },
+      "analyst_notes": "【2026-04-19 更新 - BEP-95 时间序列】\n\n## BNB TEV 计算方法\n\n采用 **Auto-Burn + BEP-95 + asBNB** 三源组合，每项按下表规则取值：\n\n| 展示周期 | Auto-Burn | BEP-95 | asBNB |\n|---------|-----------|--------|-------|\n| 7d  | 近 4 季 USD 历史累加 | 近 7 天 BNB × 52 × 当前价 | 6.87% |\n| 30d | 近 4 季 USD 历史累加 | 近 30 天 BNB × 365/30 × 当前价 | 6.87% |\n| 90d | 近 4 季 USD 历史累加 | 近 90 天 BNB × 365/90 × 当前价 | 6.87% |\n| 365d | 近 4 季 BNB × 当前价（重估） | 近 365 天 BNB × 当前价（无年化） | 6.87% |\n\nTEV Yield = (Auto-Burn USD + BEP-95 USD) ÷ 市值 + asBNB APY\n\n### BEP-95 数据源（2026-04-19 升级）\n\n- **种子**：Dune Analytics `bnb.traces` query（dead address 入金 < 10万 BNB 的部分，排除 Auto-Burn 大额）\n- **初始范围**：2025-03-14 → 2026-04-18（401 天）\n- **增量更新**：`scripts/fetch-bep95-daily.py`（TODO，待做）每日从 BSC RPC 拉新日数据 append\n- **存储**：`data/protocols/bnb/bep95-history.json`\n\n### Auto-Burn 双口径\n\n- **短周期（7/30/90d）** = 近 4 季 burn 的 `usd_value` 直接累加（每次 burn 公告时的历史 USD 值）\n  → 相当于官方披露的『过去一年累计销毁金额』，burn 发生时锁定\n- **365d** = 近 4 季 burn `bnb_burned` 合计 × 当前价\n  → 按当前市价重估的『过去一年年化』\n- 两者差异 = BNB 价格相对历史均价的变动\n\n### 为什么 BEP-95 各周期不同？\n\n BEP-95 是每区块持续销毁（链上 gas fee 的一部分）。7 天、30 天、90 天内的销毁量反映的是**不同时间段的链上活跃度**。高活跃期（如 10 月 ALT 季）日销毁可达 500+ BNB，平时 40-60 BNB。通过时间序列能真实反映。\n\n### 历史口径变更\n\n- 2026-04-19 (v4): BEP-95 升级为日时间序列（Dune seed + 日累积），各周期真正波动\n- 2026-04-19 (v3): 短周期 Auto-Burn 改为 USD 历史累加\n- 2026-04-19 (v2): 尝试『上次 burn × 4』作为短周期年化（Boss 否决）\n- 2026-04-19 (v1): 所有周期同值（Boss 否决）\n- 2026-03-01: 从 slisBNB 单一 proxy 改为 Burn + asBNB 双源",
+      "last_updated": "2026-04-24"
     },
     "compound": {
       "name": "Compound",
@@ -202,13 +355,13 @@
       },
       "tevStatus": "none",
       "tev_yield_percent": 0,
-      "market_cap_usd": 227262512.68,
+      "market_cap_usd": 227410886.36,
       "tvl": 1419957846.641336,
       "tevRatio": 0,
       "earning_yield_percent": 0,
       "tevRatioNote": "纯治理代币 - COMP 仅用于治理投票，无收入分配",
       "metrics": {
-        "current_market_cap_usd": 227262512.68,
+        "current_market_cap_usd": 227410886.36,
         "trailing_365d_revenue_usd": 0,
         "trailing_30d_revenue_usd": 0,
         "trailing_365d_tev_usd": 0,
@@ -221,7 +374,18 @@
         "earning_yield_7d_ann": 0,
         "earning_yield_30d_ann": 0,
         "earning_yield_90d_ann": 0
-      }
+      },
+      "tev_mechanisms": [],
+      "tev_summary": {
+        "fee_switch": "OFF",
+        "fee_switch_details": "Compound 协议费用开关未开启，收入保留在协议储备",
+        "buybacks": "NONE",
+        "dividends": "NONE",
+        "burns": "NONE",
+        "primary_value_accrual": "纯治理代币 - COMP 仅用于治理投票，无收入分配"
+      },
+      "notes": "Compound 作为 DeFi 借贷的先驱，COMP 代币开创了治理代币模式。尽管协议收入可观，但 COMP 始终是纯治理代币，费用开关从未开启。社区多次讨论过开启费用分配但未通过。",
+      "last_updated": "2026-02-14"
     },
     "curve": {
       "name": "Curve",
@@ -230,42 +394,42 @@
       "category": "dex",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "veCRV 费用分配合约链上可查 + DefiLlama 验证",
-        "en": "veCRV fee distribution contract on-chain verifiable + DefiLlama validated"
+        "zh": "Treasury inflow + veCRV 锁仓量都链上完全可验证, FeeAllocator 90/10 比例治理记录有据",
+        "en": "Treasury inflow + veCRV lock amount both fully on-chain, FeeAllocator 90/10 governance-documented"
       },
       "tevStatus": "active",
-      "tev_yield_percent": 2.41,
-      "market_cap_usd": 341077593.2286072,
+      "tev_yield_percent": 2.4,
+      "market_cap_usd": 342566535.64578515,
       "tvl": 1808019756.5740514,
       "tevRatio": 0.9,
-      "earning_yield_percent": 2.41,
+      "earning_yield_percent": 2.4,
       "tevRatioNote": "DAO 收入分配：约 90% -> veCRV, 10% -> Treasury（FeeAllocator），scrvUSD 流向比例动态 5%-50%（FeeSplitter）",
       "metrics": {
         "trailing_365d_revenue_usd": 8226027,
         "trailing_365d_holders_revenue_usd": 13304425,
         "trailing_30d_revenue_usd": 372315,
         "trailing_30d_holders_revenue_usd": 691740,
-        "current_market_cap_usd": 341077593.2286072,
+        "current_market_cap_usd": 342566535.64578515,
         "trailing_365d_tev_usd": 8226027,
         "trailing_30d_tev_usd": 721543.5833333334,
         "trailing_7d_revenue_usd": 177527,
         "trailing_90d_revenue_usd": 1970764,
-        "tev_yield_7d_ann": 2.71,
-        "tev_yield_30d_ann": 1.33,
-        "tev_yield_90d_ann": 2.34,
-        "earning_yield_7d_ann": 2.71,
-        "earning_yield_30d_ann": 1.33,
-        "earning_yield_90d_ann": 2.34
+        "tev_yield_7d_ann": 2.7,
+        "tev_yield_30d_ann": 1.32,
+        "tev_yield_90d_ann": 2.33,
+        "earning_yield_7d_ann": 2.7,
+        "earning_yield_30d_ann": 1.32,
+        "earning_yield_90d_ann": 2.33
       },
       "validation": {
         "method": "Community Fund Treasury crvUSD inflow × 9 (FeeAllocator 90/10)",
         "crv_locked_in_vecrv": 855952221.7179456,
-        "vecrv_tvl_usd": 193755056.8125176,
+        "vecrv_tvl_usd": 194579338.80203196,
         "lock_ratio_pct": 56.8,
-        "yield_vecrv_only_7d": 4.78,
-        "yield_vecrv_only_30d": 2.34,
-        "yield_vecrv_only_90d": 4.13,
-        "yield_vecrv_only_365d": 4.25,
+        "yield_vecrv_only_7d": 4.76,
+        "yield_vecrv_only_30d": 2.33,
+        "yield_vecrv_only_90d": 4.11,
+        "yield_vecrv_only_365d": 4.23,
         "caveats": [
           "veCRV TEV 是反推: 直接观察 Community Fund Treasury (10%) crvUSD 入金 × 9 = 90% veCRV 分配",
           "假设 FeeAllocator 90/10 比例不变（治理可改）",
@@ -273,7 +437,40 @@
           "yield_nominal = TEV / CRV 全市值（裸 CRV 持有人不参与, 此值低估 veCRV 真实 yield）",
           "yield_vecrv_only = TEV / veCRV TVL（更接近实际锁仓持有人收益, 但 veCRV 无市价, 用 CRV × 锁仓量估算）"
         ]
-      }
+      },
+      "tev_mechanisms": [
+        {
+          "type": "ve_distribution",
+          "name": "veCRV 分红",
+          "description": "veCRV 持有者获得 3CRV 管理费分红",
+          "status": "active"
+        },
+        {
+          "type": "fee_sharing",
+          "name": "veCRV Fee Distribution",
+          "description": "50% 交易手续费分配给 veCRV 持有者（以 crvUSD 形式）",
+          "status": "active",
+          "ratio": 0.5,
+          "distribution_contract": "0xA464e6DCda8AC41e03616F95f4BC98a13b8922Dc",
+          "distribution_frequency": "weekly",
+          "source": {
+            "type": "docs",
+            "title": "Curve Fee Distribution",
+            "url": "https://curve.readthedocs.io/dao-fees.html"
+          }
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "ON",
+        "fee_switch_details": "admin fees 统一兑换为 crvUSD 按周分发，交易手续费典型 50% 进 LP / 50% 进 DAO",
+        "buybacks": "NONE",
+        "dividends": "ACTIVE",
+        "burns": "NONE",
+        "primary_value_accrual": "DAO 收入分配：约 90% -> veCRV, 10% -> Treasury（FeeAllocator），scrvUSD 流向比例动态 5%-50%（FeeSplitter）",
+        "tevRatio": 0.5
+      },
+      "analyst_notes": "【2026-04-26 重写 — 链上口径替代 DefiLlama】\n\n## 调研发现\n\n老 3CRV FeeDistributor 0xA464...8922Dc 当前 inflow ≈ 0, 已迁移。\n新 90% veCRV 部分流向尚未在单一合约上识别。\n\n## 解决方案 (FeeAllocator × 9 推算)\n\nFeeAllocator 把 admin fees 90/10 拆分:\n- 10% → Community Fund Treasury (0x6508ef65...)\n- 90% → veCRV 分发\n\n我们直接观察 Treasury inflow (10% 部分), × 9 反推 veCRV TEV (90% 部分)。\n这比直接找新 distributor 合约稳健 - 即使路径再变, 比例不变就能继续算。\n\n## 链上数据\n\n- Treasury 365d 入金: $0.91M crvUSD\n- 推算 veCRV TEV: $0.91M × 9 = $8.23M\n- CRV 锁仓: 855M (56.8% 流通)\n- veCRV TVL: $193.8M\n\n## 双口径\n\n- **nominal yield**: $8.23M / $341M (CRV 全市值) = 2.41%\n  - 主表显示, 但裸 CRV 持有人不参与, 这是\"如果所有 CRV 都锁仓\"的理论值\n- **veCRV-only yield**: $8.23M / $193.8M (锁仓 TVL) = 4.25%\n  - 实际锁仓持有人接近此 yield\n\n## 数据源\n\n- Etherscan V2 chainid=1 · crvUSD Transfer events to Community Fund\n- ETH public RPC eth_call · CRV.balanceOf(veCRV_lock)\n- CoinGecko CRV 价格 + 流通市值\n\n## 关键地址\n\n- CRV: 0xD533a949740bb3306d119CC777fa900bA034cd52\n- veCRV Lock: 0x5f3b5DfEb7B28CDbD7FAba78963EE202a494e2A2\n- Community Fund Treasury (10%): 0x6508ef65b0bd57eabd0f1d52685a70433b2d290b\n- Old 3CRV FeeDistributor: 0xA464e6DCda8AC41e03616F95f4BC98a13b8922Dc (已停转)\n\n## 历史变更\n\n- 2026-04-26: 切链上 Treasury × 9 推算口径, DefiLlama 弃用, 加 veCRV-only yield 双口径\n- 2025-06-27: FeeAllocator 上线\n",
+      "last_updated": "2026-04-26"
     },
     "dydx": {
       "name": "dYdX",
@@ -286,27 +483,58 @@
         "en": "100% fees-to-staker on dYdX Chain (Cosmos) is verifiable, but 75% buyback (Proposal #313) has no public on-chain tracker. ethDYDX bridge closed."
       },
       "tevStatus": "active",
-      "tev_yield_percent": 8.73,
-      "market_cap_usd": 134552392.86,
+      "tev_yield_percent": 8.8,
+      "market_cap_usd": 133507694.57,
       "tvl": 158666696.85028014,
       "tevRatio": 0.75,
-      "earning_yield_percent": 8.73,
+      "earning_yield_percent": 8.8,
       "tevRatioNote": "回购 - 75% 净协议费用用于 DYDX 回购",
       "metrics": {
-        "current_market_cap_usd": 134552392.86,
+        "current_market_cap_usd": 133507694.57,
         "trailing_365d_revenue_usd": 11742811,
         "trailing_30d_revenue_usd": 280615,
         "trailing_365d_tev_usd": 11742811,
         "trailing_30d_tev_usd": 978567.5833333334,
         "trailing_7d_revenue_usd": 45365,
         "trailing_90d_revenue_usd": 964743,
-        "tev_yield_7d_ann": 1.76,
-        "tev_yield_30d_ann": 2.54,
-        "tev_yield_90d_ann": 2.91,
-        "earning_yield_7d_ann": 1.76,
-        "earning_yield_30d_ann": 2.54,
-        "earning_yield_90d_ann": 2.91
-      }
+        "tev_yield_7d_ann": 1.77,
+        "tev_yield_30d_ann": 2.56,
+        "tev_yield_90d_ann": 2.93,
+        "earning_yield_7d_ann": 1.77,
+        "earning_yield_30d_ann": 2.56,
+        "earning_yield_90d_ann": 2.93
+      },
+      "tev_mechanisms": [
+        {
+          "type": "fee_sharing",
+          "name": "DYDX 质押分红",
+          "description": "100% 协议费用分配给 DYDX 质押者",
+          "status": "active"
+        },
+        {
+          "type": "buyback",
+          "name": "Protocol Revenue Buyback",
+          "description": "75% 净协议费用用于 DYDX 回购",
+          "status": "active",
+          "ratio": 0.75,
+          "source": {
+            "type": "documentation",
+            "title": "dYdX Buyback Program",
+            "url": "https://dydx.foundation/blog"
+          }
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "ON",
+        "fee_switch_details": "75% 净协议费用用于 DYDX 回购",
+        "buybacks": "ACTIVE",
+        "dividends": "NONE",
+        "burns": "NONE",
+        "primary_value_accrual": "回购 - 75% 净协议费用用于 DYDX 回购",
+        "tevRatio": 0.75
+      },
+      "analyst_notes": "【2026-04-26 切链上口径】\n\n## V4 dYdX Chain 时代\n\ndYdX V4 已迁到独立 Cosmos 链 (dYdX Chain), 原 ERC-20 ethDYDX bridge **已永久关闭 (2025-06-13)**.\n\n### 双重 TEV 路径\n\n1. **100% Fees → Cosmos staker** (USDC 实时分发)\n   - 通过 Cosmos SDK x/distribution 模块按区块即时分配\n   - 365d 累计 ~$53M USDC 分给 staker (官方数据)\n   - 验证者 commission 平均 6%, 实际 staker 拿 ~94%\n\n2. **75% Buyback → Treasury SubDAO** (Proposal #313, 2025-11-13 通过)\n   - 75% 网络费用用于 DYDX 回购\n   - 5% Treasury / 5% MegaVault / 15% 待分配\n   - 执行账户: dydx1zc0jd76vfluauk6pc6rsq5dkwyjz9h8uqgppj6\n   - TWAP 策略经 Binance/Osmosis 执行\n   - **链上 tracker 缺失**: 该账户 USDC 流入/流出无公开 dashboard\n\n### 数据口径选择\n\n- DefiLlama dailyHoldersRevenue 365d = $11.74M\n- 已是 holders 部分 (USDC 给 staker), tevRatio = 1.0\n- 分母用 DYDX Chain 原生流通市值 ~$134M (排除 ethDYDX 孤儿)\n- yield = $11.74M / $134.4M = **8.74%**\n\n### 警示\n\n1. **ethDYDX 完全无 TEV**: bridge 关闭, 41.7M ethDYDX (~$26.2M 当时) 永久滞留, 持有人 0 捕获\n2. **75% buyback 链上无 tracker**: 治理通过但 Treasury SubDAO 账户活动无公开 dashboard\n3. **DefiLlama 可能混 V3/V4 数据**: V3 已 sunset, 历史数据可能仍计入聚合\n\n### 关键地址\n\n- ethDYDX (ERC-20, **已死**): 0x92D6C1e31e14520e676a687F0a93788B716BEff5\n- DYDX Chain Treasury SubDAO: dydx1zc0jd76vfluauk6pc6rsq5dkwyjz9h8uqgppj6\n- DYDX Chain 区块浏览器: https://www.mintscan.io/dydx\n\n### 历史变更\n\n- 2026-04-26: 切链上口径 (DefiLlama holdersRevenue × 1.0); confidence 从 high 降到 medium\n- 2025-11-13: Proposal #313 通过 (25% → 75% buyback)\n- 2025-06-13: ethDYDX bridge 永久关闭\n- 2023-10-26: dYdX Chain 主网启动 (V4)\n",
+      "last_updated": "2026-04-26"
     },
     "eigenlayer": {
       "name": "EigenLayer",
@@ -320,13 +548,13 @@
       },
       "tevStatus": "none",
       "tev_yield_percent": 0,
-      "market_cap_usd": 125067725.27,
+      "market_cap_usd": 126159177.81,
       "tvl": 8717705308.933592,
       "tevRatio": 0,
       "earning_yield_percent": 0,
       "tevRatioNote": "纯治理代币 - EIGEN 目前仅用于治理，无收入分配机制",
       "metrics": {
-        "current_market_cap_usd": 125067725.27,
+        "current_market_cap_usd": 126159177.81,
         "trailing_365d_revenue_usd": 0,
         "trailing_30d_revenue_usd": 0,
         "trailing_365d_tev_usd": 0,
@@ -339,7 +567,18 @@
         "earning_yield_7d_ann": 0,
         "earning_yield_30d_ann": 0,
         "earning_yield_90d_ann": 0
-      }
+      },
+      "tev_mechanisms": [],
+      "tev_summary": {
+        "fee_switch": "OFF",
+        "fee_switch_details": "协议费用开关未开启",
+        "buybacks": "NONE",
+        "dividends": "NONE",
+        "burns": "NONE",
+        "primary_value_accrual": "纯治理代币 - EIGEN 目前仅用于治理，无收入分配机制"
+      },
+      "notes": "EigenLayer 作为再质押基础设施，当前 EIGEN 代币仅有治理功能。协议收入（AVS 费用）目前未分配给代币持有者。未来可能通过治理开启费用开关。",
+      "last_updated": "2026-02-14"
     },
     "ethena": {
       "name": "Ethena",
@@ -353,26 +592,67 @@
       },
       "tevStatus": "none",
       "tev_yield_percent": 0,
-      "market_cap_usd": 952062946.06,
+      "market_cap_usd": 957442505.06,
       "tvl": 6677560266.30153,
       "tevRatio": 0,
       "earning_yield_percent": 1.34,
       "tevRatioNote": "无持续 TEV — 回购是一次性资本运作，非经营利润分红",
       "metrics": {
-        "current_market_cap_usd": 952062946.06,
-        "trailing_365d_revenue_usd": 12802497,
-        "trailing_30d_revenue_usd": 204726,
+        "current_market_cap_usd": 957442505.06,
+        "trailing_365d_revenue_usd": 12802472,
+        "trailing_30d_revenue_usd": 204701,
         "trailing_365d_tev_usd": 0,
         "trailing_30d_tev_usd": 0,
-        "trailing_7d_revenue_usd": 55927,
-        "trailing_90d_revenue_usd": 460554,
+        "trailing_7d_revenue_usd": 55902,
+        "trailing_90d_revenue_usd": 460529,
         "tev_yield_7d_ann": 0,
         "tev_yield_30d_ann": 0,
         "tev_yield_90d_ann": 0,
-        "earning_yield_7d_ann": 0.31,
+        "earning_yield_7d_ann": 0.3,
         "earning_yield_30d_ann": 0.26,
         "earning_yield_90d_ann": 0.2
-      }
+      },
+      "tev_mechanisms": [
+        {
+          "type": "staking_reward",
+          "name": "sUSDe Yield (非 ENA 收益)",
+          "description": "协议收益主要分配给 sUSDe 持有者，ENA/sENA 持有人不直接受益",
+          "status": "active",
+          "tev_eligible": false,
+          "note": "sUSDe APY ~7.83%，但这不是 ENA 的 TEV",
+          "source": {
+            "type": "documentation",
+            "title": "DefiLlama Ethena USDe",
+            "url": "https://defillama.com/protocol/ethena-usde"
+          }
+        },
+        {
+          "type": "buyback_accumulate",
+          "name": "ENA Buyback Program（资本运作）",
+          "description": "总计 $570M 回购（$260M + $310M）。⚠️ 这是资本运作/融资驱动的回购，不是经营利润分红，不算持续 TEV。资金来源是 StablecoinX PIPE 融资，非协议日常收入",
+          "status": "active",
+          "tev_eligible": false,
+          "amount_usd": 570000000,
+          "note": "StablecoinX 子公司执行，6-8周周期，第三方做市商操作。可持续性取决于后续融资安排",
+          "source": {
+            "type": "governance",
+            "title": "Ethena Governance Updates",
+            "url": "https://gov.ethenafoundation.com/t/ethena-s-september-2025-governance-update/704"
+          }
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "OFF",
+        "fee_switch_details": "Token Holder Net Income = $0，Fee switch 未落地",
+        "buybacks": "NONE",
+        "buybacks_details": "$570M 回购是资本运作，非经营利润分红，不计入持续 TEV",
+        "dividends": "NONE",
+        "dividends_details": "sENA 分配是 discretional，截至 2025-09 无持续分配",
+        "burns": "NONE",
+        "primary_value_accrual": "无持续 TEV — 回购是一次性资本运作，非经营利润分红"
+      },
+      "analyst_notes": "## Ethena TEV 分析\n\n### 结论：无持续 TEV\n\nEthena 的经营性收益主要服务于 **USDe/sUSDe 产品竞争力** 与 **系统安全垫（Reserve Fund）**。\n\n**ENA/sENA 目前没有持续的利润分配。**\n\n### Token Holder Income = $0\n\n按 DefiLlama 口径，协议收益不分配给 ENA/sENA 持有人。\n\n### 回购：资本运作，不算 TEV\n\n⚠️ 回购资金来源是 **PIPE 融资**，不是协议经营利润：\n- 资本运作驱动，非经营分红\n- 可持续性取决于后续融资安排\n- 不算持续 TEV\n\n### Fee Switch 状态\n\nFee switch 设计给 sENA，但尚未落地：\n- 分配比例待定\n- CEX adoption 条件未满足\n- 需要 legal engineering\n\n应视为**未来期权**，非当前现金流。\n\n### 收入去向\n\n| 去向 | 说明 |\n|------|------|\n| sUSDe Staking | 大部分收益 |\n| Reserve Fund | 系统安全垫 |\n| ENA/sENA | **$0** |\n\n### 数据来源\n\n- [DefiLlama](https://defillama.com/protocol/ethena-usde)\n- [Fee Switch Parameters](https://gov.ethenafoundation.com/t/ena-fee-switch-parameters/396)\n- [Governance Updates](https://gov.ethenafoundation.com)",
+      "last_updated": "2026-02-14"
     },
     "etherfi": {
       "name": "ether.fi",
@@ -381,18 +661,18 @@
       "category": "liquid_staking",
       "confidence": "low",
       "confidence_reason": {
-        "zh": "回购交易链上可追踪，但分配比例仅 Blog 公告，无治理提案约束",
-        "en": "Buyback transactions on-chain trackable, but ratio only from blog posts, no governance mandate"
+        "zh": "链上调研: Foundation Multisig 365d 0 入金, sETHFI 入金混入用户 stake, 真实 buyback 路径不可识别",
+        "en": "On-chain research: Foundation Multisig 0 inflow 365d, sETHFI inflows mixed with user stakes, real buyback path unidentifiable"
       },
       "tevStatus": "none",
       "tev_yield_percent": 0,
-      "market_cap_usd": 369305651.15678495,
+      "market_cap_usd": 373913088.77088505,
       "tvl": 5427960736.152121,
       "tevRatio": null,
       "earning_yield_percent": 0,
       "tevRatioNote": "回购分配 — 提现收入回购 ETHFI，年化约 $15M / 市值约 $600M ≈ 2.5%",
       "metrics": {
-        "current_market_cap_usd": 369305651.15678495,
+        "current_market_cap_usd": 373913088.77088505,
         "trailing_365d_revenue_usd": 0,
         "trailing_30d_revenue_usd": 0,
         "trailing_365d_tev_usd": 0,
@@ -414,7 +694,7 @@
         "sethfi_inflow_365d_ethfi": 128446410,
         "foundation_multisig_365d": 0,
         "foundation_multisig_status": "no_buyback_executed_365d",
-        "ethfi_price_usd": 0.443851,
+        "ethfi_price_usd": 0.449321,
         "caveats": [
           "Foundation Multisig 0x7A6A41F353B3002751d94118aA7f4935dA39bB53 过去 365 天 ETHFI 入金 = 0（链上确证）",
           "sETHFI 合约 0x86B5780b606940Eb59A062aA85a07959518c0161 365d 入金 128M ETHFI from 420 unique senders，包含 (a) 用户自主 stake (b) 协议侧 distribution (c) LayerZero 跨链 bridge - 无法分离三者",
@@ -423,11 +703,44 @@
           "可能解释: (a) buyback 实际未执行; (b) 在 Arbitrum/Base L2 执行; (c) 路径混入 sETHFI 入金中无法识别. 我们倾向 (a) 或 (c)",
           "如果未来发现真实 buyback executor 地址 (协议团队公开 / 链上模式变化), 可立即恢复 TEV 计算"
         ],
-        "sethfi_inflow_365d_ethfi_upper": 128446410,
-        "sethfi_inflow_365d_usd_upper": 57011067,
+        "sethfi_inflow_365d_ethfi_upper": 128446414,
+        "sethfi_inflow_365d_usd_upper": 57713671,
         "foundation_multisig_365d_inflow": 0,
         "tev_unverified_reason": "DAO Proposal #11 宣称的 Withdrawal Revenue Buyback 链上不可识别：Foundation Multisig 0x7A6A41F353B3002751d94118aA7f4935dA39bB53 365d 入金=0；sETHFI 合约 365d 入金 128M ETHFI 含用户 stake 无法分离；Uni V3 主池无大单 buyback 模式；Foundation 出账只见 Gnosis Safe 间内部腾挪（非市场买入）"
-      }
+      },
+      "tev_mechanisms": [
+        {
+          "type": "buyback_accumulate",
+          "name": "Withdrawal Revenue Buyback",
+          "description": "部分协议收入用于每周回购 ETHFI，分配给 sETHFI 质押者",
+          "status": "active",
+          "start_date": "2025-04-25",
+          "contract": "0x7A6A41F353B3002751d94118aA7f4935dA39bB53",
+          "source": {
+            "type": "governance",
+            "title": "#11 Ether.fi DAO Proposal - Withdrawal Revenue Buyback Program",
+            "url": "https://governance.ether.fi/t/11-ether-fi-dao-proposal-withdrawal-revenue-buyback-program/2920",
+            "proposal_id": "0x6a9bdf1bb43b3e38f7313247464360ab3c637dd54f45c99dfaa085539c0dc693"
+          }
+        },
+        {
+          "type": "buyback",
+          "name": "ETHFI 回购",
+          "description": "提现收入用于回购 ETHFI",
+          "status": "active"
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "PARTIAL",
+        "fee_switch_details": "100% 提现收入（非全部协议收入）用于 ETHFI 回购，分配给 sETHFI 质押者",
+        "buybacks": "ACTIVE",
+        "dividends": "NONE",
+        "burns": "NONE",
+        "primary_value_accrual": "回购分配 — 提现收入回购 ETHFI，年化约 $15M / 市值约 $600M ≈ 2.5%"
+      },
+      "analyst_notes": "【2026-04-26 链上路径调研后 — TEV 降级到 unverified】\n\n## 链上调查链路图\n\n```\nFoundation Multisig (0x7A6A41F353B3002751d94118aA7f4935dA39bB53)\n  ├─ 当前持仓: 173M ETHFI\n  ├─ 365d 入金: 0 ← 关键事实\n  └─ 365d 出账 1 笔 = 15M ETHFI → 0x5ec5e6b4... (Gnosis Safe)\n\n0x5ec5e6b4eb6827914ca8bc3ae02c39417242adde (Gnosis Safe)\n  ├─ 365d 入金 9 笔 ~21M\n  └─ 365d 出账 15 笔 ~17M, 主要 → 0xa000244b... (7.7M)\n\n0xa000244b4a36d57ea1ecb39b5f02f255e4c8cd52 (Safe Proxy)\n  └─ → 0x8f08b70456eb22f6109f57b8fafe862ed28e6040 (7.66M)\n\n==> 全部都是 Gnosis Safe 间转账 (内部 treasury 腾挪), 没有 USDC/ETH → ETHFI 的市场买入证据\n\nsETHFI 合约 0x86B5780b606940Eb59A062aA85a07959518c0161\n  ├─ 365d 入金 128M ETHFI from 420 unique senders\n  └─ 顶级 senders 包括: LayerZero bridge (0xe008...), GnosisSafeProxy (0x2c2f...), 多个 EOA\n  ==> 用户 stake + 跨链 bridge + 可能 distribution 混杂, 无法分离\n\nETHFI/WETH Uni V3 池 (0x06f00544c0bc62e6db10f46d370dfccdc23d8189)\n  └─ 30d top 买家 0xbdb3ba9ffe...\n       - 持仓 2k ETHFI (买入立即卖出)\n       - 30d 745 笔小单\n       - 也买 WETH/USDC/HIGH/LDO 等多种 token\n       ==> 是 routing/MEV bot, 不是 buyback executor\n```\n\n## 处理决定\n\n类比 JustLend 案例（孙宇晨生态金库做账销毁）：\n- 那个案例: 链上看到 burn 但溯源是 pocket-to-pocket\n- 本案例: 链上**完全看不到** DAO Proposal #11 宣称的 buyback 执行\n\n两者都不构成\"协议从市场买入归属持有人\"的真 TEV，所以 TEV = 0 + status='none'。\n\n## 保留监控\n\n- update-etherfi-tev.py 继续每日跑（监控 Foundation Multisig 入金、sETHFI 上界）\n- 数据存到 buyback-history.json\n- 如果未来 (a) 协议团队公开真实 executor (b) Foundation Multisig 开始有 ETHFI 入金 (c) 链上出现明显大单 buyback 模式\n  - 立即重新评估 TEV 口径\n\n## 数据保留事实\n\n- ETHFI 流通市值: ~$369M\n- sETHFI 合约持仓 ETHFI: ~97M (用户 + 协议 historical 投入)\n- Foundation Multisig 持仓 ETHFI: ~173M (历史 treasury, 365d 不再增长也不再减少明显)\n\n## 历史\n\n- 2026-04-25: 初版 TEV 用 DefiLlama dailyRevenue × 0.25 = 1.91% (后被推翻)\n- 2026-04-26 上午: 切链上 sETHFI 上界口径 = 15.44% (含用户 stake, 后被推翻)\n- 2026-04-26 下午: 链上深挖发现 Foundation Multisig 365d 0 inflow + 多 Gnosis Safe 内部腾挪 + Uni V3 无 buyback 大单\n  → TEV 归零 (unverified), 类比 JustLend 处理\n",
+      "notes": "ether.fi TEV 来自两条线：(1) Withdrawal Revenue Buyback（提现收入按月回购 ETHFI 分配给 sETHFI 质押者，DAO Proposal #11，2025-04-25 启动）；(2) $50M Treasury Buyback（价格<$3 启用，资金来自 Foundation 国库，pocket-to-pocket 嫌疑，需链上验证）。Foundation Multisig: 0x7A6A41F353B3002751d94118aA7f4935dA39bB53。注意区分：eETH 持有人的 staking 收益 ≠ ETHFI 持有人的 TEV。",
+      "last_updated": "2026-04-26"
     },
     "fluid": {
       "name": "Fluid",
@@ -440,11 +753,11 @@
         "en": "Dual wallets fully on-chain trackable (Etherscan), cross-validated with DefiLlama <0.1% diff"
       },
       "tevStatus": "active",
-      "tev_yield_percent": 3.44,
-      "market_cap_usd": 130605900,
+      "tev_yield_percent": 3.39,
+      "market_cap_usd": 132659834.46,
       "tvl": 858549305.8980845,
       "tevRatio": 0.35,
-      "earning_yield_percent": 9.84,
+      "earning_yield_percent": 9.69,
       "validation": {
         "onchain_total_usd": 4613558,
         "defillama_total_usd": 4637397,
@@ -452,20 +765,45 @@
       },
       "tevRatioNote": "回购 - Treasury 用 35% Revenue 回购 FLUID，Q4 2025 启动",
       "metrics": {
-        "current_market_cap_usd": 130605900,
-        "trailing_365d_revenue_usd": 12853126,
-        "trailing_30d_revenue_usd": 705340,
-        "trailing_365d_tev_usd": 4498594.1,
-        "trailing_30d_tev_usd": 374882.8416666666,
-        "trailing_7d_revenue_usd": 152441,
-        "trailing_90d_revenue_usd": 2384895,
-        "tev_yield_7d_ann": 2.13,
-        "tev_yield_30d_ann": 2.3,
-        "tev_yield_90d_ann": 2.59,
-        "earning_yield_7d_ann": 6.09,
-        "earning_yield_30d_ann": 6.57,
-        "earning_yield_90d_ann": 7.41
-      }
+        "current_market_cap_usd": 132659834.46,
+        "trailing_365d_revenue_usd": 12853196,
+        "trailing_30d_revenue_usd": 705410,
+        "trailing_365d_tev_usd": 4498618.6,
+        "trailing_30d_tev_usd": 374884.8833333333,
+        "trailing_7d_revenue_usd": 152511,
+        "trailing_90d_revenue_usd": 2384965,
+        "tev_yield_7d_ann": 2.1,
+        "tev_yield_30d_ann": 2.26,
+        "tev_yield_90d_ann": 2.55,
+        "earning_yield_7d_ann": 5.99,
+        "earning_yield_30d_ann": 6.47,
+        "earning_yield_90d_ann": 7.29
+      },
+      "tev_mechanisms": [
+        {
+          "type": "buyback",
+          "name": "Fluid Reserve Buyback",
+          "description": "Treasury 用协议收入回购 FLUID 代币，建立链上储备",
+          "status": "active",
+          "start_date": "2025-10-01",
+          "tev_ratio": 0.35,
+          "source": {
+            "type": "blog",
+            "title": "FLUID Reserve: Buybacks & Growth Strategy",
+            "url": "https://blog.instadapp.io/fluid-reserve-buybacks-growth-strategy/"
+          }
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "ON",
+        "fee_switch_details": "35% Revenue 用于回购",
+        "buybacks": "ACTIVE",
+        "dividends": "NONE",
+        "burns": "NONE",
+        "primary_value_accrual": "回购 - Treasury 用 35% Revenue 回购 FLUID，Q4 2025 启动"
+      },
+      "analyst_notes": "## 链上数据追踪\n\n**追踪方法**: 监控 FLUID 代币流入储备钱包\n\n**储备钱包地址**:\n- `0x3e6FeBd2b195e1Ef3e8e3F4AABB6772aada32353`\n- `0x9Afb8C1798B93a8E04a18553eE65bAFa41a012F1`\n\n**原理**:\n回购 = 在市场买入 FLUID → 转入储备钱包\n追踪所有转入这两个地址的 FLUID = 回购量\n\n**数据来源**:\n- Etherscan (ERC20 Transfer 事件)\n- 价格: CoinGecko\n- 参考: [Dune Dashboard](https://dune.com/murathan/fluid-buybacks)",
+      "last_updated": "2026-02-21"
     },
     "gmx": {
       "name": "GMX",
@@ -479,13 +817,13 @@
       },
       "tevStatus": "partial",
       "tev_yield_percent": 0,
-      "market_cap_usd": 75633854.32,
+      "market_cap_usd": 76515442.72,
       "tvl": 256520219.69048157,
       "tevRatio": 0.27,
-      "earning_yield_percent": 22.06,
+      "earning_yield_percent": 21.81,
       "tevRatioNote": "回购分红 - 质押 GMX 获得回购分配的 GMX",
       "metrics": {
-        "current_market_cap_usd": 75633854.32,
+        "current_market_cap_usd": 76515442.72,
         "trailing_365d_revenue_usd": 16685313,
         "trailing_30d_revenue_usd": 835835,
         "trailing_365d_tev_usd": 0,
@@ -495,10 +833,42 @@
         "tev_yield_7d_ann": 0,
         "tev_yield_30d_ann": 0,
         "tev_yield_90d_ann": 0,
-        "earning_yield_7d_ann": 12.54,
-        "earning_yield_30d_ann": 13.45,
-        "earning_yield_90d_ann": 16.9
-      }
+        "earning_yield_7d_ann": 12.4,
+        "earning_yield_30d_ann": 13.29,
+        "earning_yield_90d_ann": 16.71
+      },
+      "tev_mechanisms": [
+        {
+          "type": "staking_reward",
+          "name": "GMX 质押奖励",
+          "description": "GMX 质押者获得 30% 平台费用（ETH/AVAX）",
+          "status": "active"
+        },
+        {
+          "type": "fee_sharing",
+          "name": "GMX Staking Rewards",
+          "description": "27% 平台费用分配给质押的 GMX（通过回购机制分配）",
+          "status": "active",
+          "ratio": 0.27,
+          "staking_contract": "0x908C4D94D34924765f1eDc22A1DD098397c59dD4",
+          "source": {
+            "type": "docs",
+            "title": "GMX Tokenomics",
+            "url": "https://docs.gmx.io/docs/tokenomics/gmx"
+          }
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "ON",
+        "fee_switch_details": "27% 平台费用分配给质押 GMX 持有者（通过回购机制）",
+        "buybacks": "ACTIVE",
+        "dividends": "ACTIVE",
+        "burns": "NONE",
+        "primary_value_accrual": "回购分红 - 质押 GMX 获得回购分配的 GMX",
+        "tevRatio": 0.27
+      },
+      "analyst_notes": "【2026-04-26 链上调研后 — TEV 标 paused (低 confidence)】\n\n## 当前实际状态: 分红暂停\n\nGMX 协议分红机制经历重大变化:\n\n**2026-03-04 之前**:\n- 27% 平台费用通过 RewardRouter V2 实时分给 sGMX 持有人\n- 形式: ETH (Arbitrum) / AVAX (Avalanche), 持有人能即时领取\n- 这是真 TEV (外部资产现金分红)\n\n**2026-03-04 起 (新机制, \"Staking Power\" 系统)**:\n- ETH/AVAX 实时分红停止\n- 改为 Treasury 用 USDC 收入回购 GMX, 累积在 Treasury\n- **触发条件: GMX 价格 ≥ $90 才解锁分配**\n- 持有人累积 \"Staking Power\" = Σ(持仓天数 × 持仓量)\n- Loyalty: 若持仓跌至历史高位 80% 以下, 累积归零 (防套利)\n- 2026-03-25 引入 Loyalty Tracking\n\n**当前价格 ~$7 (2026-04-26)**, 距触发条件 $90 还差 12 倍, 实际**当前现金收益 = 0**.\n\n## DefiLlama 数据失真\n\n- DefiLlama dailyHoldersRevenue 365d 仍显示 $12.30M (历史含暂停前数据)\n- 30d 滚动 ~$0.6M (近期, 与暂停状态一致)\n- **持有人实际拿到的 = 0** (DefiLlama 跟踪 fees 不跟踪触发解锁)\n\n## 推荐口径\n\n- **yield = 0% (paused)**, status='partial'\n- 详情页明确标注 \"等待 GMX > $90 触发分配, 当前实际现金收益 = 0\"\n- 监控 Treasury GMX 累积量 + Staking Power 增长\n\n## 关键地址\n\n- GMX (Arbitrum): 0xfc5A1A6EB076a2C7aD06eD22C90d7E710E35ad0a\n- GMX (Avalanche): 0x62edc0692BD897D2295872a9FFCac5425011c661\n- RewardRouter V2: 0xB95DB5B167D75e6d04227CfFFA61069348d271F5\n- sGMX Tracker: 0x908C4D94D34924765f1eDc22A1DD098397c59dD4\n\n## 何时恢复\n\n如未来:\n- GMX 价格 ≥ $90 (当前 1200% 涨幅) → Treasury 解锁分配\n- 治理改回实时分红 → 切回 27% × revenue / mcap 口径\n- esGMX vesting / 其他机制变化 → 重新评估\n",
+      "last_updated": "2026-04-26"
     },
     "hype": {
       "name": "Hyperliquid",
@@ -528,7 +898,34 @@
         "earning_yield_30d_ann": 8.63,
         "earning_yield_90d_ann": 10.33,
         "trailing_365d_revenue_usd": 945004070
-      }
+      },
+      "tev_mechanisms": [
+        {
+          "type": "buyback_burn",
+          "name": "Assistance Fund Buyback & Burn",
+          "description": "交易费用（扣除 deployer/builder/HLP/referral 后）流入 Assistance Fund，自动回购 HYPE 并从 circulating + total supply 永久移除",
+          "status": "active",
+          "ratio": "dynamic",
+          "fee_source": "trading_fees",
+          "source": {
+            "title": "Hyperliquid Fees Documentation",
+            "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees",
+            "quote": "The Assistance Fund receives USDC and swaps them into HYPE...These HYPE are burned."
+          }
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "ON",
+        "fee_switch_details": "交易费用扣除 deployer/builder/HLP/referral 后，进入 AF 回购销毁 HYPE",
+        "buybacks": "ACTIVE",
+        "dividends": "NONE",
+        "burns": "ACTIVE",
+        "primary_value_accrual": "回购销毁 - Assistance Fund 自动将费用换成 HYPE 并永久移除",
+        "tevRatio": "100%",
+        "tevRatio_note": "净利润（Token Holder Net Income）= 进入 AF 回购金额；逐期相等，因此净利润 100% 用于回购销毁"
+      },
+      "analyst_notes": "## Hyperliquid TEV 机制（更新：2026-04-19）\n\n### 1. 核心结论（重要修正）\n\n过去版本说 'AF 买入即销毁'——**不准确**。真相是：\n- **AF 买入的 HYPE 留在 AF 地址（0xfefe...fefe），不是销毁**\n- AF 是 **treasury buyback**，理论上可被 validator consensus 动用于救灾/清算补偿/用户补偿\n- 历史上尚未发生 AF 大规模动用（JELLY 事件 2025-03 是 HLP 补的），但可能性存在\n- 真正的永久销毁只有 **spot 交易 HYPE 手续费销毁**（~745k HYPE，约占供应 0.075%）\n\n因此 TEV 的保守口径应该是 **AF 净累积 + spot burn**，而不是 '全部视为销毁'。\n\n### 2. 机制路径\n\n用户手续费 → 扣除 (referral + builder + deployer)\n  → 余下部分：\n    - **HLP share**（做市/清算收益，约 40-46% perp net fee）→ 归 HLP LP，不归 HYPE 持有人\n    - **AF share**（剩下大头）→ 用 USDC 市价买 HYPE 存 AF\n    - **Spot 手续费（HYPE 计价部分）** → 直接销毁\n\n### 3. DefiLlama 口径验证\n\n已验证：DefiLlama `dailyRevenue` 和 `dailyHoldersRevenue` 对 Hyperliquid 完全相等，都 = AF 买入金额（已剥离 HLP/builder/referral）。数值与链上 AF `entryNtl` 吻合（误差 <5%）。\n\n### 4. 当前数字（2026-04-19 快照）\n\n- 链上 AF 持仓：~43.4M HYPE, entry_ntl ~$1.065B（累计买入成本）\n- Spot burn 累计：~745k HYPE（真正永久销毁）\n- 365d AF 买入：~$942M（DefiLlama）≈ AF net accumulation\n- TEV Yield 365d ≈ $942M / $7.37B = **12.78%**\n\n### 5. Caveats（向用户展示）\n\n- **AF 可被动用风险**：若 validator consensus 决议动用，这部分 TEV 会瞬间归零\n- **HLP 不归 HYPE 持有人**：DefiLlama `dailyFees` 减去 `dailyRevenue` 就是 HLP 部分\n- **Funding 不计入 TEV**：多空点对点支付，平台不收取\n\n### 6. 自动化\n\n- 日度：`sync-tev-data.js` 拉 DefiLlama `dailyRevenue`，算 7/30/90/365d yield\n- 日度校验：`update-hype-tev.py` 拉链上 AF `entryNtl`，与 DefiLlama delta 对比，偏差 >15% 告警\n\n### 7. 历史口径变更\n\n- 2026-04-19: 修正 'AF 买入即销毁' 错误描述；365d 字段改为 sync-tev-data.js 每日刷新；加入链上校验\n- 2026-03-01: 初版 AF 口径\n",
+      "last_updated": "2026-04-24"
     },
     "jito": {
       "name": "Jito",
@@ -542,26 +939,49 @@
       },
       "tevStatus": "none",
       "tev_yield_percent": 0,
-      "market_cap_usd": 165285287.55,
+      "market_cap_usd": 164751103.22,
       "tvl": 1092767451.87587,
       "tevRatio": 0,
-      "earning_yield_percent": 17.94,
+      "earning_yield_percent": 18,
       "tevRatioNote": "治理代币 - MEV 收益流向 JitoSOL，JTO 用于治理",
       "metrics": {
-        "trailing_365d_revenue_usd": 29656569,
-        "trailing_30d_revenue_usd": 326312,
-        "current_market_cap_usd": 165285287.55,
+        "trailing_365d_revenue_usd": 29656501,
+        "trailing_30d_revenue_usd": 326244,
+        "current_market_cap_usd": 164751103.22,
         "trailing_365d_tev_usd": 0,
         "trailing_30d_tev_usd": 0,
-        "trailing_7d_revenue_usd": 63438,
-        "trailing_90d_revenue_usd": 1179281,
+        "trailing_7d_revenue_usd": 63370,
+        "trailing_90d_revenue_usd": 1179213,
         "tev_yield_7d_ann": 0,
         "tev_yield_30d_ann": 0,
         "tev_yield_90d_ann": 0,
-        "earning_yield_7d_ann": 2,
-        "earning_yield_30d_ann": 2.4,
-        "earning_yield_90d_ann": 2.89
-      }
+        "earning_yield_7d_ann": 2.01,
+        "earning_yield_30d_ann": 2.41,
+        "earning_yield_90d_ann": 2.9
+      },
+      "tev_mechanisms": [
+        {
+          "type": "staking_reward",
+          "name": "JTO Staking",
+          "description": "质押 JTO 参与协议治理和可能的收入分成",
+          "status": "planned",
+          "source": {
+            "type": "documentation",
+            "title": "JTO Token",
+            "url": "https://docs.jito.network/jto-governance/jto"
+          }
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "OFF",
+        "fee_switch_details": "JTO 目前主要用于治理，MEV 收益流向 JitoSOL 持有者",
+        "buybacks": "NONE",
+        "dividends": "NONE",
+        "burns": "NONE",
+        "primary_value_accrual": "治理代币 - MEV 收益流向 JitoSOL，JTO 用于治理"
+      },
+      "notes": "Jito 是 Solana MEV 基础设施的领导者。JTO 代币目前主要用于治理，协议的 MEV 收益直接流向 JitoSOL 持有者（更高的 APY），而非 JTO 持有者。未来可能引入 JTO staking 收入分成。",
+      "last_updated": "2026-02-14"
     },
     "justlend": {
       "name": "JustLend",
@@ -570,8 +990,8 @@
       "category": "lending",
       "confidence": "low",
       "confidence_reason": {
-        "zh": "TRON 生态透明度低，JST 质押奖励无公开 API，依赖官方声明",
-        "en": "TRON ecosystem low transparency, JST staking rewards no public API, relies on official statements"
+        "zh": "链上 burn 是做账式（从项目方金库转出），非市场 buyback；DefiLlama 侧面验证协议真实对外收入极小（~$500k/年）",
+        "en": "On-chain burn is pocket-to-pocket (from team treasury), not market buyback; DefiLlama confirms tiny real protocol revenue (~$500k/yr)"
       },
       "tevStatus": "none",
       "tev_yield_percent": 0,
@@ -612,7 +1032,33 @@
           "如果未来发现 executor 真正从市场买 JST（看到 USDT/USDD 流出换取 JST 的链上证据），可重新评估"
         ],
         "tev_zero_reason": "burn JST 源头是孙宇晨生态金库（TFTWNgDB... 持 HTX/WIN/TUSD 等），非协议收入买入，不构成真 TEV"
-      }
+      },
+      "tev_mechanisms": [
+        {
+          "type": "buyback_burn",
+          "name": "JST Buyback & Burn（链上核实为 pocket-to-pocket 做账式）",
+          "description": "JustLend DAO 2025-10-22 治理宣布的『买回销毁』机制，2025-10 / 2026-01 / 2026-04 已执行 3 次共 1.356B JST (13.70% 供应) 发到 TRON Black Hole。但 2026-04-25 链上核实：全部 burn 的 JST 都来自同一个上游地址 TFTWNgDBkQ5wQoP8RXpRznnHvAVV8x5jLu（持 HTX 2623B + WIN 484M + TUSD 15k + BTC 等，是孙宇晨生态中央金库），不是从市场用协议收入买入。这是 pocket-to-pocket 做账式销毁，对流通量和价格无实际支撑。",
+          "status": "disputed",
+          "source": {
+            "type": "governance",
+            "title": "Proposal on JST Buyback & Burn Program",
+            "url": "https://forum.justlend.org/t/proposal-on-jst-buyback-burn-program/774",
+            "on_chain_reality": "孙宇晨金库 → executor → Black Hole（无 USDT 市场买入证据）"
+          }
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "DISPUTED",
+        "fee_switch_details": "宣称 100% 净收入回购销毁，但链上看到的是从项目方金库转 JST 到 Black Hole",
+        "buybacks": "NONE",
+        "buyback_details": "没有观察到市场买入（没有对应 USDT/USDD 流出换取 JST 的链上证据）",
+        "dividends": "NONE",
+        "burns": "ACTIVE (但非真 buyback,是做账销毁)",
+        "primary_value_accrual": "无真 TEV（pocket-to-pocket 转账式销毁，不代表 token 持有人价值捕获）"
+      },
+      "analyst_notes": "【2026-04-25 更新 - TEV 归零（Boss 决策）】\n\n## 发现经过\n\n先按调研和 DAO 公告做了『A 口径链上直查』，算出 365d TEV Yield = 15.88%。\nBoss 质疑：『JustLend 不是主流项目，更多是孙宇晨包装出来服务他自己的项目，非常不透明』。\n复查链上后 **Boss 完全对**——归零。\n\n## 链上证据\n\n### 1. Burn 路径\n\n```\n孙宇晨金库 TFTWNgDB...（囤 HTX/WIN/TUSD 等孙宇晨代币）\n  → executor TZJVQuU3...\n  → TRON Black Hole\n```\n\n所有 3 次 burn（2025-10, 2026-01, 2026-04）都走这条链，burn 的 JST 从未经过市场。\n\n### 2. 上游地址持仓（= 定性证据）\n\nTFTWNgDBkQ5wQoP8RXpRznnHvAVV8x5jLu 持有：\n- **HTX: 262,355,002,622**（火币交易所代币，孙宇晨控制）\n- **WIN: 483,649,028**（WINkLink，孙宇晨）\n- **TUSD: 15,176**（TrueUSD，孙宇晨）\n- **BTC: 5.87 / USDT: 3.19M / TRX: 1.8M**\n\n这明显是孙宇晨生态的中央钱包，不是协议的 SBM buyback 合约。\n\n### 3. 没有市场买入证据\n\n真 buyback 的链上特征：executor 拿 USDT/USDD → 去 DEX 换 JST → burn。\n我们看到的是：项目方金库转 JST → executor → Black Hole。没有 USDT 对应流出换取 JST 的痕迹。\n\n### 4. DefiLlama 侧面佐证\n\nDefiLlama justlend slug 报 ~$500k/年 revenue（只算 lending interest spread）。\n即便加上 USDD/USDJ/stTRX 等其他收入，真实对外分发规模也远远撑不起官方声称的 $41.42M 储备 + 后续 3 次 ~$60M burn。\n差额要么来自项目方印钞（JST 本来就在他们手里），要么夸大。\n\n## TEV 归零的逻辑\n\n按 TEV = token 持有人真实能捕获的价值：\n\n| 真 buyback | 做账式销毁（当前 JustLend） |\n|---|---|\n| 协议收入买 JST → 市场买压支撑价格 | 项目方转仓，没有买压 |\n| 销毁的 JST 来自市场流通 → 减少流通量 | 销毁的 JST 本来在项目方金库 → 流通量不变 |\n| token 持有人间接受益 | 纯粹账面操作 |\n\n所以 TEV = 0，而不是 15.88%。\n\n## 当前配置\n\n- tevStatus: `none`\n- confidence: `low`\n- tevRatio: `null`\n- 所有周期 TEV Yield / Earning Yield = 0%\n- 链上 burn 数据**保留**在 validation（作为供给侧事实记录，非 TEV 来源）\n- 如果未来链上观察到 executor 真正从市场买 JST（USDT 流出 + JST 流入配对），可重新评估\n\n## 参考\n\n- [JustLend DAO 原提案](https://forum.justlend.org/t/proposal-on-jst-buyback-burn-program/774)\n- [TronScan: JST 合约](https://tronscan.org/#/token20/TCFLL5dx5ZJdKnWuesXxi1VPwjLVmWZZy9)\n- [TronScan: 孙宇晨金库地址](https://tronscan.org/#/address/TFTWNgDBkQ5wQoP8RXpRznnHvAVV8x5jLu)\n- [TronScan: TRON Black Hole](https://tronscan.org/#/address/T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb)\n",
+      "notes": "⚠️ 维持 PARTIAL，原因：(1) JST staking 机制缺乏透明文档，无法确认具体分配比例；(2) TRON 生态整体透明度较低，缺少 Dune 等独立数据分析工具；(3) DefiLlama 无 tokenRights 数据；(4) JST 代币跨多个 JUST 产品使用，实际 TEV 归属不清；(5) 与 Justin Sun 团队关联，中心化程度较高。如需进一步确认，建议通过浏览器直接操作 JustLend DApp 验证 staking 功能。",
+      "last_updated": "2026-04-25"
     },
     "kamino": {
       "name": "Kamino Finance",
@@ -626,15 +1072,15 @@
       },
       "tevStatus": "none",
       "tev_yield_percent": 0,
-      "market_cap_usd": 90505980.59,
+      "market_cap_usd": 89950600.68,
       "tvl": 2058177618.5805178,
       "tevRatio": 0,
-      "earning_yield_percent": 18.31,
+      "earning_yield_percent": 18.43,
       "tevRatioNote": "无 TEV — KMNO staking 仅提供 farming 奖励加成（boost），非协议收入分配。Season 奖励来自代币国库排放（激励），不是 fee distribution",
       "metrics": {
         "trailing_365d_revenue_usd": 16573587,
         "trailing_30d_revenue_usd": 758225,
-        "current_market_cap_usd": 90505980.59,
+        "current_market_cap_usd": 89950600.68,
         "trailing_365d_tev_usd": 0,
         "trailing_30d_tev_usd": 0,
         "trailing_7d_revenue_usd": 183796,
@@ -642,10 +1088,21 @@
         "tev_yield_7d_ann": 0,
         "tev_yield_30d_ann": 0,
         "tev_yield_90d_ann": 0,
-        "earning_yield_7d_ann": 10.59,
-        "earning_yield_30d_ann": 10.19,
-        "earning_yield_90d_ann": 11.03
-      }
+        "earning_yield_7d_ann": 10.65,
+        "earning_yield_30d_ann": 10.26,
+        "earning_yield_90d_ann": 11.09
+      },
+      "tev_mechanisms": [],
+      "tev_summary": {
+        "fee_switch": "NONE",
+        "fee_switch_details": "无协议收入直接分配给 KMNO 持有者。所谓 'staking' 实为 farming 奖励加成机制",
+        "buybacks": "NONE",
+        "dividends": "NONE",
+        "burns": "NONE",
+        "primary_value_accrual": "无 TEV — KMNO staking 仅提供 farming 奖励加成（boost），非协议收入分配。Season 奖励来自代币国库排放（激励），不是 fee distribution"
+      },
+      "notes": "⚠️ 从 PARTIAL 降级为 NONE。经深入调研确认：KMNO staking 不是协议收入分配，而是 farming 奖励加成（boost）机制。具体：(1) 新质押者起始 3% boost，每天 +0.1%；(2) 每 1 KMNO 质押对 $1 仓位施加 boost；(3) Season 奖励每 3 月最多 100M KMNO，来自代币国库（inflation），非协议费用；(4) 有 6 个月 vesting 期。Kamino 是优秀的 Solana 借贷协议（$3.34B AUM，零坏账），但 KMNO 代币目前无真正的 fee distribution 机制。2026 路线图专注机构产品（固定利率、链下抵押品），未来可能引入真正的 TEV。",
+      "last_updated": "2026-02-14"
     },
     "lido": {
       "name": "Lido",
@@ -659,15 +1116,15 @@
       },
       "tevStatus": "none",
       "tev_yield_percent": 0,
-      "market_cap_usd": 333691563.07,
+      "market_cap_usd": 374170944.63,
       "tvl": 18986133323.106007,
       "tevRatio": 0,
-      "earning_yield_percent": 23.62,
+      "earning_yield_percent": 21.07,
       "tevRatioNote": "无 - LDO 仅为治理代币，不分享协议收入",
       "metrics": {
         "trailing_365d_revenue_usd": 78821353,
         "trailing_30d_revenue_usd": 4608406,
-        "current_market_cap_usd": 333691563.07,
+        "current_market_cap_usd": 374170944.63,
         "trailing_365d_tev_usd": 0,
         "trailing_30d_tev_usd": 0,
         "trailing_7d_revenue_usd": 1220132,
@@ -675,10 +1132,21 @@
         "tev_yield_7d_ann": 0,
         "tev_yield_30d_ann": 0,
         "tev_yield_90d_ann": 0,
-        "earning_yield_7d_ann": 19.07,
-        "earning_yield_30d_ann": 16.8,
-        "earning_yield_90d_ann": 16.6
-      }
+        "earning_yield_7d_ann": 17,
+        "earning_yield_30d_ann": 14.98,
+        "earning_yield_90d_ann": 14.81
+      },
+      "tev_mechanisms": [],
+      "tev_summary": {
+        "fee_switch": "OFF",
+        "fee_switch_details": "所有收入归 DAO 国库，无分配给 LDO 持有者",
+        "buybacks": "NONE",
+        "dividends": "NONE",
+        "burns": "NONE",
+        "primary_value_accrual": "无 - LDO 仅为治理代币，不分享协议收入"
+      },
+      "notes": "【收入规模】年化协议费用约 $677M，DAO 分成（10%费率的50%）约 $34M/年。尽管 Lido 是最大的 DeFi 协议之一（TVL $22B+），但 LDO 代币不分享任何协议收入（fee switch OFF）。协议收入完全归 DAO 国库控制。若未来开启 fee switch，潜在 TEV 基数较大。",
+      "last_updated": "2026-02-14"
     },
     "maple": {
       "name": "Maple Finance",
@@ -692,26 +1160,129 @@
       },
       "tevStatus": "active",
       "tev_yield_percent": 0.97,
-      "market_cap_usd": 301207489.48,
+      "market_cap_usd": 303905510.47,
       "tvl": 2109989088.5761566,
       "tevRatio": 0.25,
-      "earning_yield_percent": 3.9,
+      "earning_yield_percent": 3.86,
       "tevRatioNote": "回购分配 - 25% 协议收入回购 SYRUP",
       "metrics": {
-        "current_market_cap_usd": 301207489.48,
+        "current_market_cap_usd": 303905510.47,
         "trailing_365d_revenue_usd": 11735218,
         "trailing_30d_revenue_usd": 1290414,
         "trailing_365d_tev_usd": 2933804.5,
         "trailing_30d_tev_usd": 244483.70833333334,
         "trailing_7d_revenue_usd": 213256,
         "trailing_90d_revenue_usd": 3916175,
-        "tev_yield_7d_ann": 0.92,
-        "tev_yield_30d_ann": 1.3,
-        "tev_yield_90d_ann": 1.32,
-        "earning_yield_7d_ann": 3.69,
-        "earning_yield_30d_ann": 5.21,
-        "earning_yield_90d_ann": 5.27
-      }
+        "tev_yield_7d_ann": 0.91,
+        "tev_yield_30d_ann": 1.29,
+        "tev_yield_90d_ann": 1.31,
+        "earning_yield_7d_ann": 3.66,
+        "earning_yield_30d_ann": 5.17,
+        "earning_yield_90d_ann": 5.23
+      },
+      "tev_mechanisms": [
+        {
+          "type": "buyback",
+          "name": "Syrup Strategic Fund (SSF) Buyback",
+          "description": "25% 协议收入通过 SSF 回购 SYRUP，按月执行",
+          "status": "active",
+          "ratio": 0.25,
+          "start_date": "2025-10-01",
+          "source": {
+            "type": "governance",
+            "title": "MIP-019: Activate SSF and Sunset Staking",
+            "url": "https://maple.finance/governance/proposals/19",
+            "quote": "25% of ongoing protocol revenue will be allocated to the Syrup Strategic Fund (SSF) for SYRUP buybacks"
+          }
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "ON",
+        "fee_switch_details": "25% 协议收入通过 SSF 回购 SYRUP，按月执行",
+        "buybacks": "ACTIVE",
+        "dividends": "NONE",
+        "burns": "NONE",
+        "primary_value_accrual": "回购分配 - 25% 协议收入回购 SYRUP",
+        "tevRatio": 0.25
+      },
+      "analyst_notes": {
+        "overview": {
+          "current_ratio": "25%",
+          "mechanism": "Syrup Strategic Fund (SSF)",
+          "frequency": "按月执行",
+          "yield_source": "Protocol Fee Revenue (管理费/服务费/策略费/起始费)"
+        },
+        "ratio_timeline": [
+          {
+            "period": "Q1 2025",
+            "ratio": 0.2,
+            "mip": "MIP-013",
+            "details": "20% 月度回购 → stream 给 stSYRUP"
+          },
+          {
+            "period": "Q2 2025",
+            "ratio": 0.2,
+            "mip": "MIP-016",
+            "details": "延续 20% 月度回购"
+          },
+          {
+            "period": "Q3 2025",
+            "ratio": 0.25,
+            "mip": "MIP-018",
+            "details": "提升至 25% 月度回购"
+          },
+          {
+            "period": "Q4 2025 起",
+            "ratio": 0.25,
+            "mip": "MIP-019",
+            "details": "25% → SSF，sunset staking"
+          },
+          {
+            "period": "Q1-Q2 2026",
+            "ratio": 0.25,
+            "mip": "MIP-020",
+            "details": "延长 25% → SSF"
+          }
+        ],
+        "buyback_data": {
+          "q1_2025": {
+            "usd": 235000,
+            "syrup": 1960000,
+            "ratio": 0.2
+          },
+          "h1_2025": {
+            "usd": 830000,
+            "syrup": 3500000,
+            "ratio": 0.2
+          },
+          "q4_2025": {
+            "syrup": 2000000,
+            "note": "SSF 模式，美元花费未披露"
+          }
+        },
+        "mip_proposals": {
+          "MIP-013": "Fee Buyback Mechanism (Q1 2025, 20%)",
+          "MIP-016": "Q2 Fee Buyback Continuation (Q2 2025, 20%)",
+          "MIP-018": "Q3 Fee Buyback Increase (Q3 2025, 25%)",
+          "MIP-019": "Activate SSF and Sunset Staking (Q4 2025 起)",
+          "MIP-020": "H1 2026 SSF Allocation (2026 上半年延长)"
+        },
+        "market_data": {
+          "market_cap": "$280M",
+          "circulating_supply": "1.16B SYRUP",
+          "total_supply": "1.22B SYRUP"
+        },
+        "mechanism_note": "Maple 的 Protocol Revenue ≈ DeFiLlama Revenue（管理费/服务费/策略费/起始费），不包含借款人支付的利息。MIP-019 前回购后 stream 给 stSYRUP，MIP-019 后改为 SSF 持有回购 + DAO 资产负债表建设。",
+        "data_source": "DefiLlama Revenue × 25%",
+        "links": {
+          "governance": "https://maple.finance/governance",
+          "docs": "https://docs.maple.finance",
+          "mip_hub": "https://maple.finance/governance/proposals",
+          "transparency": "https://maple.finance/transparency"
+        }
+      },
+      "notes": "【数据说明】MIP-019 提案于 2024 年通过（25% 协议收入回购 SYRUP），但实际 TEV 数据从 2025-11 才开始记录（DefiLlama dailyHoldersRevenue）。Maple 于 2024 年将代币从 MPL 迁移到 SYRUP，新代币经济模型强化了收入分配机制。作为机构借贷协议，收入主要来自贷款利差。",
+      "last_updated": "2026-02-14"
     },
     "mnt": {
       "name": "Mantle",
@@ -729,7 +1300,33 @@
       "tvl": 0,
       "tevRatio": 0,
       "earning_yield_percent": 0,
-      "tevRatioNote": "待确认 - Gas 消耗 + 潜在的质押奖励"
+      "tevRatioNote": "待确认 - Gas 消耗 + 潜在的质押奖励",
+      "tev_mechanisms": [
+        {
+          "type": "gas_token",
+          "name": "Mantle Network Gas",
+          "description": "MNT 作为 Mantle L2 原生 gas token",
+          "status": "active",
+          "note": "Gas 消耗创造代币需求，但不直接分配给持有者"
+        },
+        {
+          "type": "staking",
+          "name": "MNT Staking",
+          "description": "质押 MNT 参与网络安全和治理",
+          "status": "planned",
+          "note": "需要确认质押奖励机制"
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "N/A",
+        "fee_switch_details": "L2 gas 费用机制，非传统 fee switch",
+        "buybacks": "UNKNOWN",
+        "dividends": "UNKNOWN",
+        "burns": "UNKNOWN",
+        "primary_value_accrual": "待确认 - Gas 消耗 + 潜在的质押奖励"
+      },
+      "analyst_notes": "【2026-02-05 初步调研】\n\n## MNT 特殊情况说明\n\nMNT 与 BNB/OKB 不同，它不是传统意义上的 CEX 平台币：\n\n### 背景\n1. **前身 BitDAO**：由 Bybit 支持创立\n2. **2023 年转型**：BitDAO → Mantle\n3. **定位变化**：从 DAO 治理代币 → L2 原生代币\n\n### TEV 评估挑战\n1. ⚠️ 不是直接的 Bybit 平台币\n2. ⚠️ TEV 机制不如 BNB/OKB 明确\n3. ⚠️ 主要价值来自 L2 生态而非交易所收入\n\n### 需要向 Boss 确认\n1. MNT 是否应该按「L2 代币」而非「平台币」评估？\n2. Bybit 收入与 MNT 的具体关联是什么？\n3. 是否有官方的 TEV 机制文档？",
+      "last_updated": "2026-02-14"
     },
     "morpho": {
       "name": "Morpho",
@@ -743,13 +1340,13 @@
       },
       "tevStatus": "none",
       "tev_yield_percent": 0,
-      "market_cap_usd": 836473487.43,
+      "market_cap_usd": 855459873.69,
       "tvl": 6856802869.885637,
       "tevRatio": 0,
       "earning_yield_percent": 0,
       "tevRatioNote": "纯治理代币 - MORPHO 目前仅用于治理投票",
       "metrics": {
-        "current_market_cap_usd": 836473487.43,
+        "current_market_cap_usd": 855459873.69,
         "trailing_365d_revenue_usd": 0,
         "trailing_30d_revenue_usd": 0,
         "trailing_365d_tev_usd": 0,
@@ -762,7 +1359,18 @@
         "earning_yield_7d_ann": 0,
         "earning_yield_30d_ann": 0,
         "earning_yield_90d_ann": 0
-      }
+      },
+      "tev_mechanisms": [],
+      "tev_summary": {
+        "fee_switch": "OFF",
+        "fee_switch_details": "Morpho 当前无协议费用，由 vault curators 自行设定",
+        "buybacks": "NONE",
+        "dividends": "NONE",
+        "burns": "NONE",
+        "primary_value_accrual": "纯治理代币 - MORPHO 目前仅用于治理投票"
+      },
+      "notes": "【收入确认】Morpho 当前无协议收入（fee switch OFF）。年化总借贷费用约 $180M，但 100% 归 LP，协议不抽成。DAO 可通过治理投票激活收费机制，但目前未启用。若启用收费（如10%），潜在年化协议收入约 $18M。",
+      "last_updated": "2026-02-14"
     },
     "okb": {
       "name": "OKB",
@@ -780,7 +1388,35 @@
       "tvl": 0,
       "tevRatio": 0,
       "earning_yield_percent": 0,
-      "tevRatioNote": "无持续 TEV 回流（供应已锁定，不再回购或销毁）"
+      "tevRatioNote": "无持续 TEV 回流（供应已锁定，不再回购或销毁）",
+      "tev_mechanisms": [
+        {
+          "type": "buyback_burn",
+          "name": "Buyback & Burn (terminated)",
+          "description": "2025-08 起停止回购与销毁，供应已锁定；此前历史回购与储备于 2025-08-13 完成一次性销毁 65,256,712.097 OKB",
+          "status": "inactive",
+          "ratio": 0,
+          "frequency": "none",
+          "source": {
+            "type": "official",
+            "title": "OKX 2025-08-13 Announcement",
+            "url": "TBD",
+            "note": "One-time burn + supply locked to 21,000,000"
+          }
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "OFF",
+        "fee_switch_details": "2025-08 后停止回购/销毁，供应已锁定",
+        "buybacks": "NONE",
+        "dividends": "NONE",
+        "burns": "NONE",
+        "burn_details": "2025-08-13 一次性销毁 65,256,712.097 OKB，之后不再有回购/销毁",
+        "primary_value_accrual": "无持续 TEV 回流（供应已锁定，不再回购或销毁）",
+        "tevRatio": 0
+      },
+      "analyst_notes": "【2026-03-03 更新】\n\n## OKB 机制变更摘要\n\n- **2025-08-13 一次性销毁** 65,256,712.097 OKB（来自历史回购+储备）\n- **总供应锁定** 21,000,000 OKB\n- **后续不再回购 / 增发 / 销毁**（no more buybacks, mints, or burns）\n- **合约升级** 移除 mint/burn，Ethereum L1 版本逐步停止支持，引导到 X Layer\n\n## 结论\n\n**2025-08 之后无持续 TEV**，平台利润不再通过回购/销毁回流至 OKB 持有者。",
+      "last_updated": "2026-03-03"
     },
     "pancakeswap": {
       "name": "PancakeSwap",
@@ -789,8 +1425,8 @@
       "category": "dex",
       "confidence": "high",
       "confidence_reason": {
-        "zh": "Tokenomics 3.0 链上销毁可验证 + DefiLlama 数据",
-        "en": "Tokenomics 3.0 on-chain burn verifiable + DefiLlama data"
+        "zh": "链上 net deflation 完全可验证（BSC archive RPC + dead address snapshot diff）",
+        "en": "Net deflation fully verifiable on-chain (archive RPC + dead address snapshot)"
       },
       "tevStatus": "active",
       "tev_yield_percent": 11.5,
@@ -821,7 +1457,48 @@
         "net_burn_30d_cake": 2120626,
         "net_burn_90d_cake": 6769265,
         "net_burn_365d_cake": 37761171
-      }
+      },
+      "tev_mechanisms": [
+        {
+          "type": "buyback_burn",
+          "name": "CAKE Burns",
+          "description": "协议收入的一部分用于回购并销毁 CAKE",
+          "status": "active",
+          "start_date": "2021-01-01",
+          "burn_frequency": "weekly",
+          "source": {
+            "type": "documentation",
+            "title": "CAKE Tokenomics",
+            "url": "https://docs.pancakeswap.finance/tokenomics/cake"
+          }
+        },
+        {
+          "type": "staking_reward",
+          "name": "veCAKE Revenue Share [已结束]",
+          "description": "锁仓 CAKE 获得 veCAKE，参与协议收入分成和治理",
+          "status": "inactive",
+          "start_date": "2023-07-01",
+          "end_date": "2025-04-23",
+          "sunset_note": "Tokenomics 3.0 升级，veCAKE 于 2025-04-23 结束，收入转为全额回购销毁",
+          "source": {
+            "type": "documentation",
+            "title": "veCAKE Sunset",
+            "url": "https://docs.pancakeswap.finance/welcome-to-pancakeswap/vecake-sunset"
+          }
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "ON",
+        "fee_switch_details": "veCAKE 已于 2025-04-23 结束，现全部回购销毁",
+        "buybacks": "ACTIVE",
+        "dividends": "NONE",
+        "burns": "ACTIVE",
+        "primary_value_accrual": "回购销毁 - 协议收入 15% 用于 CAKE 回购销毁（veCAKE 分红已结束）",
+        "tevRatio": 0.15
+      },
+      "analyst_notes": "【2026-04-26 重写 — 链上口径替代 DefiLlama】\n\n## 为什么放弃 DefiLlama 主口径\n\nDefiLlama dailyHoldersRevenue 365d $99.9M 比链上实际 burn ($65M) 高约 50%。\n原因: DefiLlama 把 fees-pending-burn (Treasury 待销毁余额) 也计入了, 与 token holders 实际捕获价值有偏差。\n\n## 链上口径 (snapshot diff)\n\n```\ncirculating(t) = totalSupply(t) - dead_balance(t)\nnet_burn(N) = circulating(t-N) - circulating(now)\nTEV (USD) = net_burn × 当前 CAKE 价\n```\n\n365d 实测:\n- totalSupply 365d 前 = 2,111M → 现在 4,087M (增 1,975M, gross 通胀)\n- dead 365d 前 = 1,727M → 现在 3,741M (增 2,013M, gross burn)\n- circulating 减少 38.3M = 净通缩\n- × $1.51 = $57.0M 真实 TEV\n- yield = $57M / $496M = 11.50%\n\n## 数据源\n\n- 1rpc.io/bnb (BSC archive RPC) - eth_call totalSupply + balanceOf(dead) 历史 block\n- Moralis dateToBlock - block at timestamp\n- CoinGecko - CAKE 价格 + 流通市值\n\n## 关键地址\n\n- CAKE: 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82\n- Dead: 0x000000000000000000000000000000000000dEaD\n\n## 注意事项\n\nPancakeSwap 高速通胀（LP 奖励）+ 高速回购销毁。Net 才是真正归属持有人的价值。\n直接看 dead 地址增量会被 inflated（gross burn 2B/yr 远高于 net 38M/yr），所以必须减掉 mint。\n\n## 历史变更\n\n- 2026-04-26: 切链上 net deflation 口径，DefiLlama 弃用\n- 2025-04-23: veCAKE sunset, Tokenomics 3.0 上线\n",
+      "notes": "【Tokenomics 3.0】veCAKE 于 2025-04-23 sunset，原 5% revenue share 于 2025-05-07 结束。当前机制：协议收入按 Tokenomics 3.0 路由全部转为 CAKE 回购→销毁至 0x000...dEaD。Burn 完全链上可验证，无 pocket-to-pocket 风险（资金来自真实 trading fee）。",
+      "last_updated": "2026-04-26"
     },
     "pendle": {
       "name": "Pendle",
@@ -834,27 +1511,60 @@
         "en": "DefiLlama dailyHoldersRevenue ($22.25M, ~85% of revenue) aligns with official 80% claim, but no single on-chain executor traceable across 8+ chains"
       },
       "tevStatus": "active",
-      "tev_yield_percent": 10.23,
-      "market_cap_usd": 217520055.82,
+      "tev_yield_percent": 10.14,
+      "market_cap_usd": 219483114.68,
       "tvl": 2092670655.1775405,
       "tevRatio": 0.8,
-      "earning_yield_percent": 10.23,
+      "earning_yield_percent": 10.14,
       "tevRatioNote": "回购+分红 - 80% 协议收入转化为 PENDLE 回购，分配给 sPENDLE 持有者",
       "metrics": {
-        "current_market_cap_usd": 217520055.82,
-        "trailing_365d_revenue_usd": 22253087,
-        "trailing_30d_revenue_usd": 599881,
-        "trailing_365d_tev_usd": 22253087,
-        "trailing_30d_tev_usd": 1854423.9166666667,
-        "trailing_7d_revenue_usd": 215465,
-        "trailing_90d_revenue_usd": 1817587,
-        "tev_yield_7d_ann": 5.17,
-        "tev_yield_30d_ann": 3.36,
-        "tev_yield_90d_ann": 3.39,
-        "earning_yield_7d_ann": 5.17,
-        "earning_yield_30d_ann": 3.36,
-        "earning_yield_90d_ann": 3.39
-      }
+        "current_market_cap_usd": 219483114.68,
+        "trailing_365d_revenue_usd": 22253073,
+        "trailing_30d_revenue_usd": 599867,
+        "trailing_365d_tev_usd": 22253073,
+        "trailing_30d_tev_usd": 1854422.75,
+        "trailing_7d_revenue_usd": 215451,
+        "trailing_90d_revenue_usd": 1817573,
+        "tev_yield_7d_ann": 5.12,
+        "tev_yield_30d_ann": 3.33,
+        "tev_yield_90d_ann": 3.36,
+        "earning_yield_7d_ann": 5.12,
+        "earning_yield_30d_ann": 3.33,
+        "earning_yield_90d_ann": 3.36
+      },
+      "tev_mechanisms": [
+        {
+          "type": "ve_distribution",
+          "name": "vePENDLE 分红",
+          "description": "vePENDLE 持有者获得协议收入分红",
+          "status": "active"
+        },
+        {
+          "type": "buyback_distribution",
+          "name": "vePENDLE Revenue Share",
+          "description": "80% 协议收入用于回购 PENDLE 并分配给 vePENDLE 持有者",
+          "status": "active",
+          "ratio": 0.8,
+          "distribution_contract": "0x07282F2CEEbD7a65451Fcd268b364300D9e6D7f5",
+          "source": {
+            "type": "docs",
+            "title": "Pendle Tokenomics",
+            "url": "https://docs.pendle.finance/ProtocolMechanics/Mechanisms/vePENDLE"
+          }
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "ON",
+        "fee_switch_details": "80% 协议收入回购并分配给 sPENDLE 持有者（原 vePENDLE 升级）",
+        "buybacks": "ACTIVE",
+        "dividends": "ACTIVE",
+        "burns": "NONE",
+        "primary_value_accrual": "回购+分红 - 80% 协议收入转化为 PENDLE 回购，分配给 sPENDLE 持有者",
+        "tevRatio": 0.8
+      },
+      "analyst_notes": "【2026-04-26 切链上口径】\n\n## 机制 (sPENDLE 时代, 2026-01-29 起)\n\nvePENDLE 已 sunset. 当前:\n- 官方称 80% 协议收入回购 PENDLE → 分给 sPENDLE 质押者\n- 20% 给 protocol treasury (2025-09 治理改, 提案文档未公开链接)\n- sPENDLE: 14 天流动性 (vs vePENDLE 2 年锁定), 5% 即时赎回费\n\n收入来源: YT fees 5% + Swap fees 80% (vePENDLE/sPENDLE voters)\n\n## 数据口径 (2026-04-26)\n\n链上验证困难:\n- Pendle 多链部署 (Ethereum + Arbitrum + BSC + Optimism + Mantle + Base + Berachain + Sonic)\n- 没有单一 buyback executor 合约公开\n- sPENDLE 单 staking 合约 (0x07282...) 365d 入金混杂用户自主 stake + 协议 distribution + 跨链 bridge, 链上无法分离\n\n退而求其次:\n- DefiLlama dailyHoldersRevenue 365d = $22.25M\n- DefiLlama dailyRevenue 365d = $26.17M\n- 比例 22.25/26.17 = **85%** ≈ 官方 80% (相对合理)\n- yield = $22.25M / $217M = **10.25%**\n\n## 警示\n\n1. **80% 比例链上不可独立验证** —— 仅靠 DefiLlama 聚合, 无法二次核实\n2. **多链 executor 不公开** —— 不像 Curve FeeAllocator 有明确合约可追\n3. **sPENDLE 入金混杂** —— 0x07282 合约入金不能区分协议 distribution vs 用户 stake\n4. **2025-09 治理变更文档缺失** —— 100% → 80% 比例改动的原始提案未在 Pendle 治理论坛找到\n\n## 关键地址\n\n- PENDLE: 0x808507121B80c02388fAd14726482e061B8da827\n- sPENDLE staking: 0x07282f2ceebd7a65451fcd268b364300d9e6d7f5\n- vePENDLE lock (legacy): 0x4f30A9D41B80ecC5B94306AB4364951AE3170210\n\n## 历史变更\n\n- 2026-04-26: 切链上 (DefiLlama dailyHoldersRevenue × 1.0); confidence 从 high 降到 medium\n- 2026-01-29: vePENDLE → sPENDLE 迁移\n- 2025-09: 治理改 100% → 80% (20% treasury, 提案链接未公开)\n",
+      "notes": "【机制说明】Pendle 于 2026-01-29 从 vePENDLE 切换至 sPENDLE 模式，80% 协议收入回购 PENDLE 并分配给 sPENDLE 持有者。sPENDLE 有 14天解锁冷却期，或支付 5% 费用即时赎回。",
+      "last_updated": "2026-04-26"
     },
     "sky": {
       "name": "Sky (MakerDAO)",
@@ -904,7 +1614,39 @@
       "tevRatio_7d": 0.0708,
       "tevRatio_30d": 0.0774,
       "tevRatio_90d": 0.303,
-      "tevRatio_365d": 0.4756
+      "tevRatio_365d": 0.4756,
+      "tev_mechanisms": [
+        {
+          "type": "holders_revenue",
+          "name": "Smart Burn + 质押收益",
+          "description": "DSR 收入通过 Splitter 分配：burn 部分回购销毁 MKR，farm 部分分配给 SKY stakers",
+          "status": "active"
+        },
+        {
+          "type": "buyback_burn",
+          "name": "Smart Burn Engine (SBE)",
+          "description": "协议盈余用于回购 MKR 并添加流动性（Smart Burn Engine）",
+          "status": "active",
+          "ratio": 0.7,
+          "contract": "0x0000000000000000000000000000000000000000",
+          "source": {
+            "type": "governance",
+            "title": "Smart Burn Engine",
+            "url": "https://forum.makerdao.com/t/mip103-the-smart-burn-engine-and-tokenomics/19025"
+          }
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "ON",
+        "fee_switch_details": "协议盈余通过 Smart Burn Engine 回购 MKR 并添加流动性",
+        "buybacks": "ACTIVE",
+        "dividends": "NONE",
+        "burns": "NONE",
+        "primary_value_accrual": "回购 - Smart Burn Engine 使用协议盈余回购 MKR 并添加流动性"
+      },
+      "analyst_notes": "【2026-04-22 更新 - 切换到 DefiLlama dailyHoldersRevenue 口径】\n\n## TEV 机制（Smart Burn Engine / SBE）\n\nSky 协议盈余（来自 stability fees / SSR spread / liquidation penalties / PSM fees 等）流入 **Surplus Buffer**，然后通过 **Splitter** 分配：\n\n- **Burn 部分** → Smart Burn Engine (SBE) → **市场买 MKR + LP 化 → LP token burn**（真销毁，不可被治理动用）\n- **Farm 部分** → SKY stakers（新铸造 SKY + USDS yield，**不算 TEV**——这是协议支出，不是市场回购）\n\n## TEV 口径\n\n**TEV = DefiLlama `dailyHoldersRevenue`（= Splitter 的 burn 部分实际金额）**\n\n为什么信任这个数据源：\n- 它精准等于 SBE 实际支出\n- 最近 30d 日均 $37.5k，和 2026-03 治理公告的 \"$37,600/天\" **完全吻合**（误差 <1%）\n- 比 fixedTevUsd 硬编码更动态，能反映 Splitter 参数变化\n\n**Earning Yield** = DefiLlama `dailyRevenue`（协议归属总收入，扣除 DSR/SSR 用户支出）。\n\n差值（Earning - TEV）= Splitter 的 farm 部分 + 其他非 burn 用途。\n\n## 2026-03 治理减速\n\nSplitter burn 参数在 2026-02/03 大幅下调：\n- 近 90d 日均 $174k/天\n- 近 30d 日均 **$37.5k/天**（-78%）\n- 治理动机：SSR 加息后协议盈余压缩，减少 burn 节流\n- **短周期 TEV Yield < 365d**：不是\"价值损失\"，是\"burn 速度放缓\"\n\n## 合约参考\n\n- **Old FlapperUniV2**: `0xc4269cC7acDEdC3794b221aA4D9205F564e27f0d`（2020 编译，过去 365d 无活动，已被新版替代；新合约地址未公开追踪，但 DefiLlama 已覆盖真实数据）\n- MKR: `0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2`\n- SKY: `0x56072C95FAA701256059aa122697B133aDEd9279`（MKR → SKY 1:24000 转换）\n\n## 链上验证（2026-04-22 核实）\n\n- MKR @ 0xdead 过去 365d: 0.0001（几乎 0 —— SBE 不 burn MKR token 本身）\n- SKY @ 0xdead 过去 365d: 4.82 SKY（微不足道）\n- **SBE 实际销毁的是 LP token，不是 MKR 本身**，所以 0xdead 余额不反映真实 burn\n\n## 数据源优先级（按 CLAUDE.md）\n\n虽然\"链上 > DefiLlama\"是原则，但 Sky 的 SBE 链上数据分散（新 Flapper 地址未知 + LP token burn 复杂），且 **DefiLlama `dailyHoldersRevenue` 已经精准对应真实 SBE 支出**（和治理公告吻合）——所以采用 DefiLlama 是合理权衡。\n\n## MKR vs SKY\n\n- **市值 / ticker**：用 SKY（活跃的现行 token）\n- **burn 目标**：SBE 仍 burn MKR（经 LP 机制间接）\n- Dashboard 保持 MKR 作为 ticker 显示（历史连续性）\n\n## 历史口径变更\n\n- 2026-04-22: 从 `fixedTevUsd: $13.724M`（写死值）改为 DefiLlama `dailyHoldersRevenue` 动态拉取；移除\"tevRatio: 0.7\"的静态假设，改为动态计算（当前约 0.483）\n- 2026-03: SBE 治理减速生效\n- 2026-02-14: 初版配置",
+      "notes": "MakerDAO (现 Sky) 是最早实现代币回购销毁的 DeFi 协议之一。Smart Burn Engine 机制确保协议盈余持续回馈给 MKR 持有者。",
+      "last_updated": "2026-04-24"
     },
     "spark": {
       "name": "Spark",
@@ -918,26 +1660,45 @@
       },
       "tevStatus": "none",
       "tev_yield_percent": 0,
-      "market_cap_usd": 99259558.76,
+      "market_cap_usd": 103144572.6,
       "tvl": 5328898278.33737,
       "tevRatio": 0,
-      "earning_yield_percent": 25.66,
+      "earning_yield_percent": 24.69,
       "tevRatioNote": "治理代币 - SPK 用于 Spark SubDAO 治理，收入目前流向 Sky 主 DAO",
       "metrics": {
-        "trailing_365d_revenue_usd": 25467876,
-        "trailing_30d_revenue_usd": 689603,
-        "current_market_cap_usd": 99259558.76,
+        "trailing_365d_revenue_usd": 25467911,
+        "trailing_30d_revenue_usd": 689638,
+        "current_market_cap_usd": 103144572.6,
         "trailing_365d_tev_usd": 0,
         "trailing_30d_tev_usd": 0,
-        "trailing_7d_revenue_usd": 176419,
-        "trailing_90d_revenue_usd": 3357347,
+        "trailing_7d_revenue_usd": 176454,
+        "trailing_90d_revenue_usd": 3357382,
         "tev_yield_7d_ann": 0,
         "tev_yield_30d_ann": 0,
         "tev_yield_90d_ann": 0,
-        "earning_yield_7d_ann": 9.27,
-        "earning_yield_30d_ann": 8.45,
-        "earning_yield_90d_ann": 13.72
-      }
+        "earning_yield_7d_ann": 8.92,
+        "earning_yield_30d_ann": 8.13,
+        "earning_yield_90d_ann": 13.2
+      },
+      "tev_mechanisms": [
+        {
+          "type": "airdrop",
+          "name": "SPK Airdrop",
+          "description": "SPK 代币通过空投分发给 Spark 用户",
+          "status": "active",
+          "start_date": "2024-09-01"
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "OFF",
+        "fee_switch_details": "SPK 代币刚启动，收入流向 Sky DAO",
+        "buybacks": "NONE",
+        "dividends": "NONE",
+        "burns": "NONE",
+        "primary_value_accrual": "治理代币 - SPK 用于 Spark SubDAO 治理，收入目前流向 Sky 主 DAO"
+      },
+      "notes": "Spark 是 Sky 生态的 SubDAO，SPK 代币于 2024 年 Q3 启动。作为新代币，TEV 机制仍在发展中。协议收入主要流向 Sky 主 DAO，通过 Smart Burn Engine 回购 MKR。",
+      "last_updated": "2026-02-14"
     },
     "uniswap": {
       "name": "Uniswap",
@@ -982,7 +1743,58 @@
           "start": "2025-06-07",
           "end": "2026-04-26"
         }
-      }
+      },
+      "tev_mechanisms": [
+        {
+          "type": "buyback_burn",
+          "name": "UNI Burn via Firepit",
+          "description": "协议费用流入 TokenJar，通过 Firepit 合约销毁 UNI（发送至 0xdead）",
+          "status": "active",
+          "start_date": "2025-12-28",
+          "burn_threshold": "2000 UNI",
+          "source": {
+            "type": "governance",
+            "title": "UNIfication Proposal",
+            "url": "https://blog.uniswap.org/unification"
+          }
+        },
+        {
+          "type": "treasury_burn",
+          "name": "Retroactive Treasury Burn",
+          "description": "一次性销毁 1 亿 UNI，模拟若 fee switch 从代币发行起就开启的效果",
+          "status": "executed",
+          "amount": "100,000,000 UNI"
+        },
+        {
+          "type": "sequencer_revenue",
+          "name": "Unichain Sequencer Fees",
+          "description": "Unichain 85% sequencer 收入（扣除 L1 数据成本和 15% 给 Optimism 后）用于 UNI 销毁",
+          "status": "active"
+        },
+        {
+          "type": "mev_internalization",
+          "name": "Protocol Fee Discount Auctions (PFDA)",
+          "description": "拍卖免协议费交易权，MEV 内化后用于 UNI 销毁",
+          "status": "planned"
+        },
+        {
+          "type": "aggregator_hooks",
+          "name": "Aggregator Hooks (v4)",
+          "description": "v4 hooks 聚合外部流动性并收取费用，用于 UNI 销毁",
+          "status": "planned"
+        }
+      ],
+      "tev_summary": {
+        "fee_switch": "ON",
+        "fee_switch_details": "2025-12-28 通过 UNIfication 提案开启",
+        "buybacks": "ACTIVE",
+        "dividends": "NONE",
+        "burns": "ACTIVE",
+        "burn_mechanism": "Firepit 合约 → 0xdead 地址",
+        "primary_value_accrual": "协议费 + Unichain Sequencer 收入 → Firepit 销毁 UNI"
+      },
+      "analyst_notes": "【2026-04-22 更新 - 数据源切换到 Etherscan 链上直查】\n\n## TEV 口径（A 口径，Boss 2026-04-22 定）\n\n**TEV = 过去 365 天 UNI 转入 0xdead 地址的累计（USD 当前价重估）**\n- 排除 >=10M UNI 的一次性治理事件（如 2025-12-27 Timelock 执行的 100M retroactive burn）\n- 不使用 DefiLlama `dailyRevenue`（那是协议费流入 treasury 的口径，可能未实际 burn）\n- 数据源：Etherscan V2 logs API，按日汇总 `burn-history.json`\n\n## Fee Switch 启动历史\n\n- **2025-12-28**：UNIfication 提案生效，fee switch 开启\n- **2025-12-27**：Timelock 合约（0x1a9c...35bc）执行 100M UNI 一次性 retroactive burn\n  - 目的：模拟 fee switch 从 token genesis 起就开启的效果\n  - tx: 0x091f0083242a777d55821c1189e568d6d033d9da501b75087dc736fa143d2c1e\n  - **属于一次性操作，不计入 TEV**（脚本自动识别并排除）\n\n## 持续销毁数据（由脚本每日刷新）\n\n具体数字见主表和 `validation` 字段。截至 2026-04-22 快照：\n- 365d 累计持续 burn：~3.41M UNI（$11.6M @ $3.41）\n- 365d TEV Yield：~0.54%\n- 短周期加速（7d 年化 > 30d > 90d > 365d）\n\n## 销毁路径\n\n协议费用 → TokenJar → Firepit 合约 → 0xdead（每次 release 阈值 2,000 UNI，大量 ~4000 UNI tx 是 2 次 release 或 batch）\n\n## 已知局限\n\n1. **当前脚本只覆盖 Ethereum mainnet**。Firepit 同时部署在 **Unichain**，Unichain 上的 burn **未计入**。若要完整覆盖，需扩展 `update-uni-tev.py` 查询 Unichain 链上数据\n2. **from 地址分布复杂**：63 个不同地址，top 包括 L2 桥代理、EOA 等，并非全部是 Firepit 合约。A 口径按『到 0xdead 即算 supply 收缩』处理，无论来源\n3. **2025-06 之前没有 burn 数据**（fee switch 启动前），365d 窗口前半段实际为 0。短周期 yield 高于 365d 反映加速趋势\n\n## 收入来源列表\n\n- v2 协议费 0.05%（全池统一）\n- v3 协议费 1/4~1/6 of LP fee（按池费率不同）\n- Unichain sequencer 收入 85%（未计入当前 TEV，需扩展）\n- v4 / PFDA / Aggregator Hooks：规划中\n\n## 历史口径变更\n\n- 2026-04-22: 从 DefiLlama revenue 切换到 Etherscan 链上直查 0xdead（A 口径，Boss 指示）；每日增量由 `update-uni-tev.py` 维护\n- 2026-03-02: 初版 Firepit 分析，用 DefiLlama 估算",
+      "last_updated": "2026-04-24"
     }
   }
 }

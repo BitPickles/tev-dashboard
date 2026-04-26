@@ -355,7 +355,25 @@ async function main() {
   // 读取现有数据
   const allData = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
   const protocols = allData.protocols;
-  
+
+  // 同步所有协议的静态字段（confidence/tevStatus/tev_mechanisms 等）从 config.json → all-protocols.json
+  // 否则在 config.json 改了 confidence 但 sync 不会拉过来, 主表会显示旧值
+  const STATIC_FIELDS_FROM_CONFIG = ['confidence', 'confidence_reason', 'tevStatus',
+                                     'tev_mechanisms', 'tev_summary', 'analyst_notes', 'notes',
+                                     'last_updated'];
+  for (const [pid, protocol] of Object.entries(protocols)) {
+    const configPath = path.join(__dirname, `../data/protocols/${pid}/config.json`);
+    if (!fs.existsSync(configPath)) continue;
+    try {
+      const cfg = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+      for (const field of STATIC_FIELDS_FROM_CONFIG) {
+        if (cfg[field] !== undefined) protocol[field] = cfg[field];
+      }
+    } catch (e) {
+      console.warn(`  ⚠️ 读 ${pid}/config.json 失败: ${e.message}`);
+    }
+  }
+
   let updated = 0;
   let errors = 0;
   

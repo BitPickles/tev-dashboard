@@ -1,399 +1,3283 @@
 {
-  "protocol": "etherfi",
-  "updated_at": "2026-04-26T13:12:15.813Z",
-  "data_source": "DefiLlama API (dailyHoldersRevenue)",
-  "data_source_url": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
+  "protocol_id": "etherfi",
+  "updated_at": "2026-04-26T16:34:14.656347Z",
   "records": [
     {
-      "id": "etherfi-buyback-accumulate-2024-07",
-      "date": "2024-07-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 129000,
-      "period": "2024-07",
-      "days_with_data": 1,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 1 days of data"
+      "id": "ethfi-buyback-2025-04-26",
+      "date": "2025-04-26",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 656517.91,
+      "amount_usd": 294987,
+      "period": "2025-04-26"
     },
     {
-      "id": "etherfi-buyback-accumulate-2024-08",
-      "date": "2024-08-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 110000,
-      "period": "2024-08",
-      "days_with_data": 1,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 1 days of data"
+      "id": "ethfi-buyback-2025-04-27",
+      "date": "2025-04-27",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 2319.39,
+      "amount_usd": 1042,
+      "period": "2025-04-27"
     },
     {
-      "id": "etherfi-buyback-accumulate-2024-09",
-      "date": "2024-09-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 85000,
-      "period": "2024-09",
-      "days_with_data": 1,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 1 days of data"
+      "id": "ethfi-buyback-2025-04-28",
+      "date": "2025-04-28",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 453047.04,
+      "amount_usd": 203564,
+      "period": "2025-04-28"
     },
     {
-      "id": "etherfi-buyback-accumulate-2024-10",
-      "date": "2024-10-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 118000,
-      "period": "2024-10",
-      "days_with_data": 1,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 1 days of data"
+      "id": "ethfi-buyback-2025-04-29",
+      "date": "2025-04-29",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 211662.57,
+      "amount_usd": 95104,
+      "period": "2025-04-29"
     },
     {
-      "id": "etherfi-buyback-accumulate-2024-11",
-      "date": "2024-11-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 175000,
-      "period": "2024-11",
-      "days_with_data": 1,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 1 days of data"
+      "id": "ethfi-buyback-2025-04-30",
+      "date": "2025-04-30",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 83029.81,
+      "amount_usd": 37307,
+      "period": "2025-04-30"
     },
     {
-      "id": "etherfi-buyback-accumulate-2024-12",
-      "date": "2024-12-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 180000,
-      "period": "2024-12",
-      "days_with_data": 1,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 1 days of data"
-    },
-    {
-      "id": "etherfi-buyback-accumulate-2025-01",
-      "date": "2025-01-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 165000,
-      "period": "2025-01",
-      "days_with_data": 1,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 1 days of data"
-    },
-    {
-      "id": "etherfi-buyback-accumulate-2025-02",
-      "date": "2025-02-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 120000,
-      "period": "2025-02",
-      "days_with_data": 1,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 1 days of data"
-    },
-    {
-      "id": "etherfi-buyback-accumulate-2025-03",
-      "date": "2025-03-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 105000,
-      "period": "2025-03",
-      "days_with_data": 1,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 1 days of data"
-    },
-    {
-      "id": "etherfi-buyback-accumulate-2025-04",
-      "date": "2025-04-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 120000,
-      "period": "2025-04",
-      "days_with_data": 1,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 1 days of data"
-    },
-    {
-      "id": "etherfi-buyback-accumulate-2025-05",
+      "id": "ethfi-buyback-2025-05-01",
       "date": "2025-05-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 1115150,
-      "period": "2025-05",
-      "days_with_data": 4,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 4 days of data"
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 60218.94,
+      "amount_usd": 27058,
+      "period": "2025-05-01"
     },
     {
-      "id": "etherfi-buyback-accumulate-2025-06",
+      "id": "ethfi-buyback-2025-05-02",
+      "date": "2025-05-02",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 159607.03,
+      "amount_usd": 71715,
+      "period": "2025-05-02"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-03",
+      "date": "2025-05-03",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 602878.87,
+      "amount_usd": 270886,
+      "period": "2025-05-03"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-04",
+      "date": "2025-05-04",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 68017.18,
+      "amount_usd": 30562,
+      "period": "2025-05-04"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-05",
+      "date": "2025-05-05",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 23266.45,
+      "amount_usd": 10454,
+      "period": "2025-05-05"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-06",
+      "date": "2025-05-06",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 73257.55,
+      "amount_usd": 32916,
+      "period": "2025-05-06"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-07",
+      "date": "2025-05-07",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 532709.28,
+      "amount_usd": 239357,
+      "period": "2025-05-07"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-08",
+      "date": "2025-05-08",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 31705.97,
+      "amount_usd": 14246,
+      "period": "2025-05-08"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-09",
+      "date": "2025-05-09",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 68967.3,
+      "amount_usd": 30988,
+      "period": "2025-05-09"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-10",
+      "date": "2025-05-10",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 479599.35,
+      "amount_usd": 215494,
+      "period": "2025-05-10"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-11",
+      "date": "2025-05-11",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 126748.3,
+      "amount_usd": 56951,
+      "period": "2025-05-11"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-12",
+      "date": "2025-05-12",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 50559.76,
+      "amount_usd": 22718,
+      "period": "2025-05-12"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-13",
+      "date": "2025-05-13",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 187913.9,
+      "amount_usd": 84434,
+      "period": "2025-05-13"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-14",
+      "date": "2025-05-14",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 298981.94,
+      "amount_usd": 134339,
+      "period": "2025-05-14"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-15",
+      "date": "2025-05-15",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1422280.52,
+      "amount_usd": 639061,
+      "period": "2025-05-15"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-16",
+      "date": "2025-05-16",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 35854.29,
+      "amount_usd": 16110,
+      "period": "2025-05-16"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-17",
+      "date": "2025-05-17",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 116371.1,
+      "amount_usd": 52288,
+      "period": "2025-05-17"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-18",
+      "date": "2025-05-18",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 215648.44,
+      "amount_usd": 96895,
+      "period": "2025-05-18"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-19",
+      "date": "2025-05-19",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 140575.0,
+      "amount_usd": 63163,
+      "period": "2025-05-19"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-20",
+      "date": "2025-05-20",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1040355.27,
+      "amount_usd": 467453,
+      "period": "2025-05-20"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-21",
+      "date": "2025-05-21",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 140734.42,
+      "amount_usd": 63235,
+      "period": "2025-05-21"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-22",
+      "date": "2025-05-22",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 86861.75,
+      "amount_usd": 39029,
+      "period": "2025-05-22"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-23",
+      "date": "2025-05-23",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 64515.77,
+      "amount_usd": 28988,
+      "period": "2025-05-23"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-24",
+      "date": "2025-05-24",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 672237.1,
+      "amount_usd": 302050,
+      "period": "2025-05-24"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-25",
+      "date": "2025-05-25",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 79635.97,
+      "amount_usd": 35782,
+      "period": "2025-05-25"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-26",
+      "date": "2025-05-26",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 20564.6,
+      "amount_usd": 9240,
+      "period": "2025-05-26"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-27",
+      "date": "2025-05-27",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 282006.87,
+      "amount_usd": 126712,
+      "period": "2025-05-27"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-28",
+      "date": "2025-05-28",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 3861724.16,
+      "amount_usd": 1735154,
+      "period": "2025-05-28"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-29",
+      "date": "2025-05-29",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 169353.13,
+      "amount_usd": 76094,
+      "period": "2025-05-29"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-30",
+      "date": "2025-05-30",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 151454.6,
+      "amount_usd": 68052,
+      "period": "2025-05-30"
+    },
+    {
+      "id": "ethfi-buyback-2025-05-31",
+      "date": "2025-05-31",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 400516.72,
+      "amount_usd": 179961,
+      "period": "2025-05-31"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-01",
       "date": "2025-06-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 473926,
-      "period": "2025-06",
-      "days_with_data": 4,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 4 days of data"
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 7873.23,
+      "amount_usd": 3538,
+      "period": "2025-06-01"
     },
     {
-      "id": "etherfi-buyback-accumulate-2025-07",
+      "id": "ethfi-buyback-2025-06-02",
+      "date": "2025-06-02",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 95401.22,
+      "amount_usd": 42866,
+      "period": "2025-06-02"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-03",
+      "date": "2025-06-03",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 128934.19,
+      "amount_usd": 57933,
+      "period": "2025-06-03"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-04",
+      "date": "2025-06-04",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 595658.59,
+      "amount_usd": 267642,
+      "period": "2025-06-04"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-05",
+      "date": "2025-06-05",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 104167.53,
+      "amount_usd": 46805,
+      "period": "2025-06-05"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-06",
+      "date": "2025-06-06",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 6098.71,
+      "amount_usd": 2740,
+      "period": "2025-06-06"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-07",
+      "date": "2025-06-07",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 61978.19,
+      "amount_usd": 27848,
+      "period": "2025-06-07"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-08",
+      "date": "2025-06-08",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 2926.8,
+      "amount_usd": 1315,
+      "period": "2025-06-08"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-09",
+      "date": "2025-06-09",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 82587.45,
+      "amount_usd": 37108,
+      "period": "2025-06-09"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-10",
+      "date": "2025-06-10",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 3342491.88,
+      "amount_usd": 1501852,
+      "period": "2025-06-10"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-11",
+      "date": "2025-06-11",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 205530.83,
+      "amount_usd": 92349,
+      "period": "2025-06-11"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-12",
+      "date": "2025-06-12",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 299618.42,
+      "amount_usd": 134625,
+      "period": "2025-06-12"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-13",
+      "date": "2025-06-13",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 81264.41,
+      "amount_usd": 36514,
+      "period": "2025-06-13"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-14",
+      "date": "2025-06-14",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 72831.95,
+      "amount_usd": 32725,
+      "period": "2025-06-14"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-15",
+      "date": "2025-06-15",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 120344.6,
+      "amount_usd": 54073,
+      "period": "2025-06-15"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-16",
+      "date": "2025-06-16",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 95565.95,
+      "amount_usd": 42940,
+      "period": "2025-06-16"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-17",
+      "date": "2025-06-17",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 3574432.99,
+      "amount_usd": 1606068,
+      "period": "2025-06-17"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-18",
+      "date": "2025-06-18",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 50222.95,
+      "amount_usd": 22566,
+      "period": "2025-06-18"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-19",
+      "date": "2025-06-19",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 267981.26,
+      "amount_usd": 120410,
+      "period": "2025-06-19"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-20",
+      "date": "2025-06-20",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 144904.14,
+      "amount_usd": 65108,
+      "period": "2025-06-20"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-21",
+      "date": "2025-06-21",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 657198.3,
+      "amount_usd": 295293,
+      "period": "2025-06-21"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-22",
+      "date": "2025-06-22",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 13541.16,
+      "amount_usd": 6084,
+      "period": "2025-06-22"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-23",
+      "date": "2025-06-23",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 33007.46,
+      "amount_usd": 14831,
+      "period": "2025-06-23"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-24",
+      "date": "2025-06-24",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 320443.17,
+      "amount_usd": 143982,
+      "period": "2025-06-24"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-25",
+      "date": "2025-06-25",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 253147.54,
+      "amount_usd": 113745,
+      "period": "2025-06-25"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-26",
+      "date": "2025-06-26",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1046763.6,
+      "amount_usd": 470333,
+      "period": "2025-06-26"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-27",
+      "date": "2025-06-27",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 215809.26,
+      "amount_usd": 96968,
+      "period": "2025-06-27"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-28",
+      "date": "2025-06-28",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 558424.74,
+      "amount_usd": 250912,
+      "period": "2025-06-28"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-29",
+      "date": "2025-06-29",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 2118.92,
+      "amount_usd": 952,
+      "period": "2025-06-29"
+    },
+    {
+      "id": "ethfi-buyback-2025-06-30",
+      "date": "2025-06-30",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 2058165.34,
+      "amount_usd": 924777,
+      "period": "2025-06-30"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-01",
       "date": "2025-07-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 627813,
-      "period": "2025-07",
-      "days_with_data": 4,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 4 days of data"
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 59793.54,
+      "amount_usd": 26866,
+      "period": "2025-07-01"
     },
     {
-      "id": "etherfi-buyback-accumulate-2025-08",
+      "id": "ethfi-buyback-2025-07-02",
+      "date": "2025-07-02",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 900790.5,
+      "amount_usd": 404744,
+      "period": "2025-07-02"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-03",
+      "date": "2025-07-03",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 68854.66,
+      "amount_usd": 30938,
+      "period": "2025-07-03"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-04",
+      "date": "2025-07-04",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 300733.09,
+      "amount_usd": 135126,
+      "period": "2025-07-04"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-05",
+      "date": "2025-07-05",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 12847.57,
+      "amount_usd": 5773,
+      "period": "2025-07-05"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-06",
+      "date": "2025-07-06",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 2397.27,
+      "amount_usd": 1077,
+      "period": "2025-07-06"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-07",
+      "date": "2025-07-07",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 568833.19,
+      "amount_usd": 255589,
+      "period": "2025-07-07"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-08",
+      "date": "2025-07-08",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 9546.37,
+      "amount_usd": 4289,
+      "period": "2025-07-08"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-09",
+      "date": "2025-07-09",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 18134.59,
+      "amount_usd": 8148,
+      "period": "2025-07-09"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-10",
+      "date": "2025-07-10",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 12796.87,
+      "amount_usd": 5750,
+      "period": "2025-07-10"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-11",
+      "date": "2025-07-11",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 28916.96,
+      "amount_usd": 12993,
+      "period": "2025-07-11"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-12",
+      "date": "2025-07-12",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 3493.15,
+      "amount_usd": 1570,
+      "period": "2025-07-12"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-13",
+      "date": "2025-07-13",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1619.92,
+      "amount_usd": 728,
+      "period": "2025-07-13"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-14",
+      "date": "2025-07-14",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 211149.48,
+      "amount_usd": 94874,
+      "period": "2025-07-14"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-15",
+      "date": "2025-07-15",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 39806.74,
+      "amount_usd": 17886,
+      "period": "2025-07-15"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-16",
+      "date": "2025-07-16",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 83901.56,
+      "amount_usd": 37699,
+      "period": "2025-07-16"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-17",
+      "date": "2025-07-17",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 363161.29,
+      "amount_usd": 163176,
+      "period": "2025-07-17"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-18",
+      "date": "2025-07-18",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 43433.42,
+      "amount_usd": 19516,
+      "period": "2025-07-18"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-19",
+      "date": "2025-07-19",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 431793.45,
+      "amount_usd": 194014,
+      "period": "2025-07-19"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-20",
+      "date": "2025-07-20",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 691593.65,
+      "amount_usd": 310748,
+      "period": "2025-07-20"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-21",
+      "date": "2025-07-21",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 102921.52,
+      "amount_usd": 46245,
+      "period": "2025-07-21"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-22",
+      "date": "2025-07-22",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 7046.08,
+      "amount_usd": 3166,
+      "period": "2025-07-22"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-23",
+      "date": "2025-07-23",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 76915.42,
+      "amount_usd": 34560,
+      "period": "2025-07-23"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-24",
+      "date": "2025-07-24",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 85269.96,
+      "amount_usd": 38314,
+      "period": "2025-07-24"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-25",
+      "date": "2025-07-25",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 223418.47,
+      "amount_usd": 100387,
+      "period": "2025-07-25"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-26",
+      "date": "2025-07-26",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 29289.23,
+      "amount_usd": 13160,
+      "period": "2025-07-26"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-27",
+      "date": "2025-07-27",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 303694.92,
+      "amount_usd": 136457,
+      "period": "2025-07-27"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-28",
+      "date": "2025-07-28",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 205489.93,
+      "amount_usd": 92331,
+      "period": "2025-07-28"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-29",
+      "date": "2025-07-29",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 277653.43,
+      "amount_usd": 124756,
+      "period": "2025-07-29"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-30",
+      "date": "2025-07-30",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 849528.55,
+      "amount_usd": 381711,
+      "period": "2025-07-30"
+    },
+    {
+      "id": "ethfi-buyback-2025-07-31",
+      "date": "2025-07-31",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 171320.89,
+      "amount_usd": 76978,
+      "period": "2025-07-31"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-01",
       "date": "2025-08-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 2246459,
-      "period": "2025-08",
-      "days_with_data": 5,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 5 days of data"
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 62422.34,
+      "amount_usd": 28048,
+      "period": "2025-08-01"
     },
     {
-      "id": "etherfi-buyback-accumulate-2025-09",
+      "id": "ethfi-buyback-2025-08-02",
+      "date": "2025-08-02",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 188821.43,
+      "amount_usd": 84841,
+      "period": "2025-08-02"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-03",
+      "date": "2025-08-03",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 608791.89,
+      "amount_usd": 273543,
+      "period": "2025-08-03"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-04",
+      "date": "2025-08-04",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 10962.03,
+      "amount_usd": 4925,
+      "period": "2025-08-04"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-05",
+      "date": "2025-08-05",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1488929.01,
+      "amount_usd": 669007,
+      "period": "2025-08-05"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-06",
+      "date": "2025-08-06",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 30269.74,
+      "amount_usd": 13601,
+      "period": "2025-08-06"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-07",
+      "date": "2025-08-07",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 48992.52,
+      "amount_usd": 22013,
+      "period": "2025-08-07"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-08",
+      "date": "2025-08-08",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 335563.84,
+      "amount_usd": 150776,
+      "period": "2025-08-08"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-09",
+      "date": "2025-08-09",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 24354.76,
+      "amount_usd": 10943,
+      "period": "2025-08-09"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-10",
+      "date": "2025-08-10",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 191186.46,
+      "amount_usd": 85904,
+      "period": "2025-08-10"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-11",
+      "date": "2025-08-11",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 22207.66,
+      "amount_usd": 9978,
+      "period": "2025-08-11"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-12",
+      "date": "2025-08-12",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 18832.56,
+      "amount_usd": 8462,
+      "period": "2025-08-12"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-13",
+      "date": "2025-08-13",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 14436.62,
+      "amount_usd": 6487,
+      "period": "2025-08-13"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-14",
+      "date": "2025-08-14",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 100524.98,
+      "amount_usd": 45168,
+      "period": "2025-08-14"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-15",
+      "date": "2025-08-15",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 50534.1,
+      "amount_usd": 22706,
+      "period": "2025-08-15"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-16",
+      "date": "2025-08-16",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 58422.94,
+      "amount_usd": 26251,
+      "period": "2025-08-16"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-17",
+      "date": "2025-08-17",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 6578.46,
+      "amount_usd": 2956,
+      "period": "2025-08-17"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-18",
+      "date": "2025-08-18",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 6564.51,
+      "amount_usd": 2950,
+      "period": "2025-08-18"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-19",
+      "date": "2025-08-19",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1220616.39,
+      "amount_usd": 548449,
+      "period": "2025-08-19"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-20",
+      "date": "2025-08-20",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 89257.78,
+      "amount_usd": 40105,
+      "period": "2025-08-20"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-21",
+      "date": "2025-08-21",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 51715.88,
+      "amount_usd": 23237,
+      "period": "2025-08-21"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-22",
+      "date": "2025-08-22",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 182573.39,
+      "amount_usd": 82034,
+      "period": "2025-08-22"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-23",
+      "date": "2025-08-23",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 69916.34,
+      "amount_usd": 31415,
+      "period": "2025-08-23"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-24",
+      "date": "2025-08-24",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 138220.42,
+      "amount_usd": 62105,
+      "period": "2025-08-24"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-25",
+      "date": "2025-08-25",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 8454972.1,
+      "amount_usd": 3798997,
+      "period": "2025-08-25"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-26",
+      "date": "2025-08-26",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 217925.25,
+      "amount_usd": 97918,
+      "period": "2025-08-26"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-27",
+      "date": "2025-08-27",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 72308.46,
+      "amount_usd": 32490,
+      "period": "2025-08-27"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-28",
+      "date": "2025-08-28",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 194324.27,
+      "amount_usd": 87314,
+      "period": "2025-08-28"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-29",
+      "date": "2025-08-29",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 99304.98,
+      "amount_usd": 44620,
+      "period": "2025-08-29"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-30",
+      "date": "2025-08-30",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 17129.53,
+      "amount_usd": 7697,
+      "period": "2025-08-30"
+    },
+    {
+      "id": "ethfi-buyback-2025-08-31",
+      "date": "2025-08-31",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 64918.98,
+      "amount_usd": 29169,
+      "period": "2025-08-31"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-01",
       "date": "2025-09-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 1378489,
-      "period": "2025-09",
-      "days_with_data": 4,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 4 days of data"
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 693572.61,
+      "amount_usd": 311637,
+      "period": "2025-09-01"
     },
     {
-      "id": "etherfi-buyback-accumulate-2025-10",
+      "id": "ethfi-buyback-2025-09-02",
+      "date": "2025-09-02",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 41494.38,
+      "amount_usd": 18644,
+      "period": "2025-09-02"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-03",
+      "date": "2025-09-03",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 233359.79,
+      "amount_usd": 104853,
+      "period": "2025-09-03"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-04",
+      "date": "2025-09-04",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 278592.46,
+      "amount_usd": 125177,
+      "period": "2025-09-04"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-05",
+      "date": "2025-09-05",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 536849.18,
+      "amount_usd": 241218,
+      "period": "2025-09-05"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-06",
+      "date": "2025-09-06",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 35880.57,
+      "amount_usd": 16122,
+      "period": "2025-09-06"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-07",
+      "date": "2025-09-07",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 516217.19,
+      "amount_usd": 231947,
+      "period": "2025-09-07"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-08",
+      "date": "2025-09-08",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 26442.24,
+      "amount_usd": 11881,
+      "period": "2025-09-08"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-09",
+      "date": "2025-09-09",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 80282.16,
+      "amount_usd": 36072,
+      "period": "2025-09-09"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-10",
+      "date": "2025-09-10",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 53437.81,
+      "amount_usd": 24011,
+      "period": "2025-09-10"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-11",
+      "date": "2025-09-11",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 85189.45,
+      "amount_usd": 38277,
+      "period": "2025-09-11"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-12",
+      "date": "2025-09-12",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 110386.85,
+      "amount_usd": 49599,
+      "period": "2025-09-12"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-13",
+      "date": "2025-09-13",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 39275.63,
+      "amount_usd": 17647,
+      "period": "2025-09-13"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-14",
+      "date": "2025-09-14",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 421132.74,
+      "amount_usd": 189224,
+      "period": "2025-09-14"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-15",
+      "date": "2025-09-15",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 3501313.59,
+      "amount_usd": 1573214,
+      "period": "2025-09-15"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-16",
+      "date": "2025-09-16",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 59691.0,
+      "amount_usd": 26820,
+      "period": "2025-09-16"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-17",
+      "date": "2025-09-17",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 32832.42,
+      "amount_usd": 14752,
+      "period": "2025-09-17"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-18",
+      "date": "2025-09-18",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 135999.59,
+      "amount_usd": 61107,
+      "period": "2025-09-18"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-19",
+      "date": "2025-09-19",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 778833.13,
+      "amount_usd": 349946,
+      "period": "2025-09-19"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-20",
+      "date": "2025-09-20",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 27675.97,
+      "amount_usd": 12435,
+      "period": "2025-09-20"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-21",
+      "date": "2025-09-21",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 48696.45,
+      "amount_usd": 21880,
+      "period": "2025-09-21"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-22",
+      "date": "2025-09-22",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1307948.68,
+      "amount_usd": 587689,
+      "period": "2025-09-22"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-23",
+      "date": "2025-09-23",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 70919.94,
+      "amount_usd": 31866,
+      "period": "2025-09-23"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-24",
+      "date": "2025-09-24",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 9595.0,
+      "amount_usd": 4311,
+      "period": "2025-09-24"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-25",
+      "date": "2025-09-25",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 620676.87,
+      "amount_usd": 278883,
+      "period": "2025-09-25"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-26",
+      "date": "2025-09-26",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 220335.68,
+      "amount_usd": 99001,
+      "period": "2025-09-26"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-27",
+      "date": "2025-09-27",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 92570.69,
+      "amount_usd": 41594,
+      "period": "2025-09-27"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-28",
+      "date": "2025-09-28",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 38812.93,
+      "amount_usd": 17439,
+      "period": "2025-09-28"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-29",
+      "date": "2025-09-29",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 129431.72,
+      "amount_usd": 58156,
+      "period": "2025-09-29"
+    },
+    {
+      "id": "ethfi-buyback-2025-09-30",
+      "date": "2025-09-30",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1675005.57,
+      "amount_usd": 752615,
+      "period": "2025-09-30"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-01",
       "date": "2025-10-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 576865,
-      "period": "2025-10",
-      "days_with_data": 5,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 5 days of data"
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 14612.17,
+      "amount_usd": 6566,
+      "period": "2025-10-01"
     },
     {
-      "id": "etherfi-buyback-accumulate-2025-11",
+      "id": "ethfi-buyback-2025-10-02",
+      "date": "2025-10-02",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 132562.85,
+      "amount_usd": 59563,
+      "period": "2025-10-02"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-03",
+      "date": "2025-10-03",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 197635.82,
+      "amount_usd": 88802,
+      "period": "2025-10-03"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-04",
+      "date": "2025-10-04",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 23685.75,
+      "amount_usd": 10643,
+      "period": "2025-10-04"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-05",
+      "date": "2025-10-05",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 228194.35,
+      "amount_usd": 102533,
+      "period": "2025-10-05"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-06",
+      "date": "2025-10-06",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 48265.16,
+      "amount_usd": 21687,
+      "period": "2025-10-06"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-07",
+      "date": "2025-10-07",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 173734.06,
+      "amount_usd": 78062,
+      "period": "2025-10-07"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-08",
+      "date": "2025-10-08",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1617749.17,
+      "amount_usd": 726889,
+      "period": "2025-10-08"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-09",
+      "date": "2025-10-09",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 86559.84,
+      "amount_usd": 38893,
+      "period": "2025-10-09"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-10",
+      "date": "2025-10-10",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 153077.88,
+      "amount_usd": 68781,
+      "period": "2025-10-10"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-11",
+      "date": "2025-10-11",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 61756.51,
+      "amount_usd": 27748,
+      "period": "2025-10-11"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-12",
+      "date": "2025-10-12",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 91979.83,
+      "amount_usd": 41328,
+      "period": "2025-10-12"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-13",
+      "date": "2025-10-13",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 32433.1,
+      "amount_usd": 14573,
+      "period": "2025-10-13"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-14",
+      "date": "2025-10-14",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 180783.18,
+      "amount_usd": 81230,
+      "period": "2025-10-14"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-15",
+      "date": "2025-10-15",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 159918.9,
+      "amount_usd": 71855,
+      "period": "2025-10-15"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-16",
+      "date": "2025-10-16",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 53434.17,
+      "amount_usd": 24009,
+      "period": "2025-10-16"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-17",
+      "date": "2025-10-17",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 30703.43,
+      "amount_usd": 13796,
+      "period": "2025-10-17"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-18",
+      "date": "2025-10-18",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 148489.72,
+      "amount_usd": 66720,
+      "period": "2025-10-18"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-19",
+      "date": "2025-10-19",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 288913.85,
+      "amount_usd": 129815,
+      "period": "2025-10-19"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-20",
+      "date": "2025-10-20",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 160089.5,
+      "amount_usd": 71932,
+      "period": "2025-10-20"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-21",
+      "date": "2025-10-21",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1452178.12,
+      "amount_usd": 652494,
+      "period": "2025-10-21"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-22",
+      "date": "2025-10-22",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 393805.86,
+      "amount_usd": 176945,
+      "period": "2025-10-22"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-23",
+      "date": "2025-10-23",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 827065.16,
+      "amount_usd": 371618,
+      "period": "2025-10-23"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-24",
+      "date": "2025-10-24",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 308675.08,
+      "amount_usd": 138694,
+      "period": "2025-10-24"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-25",
+      "date": "2025-10-25",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 515480.28,
+      "amount_usd": 231616,
+      "period": "2025-10-25"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-26",
+      "date": "2025-10-26",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 32911.36,
+      "amount_usd": 14788,
+      "period": "2025-10-26"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-27",
+      "date": "2025-10-27",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 174194.59,
+      "amount_usd": 78269,
+      "period": "2025-10-27"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-28",
+      "date": "2025-10-28",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 26037.31,
+      "amount_usd": 11699,
+      "period": "2025-10-28"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-29",
+      "date": "2025-10-29",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1405092.29,
+      "amount_usd": 631337,
+      "period": "2025-10-29"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-30",
+      "date": "2025-10-30",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 107847.39,
+      "amount_usd": 48458,
+      "period": "2025-10-30"
+    },
+    {
+      "id": "ethfi-buyback-2025-10-31",
+      "date": "2025-10-31",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 521772.09,
+      "amount_usd": 234443,
+      "period": "2025-10-31"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-01",
       "date": "2025-11-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 3163535,
-      "period": "2025-11",
-      "days_with_data": 24,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 24 days of data"
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 174924.73,
+      "amount_usd": 78597,
+      "period": "2025-11-01"
     },
     {
-      "id": "etherfi-buyback-accumulate-2025-12",
+      "id": "ethfi-buyback-2025-11-02",
+      "date": "2025-11-02",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 5292.61,
+      "amount_usd": 2378,
+      "period": "2025-11-02"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-03",
+      "date": "2025-11-03",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 340118.0,
+      "amount_usd": 152822,
+      "period": "2025-11-03"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-04",
+      "date": "2025-11-04",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 277878.99,
+      "amount_usd": 124857,
+      "period": "2025-11-04"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-05",
+      "date": "2025-11-05",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 273743.36,
+      "amount_usd": 122999,
+      "period": "2025-11-05"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-06",
+      "date": "2025-11-06",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 9593.25,
+      "amount_usd": 4310,
+      "period": "2025-11-06"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-07",
+      "date": "2025-11-07",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 56092.36,
+      "amount_usd": 25203,
+      "period": "2025-11-07"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-08",
+      "date": "2025-11-08",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 7225.64,
+      "amount_usd": 3247,
+      "period": "2025-11-08"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-09",
+      "date": "2025-11-09",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 192886.45,
+      "amount_usd": 86668,
+      "period": "2025-11-09"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-10",
+      "date": "2025-11-10",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 329327.65,
+      "amount_usd": 147974,
+      "period": "2025-11-10"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-11",
+      "date": "2025-11-11",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 110623.38,
+      "amount_usd": 49705,
+      "period": "2025-11-11"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-12",
+      "date": "2025-11-12",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 165.49,
+      "amount_usd": 74,
+      "period": "2025-11-12"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-13",
+      "date": "2025-11-13",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 270786.02,
+      "amount_usd": 121670,
+      "period": "2025-11-13"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-14",
+      "date": "2025-11-14",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 152056.47,
+      "amount_usd": 68322,
+      "period": "2025-11-14"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-15",
+      "date": "2025-11-15",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 5433.4,
+      "amount_usd": 2441,
+      "period": "2025-11-15"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-16",
+      "date": "2025-11-16",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 200038.48,
+      "amount_usd": 89881,
+      "period": "2025-11-16"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-17",
+      "date": "2025-11-17",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 40898.45,
+      "amount_usd": 18377,
+      "period": "2025-11-17"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-18",
+      "date": "2025-11-18",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 52474.47,
+      "amount_usd": 23578,
+      "period": "2025-11-18"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-19",
+      "date": "2025-11-19",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 104778.15,
+      "amount_usd": 47079,
+      "period": "2025-11-19"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-20",
+      "date": "2025-11-20",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 2720309.1,
+      "amount_usd": 1222292,
+      "period": "2025-11-20"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-21",
+      "date": "2025-11-21",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 206648.85,
+      "amount_usd": 92852,
+      "period": "2025-11-21"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-22",
+      "date": "2025-11-22",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 66649.47,
+      "amount_usd": 29947,
+      "period": "2025-11-22"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-23",
+      "date": "2025-11-23",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 19112.78,
+      "amount_usd": 8588,
+      "period": "2025-11-23"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-24",
+      "date": "2025-11-24",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 158789.17,
+      "amount_usd": 71347,
+      "period": "2025-11-24"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-25",
+      "date": "2025-11-25",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 779304.39,
+      "amount_usd": 350158,
+      "period": "2025-11-25"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-26",
+      "date": "2025-11-26",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 458509.9,
+      "amount_usd": 206018,
+      "period": "2025-11-26"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-27",
+      "date": "2025-11-27",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 24989.39,
+      "amount_usd": 11228,
+      "period": "2025-11-27"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-28",
+      "date": "2025-11-28",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 5679.15,
+      "amount_usd": 2552,
+      "period": "2025-11-28"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-29",
+      "date": "2025-11-29",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 4364.15,
+      "amount_usd": 1961,
+      "period": "2025-11-29"
+    },
+    {
+      "id": "ethfi-buyback-2025-11-30",
+      "date": "2025-11-30",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 203844.22,
+      "amount_usd": 91591,
+      "period": "2025-11-30"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-01",
       "date": "2025-12-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 2610692,
-      "period": "2025-12",
-      "days_with_data": 25,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 25 days of data"
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 37450.45,
+      "amount_usd": 16827,
+      "period": "2025-12-01"
     },
     {
-      "id": "etherfi-buyback-accumulate-2026-01",
+      "id": "ethfi-buyback-2025-12-02",
+      "date": "2025-12-02",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 20596.4,
+      "amount_usd": 9254,
+      "period": "2025-12-02"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-03",
+      "date": "2025-12-03",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 60287.84,
+      "amount_usd": 27089,
+      "period": "2025-12-03"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-04",
+      "date": "2025-12-04",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 2914450.12,
+      "amount_usd": 1309524,
+      "period": "2025-12-04"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-05",
+      "date": "2025-12-05",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 29213.12,
+      "amount_usd": 13126,
+      "period": "2025-12-05"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-06",
+      "date": "2025-12-06",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 37265.77,
+      "amount_usd": 16744,
+      "period": "2025-12-06"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-07",
+      "date": "2025-12-07",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 166900.16,
+      "amount_usd": 74992,
+      "period": "2025-12-07"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-08",
+      "date": "2025-12-08",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 716.22,
+      "amount_usd": 322,
+      "period": "2025-12-08"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-09",
+      "date": "2025-12-09",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 18166.64,
+      "amount_usd": 8163,
+      "period": "2025-12-09"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-10",
+      "date": "2025-12-10",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 112587.96,
+      "amount_usd": 50588,
+      "period": "2025-12-10"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-11",
+      "date": "2025-12-11",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 3708.24,
+      "amount_usd": 1666,
+      "period": "2025-12-11"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-12",
+      "date": "2025-12-12",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 167078.63,
+      "amount_usd": 75072,
+      "period": "2025-12-12"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-13",
+      "date": "2025-12-13",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 669575.35,
+      "amount_usd": 300854,
+      "period": "2025-12-13"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-14",
+      "date": "2025-12-14",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1406995.58,
+      "amount_usd": 632193,
+      "period": "2025-12-14"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-15",
+      "date": "2025-12-15",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 55373.19,
+      "amount_usd": 24880,
+      "period": "2025-12-15"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-16",
+      "date": "2025-12-16",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 16769.81,
+      "amount_usd": 7535,
+      "period": "2025-12-16"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-17",
+      "date": "2025-12-17",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 29532.08,
+      "amount_usd": 13269,
+      "period": "2025-12-17"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-18",
+      "date": "2025-12-18",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 45112.36,
+      "amount_usd": 20270,
+      "period": "2025-12-18"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-19",
+      "date": "2025-12-19",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 256858.44,
+      "amount_usd": 115412,
+      "period": "2025-12-19"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-20",
+      "date": "2025-12-20",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 236437.25,
+      "amount_usd": 106236,
+      "period": "2025-12-20"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-21",
+      "date": "2025-12-21",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 668570.07,
+      "amount_usd": 300403,
+      "period": "2025-12-21"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-22",
+      "date": "2025-12-22",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 230780.84,
+      "amount_usd": 103695,
+      "period": "2025-12-22"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-23",
+      "date": "2025-12-23",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 746.03,
+      "amount_usd": 335,
+      "period": "2025-12-23"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-24",
+      "date": "2025-12-24",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 5096.09,
+      "amount_usd": 2290,
+      "period": "2025-12-24"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-25",
+      "date": "2025-12-25",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 149574.33,
+      "amount_usd": 67207,
+      "period": "2025-12-25"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-26",
+      "date": "2025-12-26",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 357701.15,
+      "amount_usd": 160723,
+      "period": "2025-12-26"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-27",
+      "date": "2025-12-27",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1860.07,
+      "amount_usd": 836,
+      "period": "2025-12-27"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-28",
+      "date": "2025-12-28",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 2137653.52,
+      "amount_usd": 960493,
+      "period": "2025-12-28"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-29",
+      "date": "2025-12-29",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 6906784.08,
+      "amount_usd": 3103363,
+      "period": "2025-12-29"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-30",
+      "date": "2025-12-30",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 182849.71,
+      "amount_usd": 82158,
+      "period": "2025-12-30"
+    },
+    {
+      "id": "ethfi-buyback-2025-12-31",
+      "date": "2025-12-31",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 15487.24,
+      "amount_usd": 6959,
+      "period": "2025-12-31"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-01",
       "date": "2026-01-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 1399491,
-      "period": "2026-01",
-      "days_with_data": 15,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 15 days of data"
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 39152.35,
+      "amount_usd": 17592,
+      "period": "2026-01-01"
     },
     {
-      "id": "etherfi-buyback-accumulate-2026-02",
+      "id": "ethfi-buyback-2026-01-02",
+      "date": "2026-01-02",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 28414.19,
+      "amount_usd": 12767,
+      "period": "2026-01-02"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-03",
+      "date": "2026-01-03",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 9462.76,
+      "amount_usd": 4252,
+      "period": "2026-01-03"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-04",
+      "date": "2026-01-04",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 133322.78,
+      "amount_usd": 59905,
+      "period": "2026-01-04"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-05",
+      "date": "2026-01-05",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1121.87,
+      "amount_usd": 504,
+      "period": "2026-01-05"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-06",
+      "date": "2026-01-06",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 20670.14,
+      "amount_usd": 9288,
+      "period": "2026-01-06"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-07",
+      "date": "2026-01-07",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 355.68,
+      "amount_usd": 160,
+      "period": "2026-01-07"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-08",
+      "date": "2026-01-08",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 260428.87,
+      "amount_usd": 117016,
+      "period": "2026-01-08"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-09",
+      "date": "2026-01-09",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 12119.1,
+      "amount_usd": 5445,
+      "period": "2026-01-09"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-10",
+      "date": "2026-01-10",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 641.76,
+      "amount_usd": 288,
+      "period": "2026-01-10"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-11",
+      "date": "2026-01-11",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 5203.02,
+      "amount_usd": 2338,
+      "period": "2026-01-11"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-12",
+      "date": "2026-01-12",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 11436.36,
+      "amount_usd": 5139,
+      "period": "2026-01-12"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-13",
+      "date": "2026-01-13",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 219932.82,
+      "amount_usd": 98820,
+      "period": "2026-01-13"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-14",
+      "date": "2026-01-14",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 9472.22,
+      "amount_usd": 4256,
+      "period": "2026-01-14"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-15",
+      "date": "2026-01-15",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 48120.8,
+      "amount_usd": 21622,
+      "period": "2026-01-15"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-16",
+      "date": "2026-01-16",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 7165.6,
+      "amount_usd": 3220,
+      "period": "2026-01-16"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-17",
+      "date": "2026-01-17",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 203141.19,
+      "amount_usd": 91276,
+      "period": "2026-01-17"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-18",
+      "date": "2026-01-18",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 587767.03,
+      "amount_usd": 264096,
+      "period": "2026-01-18"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-19",
+      "date": "2026-01-19",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 86884.48,
+      "amount_usd": 39039,
+      "period": "2026-01-19"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-20",
+      "date": "2026-01-20",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 281953.48,
+      "amount_usd": 126688,
+      "period": "2026-01-20"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-21",
+      "date": "2026-01-21",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 432209.66,
+      "amount_usd": 194201,
+      "period": "2026-01-21"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-22",
+      "date": "2026-01-22",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 81099.08,
+      "amount_usd": 36440,
+      "period": "2026-01-22"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-23",
+      "date": "2026-01-23",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 15947.23,
+      "amount_usd": 7165,
+      "period": "2026-01-23"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-24",
+      "date": "2026-01-24",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 412145.62,
+      "amount_usd": 185186,
+      "period": "2026-01-24"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-25",
+      "date": "2026-01-25",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 56573.69,
+      "amount_usd": 25420,
+      "period": "2026-01-25"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-26",
+      "date": "2026-01-26",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 51338.04,
+      "amount_usd": 23067,
+      "period": "2026-01-26"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-27",
+      "date": "2026-01-27",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 443594.45,
+      "amount_usd": 199316,
+      "period": "2026-01-27"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-28",
+      "date": "2026-01-28",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 17414.85,
+      "amount_usd": 7825,
+      "period": "2026-01-28"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-29",
+      "date": "2026-01-29",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 217067.2,
+      "amount_usd": 97533,
+      "period": "2026-01-29"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-30",
+      "date": "2026-01-30",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 75819.91,
+      "amount_usd": 34067,
+      "period": "2026-01-30"
+    },
+    {
+      "id": "ethfi-buyback-2026-01-31",
+      "date": "2026-01-31",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 260381.98,
+      "amount_usd": 116995,
+      "period": "2026-01-31"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-01",
       "date": "2026-02-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 1349685,
-      "period": "2026-02",
-      "days_with_data": 14,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 14 days of data"
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 7600.02,
+      "amount_usd": 3415,
+      "period": "2026-02-01"
     },
     {
-      "id": "etherfi-buyback-accumulate-2026-03",
+      "id": "ethfi-buyback-2026-02-02",
+      "date": "2026-02-02",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 150080.61,
+      "amount_usd": 67434,
+      "period": "2026-02-02"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-03",
+      "date": "2026-02-03",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1403664.59,
+      "amount_usd": 630696,
+      "period": "2026-02-03"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-04",
+      "date": "2026-02-04",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 221977.27,
+      "amount_usd": 99739,
+      "period": "2026-02-04"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-05",
+      "date": "2026-02-05",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 23689.27,
+      "amount_usd": 10644,
+      "period": "2026-02-05"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-06",
+      "date": "2026-02-06",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 38992.57,
+      "amount_usd": 17520,
+      "period": "2026-02-06"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-07",
+      "date": "2026-02-07",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 95753.09,
+      "amount_usd": 43024,
+      "period": "2026-02-07"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-08",
+      "date": "2026-02-08",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 12610.42,
+      "amount_usd": 5666,
+      "period": "2026-02-08"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-09",
+      "date": "2026-02-09",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 205029.85,
+      "amount_usd": 92124,
+      "period": "2026-02-09"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-10",
+      "date": "2026-02-10",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 76099.33,
+      "amount_usd": 34193,
+      "period": "2026-02-10"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-11",
+      "date": "2026-02-11",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 264913.58,
+      "amount_usd": 119031,
+      "period": "2026-02-11"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-12",
+      "date": "2026-02-12",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 95129.88,
+      "amount_usd": 42744,
+      "period": "2026-02-12"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-13",
+      "date": "2026-02-13",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 31840.2,
+      "amount_usd": 14306,
+      "period": "2026-02-13"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-14",
+      "date": "2026-02-14",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 12936.9,
+      "amount_usd": 5813,
+      "period": "2026-02-14"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-15",
+      "date": "2026-02-15",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 17669.49,
+      "amount_usd": 7939,
+      "period": "2026-02-15"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-16",
+      "date": "2026-02-16",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 38490.84,
+      "amount_usd": 17295,
+      "period": "2026-02-16"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-17",
+      "date": "2026-02-17",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 27772.3,
+      "amount_usd": 12479,
+      "period": "2026-02-17"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-18",
+      "date": "2026-02-18",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 15349.6,
+      "amount_usd": 6897,
+      "period": "2026-02-18"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-19",
+      "date": "2026-02-19",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 47119.54,
+      "amount_usd": 21172,
+      "period": "2026-02-19"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-20",
+      "date": "2026-02-20",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 624156.43,
+      "amount_usd": 280447,
+      "period": "2026-02-20"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-21",
+      "date": "2026-02-21",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 4603.12,
+      "amount_usd": 2068,
+      "period": "2026-02-21"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-22",
+      "date": "2026-02-22",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 26454.39,
+      "amount_usd": 11887,
+      "period": "2026-02-22"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-23",
+      "date": "2026-02-23",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1562172.16,
+      "amount_usd": 701917,
+      "period": "2026-02-23"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-24",
+      "date": "2026-02-24",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 80903.81,
+      "amount_usd": 36352,
+      "period": "2026-02-24"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-25",
+      "date": "2026-02-25",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 76838.1,
+      "amount_usd": 34525,
+      "period": "2026-02-25"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-26",
+      "date": "2026-02-26",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 21918.42,
+      "amount_usd": 9848,
+      "period": "2026-02-26"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-27",
+      "date": "2026-02-27",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 189953.18,
+      "amount_usd": 85350,
+      "period": "2026-02-27"
+    },
+    {
+      "id": "ethfi-buyback-2026-02-28",
+      "date": "2026-02-28",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 26584.11,
+      "amount_usd": 11945,
+      "period": "2026-02-28"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-01",
       "date": "2026-03-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 429982,
-      "period": "2026-03",
-      "days_with_data": 9,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 9 days of data"
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 33611.56,
+      "amount_usd": 15102,
+      "period": "2026-03-01"
     },
     {
-      "id": "etherfi-buyback-accumulate-2026-04",
+      "id": "ethfi-buyback-2026-03-02",
+      "date": "2026-03-02",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1336.84,
+      "amount_usd": 601,
+      "period": "2026-03-02"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-03",
+      "date": "2026-03-03",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 5437065.78,
+      "amount_usd": 2442988,
+      "period": "2026-03-03"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-04",
+      "date": "2026-03-04",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 144535.83,
+      "amount_usd": 64943,
+      "period": "2026-03-04"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-05",
+      "date": "2026-03-05",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 3222734.03,
+      "amount_usd": 1448042,
+      "period": "2026-03-05"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-06",
+      "date": "2026-03-06",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1149729.34,
+      "amount_usd": 516598,
+      "period": "2026-03-06"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-07",
+      "date": "2026-03-07",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 157388.36,
+      "amount_usd": 70718,
+      "period": "2026-03-07"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-08",
+      "date": "2026-03-08",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 6851.3,
+      "amount_usd": 3078,
+      "period": "2026-03-08"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-09",
+      "date": "2026-03-09",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 783896.53,
+      "amount_usd": 352221,
+      "period": "2026-03-09"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-10",
+      "date": "2026-03-10",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 909.03,
+      "amount_usd": 408,
+      "period": "2026-03-10"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-11",
+      "date": "2026-03-11",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 40825.07,
+      "amount_usd": 18344,
+      "period": "2026-03-11"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-12",
+      "date": "2026-03-12",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 8805.52,
+      "amount_usd": 3957,
+      "period": "2026-03-12"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-13",
+      "date": "2026-03-13",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 699.86,
+      "amount_usd": 314,
+      "period": "2026-03-13"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-14",
+      "date": "2026-03-14",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 26674.75,
+      "amount_usd": 11986,
+      "period": "2026-03-14"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-15",
+      "date": "2026-03-15",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 8878.65,
+      "amount_usd": 3989,
+      "period": "2026-03-15"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-16",
+      "date": "2026-03-16",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 5047.91,
+      "amount_usd": 2268,
+      "period": "2026-03-16"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-17",
+      "date": "2026-03-17",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 3926.99,
+      "amount_usd": 1764,
+      "period": "2026-03-17"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-18",
+      "date": "2026-03-18",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 235050.99,
+      "amount_usd": 105613,
+      "period": "2026-03-18"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-19",
+      "date": "2026-03-19",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1050407.21,
+      "amount_usd": 471970,
+      "period": "2026-03-19"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-20",
+      "date": "2026-03-20",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 8752.63,
+      "amount_usd": 3933,
+      "period": "2026-03-20"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-21",
+      "date": "2026-03-21",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 109136.72,
+      "amount_usd": 49037,
+      "period": "2026-03-21"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-22",
+      "date": "2026-03-22",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 65008.7,
+      "amount_usd": 29210,
+      "period": "2026-03-22"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-23",
+      "date": "2026-03-23",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1249259.81,
+      "amount_usd": 561319,
+      "period": "2026-03-23"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-24",
+      "date": "2026-03-24",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1135.01,
+      "amount_usd": 510,
+      "period": "2026-03-24"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-26",
+      "date": "2026-03-26",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 230619.07,
+      "amount_usd": 103622,
+      "period": "2026-03-26"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-27",
+      "date": "2026-03-27",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 4391.55,
+      "amount_usd": 1973,
+      "period": "2026-03-27"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-28",
+      "date": "2026-03-28",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 22209.64,
+      "amount_usd": 9979,
+      "period": "2026-03-28"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-29",
+      "date": "2026-03-29",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 271.87,
+      "amount_usd": 122,
+      "period": "2026-03-29"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-30",
+      "date": "2026-03-30",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 2532.87,
+      "amount_usd": 1138,
+      "period": "2026-03-30"
+    },
+    {
+      "id": "ethfi-buyback-2026-03-31",
+      "date": "2026-03-31",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 59994.9,
+      "amount_usd": 26957,
+      "period": "2026-03-31"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-01",
       "date": "2026-04-01",
-      "type": "aggregate",
-      "mechanism": "ETHFI Buyback",
-      "amount_usd": 29998,
-      "period": "2026-04",
-      "days_with_data": 1,
-      "source": {
-        "type": "api",
-        "provider": "DefiLlama",
-        "endpoint": "https://api.llama.fi/summary/fees/ether.fi?dataType=dailyHoldersRevenue",
-        "data_type": "dailyHoldersRevenue",
-        "methodology": "Token buybacks executed by ether.fi benefiting ETHFI token holders."
-      },
-      "notes": "Monthly aggregate from 1 days of data"
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 1088.7,
+      "amount_usd": 489,
+      "period": "2026-04-01"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-02",
+      "date": "2026-04-02",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 24094.04,
+      "amount_usd": 10826,
+      "period": "2026-04-02"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-03",
+      "date": "2026-04-03",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 101216.53,
+      "amount_usd": 45479,
+      "period": "2026-04-03"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-04",
+      "date": "2026-04-04",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 22318.98,
+      "amount_usd": 10028,
+      "period": "2026-04-04"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-05",
+      "date": "2026-04-05",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 136440.72,
+      "amount_usd": 61306,
+      "period": "2026-04-05"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-06",
+      "date": "2026-04-06",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 949277.8,
+      "amount_usd": 426530,
+      "period": "2026-04-06"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-07",
+      "date": "2026-04-07",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 4963855.52,
+      "amount_usd": 2230365,
+      "period": "2026-04-07"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-08",
+      "date": "2026-04-08",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 35449.92,
+      "amount_usd": 15928,
+      "period": "2026-04-08"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-09",
+      "date": "2026-04-09",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 11270.69,
+      "amount_usd": 5064,
+      "period": "2026-04-09"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-10",
+      "date": "2026-04-10",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 650379.55,
+      "amount_usd": 292229,
+      "period": "2026-04-10"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-11",
+      "date": "2026-04-11",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 13162.89,
+      "amount_usd": 5914,
+      "period": "2026-04-11"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-12",
+      "date": "2026-04-12",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 20479.34,
+      "amount_usd": 9202,
+      "period": "2026-04-12"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-13",
+      "date": "2026-04-13",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 384046.3,
+      "amount_usd": 172560,
+      "period": "2026-04-13"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-14",
+      "date": "2026-04-14",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 888.62,
+      "amount_usd": 399,
+      "period": "2026-04-14"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-15",
+      "date": "2026-04-15",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 16464.55,
+      "amount_usd": 7398,
+      "period": "2026-04-15"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-16",
+      "date": "2026-04-16",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 4092024.27,
+      "amount_usd": 1838632,
+      "period": "2026-04-16"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-17",
+      "date": "2026-04-17",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 8744.26,
+      "amount_usd": 3929,
+      "period": "2026-04-17"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-18",
+      "date": "2026-04-18",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 18561.72,
+      "amount_usd": 8340,
+      "period": "2026-04-18"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-20",
+      "date": "2026-04-20",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 220.0,
+      "amount_usd": 99,
+      "period": "2026-04-20"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-21",
+      "date": "2026-04-21",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 8243.0,
+      "amount_usd": 3704,
+      "period": "2026-04-21"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-22",
+      "date": "2026-04-22",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 39858.37,
+      "amount_usd": 17909,
+      "period": "2026-04-22"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-23",
+      "date": "2026-04-23",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 38287.74,
+      "amount_usd": 17203,
+      "period": "2026-04-23"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-24",
+      "date": "2026-04-24",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 401163.48,
+      "amount_usd": 180251,
+      "period": "2026-04-24"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-25",
+      "date": "2026-04-25",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 2075.06,
+      "amount_usd": 932,
+      "period": "2026-04-25"
+    },
+    {
+      "id": "ethfi-buyback-2026-04-26",
+      "date": "2026-04-26",
+      "type": "buyback",
+      "mechanism": "sETHFI contract inflow (upper bound)",
+      "amount_ethfi": 15304.2,
+      "amount_usd": 6876,
+      "period": "2026-04-26"
     }
   ],
-  "summary": {
-    "total_tev_usd": 16709085,
-    "total_30d_usd": 49968,
-    "by_mechanism": {
-      "buyback_accumulate": 16709085
-    },
-    "by_period": {
-      "2024-Q3": 324000,
-      "2024-Q4": 473000,
-      "2025-Q1": 390000,
-      "2025-Q2": 1709076,
-      "2025-Q3": 4252761,
-      "2025-Q4": 6351092,
-      "2026-Q1": 3179158,
-      "2026-Q2": 29998
-    }
-  }
+  "source": "Etherscan V2 · ETHFI → sETHFI staking contract"
 }
