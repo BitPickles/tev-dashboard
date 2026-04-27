@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-04-27T01:06:26.694417+00:00",
-  "total": 235,
+  "updated_at": "2026-04-27T13:06:26.785927+00:00",
+  "total": 236,
   "active_count": 32,
-  "passed_count": 203,
+  "passed_count": 204,
   "tev_related": 62,
   "monitored_protocols": 19,
   "protocols_meta": {
@@ -2657,8 +2657,22 @@
     {
       "source": "dYdX Cosmos",
       "protocol": "dYdX",
-      "title": "Fee Holiday for BTC & BONK markets - May 2026",
+      "title": "Add order router rev share for NautilusTrader",
       "status": "active",
+      "link": "https://www.mintscan.io/dydx/proposals/381",
+      "created": "2026-04-27T08:21:37.636728636Z",
+      "end": "2026-04-30T08:21:37.636728636Z",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Add order router rev share for NautilusTrader. Forum Post",
+      "summary_zh": "dYdX治理提案：添加NautilusTrader订单路由收益分成。论坛帖子",
+      "analysis_zh": ""
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
+      "title": "Fee Holiday for BTC & BONK markets - May 2026",
+      "status": "passed",
       "link": "https://www.mintscan.io/dydx/proposals/380",
       "created": "2026-04-24T03:41:50.301829872Z",
       "end": "2026-04-27T03:41:50.301829872Z",
@@ -2791,6 +2805,20 @@
     {
       "source": "GitHub BEP",
       "protocol": "BNB Chain",
+      "title": "update Pasteur content",
+      "status": "passed",
+      "link": "https://github.com/bnb-chain/BEPs/pull/685",
+      "created": "2026-04-27T08:04:21",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "update Pasteur content",
+      "summary_zh": "协议：BNB Chain\n标题：更新Pasteur内容\n摘要：更新Pasteur内容",
+      "analysis_zh": ""
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
       "title": "BEP-684.md: Decouple consensus voting from block execution by allowing validators to vote upon header verification, removing execution from the critical voting path.",
       "status": "active",
       "link": "https://github.com/bnb-chain/BEPs/pull/684",
@@ -2912,20 +2940,6 @@
       "tev_keywords": [],
       "summary_en": "Finality was computed under BEP-126's header-based justification, inflating L to 2N·BI / (3N-j)·BI and giving 1000-1250ms at N=2/BI=250 (worse than today's 900ms). Apply BEP-648's rule on the voting block subsequence so L = N·BI + (2·OWD + T_import) ",
       "summary_zh": "协议：BNB Chain\n标题：BEP-667.md：更新最终性分析\n摘要：基于BEP-126的头部验证计算最终性，将L扩展至2N·BI / (3N-j)·BI，在N=2/BI=250时，耗时1000-1250ms（低于当前900ms）。应用BEP-648规则于投票区块子序列，使L=N·BI + (2·OWD + T_import)。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BEP-675: Builder-Proposed Block with Validator Blind Signing",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/675",
-      "created": "2026-04-13T10:08:38",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "BEP-675: Builder-Proposed Block with Validator Blind Signing",
-      "summary_zh": "BEP-675：由构建者提出的带有验证者盲签名的区块提案",
       "analysis_zh": ""
     },
     {
