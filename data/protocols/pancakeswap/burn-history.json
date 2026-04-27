@@ -1,31 +1,31 @@
 {
   "protocol": "pancakeswap",
   "method": "snapshot diff (totalSupply - dead) for true net deflation",
-  "updated_at": "2026-04-27T01:10:49.916732Z",
+  "updated_at": "2026-04-27T13:11:14.653675Z",
   "cake_price_usd": 1.54,
   "market_cap_usd": 505248845.43783844,
-  "circulating_now": 346036847.49351406,
+  "circulating_now": 345615443.4935136,
   "snapshots": [
     {
       "days_ago": 0,
       "date": "2026-04-27",
       "block": "latest",
-      "totalSupply": 4086815067.7510514,
-      "deadBalance": 3740778220.2575374,
-      "circulating": 346036847.49351406
+      "totalSupply": 4146390759.751051,
+      "deadBalance": 3800775316.2575374,
+      "circulating": 345615443.4935136
     },
     {
       "days_ago": 7,
       "date": "2026-04-20",
-      "block": 93546723,
-      "totalSupply": 4028685303.75,
-      "deadBalance": 3682033260.25,
-      "circulating": 346652043.5
+      "block": 93642609,
+      "totalSupply": 4086815067.75,
+      "deadBalance": 3740778220.25,
+      "circulating": 346036847.5
     },
     {
       "days_ago": 30,
       "date": "2026-03-28",
-      "block": 89136340,
+      "block": 89232361,
       "totalSupply": 3851088587.75,
       "deadBalance": 3502931114.25,
       "circulating": 348157473.5
@@ -33,7 +33,7 @@
     {
       "days_ago": 90,
       "date": "2026-01-27",
-      "block": 77624261,
+      "block": 77720305,
       "totalSupply": 3378118859.75,
       "deadBalance": 3025312747.2,
       "circulating": 352806112.55
@@ -41,7 +41,7 @@
     {
       "days_ago": 365,
       "date": "2025-04-27",
-      "block": 48711297,
+      "block": 48725703,
       "totalSupply": 2111264523.75,
       "deadBalance": 1727466505.39,
       "circulating": 383798018.36
@@ -49,28 +49,28 @@
   ],
   "net_burns": {
     "7": {
-      "net_cake": 615196,
-      "usd": 947402,
-      "annualized_usd": 49400239,
-      "yield_pct": 9.78
+      "net_cake": 421404,
+      "usd": 648962,
+      "annualized_usd": 33838742,
+      "yield_pct": 6.7
     },
     "30": {
-      "net_cake": 2120626,
-      "usd": 3265764,
-      "annualized_usd": 39733463,
-      "yield_pct": 7.86
+      "net_cake": 2542030,
+      "usd": 3914726,
+      "annualized_usd": 47629169,
+      "yield_pct": 9.43
     },
     "90": {
-      "net_cake": 6769265,
-      "usd": 10424668,
-      "annualized_usd": 42277821,
-      "yield_pct": 8.37
+      "net_cake": 7190669,
+      "usd": 11073630,
+      "annualized_usd": 44909723,
+      "yield_pct": 8.89
     },
     "365": {
-      "net_cake": 37761171,
-      "usd": 58152203,
-      "annualized_usd": 58152203,
-      "yield_pct": 11.51
+      "net_cake": 38182575,
+      "usd": 58801165,
+      "annualized_usd": 58801165,
+      "yield_pct": 11.64
     }
   },
   "data_sources": [
