@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-04-27T13:06:26.785927+00:00",
-  "total": 236,
-  "active_count": 32,
-  "passed_count": 204,
-  "tev_related": 62,
+  "updated_at": "2026-04-28T01:07:16.028554+00:00",
+  "total": 241,
+  "active_count": 38,
+  "passed_count": 203,
+  "tev_related": 63,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -1497,6 +1497,20 @@
     {
       "source": "Snapshot",
       "protocol": "Morpho",
+      "title": "MIP 131 - Allocation of a Grant for the Morpho Association’s Strategic Support Program (2026-2030)",
+      "status": "active",
+      "link": "https://snapshot.org/#/morpho.eth/proposal/0x83443370986177da725526ef2f3bdab380ee831d14e697b9cae21cc4bf7eb848",
+      "created": 1777299569,
+      "end": 1777558769,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "The Morpho Association (the “Association”) is requesting from the MORPHO token-holding community (the “DAO”) an allocation of a financial grant of 150M MORPHO, to support the Association’s mission to develop and promote the Morpho network over a mult",
+      "summary_zh": "Morpho 协议治理提案：MIP 131 - 2026-2030 年战略支持项目资助分配（150M MORPHO）提案，请求 DAO 社区为 Morpho 协会资助 150M MORPHO，以支持协会发展及推广 Morpho 网络。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Morpho",
       "title": "MIP 130 - MORPHO Incentives on Tempo",
       "status": "passed",
       "link": "https://snapshot.org/#/morpho.eth/proposal/0x3ed6d533b88987d59eea43a0cb320cb3386b863f27e5764e600302bbfe15f16a",
@@ -1884,7 +1898,7 @@
       "source": "Snapshot",
       "protocol": "ether.fi",
       "title": "ether.fi DAO Proposal: Treasury Contribution to restore rsETH's backing",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/etherfi-dao.eth/proposal/0x9c293f9cdc89031d4828cd377de770932255e1f548d4f06643a1ebe35ea47a8f",
       "created": 1776971047,
       "end": 1777316647,
@@ -2181,6 +2195,62 @@
       "tev_keywords": [],
       "summary_en": "This proposal introduces Ethereal: an integrated spot & perpetual futures DEX built on the upcoming Ethena Network using USDe. Ethereal are requesting that the exchange be directly integrated into Ethena-related reserve management from launch to prov",
       "summary_zh": "Ethereal 提案：在即将上线的 Ethena Network 上构建现货和永续合约 DEX，使用 USDe 作为核心资产，申请从发布起直接集成到 Ethena 储备管理体系中。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Spark",
+      "title": "[Ethereum] Spark Liquidity Layer - Update Spark Blue Chip USDT Morpho Vault",
+      "status": "active",
+      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0xa72495fc832baced4d2285928e2ca6ff906d7ff88c4dceaaa2d8c4aa6bdfdbdc",
+      "created": 1777305509,
+      "end": 1777564709,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "> \n> -   Old vault Spark Liquidity Layer updates\n>     \n>     -   Address: 0xc7CDcFDEfC64631ED6799C95e3b110cd42F2bD22\n>         \n>     -   Deposits\n>         \n>         -   maxAmount: 0\n>             \n>     -   Withdrawals\n>         \n>         -   ma",
+      "summary_zh": "协议：Spark\n标题：[以太坊] Spark流动性层 - 更新Spark蓝筹USDT Morpho保险库\n摘要：\n- 旧保险库Spark流动性层更新\n  - 地址：0xc7CDcFDEfC64631ED6799C95e3b110cd42F2bD22\n  - 存款\n    - maxAmount: 0\n  - 提款\n    - maxAmount: 0",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Spark",
+      "title": "[Ethereum] Spark Liquidity Layer - Offboard Aave Core USDT",
+      "status": "active",
+      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x7909f554a2f33155e234788382927f9af0d4dd5a4808349bc0ff57c2ab8b5ce0",
+      "created": 1777305419,
+      "end": 1777564619,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "> \n> -   Spark Liquidity Layer parameters\n>     \n>     -   Deposits\n>         \n>         -   maxAmount: 0\n>             \n>     -   Withdrawals\n>         \n>         -   maxAmount: 0\n>.",
+      "summary_zh": "协议：Spark\n标题：[以太坊] Spark流动性层 - 离场Aave Core USDT\n摘要：\n- Spark流动性层参数\n  - 存款\n    - 最大额度：0\n  - 提现\n    - 最大额度：0",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Spark",
+      "title": "[Avalanche] Spark Liquidity Layer - Offboard Aave Avalanche USDC",
+      "status": "active",
+      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x710eb6996204b3df1eedd19d2f8bea9d0d69cdfa85a31c514527d9c212686348",
+      "created": 1777305301,
+      "end": 1777564501,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "> \n> -   Spark Liquidity Layer parameters\n>     \n>     -   Deposits\n>         \n>         -   maxAmount: 0\n>             \n>     -   Withdrawals\n>         \n>         -   maxAmount: 0\n>.",
+      "summary_zh": "Spark协议：[Avalanche] Spark流动性层 - 退出Aave Avalanche USDC\n\n摘要：\n- Spark流动性层参数\n  - 存款\n    - 最大金额：0\n  - 提款\n    - 最大金额：0",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Spark",
+      "title": "[Avalanche] Spark Liquidity Layer - Update Governance Bridge Configuration",
+      "status": "active",
+      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x2912831b683f5461d7bb4a5702c63ff8d2a4ff93d4422ce0cca0ef29f4a3509c",
+      "created": 1777305178,
+      "end": 1777564378,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "> \n> -   DVN configuration\n>     \n>     -   Threshold: 4 of 7\n>         \n>     -   DVNs: Horizen, LayerZero Labs, Nethermind, Deutsche Telekom, Canary, Luganodes, P2P\n>.",
+      "summary_zh": "协议：Spark\n标题：[Avalanche] Spark流动性层 - 更新治理桥配置\n摘要：\n- DVN配置\n  - 阈值：7票中的4票\n  - DVNs：Horizen、LayerZero Labs、Nethermind、Deutsche Telekom、Canary、Luganodes、P2P",
       "analysis_zh": ""
     },
     {
@@ -2805,6 +2875,34 @@
     {
       "source": "GitHub BEP",
       "protocol": "BNB Chain",
+      "title": "Anassalehd1995@gmail.com ",
+      "status": "active",
+      "link": "https://github.com/bnb-chain/BEPs/issues/687",
+      "created": "2026-04-27T23:58:03",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "عنواني العام لاستلام BNB 0x1bc6983EDC6ab89797b272Dd8411c321DEf07c91",
+      "summary_zh": "协议：BNB Chain\n标题：Anassalehd1995@gmail.com\n摘要：接收BNB 0x1bc6983EDC6ab89797b272Dd8411c321DEf07c91的通用标题",
+      "analysis_zh": ""
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
+      "title": "0xF230Dd4959039ec94b3D5Acb07267D8C6A2Dc642",
+      "status": "active",
+      "link": "https://github.com/bnb-chain/BEPs/issues/686",
+      "created": "2026-04-27T21:33:02",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "https://link.trustwallet.com/prediction?id=myriad_average-ships-transiting-the-strait-of-hormuz-back-above-15-before-may",
+      "summary_zh": "协议：BNB Chain\n标题：0xF230Dd4959039ec94b3D5Acb07267D8C6A2Dc642\n摘要：提案将于2023年5月前实施，旨在提高Aave和Uniswap的流动性，通过FLUID代币奖励用户。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
       "title": "update Pasteur content",
       "status": "passed",
       "link": "https://github.com/bnb-chain/BEPs/pull/685",
@@ -2912,34 +3010,6 @@
       "tev_keywords": [],
       "summary_en": "add BEP-657 into Pasteur hard fork",
       "summary_zh": "将BEP-657协议集成至BNB Chain的Pasteur硬分叉中。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BEP-677: Implement EIP-8056 Scaled UI Amount",
-      "status": "active",
-      "link": "https://github.com/bnb-chain/BEPs/pull/677",
-      "created": "2026-04-14T08:52:12",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "- Adds BEP-676 proposing implementation of EIP-8056 (Scaled UI Amount) on BSC\n- Defines an updatable UI multiplier extension for ERC-20 tokens, enabling token projects to adjust display amounts without modifying on-chain balances\n- Includes BSC-speci",
-      "summary_zh": "协议：BNB Chain\n标题：BEP-677：实施EIP-8056缩放UI金额\n摘要：- 在BSC上提出实施EIP-8056（缩放UI金额）\n- 为ERC-20代币定义一个可更新的UI乘数扩展，允许代币项目调整显示金额而无需修改链上余额\n- 包含BSC特定",
-      "analysis_zh": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BEP-667.md：update finality analysis",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/676",
-      "created": "2026-04-13T12:37:38",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Finality was computed under BEP-126's header-based justification, inflating L to 2N·BI / (3N-j)·BI and giving 1000-1250ms at N=2/BI=250 (worse than today's 900ms). Apply BEP-648's rule on the voting block subsequence so L = N·BI + (2·OWD + T_import) ",
-      "summary_zh": "协议：BNB Chain\n标题：BEP-667.md：更新最终性分析\n摘要：基于BEP-126的头部验证计算最终性，将L扩展至2N·BI / (3N-j)·BI，在N=2/BI=250时，耗时1000-1250ms（低于当前900ms）。应用BEP-648规则于投票区块子序列，使L=N·BI + (2·OWD + T_import)。",
       "analysis_zh": ""
     },
     {
@@ -3215,6 +3285,21 @@
     {
       "source": "Sky Polling",
       "protocol": "Sky (MakerDAO)",
+      "title": "Atlas Edit Weekly Cycle Proposal - April 27, 2026",
+      "status": "active",
+      "link": "https://vote.makerdao.com/polling/QmToMBbA",
+      "created": "2026-04-27T16:00:00",
+      "end": "2026-04-30T16:00:00",
+      "tev_related": true,
+      "tev_keywords": [
+        "treasury"
+      ],
+      "summary_en": "This Atlas edit proposal 1) restructures the Treasury Management Function, 2) adds Authorized Forum Accounts requirements, 3) defines the Protocol Security workstream lead role, 4) increases the GSM Pause Delay from 24 hours to 48 hours, 5) clarifies",
+      "summary_zh": "协议：Sky（MakerDAO）\n标题：Atlas 编辑每周周期提案 - 2026年4月27日\n摘要：本提案1）重组了财政管理功能，2）添加了授权论坛账户要求，3）定义了协议安全工作流负责人角色，4）将GSM暂停延迟从24小时增加至48小时，5）明确了..."
+    },
+    {
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
       "title": "Atlas Edit Weekly Cycle Proposal - April 20, 2026",
       "status": "passed",
       "link": "https://vote.makerdao.com/polling/QmNXSS7H",
@@ -3273,20 +3358,6 @@
       "summary_en": "This Atlas edit proposal 1) updates the Emergency Response Article to the Agent Framework, 2) updates the Emergency Spells and Protego documents to the Agent Framework, 3) establishes a Demand Side Buffer for Distribution Reward and Integration Boost",
       "summary_zh": "协议：Sky（MakerDAO）\n标题：Atlas编辑周循环提案 - 2026年3月30日\n摘要：本提案1）更新了紧急响应文章至代理框架，2）更新了紧急咒语和Protego文档至代理框架，3）设立需求侧缓冲区以分配奖励和集成提升。",
       "analysis_zh": "Sky 升级应急响应至 Agent Framework 并设立支付缓冲，强化协议抗风险能力与激励稳定性。\n\nSky (MakerDAO) 此次 Atlas 修改提案将 Emergency Response 升级至 Agent Framework，标志着协议自动化治理迈出关键一步。尽管当前 TVL 高达 $6.77B 且年收入 $251.4M，但复杂的系统架构"
-    },
-    {
-      "source": "Sky Polling",
-      "protocol": "Sky (MakerDAO)",
-      "title": "Atlas Edit Weekly Cycle Proposal - March 23, 2026",
-      "status": "passed",
-      "link": "https://vote.makerdao.com/polling/QmVbqw1G",
-      "created": "2026-03-23T16:00:00",
-      "end": "2026-03-26T16:00:00",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "This Atlas edit proposal 1) removes Governance poll requirement for SparkLend parameter changes, 2) removes Signal Requests and Non-Standard Weekly Polls from the Atlas, 3) clarifies Facilitator authority to update Atlas after spell execution, 4) add",
-      "summary_zh": "协议：Sky（MakerDAO）\n标题：Atlas 编辑每周周期提案 - 2026年3月23日\n摘要：本提案1）取消SparkLend参数变更的治理投票要求，2）从Atlas中移除信号请求和非标准每周投票，3）明确执行咒语后更新Atlas的协调员权限，4）添加...",
-      "analysis_zh": ""
     },
     {
       "source": "Mantle Forum",
