@@ -57,7 +57,7 @@
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "market_cap_usd": 158553304.65,
+    "market_cap_usd": 156654531.49,
     "calculation_date": "2026-04-28",
     "sources": [
       {
@@ -82,23 +82,23 @@
     "en": "Solana MEV 收益归 JitoSOL (LST), JTO 仅治理"
   },
   "tevRatio": 0,
-  "earning_yield_percent": 18.42,
-  "market_cap_usd": 158553304.65,
+  "earning_yield_percent": 18.52,
+  "market_cap_usd": 156654531.49,
   "tev_yield_percent": 0,
   "metrics": {
-    "trailing_365d_revenue_usd": 29197895,
-    "trailing_30d_revenue_usd": 329851,
-    "current_market_cap_usd": 158553304.65,
+    "trailing_365d_revenue_usd": 29011820,
+    "trailing_30d_revenue_usd": 331401,
+    "current_market_cap_usd": 156654531.49,
     "trailing_365d_tev_usd": 0,
     "trailing_30d_tev_usd": 0,
-    "trailing_7d_revenue_usd": 66449,
-    "trailing_90d_revenue_usd": 1160639,
+    "trailing_7d_revenue_usd": 67716,
+    "trailing_90d_revenue_usd": 1156917,
     "tev_yield_7d_ann": 0,
     "tev_yield_30d_ann": 0,
     "tev_yield_90d_ann": 0,
-    "earning_yield_7d_ann": 2.19,
-    "earning_yield_30d_ann": 2.53,
-    "earning_yield_90d_ann": 2.97
+    "earning_yield_7d_ann": 2.25,
+    "earning_yield_30d_ann": 2.57,
+    "earning_yield_90d_ann": 3
   },
   "analyst_notes": "【2026-04-27 governance-only 验证】\n\n## 现状\nJito Network 提取 Solana MEV tips, MEV 收益按 96% 归 JitoSOL 持有人 + 4% Jito Foundation. JTO 不分润.\n\n## TEV: 0% (governance-only, low confidence)\n\n## 何时变化\n若未来治理提案启用 fee switch / buyback 给 token 持有人, 重新评估.\n\n## 类比\nLDO / COMP 等老牌纯治理代币模式.\n",
   "calc_pipeline": [
