@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-04-28T01:07:16.028554+00:00",
-  "total": 241,
-  "active_count": 38,
+  "updated_at": "2026-04-28T13:07:04.954430+00:00",
+  "total": 242,
+  "active_count": 39,
   "passed_count": 203,
-  "tev_related": 63,
+  "tev_related": 64,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -130,6 +130,21 @@
     }
   },
   "proposals": [
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[ARFC] Pause AAVE Buybacks",
+      "status": "active",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0x10a2af0110b1ad6f4afd7a3a052b2a119d102cc22949e80e9bbd5132587107c8",
+      "created": 1777280718,
+      "end": 1777626318,
+      "tev_related": true,
+      "tev_keywords": [
+        "buyback"
+      ],
+      "summary_en": "Following the rsETH bridge incident on April 18, 2026, AAVE buybacks have been paused since April 19, 2026. This ARFC formalises the pause and outlines the conditions under which the buyback cadence will be reassessed.",
+      "summary_zh": "[ARFC] 自2026年4月18日rsETH桥接事件后，AAVE回购已自4月19日起暂停。此提案正式化暂停，并明确评估回购节奏的条件。"
+    },
     {
       "source": "Snapshot",
       "protocol": "Aave",
@@ -2875,6 +2890,20 @@
     {
       "source": "GitHub BEP",
       "protocol": "BNB Chain",
+      "title": "update mendel bep status",
+      "status": "passed",
+      "link": "https://github.com/bnb-chain/BEPs/pull/688",
+      "created": "2026-04-28T03:24:34",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "update mendel bep status",
+      "summary_zh": "协议：BNB Chain\n标题：更新Mendel BEP状态\n摘要：更新Mendel的BEP状态",
+      "analysis_zh": ""
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
       "title": "Anassalehd1995@gmail.com ",
       "status": "active",
       "link": "https://github.com/bnb-chain/BEPs/issues/687",
@@ -2996,20 +3025,6 @@
       "tev_keywords": [],
       "summary_en": "introduce BEPs in Pasteur",
       "summary_zh": "引入 Pasteur 协议中的 BEPs（币安智能链治理提案）",
-      "analysis_zh": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "add BEP-657 into Pasteur hard fork",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/678",
-      "created": "2026-04-16T06:12:42",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "add BEP-657 into Pasteur hard fork",
-      "summary_zh": "将BEP-657协议集成至BNB Chain的Pasteur硬分叉中。",
       "analysis_zh": ""
     },
     {
