@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-04-29T01:06:53.165782+00:00",
+  "updated_at": "2026-04-29T13:06:50.607233+00:00",
   "total": 243,
-  "active_count": 40,
-  "passed_count": 203,
-  "tev_related": 64,
+  "active_count": 41,
+  "passed_count": 202,
+  "tev_related": 63,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -2756,6 +2756,20 @@
     {
       "source": "dYdX Cosmos",
       "protocol": "dYdX",
+      "title": "Wind down AKT-USD, GNO-USD, MNRY-USD and MOG-USD markets",
+      "status": "active",
+      "link": "https://www.mintscan.io/dydx/proposals/382",
+      "created": "2026-04-29T07:19:11.129231769Z",
+      "end": "2026-05-02T07:19:11.129231769Z",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Wind down AKT-USD, GNO-USD, MNRY-USD and MOG-USD markets",
+      "summary_zh": "dYdX治理提案：于2023年11月30日关闭AKT-USD、GNO-USD、MNRY-USD和MOG-USD市场。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
       "title": "Add order router rev share for NautilusTrader",
       "status": "active",
       "link": "https://www.mintscan.io/dydx/proposals/381",
@@ -2884,22 +2898,6 @@
       "summary_en": "Wind down AERO-USD, ANIME-USD, BANANA-USD, CORE-USD, CVX-USD, DASH-USD, DEGEN-USD, FLR-USD, GOAT-USD, HNT-USD, IOTA-USD, IOTX-USD and IP-USD markets",
       "summary_zh": "dYdX协议于2023年11月1日起逐步关闭AERO-USD、ANIME-USD、BANANA-USD、CORE-USD、CVX-USD、DASH-USD、DEGEN-USD、FLR-USD、GOAT-USD、HNT-USD、IOTA-USD、IOTX-USD和IP-USD市场。",
       "analysis_zh": ""
-    },
-    {
-      "source": "dYdX Cosmos",
-      "protocol": "dYdX",
-      "title": " Utilise Insurance Fund for DAO Funding",
-      "status": "passed",
-      "link": "https://www.mintscan.io/dydx/proposals/372",
-      "created": "2026-03-30T05:44:38.926928114Z",
-      "end": "2026-04-02T05:44:38.926928114Z",
-      "tev_related": true,
-      "tev_keywords": [
-        "treasury"
-      ],
-      "summary_en": "This proposal seeks community approval to transfer 10M USDC from the dYdX Chain Insurance Fund to three separate entities: 2.5M USDC to the dYdX Operations SubDAO for operational runway, 5M USDC to the dYdX Treasury SubDAO for discretionary reserves,",
-      "summary_zh": "本提案请求社区批准将1000万美元USDC从dYdX链保险基金划拨给三个独立实体：250万美元用于dYdX运营子DAO的运营资金，500万美元用于dYdX财政子DAO的自主储备金。",
-      "analysis_zh": "从保险基金划转 1000 万 USDC 资助运营，安全缓冲仅剩 700 万 USDC 引发担忧。\n\ndYdX 提议从 Insurance Fund 划转 1000 万 USDC 分配给 Operations SubDAO、Treasury SubDAO 及 Foundation，虽缓解了运营资金压力，但将安全缓冲削减至 700 万 USDC。面对高达 $158.7M 的 TVL，仅保留不足 5% 的资金作为风险储备显得过于激进，这种“拆东墙补西墙”的策略在极端行情下可能无法有效覆盖穿仓损失，牺牲了协议核心的安全边际来换取行政续航，无疑增加了用户的资金风险，社区应审慎评估安全垫变薄的长期隐患。"
     },
     {
       "source": "GitHub BEP",
