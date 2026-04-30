@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-04-30T01:06:48.109622+00:00",
-  "total": 244,
+  "updated_at": "2026-04-30T13:07:00.988748+00:00",
+  "total": 245,
   "active_count": 42,
-  "passed_count": 202,
+  "passed_count": 203,
   "tev_related": 63,
   "monitored_protocols": 19,
   "protocols_meta": {
@@ -1260,6 +1260,20 @@
       "tev_keywords": [],
       "summary_en": "Here’s a quick recap of veCAKE’s utility:.",
       "summary_zh": "提议在 Base 链上线 veCAKE 功能，扩展 PancakeSwap 跨链治理覆盖。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Lido",
+      "title": "Authorize Lido EarnETH Loss Coverage Below 1% Threshold For The Kelp Incident",
+      "status": "active",
+      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0x5629f9b201f32dbd5780f7e2e5601eed7504cdb7919b622a7ef039261d3c671a",
+      "created": 1777537782,
+      "end": 1778056200,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Lido Earn contributors request DAO authorization to use the Lido Earn first-loss mechanism to cover Kelp-related losses incurred by Lido EarnETH users, even if such losses are below the previously approved 1% threshold. This is a one-off, Kelp-specif",
+      "summary_zh": "Lido协议：授权Lido Earn对Kelp事件造成的ETH损失低于1%阈值的赔偿。Lido Earn出资者请求DAO授权使用Lido Earn的第一损失机制，覆盖Lido EarnETH用户因Kelp相关损失，即使该损失低于之前批准的1%阈值。这是一次性、针对Kelp特定事件的赔偿。",
       "analysis_zh": ""
     },
     {
@@ -2785,7 +2799,7 @@
       "source": "dYdX Cosmos",
       "protocol": "dYdX",
       "title": "Add order router rev share for NautilusTrader",
-      "status": "active",
+      "status": "passed",
       "link": "https://www.mintscan.io/dydx/proposals/381",
       "created": "2026-04-27T08:21:37.636728636Z",
       "end": "2026-04-30T08:21:37.636728636Z",
