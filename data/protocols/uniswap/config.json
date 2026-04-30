@@ -130,9 +130,9 @@
   "last_updated": "2026-04-24",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 0.54,
+    "tev_yield_percent": 0.55,
     "market_cap_usd": 2068286781.9099333,
-    "calculation_date": "2026-04-29",
+    "calculation_date": "2026-04-30",
     "sources": [
       {
         "name": "On-chain Firepit burns",
@@ -147,16 +147,16 @@
     "validation": {
       "method": "A 口径：365d UNI 转入 0xdead（链上）减去 >=10M UNI 一次性事件",
       "burn_7d_uni": 168000,
-      "burn_30d_uni": 1040000,
-      "burn_90d_uni": 2992000,
-      "burn_365d_uni": 3450003,
+      "burn_30d_uni": 1002000,
+      "burn_90d_uni": 2970000,
+      "burn_365d_uni": 3462003,
       "retro_events_count": 1,
       "retro_total_uni": 100000000,
       "uni_price_usd": 3.26,
-      "data_days": 125,
+      "data_days": 126,
       "data_range": {
         "start": "2025-06-07",
-        "end": "2026-04-29"
+        "end": "2026-04-30"
       }
     }
   },
@@ -190,20 +190,20 @@
     "en": "Firepit burn UNI→0xdead fully on-chain trackable (Etherscan)"
   },
   "tevRatio": 1,
-  "earning_yield_percent": 0.54,
+  "earning_yield_percent": 0.55,
   "market_cap_usd": 2068286781.9099333,
-  "tev_yield_percent": 0.54,
+  "tev_yield_percent": 0.55,
   "metrics": {
     "trailing_7d_revenue_usd": 548443,
-    "trailing_30d_revenue_usd": 3395121,
-    "trailing_90d_revenue_usd": 9767502,
+    "trailing_30d_revenue_usd": 3271068,
+    "trailing_90d_revenue_usd": 9695682,
     "tev_yield_7d_ann": 1.38,
-    "tev_yield_30d_ann": 2,
-    "tev_yield_90d_ann": 1.92,
+    "tev_yield_30d_ann": 1.92,
+    "tev_yield_90d_ann": 1.9,
     "earning_yield_7d_ann": 1.38,
-    "earning_yield_30d_ann": 2,
-    "earning_yield_90d_ann": 1.92,
-    "trailing_365d_revenue_usd": 11262672
+    "earning_yield_30d_ann": 1.92,
+    "earning_yield_90d_ann": 1.9,
+    "trailing_365d_revenue_usd": 11301846
   },
   "calc_pipeline": [
     {
