@@ -103,7 +103,7 @@
       "sm_7d_usd": 0,
       "sm_30d_usd": 0,
       "sm_90d_usd": 6569477,
-      "sm_365d_usd": 39324583,
+      "sm_365d_usd": 39181630,
       "caveats": [
         "Buyback 是 treasury-accumulated，不是真 burn（买入 AAVE → Ecosystem Reserve，治理可 redistribute）",
         "Safety Module 分发是脉冲式（每 1-2 周一次大包），短周期窗口可能为 0",
@@ -125,20 +125,20 @@
   "tev_yield_percent": 3.85,
   "metrics": {
     "current_market_cap_usd": 1799059173.84,
-    "trailing_365d_revenue_usd": 125363334,
-    "trailing_30d_revenue_usd": 8339252,
+    "trailing_365d_revenue_usd": 125437007,
+    "trailing_30d_revenue_usd": 8368870,
     "trailing_365d_tev_usd": 30000000,
     "trailing_30d_tev_usd": 2500000,
     "trailing_365d_holders_revenue_usd": 42212267,
     "trailing_30d_holders_revenue_usd": 6155965,
-    "trailing_7d_revenue_usd": 2127993,
-    "trailing_90d_revenue_usd": 24851285,
+    "trailing_7d_revenue_usd": 1961150,
+    "trailing_90d_revenue_usd": 24723730,
     "tev_yield_7d_ann": 1.67,
     "tev_yield_30d_ann": 1.67,
     "tev_yield_90d_ann": 3.15,
-    "earning_yield_7d_ann": 6.17,
-    "earning_yield_30d_ann": 5.64,
-    "earning_yield_90d_ann": 5.6
+    "earning_yield_7d_ann": 5.68,
+    "earning_yield_30d_ann": 5.66,
+    "earning_yield_90d_ann": 5.57
   },
   "calc_pipeline": [
     {
