@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-04-29T13:06:50.607233+00:00",
-  "total": 243,
-  "active_count": 41,
+  "updated_at": "2026-04-30T01:06:48.109622+00:00",
+  "total": 244,
+  "active_count": 42,
   "passed_count": 202,
   "tev_related": 63,
   "monitored_protocols": 19,
@@ -1824,6 +1824,20 @@
       "summary_en": "Switch MORPHO token rewards distribution on Ethereum and Base to use the Merkl stack in order to accomplish the following objectives:",
       "summary_zh": "MIP 111：将以太坊和 Base 上的 MORPHO 代币奖励分配系统切换至 Merkl 技术栈，提升分配效率和灵活性。",
       "analysis_zh": "Morpho 拟切换至 Merkl 技术栈分发奖励，旨在提升多链扩展效率并释放核心技术资源。\n\nMorpho 坐拥 $6.98B 的 TVL，但 MORPHO 目前仅为纯治理代币，TEV Yield 为 0%，缺乏价值捕获。提案 MIP 111 计划将 Ethereum 和 Base 上的奖励分发切换至 Merkl 技术栈，这不仅是技术迁移，更是运营效率的升级。新方案将显著降低领取延迟并简化外部奖励整合，为未来多链扩展扫清障碍。此举最核心的价值在于释放团队技术资源，使其能从繁琐的分发维护中抽身，专注于构建核心借贷基础设施。虽然短期内无法改变代币无收益的现状，但优化底层设施是支撑 $6.98B 资产规模持续增长的必要举措。"
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Compound",
+      "title": "Should Compound Contribute to the DeFi United Recovery Effort?",
+      "status": "active",
+      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0xd71e399d706e3346c3269805496f2e2fa986be9873026e8c27c81a863ba77da2",
+      "created": 1777497029,
+      "end": 1777756500,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "published on April 27 (linked here) outlines a potential Compound contribution structured in two parts:  \n Part A: approximately 1,857 ETH that may be satisfied through recovery of the attacker's position on Compound, contingent on restoration of rsE",
+      "summary_zh": "《应Compound参与DeFi联合复苏努力吗？》提案于4月27日发布，提出Compound以两部分方式贡献力量：A部分：约1857 ETH，可通过恢复攻击者在Compound的仓位实现，前提是rsE恢复。",
+      "analysis_zh": ""
     },
     {
       "source": "Snapshot",
