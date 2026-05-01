@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-05-01T01:06:59.941806+00:00",
-  "total": 240,
-  "active_count": 36,
+  "updated_at": "2026-05-01T13:06:44.061497+00:00",
+  "total": 239,
+  "active_count": 35,
   "passed_count": 204,
-  "tev_related": 60,
+  "tev_related": 59,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -148,7 +148,7 @@
       "source": "Snapshot",
       "protocol": "Aave",
       "title": "[ARFC] Pause AAVE Buybacks",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/aavedao.eth/proposal/0x10a2af0110b1ad6f4afd7a3a052b2a119d102cc22949e80e9bbd5132587107c8",
       "created": 1777280718,
       "end": 1777626318,
@@ -429,22 +429,6 @@
       "summary_en": "Proposal for the pre-approval of Aave v3.7, to authorise security procedures before the final on-chain AIP activation vote.",
       "summary_zh": "预批准 Aave v3.7 版本升级的提案，在最终链上 AIP 激活投票前先授权完成安全审计流程，确保升级安全性。",
       "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Aave",
-      "title": "[ARFC] Revenue-indexed deficit offsets for Umbrella",
-      "status": "passed",
-      "link": "https://snapshot.org/#/aavedao.eth/proposal/0xfcd429c8fcb5fc44a0bea9bf078726ef48b1c76ca1039a8c6c9dff23f4547e30",
-      "created": 1770887639,
-      "end": 1771233239,
-      "tev_related": true,
-      "tev_keywords": [
-        "revenue"
-      ],
-      "summary_en": "Umbrella makes deficit handling explicit and mechanically enforceable. Once a reserve deficit is realized on-chain, the protocol applies a senior, DAO-backed first-loss layer (the deficitOffset) before any impairment is passed through to Umbrella sta",
-      "summary_zh": "Umbrella 机制使坏账处理显式化且可自动执行。链上确认储备赤字后，协议优先使用 DAO 担保的 deficitOffset（优先损失层），再将剩余损失传递给 Umbrella 质押者。",
-      "analysis_zh": "Umbrella 引入收入挂钩的赤字抵消机制，强化 DAO 权益缓冲以保护质押者。\n\nAave 提案旨在改革 Umbrella 的赤字处理机制，将 deficitOffset 与协议实际收入挂钩，解决当前校准缺乏系统性的问题。目前年收入达 $122.1M，TVL 高达 $26.71B，巨大的资金体量要求更精准的风险缓冲。新机制明确了 DAO 承担首损的“权益缓冲”角色，在赤字传递给"
     },
     {
       "source": "Snapshot",
