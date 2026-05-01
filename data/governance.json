@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-04-30T13:07:00.988748+00:00",
-  "total": 245,
-  "active_count": 42,
-  "passed_count": 203,
-  "tev_related": 63,
+  "updated_at": "2026-05-01T01:06:59.941806+00:00",
+  "total": 240,
+  "active_count": 36,
+  "passed_count": 204,
+  "tev_related": 60,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -1541,7 +1541,7 @@
       "source": "Snapshot",
       "protocol": "Morpho",
       "title": "MIP 131 - Allocation of a Grant for the Morpho Association’s Strategic Support Program (2026-2030)",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/morpho.eth/proposal/0x83443370986177da725526ef2f3bdab380ee831d14e697b9cae21cc4bf7eb848",
       "created": 1777299569,
       "end": 1777558769,
@@ -1822,22 +1822,6 @@
       "summary_en": "The Morpho Association proposes to allocate 200,000 OP tokens from the Optimism Council Grant Cycle 33 to incentivize USDC growth on Base, targeting an additional $5M TVL increase to satisfy the grant criteria.",
       "summary_zh": "MIP 112：将 Optimism Council 第 33 轮拨款的 20 万 OP 代币用于激励 Base 上 USDC 增长，目标新增 500 万美元 TVL。",
       "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Morpho",
-      "title": "MIP 111 - Switch MORPHO Rewards Stack to Merkl",
-      "status": "passed",
-      "link": "https://snapshot.org/#/morpho.eth/proposal/0xadf3862d97cf4e8bb84a4b3d5117abe1a9db774e92ad97c65bde22214c0b76c9",
-      "created": 1753160608,
-      "end": 1753419808,
-      "tev_related": true,
-      "tev_keywords": [
-        "distribution"
-      ],
-      "summary_en": "Switch MORPHO token rewards distribution on Ethereum and Base to use the Merkl stack in order to accomplish the following objectives:",
-      "summary_zh": "MIP 111：将以太坊和 Base 上的 MORPHO 代币奖励分配系统切换至 Merkl 技术栈，提升分配效率和灵活性。",
-      "analysis_zh": "Morpho 拟切换至 Merkl 技术栈分发奖励，旨在提升多链扩展效率并释放核心技术资源。\n\nMorpho 坐拥 $6.98B 的 TVL，但 MORPHO 目前仅为纯治理代币，TEV Yield 为 0%，缺乏价值捕获。提案 MIP 111 计划将 Ethereum 和 Base 上的奖励分发切换至 Merkl 技术栈，这不仅是技术迁移，更是运营效率的升级。新方案将显著降低领取延迟并简化外部奖励整合，为未来多链扩展扫清障碍。此举最核心的价值在于释放团队技术资源，使其能从繁琐的分发维护中抽身，专注于构建核心借贷基础设施。虽然短期内无法改变代币无收益的现状，但优化底层设施是支撑 $6.98B 资产规模持续增长的必要举措。"
     },
     {
       "source": "Snapshot",
@@ -2258,7 +2242,7 @@
       "source": "Snapshot",
       "protocol": "Spark",
       "title": "[Ethereum] Spark Liquidity Layer - Update Spark Blue Chip USDT Morpho Vault",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/sparkfi.eth/proposal/0xa72495fc832baced4d2285928e2ca6ff906d7ff88c4dceaaa2d8c4aa6bdfdbdc",
       "created": 1777305509,
       "end": 1777564709,
@@ -2272,7 +2256,7 @@
       "source": "Snapshot",
       "protocol": "Spark",
       "title": "[Ethereum] Spark Liquidity Layer - Offboard Aave Core USDT",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x7909f554a2f33155e234788382927f9af0d4dd5a4808349bc0ff57c2ab8b5ce0",
       "created": 1777305419,
       "end": 1777564619,
@@ -2286,7 +2270,7 @@
       "source": "Snapshot",
       "protocol": "Spark",
       "title": "[Avalanche] Spark Liquidity Layer - Offboard Aave Avalanche USDC",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x710eb6996204b3df1eedd19d2f8bea9d0d69cdfa85a31c514527d9c212686348",
       "created": 1777305301,
       "end": 1777564501,
@@ -2300,7 +2284,7 @@
       "source": "Snapshot",
       "protocol": "Spark",
       "title": "[Avalanche] Spark Liquidity Layer - Update Governance Bridge Configuration",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x2912831b683f5461d7bb4a5702c63ff8d2a4ff93d4422ce0cca0ef29f4a3509c",
       "created": 1777305178,
       "end": 1777564378,
@@ -2536,67 +2520,6 @@
       "tev_keywords": [],
       "summary_en": ">\n> - SLL configuration for SparkLend USDT\n>   - Deposits\n>     - maxAmount: 250 million (from current 100 million)\n>     - slope: 2 billion per day (from current 200 million per day)\n>   - Withdrawals\n>     - maxAmount: Unlimited\n>\n> [Ethereum] Spar",
       "summary_zh": "调整 SparkLend USDT、Aave Core USDT 和 Maple syrupUSDT 的速率限制：USDT 存款上限从 1 亿提至 2.5 亿，slope 从每日 2 亿提至每日 20 亿。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Spark",
-      "title": "SAEP-10: Update Offchain Collateralized Lending Artifact Section",
-      "status": "passed",
-      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x61799d70a3ff59487d6b568af121b3ae2de61626f6f0230ddf720ccf8679f886",
-      "created": 1771257269,
-      "end": 1771516469,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": ">\n> This proposal is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 of the Spark Artifact. The proposal recommends that Spark governance update certain parameters to increase the venue",
-      "summary_zh": "SAEP-10：Phoenix Labs 提案，更新链下抵押贷款参数以增加额度，扩大 Spark 的链下借贷业务规模。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Spark",
-      "title": "[Ethereum] Spark Treasury - Transfer USDS to Grove for Remaining Share of Ethena Revenue - February 2, 2026",
-      "status": "passed",
-      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x444abfce22102793c25d85d659ff69747fdc56091e41dd6e7c67a9ac5d1b1b15",
-      "created": 1770047379,
-      "end": 1770306579,
-      "tev_related": true,
-      "tev_keywords": [
-        "revenue",
-        "treasury"
-      ],
-      "summary_en": ">\n> - Recipient address: Grove SubProxy (0x1369f7b2b38c76B6478c0f0E66D94923421891Ba)\n> - Amount: 78,394 USDS.",
-      "summary_zh": "向 Grove SubProxy 转账 78,394 USDS，结算 Ethena 剩余收入份额（2026 年 2 月 2 日批次）。",
-      "analysis_zh": "Spark 执行 Ethena 收益分成协议，向 Grove 转移 $78,394 USDS。\n\n本次提案由 Phoenix Labs 发起，拟将 78,394 USDS 划转至 Grove，作为 Ethena USDe/sUSDe 配置收益的剩余结算。尽管 Spark 拥有 $4.88B 的庞大 TVL 和 $23.6M 年收入，但这笔不足 $8 万的款项仅是财务流程上的“收尾”，对整体资金池影响微乎其微。值得注意的是，当前 SPK 代币 TEV Yield 为 0%，收入仍流向 Sky 主 DAO，此次转账再次印证了 Spark 目前更侧重于生态协同与资金流转效率，而非直接回馈代币持有者，投资者短期内无需期待分红层面的利好。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Spark",
-      "title": "[Ethereum] Spark Treasury - Initiate DssVest for SPK Contributor Vesting - February 2, 2026",
-      "status": "passed",
-      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x3ffd7702f9f23b9dabbb6297e6690f9f648e9968fc88fbfc4fe3aee41d764569",
-      "created": 1770047266,
-      "end": 1770306466,
-      "tev_related": true,
-      "tev_keywords": [
-        "treasury"
-      ],
-      "summary_en": ">\n> - DssVest\n>   - Recipient address(es): to be provided when available\n>   - Start date: 17 June 2025\n>   - Cliff date: 17 June 2026\n>   - End date: 17 June 2029\n>   - Vesting method: Linear per block with cliff\n>   - Claim auth: Permissionless\n> -",
-      "summary_zh": "启动 SPK 贡献者代币解锁计划（DssVest）：2025 年 6 月 17 日起始，Cliff 一年，2029 年 6 月结束，线性逐块解锁。",
-      "analysis_zh": "SPK 贡献者解锁启动，12% 供应量进入四年释放期，潜在抛压显现。\n\nSpark 提案通过 DssVest 启动贡献者激励，将 SPK 总供应量的 12% 纳入 4 年线性归属，并设置 1 年悬崖期。尽管项目坐拥 $4.88B TVL 和 $23.6M 年收入，但 TEV Yield 目前为 0%，收入并未"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Spark",
-      "title": "SAEP-09: Adjust SubDAO Proxy Management",
-      "status": "passed",
-      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0xdc4f3859185ca5caa7b7eb1c6ef732546469d4a9df68b7d8b31ec8ad9b0a72fc",
-      "created": 1769443272,
-      "end": 1769702472,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": ">\n> This proposal is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 of the Spark Artifact. The proposal outlines adjustments for Spark governance to consider regarding parameters assoc",
-      "summary_zh": "SAEP-09：Phoenix Labs 提案，调整 SubDAO Proxy 管理相关参数，优化治理代理结构。",
       "analysis_zh": ""
     },
     {
@@ -3341,7 +3264,7 @@
       "source": "Sky Polling",
       "protocol": "Sky (MakerDAO)",
       "title": "Atlas Edit Weekly Cycle Proposal - April 27, 2026",
-      "status": "active",
+      "status": "passed",
       "link": "https://vote.makerdao.com/polling/QmToMBbA",
       "created": "2026-04-27T16:00:00",
       "end": "2026-04-30T16:00:00",
