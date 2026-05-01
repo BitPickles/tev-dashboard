@@ -61,7 +61,7 @@
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "market_cap_usd": 94396937.27,
+    "market_cap_usd": 92428900.7,
     "calculation_date": "2026-05-01",
     "sources": [
       {
@@ -87,23 +87,23 @@
     "en": "KMNO staking 是 farming reward boost, 不是协议 fee 分润"
   },
   "tevRatio": 0,
-  "earning_yield_percent": 17.45,
-  "market_cap_usd": 94396937.27,
+  "earning_yield_percent": 17.63,
+  "market_cap_usd": 92428900.7,
   "tev_yield_percent": 0,
   "metrics": {
-    "trailing_365d_revenue_usd": 16468495,
-    "trailing_30d_revenue_usd": 759838,
-    "current_market_cap_usd": 94396937.27,
+    "trailing_365d_revenue_usd": 16296481,
+    "trailing_30d_revenue_usd": 755782,
+    "current_market_cap_usd": 92428900.7,
     "trailing_365d_tev_usd": 0,
     "trailing_30d_tev_usd": 0,
-    "trailing_7d_revenue_usd": 170398,
-    "trailing_90d_revenue_usd": 2452004,
+    "trailing_7d_revenue_usd": 164208,
+    "trailing_90d_revenue_usd": 2413537,
     "tev_yield_7d_ann": 0,
     "tev_yield_30d_ann": 0,
     "tev_yield_90d_ann": 0,
-    "earning_yield_7d_ann": 9.41,
-    "earning_yield_30d_ann": 9.79,
-    "earning_yield_90d_ann": 10.53
+    "earning_yield_7d_ann": 9.26,
+    "earning_yield_30d_ann": 9.95,
+    "earning_yield_90d_ann": 10.59
   },
   "analyst_notes": "【2026-04-27 governance-only 验证】\n\n## 现状\nKamino 借贷协议 ($3.34B AUM) fees 100% 给 LP. KMNO staking 提供 farming boost (起始 3% 每天 +0.1%), 但 reward 来自 token 国库 inflation (100M KMNO/3月 季度排放), 非协议收入\n\n## TEV: 0% (governance-only, low confidence)\n\n## 何时变化\n若未来治理提案启用 fee switch / buyback 给 token 持有人, 重新评估.\n\n## 类比\nLDO / COMP 等老牌纯治理代币模式.\n",
   "calc_pipeline": [

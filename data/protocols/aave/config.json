@@ -78,7 +78,7 @@
   "last_updated": "2026-04-24",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 3.85,
+    "tev_yield_percent": 3.84,
     "annual_tev_usd": 30000000,
     "market_cap_usd": 1799059173.84,
     "calculation_date": "2026-05-01",
@@ -100,10 +100,10 @@
     "validation": {
       "method": "TEV = 固定 Buyback $30M/年（2026-03 治理）+ Safety Module (Umbrella) DefiLlama dailyHoldersRevenue 按窗口年化",
       "fixed_buyback_usd_annual": 30000000,
-      "sm_7d_usd": 0,
-      "sm_30d_usd": 0,
-      "sm_90d_usd": 6569477,
-      "sm_365d_usd": 39181630,
+      "sm_7d_usd": 40376,
+      "sm_30d_usd": 40376,
+      "sm_90d_usd": 6609853,
+      "sm_365d_usd": 39077940,
       "caveats": [
         "Buyback 是 treasury-accumulated，不是真 burn（买入 AAVE → Ecosystem Reserve，治理可 redistribute）",
         "Safety Module 分发是脉冲式（每 1-2 周一次大包），短周期窗口可能为 0",
@@ -119,26 +119,26 @@
     "zh": "治理提案 AIP-1 明确年回购预算，链上可追踪",
     "en": "AIP-1 governance proposal with fixed annual buyback budget, on-chain trackable"
   },
-  "tevRatio": 0.5524,
-  "earning_yield_percent": 6.97,
+  "tevRatio": 0.5501,
+  "earning_yield_percent": 6.98,
   "market_cap_usd": 1799059173.84,
-  "tev_yield_percent": 3.85,
+  "tev_yield_percent": 3.84,
   "metrics": {
     "current_market_cap_usd": 1799059173.84,
-    "trailing_365d_revenue_usd": 125437007,
-    "trailing_30d_revenue_usd": 8368870,
+    "trailing_365d_revenue_usd": 125556117,
+    "trailing_30d_revenue_usd": 8433435,
     "trailing_365d_tev_usd": 30000000,
     "trailing_30d_tev_usd": 2500000,
     "trailing_365d_holders_revenue_usd": 42212267,
     "trailing_30d_holders_revenue_usd": 6155965,
-    "trailing_7d_revenue_usd": 1961150,
-    "trailing_90d_revenue_usd": 24723730,
-    "tev_yield_7d_ann": 1.67,
-    "tev_yield_30d_ann": 1.67,
-    "tev_yield_90d_ann": 3.15,
-    "earning_yield_7d_ann": 5.68,
-    "earning_yield_30d_ann": 5.66,
-    "earning_yield_90d_ann": 5.57
+    "trailing_7d_revenue_usd": 1889672,
+    "trailing_90d_revenue_usd": 23892493,
+    "tev_yield_7d_ann": 1.78,
+    "tev_yield_30d_ann": 1.69,
+    "tev_yield_90d_ann": 3.16,
+    "earning_yield_7d_ann": 5.48,
+    "earning_yield_30d_ann": 5.7,
+    "earning_yield_90d_ann": 5.39
   },
   "calc_pipeline": [
     {
