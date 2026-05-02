@@ -1,6 +1,6 @@
 {
   "protocol": "pancakeswap",
-  "updated_at": "2026-05-01T13:15:04.641Z",
+  "updated_at": "2026-05-02T01:14:51.928Z",
   "data_source": "DefiLlama API (dailyHoldersRevenue)",
   "data_source_url": "https://api.llama.fi/summary/fees/pancakeswap?dataType=dailyHoldersRevenue",
   "records": [
@@ -825,7 +825,7 @@
       "date": "2025-04-01",
       "type": "aggregate",
       "mechanism": "CAKE Buyback & Burn",
-      "amount_usd": 929765,
+      "amount_usd": 2354917,
       "period": "2025-04",
       "days_with_data": 30,
       "source": {
@@ -842,7 +842,7 @@
       "date": "2025-05-01",
       "type": "aggregate",
       "mechanism": "CAKE Buyback & Burn",
-      "amount_usd": 2951634,
+      "amount_usd": 7252299,
       "period": "2025-05",
       "days_with_data": 31,
       "source": {
@@ -859,7 +859,7 @@
       "date": "2025-06-01",
       "type": "aggregate",
       "mechanism": "CAKE Buyback & Burn",
-      "amount_usd": 22653901,
+      "amount_usd": 8359904,
       "period": "2025-06",
       "days_with_data": 30,
       "source": {
@@ -876,7 +876,7 @@
       "date": "2025-07-01",
       "type": "aggregate",
       "mechanism": "CAKE Buyback & Burn",
-      "amount_usd": 24990687,
+      "amount_usd": 22915328,
       "period": "2025-07",
       "days_with_data": 31,
       "source": {
@@ -1046,7 +1046,7 @@
       "date": "2026-05-01",
       "type": "aggregate",
       "mechanism": "CAKE Buyback & Burn",
-      "amount_usd": 14935,
+      "amount_usd": 13404,
       "period": "2026-05",
       "days_with_data": 1,
       "source": {
@@ -1060,10 +1060,10 @@
     }
   ],
   "summary": {
-    "total_tev_usd": 837026320,
-    "total_30d_usd": 2482213,
+    "total_tev_usd": 826381250,
+    "total_30d_usd": 2401043,
     "by_mechanism": {
-      "buyback_burn": 837026320
+      "buyback_burn": 826381250
     },
     "by_period": {
       "2021-Q2": 144430719,
@@ -1082,11 +1082,11 @@
       "2024-Q3": 4916773,
       "2024-Q4": 17832592,
       "2025-Q1": 3071531,
-      "2025-Q2": 26535300,
-      "2025-Q3": 39222673,
+      "2025-Q2": 17967120,
+      "2025-Q3": 37147314,
       "2025-Q4": 19862552,
       "2026-Q1": 7813529,
-      "2026-Q2": 2497148
+      "2026-Q2": 2495617
     }
   }
 }
