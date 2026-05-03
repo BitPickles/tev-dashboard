@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-05-03T01:06:45.069651+00:00",
-  "total": 237,
-  "active_count": 32,
+  "updated_at": "2026-05-03T13:07:16.213217+00:00",
+  "total": 238,
+  "active_count": 33,
   "passed_count": 205,
-  "tev_related": 59,
+  "tev_related": 60,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -415,6 +415,21 @@
       "summary_en": "Aave began with the thesis that decentralized lending could play a major role in traditional finance. Eight years later, that thesis has been validated.",
       "summary_zh": "「Aave Will Win」框架提案，回顾 Aave 八年发展历程，验证去中心化借贷在传统金融中的重要地位，并提出未来战略方向。",
       "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Uniswap",
+      "title": "Return 12.5M Delegated Tokens to the Governance Timelock",
+      "status": "active",
+      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0xd41b2db93c0348e9061bf786dfcb610d8f35e8447f2e90b37b8f30a9b1a3091e",
+      "created": 1777813047,
+      "end": 1778245047,
+      "tev_related": true,
+      "tev_keywords": [
+        "treasury"
+      ],
+      "summary_en": "With DUNI unlocking greater governance participation from UNI token holders, this proposal undelegates 12.5M UNI currently deployed via the Franchiser, returning the tokens to the Governance Timelock.",
+      "summary_zh": "协议：Uniswap\n标题：将1250万委托代币返还至治理时间锁\n摘要：随着DUNI解锁UNI代币持有者的更大治理参与度，本提案取消通过Franchiser部署的1250万UNI代币的委托，将代币返还至治理时间锁。"
     },
     {
       "source": "Snapshot",
