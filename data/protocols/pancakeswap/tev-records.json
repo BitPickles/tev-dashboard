@@ -1,6 +1,6 @@
 {
   "protocol": "pancakeswap",
-  "updated_at": "2026-05-02T13:13:56.777Z",
+  "updated_at": "2026-05-03T01:14:52.619Z",
   "data_source": "DefiLlama API (dailyHoldersRevenue)",
   "data_source_url": "https://api.llama.fi/summary/fees/pancakeswap?dataType=dailyHoldersRevenue",
   "records": [
@@ -706,7 +706,7 @@
       "date": "2024-09-01",
       "type": "aggregate",
       "mechanism": "CAKE Buyback & Burn",
-      "amount_usd": 2402274,
+      "amount_usd": 2813726,
       "period": "2024-09",
       "days_with_data": 30,
       "source": {
@@ -723,7 +723,7 @@
       "date": "2024-10-01",
       "type": "aggregate",
       "mechanism": "CAKE Buyback & Burn",
-      "amount_usd": 6181165,
+      "amount_usd": 7164307,
       "period": "2024-10",
       "days_with_data": 31,
       "source": {
@@ -740,7 +740,7 @@
       "date": "2024-11-01",
       "type": "aggregate",
       "mechanism": "CAKE Buyback & Burn",
-      "amount_usd": 7280233,
+      "amount_usd": 9470753,
       "period": "2024-11",
       "days_with_data": 30,
       "source": {
@@ -757,7 +757,7 @@
       "date": "2024-12-01",
       "type": "aggregate",
       "mechanism": "CAKE Buyback & Burn",
-      "amount_usd": 4371194,
+      "amount_usd": 6836243,
       "period": "2024-12",
       "days_with_data": 31,
       "source": {
@@ -774,7 +774,7 @@
       "date": "2025-01-01",
       "type": "aggregate",
       "mechanism": "CAKE Buyback & Burn",
-      "amount_usd": 1018500,
+      "amount_usd": 2881646,
       "period": "2025-01",
       "days_with_data": 31,
       "source": {
@@ -1046,7 +1046,7 @@
       "date": "2026-05-01",
       "type": "aggregate",
       "mechanism": "CAKE Buyback & Burn",
-      "amount_usd": 73486,
+      "amount_usd": 108217,
       "period": "2026-05",
       "days_with_data": 2,
       "source": {
@@ -1060,10 +1060,10 @@
     }
   ],
   "summary": {
-    "total_tev_usd": 842817249,
-    "total_30d_usd": 2451655,
+    "total_tev_usd": 850765289,
+    "total_30d_usd": 2416051,
     "by_mechanism": {
-      "buyback_burn": 842817249
+      "buyback_burn": 850765289
     },
     "by_period": {
       "2021-Q2": 144430719,
@@ -1079,14 +1079,14 @@
       "2023-Q4": 6633914,
       "2024-Q1": 18045932,
       "2024-Q2": 7031095,
-      "2024-Q3": 4916773,
-      "2024-Q4": 17832592,
-      "2025-Q1": 18496305,
+      "2024-Q3": 5328225,
+      "2024-Q4": 23471303,
+      "2025-Q1": 20359451,
       "2025-Q2": 18918263,
       "2025-Q3": 37147314,
       "2025-Q4": 19862552,
       "2026-Q1": 7813529,
-      "2026-Q2": 2555699
+      "2026-Q2": 2590430
     }
   }
 }
