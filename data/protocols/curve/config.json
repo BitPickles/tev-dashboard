@@ -154,7 +154,7 @@
     "market_cap_usd": 354900834.7210953,
     "vecrv_tvl_usd": 193755056.8125176,
     "crv_locked": 855952221.7179456,
-    "calculation_date": "2026-05-04",
+    "calculation_date": "2026-05-05",
     "sources": [
       {
         "name": "链上 Community Fund Treasury × 9 推算",
@@ -178,12 +178,12 @@
     ],
     "validation": {
       "method": "Community Fund Treasury crvUSD inflow × 9 (FeeAllocator 90/10)",
-      "crv_locked_in_vecrv": 855874727.658788,
-      "vecrv_tvl_usd": 201510569.37889567,
+      "crv_locked_in_vecrv": 855874476.1618593,
+      "vecrv_tvl_usd": 201510510.16545278,
       "lock_ratio_pct": 56.8,
       "yield_vecrv_only_7d": 3.16,
       "yield_vecrv_only_30d": 2.68,
-      "yield_vecrv_only_90d": 3.71,
+      "yield_vecrv_only_90d": 2.76,
       "yield_vecrv_only_365d": 4.14,
       "caveats": [
         "veCRV TEV 是反推: 直接观察 Community Fund Treasury (10%) crvUSD 入金 × 9 = 90% veCRV 分配",
@@ -213,13 +213,13 @@
     "trailing_365d_tev_usd": 8348202,
     "trailing_30d_tev_usd": 721543.5833333334,
     "trailing_7d_revenue_usd": 122175,
-    "trailing_90d_revenue_usd": 1844023,
+    "trailing_90d_revenue_usd": 1369016,
     "tev_yield_7d_ann": 1.8,
     "tev_yield_30d_ann": 1.52,
-    "tev_yield_90d_ann": 2.11,
+    "tev_yield_90d_ann": 1.56,
     "earning_yield_7d_ann": 1.8,
     "earning_yield_30d_ann": 1.52,
-    "earning_yield_90d_ann": 2.11
+    "earning_yield_90d_ann": 1.56
   },
   "tev_yield_percent": 2.35,
   "calc_pipeline": [
