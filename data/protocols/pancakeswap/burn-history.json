@@ -1,9 +1,9 @@
 {
   "protocol": "pancakeswap",
   "method": "snapshot diff (totalSupply - dead) for true net deflation",
-  "updated_at": "2026-05-06T01:12:24.029678Z",
-  "cake_price_usd": 1.51,
-  "market_cap_usd": 494224526.033925,
+  "updated_at": "2026-05-06T13:13:03.199263Z",
+  "cake_price_usd": 1.58,
+  "market_cap_usd": 519419928.76431274,
   "circulating_now": 345180182.4756732,
   "snapshots": [
     {
@@ -13,66 +13,9 @@
       "totalSupply": 4204780607.7510514,
       "deadBalance": 3859600425.275378,
       "circulating": 345180182.4756732
-    },
-    {
-      "days_ago": 7,
-      "date": "2026-04-29",
-      "block": 95272366,
-      "totalSupply": 4146390759.75,
-      "deadBalance": 3800775316.26,
-      "circulating": 345615443.49
-    },
-    {
-      "days_ago": 30,
-      "date": "2026-04-06",
-      "block": 90862627,
-      "totalSupply": 3924427127.75,
-      "deadBalance": 3563475767.25,
-      "circulating": 360951360.5
-    },
-    {
-      "days_ago": 90,
-      "date": "2026-02-05",
-      "block": 79351983,
-      "totalSupply": 3436583463.75,
-      "deadBalance": 3084403627.2,
-      "circulating": 352179836.55
-    },
-    {
-      "days_ago": 365,
-      "date": "2025-05-06",
-      "block": 49167247,
-      "totalSupply": 2131264987.75,
-      "deadBalance": 1754057767.27,
-      "circulating": 377207220.48
     }
   ],
-  "net_burns": {
-    "7": {
-      "net_cake": 435261,
-      "usd": 657244,
-      "annualized_usd": 34270587,
-      "yield_pct": 6.93
-    },
-    "30": {
-      "net_cake": 15771178,
-      "usd": 23814479,
-      "annualized_usd": 289742826,
-      "yield_pct": 58.63
-    },
-    "90": {
-      "net_cake": 6999654,
-      "usd": 10569478,
-      "annualized_usd": 42865104,
-      "yield_pct": 8.67
-    },
-    "365": {
-      "net_cake": 32027038,
-      "usd": 48360827,
-      "annualized_usd": 48360827,
-      "yield_pct": 9.79
-    }
-  },
+  "net_burns": {},
   "data_sources": [
     "1rpc.io/bnb (BSC archive eth_call)",
     "Moralis dateToBlock",
