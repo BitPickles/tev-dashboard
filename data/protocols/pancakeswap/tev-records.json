@@ -1,6 +1,6 @@
 {
   "protocol": "pancakeswap",
-  "updated_at": "2026-05-05T13:15:24.301Z",
+  "updated_at": "2026-05-06T01:14:55.808Z",
   "data_source": "DefiLlama API (dailyHoldersRevenue)",
   "data_source_url": "https://api.llama.fi/summary/fees/pancakeswap?dataType=dailyHoldersRevenue",
   "records": [
@@ -519,7 +519,7 @@
       "date": "2023-10-01",
       "type": "aggregate",
       "mechanism": "CAKE Buyback & Burn",
-      "amount_usd": 1628801,
+      "amount_usd": 1659130,
       "period": "2023-10",
       "days_with_data": 31,
       "source": {
@@ -536,7 +536,7 @@
       "date": "2023-11-01",
       "type": "aggregate",
       "mechanism": "CAKE Buyback & Burn",
-      "amount_usd": 2435455,
+      "amount_usd": 3440529,
       "period": "2023-11",
       "days_with_data": 30,
       "source": {
@@ -553,7 +553,7 @@
       "date": "2023-12-01",
       "type": "aggregate",
       "mechanism": "CAKE Buyback & Burn",
-      "amount_usd": 2569658,
+      "amount_usd": 3869903,
       "period": "2023-12",
       "days_with_data": 31,
       "source": {
@@ -1046,7 +1046,7 @@
       "date": "2026-05-01",
       "type": "aggregate",
       "mechanism": "CAKE Buyback & Burn",
-      "amount_usd": 361759,
+      "amount_usd": 405634,
       "period": "2026-05",
       "days_with_data": 5,
       "source": {
@@ -1060,10 +1060,10 @@
     }
   ],
   "summary": {
-    "total_tev_usd": 863373701,
-    "total_30d_usd": 2472948,
+    "total_tev_usd": 865753224,
+    "total_30d_usd": 2443915,
     "by_mechanism": {
-      "buyback_burn": 863373701
+      "buyback_burn": 865753224
     },
     "by_period": {
       "2021-Q2": 144430719,
@@ -1076,7 +1076,7 @@
       "2023-Q1": 12266118,
       "2023-Q2": 14824401,
       "2023-Q3": 7517138,
-      "2023-Q4": 6633914,
+      "2023-Q4": 8969562,
       "2024-Q1": 23609520,
       "2024-Q2": 11110764,
       "2024-Q3": 8039838,
@@ -1086,7 +1086,7 @@
       "2025-Q3": 37147314,
       "2025-Q4": 19862552,
       "2026-Q1": 7813529,
-      "2026-Q2": 2843972
+      "2026-Q2": 2887847
     }
   }
 }
