@@ -130,9 +130,9 @@
   "last_updated": "2026-04-24",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 0.55,
-    "market_cap_usd": 2212324695.9653144,
-    "calculation_date": "2026-05-06",
+    "tev_yield_percent": 0.56,
+    "market_cap_usd": 2163868487.155113,
+    "calculation_date": "2026-05-07",
     "sources": [
       {
         "name": "On-chain Firepit burns",
@@ -146,17 +146,17 @@
     "last_updated": "2026-03-27",
     "validation": {
       "method": "A 口径：365d UNI 转入 0xdead（链上）减去 >=10M UNI 一次性事件",
-      "burn_7d_uni": 138000,
-      "burn_30d_uni": 814000,
-      "burn_90d_uni": 2654000,
-      "burn_365d_uni": 3496003,
+      "burn_7d_uni": 164000,
+      "burn_30d_uni": 786000,
+      "burn_90d_uni": 2608000,
+      "burn_365d_uni": 3530003,
       "retro_events_count": 1,
       "retro_total_uni": 100000000,
-      "uni_price_usd": 3.49,
-      "data_days": 132,
+      "uni_price_usd": 3.42,
+      "data_days": 133,
       "data_range": {
         "start": "2025-06-07",
-        "end": "2026-05-06"
+        "end": "2026-05-07"
       }
     }
   },
@@ -190,20 +190,20 @@
     "en": "Firepit burn UNI→0xdead fully on-chain trackable (Etherscan)"
   },
   "tevRatio": 1,
-  "earning_yield_percent": 0.55,
-  "market_cap_usd": 2212324695.9653144,
-  "tev_yield_percent": 0.55,
+  "earning_yield_percent": 0.56,
+  "market_cap_usd": 2163868487.155113,
+  "tev_yield_percent": 0.56,
   "metrics": {
-    "trailing_7d_revenue_usd": 481880,
-    "trailing_30d_revenue_usd": 2842395,
-    "trailing_90d_revenue_usd": 9267465,
-    "tev_yield_7d_ann": 1.14,
-    "tev_yield_30d_ann": 1.56,
-    "tev_yield_90d_ann": 1.7,
-    "earning_yield_7d_ann": 1.14,
-    "earning_yield_30d_ann": 1.56,
-    "earning_yield_90d_ann": 1.7,
-    "trailing_365d_revenue_usd": 12207644
+    "trailing_7d_revenue_usd": 560126,
+    "trailing_30d_revenue_usd": 2684507,
+    "trailing_90d_revenue_usd": 8907372,
+    "tev_yield_7d_ann": 1.35,
+    "tev_yield_30d_ann": 1.51,
+    "tev_yield_90d_ann": 1.67,
+    "earning_yield_7d_ann": 1.35,
+    "earning_yield_30d_ann": 1.51,
+    "earning_yield_90d_ann": 1.67,
+    "trailing_365d_revenue_usd": 12056386
   },
   "calc_pipeline": [
     {
