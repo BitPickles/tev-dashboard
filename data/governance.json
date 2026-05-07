@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-05-07T01:07:18.878363+00:00",
-  "total": 238,
+  "updated_at": "2026-05-07T13:07:12.963666+00:00",
+  "total": 239,
   "active_count": 35,
-  "passed_count": 203,
+  "passed_count": 204,
   "tev_related": 60,
   "monitored_protocols": 19,
   "protocols_meta": {
@@ -130,6 +130,20 @@
     }
   },
   "proposals": [
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[ARFC] Renew LlamaRisk as Risk Service Provider - epoch 4",
+      "status": "active",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0x139144f55e87579003f5f9ed53fc4b87bd0c7312fc9c356e5e4e164baa3f8077",
+      "created": 1778067382,
+      "end": 1778412982,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "It has been one year since LlamaRisk’s last renewal. LlamaRisk submits this proposal to renew its role as Aave’s Risk Service Provider.",
+      "summary_zh": "自上次LlamaRisk续约以来已满一年。LlamaRisk提交此提案，续任Aave风险管理服务商。",
+      "analysis_zh": ""
+    },
     {
       "source": "Snapshot",
       "protocol": "Aave",
@@ -2679,7 +2693,7 @@
       "source": "dYdX Cosmos",
       "protocol": "dYdX",
       "title": "dYdX Surge Program - Season 13 Distribution",
-      "status": "active",
+      "status": "passed",
       "link": "https://www.mintscan.io/dydx/proposals/383",
       "created": "2026-05-04T09:13:32.025105605Z",
       "end": "2026-05-07T09:13:32.025105605Z",
