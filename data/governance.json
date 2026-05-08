@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-05-08T01:07:10.286196+00:00",
-  "total": 239,
-  "active_count": 34,
+  "updated_at": "2026-05-08T13:07:16.428640+00:00",
+  "total": 238,
+  "active_count": 33,
   "passed_count": 205,
-  "tev_related": 60,
+  "tev_related": 59,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -448,7 +448,7 @@
       "source": "Snapshot",
       "protocol": "Uniswap",
       "title": "Return 12.5M Delegated Tokens to the Governance Timelock",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0xd41b2db93c0348e9061bf786dfcb610d8f35e8447f2e90b37b8f30a9b1a3091e",
       "created": 1777813047,
       "end": 1778245047,
@@ -666,22 +666,6 @@
       "summary_en": "passing. Post launch, Oku will continue to improve the V4 interface and iterate based on feedback.",
       "summary_zh": "支持 Oku 团队开发 Uniswap V4 前端界面和 Unichain 生态工具。通过后 Oku 将持续优化 V4 界面并根据反馈迭代。",
       "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Uniswap",
-      "title": "[Temp Check/Revised] Treasury Delegation Round 2",
-      "status": "passed",
-      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x46fef087a43555e156db287d370151a76e19e1e2cd7d36f442409987f93d4215",
-      "created": 1745511662,
-      "end": 1745943662,
-      "tev_related": true,
-      "tev_keywords": [
-        "treasury"
-      ],
-      "summary_en": "We propose allocating up to 15 million UNI of total amount as the treasury delegation, distributing into selected delegates.",
-      "summary_zh": "提议分配最多 1500 万 UNI 作为国库委托总量，分配给选定的委托人以增强治理参与度和可投票供应。",
-      "analysis_zh": "Uniswap 拟委托 1500 万 UNI 助力代表，治理格局或迎结构性优化。\n\nUniswap DAO 推出国库委托第二轮提案，计划分配高达 1500 万 UNI 给选定的代表，旨在打破治理僵局。相比初版，此次修订版将总额缩减并引入 Election Snapshot 机制筛选“杰出”代表，显示出对治理权力分配的审慎态度。虽然短期委托期限限制了代表的长期控制权，但承诺在 Unistaker 实施等重大变局时重新评估，体现了灵活应变的治理智慧。此举若能落实，将有效激活沉睡的治理代币，提升决策效率，但需警惕大户通过委托过度集中投票权的风险。"
     },
     {
       "source": "Snapshot",
@@ -2840,6 +2824,20 @@
     {
       "source": "GitHub BEP",
       "protocol": "BNB Chain",
+      "title": "docs: add BEP-677 to README table",
+      "status": "passed",
+      "link": "https://github.com/bnb-chain/BEPs/pull/690",
+      "created": "2026-05-08T09:56:35",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Add BEP-677 (Implement EIP-8056 Scaled UI Amount) to the BEPs list in README.md.",
+      "summary_zh": "提案：BNB Chain\n标题：docs：将BEP-677添加到README表格\n摘要：将BEP-677（实施EIP-8056缩放UI金额）添加至README.md中的BEP列表。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
       "title": "update mendel bep status",
       "status": "passed",
       "link": "https://github.com/bnb-chain/BEPs/pull/688",
@@ -2961,20 +2959,6 @@
       "tev_keywords": [],
       "summary_en": "improve bep-675 analysis on performance",
       "summary_zh": "Binance Smart Chain治理提案：feat: 优化BEP-675性能分析\n摘要：提升BEP-675性能分析质量",
-      "analysis_zh": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "introduce BEPs in Pasteur",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/679",
-      "created": "2026-04-16T10:17:36",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "introduce BEPs in Pasteur",
-      "summary_zh": "引入 Pasteur 协议中的 BEPs（币安智能链治理提案）",
       "analysis_zh": ""
     },
     {
