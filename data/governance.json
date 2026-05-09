@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-05-08T13:07:16.428640+00:00",
-  "total": 238,
-  "active_count": 33,
-  "passed_count": 205,
+  "updated_at": "2026-05-09T01:07:10.790852+00:00",
+  "total": 239,
+  "active_count": 35,
+  "passed_count": 204,
   "tev_related": 59,
   "monitored_protocols": 19,
   "protocols_meta": {
@@ -1809,6 +1809,20 @@
     {
       "source": "Snapshot",
       "protocol": "Compound",
+      "title": "Compound Contribution to DeFi United Recovery Effort (Snapshot 2)",
+      "status": "active",
+      "link": "https://snapshot.org/#/comp-vote.eth/proposal/0xc0de358dd34845186ac2a4636a06a20b4a331b427099808e46b37473ddd1e8aa",
+      "created": 1778253834,
+      "end": 1778472000,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Compound Contribution to DeFi United Recovery Effort (Snapshot 2)",
+      "summary_zh": "Compound 对 DeFi 联合复苏努力（快照 2）的贡献",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Compound",
       "title": "Should Compound Contribute to the DeFi United Recovery Effort?",
       "status": "passed",
       "link": "https://snapshot.org/#/comp-vote.eth/proposal/0xd71e399d706e3346c3269805496f2e2fa986be9873026e8c27c81a863ba77da2",
@@ -2824,6 +2838,20 @@
     {
       "source": "GitHub BEP",
       "protocol": "BNB Chain",
+      "title": "BAP : Token Name Registry Standard, UNIQUE Registry",
+      "status": "active",
+      "link": "https://github.com/bnb-chain/BEPs/pull/691",
+      "created": "2026-05-08T16:35:24",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Submitting UNIQUE Registry as a BNB Application Proposal. Contract live since April 18, 2026. Following a conversation with the BNBChain BD team who suggested this path.",
+      "summary_zh": "提交 UNIQUE 注册系统作为 BNB 应用提案。合约自 2026 年 4 月 18 日起运行。经与 BNBChain BD 团队沟通建议此路径。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
       "title": "docs: add BEP-677 to README table",
       "status": "passed",
       "link": "https://github.com/bnb-chain/BEPs/pull/690",
@@ -2945,20 +2973,6 @@
       "tev_keywords": [],
       "summary_en": "BAP-578 currently provides interface-level action semantics(`executeAction`), but lacks implementation-level security constraints for multi-user shared execution, making safe interoperability difficult in practice.",
       "summary_zh": "BAP-578定义了`executeAction`接口语义，但缺少多用户共享执行的安全约束，实际应用中安全互操作性困难。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "feat: add improve bep-675 perforamce analysiså",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/680",
-      "created": "2026-04-21T04:29:48",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "improve bep-675 analysis on performance",
-      "summary_zh": "Binance Smart Chain治理提案：feat: 优化BEP-675性能分析\n摘要：提升BEP-675性能分析质量",
       "analysis_zh": ""
     },
     {
