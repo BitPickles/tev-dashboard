@@ -131,7 +131,7 @@
   "tev_data": {
     "has_tev": true,
     "tev_yield_percent": 0.55,
-    "market_cap_usd": 2364760360.638161,
+    "market_cap_usd": 2558245669.3579154,
     "calculation_date": "2026-05-10",
     "sources": [
       {
@@ -146,13 +146,13 @@
     "last_updated": "2026-03-27",
     "validation": {
       "method": "A 口径：365d UNI 转入 0xdead（链上）减去 >=10M UNI 一次性事件",
-      "burn_7d_uni": 114000,
-      "burn_30d_uni": 636000,
-      "burn_90d_uni": 2490000,
-      "burn_365d_uni": 3504003,
+      "burn_7d_uni": 106000,
+      "burn_30d_uni": 628000,
+      "burn_90d_uni": 2482000,
+      "burn_365d_uni": 3496003,
       "retro_events_count": 1,
       "retro_total_uni": 100000000,
-      "uni_price_usd": 3.73,
+      "uni_price_usd": 4.04,
       "data_days": 136,
       "data_range": {
         "start": "2025-06-07",
@@ -191,19 +191,19 @@
   },
   "tevRatio": 1,
   "earning_yield_percent": 0.55,
-  "market_cap_usd": 2364760360.638161,
+  "market_cap_usd": 2558245669.3579154,
   "tev_yield_percent": 0.55,
   "metrics": {
-    "trailing_7d_revenue_usd": 425504,
-    "trailing_30d_revenue_usd": 2373862,
-    "trailing_90d_revenue_usd": 9293892,
-    "tev_yield_7d_ann": 0.94,
-    "tev_yield_30d_ann": 1.22,
+    "trailing_7d_revenue_usd": 428015,
+    "trailing_30d_revenue_usd": 2535789,
+    "trailing_90d_revenue_usd": 10022018,
+    "tev_yield_7d_ann": 0.87,
+    "tev_yield_30d_ann": 1.21,
     "tev_yield_90d_ann": 1.59,
-    "earning_yield_7d_ann": 0.94,
-    "earning_yield_30d_ann": 1.22,
+    "earning_yield_7d_ann": 0.87,
+    "earning_yield_30d_ann": 1.21,
     "earning_yield_90d_ann": 1.59,
-    "trailing_365d_revenue_usd": 13078646
+    "trailing_365d_revenue_usd": 14116442
   },
   "calc_pipeline": [
     {
