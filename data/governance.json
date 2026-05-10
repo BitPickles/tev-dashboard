@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-05-10T01:07:05.746634+00:00",
-  "total": 238,
-  "active_count": 34,
+  "updated_at": "2026-05-10T13:08:30.294756+00:00",
+  "total": 237,
+  "active_count": 33,
   "passed_count": 204,
   "tev_related": 59,
   "monitored_protocols": 19,
@@ -134,7 +134,7 @@
       "source": "Snapshot",
       "protocol": "Aave",
       "title": "[ARFC] Renew LlamaRisk as Risk Service Provider - epoch 4",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/aavedao.eth/proposal/0x139144f55e87579003f5f9ed53fc4b87bd0c7312fc9c356e5e4e164baa3f8077",
       "created": 1778067382,
       "end": 1778412982,
@@ -414,20 +414,6 @@
       "tev_keywords": [],
       "summary_en": "This ARFC proposes the deployment of an Aave v3 Instance on X Layer.",
       "summary_zh": "本 ARFC 提案建议在 X Layer（OKX 生态 L2）上部署 Aave v3 借贷实例，扩展协议的多链覆盖。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Aave",
-      "title": "[TEMP CHECK] Deploy Aave Protocol on Monad",
-      "status": "passed",
-      "link": "https://snapshot.org/#/aavedao.eth/proposal/0x9276d5177f3f043f3becefd07668441a684329af1eaaf2113d96f7c8608a7c8d",
-      "created": 1772452098,
-      "end": 1772797698,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "This TEMP CHECK seeks the community’s input on deploying the Aave Protocol on Monad, a fully EVM-compatible, high-throughput network well-suited to supporting high-frequency DeFi applications.",
-      "summary_zh": "温度检查提案，征求社区对在 Monad 上部署 Aave 协议的意见。Monad 是完全 EVM 兼容的高吞吐量 L1 网络，适合支持高频 DeFi 应用场景。",
       "analysis_zh": ""
     },
     {
