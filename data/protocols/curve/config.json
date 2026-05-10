@@ -148,13 +148,13 @@
   "last_updated": "2026-04-26",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 2.23,
+    "tev_yield_percent": 2.24,
     "tev_yield_vecrv_only_percent": 4.25,
     "annual_tev_usd": 8411409,
-    "market_cap_usd": 376474668.755491,
+    "market_cap_usd": 376316322.83405435,
     "vecrv_tvl_usd": 193755056.8125176,
     "crv_locked": 855952221.7179456,
-    "calculation_date": "2026-05-09",
+    "calculation_date": "2026-05-10",
     "sources": [
       {
         "name": "链上 Community Fund Treasury × 9 推算",
@@ -178,13 +178,13 @@
     ],
     "validation": {
       "method": "Community Fund Treasury crvUSD inflow × 9 (FeeAllocator 90/10)",
-      "crv_locked_in_vecrv": 855626812.4890542,
-      "vecrv_tvl_usd": 213113537.0670862,
-      "lock_ratio_pct": 56.6,
+      "crv_locked_in_vecrv": 855673332.1503993,
+      "vecrv_tvl_usd": 212673328.339321,
+      "lock_ratio_pct": 56.5,
       "yield_vecrv_only_7d": 1.55,
       "yield_vecrv_only_30d": 2.52,
       "yield_vecrv_only_90d": 2.73,
-      "yield_vecrv_only_365d": 3.95,
+      "yield_vecrv_only_365d": 3.96,
       "caveats": [
         "veCRV TEV 是反推: 直接观察 Community Fund Treasury (10%) crvUSD 入金 × 9 = 90% veCRV 分配",
         "假设 FeeAllocator 90/10 比例不变（治理可改）",
@@ -200,8 +200,8 @@
     "en": "Treasury inflow + veCRV lock amount both fully on-chain, FeeAllocator 90/10 governance-documented"
   },
   "tevRatio": 0.9,
-  "earning_yield_percent": 2.23,
-  "market_cap_usd": 376474668.755491,
+  "earning_yield_percent": 2.24,
+  "market_cap_usd": 376316322.83405435,
   "metrics": {
     "trailing_365d_fees_usd": 55189562,
     "trailing_365d_revenue_usd": 8411409,
@@ -209,7 +209,7 @@
     "trailing_30d_fees_usd": 4978284,
     "trailing_30d_revenue_usd": 441021,
     "trailing_30d_holders_revenue_usd": 691740,
-    "current_market_cap_usd": 376474668.755491,
+    "current_market_cap_usd": 376316322.83405435,
     "trailing_365d_tev_usd": 8411409,
     "trailing_30d_tev_usd": 721543.5833333334,
     "trailing_7d_revenue_usd": 63208,
@@ -221,7 +221,7 @@
     "earning_yield_30d_ann": 1.43,
     "earning_yield_90d_ann": 1.54
   },
-  "tev_yield_percent": 2.23,
+  "tev_yield_percent": 2.24,
   "calc_pipeline": [
     {
       "step": 1,
