@@ -422,14 +422,14 @@
   "tev_data": {
     "has_tev": true,
     "tev_yield_percent": 11.27,
-    "calculation_date": "2026-05-10",
+    "calculation_date": "2026-05-11",
     "methodology": "Auto-Burn（短周期=近4季USD累加；365d=近4季BNB×当前价）+ BEP-95（按窗口从日时间序列求和）+ asBNB APY。BEP-95 现已真正波动——数据源：Dune Analytics bnb.traces + 每日 BSC RPC 累积。",
     "validation": {
       "method": "Auto-Burn（短周期=近4季USD累加；365d=近4季BNB×当前价）+ BEP-95（按窗口从日时间序列计算）+ asBNB APY (Aster)",
       "burn_apy_percent": 4.42,
       "asbnb_apy_percent": 6.87,
       "total_apy_percent": 11.29,
-      "burn_source": "Auto-Burn 近4季 5,977,992 BNB (历史$4.49B / 当前价$3.84B); BEP-95 423天数据, 7/30/90/365d = 352/1610/4561/26446 BNB",
+      "burn_source": "Auto-Burn 近4季 5,977,992 BNB (历史$4.49B / 当前价$3.88B); BEP-95 424天数据, 7/30/90/365d = 325/1593/4544/26415 BNB",
       "asbnb_source": "Aster asBNB (Staking + Launchpool/HODLer/Megadrop)",
       "asbnb_url": "https://www.asterdex.com/en/earn/astoken?token=slisBNB",
       "burn_data_url": "https://www.bnbburn.info/",
@@ -438,8 +438,8 @@
       "note": "Burn 通过链上黑洞地址余额验证；asBNB 通过 Aster 官方数据（含 Staking + Launchpool/HODLer/Megadrop，不含 Burn）",
       "total_annual_burn_bnb": 6025469,
       "bep95_annual_bnb": 37576,
-      "bnb_price_usd": 641.87,
-      "market_cap_usd": 87523431625.4598,
+      "bnb_price_usd": 649.29,
+      "market_cap_usd": 88536041951.79527,
       "circulating_supply": 136357344.28,
       "burn_apy_short_percent": 5.2,
       "burn_apy_annual_percent": 4.42,
@@ -449,19 +449,19 @@
       "last_burn_date": "2026-04-15",
       "recent_4q_burn_bnb": 5977992,
       "recent_4q_burn_usd_historical": 4494755575,
-      "recent_4q_burn_usd_current": 3837082661,
-      "tev_yield_7d_percent": 12.02,
-      "tev_yield_30d_percent": 12.02,
-      "tev_yield_90d_percent": 12.02,
+      "recent_4q_burn_usd_current": 3881476139,
+      "tev_yield_7d_percent": 11.96,
+      "tev_yield_30d_percent": 11.96,
+      "tev_yield_90d_percent": 11.96,
       "tev_yield_365d_percent": 11.27,
-      "bep95_7d_bnb": 352.22,
-      "bep95_30d_bnb": 1609.52,
-      "bep95_90d_bnb": 4561.31,
-      "bep95_365d_bnb": 26446.25,
-      "bep95_data_days": 423,
+      "bep95_7d_bnb": 324.99,
+      "bep95_30d_bnb": 1593.49,
+      "bep95_90d_bnb": 4544.24,
+      "bep95_365d_bnb": 26414.69,
+      "bep95_data_days": 424,
       "bep95_data_range": {
         "start": "2025-03-14",
-        "end": "2026-05-10"
+        "end": "2026-05-11"
       }
     },
     "sources": [
@@ -511,7 +511,7 @@
       "slisBNB 仅含 Staking 收益，不适合作为 BNB 全部 TEV 的 proxy",
       "CEX 财务不公开，Holder Perks 部分依赖 Aster 聚合数据"
     ],
-    "market_cap_usd": 87523431625.4598
+    "market_cap_usd": 88536041951.79527
   },
   "confidence": "high",
   "data_sources": [
@@ -591,15 +591,15 @@
   "tevRatio": null,
   "tevRatioNote": "BNB 无 fee 分润机制，TEV 来自供给收缩（Auto-Burn + BEP-95）+ 链上质押收益（asBNB），不适用『分配比例』概念",
   "earning_yield_percent": 6.89,
-  "market_cap_usd": 87523431625.4598,
+  "market_cap_usd": 88536041951.79527,
   "tev_yield_percent": 11.27,
   "metrics": {
     "trailing_7d_revenue_usd": 265445,
     "trailing_30d_revenue_usd": 842118,
     "trailing_90d_revenue_usd": 3364197,
-    "tev_yield_7d_ann": 12.02,
-    "tev_yield_30d_ann": 12.02,
-    "tev_yield_90d_ann": 12.02,
+    "tev_yield_7d_ann": 11.96,
+    "tev_yield_30d_ann": 11.96,
+    "tev_yield_90d_ann": 11.96,
     "earning_yield_7d_ann": 6.88,
     "earning_yield_30d_ann": 6.88,
     "earning_yield_90d_ann": 6.88
