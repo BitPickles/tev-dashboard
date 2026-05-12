@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-05-11T13:07:17.155408+00:00",
-  "total": 237,
-  "active_count": 32,
-  "passed_count": 205,
-  "tev_related": 59,
+  "updated_at": "2026-05-12T01:08:05.991934+00:00",
+  "total": 242,
+  "active_count": 38,
+  "passed_count": 204,
+  "tev_related": 60,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -1229,6 +1229,78 @@
       "tev_keywords": [],
       "summary_en": "Here’s a quick recap of veCAKE’s utility:.",
       "summary_zh": "提议在 Base 链上线 veCAKE 功能，扩展 PancakeSwap 跨链治理覆盖。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Lido",
+      "title": "Adopt the Node Operator Type Assessment Framework for CMv2",
+      "status": "active",
+      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0x2b221847bae789551593115be9a364db4c9a478056d6394b1bef7728790258ee",
+      "created": 1778519597,
+      "end": 1779120000,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "This proposal seeks DAO approval for the Node Operator Type Assessment Framework for Curated Module v2 (CMv2). The framework introduces six Node Operator types: Professional, Professional Trusted, Public Good, Extra Effort, Decentralization, and an a",
+      "summary_zh": "Lido协议治理提案摘要：\n本提案申请DAO批准Curated Module v2（CMv2）的节点运营商类型评估框架。框架包含六种节点运营商类型：专业、专业信任、公共利益、额外努力、去中心化和FLUID。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Lido",
+      "title": "NEST: Automated LDO Buyback and Liquidity Provisioning",
+      "status": "active",
+      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0x022e901a6368573d18b150eecda563dd2ee17ad2aa6a0ef9772151cc7ba55187",
+      "created": 1778517254,
+      "end": 1779120000,
+      "tev_related": true,
+      "tev_keywords": [
+        "buyback",
+        "revenue"
+      ],
+      "summary_en": "This proposal seeks DAO approval for the final design and implementation of NEST — a rule-based mechanism that creates an on-chain link between Lido protocol performance and LDO. If staking revenue exceeds an operating baseline, NEST can convert a bo",
+      "summary_zh": "提案：Lido\n标题：NEST：自动化的LDO回购和流动性提供\n摘要：本提案寻求DAO批准NEST的最终设计和实施——这是一种基于规则的机制，在Lido协议表现和LDO之间建立链上联系。若质押收益超过运营基准，NEST可将部分收益转换为LDO。"
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Lido",
+      "title": "Transition from GateSeals to CircuitBreaker",
+      "status": "active",
+      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0x46d8df504c019be2be84a38c8705cd8bdbe4f5f4d2b141d4e8bd3e69af9ef5f3",
+      "created": 1778505523,
+      "end": 1779120000,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "It is proposed to replace GateSeals with CircuitBreaker, a permanent emergency pause contract. Unlike GateSeals, CircuitBreaker does not expire, does not require recurring redeployment, and allows committees to prolong their pause authority over assi",
+      "summary_zh": "提案：Lido\n标题：从GateSeals过渡至CircuitBreaker\n摘要：提议用永久性紧急暂停合约CircuitBreaker替换GateSeals。与GateSeals不同，CircuitBreaker不会过期，无需重复部署，并允许委员会延长暂停权限。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Lido",
+      "title": "Should Pier Two continue in the Curated and SDVT sets following the acquisition by Bitmine Immersion Technologies?",
+      "status": "active",
+      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0x80959462b3026fc118ee9a3d7f46485b335677a2a5a739b3ede2656b7982f8e8",
+      "created": 1778502213,
+      "end": 1779120000,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Allow MAVAN (formerly Pier Two) to continue node operations in Lido on Ethereum.",
+      "summary_zh": "协议：Lido\n标题：在Bitmine Immersion Technologies收购后，Pier Two是否应继续在精选和SDVT集合中运营节点？\n摘要：允许MAVAN（原名Pier Two）在以太坊上的Lido中继续节点运营。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Lido",
+      "title": "Increase Easy Track transfer limits for Liquidity Observation Lab to align with EGG",
+      "status": "active",
+      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0x863859d857c7429a0dcb85a4b324de803e2f66ddd8f50e4c2f04a31c35c6ae6f",
+      "created": 1778501411,
+      "end": 1779120000,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "The Lido Ecosystem Foundation (the \"Foundation\") proposes updating the Easy Track setup for transfers to the Liquidity Observation Lab (LOL) multisig:.",
+      "summary_zh": "协议：Lido\n标题：提高流动性观察实验室Easy Track转账限额以与EGG保持一致\n摘要：Lido生态系统基金会（“基金会”）提议更新流动性观察实验室（LOL）多重签名账户的Easy Track设置。",
       "analysis_zh": ""
     },
     {
@@ -3220,6 +3292,22 @@
     {
       "source": "Sky Polling",
       "protocol": "Sky (MakerDAO)",
+      "title": "Atlas Edit Weekly Cycle Proposal - May 11, 2026",
+      "status": "active",
+      "link": "https://vote.makerdao.com/polling/QmRqCi82",
+      "created": "2026-05-11T16:00:00",
+      "end": "2026-05-14T16:00:00",
+      "tev_related": true,
+      "tev_keywords": [
+        "distribution",
+        "staking reward"
+      ],
+      "summary_en": "This Atlas edit proposal 1) specifies the Agent Termination Process in Root Edit Primitive, 2) defines Synome Documents and the Delegated Authority update process, 3) updates Freezer Multisig configuration for Obex, 4) adds Distribution Reward Instan",
+      "summary_zh": "Sky (MakerDAO) 协议“Atlas 编辑周循环提案 - 2026年5月11日”：明确代理终止流程，定义Synome文档和委托权限更新流程，更新Obex的Freezer多重签名配置，新增分配奖励实例。"
+    },
+    {
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
       "title": "Atlas Edit Weekly Cycle Proposal - May 4, 2026",
       "status": "passed",
       "link": "https://vote.makerdao.com/polling/QmYeBemY",
@@ -3275,22 +3363,6 @@
       ],
       "summary_en": "This Atlas edit proposal 1) updates Grove Liquidity Layer for April 23 spell, 2) adds Pattern Liquidity Layer documentation, 3) transfers Integrator Program responsibility to Operational GovOps, 4) adds Avalanche Asset Recovery Address to Safe Harbor",
       "summary_zh": "提案：Sky（MakerDAO）\n标题：Atlas编辑周循环提案 - 2026年4月13日\n摘要：本提案1）更新Grove流动性层以适应4月23日的咒语，2）添加Pattern流动性层文档，3）将集成器计划责任转移至运营Governing Ops，4）将Avalanche资产恢复地址添加至安全港。"
-    },
-    {
-      "source": "Sky Polling",
-      "protocol": "Sky (MakerDAO)",
-      "title": "Atlas Edit Weekly Cycle Proposal - April 6, 2026",
-      "status": "passed",
-      "link": "https://vote.makerdao.com/polling/QmW61Lnd",
-      "created": "2026-04-06T16:00:00",
-      "end": "2026-04-09T16:00:00",
-      "tev_related": true,
-      "tev_keywords": [
-        "distribution"
-      ],
-      "summary_en": "This Atlas edit proposal 1) introduces a three-stage framework governing allocation of Step 4 capital, 2) raises the target Aggregate Backstop Capital, 3) adds documentation for the Avalanche SkyLink Bridge, 4) adds the Solana Instance Configuration ",
-      "summary_zh": "Sky（MakerDAO）协议“Atlas Edit Weekly Cycle提案-2026年4月6日”：1）引入三阶段框架管理Step 4资本分配；2）提高目标Aggregate Backstop Capital；3）添加Avalanche SkyLink Bridge文档；4）添加Solana实例配置。",
-      "analysis_zh": "Sky 多链扩张与资本框架升级并行，协议防御力与生态版图双向增强。\n\nSky (MakerDAO) 此次 Atlas 更新虽看似繁杂，实则通过引入三阶段资本分配框架并提高 Aggregate Backstop Capital，为 $6.77B 的 TVL 筑牢安全垫。新增 Avalanche SkyLink Bridge 与 Solana Instance Configuration 标志着多链扩张战略的实质性落地，配合 Grove 作为 Pioneer Prime 的部署，协议正积极寻求外部增长增量。尽管当前 6.21% 的 TEV Yield 依赖 Smart Burn Engine 维持，但设置 Maple syrupUSDC 风险敞口上限显示出 DAO 在激进扩张中对风险敞口的精准把控，这种“稳守反击”的策略有助于在 $251.4M 年收入基础上进一步巩固 CDP 龙头地位。"
     },
     {
       "source": "Mantle Forum",
