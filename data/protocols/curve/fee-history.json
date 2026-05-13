@@ -1,12 +1,12 @@
 {
   "protocol": "curve",
   "method": "Community Fund Treasury crvUSD inflow × 9 (FeeAllocator 90/10 比例反推)",
-  "updated_at": "2026-05-12T01:16:03.651510Z",
-  "crv_price_usd": 0.279393,
-  "crv_market_cap_usd": 422157608.7890477,
-  "crv_locked_in_vecrv": 855651630.4277751,
-  "vecrv_tvl_usd": 239063075.9801074,
-  "lock_ratio_pct": 56.6,
+  "updated_at": "2026-05-13T01:15:44.562098Z",
+  "crv_price_usd": 0.281991,
+  "crv_market_cap_usd": 425042465.6036789,
+  "crv_locked_in_vecrv": 855546116.575349,
+  "vecrv_tvl_usd": 241256304.95919922,
+  "lock_ratio_pct": 56.8,
   "addresses": {
     "CRV": "0xD533a949740bb3306d119CC777fa900bA034cd52",
     "veCRV_lock": "0x5f3b5DfEb7B28CDbD7FAba78963EE202a494e2A2",
@@ -283,36 +283,42 @@
       "crvusd_to_treasury": 7023.09,
       "vecrv_inferred_tev": 63207.83,
       "tx_count": 7
+    },
+    {
+      "date": "2026-05-13",
+      "crvusd_to_treasury": 10892.33,
+      "vecrv_inferred_tev": 98031.0,
+      "tx_count": 1
     }
   ],
   "summary": {
     "7d": {
-      "treasury_crvusd": 7023,
-      "vecrv_tev_usd": 63208,
-      "annualized_usd": 3295836,
-      "yield_pct_nominal": 0.78,
-      "yield_pct_vecrv_only": 1.38
+      "treasury_crvusd": 10892,
+      "vecrv_tev_usd": 98031,
+      "annualized_usd": 5111615,
+      "yield_pct_nominal": 1.2,
+      "yield_pct_vecrv_only": 2.12
     },
     "30d": {
-      "treasury_crvusd": 49002,
-      "vecrv_tev_usd": 441021,
-      "annualized_usd": 5365761,
-      "yield_pct_nominal": 1.27,
-      "yield_pct_vecrv_only": 2.24
+      "treasury_crvusd": 59895,
+      "vecrv_tev_usd": 539052,
+      "annualized_usd": 6558471,
+      "yield_pct_nominal": 1.54,
+      "yield_pct_vecrv_only": 2.72
     },
     "90d": {
-      "treasury_crvusd": 123239,
-      "vecrv_tev_usd": 1109155,
-      "annualized_usd": 4498241,
-      "yield_pct_nominal": 1.07,
-      "yield_pct_vecrv_only": 1.88
+      "treasury_crvusd": 134132,
+      "vecrv_tev_usd": 1207186,
+      "annualized_usd": 4895811,
+      "yield_pct_nominal": 1.15,
+      "yield_pct_vecrv_only": 2.03
     },
     "365d": {
-      "treasury_crvusd": 934601,
-      "vecrv_tev_usd": 8411409,
-      "annualized_usd": 8411409,
-      "yield_pct_nominal": 1.99,
-      "yield_pct_vecrv_only": 3.52
+      "treasury_crvusd": 945493,
+      "vecrv_tev_usd": 8509440,
+      "annualized_usd": 8509440,
+      "yield_pct_nominal": 2.0,
+      "yield_pct_vecrv_only": 3.53
     }
   },
   "caveats": [
