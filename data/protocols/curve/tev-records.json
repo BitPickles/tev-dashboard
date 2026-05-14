@@ -1,6 +1,6 @@
 {
   "protocol": "curve",
-  "updated_at": "2026-05-13T13:16:42.943Z",
+  "updated_at": "2026-05-14T01:19:32.286Z",
   "data_source": "DefiLlama API (dailyHoldersRevenue)",
   "data_source_url": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
   "records": [
@@ -349,7 +349,7 @@
       "date": "2023-05-01",
       "type": "aggregate",
       "mechanism": "veCRV Fee Distribution",
-      "amount_usd": 1084496,
+      "amount_usd": 1084725,
       "period": "2023-05",
       "days_with_data": 31,
       "source": {
@@ -366,7 +366,7 @@
       "date": "2023-06-01",
       "type": "aggregate",
       "mechanism": "veCRV Fee Distribution",
-      "amount_usd": 1242345,
+      "amount_usd": 1210899,
       "period": "2023-06",
       "days_with_data": 30,
       "source": {
@@ -383,7 +383,7 @@
       "date": "2023-07-01",
       "type": "aggregate",
       "mechanism": "veCRV Fee Distribution",
-      "amount_usd": 1230047,
+      "amount_usd": 1133931,
       "period": "2023-07",
       "days_with_data": 31,
       "source": {
@@ -400,7 +400,7 @@
       "date": "2023-08-01",
       "type": "aggregate",
       "mechanism": "veCRV Fee Distribution",
-      "amount_usd": 1115645,
+      "amount_usd": 1084301,
       "period": "2023-08",
       "days_with_data": 31,
       "source": {
@@ -417,7 +417,7 @@
       "date": "2023-09-01",
       "type": "aggregate",
       "mechanism": "veCRV Fee Distribution",
-      "amount_usd": 944708,
+      "amount_usd": 889023,
       "period": "2023-09",
       "days_with_data": 30,
       "source": {
@@ -434,7 +434,7 @@
       "date": "2023-10-01",
       "type": "aggregate",
       "mechanism": "veCRV Fee Distribution",
-      "amount_usd": 1828287,
+      "amount_usd": 1611577,
       "period": "2023-10",
       "days_with_data": 31,
       "source": {
@@ -451,7 +451,7 @@
       "date": "2023-11-01",
       "type": "aggregate",
       "mechanism": "veCRV Fee Distribution",
-      "amount_usd": 2022132,
+      "amount_usd": 1727010,
       "period": "2023-11",
       "days_with_data": 30,
       "source": {
@@ -468,7 +468,7 @@
       "date": "2023-12-01",
       "type": "aggregate",
       "mechanism": "veCRV Fee Distribution",
-      "amount_usd": 3752972,
+      "amount_usd": 3347471,
       "period": "2023-12",
       "days_with_data": 31,
       "source": {
@@ -485,7 +485,7 @@
       "date": "2024-01-01",
       "type": "aggregate",
       "mechanism": "veCRV Fee Distribution",
-      "amount_usd": 2501537,
+      "amount_usd": 2563824,
       "period": "2024-01",
       "days_with_data": 31,
       "source": {
@@ -553,7 +553,7 @@
       "date": "2024-05-01",
       "type": "aggregate",
       "mechanism": "veCRV Fee Distribution",
-      "amount_usd": 2088781,
+      "amount_usd": 2171793,
       "period": "2024-05",
       "days_with_data": 31,
       "source": {
@@ -587,7 +587,7 @@
       "date": "2024-07-01",
       "type": "aggregate",
       "mechanism": "veCRV Fee Distribution",
-      "amount_usd": 2453280,
+      "amount_usd": 2584273,
       "period": "2024-07",
       "days_with_data": 31,
       "source": {
@@ -638,7 +638,7 @@
       "date": "2024-10-01",
       "type": "aggregate",
       "mechanism": "veCRV Fee Distribution",
-      "amount_usd": 1075429,
+      "amount_usd": 1074642,
       "period": "2024-10",
       "days_with_data": 31,
       "source": {
@@ -910,7 +910,7 @@
       "date": "2026-02-01",
       "type": "aggregate",
       "mechanism": "veCRV Fee Distribution",
-      "amount_usd": 735630,
+      "amount_usd": 765000,
       "period": "2026-02",
       "days_with_data": 28,
       "source": {
@@ -927,7 +927,7 @@
       "date": "2026-03-01",
       "type": "aggregate",
       "mechanism": "veCRV Fee Distribution",
-      "amount_usd": 405434,
+      "amount_usd": 505239,
       "period": "2026-03",
       "days_with_data": 31,
       "source": {
@@ -961,7 +961,7 @@
       "date": "2026-05-01",
       "type": "aggregate",
       "mechanism": "veCRV Fee Distribution",
-      "amount_usd": 118537,
+      "amount_usd": 121349,
       "period": "2026-05",
       "days_with_data": 13,
       "source": {
@@ -975,10 +975,10 @@
     }
   ],
   "summary": {
-    "total_tev_usd": 156499674,
-    "total_30d_usd": 333848,
+    "total_tev_usd": 155775471,
+    "total_30d_usd": 343996,
     "by_mechanism": {
-      "ve_reward": 156499674
+      "ve_reward": 155775471
     },
     "by_period": {
       "2020-Q4": 202505,
@@ -988,19 +988,19 @@
       "2022-Q3": 5711351,
       "2022-Q4": 5132472,
       "2023-Q1": 5015632,
-      "2023-Q2": 3357512,
-      "2023-Q3": 3290400,
-      "2023-Q4": 7603391,
-      "2024-Q1": 8073676,
-      "2024-Q2": 7427631,
-      "2024-Q3": 4706680,
-      "2024-Q4": 4422375,
+      "2023-Q2": 3326295,
+      "2023-Q3": 3107255,
+      "2023-Q4": 6686058,
+      "2024-Q1": 8135963,
+      "2024-Q2": 7510643,
+      "2024-Q3": 4837673,
+      "2024-Q4": 4421588,
       "2025-Q1": 4205051,
       "2025-Q2": 2957482,
       "2025-Q3": 3966657,
       "2025-Q4": 2519274,
-      "2026-Q1": 2000734,
-      "2026-Q2": 464373
+      "2026-Q1": 2129909,
+      "2026-Q2": 467185
     }
   }
 }
