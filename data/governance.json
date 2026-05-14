@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-14T01:07:42.394598+00:00",
+  "updated_at": "2026-05-14T13:07:55.412196+00:00",
   "total": 244,
   "active_count": 40,
   "passed_count": 204,
@@ -2911,6 +2911,20 @@
     {
       "source": "GitHub BEP",
       "protocol": "BNB Chain",
+      "title": "BAP-692: BNBChain Agentic SDK — Identity, Commerce, Payment, Memory",
+      "status": "active",
+      "link": "https://github.com/bnb-chain/BEPs/pull/692",
+      "created": "2026-05-14T09:29:36",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "BAP-692: BNBChain Agentic SDK — Identity, Commerce, Payment, Memory",
+      "summary_zh": "BAP-692：BNBChain Agentic SDK — 身份、商业、支付、记忆",
+      "analysis_zh": ""
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
       "title": "BAP : Token Name Registry Standard, UNIQUE Registry",
       "status": "active",
       "link": "https://github.com/bnb-chain/BEPs/pull/691",
@@ -3032,20 +3046,6 @@
       "tev_keywords": [],
       "summary_en": "https://github.com/zlacfzy/BEPs/blob/15204dc5b4e7af36fadadbbdaebadd3b4f9889f5/BEPs/BEP-682.md",
       "summary_zh": "Binance智能链（BNB Chain）于2023年2月1日实施BEP-682提案，强制在CometBFT轻节点验证器中实施唯一验证者机制。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "BAP-578 executeAction Defines Interface Semantics but Lacks Security Constraints for Safe Multi-User Interoperability",
-      "status": "active",
-      "link": "https://github.com/bnb-chain/BEPs/issues/681",
-      "created": "2026-04-21T12:00:21",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "BAP-578 currently provides interface-level action semantics(`executeAction`), but lacks implementation-level security constraints for multi-user shared execution, making safe interoperability difficult in practice.",
-      "summary_zh": "BAP-578定义了`executeAction`接口语义，但缺少多用户共享执行的安全约束，实际应用中安全互操作性困难。",
       "analysis_zh": ""
     },
     {
