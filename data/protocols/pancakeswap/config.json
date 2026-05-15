@@ -81,8 +81,8 @@
     "has_tev": true,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "market_cap_usd": 496795257.22233456,
-    "calculation_date": "2026-05-14",
+    "market_cap_usd": 500673219.3556136,
+    "calculation_date": "2026-05-15",
     "sources": [
       {
         "name": "链上 net deflation (totalSupply 增量 - dead 增量)",
@@ -105,7 +105,7 @@
     ],
     "validation": {
       "method": "snapshot diff (totalSupply - dead) for net deflation",
-      "cake_price_usd": 1.52
+      "cake_price_usd": 1.53
     }
   },
   "market_data": {
@@ -126,10 +126,10 @@
   },
   "tevRatio": 1,
   "earning_yield_percent": 0,
-  "market_cap_usd": 496795257.22233456,
+  "market_cap_usd": 500673219.3556136,
   "tev_yield_percent": 0,
   "metrics": {
-    "current_market_cap_usd": 496795257.22233456,
+    "current_market_cap_usd": 500673219.3556136,
     "trailing_365d_revenue_usd": 0,
     "trailing_30d_revenue_usd": 0,
     "trailing_365d_tev_usd": 0,
