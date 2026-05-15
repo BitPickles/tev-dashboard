@@ -1,6 +1,6 @@
 {
   "protocol": "maple",
-  "updated_at": "2026-05-15T01:15:30.696Z",
+  "updated_at": "2026-05-15T13:16:27.610Z",
   "data_source": "DefiLlama API (dailyHoldersRevenue)",
   "data_source_url": "https://api.llama.fi/summary/fees/maple?dataType=dailyHoldersRevenue",
   "records": [
@@ -111,9 +111,9 @@
       "date": "2026-05-01",
       "type": "aggregate",
       "mechanism": "SYRUP Staking Fee Share",
-      "amount_usd": 49861,
+      "amount_usd": 50830,
       "period": "2026-05",
-      "days_with_data": 8,
+      "days_with_data": 9,
       "source": {
         "type": "api",
         "provider": "DefiLlama",
@@ -121,19 +121,19 @@
         "data_type": "dailyHoldersRevenue",
         "methodology": "25% of protocol revenue used to buy back SYRUP tokens from MIP-019 (starting Nov 2025)."
       },
-      "notes": "Monthly aggregate from 8 days of data"
+      "notes": "Monthly aggregate from 9 days of data"
     }
   ],
   "summary": {
-    "total_tev_usd": 1935305,
-    "total_30d_usd": 193741,
+    "total_tev_usd": 1936274,
+    "total_30d_usd": 194710,
     "by_mechanism": {
-      "staking_reward": 1935305
+      "staking_reward": 1936274
     },
     "by_period": {
       "2025-Q4": 615408,
       "2026-Q1": 939549,
-      "2026-Q2": 380348
+      "2026-Q2": 381317
     }
   }
 }
