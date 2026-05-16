@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-05-16T01:07:37.593302+00:00",
-  "total": 244,
-  "active_count": 38,
+  "updated_at": "2026-05-16T13:07:46.227267+00:00",
+  "total": 243,
+  "active_count": 37,
   "passed_count": 206,
   "tev_related": 61,
   "monitored_protocols": 19,
@@ -134,7 +134,7 @@
       "source": "Snapshot",
       "protocol": "Aave",
       "title": "[ARFC] TokenLogic Phase II - Extension",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/aavedao.eth/proposal/0x6c2814dc5da68698105894f1c450c80aa2296243ff737843cf9e869eecd8fa69",
       "created": 1778571594,
       "end": 1778917194,
@@ -415,20 +415,6 @@
       "summary_en": "The publication proposes implementing the AAVE Emission reduction as presented in the Aave DAO Funding Insights forum post.",
       "summary_zh": "提案建议削减 Safety Module 的 AAVE 代币排放量，依据 Aave DAO 资金洞察论坛的分析，通过降低排放减少代币通胀压力。",
       "analysis_zh": "Aave 拟削减 Safety Module 排放，巩固代币净通缩优势。\n\nAave DAO 提议削减 Safety Module 排放，旨在延续当前强劲的净收购态势。数据显示，回购计划不到一年"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Aave",
-      "title": "[ARFC] Deploy Aave v3 on X Layer",
-      "status": "passed",
-      "link": "https://snapshot.org/#/aavedao.eth/proposal/0x251c520f1f1da8287168420fa2d2a73a2eb5342c3c62508553123129dec059b0",
-      "created": 1772470197,
-      "end": 1772815797,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "This ARFC proposes the deployment of an Aave v3 Instance on X Layer.",
-      "summary_zh": "本 ARFC 提案建议在 X Layer（OKX 生态 L2）上部署 Aave v3 借贷实例，扩展协议的多链覆盖。",
-      "analysis_zh": ""
     },
     {
       "source": "Snapshot",
