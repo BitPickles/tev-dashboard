@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-05-16T13:07:46.227267+00:00",
-  "total": 243,
-  "active_count": 37,
+  "updated_at": "2026-05-17T01:07:51.940923+00:00",
+  "total": 244,
+  "active_count": 38,
   "passed_count": 206,
-  "tev_related": 61,
+  "tev_related": 62,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -415,6 +415,21 @@
       "summary_en": "The publication proposes implementing the AAVE Emission reduction as presented in the Aave DAO Funding Insights forum post.",
       "summary_zh": "提案建议削减 Safety Module 的 AAVE 代币排放量，依据 Aave DAO 资金洞察论坛的分析，通过降低排放减少代币通胀压力。",
       "analysis_zh": "Aave 拟削减 Safety Module 排放，巩固代币净通缩优势。\n\nAave DAO 提议削减 Safety Module 排放，旨在延续当前强劲的净收购态势。数据显示，回购计划不到一年"
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Uniswap",
+      "title": "[Temp Check] Protocol Fee Expansion: Three More Chains",
+      "status": "active",
+      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x34954750c83fdbea3d428e387aa7948eecd66d2f76c35f5588c3f1fd1e1f5c4d",
+      "created": 1778952290,
+      "end": 1779384600,
+      "tev_related": true,
+      "tev_keywords": [
+        "fee"
+      ],
+      "summary_en": "continues the protocol fee rollout, following proposals 92, 93, and 94. It uses the expedited governance process approved in UNIfication, where fee parameter update proposals can bypass the RFC stage and go directly to a five-day Snapshot followed by",
+      "summary_zh": "协议：Uniswap\n标题：[体温检测] 协议费用扩展：新增三条链\n摘要：继续推进协议费用实施，继提案92、93和94之后。采用UNIfication中批准的加速治理流程，费用参数更新提案可绕过RFC阶段，直接进入为期五天的Snapshot投票。"
     },
     {
       "source": "Snapshot",
