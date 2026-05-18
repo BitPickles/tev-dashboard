@@ -130,9 +130,9 @@
   "last_updated": "2026-04-24",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 0.56,
-    "market_cap_usd": 2281415127.169932,
-    "calculation_date": "2026-05-17",
+    "tev_yield_percent": 0.57,
+    "market_cap_usd": 2194655141.3657227,
+    "calculation_date": "2026-05-18",
     "sources": [
       {
         "name": "On-chain Firepit burns",
@@ -146,17 +146,17 @@
     "last_updated": "2026-03-27",
     "validation": {
       "method": "A 口径：365d UNI 转入 0xdead（链上）减去 >=10M UNI 一次性事件",
-      "burn_7d_uni": 110000,
-      "burn_30d_uni": 404000,
-      "burn_90d_uni": 2390000,
-      "burn_365d_uni": 3568003,
+      "burn_7d_uni": 124000,
+      "burn_30d_uni": 388000,
+      "burn_90d_uni": 2392000,
+      "burn_365d_uni": 3590003,
       "retro_events_count": 1,
       "retro_total_uni": 100000000,
-      "uni_price_usd": 3.6,
-      "data_days": 143,
+      "uni_price_usd": 3.46,
+      "data_days": 144,
       "data_range": {
         "start": "2025-06-07",
-        "end": "2026-05-17"
+        "end": "2026-05-18"
       }
     }
   },
@@ -190,20 +190,20 @@
     "en": "Firepit burn UNI→0xdead fully on-chain trackable (Etherscan)"
   },
   "tevRatio": 1,
-  "earning_yield_percent": 0.56,
-  "market_cap_usd": 2281415127.169932,
-  "tev_yield_percent": 0.56,
+  "earning_yield_percent": 0.57,
+  "market_cap_usd": 2194655141.3657227,
+  "tev_yield_percent": 0.57,
   "metrics": {
-    "trailing_7d_revenue_usd": 396103,
-    "trailing_30d_revenue_usd": 1454778,
-    "trailing_90d_revenue_usd": 8606238,
-    "tev_yield_7d_ann": 0.91,
-    "tev_yield_30d_ann": 0.78,
+    "trailing_7d_revenue_usd": 429536,
+    "trailing_30d_revenue_usd": 1344031,
+    "trailing_90d_revenue_usd": 8285880,
+    "tev_yield_7d_ann": 1.02,
+    "tev_yield_30d_ann": 0.75,
     "tev_yield_90d_ann": 1.53,
-    "earning_yield_7d_ann": 0.91,
-    "earning_yield_30d_ann": 0.78,
+    "earning_yield_7d_ann": 1.02,
+    "earning_yield_30d_ann": 0.75,
     "earning_yield_90d_ann": 1.53,
-    "trailing_365d_revenue_usd": 12848154
+    "trailing_365d_revenue_usd": 12435759
   },
   "calc_pipeline": [
     {
