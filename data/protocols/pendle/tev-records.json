@@ -1,6 +1,6 @@
 {
   "protocol": "pendle",
-  "updated_at": "2026-05-19T13:17:54.989Z",
+  "updated_at": "2026-05-20T01:18:59.946Z",
   "data_source": "DefiLlama API (dailyHoldersRevenue)",
   "data_source_url": "https://api.llama.fi/summary/fees/pendle?dataType=dailyHoldersRevenue",
   "records": [
@@ -468,7 +468,7 @@
       "date": "2026-01-01",
       "type": "aggregate",
       "mechanism": "vePENDLE Revenue Share",
-      "amount_usd": 906304,
+      "amount_usd": 906299,
       "period": "2026-01",
       "days_with_data": 31,
       "source": {
@@ -485,7 +485,7 @@
       "date": "2026-02-01",
       "type": "aggregate",
       "mechanism": "vePENDLE Revenue Share",
-      "amount_usd": 465477,
+      "amount_usd": 728178,
       "period": "2026-02",
       "days_with_data": 28,
       "source": {
@@ -502,7 +502,7 @@
       "date": "2026-03-01",
       "type": "aggregate",
       "mechanism": "vePENDLE Revenue Share",
-      "amount_usd": 441653,
+      "amount_usd": 468458,
       "period": "2026-03",
       "days_with_data": 31,
       "source": {
@@ -519,7 +519,7 @@
       "date": "2026-04-01",
       "type": "aggregate",
       "mechanism": "vePENDLE Revenue Share",
-      "amount_usd": 610375,
+      "amount_usd": 659716,
       "period": "2026-04",
       "days_with_data": 30,
       "source": {
@@ -536,7 +536,7 @@
       "date": "2026-05-01",
       "type": "aggregate",
       "mechanism": "vePENDLE Revenue Share",
-      "amount_usd": 356260,
+      "amount_usd": 540105,
       "period": "2026-05",
       "days_with_data": 19,
       "source": {
@@ -550,10 +550,10 @@
     }
   ],
   "summary": {
-    "total_tev_usd": 47609005,
-    "total_30d_usd": 625182,
+    "total_tev_usd": 48131692,
+    "total_30d_usd": 824112,
     "by_mechanism": {
-      "ve_reward": 47609005
+      "ve_reward": 48131692
     },
     "by_period": {
       "2023-Q4": 41653,
@@ -565,8 +565,8 @@
       "2025-Q2": 5927682,
       "2025-Q3": 9554969,
       "2025-Q4": 5113143,
-      "2026-Q1": 1813434,
-      "2026-Q2": 966635
+      "2026-Q1": 2102935,
+      "2026-Q2": 1199821
     }
   }
 }
