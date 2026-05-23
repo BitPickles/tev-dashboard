@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-05-22T13:07:38.796624+00:00",
-  "total": 238,
-  "active_count": 32,
+  "updated_at": "2026-05-23T01:07:51.661716+00:00",
+  "total": 239,
+  "active_count": 33,
   "passed_count": 206,
-  "tev_related": 60,
+  "tev_related": 61,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -130,6 +130,21 @@
     }
   },
   "proposals": [
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[ARFC] Establish Aave Rewards Multisig and Initial Incentives Operations Mandate",
+      "status": "active",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0x0e7ae3e764d69c808a7b2f062ede699f51492f6160796fad21d7f8537e6e055e",
+      "created": 1779369936,
+      "end": 1779715536,
+      "tev_related": true,
+      "tev_keywords": [
+        "treasury"
+      ],
+      "summary_en": "This ARFC proposes the creation of a new 3-of-4 rewards operations multisig at rewards.aave.eth to receive, hold, and administer incentive funding provided by third parties for Aave growth campaigns.",
+      "summary_zh": "[ARFC] 在 rewards.aave.eth 建立新的3-of-4奖励操作多重签名，用于接收、持有和管理第三方为Aave增长活动提供的激励资金。"
+    },
     {
       "source": "Snapshot",
       "protocol": "Aave",
