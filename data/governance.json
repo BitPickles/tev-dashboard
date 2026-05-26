@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-05-25T13:07:51.117162+00:00",
-  "total": 239,
-  "active_count": 33,
+  "updated_at": "2026-05-26T01:08:00.538104+00:00",
+  "total": 242,
+  "active_count": 36,
   "passed_count": 206,
-  "tev_related": 61,
+  "tev_related": 59,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -134,7 +134,7 @@
       "source": "Snapshot",
       "protocol": "Aave",
       "title": "[ARFC] Establish Aave Rewards Multisig and Initial Incentives Operations Mandate",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/aavedao.eth/proposal/0x0e7ae3e764d69c808a7b2f062ede699f51492f6160796fad21d7f8537e6e055e",
       "created": 1779369936,
       "end": 1779715536,
@@ -414,22 +414,6 @@
       "summary_en": "Aave Labs proposes launching a dedicated Aave V4 bug bounty program on the Sherlock platform. The objective is to add an always-on security reporting channel for Aave V4, with a triage setup designed to reduce spam and route high-severity reports wit",
       "summary_zh": "Aave Labs 提议在 Sherlock 平台为 Aave V4 启动专属漏洞赏金计划，建立 7×24 安全报告渠道，通过分级筛选减少垃圾报告并优先处理高危漏洞。",
       "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Aave",
-      "title": "[ARFC] Safety Module - Reduce  Emissions",
-      "status": "passed",
-      "link": "https://snapshot.org/#/aavedao.eth/proposal/0xe76461b0936fc892904c1696066b9fa3688e1042078d9c9f06c1a937736a100e",
-      "created": 1772800909,
-      "end": 1773146509,
-      "tev_related": true,
-      "tev_keywords": [
-        "buyback"
-      ],
-      "summary_en": "The publication proposes implementing the AAVE Emission reduction as presented in the Aave DAO Funding Insights forum post.",
-      "summary_zh": "提案建议削减 Safety Module 的 AAVE 代币排放量，依据 Aave DAO 资金洞察论坛的分析，通过降低排放减少代币通胀压力。",
-      "analysis_zh": "Aave 拟削减 Safety Module 排放，巩固代币净通缩优势。\n\nAave DAO 提议削减 Safety Module 排放，旨在延续当前强劲的净收购态势。数据显示，回购计划不到一年"
     },
     {
       "source": "Snapshot",
@@ -2227,6 +2211,62 @@
     {
       "source": "Snapshot",
       "protocol": "Spark",
+      "title": "SAEP-15: Update Spark Prime Artifact Section",
+      "status": "active",
+      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x9f516b585a821f4f66faf028b473181b45c60bb6fc8458464c118b912afeb4ee",
+      "created": 1779725793,
+      "end": 1779984993,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": ">\n> This proposal is submitted by Phoenix Labs in its role as a nested contributor, as defined in section A.6.1.1.1.2.2.2.2.1.2.1.1.1 of the Spark Artifact. The proposal recommends that Spark governance update the Spark Prime Brokerage section of the",
+      "summary_zh": "提案：Spark SAEP-15：更新Spark Prime艺术品部分\n摘要：此提案由Phoenix Labs以其作为Spark艺术品第A.6.1.1.1.2.2.2.1.2.1.1.1节定义的嵌套贡献者角色提交。提案建议Spark治理更新Spark Prime经纪部分，以……",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Spark",
+      "title": "[Ethereum] SparkLend - Update WBTC Oracle to Use Kill Switch",
+      "status": "active",
+      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x36c9bf4683e3afc069605dccc1d7c3e3a2bf753d9e7ee2170650605bf8d9af31",
+      "created": 1779725645,
+      "end": 1779984845,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": ">\n> - WBTC Kill Switch Oracle\n>   - Feed: ChainLink WBTC/BTC\n>   - Address: 0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23\n>   - Threshold: 0.95.",
+      "summary_zh": "协议：Spark\n标题：[以太坊] SparkLend - 更新WBTC Oracle以使用Kill Switch\n摘要：\n- WBTC Kill Switch Oracle\n  - 数据源：ChainLink WBTC/BTC\n  - 地址：0xfdFD9C85aD200c506Cf9e21F1FD8dd01932FBB23\n  - 阈值：0.95",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Spark",
+      "title": "[Ethereum] Spark Liquidity Layer - Update Rate Limits",
+      "status": "active",
+      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0xe09e63d9eb11a7a89cb28801e060443b5a098a262f17171e77f5e33202f0ffdb",
+      "created": 1779725224,
+      "end": 1779984424,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": ">\n> - Anchorage USDC\n>   - maxAmount: 50 million\n>   - slope: 250 million\n> - Uniswap v4 USDT/USDS swap\n>   - maxAmount: 25 million\n>   - slope: 250 million\n>   - maxSlippage: 0.2%\n> - USDS mint\n>   - maxAmount: 1 billion\n>   - slope: 1 billion\n> - U",
+      "summary_zh": "协议：Spark\n标题：[以太坊] Spark 流动性层 - 更新速率限制\n摘要：\n- Anchorage USDC\n  - 最大金额：5000万美元\n  - 斜率：2.5亿美元\n- Uniswap v4 USDT/USDS 交易\n  - 最大金额：2500万美元\n  - 斜率：2.5亿美元\n  - 最大滑点：0.2%\n- USDS 发行\n  - 最大金额：10亿美元\n  - 斜率：10亿美元\n- U",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Spark",
+      "title": "[Ethereum, Base, Avalanche] Spark Liquidity Layer - Update ALM Proxy Freezable",
+      "status": "active",
+      "link": "https://snapshot.org/#/sparkfi.eth/proposal/0x75c80c3b462ab1efe3aa2cb919e97e487ae66d0c62265d204fe9499499cc7e6d",
+      "created": 1779725093,
+      "end": 1779984293,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": ">\n> - Upgrade ALM Proxy Freezable to v1.1 on Ethereum\n>   - Address: 0x9Ad87668d49ab69EEa0AF091de970EF52b0D5178\n> - Contracts referencing ALM Proxy Freezable\n>   - SparkLend Cap Automator: 0x4C1341636721b8B687647920B2E9481f3AB1F2eE\n>   - Spark Saving",
+      "summary_zh": "协议：Spark\n标题：[Ethereum, Base, Avalanche] Spark流动性层 - 更新ALM Proxy Freezable\n摘要：\n- 在Ethereum上升级ALM Proxy Freezable至v1.1\n  - 地址：0x9Ad87668d49ab69EEa0AF091de970EF52b0D5178\n- 引用ALM Proxy Freezable的合约\n  - SparkLend Cap Automator：0x4C1341636721b8B687647920B2E9481f3AB1F2eE\n  - Spark Saving",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Spark",
       "title": "[Ethereum] Spark Liquidity Layer - Update Spark Blue Chip USDT Morpho Vault",
       "status": "passed",
       "link": "https://snapshot.org/#/sparkfi.eth/proposal/0xa72495fc832baced4d2285928e2ca6ff906d7ff88c4dceaaa2d8c4aa6bdfdbdc",
@@ -3251,6 +3291,20 @@
     {
       "source": "Sky Polling",
       "protocol": "Sky (MakerDAO)",
+      "title": "Atlas Edit Weekly Cycle Proposal - May 25, 2026",
+      "status": "active",
+      "link": "https://vote.makerdao.com/polling/QmeS7Hm2",
+      "created": "2026-05-25T16:00:00",
+      "end": "2026-05-28T16:00:00",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "This Atlas edit proposal 1) introduces Independent Governance standard for Root Edit Primitive Operation, 2) adds spell checklists and reference materials, 3) adds GROVE token transfer to Grove Foundation, 4) specifies Pre-Risk Review timing, 5) adds",
+      "summary_zh": "协议：Sky（MakerDAO）\n标题：Atlas 编辑每周周期提案 - 2026年5月25日\n摘要：本提案1）引入独立治理标准于根编辑原始操作，2）添加拼写清单和参考资料，3）将 GROVE 代币转账至 Grove 基金会，4）明确预风险评估时间，5）新增...",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
       "title": "Atlas Edit Weekly Cycle Proposal - May 18, 2026",
       "status": "passed",
       "link": "https://vote.makerdao.com/polling/QmX9L2Mf",
@@ -3308,26 +3362,11 @@
       "summary_zh": "协议：Sky（MakerDAO）\n标题：Atlas 编辑每周周期提案 - 2026年4月27日\n摘要：本提案1）重组了财政管理功能，2）添加了授权论坛账户要求，3）定义了协议安全工作流负责人角色，4）将GSM暂停延迟从24小时增加至48小时，5）明确了..."
     },
     {
-      "source": "Sky Polling",
-      "protocol": "Sky (MakerDAO)",
-      "title": "Atlas Edit Weekly Cycle Proposal - April 20, 2026",
-      "status": "passed",
-      "link": "https://vote.makerdao.com/polling/QmNXSS7H",
-      "created": "2026-04-20T16:00:00",
-      "end": "2026-04-23T16:00:00",
-      "tev_related": true,
-      "tev_keywords": [
-        "fee"
-      ],
-      "summary_en": "This Atlas edit proposal 1) reorders the loss absorption sequence so the Genesis Capital Backstop is applied before the SKY Backstop, 2) collapses ecosystem upkeep to a uniform 50 bps fee, 3) adds documentation for the Plasma SkyLink Bridge, 4) remov",
-      "summary_zh": "协议：Sky（MakerDAO）\n标题：Atlas 编辑每周周期提案 - 2026年4月20日\n摘要：本提案1）调整损失吸收顺序，使创世资本后备基金先于SKY后备基金应用，2）将生态系统维护费率统一为50个基点，3）添加Plasma SkyLink桥的文档，4）移除"
-    },
-    {
       "source": "Mantle Forum",
       "protocol": "Mantle",
-      "title": "[DISCUSSION] MIP-34: Strategic Credit Facility for Aave DAO (rsETH Exploit)",
-      "status": "active",
-      "link": "https://forum.mantle.xyz/t/discussion-mip-34-strategic-credit-facility-for-aave-dao-rseth-exploit/9417",
+      "title": "[PASSED] MIP-34: Strategic Credit Facility for Aave DAO (rsETH Exploit)",
+      "status": "passed",
+      "link": "https://forum.mantle.xyz/t/passed-mip-34-strategic-credit-facility-for-aave-dao-rseth-exploit/9417",
       "created": "2026-04-24T00:06:36",
       "end": "",
       "tev_related": false,
