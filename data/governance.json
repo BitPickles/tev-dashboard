@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-05-27T01:07:35.385513+00:00",
-  "total": 242,
-  "active_count": 36,
-  "passed_count": 206,
-  "tev_related": 59,
+  "updated_at": "2026-05-27T13:08:16.894762+00:00",
+  "total": 243,
+  "active_count": 38,
+  "passed_count": 205,
+  "tev_related": 60,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -130,6 +130,20 @@
     }
   },
   "proposals": [
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[ARFC] stkAAVE Emissions Update",
+      "status": "active",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0xd416e6cb09416cc4effdd2ad869373db2ac005ea63e7d7baeec0db4934281352",
+      "created": 1779768597,
+      "end": 1780114197,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "This proposal restores stkAAVE emissions to reflect the targeted 2.75% staking APR, as mentioned in the https://governance.aave.com/t/aave-dao-funding-insights/24192.",
+      "summary_zh": "协议：Aave\n标题：[ARFC] stkAAVE 发射量更新\n摘要：本提案将 stkAAVE 发射量恢复至目标 2.75% 抵押年利率，如 https://governance.aave.com/t/aave-dao-funding-insights/24192 所述。",
+      "analysis_zh": ""
+    },
     {
       "source": "Snapshot",
       "protocol": "Aave",
@@ -2733,6 +2747,21 @@
     {
       "source": "dYdX Cosmos",
       "protocol": "dYdX",
+      "title": "Fee Holiday for BTC & BONK markets - June 2026",
+      "status": "active",
+      "link": "https://www.mintscan.io/dydx/proposals/384",
+      "created": "2026-05-27T05:00:22.907603617Z",
+      "end": "2026-05-30T05:00:22.907603617Z",
+      "tev_related": true,
+      "tev_keywords": [
+        "fee"
+      ],
+      "summary_en": "Fee Holiday for BTC & BONK markets - June 2026",
+      "summary_zh": "dYdX治理提案：BTC与BONK市场免费期 - 2026年6月"
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
       "title": "dYdX Surge Program - Season 13 Distribution",
       "status": "passed",
       "link": "https://www.mintscan.io/dydx/proposals/383",
@@ -2863,20 +2892,6 @@
       "summary_en": "Refund BTC and BONK fees incurred from March 30, 2026 02:39:49 UTC to March 31st, 2026, 23:59:59 UTC. Forum Post",
       "summary_zh": "dYdX治理提案：退还2026年3月30日02:39:49 UTC至3月31日23:59:59 UTC产生的BTC和BONK费用。论坛帖子",
       "analysis_zh": "dYdX 提案退还特定时段 BTC 和 BONK 交易手续费，短期让利以提振交易活跃度。\n\n该提案针对 2026 年 3 月底的特定时段退还 BTC 和 BONK 交易手续费，虽然名义上"
-    },
-    {
-      "source": "dYdX Cosmos",
-      "protocol": "dYdX",
-      "title": "Wind down JASMY-USD, KOMA-USD, LINEA-USD, ME-USD, NEIRO-USD, PIPPIN-USD, RAY-USD, TRB-USD, TRY-USD, USDE-USD, YFI-USD and ZEREBRO-USD markets",
-      "status": "passed",
-      "link": "https://www.mintscan.io/dydx/proposals/374",
-      "created": "2026-04-01T09:17:10.458501522Z",
-      "end": "2026-04-04T09:17:10.458501522Z",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Wind down JASMY-USD, KOMA-USD, LINEA-USD, ME-USD, NEIRO-USD, PIPPIN-USD, RAY-USD, TRB-USD, TRY-USD, USDE-USD, YFI-USD and ZEREBRO-USD markets",
-      "summary_zh": "Wind down JASMY-USD, KOMA-USD, LINEA-USD, ME-USD, NEIRO-USD, PIPPIN-USD, RAY-USD, TRB-USD, TRY-USD, USDE-USD, YFI-USD and ZEREBRO-USD markets",
-      "analysis_zh": ""
     },
     {
       "source": "GitHub BEP",
