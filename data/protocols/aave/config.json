@@ -78,7 +78,7 @@
   "last_updated": "2026-04-24",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 3.64,
+    "tev_yield_percent": 3.63,
     "annual_tev_usd": 30000000,
     "market_cap_usd": 1799059173.84,
     "calculation_date": "2026-05-28",
@@ -103,7 +103,7 @@
       "sm_7d_usd": 135368,
       "sm_30d_usd": 155556,
       "sm_90d_usd": 6311521,
-      "sm_365d_usd": 35431361,
+      "sm_365d_usd": 35290653,
       "caveats": [
         "Buyback 是 treasury-accumulated，不是真 burn（买入 AAVE → Ecosystem Reserve，治理可 redistribute）",
         "Safety Module 分发是脉冲式（每 1-2 周一次大包），短周期窗口可能为 0",
@@ -119,26 +119,26 @@
     "zh": "治理提案 AIP-1 明确年回购预算，链上可追踪",
     "en": "AIP-1 governance proposal with fixed annual buyback budget, on-chain trackable"
   },
-  "tevRatio": 0.52,
-  "earning_yield_percent": 7,
+  "tevRatio": 0.5193,
+  "earning_yield_percent": 6.99,
   "market_cap_usd": 1799059173.84,
-  "tev_yield_percent": 3.64,
+  "tev_yield_percent": 3.63,
   "metrics": {
     "current_market_cap_usd": 1799059173.84,
-    "trailing_365d_revenue_usd": 125923987,
-    "trailing_30d_revenue_usd": 6879961,
+    "trailing_365d_revenue_usd": 125836882,
+    "trailing_30d_revenue_usd": 6763469,
     "trailing_365d_tev_usd": 30000000,
     "trailing_30d_tev_usd": 2500000,
     "trailing_365d_holders_revenue_usd": 42212267,
     "trailing_30d_holders_revenue_usd": 6155965,
-    "trailing_7d_revenue_usd": 1073564,
-    "trailing_90d_revenue_usd": 21315495,
+    "trailing_7d_revenue_usd": 1072921,
+    "trailing_90d_revenue_usd": 21259458,
     "tev_yield_7d_ann": 2.06,
     "tev_yield_30d_ann": 1.77,
     "tev_yield_90d_ann": 3.09,
     "earning_yield_7d_ann": 3.11,
-    "earning_yield_30d_ann": 4.65,
-    "earning_yield_90d_ann": 4.81
+    "earning_yield_30d_ann": 4.57,
+    "earning_yield_90d_ann": 4.79
   },
   "calc_pipeline": [
     {

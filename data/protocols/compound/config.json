@@ -45,7 +45,7 @@
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "market_cap_usd": 180770862.66,
+    "market_cap_usd": 173772305.31,
     "calculation_date": "2026-05-28",
     "sources": [
       {
@@ -71,23 +71,23 @@
     "en": "纯治理代币. fee switch 从未开启, 协议 fees ($180M+/年) 100% 给 LP, COMP 持有人不分润"
   },
   "tevRatio": 0,
-  "earning_yield_percent": 0,
-  "market_cap_usd": 180770862.66,
+  "earning_yield_percent": 0.01,
+  "market_cap_usd": 173772305.31,
   "tev_yield_percent": 0,
   "metrics": {
-    "current_market_cap_usd": 180770862.66,
-    "trailing_365d_revenue_usd": 6586,
-    "trailing_30d_revenue_usd": 6586,
+    "current_market_cap_usd": 173772305.31,
+    "trailing_365d_revenue_usd": 9787,
+    "trailing_30d_revenue_usd": 9787,
     "trailing_365d_tev_usd": 0,
     "trailing_30d_tev_usd": 0,
-    "trailing_7d_revenue_usd": 6586,
-    "trailing_90d_revenue_usd": 6586,
+    "trailing_7d_revenue_usd": 9787,
+    "trailing_90d_revenue_usd": 9787,
     "tev_yield_7d_ann": 0,
     "tev_yield_30d_ann": 0,
     "tev_yield_90d_ann": 0,
-    "earning_yield_7d_ann": 0.19,
-    "earning_yield_30d_ann": 0.04,
-    "earning_yield_90d_ann": 0.01
+    "earning_yield_7d_ann": 0.29,
+    "earning_yield_30d_ann": 0.07,
+    "earning_yield_90d_ann": 0.02
   },
   "analyst_notes": "【2026-04-27 governance-only 验证】\n\n## 现状\nCOMP 仅作 Compound DAO 治理投票, fee switch 多次讨论但未通过\n\n## TEV: 0% (governance-only, low confidence)\n\n## 何时变化\n若未来治理提案启用 fee switch / buyback 给 token 持有人, 重新评估.\n\n## 类比\nLDO / COMP 等老牌纯治理代币模式.\n",
   "calc_pipeline": [
