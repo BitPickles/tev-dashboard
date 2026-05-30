@@ -148,13 +148,13 @@
   "last_updated": "2026-04-26",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 2.78,
+    "tev_yield_percent": 2.71,
     "tev_yield_vecrv_only_percent": 4.25,
     "annual_tev_usd": 8803998,
-    "market_cap_usd": 317133474.1805216,
+    "market_cap_usd": 324859336.672425,
     "vecrv_tvl_usd": 193755056.8125176,
     "crv_locked": 855952221.7179456,
-    "calculation_date": "2026-05-29",
+    "calculation_date": "2026-05-30",
     "sources": [
       {
         "name": "链上 Community Fund Treasury × 9 推算",
@@ -178,13 +178,13 @@
     ],
     "validation": {
       "method": "Community Fund Treasury crvUSD inflow × 9 (FeeAllocator 90/10)",
-      "crv_locked_in_vecrv": 854070634.0660522,
-      "vecrv_tvl_usd": 178207816.29232025,
-      "lock_ratio_pct": 56.2,
-      "yield_vecrv_only_7d": 3.49,
-      "yield_vecrv_only_30d": 3.11,
-      "yield_vecrv_only_90d": 3.04,
-      "yield_vecrv_only_365d": 4.94,
+      "crv_locked_in_vecrv": 854070084.7241887,
+      "vecrv_tvl_usd": 182947790.63851428,
+      "lock_ratio_pct": 56.3,
+      "yield_vecrv_only_7d": 3.4,
+      "yield_vecrv_only_30d": 3.03,
+      "yield_vecrv_only_90d": 2.96,
+      "yield_vecrv_only_365d": 4.81,
       "caveats": [
         "veCRV TEV 是反推: 直接观察 Community Fund Treasury (10%) crvUSD 入金 × 9 = 90% veCRV 分配",
         "假设 FeeAllocator 90/10 比例不变（治理可改）",
@@ -200,8 +200,8 @@
     "en": "Treasury inflow + veCRV lock amount both fully on-chain, FeeAllocator 90/10 governance-documented"
   },
   "tevRatio": 0.9,
-  "earning_yield_percent": 2.78,
-  "market_cap_usd": 317133474.1805216,
+  "earning_yield_percent": 2.71,
+  "market_cap_usd": 324859336.672425,
   "metrics": {
     "trailing_365d_fees_usd": 55189562,
     "trailing_365d_revenue_usd": 8803998,
@@ -209,19 +209,19 @@
     "trailing_30d_fees_usd": 4978284,
     "trailing_30d_revenue_usd": 455796,
     "trailing_30d_holders_revenue_usd": 691740,
-    "current_market_cap_usd": 317133474.1805216,
+    "current_market_cap_usd": 324859336.672425,
     "trailing_365d_tev_usd": 8803998,
     "trailing_30d_tev_usd": 721543.5833333334,
     "trailing_7d_revenue_usd": 119446,
     "trailing_90d_revenue_usd": 1336565,
-    "tev_yield_7d_ann": 1.96,
-    "tev_yield_30d_ann": 1.75,
-    "tev_yield_90d_ann": 1.71,
-    "earning_yield_7d_ann": 1.96,
-    "earning_yield_30d_ann": 1.75,
-    "earning_yield_90d_ann": 1.71
+    "tev_yield_7d_ann": 1.92,
+    "tev_yield_30d_ann": 1.71,
+    "tev_yield_90d_ann": 1.67,
+    "earning_yield_7d_ann": 1.92,
+    "earning_yield_30d_ann": 1.71,
+    "earning_yield_90d_ann": 1.67
   },
-  "tev_yield_percent": 2.78,
+  "tev_yield_percent": 2.71,
   "calc_pipeline": [
     {
       "step": 1,
