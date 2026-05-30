@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-05-30T01:07:48.016635+00:00",
-  "total": 239,
-  "active_count": 34,
-  "passed_count": 205,
+  "updated_at": "2026-05-30T13:09:53.617378+00:00",
+  "total": 238,
+  "active_count": 32,
+  "passed_count": 206,
   "tev_related": 60,
   "monitored_protocols": 19,
   "protocols_meta": {
@@ -134,7 +134,7 @@
       "source": "Snapshot",
       "protocol": "Aave",
       "title": "[ARFC] stkAAVE Emissions Update",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/aavedao.eth/proposal/0xd416e6cb09416cc4effdd2ad869373db2ac005ea63e7d7baeec0db4934281352",
       "created": 1779768597,
       "end": 1780114197,
@@ -414,20 +414,6 @@
       "summary_en": "This publication proposes reducing the annual AAVE buyback budget from approximately $50M to $30M ad outlined in the Aave DAO Funding Insights forum post.",
       "summary_zh": "提案建议将 AAVE 年度回购预算从约 5000 万美元削减至 3000 万美元（削减 40%），依据 Aave DAO 资金洞察分析，旨在优化协议资金使用效率。",
       "analysis_zh": "Aave 提议将年回购预算砍掉 40% 至 $3000 万，直接削弱了 AAVE 的通缩力度与质押收益预期。\n\n鉴于借款费用收入较峰值下滑 25%（1 月仅 $7.95M），Aave DAO 不得不将年回购预算从 $5000 万缩减至 $3000 万以缓解财政压力。虽然年收入仍有 $1.22 亿，但回购占比的显著下降意味着 TEV Yield（当前 4.49%）将面临缩水，AAVE 作为“生息资产”的叙事逻辑短期受损。若节省的资金未能有效转化为生态增长动力，这种“节流”策略恐将打击长期持有者的信心，需警惕市场对收益预期下调的重新定价。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Aave",
-      "title": "[TEMP CHECK] Aave V4 Bug Bounty Program on Sherlock",
-      "status": "passed",
-      "link": "https://snapshot.org/#/aavedao.eth/proposal/0x44d4562d2c0800343a791d42dadc9b025a541f69cbce69e64af5de26fb35f74b",
-      "created": 1773153531,
-      "end": 1773499131,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Aave Labs proposes launching a dedicated Aave V4 bug bounty program on the Sherlock platform. The objective is to add an always-on security reporting channel for Aave V4, with a triage setup designed to reduce spam and route high-severity reports wit",
-      "summary_zh": "Aave Labs 提议在 Sherlock 平台为 Aave V4 启动专属漏洞赏金计划，建立 7×24 安全报告渠道，通过分级筛选减少垃圾报告并优先处理高危漏洞。",
-      "analysis_zh": ""
     },
     {
       "source": "Snapshot",
@@ -2692,7 +2678,7 @@
       "source": "dYdX Cosmos",
       "protocol": "dYdX",
       "title": "Fee Holiday for BTC & BONK markets - June 2026",
-      "status": "active",
+      "status": "passed",
       "link": "https://www.mintscan.io/dydx/proposals/384",
       "created": "2026-05-27T05:00:22.907603617Z",
       "end": "2026-05-30T05:00:22.907603617Z",
