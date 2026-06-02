@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-06-02T01:10:27.566325+00:00",
+  "updated_at": "2026-06-02T13:08:02.800377+00:00",
   "total": 238,
-  "active_count": 33,
-  "passed_count": 205,
-  "tev_related": 59,
+  "active_count": 35,
+  "passed_count": 203,
+  "tev_related": 58,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -2677,6 +2677,36 @@
     {
       "source": "dYdX Cosmos",
       "protocol": "dYdX",
+      "title": "Wind down KAS-USD and USELESS-USD markets",
+      "status": "active",
+      "link": "https://www.mintscan.io/dydx/proposals/386",
+      "created": "2026-06-02T07:53:22.162546736Z",
+      "end": "2026-06-05T07:53:22.162546736Z",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Wind down KAS-USD and USELESS-USD markets",
+      "summary_zh": "协议：dYdX\n标题：关闭 KAS-USD 和 USELESS-USD 市场\n摘要：关闭 KAS-USD 和 USELESS-USD 市场",
+      "analysis_zh": ""
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
+      "title": "dYdX Surge Program - Season 14 Distribution",
+      "status": "active",
+      "link": "https://www.mintscan.io/dydx/proposals/385",
+      "created": "2026-06-02T07:17:37.090194408Z",
+      "end": "2026-06-05T07:17:37.090194408Z",
+      "tev_related": true,
+      "tev_keywords": [
+        "distribution",
+        "treasury"
+      ],
+      "summary_en": "We are seeking community approval to authorise the transfer of $50,000 (294,117.24 DYDX) from the Community Treasury to be distributed to Season 14 Surge Program participants for the Liquidation Rebate Program (294,117.24 DYDX based on 7-day TWAP of ",
+      "summary_zh": "dYdX协议 - 第14季激增计划分配\n我们寻求社区批准，授权从社区金库转账50,000美元（294,117.24 DYDX）至第14季激增计划参与者，用于清算返利计划（基于7日TWAP的294,117.24 DYDX）。"
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
       "title": "Fee Holiday for BTC & BONK markets - June 2026",
       "status": "passed",
       "link": "https://www.mintscan.io/dydx/proposals/384",
@@ -2789,39 +2819,6 @@
       "summary_en": "Proposal to reduce step base quantums (and therefore step size) for WTI CLOB Pair.",
       "summary_zh": "dYdX治理提案：更新WTI CLOB对基点增量（及步长大小）。提议降低WTI CLOB对基点基数（因此步长）。",
       "analysis_zh": ""
-    },
-    {
-      "source": "dYdX Cosmos",
-      "protocol": "dYdX",
-      "title": "dYdX Surge Program - Season 12 Distribution",
-      "status": "passed",
-      "link": "https://www.mintscan.io/dydx/proposals/376",
-      "created": "2026-04-03T01:16:08.369935389Z",
-      "end": "2026-04-06T01:16:08.369935389Z",
-      "tev_related": true,
-      "tev_keywords": [
-        "distribution",
-        "treasury"
-      ],
-      "summary_en": "We are seeking community approval to authorise the transfer of $102,500 (1,138,888.89 DYDX) from the Community Treasury to be distributed to Season 12 Surge Program participants, comprising $50,000 for the Liquidation Rebate Program (555,555.56 DYDX ",
-      "summary_zh": "dYdX社区寻求批准，授权从社区财库转移$102,500（1,138,888.89 DYDX）至第12季Surge Program参与者，其中$50,000用于清算返利计划（555,555.56 DYDX）。",
-      "analysis_zh": "dYdX 拟动用 $102,500 延续 Season 12 Surge Program，以激励维持链上活跃度。\n\ndYdX 社区提议从 Community Treasury 拨款 $102,500（约 114 万枚 DYDX）用于 Season 12 Surge Program，其中 $50,000 用于 Liquidation Rebate Program，$52,500 用于 BONK Trading Competition。基于 $0.09 的 TWAP 价格计算，此次激励规模虽不算大，但在当前 $75.0M 市值和 $158.7M TVL 的背景下，精准投放于清算流动性和"
-    },
-    {
-      "source": "dYdX Cosmos",
-      "protocol": "dYdX",
-      "title": "Refund BTC and BONK fees incurred from March 30, 2026 02:39:49 UTC to March 31st, 2026, 23:59:59 UTC",
-      "status": "passed",
-      "link": "https://www.mintscan.io/dydx/proposals/375",
-      "created": "2026-04-02T08:30:26.917027581Z",
-      "end": "2026-04-05T08:30:26.917027581Z",
-      "tev_related": true,
-      "tev_keywords": [
-        "fee"
-      ],
-      "summary_en": "Refund BTC and BONK fees incurred from March 30, 2026 02:39:49 UTC to March 31st, 2026, 23:59:59 UTC. Forum Post",
-      "summary_zh": "dYdX治理提案：退还2026年3月30日02:39:49 UTC至3月31日23:59:59 UTC产生的BTC和BONK费用。论坛帖子",
-      "analysis_zh": "dYdX 提案退还特定时段 BTC 和 BONK 交易手续费，短期让利以提振交易活跃度。\n\n该提案针对 2026 年 3 月底的特定时段退还 BTC 和 BONK 交易手续费，虽然名义上"
     },
     {
       "source": "GitHub BEP",
