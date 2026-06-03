@@ -1,6 +1,6 @@
 {
   "protocol": "curve",
-  "updated_at": "2026-06-03T01:14:37.470Z",
+  "updated_at": "2026-06-03T13:14:52.464Z",
   "data_source": "DefiLlama API (dailyHoldersRevenue)",
   "data_source_url": "https://api.llama.fi/summary/fees/curve-finance?dataType=dailyHoldersRevenue",
   "records": [
@@ -978,9 +978,9 @@
       "date": "2026-06-01",
       "type": "aggregate",
       "mechanism": "veCRV Fee Distribution",
-      "amount_usd": 64938,
+      "amount_usd": 116730,
       "period": "2026-06",
-      "days_with_data": 2,
+      "days_with_data": 3,
       "source": {
         "type": "api",
         "provider": "DefiLlama",
@@ -988,14 +988,14 @@
         "data_type": "dailyHoldersRevenue",
         "methodology": "Fees distributed to veCRV governance token holders"
       },
-      "notes": "Monthly aggregate from 2 days of data"
+      "notes": "Monthly aggregate from 3 days of data"
     }
   ],
   "summary": {
-    "total_tev_usd": 156342831,
-    "total_30d_usd": 611358,
+    "total_tev_usd": 156394623,
+    "total_30d_usd": 612547,
     "by_mechanism": {
-      "ve_reward": 156342831
+      "ve_reward": 156394623
     },
     "by_period": {
       "2020-Q4": 202505,
@@ -1017,7 +1017,7 @@
       "2025-Q3": 3966657,
       "2025-Q4": 2519274,
       "2026-Q1": 2194136,
-      "2026-Q2": 970318
+      "2026-Q2": 1022110
     }
   }
 }
