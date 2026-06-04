@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-06-04T01:10:22.348612+00:00",
-  "total": 238,
-  "active_count": 34,
+  "updated_at": "2026-06-04T13:10:08.912725+00:00",
+  "total": 239,
+  "active_count": 35,
   "passed_count": 204,
-  "tev_related": 58,
+  "tev_related": 59,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -130,6 +130,21 @@
     }
   },
   "proposals": [
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[TEMP CHECK] Deploy Aave V4 on Avalanche",
+      "status": "active",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0xd156f75952dc0d57dd31c4d68b31576f534e5f2a85243148daeeadbf2d650d76",
+      "created": 1780489201,
+      "end": 1780834801,
+      "tev_related": true,
+      "tev_keywords": [
+        "fee"
+      ],
+      "summary_en": "This proposal seeks community feedback on deploying Aave V4 on Avalanche, including a dedicated RWA hub.",
+      "summary_zh": "关于在Avalanche上部署Aave V4及设立专门RWA中心的提案，征求社区意见。"
+    },
     {
       "source": "Snapshot",
       "protocol": "Aave",
@@ -2823,6 +2838,20 @@
     {
       "source": "GitHub BEP",
       "protocol": "BNB Chain",
+      "title": "fix : improve  gas and time description",
+      "status": "passed",
+      "link": "https://github.com/bnb-chain/BEPs/pull/694",
+      "created": "2026-06-04T04:26:09",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "improve gas and time description of bep675",
+      "summary_zh": "改进BEP675的gas和时间描述",
+      "analysis_zh": ""
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
       "title": "fix: update bep-675 description",
       "status": "passed",
       "link": "https://github.com/bnb-chain/BEPs/pull/693",
@@ -2944,20 +2973,6 @@
       "tev_keywords": [],
       "summary_en": "BEP-684.md: Decouple consensus voting from block execution by allowing validators to vote upon header verification, removing execution from the critic",
       "summary_zh": "协议：BNB Chain\n标题：BEP-684.md：通过允许验证者在验证区块头时进行投票，将共识投票与区块执行解耦，将执行过程从关键投票路径中移除。\n摘要：BEP-684.md：允许验证者在区块头验证时投票，实现共识投票与区块执行的解耦，将执行阶段从核心投票路径中去除。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "fix: improve system txn check design ",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/683",
-      "created": "2026-04-23T07:04:51",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "fix: improve system txn check design ",
-      "summary_zh": "修复：优化系统交易检查设计",
       "analysis_zh": ""
     },
     {
