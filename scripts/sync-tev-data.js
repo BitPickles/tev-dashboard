@@ -899,18 +899,19 @@ async function main() {
       continue;
     }
 
-    // PancakeSwap 专属：链上 net deflation 口径 (totalSupply - dead snapshot diff)
+    // PancakeSwap 专属：DefiLlama buyback&burn 口径 (dailyHoldersRevenue)
     // 数据源：data/protocols/pancakeswap/burn-history.json (update-pancakeswap-tev.py 维护)
+    // 注：原链上 net deflation 口径因公共 BSC RPC 取消 archive 支持已失效，2026-06-14 改 DefiLlama
     if (key === 'pancakeswap') {
       const protocol = protocols[key];
       if (!protocol) continue;
-      console.log(`📊 pancakeswap... (链上 net deflation 口径)`);
+      console.log(`📊 pancakeswap... (DefiLlama buyback&burn 口径)`);
       const histPath = path.join(__dirname, '../data/protocols/pancakeswap/burn-history.json');
       let hist = null;
       try { hist = JSON.parse(fs.readFileSync(histPath, 'utf8')); } catch (e) {
         console.warn(`  ⚠️ burn-history.json 读取失败: ${e.message}`); continue;
       }
-      // 注意：PancakeSwap script 里键名是 net_burns 且 key 用数字 "7","30","90","365"
+      // net_burns key 用字符串 "7","30","90","365"，每项 {burn_usd, annualized_usd, yield_pct}
       const sm = hist.net_burns || {};
       const mcap = hist.market_cap_usd || protocol.market_cap_usd || 0;
       if (!protocol.metrics) protocol.metrics = {};
@@ -924,22 +925,22 @@ async function main() {
       protocol.metrics.earning_yield_7d_ann  = protocol.metrics.tev_yield_7d_ann;
       protocol.metrics.earning_yield_30d_ann = protocol.metrics.tev_yield_30d_ann;
       protocol.metrics.earning_yield_90d_ann = protocol.metrics.tev_yield_90d_ann;
-      protocol.metrics.trailing_7d_revenue_usd   = sm['7']?.usd ?? 0;
-      protocol.metrics.trailing_30d_revenue_usd  = sm['30']?.usd ?? 0;
-      protocol.metrics.trailing_90d_revenue_usd  = sm['90']?.usd ?? 0;
-      protocol.metrics.trailing_365d_revenue_usd = sm['365']?.usd ?? 0;
-      protocol.metrics.trailing_365d_tev_usd     = sm['365']?.usd ?? 0;
+      protocol.metrics.trailing_7d_revenue_usd   = sm['7']?.burn_usd ?? 0;
+      protocol.metrics.trailing_30d_revenue_usd  = sm['30']?.burn_usd ?? 0;
+      protocol.metrics.trailing_90d_revenue_usd  = sm['90']?.burn_usd ?? 0;
+      protocol.metrics.trailing_365d_revenue_usd = sm['365']?.burn_usd ?? 0;
+      protocol.metrics.trailing_365d_tev_usd     = sm['365']?.burn_usd ?? 0;
       protocol.tevStatus = 'active';
       protocol.tevRatio = 1.0;
       protocol.confidence = 'high';
       protocol.validation = protocol.validation || {};
-      protocol.validation.method = 'snapshot diff (totalSupply - dead) for net deflation';
-      protocol.validation.net_burn_7d_cake   = sm['7']?.net_cake;
-      protocol.validation.net_burn_30d_cake  = sm['30']?.net_cake;
-      protocol.validation.net_burn_90d_cake  = sm['90']?.net_cake;
-      protocol.validation.net_burn_365d_cake = sm['365']?.net_cake;
+      protocol.validation.method = 'DefiLlama dailyHoldersRevenue (CAKE buyback&burn, gross)';
+      protocol.validation.burn_7d_usd   = sm['7']?.burn_usd;
+      protocol.validation.burn_30d_usd  = sm['30']?.burn_usd;
+      protocol.validation.burn_90d_usd  = sm['90']?.burn_usd;
+      protocol.validation.burn_365d_usd = sm['365']?.burn_usd;
       protocol.validation.cake_price_usd = hist.cake_price_usd;
-      console.log(`  net deflation 365d: ${(sm['365']?.net_cake || 0).toLocaleString()} CAKE = $${((sm['365']?.usd||0)/1e6).toFixed(1)}M`);
+      console.log(`  buyback&burn 365d: $${((sm['365']?.burn_usd||0)/1e6).toFixed(1)}M  (gross)`);
       console.log(`  TEV Yield: 7d=${sm['7']?.yield_pct}% 30d=${sm['30']?.yield_pct}% 90d=${sm['90']?.yield_pct}% 365d=${sm['365']?.yield_pct}%`);
       updated++;
       continue;

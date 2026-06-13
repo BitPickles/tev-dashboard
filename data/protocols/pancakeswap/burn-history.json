@@ -1,24 +1,34 @@
 {
   "protocol": "pancakeswap",
-  "method": "snapshot diff (totalSupply - dead) for true net deflation",
-  "updated_at": "2026-06-13T13:12:02.051275Z",
+  "method": "DefiLlama dailyHoldersRevenue (CAKE buyback&burn, gross)",
+  "updated_at": "2026-06-13T23:33:41.890558Z",
   "cake_price_usd": 1.35,
-  "market_cap_usd": 473660438.4443053,
-  "circulating_now": 370173292.4756727,
-  "snapshots": [
-    {
-      "days_ago": 0,
-      "date": "2026-06-13",
-      "block": "latest",
-      "totalSupply": 4527629551.751051,
-      "deadBalance": 4157456259.275378,
-      "circulating": 370173292.4756727
+  "market_cap_usd": 474072218.4663578,
+  "data_latest_date": "2026-06-13",
+  "net_burns": {
+    "7": {
+      "burn_usd": 583324,
+      "annualized_usd": 30416180,
+      "yield_pct": 6.42
+    },
+    "30": {
+      "burn_usd": 2213808,
+      "annualized_usd": 26934664,
+      "yield_pct": 5.68
+    },
+    "90": {
+      "burn_usd": 7448590,
+      "annualized_usd": 30208171,
+      "yield_pct": 6.37
+    },
+    "365": {
+      "burn_usd": 65107983,
+      "annualized_usd": 65107983,
+      "yield_pct": 13.73
     }
-  ],
-  "net_burns": {},
+  },
   "data_sources": [
-    "1rpc.io/bnb (BSC archive eth_call)",
-    "Moralis dateToBlock",
+    "DefiLlama summary/fees/pancakeswap?dataType=dailyHoldersRevenue",
     "CoinGecko (CAKE price + circulating mcap)"
   ]
 }
