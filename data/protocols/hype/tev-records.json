@@ -1,6 +1,6 @@
 {
   "protocol": "hyperliquid",
-  "updated_at": "2026-06-04T13:09:13.747958Z",
+  "updated_at": "2026-06-13T01:09:19.694909Z",
   "data_source": "DefiLlama dailyRevenue (= holdersRevenue for Hyperliquid)",
   "data_source_url": "https://api.llama.fi/summary/fees/hyperliquid?dataType=dailyRevenue",
   "records": [
@@ -5239,6 +5239,86 @@
       "type": "buyback_burn",
       "amount_usd": 3504616,
       "period": "2026-06-03",
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama"
+      }
+    },
+    {
+      "date": "2026-06-04",
+      "type": "buyback_burn",
+      "amount_usd": 4471805,
+      "period": "2026-06-04",
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama"
+      }
+    },
+    {
+      "date": "2026-06-05",
+      "type": "buyback_burn",
+      "amount_usd": 5355849,
+      "period": "2026-06-05",
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama"
+      }
+    },
+    {
+      "date": "2026-06-06",
+      "type": "buyback_burn",
+      "amount_usd": 1818311,
+      "period": "2026-06-06",
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama"
+      }
+    },
+    {
+      "date": "2026-06-07",
+      "type": "buyback_burn",
+      "amount_usd": 2030216,
+      "period": "2026-06-07",
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama"
+      }
+    },
+    {
+      "date": "2026-06-08",
+      "type": "buyback_burn",
+      "amount_usd": 2194967,
+      "period": "2026-06-08",
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama"
+      }
+    },
+    {
+      "date": "2026-06-09",
+      "type": "buyback_burn",
+      "amount_usd": 2244245,
+      "period": "2026-06-09",
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama"
+      }
+    },
+    {
+      "date": "2026-06-10",
+      "type": "buyback_burn",
+      "amount_usd": 2242406,
+      "period": "2026-06-10",
+      "source": {
+        "type": "api",
+        "provider": "DefiLlama"
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "type": "buyback_burn",
+      "amount_usd": 1906046,
+      "period": "2026-06-11",
       "source": {
         "type": "api",
         "provider": "DefiLlama"

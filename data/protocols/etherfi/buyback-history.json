@@ -1,60 +1,15 @@
 {
   "protocol": "etherfi",
   "method": "ETHFI inflows to sETHFI staking contract (UPPER BOUND, includes user stakes)",
-  "updated_at": "2026-06-04T13:13:10.059170Z",
+  "updated_at": "2026-06-13T01:12:52.296647Z",
   "ethfi_token": "0xFe0c30065B384F05761f15d0CC899D4F9F9Cc0eB",
   "sethfi_contract": "0x86B5780b606940Eb59A062aA85a07959518c0161",
   "foundation_multisig": "0x7A6A41F353B3002751d94118aA7f4935dA39bB53",
   "foundation_multisig_365d_inflow_ethfi": 0,
   "foundation_multisig_status": "no_buyback_executed_365d",
-  "ethfi_price_usd": 0.330221,
-  "market_cap_usd": 292324153.6426829,
+  "ethfi_price_usd": 0.312486,
+  "market_cap_usd": 274841457.42825806,
   "daily": [
-    {
-      "date": "2025-06-04",
-      "ethfi": 563023.33835,
-      "tx_count": 7
-    },
-    {
-      "date": "2025-06-05",
-      "ethfi": 104167.533529,
-      "tx_count": 10
-    },
-    {
-      "date": "2025-06-06",
-      "ethfi": 6098.709471,
-      "tx_count": 9
-    },
-    {
-      "date": "2025-06-07",
-      "ethfi": 61978.185925,
-      "tx_count": 16
-    },
-    {
-      "date": "2025-06-08",
-      "ethfi": 2926.800543,
-      "tx_count": 9
-    },
-    {
-      "date": "2025-06-09",
-      "ethfi": 82587.446397,
-      "tx_count": 11
-    },
-    {
-      "date": "2025-06-10",
-      "ethfi": 3342491.876804,
-      "tx_count": 17
-    },
-    {
-      "date": "2025-06-11",
-      "ethfi": 205530.826474,
-      "tx_count": 11
-    },
-    {
-      "date": "2025-06-12",
-      "ethfi": 299618.419291,
-      "tx_count": 15
-    },
     {
       "date": "2025-06-13",
       "ethfi": 81264.410628,
@@ -1827,30 +1782,70 @@
     },
     {
       "date": "2026-06-04",
-      "ethfi": 1757.317315,
-      "tx_count": 4
+      "ethfi": 5476.553565,
+      "tx_count": 5
+    },
+    {
+      "date": "2026-06-05",
+      "ethfi": 174086.876327,
+      "tx_count": 9
+    },
+    {
+      "date": "2026-06-06",
+      "ethfi": 215610.638829,
+      "tx_count": 11
+    },
+    {
+      "date": "2026-06-07",
+      "ethfi": 20366.556482,
+      "tx_count": 3
+    },
+    {
+      "date": "2026-06-08",
+      "ethfi": 58774.400147,
+      "tx_count": 5
+    },
+    {
+      "date": "2026-06-09",
+      "ethfi": 17487.935916,
+      "tx_count": 3
+    },
+    {
+      "date": "2026-06-10",
+      "ethfi": 237905.822703,
+      "tx_count": 9
+    },
+    {
+      "date": "2026-06-11",
+      "ethfi": 275331.043745,
+      "tx_count": 6
+    },
+    {
+      "date": "2026-06-12",
+      "ethfi": 16740.2124,
+      "tx_count": 2
     }
   ],
   "summary": {
     "7d": {
-      "ethfi": 923827,
-      "usd": 305067,
-      "yield_pct": 5.44
+      "ethfi": 626606,
+      "usd": 195806,
+      "yield_pct": 3.71
     },
     "30d": {
-      "ethfi": 3430829,
-      "usd": 1132932,
-      "yield_pct": 4.72
+      "ethfi": 3977644,
+      "usd": 1242958,
+      "yield_pct": 5.5
     },
     "90d": {
-      "ethfi": 23971397,
-      "usd": 7915859,
-      "yield_pct": 10.98
+      "ethfi": 23956490,
+      "usd": 7486068,
+      "yield_pct": 11.05
     },
     "365d": {
-      "ethfi": 123137172,
-      "usd": 40662480,
-      "yield_pct": 13.91
+      "ethfi": 119970531,
+      "usd": 37489111,
+      "yield_pct": 13.64
     }
   },
   "caveats": [
