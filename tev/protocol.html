@@ -391,6 +391,10 @@
             <div class="tev-kpi-value" id="kpi-earningyield">—</div>
           </div>
           <div class="tev-kpi-item">
+            <div class="tev-kpi-label" data-zh="市盈率 P/E" data-en="P/E">市盈率 / P/E</div>
+            <div class="tev-kpi-value" id="kpi-pe">—</div>
+          </div>
+          <div class="tev-kpi-item">
             <div class="tev-kpi-label" data-zh="派息率" data-en="Payout Ratio">派息率 / Payout Ratio</div>
             <div class="tev-kpi-value" id="kpi-tevratio">—</div>
           </div>
@@ -1284,6 +1288,12 @@
           const ps = 100 / earn;
           return (ps >= 100 ? Math.round(ps) : ps.toFixed(1)) + 'x';
         }
+        // 市盈率 P/E = 100 ÷ 股东回报率(%)；无股东回报时 —
+        function formatPE(tev) {
+          if (tev == null || tev <= 0) return '—';
+          const pe = 100 / tev;
+          return (pe >= 100 ? Math.round(pe) : pe.toFixed(1)) + 'x';
+        }
         function formatPayout(v, tev) {
           if (!tev) return '—';  // 无实际股东回报时派息率无意义
           if (typeof v === 'string') return v;
@@ -1299,6 +1309,7 @@
           document.getElementById('kpi-divyield').textContent = (k.div || 0) > 0 ? formatPct(k.div, displayPrecision) : '—';
           document.getElementById('kpi-buybackyield').textContent = (k.buy || 0) > 0 ? formatPct(k.buy, displayPrecision) : '—';
           document.getElementById('kpi-earningyield').textContent = formatPS(k.earn);
+          document.getElementById('kpi-pe').textContent = formatPE(k.tev);
           document.getElementById('kpi-tevratio').textContent = formatPayout(k.ratio, k.tev);
         }
         renderKPI('365d');
