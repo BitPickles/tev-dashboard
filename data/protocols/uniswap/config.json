@@ -203,7 +203,13 @@
     "earning_yield_7d_ann": 2.39,
     "earning_yield_30d_ann": 1.24,
     "earning_yield_90d_ann": 1.49,
-    "trailing_365d_revenue_usd": 10376292
+    "trailing_365d_revenue_usd": 10376292,
+    "dividend_yield_7d_ann": 0,
+    "buyback_yield_7d_ann": 2.39,
+    "dividend_yield_30d_ann": 0,
+    "buyback_yield_30d_ann": 1.24,
+    "dividend_yield_90d_ann": 0,
+    "buyback_yield_90d_ann": 1.49
   },
   "calc_pipeline": [
     {
@@ -219,7 +225,7 @@
     {
       "step": 2,
       "label": "排除一次性治理事件",
-      "description": "单笔 ≥ 10M UNI 视为 retro burn（如 2025-12-27 Timelock 执行的 100M UNI 一次性销毁，Boss 指示不计入持续 TEV）。",
+      "description": "单笔 ≥ 10M UNI 视为 retro burn（如 2025-12-27 Timelock 执行的 100M UNI 一次性销毁，Boss 指示不计入持续 股东回报）。",
       "output_file": "data/protocols/uniswap/burn-history.json",
       "updated_by": "~/crypto3d-updater/scripts/update-uni-tev.py"
     },
@@ -254,7 +260,7 @@
     },
     {
       "step": 6,
-      "label": "最终 TEV Yield",
+      "label": "最终 股东回报率",
       "derived": true,
       "value_fields_by_period": {
         "7d": "metrics.tev_yield_7d_ann",
@@ -264,5 +270,8 @@
       },
       "unit": "%"
     }
-  ]
+  ],
+  "dividend_yield_percent": 0,
+  "buyback_yield_percent": 0.66,
+  "style": "growth"
 }

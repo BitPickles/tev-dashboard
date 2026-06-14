@@ -146,7 +146,13 @@
     "tev_yield_90d_ann": 6.36,
     "earning_yield_7d_ann": 6.41,
     "earning_yield_30d_ann": 5.67,
-    "earning_yield_90d_ann": 6.36
+    "earning_yield_90d_ann": 6.36,
+    "dividend_yield_7d_ann": 0,
+    "buyback_yield_7d_ann": 6.41,
+    "dividend_yield_30d_ann": 0,
+    "buyback_yield_30d_ann": 5.67,
+    "dividend_yield_90d_ann": 0,
+    "buyback_yield_90d_ann": 6.36
   },
   "calc_pipeline": [
     {
@@ -198,8 +204,8 @@
     },
     {
       "step": 6,
-      "label": "年化 / 流通市值 = TEV Yield",
-      "formula": "TEV_Yield = annual_USD ÷ circulating_market_cap × 100%",
+      "label": "年化 / 流通市值 = 股东回报率",
+      "formula": "Shareholder_Yield = annual_USD ÷ circulating_market_cap × 100%",
       "derived": true,
       "value_fields_by_period": {
         "7d": "metrics.tev_yield_7d_ann",
@@ -209,5 +215,8 @@
       },
       "unit": "%"
     }
-  ]
+  ],
+  "dividend_yield_percent": 0,
+  "buyback_yield_percent": 13.72,
+  "style": "cash_cow"
 }

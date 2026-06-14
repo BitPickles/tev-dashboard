@@ -602,7 +602,13 @@
     "tev_yield_90d_ann": 12.36,
     "earning_yield_7d_ann": 6.89,
     "earning_yield_30d_ann": 6.89,
-    "earning_yield_90d_ann": 6.88
+    "earning_yield_90d_ann": 6.88,
+    "dividend_yield_7d_ann": 6.87,
+    "buyback_yield_7d_ann": 5.49,
+    "dividend_yield_30d_ann": 6.87,
+    "buyback_yield_30d_ann": 5.49,
+    "dividend_yield_90d_ann": 6.87,
+    "buyback_yield_90d_ann": 5.49
   },
   "calc_pipeline": [
     {
@@ -673,12 +679,12 @@
     {
       "step": 7,
       "label": "叠加 asBNB APY",
-      "description": "Burn Yield + asBNB APY（6.87%）= 总 TEV Yield（Burn 供给收缩 + Staking 收益，两者无重叠）",
+      "description": "Burn Yield + asBNB APY（6.87%）= 总 股东回报率（Burn 供给收缩 + Staking 收益，两者无重叠）",
       "formula": "Burn Yield + asBNB APY"
     },
     {
       "step": 8,
-      "label": "最终 TEV Yield",
+      "label": "最终 股东回报率",
       "derived": true,
       "value_fields_by_period": {
         "7d": "metrics.tev_yield_7d_ann",
@@ -688,5 +694,8 @@
       },
       "unit": "%"
     }
-  ]
+  ],
+  "dividend_yield_percent": 6.87,
+  "buyback_yield_percent": 4.4,
+  "style": "cash_cow"
 }

@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-  <title>Protocol — TEV Dashboard</title>
+  <title>Protocol — Crypto3D 估值仪表盘</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../indicators/css/common.css">
@@ -318,7 +318,7 @@
         <a href="../" class="logo"><img src="../logo.svg" alt="3D" class="logo-icon"><span class="logo-text">Crypto3D</span></a>
         <nav class="nav-links">
           <a href="../" data-i18n="nav.home" data-zh="首页" data-en="Home">首页</a>
-          <a href="./" data-i18n="nav.tev">TEV</a>
+          <a href="./" data-i18n="nav.tev" data-zh="协议估值" data-en="Valuation">协议估值</a>
         </nav>
         <div class="lang-switch-tev">
           <button class="lang-btn active" data-lang="zh">中文</button>
@@ -356,7 +356,7 @@
 
       <!-- 1. TEV 概览（紧凑版 + 周期切换 + Caveats）-->
       <div class="section">
-        <div class="section-title"><span class="icon">📊</span><span data-i18n="section.tevSummary">TEV 概览</span></div>
+        <div class="section-title"><span class="icon">📊</span><span data-i18n="section.tevSummary">估值概览</span></div>
         <div class="tev-overview-hero">
           <div class="tev-hero-primary">
             <div class="tev-hero-label" data-zh="价值捕获方式" data-en="Primary Value Accrual">价值捕获方式</div>
@@ -375,15 +375,23 @@
             <div class="tev-kpi-value" id="kpi-marketcap">—</div>
           </div>
           <div class="tev-kpi-item">
-            <div class="tev-kpi-label">TEV Yield</div>
+            <div class="tev-kpi-label" data-zh="股东回报率" data-en="Shareholder Yield">股东回报率 / Shareholder Yield</div>
             <div class="tev-kpi-value" id="kpi-tevyield">—</div>
           </div>
           <div class="tev-kpi-item">
-            <div class="tev-kpi-label" data-zh="收益率" data-en="Earning Yield">Earning Yield</div>
+            <div class="tev-kpi-label" data-zh="股息率" data-en="Dividend Yield">股息率 / Dividend Yield</div>
+            <div class="tev-kpi-value" id="kpi-divyield">—</div>
+          </div>
+          <div class="tev-kpi-item">
+            <div class="tev-kpi-label" data-zh="回购率" data-en="Buyback Yield">回购率 / Buyback Yield</div>
+            <div class="tev-kpi-value" id="kpi-buybackyield">—</div>
+          </div>
+          <div class="tev-kpi-item">
+            <div class="tev-kpi-label" data-zh="市销率 P/S" data-en="P/S">市销率 / P/S</div>
             <div class="tev-kpi-value" id="kpi-earningyield">—</div>
           </div>
           <div class="tev-kpi-item">
-            <div class="tev-kpi-label" data-zh="分配比例" data-en="Distribution Ratio">分配比例 / Ratio</div>
+            <div class="tev-kpi-label" data-zh="派息率" data-en="Payout Ratio">派息率 / Payout Ratio</div>
             <div class="tev-kpi-value" id="kpi-tevratio">—</div>
           </div>
         </div>
@@ -401,7 +409,7 @@
 
       <!-- 2. TEV 历史记录（上位）-->
       <div class="section chart-section" id="tev-chart-section">
-        <div class="section-title"><span class="icon">📈</span><span data-i18n="section.tevHistory">TEV 历史记录</span></div>
+        <div class="section-title"><span class="icon">📈</span><span data-i18n="section.tevHistory">股东回报历史</span></div>
         <div class="chart-container"><div class="chart-canvas-wrap"><canvas id="tev-history-chart"></canvas></div><div class="chart-stats" id="chart-stats"></div></div>
       </div>
 
@@ -465,7 +473,7 @@
 
       <!-- 6. 附加内容（折叠）-->
       <details class="extra-section" id="extra-governance" style="display:none;">
-        <summary><span class="icon">🏛️</span><span data-zh="TEV 治理动态" data-en="TEV Governance Feed">TEV 治理动态</span></summary>
+        <summary><span class="icon">🏛️</span><span data-zh="治理动态" data-en="Governance Feed">治理动态</span></summary>
         <div class="extra-body">
           <div id="governance-list" style="display:flex;flex-direction:column;gap:8px;"></div>
           <div id="governance-more" style="margin-top:12px;text-align:right;"></div>
@@ -509,12 +517,12 @@
     </div>
   </main>
 
-  <footer><div class="container"><div class="footer-content" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px"><div class="footer-text">TEV Dashboard · <span data-i18n="footer.lastUpdated">最后更新</span>: <span id="last-updated">—</span></div><div class="footer-links" style="display:flex;gap:14px;flex-wrap:wrap;font-size:12px"><a href="/about" data-zh="关于我们" data-en="About">关于我们</a><a href="/privacy" data-zh="隐私政策" data-en="Privacy Policy">隐私政策</a><a href="/terms" data-zh="使用条款" data-en="Terms">使用条款</a><a href="/disclaimer" data-zh="风险披露" data-en="Risk Disclosure">风险披露</a><a href="/about#contact" data-zh="联系方式" data-en="Contact">联系方式</a></div></div></div></footer>
+  <footer><div class="container"><div class="footer-content" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px"><div class="footer-text">Crypto3D · <span data-i18n="footer.lastUpdated">最后更新</span>: <span id="last-updated">—</span></div><div class="footer-links" style="display:flex;gap:14px;flex-wrap:wrap;font-size:12px"><a href="/about" data-zh="关于我们" data-en="About">关于我们</a><a href="/privacy" data-zh="隐私政策" data-en="Privacy Policy">隐私政策</a><a href="/terms" data-zh="使用条款" data-en="Terms">使用条款</a><a href="/disclaimer" data-zh="风险披露" data-en="Risk Disclosure">风险披露</a><a href="/about#contact" data-zh="联系方式" data-en="Contact">联系方式</a></div></div></div></footer>
 
   <script>
     const i18n = {
-      zh: { 'nav.dashboard': '仪表盘', 'loading': '加载中...', 'section.tevSummary': 'TEV 概览', 'section.tevHistory': 'TEV 历史记录', 'section.buybackAddresses': '回购地址', 'section.tevMechanisms': 'TEV 机制详情', 'section.dataSources': '数据来源', 'section.notes': '分析师备注', 'section.references': '参考资料', 'buyback.current': '当前阶段', 'buyback.historical': '历史阶段', 'buyback.legacy': '历史钱包', 'buyback.disposal': '处置地址', 'buyback.autoDailyBuyback': '自动每日回购', 'buyback.strategicReserve': '战略回购储备', 'buyback.burnAddress': '销毁地址', 'buyback.airdropLock': '空投锁仓', 'buyback.progress': '回购进度', 'buyback.totalBought': '已回购', 'buyback.totalUsd': '回购价值', 'buyback.totalSupply': '代币总量', 'section.buybackData': '回购数据', 'chart.totalTev': '累计 TEV', 'chart.records': '记录数', 'chart.avgMonthly': '月均 TEV', 'chart.period': '数据周期', 'chart.cumulative': '累计 TEV', 'chart.zoomHint': '🖱️ 滚轮缩放 · 拖动平移 · 双击重置', 'tev.feeSwitch': '费用开关', 'tev.buybacks': '回购', 'tev.dividends': '分红', 'tev.burns': '销毁', 'tev.confidence': '可信度', 'footer.lastUpdated': '最后更新', 'status.active': '活跃', 'status.planned': '计划中', 'status.inactive': '未激活', 'status.ON': '已开启', 'status.OFF': '未开启', 'status.PARTIAL': '部分', 'status.NONE': '无', 'status.ACTIVE': '活跃', 'noTev.title': '该协议目前没有 TEV 机制', 'noTev.desc': '代币仅用于治理，协议收入未分配给代币持有者', 'mechanism.type.buyback': '回购', 'mechanism.type.buyback_burn': '回购销毁', 'mechanism.type.staking_reward': '质押奖励', 'mechanism.type.fee_sharing': '费用分成', 'mechanism.type.ve_distribution': 've 分配', 'mechanism.type.airdrop': '空投', 'mechanism.type.aggregate': '综合 TEV', 'mechanism.type.burn': '销毁', 'mechanism.type.direct_distribution': '直接分配', 'mechanism.type.ve_reward': 've 奖励', 'mechanism.type.holders_revenue': '持有者收入', 'source.governance': '治理', 'source.documentation': '文档', 'source.report': '报告', 'source.api': 'API', 'source.onchain': '链上', 'confidence.high': '高', 'confidence.medium': '中', 'confidence.low': '低', 'burn.progress': '销毁进度', 'burn.totalBurned': '已销毁', 'burn.remaining': '剩余供应', 'burn.target': '目标供应' },
-      en: { 'nav.dashboard': 'Dashboard', 'loading': 'Loading...', 'section.tevSummary': 'TEV Summary', 'section.tevHistory': 'TEV History', 'section.buybackAddresses': 'Buyback Addresses', 'section.tevMechanisms': 'TEV Mechanisms', 'section.dataSources': 'Data Sources', 'section.notes': 'Analyst Notes', 'section.references': 'References', 'buyback.current': 'Current Stage', 'buyback.historical': 'Historical Stage', 'buyback.legacy': 'Legacy Wallets', 'buyback.disposal': 'Disposal Addresses', 'buyback.autoDailyBuyback': 'Auto Daily Buyback', 'buyback.strategicReserve': 'Strategic Reserve', 'buyback.burnAddress': 'Burn Address', 'buyback.airdropLock': 'Airdrop Lock', 'buyback.progress': 'Buyback Progress', 'buyback.totalBought': 'Total Bought', 'buyback.totalUsd': 'Total Value', 'buyback.totalSupply': 'Total Supply', 'section.buybackData': 'Buyback Data', 'chart.totalTev': 'Total TEV', 'chart.records': 'Records', 'chart.avgMonthly': 'Avg Monthly', 'chart.period': 'Period', 'chart.cumulative': 'Cumulative TEV', 'chart.zoomHint': '🖱️ Scroll to zoom · Drag to pan · Double-click to reset', 'tev.feeSwitch': 'Fee Switch', 'tev.buybacks': 'Buybacks', 'tev.dividends': 'Dividends', 'tev.burns': 'Burns', 'tev.confidence': 'Confidence', 'footer.lastUpdated': 'Last Updated', 'status.active': 'Active', 'status.planned': 'Planned', 'status.inactive': 'Inactive', 'status.ON': 'ON', 'status.OFF': 'OFF', 'status.PARTIAL': 'Partial', 'status.NONE': 'None', 'status.ACTIVE': 'Active', 'noTev.title': 'No TEV Mechanisms', 'noTev.desc': 'Token is governance-only, protocol revenue not distributed to holders', 'mechanism.type.buyback': 'Buyback', 'mechanism.type.buyback_burn': 'Buyback & Burn', 'mechanism.type.staking_reward': 'Staking Reward', 'mechanism.type.fee_sharing': 'Fee Sharing', 'mechanism.type.ve_distribution': 've Distribution', 'mechanism.type.airdrop': 'Airdrop', 'mechanism.type.aggregate': 'Total TEV', 'mechanism.type.burn': 'Burn', 'mechanism.type.direct_distribution': 'Direct Distribution', 'mechanism.type.ve_reward': 've Reward', 'mechanism.type.holders_revenue': 'Holders Revenue', 'source.governance': 'Governance', 'source.documentation': 'Docs', 'source.report': 'Report', 'source.api': 'API', 'source.onchain': 'On-chain', 'confidence.high': 'High', 'confidence.medium': 'Medium', 'confidence.low': 'Low', 'burn.progress': 'Burn Progress', 'burn.totalBurned': 'Total Burned', 'burn.remaining': 'Remaining Supply', 'burn.target': 'Target Supply' }
+      zh: { 'nav.dashboard': '仪表盘', 'nav.home': '首页', 'nav.tev': '协议估值', 'loading': '加载中...', 'section.tevSummary': '估值概览', 'section.tevHistory': '股东回报历史', 'section.buybackAddresses': '回购地址', 'section.tevMechanisms': '价值返还机制', 'section.dataSources': '数据来源', 'section.notes': '分析师备注', 'section.references': '参考资料', 'buyback.current': '当前阶段', 'buyback.historical': '历史阶段', 'buyback.legacy': '历史钱包', 'buyback.disposal': '处置地址', 'buyback.autoDailyBuyback': '自动每日回购', 'buyback.strategicReserve': '战略回购储备', 'buyback.burnAddress': '销毁地址', 'buyback.airdropLock': '空投锁仓', 'buyback.progress': '回购进度', 'buyback.totalBought': '已回购', 'buyback.totalUsd': '回购价值', 'buyback.totalSupply': '代币总量', 'section.buybackData': '回购数据', 'chart.totalTev': '累计股东回报', 'chart.records': '记录数', 'chart.avgMonthly': '月均回报', 'chart.period': '数据周期', 'chart.cumulative': '累计回报', 'chart.zoomHint': '🖱️ 滚轮缩放 · 拖动平移 · 双击重置', 'tev.feeSwitch': '费用开关', 'tev.buybacks': '回购', 'tev.dividends': '分红', 'tev.burns': '销毁', 'tev.confidence': '可信度', 'footer.lastUpdated': '最后更新', 'status.active': '活跃', 'status.planned': '计划中', 'status.inactive': '未激活', 'status.ON': '已开启', 'status.OFF': '未开启', 'status.PARTIAL': '部分', 'status.NONE': '无', 'status.ACTIVE': '活跃', 'noTev.title': '该协议暂无股东回报', 'noTev.desc': '代币仅用于治理，协议收入未以分红或回购返还给代币持有者', 'mechanism.type.buyback': '回购', 'mechanism.type.buyback_burn': '回购销毁', 'mechanism.type.staking_reward': '质押奖励', 'mechanism.type.fee_sharing': '费用分成', 'mechanism.type.ve_distribution': 've 分配', 'mechanism.type.airdrop': '空投', 'mechanism.type.aggregate': '综合回报', 'mechanism.type.burn': '销毁', 'mechanism.type.direct_distribution': '直接分配', 'mechanism.type.ve_reward': 've 奖励', 'mechanism.type.holders_revenue': '持有者收入', 'source.governance': '治理', 'source.documentation': '文档', 'source.report': '报告', 'source.api': 'API', 'source.onchain': '链上', 'confidence.high': '高', 'confidence.medium': '中', 'confidence.low': '低', 'burn.progress': '销毁进度', 'burn.totalBurned': '已销毁', 'burn.remaining': '剩余供应', 'burn.target': '目标供应' },
+      en: { 'nav.dashboard': 'Dashboard', 'nav.home': 'Home', 'nav.tev': 'Valuation', 'loading': 'Loading...', 'section.tevSummary': 'Valuation Summary', 'section.tevHistory': 'Shareholder Return History', 'section.buybackAddresses': 'Buyback Addresses', 'section.tevMechanisms': 'Value Return Mechanisms', 'section.dataSources': 'Data Sources', 'section.notes': 'Analyst Notes', 'section.references': 'References', 'buyback.current': 'Current Stage', 'buyback.historical': 'Historical Stage', 'buyback.legacy': 'Legacy Wallets', 'buyback.disposal': 'Disposal Addresses', 'buyback.autoDailyBuyback': 'Auto Daily Buyback', 'buyback.strategicReserve': 'Strategic Reserve', 'buyback.burnAddress': 'Burn Address', 'buyback.airdropLock': 'Airdrop Lock', 'buyback.progress': 'Buyback Progress', 'buyback.totalBought': 'Total Bought', 'buyback.totalUsd': 'Total Value', 'buyback.totalSupply': 'Total Supply', 'section.buybackData': 'Buyback Data', 'chart.totalTev': 'Total Returns', 'chart.records': 'Records', 'chart.avgMonthly': 'Avg Monthly', 'chart.period': 'Period', 'chart.cumulative': 'Cumulative Returns', 'chart.zoomHint': '🖱️ Scroll to zoom · Drag to pan · Double-click to reset', 'tev.feeSwitch': 'Fee Switch', 'tev.buybacks': 'Buybacks', 'tev.dividends': 'Dividends', 'tev.burns': 'Burns', 'tev.confidence': 'Confidence', 'footer.lastUpdated': 'Last Updated', 'status.active': 'Active', 'status.planned': 'Planned', 'status.inactive': 'Inactive', 'status.ON': 'ON', 'status.OFF': 'OFF', 'status.PARTIAL': 'Partial', 'status.NONE': 'None', 'status.ACTIVE': 'Active', 'noTev.title': 'No Shareholder Returns Yet', 'noTev.desc': 'Token is governance-only; protocol revenue is not returned to holders via dividends or buybacks', 'mechanism.type.buyback': 'Buyback', 'mechanism.type.buyback_burn': 'Buyback & Burn', 'mechanism.type.staking_reward': 'Staking Reward', 'mechanism.type.fee_sharing': 'Fee Sharing', 'mechanism.type.ve_distribution': 've Distribution', 'mechanism.type.airdrop': 'Airdrop', 'mechanism.type.aggregate': 'Total Return', 'mechanism.type.burn': 'Burn', 'mechanism.type.direct_distribution': 'Direct Distribution', 'mechanism.type.ve_reward': 've Reward', 'mechanism.type.holders_revenue': 'Holders Revenue', 'source.governance': 'Governance', 'source.documentation': 'Docs', 'source.report': 'Report', 'source.api': 'API', 'source.onchain': 'On-chain', 'confidence.high': 'High', 'confidence.medium': 'Medium', 'confidence.low': 'Low', 'burn.progress': 'Burn Progress', 'burn.totalBurned': 'Total Burned', 'burn.remaining': 'Remaining Supply', 'burn.target': 'Target Supply' }
     };
     let currentLang = localStorage.getItem('lang') || 'zh';
     const t = k => i18n[currentLang][k] || k;
@@ -628,7 +636,7 @@
               },
               scales: {
                 x: { type: 'time', time: { unit: records.length > 180 ? 'month' : 'day', displayFormats: { day: 'MM-dd', month: 'yyyy-MM' }, tooltipFormat: 'yyyy-MM-dd' }, grid: { display: false }, ticks: { color: '#71717a', font: { size: 10 }, maxRotation: 0, maxTicksLimit: 15 } },
-                y: { position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => fmtCurrency(v) }, title: { display: true, text: currentLang === 'zh' ? '每日 TEV (USD)' : 'Daily TEV (USD)', color: '#71717a' } },
+                y: { position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => fmtCurrency(v) }, title: { display: true, text: currentLang === 'zh' ? '每日股东回报 (USD)' : 'Daily Returns (USD)', color: '#71717a' } },
                 y2: { position: 'right', grid: { display: false }, ticks: { color: '#f59e0b', callback: v => fmtCurrency(v) }, title: { display: true, text: t('chart.cumulative'), color: '#f59e0b' } }
               }
             }
@@ -669,7 +677,7 @@
               },
               scales: {
                 x: { stacked: true, grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', font: { size: 11 } } },
-                y: { stacked: true, position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => fmtCurrency(v) }, title: { display: true, text: currentLang === 'zh' ? '单期 TEV' : 'Period TEV', color: '#71717a' } },
+                y: { stacked: true, position: 'left', grid: { color: 'rgba(39,39,42,0.5)' }, ticks: { color: '#71717a', callback: v => fmtCurrency(v) }, title: { display: true, text: currentLang === 'zh' ? '单期回报' : 'Period Returns', color: '#71717a' } },
                 y2: { position: 'right', grid: { display: false }, ticks: { color: '#f59e0b', callback: v => fmtCurrency(v) }, title: { display: true, text: t('chart.cumulative'), color: '#f59e0b' } }
               }
             }
@@ -677,7 +685,7 @@
         }
         
         const total = records.reduce((s, r) => s + r.amount_usd, 0);
-        const avgLabel = isDaily ? (currentLang === 'zh' ? '日均 TEV' : 'Avg Daily') : t('chart.avgMonthly');
+        const avgLabel = isDaily ? (currentLang === 'zh' ? '日均回报' : 'Avg Daily') : t('chart.avgMonthly');
         const fmtPeriod = (d) => { const [y,m] = d.split('-'); return y + '/' + m; };
         document.getElementById('chart-stats').innerHTML = `<div class="chart-stat"><div class="chart-stat-value">${fmtCurrency(total)}</div><div class="chart-stat-label">${t('chart.totalTev')}</div></div><div class="chart-stat"><div class="chart-stat-value">${records.length}</div><div class="chart-stat-label">${isDaily ? (currentLang === 'zh' ? '天数' : 'Days') : t('chart.records')}</div></div><div class="chart-stat"><div class="chart-stat-value">${fmtCurrency(total / records.length)}</div><div class="chart-stat-label">${avgLabel}</div></div>`;
         // 在图表右上角显示数据周期
@@ -1215,7 +1223,7 @@
         if (!resp.ok) throw new Error('Protocol not found');
         const cfg = await resp.json();
         protocolConfig = cfg;
-        document.title = `${cfg.name} — TEV Dashboard`;
+        document.title = `${cfg.name} — Crypto3D 估值仪表盘`;
         document.getElementById('breadcrumb-name').textContent = cfg.name;
         const iconEl = document.getElementById('protocol-icon');
         const logoUrl = logoUrls[pid] || (cfg.icon?.startsWith('http') ? cfg.icon : null);
@@ -1225,14 +1233,17 @@
         const catMap = { lending: '借贷', dex: 'DEX', liquid_staking: '流动性质押', restaking: '再质押', perpetuals: '永续合约', yield: '收益' };
         document.getElementById('protocol-ticker').textContent = `${cfg.ticker} · ${currentLang === 'zh' ? (catMap[cfg.category] || cfg.category) : cfg.category}`;
         const tevStatus = getTevStatus(cfg.tev_summary || {}, cfg);
+        const style = cfg.style || (tevStatus === 'active' ? 'cash_cow' : 'growth');
         const badge = document.getElementById('tev-badge');
-        badge.className = `badge badge-${tevStatus === 'active' ? 'active' : tevStatus === 'partial' ? 'partial' : 'none'}`;
-        badge.textContent = tevStatus === 'active' ? 'TEV Active' : tevStatus === 'partial' ? 'TEV Partial' : 'No TEV';
+        badge.className = `badge badge-${style === 'cash_cow' ? 'active' : 'partial'}`;
+        badge.textContent = style === 'cash_cow' ? (currentLang === 'zh' ? '现金牛' : 'Cash Cow') : (currentLang === 'zh' ? '成长股' : 'Growth');
         document.getElementById('link-website').href = cfg.website || '#';
         document.getElementById('link-docs').href = cfg.docs || '#';
         document.getElementById('link-coingecko').href = cfg.token?.coingecko_id ? `https://www.coingecko.com/en/coins/${cfg.token.coingecko_id}` : '#';
         const statusText = document.getElementById('tev-status-text');
-        statusText.textContent = tevStatus === 'active' ? 'TEV ACTIVE' : tevStatus === 'partial' ? 'TEV PARTIAL' : 'NO TEV';
+        const statusZh = { active: '股东回报 · 活跃', partial: '股东回报 · 部分', none: '股东回报 · 无' };
+        const statusEn = { active: 'SHAREHOLDER RETURN · ACTIVE', partial: 'SHAREHOLDER RETURN · PARTIAL', none: 'SHAREHOLDER RETURN · NONE' };
+        statusText.textContent = (currentLang === 'zh' ? statusZh : statusEn)[tevStatus] || statusZh.none;
         statusText.className = `tev-status ${tevStatus}`;
         const feeSwitch = cfg.tev_summary?.fee_switch;
         document.getElementById('primary-value').textContent = tevStatus === 'active' ? '✓ ON' : tevStatus === 'partial' ? '~ PARTIAL' : feeSwitch === 'N/A' ? 'N/A' : '✗ OFF';
@@ -1256,14 +1267,25 @@
           const tevMap = { '7d': metrics.tev_yield_7d_ann, '30d': metrics.tev_yield_30d_ann, '90d': metrics.tev_yield_90d_ann, '365d': proto.tev_yield_percent };
           const earnMap = { '7d': metrics.earning_yield_7d_ann, '30d': metrics.earning_yield_30d_ann, '90d': metrics.earning_yield_90d_ann, '365d': proto.earning_yield_percent };
           const ratioMap = { '7d': proto.tevRatio_7d, '30d': proto.tevRatio_30d, '90d': proto.tevRatio_90d, '365d': proto.tevRatio_365d != null ? proto.tevRatio_365d : proto.tevRatio };
+          const divMap = { '7d': metrics.dividend_yield_7d_ann, '30d': metrics.dividend_yield_30d_ann, '90d': metrics.dividend_yield_90d_ann, '365d': proto.dividend_yield_percent };
+          const buyMap = { '7d': metrics.buyback_yield_7d_ann, '30d': metrics.buyback_yield_30d_ann, '90d': metrics.buyback_yield_90d_ann, '365d': proto.buyback_yield_percent };
           return {
             tev:   tevMap[period]   != null ? tevMap[period]   : proto.tev_yield_percent,
             earn:  earnMap[period]  != null ? earnMap[period]  : proto.earning_yield_percent,
             ratio: ratioMap[period] != null ? ratioMap[period] : proto.tevRatio,
+            div:   divMap[period]   != null ? divMap[period]   : (proto.dividend_yield_percent || 0),
+            buy:   buyMap[period]   != null ? buyMap[period]   : (proto.buyback_yield_percent || 0),
           };
         }
         function formatPct(v, p) { return v == null ? '—' : v.toFixed(p) + '%'; }
-        function formatRatio(v) {
+        // 市销率 P/S = 100 ÷ Earning Yield(%)；无营收时 —
+        function formatPS(earn) {
+          if (earn == null || earn <= 0) return '—';
+          const ps = 100 / earn;
+          return (ps >= 100 ? Math.round(ps) : ps.toFixed(1)) + 'x';
+        }
+        function formatPayout(v, tev) {
+          if (!tev) return '—';  // 无实际股东回报时派息率无意义
           if (typeof v === 'string') return v;
           if (v == null || v <= 0) return '—';
           return (v * 100).toFixed(1) + '%';
@@ -1274,8 +1296,10 @@
           const tevEl = document.getElementById('kpi-tevyield');
           tevEl.textContent = formatPct(k.tev, displayPrecision);
           tevEl.className = 'tev-kpi-value ' + ((k.tev || 0) > 5 ? 'value-on' : (k.tev || 0) > 0 ? 'value-partial' : '');
-          document.getElementById('kpi-earningyield').textContent = formatPct(k.earn, displayPrecision);
-          document.getElementById('kpi-tevratio').textContent = formatRatio(k.ratio);
+          document.getElementById('kpi-divyield').textContent = (k.div || 0) > 0 ? formatPct(k.div, displayPrecision) : '—';
+          document.getElementById('kpi-buybackyield').textContent = (k.buy || 0) > 0 ? formatPct(k.buy, displayPrecision) : '—';
+          document.getElementById('kpi-earningyield').textContent = formatPS(k.earn);
+          document.getElementById('kpi-tevratio').textContent = formatPayout(k.ratio, k.tev);
         }
         renderKPI('365d');
         document.querySelectorAll('#period-tabs .period-tab').forEach(btn => {
@@ -1469,10 +1493,10 @@
         // 精简：只保留核心 5 行推导。多周期 yield 在概览 KPI + 周期 tab 已展示，不重复。
         const rows = [
           { label: currentLang === 'zh' ? '365D 协议收入' : '365D Revenue', value: fmt(revenue) },
-          { label: currentLang === 'zh' ? 'TEV 比例' : 'TEV Ratio', value: tevRatio != null ? pct(tevRatio) : '—' },
-          { label: currentLang === 'zh' ? '365D TEV' : '365D TEV', value: fmt(tev), derived: true },
+          { label: currentLang === 'zh' ? '派息率' : 'Payout Ratio', value: (tevRatio != null && tevYield) ? pct(tevRatio) : '—' },
+          { label: currentLang === 'zh' ? '365D 股东回报' : '365D Shareholder Returns', value: fmt(tev), derived: true },
           { label: currentLang === 'zh' ? '市值' : 'Market Cap', value: fmt(mcap) },
-          { label: 'TEV Yield', value: yld(tevYield), derived: true },
+          { label: currentLang === 'zh' ? '股东回报率' : 'Shareholder Yield', value: yld(tevYield), derived: true },
         ];
 
         const container = document.getElementById('tev-calc-content');
@@ -1491,7 +1515,7 @@
         const updatedAt = allData.generated_at ? allData.generated_at.split('T')[0] : '—';
         footer.innerHTML = [
           `<span>${currentLang === 'zh' ? '数据来源' : 'Source'}: DefiLlama Revenue API</span>`,
-          note ? `<span>${currentLang === 'zh' ? 'TEV 比例依据' : 'Ratio basis'}: ${note}</span>` : '',
+          note ? `<span>${currentLang === 'zh' ? '派息率依据' : 'Payout basis'}: ${note}</span>` : '',
           `<span>${currentLang === 'zh' ? '置信度' : 'Confidence'}: ${confLabel}</span>`,
           `<span>${currentLang === 'zh' ? '更新' : 'Updated'}: ${updatedAt}</span>`,
         ].filter(Boolean).join('');

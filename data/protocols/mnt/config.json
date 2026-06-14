@@ -172,11 +172,11 @@
     {
       "step": 5,
       "label": "MNT staking APY 来自新币发行",
-      "description": "4-8% APY 但是 inflation, 非协议收入分润, 不算 TEV"
+      "description": "4-8% APY 但是 inflation, 非协议收入分润, 不算 股东回报"
     },
     {
       "step": 6,
-      "label": "TEV Yield: 0% (governance-only, 类 LDO)",
+      "label": "股东回报率: 0% (governance-only, 类 LDO)",
       "derived": true,
       "value_fields_by_period": {
         "7d": "metrics.tev_yield_7d_ann",
@@ -186,5 +186,16 @@
       },
       "unit": "%"
     }
-  ]
+  ],
+  "dividend_yield_percent": 0,
+  "buyback_yield_percent": 0,
+  "style": "growth",
+  "metrics": {
+    "dividend_yield_7d_ann": 0,
+    "buyback_yield_7d_ann": 0,
+    "dividend_yield_30d_ann": 0,
+    "buyback_yield_30d_ann": 0,
+    "dividend_yield_90d_ann": 0,
+    "buyback_yield_90d_ann": 0
+  }
 }

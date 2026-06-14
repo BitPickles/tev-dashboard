@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <script>(function(){var t=localStorage.getItem('theme');if(t!=='dark')document.documentElement.setAttribute('data-theme','light')})()</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TEV Dashboard — 加密协议估值</title>
-  <meta name="description" content="TEV（Token Economic Value）是 token 持有人从协议中捕获的年化经济价值。Crypto3D 为长期投资者提供价值判断工具——逐协议展示链上验证过的 TEV 收益率、分配比例与 buyback/burn 证据。">
+  <title>Crypto3D 估值仪表盘 — 加密协议股东回报率</title>
+  <meta name="description" content="用美股口径衡量加密协议：股东回报率（股息率 + 回购率）、市销率 P/S、派息率。Crypto3D 为长期投资者提供价值判断工具——逐协议展示链上验证过的股东回报数据与 buyback/burn 证据，可横向对比科技股。">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://crypto3d.pro/tev/">
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
@@ -64,7 +64,7 @@
     <section class="hero">
       <div class="container">
         <h1 data-i18n="hero.title">加密协议估值仪表盘</h1>
-        <p data-i18n="hero.subtitle">追踪协议收入真正流向代币持有者的比例。TEV Yield 是加密版的「股息率」。</p>
+        <p data-i18n="hero.subtitle">用美股的估值语言看加密协议：股东回报率、市销率、派息率——把成熟协议当蓝筹，把高增长协议当科技股。</p>
       </div>
     </section>
 
@@ -100,13 +100,14 @@
               <tr>
                 <th style="width: 50px;">#</th>
                 <th data-i18n="th.protocol" data-zh="协议" data-en="Protocol">协议</th>
-                <th class="text-right sortable" data-sort="tvl" data-i18n="th.tvl">TVL</th>
-                <th class="text-right sortable sorted desc" data-sort="tevStatus" data-i18n="th.tevStatus">TEV 状态</th>
-                <th class="text-right sortable" data-sort="tevRatio" data-i18n="th.tevRatio" data-zh="分配比例" data-en="Distribution Ratio">分配比例</th>
+                <th class="text-right sortable sorted desc" data-sort="style" data-i18n="th.style">类型</th>
                 <th class="text-right sortable" data-sort="mcap" data-i18n="th.mcap" data-zh="市值" data-en="Market Cap">市值</th>
-                <th class="text-right sortable" data-sort="earningYield" data-i18n="th.earningYield" data-zh="收益率" data-en="Earning Yield">收益率</th>
-                <th class="text-right sortable" data-sort="tevYield" data-i18n="th.yield">TEV Yield</th>
-                <th class="text-right" data-i18n="th.confidence">可信度</th>
+                <th class="text-right sortable" data-sort="ps" data-i18n="th.ps">市销率</th>
+                <th class="text-right sortable" data-sort="divYield" data-i18n="th.divYield">股息率</th>
+                <th class="text-right sortable" data-sort="buybackYield" data-i18n="th.buybackYield">回购率</th>
+                <th class="text-right sortable" data-sort="shareholderYield" data-i18n="th.shareholderYield">股东回报率</th>
+                <th class="text-right sortable" data-sort="payout" data-i18n="th.payout">派息率</th>
+                <th class="text-right" data-i18n="th.dataQuality">数据质量</th>
               </tr>
             </thead>
             <tbody id="protocol-tbody"></tbody>
@@ -120,17 +121,17 @@
       <div class="container">
         <div class="intro-grid">
           <div class="intro-card">
-            <h2><span class="icon">📊</span> <span data-i18n="intro.what.title">什么是 TEV?</span></h2>
-            <p data-i18n="intro.what.p1"><strong>TEV (Token Empowerment Value)</strong>，即「代币赋能价值」，是衡量加密协议向代币持有者分配价值能力的核心指标。</p>
-            <p data-i18n="intro.what.p2">不同于传统的「协议收入」，TEV 只计算真正赋能给代币持有者的那部分——包括回购销毁、质押分红、治理激励等。</p>
-            <div class="formula-box">TEV Yield = TEV ÷ Market Cap × 100%</div>
-            <p data-i18n="intro.what.p3">这个比率类似传统股票的「股息率」，帮助投资者用股东回报视角评估协议价值。</p>
+            <h2><span class="icon">📊</span> <span data-i18n="intro.what.title">什么是股东回报率?</span></h2>
+            <p data-i18n="intro.what.p1"><strong>股东回报率 (Shareholder Yield)</strong> 衡量一个加密协议把多少收入真正以分红和回购的形式返还给代币持有者，等于「股息率 + 回购率」。</p>
+            <p data-i18n="intro.what.p2">它直接对标美股的同名指标：<strong>股息率</strong> = 协议以现金/稳定币等形式直接分配给持币人和质押者的部分；<strong>回购率</strong> = 协议用收入回购并销毁代币的部分，等价于上市公司的股票回购。</p>
+            <div class="formula-box">股东回报率 = 股息率 + 回购率 = 年化股东回报 ÷ 市值 × 100%</div>
+            <p data-i18n="intro.what.p3">配合<strong>市销率 (P/S)</strong> 和<strong>派息率</strong>，你可以像分析美股一样横向对比加密协议——把持续返还收入的成熟协议看作派息蓝筹（现金牛），把暂不返还、靠营收增长定价的项目看作科技成长股。</p>
           </div>
           <div class="intro-card">
-            <h2><span class="icon">💡</span> <span data-i18n="intro.why.title">为什么需要这个指标?</span></h2>
+            <h2><span class="icon">💡</span> <span data-i18n="intro.why.title">为什么向美股指标看齐?</span></h2>
             <p data-i18n="intro.why.p1">加密行业发展了这么多年，大部分 Token 依然是「空气」——持有它们除了投机，几乎没有任何实际价值。这也是为什么越来越多的投资者对「持币」失去信心。</p>
             <p data-i18n="intro.why.p2">但并非所有项目都是如此。一些真正优秀的加密协议，正在通过回购、分红、销毁等方式，将协议收入回馈给代币持有者——这才是「持币者权益」应有的样子。</p>
-            <p data-i18n="intro.why.p3">TEV 指标的核心目标，就是帮你筛选出那些真正在为持币者创造价值的协议，而不是只会画饼的「空气项目」。用数据说话，让赋能可量化。</p>
+            <p data-i18n="intro.why.p3">我们不另造新概念，而是直接套用美股成熟的估值框架，让你用熟悉的指标筛选出真正为持币者创造价值的协议，并和美股科技股横向对比。用数据说话，让回报可量化。</p>
           </div>
         </div>
       </div>
@@ -144,10 +145,10 @@
               <div class="author-avatar">🔮</div>
               <div class="author-meta">
                 <h3>3D</h3>
-                <div class="tagline" data-i18n="author.tagline">DeFi 实战派 | TEV 框架创建者</div>
+                <div class="tagline" data-i18n="author.tagline">DeFi 实战派 | 股东回报估值框架</div>
               </div>
             </div>
-            <p class="author-bio" data-i18n="author.bio">专注 DeFi、链上套利及低风险机会的探索与实战。TEV（代币赋能价值）指标体系是我在实践中提炼的估值框架——用「股东回报」视角审视加密项目，区分真正回馈持币者的优质协议和只会画饼的空气项目。相信「活得久」比「赚得多」更重要，希望这个工具能帮助更多人做出理性投资决策。我在 YouTube「3D 加密频道」持续分享 DeFi 研究和实战心得，欢迎订阅交流。</p>
+            <p class="author-bio" data-i18n="author.bio">专注 DeFi、链上套利及低风险机会的探索与实战。我不另造新概念，而是直接套用美股成熟的估值口径——股东回报率（股息率 + 回购率）、市销率 P/S、派息率——审视加密项目，区分真正回馈持币者的优质协议和只会画饼的空气项目，并和美股科技股横向对比。相信「活得久」比「赚得多」更重要，希望这个工具能帮助更多人做出理性投资决策。我在 YouTube「3D 加密频道」持续分享 DeFi 研究和实战心得，欢迎订阅交流。</p>
             <div class="author-links">
               <a href="https://x.com/22333D" target="_blank" class="author-link">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -160,9 +161,9 @@
             </div>
           </div>
           <div class="video-card">
-            <h2 data-i18n="video.title">📺 TEV 框架详解</h2>
+            <h2 data-i18n="video.title">📺 股东回报估值框架详解</h2>
             <div class="video-container">
-              <iframe src="https://www.youtube.com/embed/Gl8e_t2Zo6w" title="TEV Framework Explained" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <iframe src="https://www.youtube.com/embed/Gl8e_t2Zo6w" title="Shareholder Yield Framework Explained" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -206,46 +207,50 @@
     const i18n = {
       zh: {
         'nav.home': '← 首页', 'nav.governance': '治理', 'nav.protocols': '协议数据', 'nav.methodology': '方法论', 'nav.about': '关于',
-        'hero.title': '加密协议估值仪表盘', 'hero.subtitle': '追踪协议收入真正流向代币持有者的比例。TEV Yield 是加密版的「股息率」。',
-        'intro.what.title': '什么是 TEV?',
-        'intro.what.p1': '<strong>TEV (Token Empowerment Value)</strong>，即「代币赋能价值」，是衡量加密协议向代币持有者分配价值能力的核心指标。',
-        'intro.what.p2': '不同于传统的「协议收入」，TEV 只计算真正赋能给代币持有者的那部分——包括回购销毁、质押分红、治理激励等。',
-        'intro.what.p3': '这个比率类似传统股票的「股息率」，帮助投资者用股东回报视角评估协议价值。',
-        'intro.why.title': '为什么需要这个指标?',
+        'hero.title': '加密协议估值仪表盘', 'hero.subtitle': '用美股的估值语言看加密协议：股东回报率、市销率、派息率——把成熟协议当蓝筹，把高增长协议当科技股。',
+        'intro.what.title': '什么是股东回报率?',
+        'intro.what.p1': '<strong>股东回报率 (Shareholder Yield)</strong> 衡量一个加密协议把多少收入真正以分红和回购的形式返还给代币持有者，等于「股息率 + 回购率」。',
+        'intro.what.p2': '它直接对标美股的同名指标：<strong>股息率</strong> = 协议以现金/稳定币等形式直接分配给持币人和质押者的部分；<strong>回购率</strong> = 协议用收入回购并销毁代币的部分，等价于上市公司的股票回购。',
+        'intro.what.p3': '配合<strong>市销率 (P/S)</strong> 和<strong>派息率</strong>，你可以像分析美股一样横向对比加密协议——把持续返还收入的成熟协议看作派息蓝筹（现金牛），把暂不返还、靠营收增长定价的项目看作科技成长股。',
+        'intro.why.title': '为什么向美股指标看齐?',
         'intro.why.p1': '加密行业发展了这么多年，大部分 Token 依然是「空气」——持有它们除了投机，几乎没有任何实际价值。这也是为什么越来越多的投资者对「持币」失去信心。',
         'intro.why.p2': '但并非所有项目都是如此。一些真正优秀的加密协议，正在通过回购、分红、销毁等方式，将协议收入回馈给代币持有者——这才是「持币者权益」应有的样子。',
-        'intro.why.p3': 'TEV 指标的核心目标，就是帮你筛选出那些真正在为持币者创造价值的协议，而不是只会画饼的「空气项目」。用数据说话，让赋能可量化。',
-        'video.title': '📺 TEV 框架详解', 'author.tagline': 'DeFi 实战派 | TEV 框架创建者',
-        'author.bio': '专注 DeFi、链上套利及低风险机会的探索与实战。TEV（代币赋能价值）指标体系是我在实践中提炼的估值框架——用「股东回报」视角审视加密项目，区分真正回馈持币者的优质协议和只会画饼的空气项目。相信「活得久」比「赚得多」更重要，希望这个工具能帮助更多人做出理性投资决策。我在 YouTube「3D 加密频道」持续分享 DeFi 研究和实战心得，欢迎订阅交流。',
+        'intro.why.p3': '我们不另造新概念，而是直接套用美股成熟的估值框架，让你用熟悉的指标筛选出真正为持币者创造价值的协议，并和美股科技股横向对比。用数据说话，让回报可量化。',
+        'video.title': '📺 股东回报估值框架详解', 'author.tagline': 'DeFi 实战派 | 股东回报估值框架',
+        'author.bio': '专注 DeFi、链上套利及低风险机会的探索与实战。我不另造新概念，而是直接套用美股成熟的估值口径——股东回报率（股息率 + 回购率）、市销率 P/S、派息率——审视加密项目，区分真正回馈持币者的优质协议和只会画饼的空气项目，并和美股科技股横向对比。相信「活得久」比「赚得多」更重要，希望这个工具能帮助更多人做出理性投资决策。我在 YouTube「3D 加密频道」持续分享 DeFi 研究和实战心得，欢迎订阅交流。',
         'author.youtube': '3D 加密频道',
-        'stats.protocols': '追踪协议数', 'stats.mcap': '总市值', 'stats.fees': '30日总费用', 'stats.tev': '30日总 TEV',
+        'stats.protocols': '追踪协议数', 'stats.mcap': '总市值', 'stats.fees': '30日总费用', 'stats.tev': '30日股东回报',
         'table.title': '协议排名', 'table.loading': '加载协议数据中...',
         'filter.all': '全部', 'filter.lending': '借贷', 'filter.dex': 'DEX', 'filter.cex': 'CEX', 'filter.perps': 'Perps', 'filter.yield': '收益',
-        'th.protocol': '协议', 'th.earningYield': '收益率', 'th.tvl': 'TVL', 'th.tevStatus': 'TEV 状态', 'th.tevRatio': '分配比例', 'th.mcap': '市值', 'th.yield': 'TEV Yield', 'th.confidence': '可信度',
-        'tevStatus.active': '活跃', 'tevStatus.partial': '部分', 'tevStatus.none': '无',
+        'th.protocol': '协议', 'th.style': '类型', 'th.mcap': '市值', 'th.ps': '市销率', 'th.divYield': '股息率', 'th.buybackYield': '回购率', 'th.shareholderYield': '股东回报率', 'th.payout': '派息率', 'th.dataQuality': '数据质量',
+        'style.cash_cow': '现金牛', 'style.growth': '成长股',
+        'style.tip.cash_cow': '现金牛 — 已进入成熟期、持续把收入以分红/回购返还给持币人的价值股，类比派息成熟的蓝筹（股东回报率 ≥ 1%）',
+        'style.tip.growth': '成长股 — 暂未向持币人返还收入、靠营收增长与市销率定价的科技成长型项目（股东回报率 < 1%）',
         'confidence.high': '高', 'confidence.medium': '中', 'confidence.low': '低',
         'footer.loading': '加载数据中...', 'footer.updated': '数据更新时间：{date} · 维护者 3D', 'footer.methodology': '方法论', 'footer.sources': '数据来源',
         'ytbanner.title': '📺 订阅 3D 加密频道', 'ytbanner.desc': '更多 DeFi 深度分析、链上套利实战、低风险机会分享，尽在 YouTube', 'ytbanner.btn': '立即订阅',
       },
       en: {
         'nav.home': '← Home', 'nav.governance': 'Governance', 'nav.protocols': 'Protocols', 'nav.methodology': 'Methodology', 'nav.about': 'About',
-        'hero.title': 'Crypto Protocol Valuation Dashboard', 'hero.subtitle': 'Track how much protocol revenue actually flows to token holders. TEV Yield is the dividend yield for crypto.',
-        'intro.what.title': 'What is TEV?',
-        'intro.what.p1': '<strong>TEV (Token Empowerment Value)</strong> measures how much value a crypto protocol distributes to its token holders.',
-        'intro.what.p2': 'Unlike "protocol revenue", TEV only counts value that actually empowers token holders — including buybacks, staking rewards, and governance incentives.',
-        'intro.what.p3': 'This ratio is similar to traditional dividend yield, helping investors evaluate protocols from a shareholder return perspective.',
-        'intro.why.title': 'Why This Metric?',
+        'hero.title': 'Crypto Protocol Valuation Dashboard', 'hero.subtitle': 'Read crypto protocols in US-equity terms: Shareholder Yield, P/S, and Payout Ratio — mature protocols as blue chips, high-growth ones as tech stocks.',
+        'intro.what.title': 'What is Shareholder Yield?',
+        'intro.what.p1': '<strong>Shareholder Yield</strong> measures how much protocol revenue is actually returned to token holders via dividends and buybacks — it equals Dividend Yield + Buyback Yield.',
+        'intro.what.p2': 'It maps directly to the equity metric of the same name: <strong>Dividend Yield</strong> is revenue paid directly to holders/stakers (cash/stablecoin); <strong>Buyback Yield</strong> is revenue used to buy back and burn the token, equivalent to corporate share buybacks.',
+        'intro.what.p3': 'Together with <strong>P/S</strong> and <strong>Payout Ratio</strong>, you can compare crypto protocols just like US stocks — treating protocols that consistently return revenue as dividend blue chips (cash cows), and those not yet returning as tech growth stocks.',
+        'intro.why.title': 'Why Align With US-Equity Metrics?',
         'intro.why.p1': 'After years of crypto evolution, most tokens remain "vaporware" — holding them offers nothing beyond speculation. That\'s why more investors are losing faith in "holding tokens."',
         'intro.why.p2': 'But not all projects are the same. Some truly excellent DeFi protocols are giving back to token holders through buybacks, dividends, and burns — this is what "token holder equity" should look like.',
-        'intro.why.p3': 'The core goal of TEV is to help you identify protocols that genuinely create value for holders, not just projects that make empty promises. Let data speak, make empowerment measurable.',
-        'video.title': '📺 TEV Framework Explained', 'author.tagline': 'DeFi Practitioner | TEV Framework Creator',
-        'author.bio': 'Focused on DeFi, on-chain arbitrage, and low-risk opportunities. The TEV framework is a valuation system I developed to evaluate crypto projects from a shareholder return perspective. Subscribe to my YouTube channel "3D Crypto" for DeFi research and insights.',
+        'intro.why.p3': 'Rather than inventing a new vocabulary, we reuse the mature valuation framework of US equities, so you can screen protocols that genuinely create value for holders and compare them side by side with tech stocks. Let data speak, make returns measurable.',
+        'video.title': '📺 Shareholder Yield Framework Explained', 'author.tagline': 'DeFi Practitioner | Shareholder-Yield Valuation',
+        'author.bio': 'Focused on DeFi, on-chain arbitrage, and low-risk opportunities. Rather than inventing new jargon, I apply mature US-equity metrics — Shareholder Yield (dividend + buyback yield), P/S ratio, and Payout Ratio — to evaluate crypto projects and compare them directly with tech stocks, separating protocols that truly return capital to holders from empty promises. Subscribe to my YouTube channel "3D Crypto" for DeFi research and insights.',
         'author.youtube': '3D Crypto Channel',
-        'stats.protocols': 'Protocols Tracked', 'stats.mcap': 'Total Market Cap', 'stats.fees': '30d Total Fees', 'stats.tev': '30d Total TEV',
+        'stats.protocols': 'Protocols Tracked', 'stats.mcap': 'Total Market Cap', 'stats.fees': '30d Total Fees', 'stats.tev': '30d Shareholder Returns',
         'table.title': 'Protocol Rankings', 'table.loading': 'Loading protocol data...',
         'filter.all': 'All', 'filter.lending': 'Lending', 'filter.dex': 'DEX', 'filter.cex': 'CEX', 'filter.perps': 'Perps', 'filter.yield': 'Yield',
-        'th.protocol': 'Protocol', 'th.earningYield': 'Earning Yield', 'th.tvl': 'TVL', 'th.tevStatus': 'TEV Status', 'th.tevRatio': 'Distribution', 'th.mcap': 'Market Cap', 'th.yield': 'TEV Yield', 'th.confidence': 'Confidence',
-        'tevStatus.active': 'Active', 'tevStatus.partial': 'Partial', 'tevStatus.none': 'None',
+        'th.protocol': 'Protocol', 'th.style': 'Style', 'th.mcap': 'Market Cap', 'th.ps': 'P/S', 'th.divYield': 'Dividend Yield', 'th.buybackYield': 'Buyback Yield', 'th.shareholderYield': 'Shareholder Yield', 'th.payout': 'Payout Ratio', 'th.dataQuality': 'Data Quality',
+        'style.cash_cow': 'Cash Cow', 'style.growth': 'Growth',
+        'style.tip.cash_cow': 'Cash Cow — a mature value stock that consistently returns revenue to holders via dividends/buybacks, like a dividend-paying blue chip (Shareholder Yield ≥ 1%)',
+        'style.tip.growth': 'Growth — a tech-style project not yet returning revenue to holders, priced on revenue growth and P/S (Shareholder Yield < 1%)',
         'confidence.high': 'High', 'confidence.medium': 'Medium', 'confidence.low': 'Low',
         'footer.loading': 'Loading data...', 'footer.updated': 'Data updated: {date} · Maintained by 3D', 'footer.methodology': 'Methodology', 'footer.sources': 'Data Sources',
         'ytbanner.title': '📺 Subscribe to 3D Crypto Channel', 'ytbanner.desc': 'More DeFi deep dives, on-chain arbitrage tactics, and low-risk opportunities on YouTube', 'ytbanner.btn': 'Subscribe Now',
@@ -268,27 +273,29 @@
     // Header tooltips
     const headerTips = {
       zh: {
-        tvl: 'Total Value Locked — 用户存入协议的总资产价值，反映协议的资金规模和信任度',
-        tevStatus: '该协议是否有将收入分配给代币持有者的机制，如回购、销毁、质押分红等',
-        tevRatio: '分配比例 = TEV ÷ 协议利润。衡量协议把多少比例的利润回馈给代币持有者，越高代表持有者获得的价值越多',
-        mcap: '代币的流通市值 = 当前价格 × 流通量，是计算 TEV Yield 的分母',
-        earningYield: '收益率 = 协议年化利润 ÷ 市值。类似传统金融的市盈率倒数（1/PE），反映协议的盈利能力',
-        tevYield: 'TEV Yield = 年化 TEV ÷ 市值。TEV（Token Enabled Value）是协议实际分配给代币持有者的价值（回购/销毁/分红），类似股票的股息率',
-        confidence: '数据可信度 — 基于数据来源是否可在链上验证、是否有公开 API、是否依赖第三方等因素综合判断'
+        style: '类型 — 现金牛：成熟、持续向持币人返还收入的价值股；成长股：暂不返还、靠营收增长定价的科技型项目。判定线为股东回报率 1%',
+        mcap: '代币的流通市值 = 当前价格 × 流通量，是计算股东回报率与市销率的分母',
+        ps: '市销率 P/S = 市值 ÷ 年化协议营收。类比美股市销率，数值越低代表相对营收越便宜；无营收时显示 —',
+        divYield: '股息率 = 年化分红 ÷ 市值。协议以现金/稳定币等形式直接分配给持币人/质押者的部分，类比股票现金分红',
+        buybackYield: '回购率 = 年化回购销毁 ÷ 市值。协议用收入回购并销毁代币的部分，类比上市公司股票回购',
+        shareholderYield: '股东回报率 = 股息率 + 回购率 = 年化股东回报 ÷ 市值。衡量协议总共把多少收入以分红+回购返还给持币人，类比美股 Shareholder Yield',
+        payout: '派息率 Payout Ratio = 股东回报 ÷ 协议营收。衡量协议把多少比例的营收返还给持币人，类比美股派息率',
+        dataQuality: '数据质量 — 基于数据来源是否可在链上验证、是否有公开 API、是否依赖第三方等因素综合判断'
       },
       en: {
-        tvl: 'Total Value Locked — total assets deposited in the protocol, reflecting its scale and trust',
-        tevStatus: 'Whether the protocol has mechanisms to distribute revenue to token holders (buybacks, burns, staking rewards, etc.)',
-        tevRatio: 'Distribution Ratio = TEV ÷ Protocol Revenue. Measures what share of profits goes back to token holders',
-        mcap: 'Circulating market cap = current price × circulating supply, used as denominator for TEV Yield',
-        earningYield: 'Earning Yield = Annualized Revenue ÷ Market Cap. Similar to inverse P/E ratio in traditional finance',
-        tevYield: 'TEV Yield = Annualized TEV ÷ Market Cap. TEV (Token Enabled Value) is the actual value distributed to holders (buybacks/burns/dividends), similar to dividend yield in stocks',
-        confidence: 'Data confidence — based on whether data is verifiable on-chain, has public APIs, or relies on third-party sources'
+        style: 'Style — Cash Cow: a mature value stock that returns revenue to holders; Growth: not yet returning, priced on revenue growth. Cutoff is 1% Shareholder Yield',
+        mcap: 'Circulating market cap = current price × circulating supply, the denominator for Shareholder Yield and P/S',
+        ps: 'Price/Sales = Market Cap ÷ annualized protocol revenue. Like the equity P/S; lower means cheaper relative to revenue. Shows — when there is no revenue',
+        divYield: 'Dividend Yield = annualized dividends ÷ market cap. Revenue paid directly to holders/stakers (cash/stablecoin), like a cash dividend',
+        buybackYield: 'Buyback Yield = annualized buyback-and-burn ÷ market cap. Revenue used to buy back and burn the token, like corporate share buybacks',
+        shareholderYield: 'Shareholder Yield = Dividend Yield + Buyback Yield = annualized shareholder returns ÷ market cap. Total revenue returned to holders, like equity Shareholder Yield',
+        payout: 'Payout Ratio = shareholder returns ÷ protocol revenue. What share of revenue is returned to holders, like an equity payout ratio',
+        dataQuality: 'Data quality — based on whether data is verifiable on-chain, has public APIs, or relies on third-party sources'
       }
     };
     function setupHeaderTips() {
-      document.querySelectorAll('th[data-sort], th[data-i18n="th.confidence"]').forEach(th => {
-        const key = th.dataset.sort || 'confidence';
+      document.querySelectorAll('th[data-sort], th[data-i18n="th.dataQuality"]').forEach(th => {
+        const key = th.dataset.sort || 'dataQuality';
         const tip = (headerTips[currentLang] || headerTips.zh)[key];
         if (!tip) return;
         let trigger = th.querySelector('.tip-trigger');
@@ -324,7 +331,7 @@
       });
     })();
 
-    let currentSort = { field: 'tevStatus', dir: 'desc' };
+    let currentSort = { field: 'style', dir: 'desc' };
     let currentYieldPeriod = '365d';
     let currentFilter = 'all';
     const TEV_STATUS_ORDER = { active: 3, partial: 2, none: 1 };
@@ -363,36 +370,39 @@
     }
 
     // === Sorting ===
+    const psVal = p => { const e = p.earning_yield_percent || 0; return e > 0 ? 100 / e : Infinity; };
     function getSortValue(p, f) {
       switch (f) {
-        case 'tvl': return p.tvl || 0;
-        case 'tevStatus': return TEV_STATUS_ORDER[p.tevStatus] || 0;
-        case 'tevRatio': return p.tevRatio || 0;
+        case 'style': return p.style === 'cash_cow' ? 1 : 0;
+        case 'payout': return p.tevRatio || 0;
         case 'mcap': return p.market_cap_usd || 0;
-        case 'earningYield': return p.earning_yield_percent || 0;
-        case 'tevYield': return p.tev_yield_percent || 0;
+        case 'ps': return psVal(p);
+        case 'divYield': return p.dividend_yield_percent || 0;
+        case 'buybackYield': return p.buyback_yield_percent || 0;
+        case 'shareholderYield': return p.tev_yield_percent || 0;
         default: return 0;
       }
     }
     function sortProtocols(arr, f, d) {
       return [...arr].sort((a, b) => {
-        // 默认排序（tevStatus）：有 tev_yield > 0 的排前面，然后按市值
-        if (f === 'tevStatus') {
-          const aYield = a.tev_yield_percent || 0;
-          const bYield = b.tev_yield_percent || 0;
-          const aHasYield = aYield > 0 ? 1 : 0;
-          const bHasYield = bYield > 0 ? 1 : 0;
-          if (bHasYield !== aHasYield) return bHasYield - aHasYield;
+        // 默认排序（style）：现金牛排前面，组内按股东回报率，再按市值
+        if (f === 'style') {
+          const aCow = a.style === 'cash_cow' ? 1 : 0;
+          const bCow = b.style === 'cash_cow' ? 1 : 0;
+          if (bCow !== aCow) return bCow - aCow;
+          const yd = (b.tev_yield_percent || 0) - (a.tev_yield_percent || 0);
+          if (yd !== 0) return yd;
           return (b.market_cap_usd || 0) - (a.market_cap_usd || 0);
         }
         // 其他字段：按点击的字段排序，使用预计算值
         let aVal, bVal;
         switch (f) {
-          case 'tvl': aVal = a.tvl || 0; bVal = b.tvl || 0; break;
-          case 'tevRatio': aVal = a.tevRatio || 0; bVal = b.tevRatio || 0; break;
+          case 'payout': aVal = a.tevRatio || 0; bVal = b.tevRatio || 0; break;
           case 'mcap': aVal = a.market_cap_usd || 0; bVal = b.market_cap_usd || 0; break;
-          case 'earningYield': aVal = a.earning_yield_percent || 0; bVal = b.earning_yield_percent || 0; break;
-          case 'tevYield': aVal = a.tev_yield_percent || 0; bVal = b.tev_yield_percent || 0; break;
+          case 'ps': aVal = psVal(a); bVal = psVal(b); break;
+          case 'divYield': aVal = a.dividend_yield_percent || 0; bVal = b.dividend_yield_percent || 0; break;
+          case 'buybackYield': aVal = a.buyback_yield_percent || 0; bVal = b.buyback_yield_percent || 0; break;
+          case 'shareholderYield': aVal = a.tev_yield_percent || 0; bVal = b.tev_yield_percent || 0; break;
           default: aVal = a.market_cap_usd || 0; bVal = b.market_cap_usd || 0;
         }
         // 根据方向排序
@@ -441,25 +451,42 @@
           '365d': p.earning_yield_percent || 0,
         };
         const earningYield = earningYieldMap[currentYieldPeriod] != null ? earningYieldMap[currentYieldPeriod] : (p.earning_yield_percent || 0);
-        const tevStatus = p.tevStatus || 'none';
-        // tevRatio 按周期：如果协议在该周期提供独立 ratio 则用，否则 fallback 到顶层 tevRatio
-        const tevRatioMap = {
+        // 股息率 / 回购率 按周期（数据层 post-pass 已保证 股息率 + 回购率 ≡ 股东回报率）
+        const divYieldMap = {
+          '7d': m.dividend_yield_7d_ann,
+          '30d': m.dividend_yield_30d_ann,
+          '90d': m.dividend_yield_90d_ann,
+          '365d': p.dividend_yield_percent,
+        };
+        const buybackYieldMap = {
+          '7d': m.buyback_yield_7d_ann,
+          '30d': m.buyback_yield_30d_ann,
+          '90d': m.buyback_yield_90d_ann,
+          '365d': p.buyback_yield_percent,
+        };
+        const divYield = divYieldMap[currentYieldPeriod] != null ? divYieldMap[currentYieldPeriod] : (p.dividend_yield_percent || 0);
+        const buybackYield = buybackYieldMap[currentYieldPeriod] != null ? buybackYieldMap[currentYieldPeriod] : (p.buyback_yield_percent || 0);
+        // 派息率 (Payout Ratio) = 股东回报 ÷ 营收，按周期
+        const payoutMap = {
           '7d':   p.tevRatio_7d,
           '30d':  p.tevRatio_30d,
           '90d':  p.tevRatio_90d,
           '365d': p.tevRatio_365d != null ? p.tevRatio_365d : p.tevRatio,
         };
-        const tevRatio = tevRatioMap[currentYieldPeriod] != null ? tevRatioMap[currentYieldPeriod] : (p.tevRatio || 0);
+        const payout = payoutMap[currentYieldPeriod] != null ? payoutMap[currentYieldPeriod] : (p.tevRatio || 0);
         const mcap = p.market_cap_usd || 0;
         const precision = p.display_precision || 2;
-
-        // tevRatio 显示：处理 'dynamic' 字符串、null（N/A）、数字
-        let tevRatioDisplay = '—';
-        if (typeof tevRatio === 'string') {
-          tevRatioDisplay = tevRatio;
-        } else if (tevRatio > 0) {
-          tevRatioDisplay = (tevRatio * 100).toFixed(0) + '%';
-        }
+        // 市销率 P/S = 市值 ÷ 年化营收 = 100 ÷ Earning Yield(%)
+        const ps = earningYield > 0 ? (100 / earningYield) : null;
+        const psDisplay = ps != null ? (ps >= 100 ? Math.round(ps) : ps.toFixed(1)) + 'x' : '—';
+        // 派息率显示：处理 'dynamic' 字符串、null（N/A）、数字
+        let payoutDisplay = '—';
+        if (typeof payout === 'string') payoutDisplay = payout;
+        else if (payout > 0) payoutDisplay = (payout * 100).toFixed(0) + '%';
+        // 没有实际股东回报时，派息率无意义（如 GMX 配置 27% 但实算 TEV=0），显示 —
+        if (!tevYield) payoutDisplay = '—';
+        // 风格标签（现金牛 / 成长股）
+        const style = p.style || 'growth';
 
         const row = document.createElement('tr');
         row.onclick = () => window.location.href = `protocol.html?id=${p.key}`;
@@ -469,12 +496,13 @@
             <div class="protocol-icon"><img src="${LOGO_URLS[p.key] || p.icon}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.textContent='${p.name.charAt(0)}'"></div>
             <div class="protocol-info"><span class="protocol-name">${p.name}</span><span class="protocol-ticker">${p.ticker}</span></div>
           </div></td>
-          <td class="text-right"><span class="value">${formatCurrency(p.tvl)}</span></td>
-          <td class="text-right"><span class="badge badge-${tevStatus === 'active' ? 'active' : tevStatus === 'partial' ? 'partial' : 'none'}">${tevStatus === 'active' ? '✓' : tevStatus === 'partial' ? '~' : '✗'} ${t('tevStatus.' + tevStatus)}</span></td>
-          <td class="text-right"><span class="value ${tevRatio >= 0.5 ? 'value-highlight' : tevRatio > 0 ? '' : 'value-zero'}">${tevRatioDisplay}</span></td>
+          <td class="text-right"><span class="badge badge-${style === 'cash_cow' ? 'active' : 'partial'}" data-tip="${t('style.tip.' + style)}">${t('style.' + style)}</span></td>
           <td class="text-right"><span class="value">${formatCurrency(mcap)}</span></td>
-          <td class="text-right"><span class="value ${earningYield > 0.1 ? 'value-highlight' : earningYield === 0 ? 'value-zero' : ''}">${earningYield > 0 ? formatPercent(earningYield, precision) : '—'}</span></td>
+          <td class="text-right"><span class="value ${ps == null ? 'value-zero' : ''}">${psDisplay}</span></td>
+          <td class="text-right"><span class="value ${divYield > 0 ? 'value-highlight' : 'value-zero'}">${divYield > 0 ? formatPercent(divYield, precision) : '—'}</span></td>
+          <td class="text-right"><span class="value ${buybackYield > 0 ? 'value-highlight' : 'value-zero'}">${buybackYield > 0 ? formatPercent(buybackYield, precision) : '—'}</span></td>
           <td class="text-right"><span class="value ${tevYield > 10 ? 'value-highlight' : tevYield === 0 ? 'value-zero' : ''}">${formatPercent(tevYield, precision)}</span></td>
+          <td class="text-right"><span class="value ${payout >= 0.5 ? 'value-highlight' : payout > 0 ? '' : 'value-zero'}">${payoutDisplay}</span></td>
           <td class="text-right"><span class="badge badge-${p.confidence === 'high' ? 'high' : p.confidence === 'medium' ? 'medium' : 'low'}" data-tip="${(p.confidence_reason && p.confidence_reason[currentLang]) || ''}">${p.confidence === 'high' ? '✓' : '!'} ${t('confidence.' + p.confidence)}</span></td>
         `;
         tbody.appendChild(row);

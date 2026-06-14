@@ -201,7 +201,13 @@
     "earning_yield_7d_ann": 9.91,
     "earning_yield_30d_ann": 10.57,
     "earning_yield_90d_ann": 8.6,
-    "trailing_365d_revenue_usd": 884508108
+    "trailing_365d_revenue_usd": 884508108,
+    "dividend_yield_7d_ann": 0,
+    "buyback_yield_7d_ann": 9.91,
+    "dividend_yield_30d_ann": 0,
+    "buyback_yield_30d_ann": 10.57,
+    "dividend_yield_90d_ann": 0,
+    "buyback_yield_90d_ann": 8.6
   },
   "calc_pipeline": [
     {
@@ -242,7 +248,7 @@
     },
     {
       "step": 5,
-      "label": "最终 TEV Yield",
+      "label": "最终 股东回报率",
       "derived": true,
       "value_fields_by_period": {
         "7d": "metrics.tev_yield_7d_ann",
@@ -252,5 +258,8 @@
       },
       "unit": "%"
     }
-  ]
+  ],
+  "dividend_yield_percent": 0,
+  "buyback_yield_percent": 12,
+  "style": "cash_cow"
 }

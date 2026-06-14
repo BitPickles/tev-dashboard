@@ -121,7 +121,13 @@
     "tev_yield_90d_ann": 0.75,
     "earning_yield_7d_ann": 8.13,
     "earning_yield_30d_ann": 8.92,
-    "earning_yield_90d_ann": 9.62
+    "earning_yield_90d_ann": 9.62,
+    "dividend_yield_7d_ann": 0,
+    "buyback_yield_7d_ann": 0.75,
+    "dividend_yield_30d_ann": 0,
+    "buyback_yield_30d_ann": 0.75,
+    "dividend_yield_90d_ann": 0,
+    "buyback_yield_90d_ann": 0.75
   },
   "calc_pipeline": [
     {
@@ -133,7 +139,7 @@
     {
       "step": 2,
       "label": "补充：Earning 口径对照",
-      "description": "dailyRevenue（协议总归属，含 farm 部分）用于 Earning Yield。差值 = Splitter 的 farm 部分（给 SKY stakers 的新铸造 SKY + USDS yield，不算 TEV，是协议支出而非市场回购）。",
+      "description": "dailyRevenue（协议总归属，含 farm 部分）用于 Earning Yield。差值 = Splitter 的 farm 部分（给 SKY stakers 的新铸造 SKY + USDS yield，不算 股东回报，是协议支出而非市场回购）。",
       "source_url": "https://api.llama.fi/summary/fees/sky?dataType=dailyRevenue"
     },
     {
@@ -167,7 +173,7 @@
     },
     {
       "step": 6,
-      "label": "最终 TEV Yield",
+      "label": "最终 股东回报率",
       "derived": true,
       "value_fields_by_period": {
         "7d": "metrics.tev_yield_7d_ann",
@@ -177,5 +183,8 @@
       },
       "unit": "%"
     }
-  ]
+  ],
+  "dividend_yield_percent": 0,
+  "buyback_yield_percent": 5.37,
+  "style": "cash_cow"
 }

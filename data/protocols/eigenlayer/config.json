@@ -40,7 +40,7 @@
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "market_cap_usd": 155216926.5,
+    "market_cap_usd": 155502197.25,
     "calculation_date": "2026-06-14",
     "sources": [
       {
@@ -67,10 +67,10 @@
   },
   "tevRatio": 0,
   "earning_yield_percent": 0,
-  "market_cap_usd": 155216926.5,
+  "market_cap_usd": 155502197.25,
   "tev_yield_percent": 0,
   "metrics": {
-    "current_market_cap_usd": 155216926.5,
+    "current_market_cap_usd": 155502197.25,
     "trailing_365d_revenue_usd": 0,
     "trailing_30d_revenue_usd": 0,
     "trailing_365d_tev_usd": 0,
@@ -82,7 +82,13 @@
     "tev_yield_90d_ann": 0,
     "earning_yield_7d_ann": 0,
     "earning_yield_30d_ann": 0,
-    "earning_yield_90d_ann": 0
+    "earning_yield_90d_ann": 0,
+    "dividend_yield_7d_ann": 0,
+    "buyback_yield_7d_ann": 0,
+    "dividend_yield_30d_ann": 0,
+    "buyback_yield_30d_ann": 0,
+    "dividend_yield_90d_ann": 0,
+    "buyback_yield_90d_ann": 0
   },
   "analyst_notes": "【2026-04-27 governance-only 验证】\n\n## 现状\nEigenLayer AVS (Actively Validated Services) 收取 fees, 但 fee 分给 operator + restaker (持 ETH/LST), 不给 EIGEN 持有人\n\n## TEV: 0% (governance-only, low confidence)\n\n## 何时变化\n若未来治理提案启用 fee switch / buyback 给 token 持有人, 重新评估.\n\n## 类比\nLDO / COMP 等老牌纯治理代币模式.\n",
   "calc_pipeline": [
@@ -98,7 +104,7 @@
     },
     {
       "step": 3,
-      "label": "TEV Yield: 0% (governance-only)",
+      "label": "股东回报率: 0% (governance-only)",
       "derived": true,
       "value_fields_by_period": {
         "7d": "metrics.tev_yield_7d_ann",
@@ -108,5 +114,8 @@
       },
       "unit": "%"
     }
-  ]
+  ],
+  "dividend_yield_percent": 0,
+  "buyback_yield_percent": 0,
+  "style": "growth"
 }

@@ -77,7 +77,7 @@
     <ul>
       <li data-zh="源数据接口延迟、中断或口径变更" data-en="Upstream API latency, outages, or methodology changes">源数据接口延迟、中断或口径变更</li>
       <li data-zh="协议治理变更未及时反映" data-en="Protocol-governance changes not reflected in real time">协议治理变更未及时反映</li>
-      <li data-zh="链上事件的归类与计算口径存在主观判断（尤其是 TEV 类复合指标）" data-en="Subjective judgment in classifying on-chain events and choosing calculation methodology (especially for composite indicators like TEV)">链上事件的归类与计算口径存在主观判断（尤其是 TEV 类复合指标）</li>
+      <li data-zh="链上事件的归类与计算口径存在主观判断（尤其是股东回报率等复合指标）" data-en="Subjective judgment in classifying on-chain events and choosing calculation methodology (especially for composite indicators like Shareholder Yield)">链上事件的归类与计算口径存在主观判断（尤其是股东回报率等复合指标）</li>
       <li data-zh="我们的脚本或展示逻辑存在 bug" data-en="Bugs in our scripts or display logic">我们的脚本或展示逻辑存在 bug</li>
     </ul>
     <p data-zh="我们会在发现错误后尽快修正，但不保证任何一个时刻的数据是绝对准确的。关键决策前请交叉核对官方来源（项目白皮书、链上原始数据、官方治理记录）。"
@@ -85,16 +85,16 @@
   </section>
 
   <section>
-    <h2 data-zh="4. TEV / Token Economic Value 口径说明" data-en="4. TEV / Token Economic Value Methodology">4. TEV / Token Economic Value 口径说明</h2>
-    <p data-zh="TEV 是本站的核心原创指标，衡量 token 持有人从协议运转中捕获的经济价值。其计算："
-       data-en="TEV is our core original indicator, measuring the economic value token holders capture from protocol operation. Its calculation:">TEV 是本站的核心原创指标，衡量 token 持有人从协议运转中捕获的经济价值。其计算：</p>
+    <h2 data-zh="4. 股东回报率 / Shareholder Yield 口径说明" data-en="4. Shareholder Yield Methodology">4. 股东回报率 / Shareholder Yield 口径说明</h2>
+    <p data-zh="本站采用美股成熟的估值口径，不自创概念：股东回报率（Shareholder Yield = 股息率 + 回购率）衡量每年通过分红和回购返还给 token 持有人的价值占市值的比例（底层方法在脚本中沿用 TEV 命名）。其计算："
+       data-en="We adopt mature US-equity metrics rather than inventing our own: Shareholder Yield (= dividend yield + buyback yield) measures the share of market cap returned to token holders each year via dividends and buybacks (the underlying methodology retains the TEV naming in our scripts). Its calculation:">本站采用美股成熟的估值口径，不自创概念：<strong>股东回报率（Shareholder Yield = 股息率 + 回购率）</strong>衡量每年通过分红和回购返还给 token 持有人的价值占市值的比例（底层方法在脚本中沿用 TEV 命名）。其计算：</p>
     <ul>
       <li data-zh="尽量优先采用链上直接可验证的数据（如 burn 地址持仓、买回钱包 USDT 流出）" data-en="Prefers data directly verifiable on-chain (e.g., burn-address balance, USDT outflow from buyback wallets)">尽量优先采用<strong>链上直接可验证</strong>的数据（如 burn 地址持仓、买回钱包 USDT 流出）</li>
       <li data-zh="其次采用官方治理披露（如基金会 Treasury 报告）" data-en="Next, official governance disclosures (e.g., foundation treasury reports)">其次采用<strong>官方治理披露</strong>（如基金会 Treasury 报告）</li>
       <li data-zh="最后才采用第三方聚合口径（如 DefiLlama holdersRevenue），并在详情页说明口径差异" data-en="Lastly, third-party aggregations (such as DefiLlama holdersRevenue), with methodology differences explained on detail pages">最后才采用第三方聚合口径（如 DefiLlama holdersRevenue），并在详情页说明口径差异</li>
     </ul>
-    <p data-zh="对于可能存在「做账式销毁」（pocket-to-pocket fake burn，例如源头和销毁目的地都属于同一方）的情形，我们会在详情页 Caveats 卡片中明确标注，并将相应的 TEV 归零。"
-       data-en="When a potential &quot;cosmetic burn&quot; (pocket-to-pocket fake burn — e.g., where the source wallet and destination both belong to the same party) is suspected, we explicitly flag it in the Caveats card on the detail page and zero out the corresponding TEV.">对于可能存在<strong>"做账式销毁"</strong>（pocket-to-pocket fake burn，例如源头和销毁目的地都属于同一方）的情形，我们会在详情页 Caveats 卡片中明确标注，并将相应的 TEV 归零。</p>
+    <p data-zh="对于可能存在「做账式销毁」（pocket-to-pocket fake burn，例如源头和销毁目的地都属于同一方）的情形，我们会在详情页 Caveats 卡片中明确标注，并将相应的回购率归零。"
+       data-en="When a potential &quot;cosmetic burn&quot; (pocket-to-pocket fake burn — e.g., where the source wallet and destination both belong to the same party) is suspected, we explicitly flag it in the Caveats card on the detail page and zero out the corresponding buyback yield.">对于可能存在<strong>"做账式销毁"</strong>（pocket-to-pocket fake burn，例如源头和销毁目的地都属于同一方）的情形，我们会在详情页 Caveats 卡片中明确标注，并将相应的回购率归零。</p>
   </section>
 
   <section>

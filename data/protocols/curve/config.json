@@ -219,7 +219,13 @@
     "tev_yield_90d_ann": 1.65,
     "earning_yield_7d_ann": 2.75,
     "earning_yield_30d_ann": 2.02,
-    "earning_yield_90d_ann": 1.65
+    "earning_yield_90d_ann": 1.65,
+    "dividend_yield_7d_ann": 2.75,
+    "buyback_yield_7d_ann": 0,
+    "dividend_yield_30d_ann": 2.02,
+    "buyback_yield_30d_ann": 0,
+    "dividend_yield_90d_ann": 1.65,
+    "buyback_yield_90d_ann": 0
   },
   "tev_yield_percent": 2.55,
   "calc_pipeline": [
@@ -255,7 +261,7 @@
     {
       "step": 4,
       "label": "× 9 推算 veCRV 部分 (FeeAllocator 90%)",
-      "formula": "veCRV_TEV = Treasury_inflow × 9",
+      "formula": "veCRV_ShareholderReturn = Treasury_inflow × 9",
       "description": "基于 90/10 拆分比例, 假设比例不变 (治理可改)"
     },
     {
@@ -269,7 +275,7 @@
     {
       "step": 6,
       "label": "双口径 yield",
-      "formula": "nominal: TEV / CRV 全市值 · veCRV-only: TEV / (locked_CRV × CRV_price)",
+      "formula": "nominal: 股东回报 / CRV 全市值 · veCRV-only: 股东回报 / (locked_CRV × CRV_price)",
       "derived": true,
       "value_fields_by_period": {
         "7d": "metrics.tev_yield_7d_ann",
@@ -279,5 +285,8 @@
       },
       "unit": "%"
     }
-  ]
+  ],
+  "dividend_yield_percent": 2.55,
+  "buyback_yield_percent": 0,
+  "style": "cash_cow"
 }

@@ -168,7 +168,13 @@
     "tev_yield_90d_ann": 0,
     "earning_yield_7d_ann": 0,
     "earning_yield_30d_ann": 0,
-    "earning_yield_90d_ann": 0
+    "earning_yield_90d_ann": 0,
+    "dividend_yield_7d_ann": 0,
+    "buyback_yield_7d_ann": 0,
+    "dividend_yield_30d_ann": 0,
+    "buyback_yield_30d_ann": 0,
+    "dividend_yield_90d_ann": 0,
+    "buyback_yield_90d_ann": 0
   },
   "calc_pipeline": [
     {
@@ -201,11 +207,11 @@
     {
       "step": 5,
       "label": "⚠️ 结论: 链上无法识别协议侧真实 buyback 路径",
-      "description": "类比 JustLend 案例, TEV 归零 (unverified) 并保留监控脚本"
+      "description": "类比 JustLend 案例, 股东回报 归零 (unverified) 并保留监控脚本"
     },
     {
       "step": 6,
-      "label": "最终 TEV: 0% (unverified)",
+      "label": "最终 股东回报: 0% (unverified)",
       "derived": true,
       "value_fields_by_period": {
         "7d": "metrics.tev_yield_7d_ann",
@@ -215,5 +221,8 @@
       },
       "unit": "%"
     }
-  ]
+  ],
+  "dividend_yield_percent": 0,
+  "buyback_yield_percent": 0,
+  "style": "growth"
 }

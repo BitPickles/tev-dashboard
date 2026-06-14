@@ -39,7 +39,7 @@
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "market_cap_usd": 220596714.21,
+    "market_cap_usd": 221003650.43,
     "calculation_date": "2026-06-14",
     "sources": [
       {
@@ -65,13 +65,13 @@
     "en": "纯治理代币. stETH 收益 (~3% ETH staking yield) 给 stETH 持有人, LDO 不分润"
   },
   "tevRatio": 0,
-  "earning_yield_percent": 34.38,
-  "market_cap_usd": 220596714.21,
+  "earning_yield_percent": 34.32,
+  "market_cap_usd": 221003650.43,
   "tev_yield_percent": 0,
   "metrics": {
     "trailing_365d_revenue_usd": 75851539,
     "trailing_30d_revenue_usd": 3004806,
-    "current_market_cap_usd": 220596714.21,
+    "current_market_cap_usd": 221003650.43,
     "trailing_365d_tev_usd": 0,
     "trailing_30d_tev_usd": 0,
     "trailing_7d_revenue_usd": 483663,
@@ -79,9 +79,15 @@
     "tev_yield_7d_ann": 0,
     "tev_yield_30d_ann": 0,
     "tev_yield_90d_ann": 0,
-    "earning_yield_7d_ann": 11.43,
-    "earning_yield_30d_ann": 16.57,
-    "earning_yield_90d_ann": 22.44
+    "earning_yield_7d_ann": 11.41,
+    "earning_yield_30d_ann": 16.54,
+    "earning_yield_90d_ann": 22.4,
+    "dividend_yield_7d_ann": 0,
+    "buyback_yield_7d_ann": 0,
+    "dividend_yield_30d_ann": 0,
+    "buyback_yield_30d_ann": 0,
+    "dividend_yield_90d_ann": 0,
+    "buyback_yield_90d_ann": 0
   },
   "analyst_notes": "【2026-04-27 governance-only 验证】\n\n## 现状\nLido 协议收入 ~$677M/年 (5% staking fee), 100% 进 Lido DAO Treasury. LDO 仅作治理投票, 不分红.\n\n## TEV: 0% (governance-only, low confidence)\n\n## 何时变化\n若未来治理提案启用 fee switch / buyback 给 token 持有人, 重新评估.\n\n## 类比\nLDO / COMP 等老牌纯治理代币模式.\n",
   "calc_pipeline": [
@@ -97,7 +103,7 @@
     },
     {
       "step": 3,
-      "label": "TEV Yield: 0% (governance-only)",
+      "label": "股东回报率: 0% (governance-only)",
       "derived": true,
       "value_fields_by_period": {
         "7d": "metrics.tev_yield_7d_ann",
@@ -107,5 +113,8 @@
       },
       "unit": "%"
     }
-  ]
+  ],
+  "dividend_yield_percent": 0,
+  "buyback_yield_percent": 0,
+  "style": "growth"
 }

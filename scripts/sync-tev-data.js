@@ -222,6 +222,19 @@ const PROTOCOL_CONFIG = {
 // 2026-04-26: pancakeswap/etherfi/curve 改链上口径，不再走 generic DefiLlama
 const SKIP_PROTOCOLS = ['aster', 'hype', 'bnb', 'uniswap', 'bgb', 'okb', 'pancakeswap', 'etherfi', 'curve'];
 
+// 股东回报拆分：把每协议的「股东回报率」归为 dividend(分配给持有人/质押者) 或 buyback(回购销毁)
+//   'dividend'：fee 分配给 ve/staker（持有人拿到现金/代币流）
+//   'buyback' ：协议回购销毁（减少流通 → 全体持有人通过稀缺性受益）
+//   'mixed'   ：两者皆有，由专属分支预存 protocol._divYld（分红部分 yield），post-pass 用 buyback = tev - dividend
+// 后处理 pass 据此输出 dividend_yield/buyback_yield；不变量：两者和 ≡ 股东回报率（每周期）
+const VALUE_RETURN = {
+  aave: 'mixed',   bnb: 'mixed',
+  curve: 'dividend', dydx: 'dividend', pendle: 'dividend', gmx: 'dividend',
+  aster: 'buyback', hype: 'buyback', uniswap: 'buyback', pancakeswap: 'buyback',
+  fluid: 'buyback', maple: 'buyback', sky: 'buyback', justlend: 'buyback',
+  etherfi: 'buyback', ethena: 'buyback',
+};
+
 const DATA_FILE = path.join(__dirname, '../data/all-protocols.json');
 
 // API 请求封装
@@ -470,6 +483,9 @@ async function main() {
       // BNB 无 fee 分润机制，tevRatio 不适用（前端渲染会显示 '—'）
       protocol.tevRatio = null;
 
+      // 股东回报拆分（mixed）：分红 = asBNB 质押收益（各周期恒定）；回购 = Auto-Burn + BEP-95（post-pass 取 tev - dividend）
+      protocol._divYld = { '7': asbnbApy, '30': asbnbApy, '90': asbnbApy, '365': asbnbApy };
+
       // Earning Yield = BEP-95（按窗口年化）+ asBNB APY
       // 各周期用对应窗口的 BEP-95 值，与 TEV Yield 的周期口径保持一致
       const bep95Yield = (usd) => marketCap > 0 ? usd / marketCap * 100 : 0;
@@ -582,6 +598,19 @@ async function main() {
         protocol.tevRatio_90d  = calcRatio(tev_90d,  ey_90d);
         protocol.tevRatio_365d = calcRatio(tev_365d, ey_365d);
         protocol.tevRatio = protocol.tevRatio_365d;
+
+        // 股东回报拆分（mixed）：分红 = Safety Module holdersRevenue（年化）；回购 = 固定 Buyback（post-pass 取 tev - dividend）
+        const divYld = (smSum, days) => {
+          if (!marketCap) return 0;
+          const ann = days >= 365 ? 1 : (365 / days);
+          return Math.round((smSum || 0) * ann / marketCap * 10000) / 100;
+        };
+        protocol._divYld = {
+          '7':   divYld(holdersData.sum7d,   7),
+          '30':  divYld(holdersData.sum30d,  30),
+          '90':  divYld(holdersData.sum90d,  90),
+          '365': divYld(holdersData.sum365d, 365),
+        };
 
         protocol.validation = protocol.validation || {};
         protocol.validation.method = 'TEV = 固定 Buyback $30M/年（2026-03 治理）+ Safety Module (Umbrella) DefiLlama dailyHoldersRevenue 按窗口年化';
@@ -1194,6 +1223,37 @@ async function main() {
     await new Promise(r => setTimeout(r, 3000));
   }
   
+  // === 股东回报拆分（dividend vs buyback）+ 风格分类 ===
+  // 不变量：dividend_yield + buyback_yield ≡ tev_yield（每周期）。回购 = tev - dividend，强制自洽。
+  for (const [pid, protocol] of Object.entries(allData.protocols)) {
+    const m = protocol.metrics || (protocol.metrics = {});
+    const vr = VALUE_RETURN[pid] || 'buyback';
+    const div = protocol._divYld || null;  // mixed 分支预存的分红 yield（按周期）
+    const splitOne = (tev, key) => {
+      tev = tev || 0;
+      let d;
+      if (!tev) d = 0;
+      else if (vr === 'dividend') d = tev;
+      else if (vr === 'mixed' && div) d = Math.min(div[key] || 0, tev);
+      else d = 0;  // buyback
+      d = Math.round(d * 100) / 100;
+      return { d, b: Math.round((tev - d) * 100) / 100 };
+    };
+    const s365 = splitOne(protocol.tev_yield_percent, '365');
+    protocol.dividend_yield_percent = s365.d;
+    protocol.buyback_yield_percent  = s365.b;
+    for (const [n, field] of [['7', 'tev_yield_7d_ann'], ['30', 'tev_yield_30d_ann'], ['90', 'tev_yield_90d_ann']]) {
+      const s = splitOne(m[field], n);
+      m['dividend_yield_' + n + 'd_ann'] = s.d;
+      m['buyback_yield_'  + n + 'd_ann'] = s.b;
+    }
+    // 风格：现金牛（在实际向持有人还钱）vs 成长（基本不还钱，按 P/S + 增速估）
+    // 阈值 1%：把 Uniswap(~0.66%, fee switch 基本关) / Lido(0) 等近零回报归成长；
+    // Curve/Aster/Maple 等虽然 yield 不高但有真实资本返还 → 现金牛（风格是性质不是量级）
+    protocol.style = (protocol.tev_yield_percent >= 1 && protocol.tevStatus === 'active') ? 'cash_cow' : 'growth';
+    delete protocol._divYld;
+  }
+
   // 写入文件
   if (!dryRun && updated > 0) {
     allData.generated_at = new Date().toISOString();
@@ -1211,6 +1271,9 @@ async function main() {
         cfg.tev_yield_percent = protocol.tev_yield_percent;
         cfg.earning_yield_percent = protocol.earning_yield_percent;
         cfg.tevRatio = protocol.tevRatio;
+        cfg.dividend_yield_percent = protocol.dividend_yield_percent;
+        cfg.buyback_yield_percent = protocol.buyback_yield_percent;
+        cfg.style = protocol.style;
         if (!cfg.tev_data) cfg.tev_data = {};
         cfg.tev_data.tev_yield_percent = protocol.tev_yield_percent;
         cfg.tev_data.market_cap_usd = protocol.market_cap_usd;

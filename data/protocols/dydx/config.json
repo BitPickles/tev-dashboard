@@ -87,9 +87,9 @@
   "last_updated": "2026-04-26",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 10.18,
+    "tev_yield_percent": 10.14,
     "annual_tev_usd": 10337893,
-    "market_cap_usd": 101596934.03,
+    "market_cap_usd": 101910678.93,
     "calculation_date": "2026-06-14",
     "sources": [
       {
@@ -119,11 +119,11 @@
     "en": "100% fees-to-staker on dYdX Chain (Cosmos) is verifiable, but 75% buyback (Proposal #313) has no public on-chain tracker. ethDYDX bridge closed."
   },
   "tevRatio": 0.75,
-  "earning_yield_percent": 10.18,
-  "market_cap_usd": 101596934.03,
-  "tev_yield_percent": 10.18,
+  "earning_yield_percent": 10.14,
+  "market_cap_usd": 101910678.93,
+  "tev_yield_percent": 10.14,
   "metrics": {
-    "current_market_cap_usd": 101596934.03,
+    "current_market_cap_usd": 101910678.93,
     "trailing_365d_revenue_usd": 10337893,
     "trailing_30d_revenue_usd": 137591,
     "trailing_365d_tev_usd": 10337893,
@@ -131,11 +131,17 @@
     "trailing_7d_revenue_usd": 30825,
     "trailing_90d_revenue_usd": 748220,
     "tev_yield_7d_ann": 1.58,
-    "tev_yield_30d_ann": 1.65,
-    "tev_yield_90d_ann": 2.99,
+    "tev_yield_30d_ann": 1.64,
+    "tev_yield_90d_ann": 2.98,
     "earning_yield_7d_ann": 1.58,
-    "earning_yield_30d_ann": 1.65,
-    "earning_yield_90d_ann": 2.99
+    "earning_yield_30d_ann": 1.64,
+    "earning_yield_90d_ann": 2.98,
+    "dividend_yield_7d_ann": 1.58,
+    "buyback_yield_7d_ann": 0,
+    "dividend_yield_30d_ann": 1.64,
+    "buyback_yield_30d_ann": 0,
+    "dividend_yield_90d_ann": 2.98,
+    "buyback_yield_90d_ann": 0
   },
   "calc_pipeline": [
     {
@@ -156,7 +162,7 @@
     {
       "step": 3,
       "label": "⚠️ ethDYDX (ERC-20) 不能 stake",
-      "description": "Ethereum 主网 ethDYDX bridge 2025-06-13 永久关闭, 持有 ethDYDX = 0 TEV",
+      "description": "Ethereum 主网 ethDYDX bridge 2025-06-13 永久关闭, 持有 ethDYDX = 0 股东回报",
       "addresses": {
         "ethDYDX (已死)": "0x92D6C1e31e14520e676a687F0a93788B716BEff5"
       }
@@ -177,13 +183,13 @@
     {
       "step": 5,
       "label": "年化 / DYDX Chain 流通市值",
-      "formula": "TEV_Yield = USDC_distributed × (365/N) ÷ DYDX_Chain_market_cap × 100%",
+      "formula": "Shareholder_Yield = USDC_distributed × (365/N) ÷ DYDX_Chain_market_cap × 100%",
       "description": "分母排除 ethDYDX (孤儿)",
       "unit": "%"
     },
     {
       "step": 6,
-      "label": "最终 TEV Yield",
+      "label": "最终 股东回报率",
       "derived": true,
       "value_fields_by_period": {
         "7d": "metrics.tev_yield_7d_ann",
@@ -193,5 +199,8 @@
       },
       "unit": "%"
     }
-  ]
+  ],
+  "dividend_yield_percent": 10.14,
+  "buyback_yield_percent": 0,
+  "style": "cash_cow"
 }

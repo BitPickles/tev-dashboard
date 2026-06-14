@@ -150,16 +150,16 @@
     {
       "step": 4,
       "label": "⚠️ pocket-to-pocket 嫌疑 (类 JustLend)",
-      "description": "CEX 自持销毁不构成真 TEV. 没有市场对手方花真金白银买 BGB 的证据"
+      "description": "CEX 自持销毁不构成真 股东回报. 没有市场对手方花真金白银买 BGB 的证据"
     },
     {
       "step": 5,
-      "label": "结论: TEV unverified",
+      "label": "结论: 股东回报 unverified",
       "description": "保留监控. 如未来发现链上可验证的销毁机制 (类 BNB Auto-Burn 公式), 重新评估"
     },
     {
       "step": 6,
-      "label": "当前 TEV Yield: 0% (low confidence)",
+      "label": "当前 股东回报率: 0% (low confidence)",
       "derived": true,
       "value_fields_by_period": {
         "7d": "metrics.tev_yield_7d_ann",
@@ -169,5 +169,16 @@
       },
       "unit": "%"
     }
-  ]
+  ],
+  "dividend_yield_percent": 0,
+  "buyback_yield_percent": 0,
+  "style": "growth",
+  "metrics": {
+    "dividend_yield_7d_ann": 0,
+    "buyback_yield_7d_ann": 0,
+    "dividend_yield_30d_ann": 0,
+    "buyback_yield_30d_ann": 0,
+    "dividend_yield_90d_ann": 0,
+    "buyback_yield_90d_ann": 0
+  }
 }

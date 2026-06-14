@@ -160,7 +160,7 @@
     },
     {
       "step": 4,
-      "label": "⚠️ TEV 永久退出",
+      "label": "⚠️ 股东回报 永久退出",
       "description": "与 GMX paused 不同 — OKB 是明确治理决议永久停止, 不是暂停"
     },
     {
@@ -170,7 +170,7 @@
     },
     {
       "step": 6,
-      "label": "TEV Yield: 0% (high confidence — 永久停止)",
+      "label": "股东回报率: 0% (high confidence — 永久停止)",
       "derived": true,
       "value_fields_by_period": {
         "7d": "metrics.tev_yield_7d_ann",
@@ -180,5 +180,16 @@
       },
       "unit": "%"
     }
-  ]
+  ],
+  "dividend_yield_percent": 0,
+  "buyback_yield_percent": 0,
+  "style": "growth",
+  "metrics": {
+    "dividend_yield_7d_ann": 0,
+    "buyback_yield_7d_ann": 0,
+    "dividend_yield_30d_ann": 0,
+    "buyback_yield_30d_ann": 0,
+    "dividend_yield_90d_ann": 0,
+    "buyback_yield_90d_ann": 0
+  }
 }

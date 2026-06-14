@@ -90,7 +90,7 @@
     "has_tev": false,
     "tev_yield_percent": 0,
     "annual_tev_usd": 0,
-    "market_cap_usd": 58722902.41,
+    "market_cap_usd": 58718271.78,
     "calculation_date": "2026-06-14",
     "sources": [
       {
@@ -121,10 +121,10 @@
   },
   "tevRatio": 0.27,
   "earning_yield_percent": 25.7,
-  "market_cap_usd": 58722902.41,
+  "market_cap_usd": 58718271.78,
   "tev_yield_percent": 0,
   "metrics": {
-    "current_market_cap_usd": 58722902.41,
+    "current_market_cap_usd": 58718271.78,
     "trailing_365d_revenue_usd": 15090194,
     "trailing_30d_revenue_usd": 801951,
     "trailing_365d_tev_usd": 0,
@@ -136,7 +136,13 @@
     "tev_yield_90d_ann": 0,
     "earning_yield_7d_ann": 12.58,
     "earning_yield_30d_ann": 16.62,
-    "earning_yield_90d_ann": 17.44
+    "earning_yield_90d_ann": 17.44,
+    "dividend_yield_7d_ann": 0,
+    "buyback_yield_7d_ann": 0,
+    "dividend_yield_30d_ann": 0,
+    "buyback_yield_30d_ann": 0,
+    "dividend_yield_90d_ann": 0,
+    "buyback_yield_90d_ann": 0
   },
   "calc_pipeline": [
     {
@@ -164,12 +170,12 @@
     },
     {
       "step": 5,
-      "label": "Staking Power 累积权利 (不是现金 TEV)",
+      "label": "Staking Power 累积权利 (不是现金回报)",
       "formula": "Power = Σ(持仓天数 × 持仓量), 若回撤至历史高位 80% 以下归零"
     },
     {
       "step": 6,
-      "label": "当前 TEV Yield: 0% (paused)",
+      "label": "当前 股东回报率: 0% (paused)",
       "derived": true,
       "value_fields_by_period": {
         "7d": "metrics.tev_yield_7d_ann",
@@ -179,5 +185,8 @@
       },
       "unit": "%"
     }
-  ]
+  ],
+  "dividend_yield_percent": 0,
+  "buyback_yield_percent": 0,
+  "style": "growth"
 }

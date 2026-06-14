@@ -59,9 +59,9 @@
   "last_updated": "2026-04-27",
   "tev_data": {
     "has_tev": true,
-    "tev_yield_percent": 1.41,
+    "tev_yield_percent": 1.4,
     "annual_tev_usd": 2193570,
-    "market_cap_usd": 155916983.35,
+    "market_cap_usd": 156163128.64,
     "calculation_date": "2026-06-14",
     "sources": [
       {
@@ -95,23 +95,29 @@
   },
   "analyst_notes": "【2026-04-27 链上调研】\n\n## 机制\nMaple Improvement Proposal MIP-019 (2024-Q4 通过):\n- 25% 协议收入 → Syrup Strategic Fund (SSF) 回购 SYRUP\n- 取消原 stSYRUP staking reward, 改为 DAO 资产负债表建设\n- Snapshot 投票 99%+ 赞成\n\nMIP-020 (2026-Q1-Q2): 延续 MIP-019, 月度执行.\n\n## 数据\n- DefiLlama dailyHoldersRevenue 365d $1.81M (6 个月数据)\n- DefiLlama dailyRevenue 365d $11.74M\n- 比例 1.81/11.74 = 15.4% (低于宣称 25%, 可能是 6 个月外推不完整)\n- 流通市值 ~$303M\n- yield ≈ 0.97%\n\n## 警示\n- SSF 国库地址未公开\n- Burn vs Reserve 比例未披露\n- DefiLlama 数据时间跨度不足\n\n## 关键地址\n- SYRUP: 0x643C4E15d7d62Ad0aBeC4a9BD4b001aA3Ef52d66\n\n## 历史\n- 2026-04-27: 链上调研, 标 medium confidence (国库地址未公开, 数据 6 个月)\n- 2025-Q4: MIP-019 通过启动 SSF\n",
   "tevRatio": 0.25,
-  "earning_yield_percent": 1.41,
-  "market_cap_usd": 155916983.35,
-  "tev_yield_percent": 1.41,
+  "earning_yield_percent": 1.4,
+  "market_cap_usd": 156163128.64,
+  "tev_yield_percent": 1.4,
   "metrics": {
-    "current_market_cap_usd": 155916983.35,
+    "current_market_cap_usd": 156163128.64,
     "trailing_365d_revenue_usd": 2193570,
     "trailing_30d_revenue_usd": 258265,
     "trailing_365d_tev_usd": 2193570,
     "trailing_30d_tev_usd": 182797.5,
     "trailing_7d_revenue_usd": 63846,
     "trailing_90d_revenue_usd": 783011,
-    "tev_yield_7d_ann": 2.14,
-    "tev_yield_30d_ann": 2.02,
-    "tev_yield_90d_ann": 2.04,
-    "earning_yield_7d_ann": 2.14,
-    "earning_yield_30d_ann": 2.02,
-    "earning_yield_90d_ann": 2.04
+    "tev_yield_7d_ann": 2.13,
+    "tev_yield_30d_ann": 2.01,
+    "tev_yield_90d_ann": 2.03,
+    "earning_yield_7d_ann": 2.13,
+    "earning_yield_30d_ann": 2.01,
+    "earning_yield_90d_ann": 2.03,
+    "dividend_yield_7d_ann": 0,
+    "buyback_yield_7d_ann": 2.13,
+    "dividend_yield_30d_ann": 0,
+    "buyback_yield_30d_ann": 2.01,
+    "dividend_yield_90d_ann": 0,
+    "buyback_yield_90d_ann": 2.03
   },
   "calc_pipeline": [
     {
@@ -150,7 +156,7 @@
     {
       "step": 5,
       "label": "年化 / SYRUP 流通市值",
-      "formula": "TEV_Yield = holdersRevenue × (365/N) ÷ market_cap × 100%",
+      "formula": "Shareholder_Yield = holdersRevenue × (365/N) ÷ market_cap × 100%",
       "inputs": {
         "市值": "market_cap_usd"
       },
@@ -158,7 +164,7 @@
     },
     {
       "step": 6,
-      "label": "最终 TEV Yield",
+      "label": "最终 股东回报率",
       "derived": true,
       "value_fields_by_period": {
         "7d": "metrics.tev_yield_7d_ann",
@@ -168,5 +174,8 @@
       },
       "unit": "%"
     }
-  ]
+  ],
+  "dividend_yield_percent": 0,
+  "buyback_yield_percent": 1.4,
+  "style": "cash_cow"
 }
