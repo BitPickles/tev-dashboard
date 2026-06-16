@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-06-15T13:14:29.883585+00:00",
-  "total": 238,
-  "active_count": 29,
-  "passed_count": 209,
-  "tev_related": 58,
+  "updated_at": "2026-06-16T01:18:21.878344+00:00",
+  "total": 244,
+  "active_count": 36,
+  "passed_count": 208,
+  "tev_related": 57,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -1228,6 +1228,90 @@
       "tev_keywords": [],
       "summary_en": "Here’s a quick recap of veCAKE’s utility:.",
       "summary_zh": "提议在 Base 链上线 veCAKE 功能，扩展 PancakeSwap 跨链治理覆盖。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Lido",
+      "title": "LIP-35: Staking Router v3 Architecture and Key Parameters",
+      "status": "active",
+      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0x8fdec5d2cb70f8a266c4f5a269051fcfa985fab0f66cbe747702719d7433f606",
+      "created": 1781535426,
+      "end": 1782144000,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Staking Router v3 (SRv3) is a Lido Core upgrade that supports large validators (up to 2048 ETH) and introduces balance-based accounting for the post-Pectra validator model, lays the foundation for proposed new versions of the Curated and Community St",
+      "summary_zh": "LIP-35: Lido 协议升级版 Staking Router v3（SRv3）于 2023 年 3 月 15 日发布，支持高达 2048 ETH 的大规模验证者，并引入基于余额的会计模型，为 Curated 和 Community Staking 的新版本奠定基础。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Lido",
+      "title": "LIP-33: CMv2 and CSMv3 Architecture, Key Parameters, Rollout Plan",
+      "status": "active",
+      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0x7b07bc31f0b38b69a117473031bc126becc70b9fa37246b53d9fe5a841c814f5",
+      "created": 1781524303,
+      "end": 1782144000,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "This proposal introduces upgraded versions of the Community Staking Module and Curated Module — CSMv3 and CMv2 — with support for `0x02` validator withdrawal credentials introduced in the Pectra hard fork. More details can be found in LIP-33.",
+      "summary_zh": "提案：Lido\n标题：LIP-33：CMv2和CSMv3架构、关键参数、实施计划\n摘要：本提案介绍升级版的社区质押模块和精选模块——CSMv3和CMv2，支持Pectra硬分叉引入的`0x02`验证者提款凭证。更多详情见LIP-33。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Lido",
+      "title": "Lido Labs Board Update: Appointment of Nemo as Director",
+      "status": "active",
+      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0x3e74af3eb9119c60616c93d1ecccc3bcbd1af27e3895f2e354217872ae116e76",
+      "created": 1781268581,
+      "end": 1782144000,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "This vote seeks Lido DAO approval for the appointment of Nemo (@nemo) as a director of Lido Labs Foundation (\"Lido Labs\").",
+      "summary_zh": "Lido 协议治理提案：2023年X月X日，Lido DAO 同意任命 Nemo (@nemo) 为 Lido Labs Foundation（Lido Labs）董事。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Lido",
+      "title": "Wind Down Simple DVT Module Regular Clusters",
+      "status": "active",
+      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0x6ab9651fba999ba29ba780fe61d68cc23e7aeb83c841181c5c1933dec9197f37",
+      "created": 1781254044,
+      "end": 1782144000,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "This proposal seeks DAO approval to wind down the 72 regular clusters in the Simple DVT Module (SDVTM) ahead of the originally communicated up to 3-year module lifetime. If approved, operators from regular clusters will be offered several continuatio",
+      "summary_zh": "提案：Lido\n标题：提前结束Simple DVT模块常规集群\n摘要：本提案寻求DAO批准在原定3年模块寿命之前结束Simple DVT模块（SDVTM）中的72个常规集群。若获批准，常规集群的操作员将被提供多个续约选项。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Lido",
+      "title": "Revoke Canonical Status of (w)stETH Bridge Endpoints on Selected Chains and Authorize NEC for Revocations",
+      "status": "active",
+      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0x09880de4739dcef13c4aa5605f1dca23556fc7495d09ecc84561a10f26a59b5c",
+      "created": 1781250956,
+      "end": 1782144000,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "This proposal seeks LDO token holders’ approval to:.",
+      "summary_zh": "撤销选定链上(w)stETH桥接端点的标准状态，并授权NEC进行撤销。此提案请求LDO代币持有者批准：",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Lido",
+      "title": "Galaxy Node Operator Infrastructure Update",
+      "status": "active",
+      "link": "https://snapshot.org/#/lido-snapshot.eth/proposal/0x644ddd8079f1f802f3da16b11556412cec4f753a1b942fa8456c631a265a4083",
+      "created": 1781249517,
+      "end": 1782144000,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "This proposal seeks DAO approval for Galaxy’s planned infrastructure update during the Curated Module v1→v2 migration. As part of this migration, the Galaxy Lido validator and signing stack will transition from the current Vouch/Dirk setup to its int",
+      "summary_zh": "This proposal seeks DAO approval for Galaxy’s planned infrastructure update during the Curated Module v1→v2 migration. As part of this migration, the Galaxy Lido validator and signing stack will transition from the current Vouch/Dirk setup to its int",
       "analysis_zh": ""
     },
     {
@@ -3230,6 +3314,20 @@
     {
       "source": "Sky Polling",
       "protocol": "Sky (MakerDAO)",
+      "title": "Atlas Edit Weekly Cycle Proposal - June 15, 2026",
+      "status": "active",
+      "link": "https://vote.makerdao.com/polling/QmdYpnYS",
+      "created": "2026-06-15T16:00:00",
+      "end": "2026-06-18T16:00:00",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "This Atlas edit proposal 1) codifies Core Facilitator authority over final Spell inclusion, 2) updates the Ethereum SkyLink Freezer Multisig configuration from 2/4 to 2/5, 3) adds Spark Foundation grant authorization for Q3 2026, 4) adds a second All",
+      "summary_zh": "协议：Sky（MakerDAO）\n标题：Atlas编辑每周周期提案 - 2026年6月15日\n摘要：本提案1）将核心促进者对最终咒语加入的权限进行法典化，2）将以太坊SkyLink Freezer多重签名配置从2/4更改为2/5，3）增加2026年第三季度Spark基金会拨款授权，4）增加第二次所有者治理投票。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
       "title": "Atlas Edit Weekly Cycle Proposal - June 8, 2026",
       "status": "passed",
       "link": "https://vote.makerdao.com/polling/Qme7Pt6e",
@@ -3282,22 +3380,6 @@
       "summary_en": "This Atlas edit proposal 1) defines the Executive Process Liaison and Strategic Team roles and adds Prime Agents to the Roles in the Executive Process Section, 2) rebrands Launch Agent 6 to Osero across the Atlas, 3) fixes stale cross-reference label",
       "summary_zh": "协议：Sky（MakerDAO）\n标题：Atlas编辑每周周期提案 - 2026年5月18日\n摘要：本提案1）定义了执行流程联络官和战略团队角色，并将Prime代理商添加到执行流程部分的角色中，2）将Atlas中的启动代理商6重命名为Osero，3）修复了过时的交叉引用标签。",
       "analysis_zh": ""
-    },
-    {
-      "source": "Sky Polling",
-      "protocol": "Sky (MakerDAO)",
-      "title": "Atlas Edit Weekly Cycle Proposal - May 11, 2026",
-      "status": "passed",
-      "link": "https://vote.makerdao.com/polling/QmRqCi82",
-      "created": "2026-05-11T16:00:00",
-      "end": "2026-05-14T16:00:00",
-      "tev_related": true,
-      "tev_keywords": [
-        "distribution",
-        "staking reward"
-      ],
-      "summary_en": "This Atlas edit proposal 1) specifies the Agent Termination Process in Root Edit Primitive, 2) defines Synome Documents and the Delegated Authority update process, 3) updates Freezer Multisig configuration for Obex, 4) adds Distribution Reward Instan",
-      "summary_zh": "Sky (MakerDAO) 协议“Atlas 编辑周循环提案 - 2026年5月11日”：明确代理终止流程，定义Synome文档和委托权限更新流程，更新Obex的Freezer多重签名配置，新增分配奖励实例。"
     },
     {
       "source": "Mantle Forum",
