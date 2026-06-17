@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-06-16T13:16:45.635178+00:00",
+  "updated_at": "2026-06-17T01:16:40.241955+00:00",
   "total": 246,
-  "active_count": 38,
-  "passed_count": 208,
+  "active_count": 39,
+  "passed_count": 207,
   "tev_related": 57,
   "monitored_protocols": 19,
   "protocols_meta": {
@@ -2786,6 +2786,20 @@
     {
       "source": "dYdX Cosmos",
       "protocol": "dYdX",
+      "title": "Wind down TON-USD market",
+      "status": "active",
+      "link": "https://www.mintscan.io/dydx/proposals/387",
+      "created": "2026-06-16T21:12:13.791483011Z",
+      "end": "2026-06-18T09:12:13.791483011Z",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Wind down TON-USD market",
+      "summary_zh": "dYdX协议治理提案：2023年X月X日，逐步关闭TON-USD市场。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
       "title": "Wind down KAS-USD and USELESS-USD markets",
       "status": "passed",
       "link": "https://www.mintscan.io/dydx/proposals/386",
@@ -2913,20 +2927,6 @@
       "tev_keywords": [],
       "summary_en": "Upgrade WTI-USD market from ISOLATED to CROSS and/or change liquidity tier",
       "summary_zh": "将 dYdX 中的 WTI-USD 市场从隔离状态升级为交叉状态，或更改流动性层级。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "dYdX Cosmos",
-      "protocol": "dYdX",
-      "title": "Update CLOB Pair Tick Size for WTI CLOB Pair",
-      "status": "passed",
-      "link": "https://www.mintscan.io/dydx/proposals/377",
-      "created": "2026-04-07T15:49:50.735376184Z",
-      "end": "2026-04-09T03:49:50.735376184Z",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Proposal to reduce step base quantums (and therefore step size) for WTI CLOB Pair.",
-      "summary_zh": "dYdX治理提案：更新WTI CLOB对基点增量（及步长大小）。提议降低WTI CLOB对基点基数（因此步长）。",
       "analysis_zh": ""
     },
     {
