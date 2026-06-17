@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-17T01:16:40.241955+00:00",
+  "updated_at": "2026-06-17T13:21:18.334681+00:00",
   "total": 246,
   "active_count": 39,
   "passed_count": 207,
@@ -2932,6 +2932,20 @@
     {
       "source": "GitHub BEP",
       "protocol": "BNB Chain",
+      "title": "BEP-673: add BEP-675 integration note for Pasteur hardfork",
+      "status": "passed",
+      "link": "https://github.com/bnb-chain/BEPs/pull/700",
+      "created": "2026-06-17T02:55:53",
+      "end": "",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Clarify that the SendBidBlock path on the validator side is enabled only after the Pasteur hard fork activates and is controlled via RPC interfaces, to give builders sufficient time for integration.",
+      "summary_zh": "Clarify that the SendBidBlock path on the validator side is enabled only after the Pasteur hard fork activates and is controlled via RPC interfaces, to give builders sufficient time for integration.",
+      "analysis_zh": ""
+    },
+    {
+      "source": "GitHub BEP",
+      "protocol": "BNB Chain",
       "title": "all: remove BEP-696",
       "status": "passed",
       "link": "https://github.com/bnb-chain/BEPs/pull/699",
@@ -3053,20 +3067,6 @@
       "tev_keywords": [],
       "summary_en": "Submitting UNIQUE Registry as a BNB Application Proposal. Contract live since April 18, 2026. Following a conversation with the BNBChain BD team who suggested this path.",
       "summary_zh": "提交 UNIQUE 注册系统作为 BNB 应用提案。合约自 2026 年 4 月 18 日起运行。经与 BNBChain BD 团队沟通建议此路径。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "GitHub BEP",
-      "protocol": "BNB Chain",
-      "title": "docs: add BEP-677 to README table",
-      "status": "passed",
-      "link": "https://github.com/bnb-chain/BEPs/pull/690",
-      "created": "2026-05-08T09:56:35",
-      "end": "",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Add BEP-677 (Implement EIP-8056 Scaled UI Amount) to the BEPs list in README.md.",
-      "summary_zh": "提案：BNB Chain\n标题：docs：将BEP-677添加到README表格\n摘要：将BEP-677（实施EIP-8056缩放UI金额）添加至README.md中的BEP列表。",
       "analysis_zh": ""
     },
     {
