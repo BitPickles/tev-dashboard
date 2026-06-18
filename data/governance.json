@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-06-18T01:13:50.256249+00:00",
-  "total": 246,
-  "active_count": 39,
-  "passed_count": 207,
-  "tev_related": 57,
+  "updated_at": "2026-06-18T13:18:24.898801+00:00",
+  "total": 248,
+  "active_count": 40,
+  "passed_count": 208,
+  "tev_related": 59,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -130,6 +130,21 @@
     }
   },
   "proposals": [
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[ARFC] Deploy Aave Protocol on Monad",
+      "status": "active",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0x24f105bd023c476a9b85fa87ff795bfeec769fa799ce6ada8e2724c9738049f6",
+      "created": 1781696837,
+      "end": 1782042437,
+      "tev_related": true,
+      "tev_keywords": [
+        "fee"
+      ],
+      "summary_en": "This ARFC proposes deploying Aave Protocol v3.7 on the Monad Network.",
+      "summary_zh": "[ARFC] 2023年11月X日，提议在Monad网络上部署Aave协议v3.7。"
+    },
     {
       "source": "Snapshot",
       "protocol": "Aave",
@@ -986,6 +1001,22 @@
       "summary_en": "The GMX DAO currently holds outstanding pool fees amounting to 994.70 ETH (3.2m USD) and 69,132.83 GMX (1.6m USD) from its GMX/ETH Uniswap LP position. This proposal seeks to authorize GMX DAO to collect these outstanding position fees from Uniswap a",
       "summary_zh": "GMX DAO 的 Uniswap LP 头寸累积了 994.70 ETH（320 万美元）和 69,132.83 GMX（160 万美元）的未提取费用，提案授权 DAO 领取这些费用。",
       "analysis_zh": "GMX 拟收回 Uniswap 上 $480 万未领费用并迁移 POL 至 Timelock，强化资金安全与流动性部署。\n\n提案计划收取 GMX/ETH Uniswap LP 头寸中累积的 994.70 ETH（约 $3.2m）及 69,132.83 GMX（约 $1.6m），总价值近 $480 万，同时将 21 个 POL NFTs 移入 DAO Timelock Contract。此举将单一托管转为时间锁合约，显著降低了资金托管风险，展现了 DAO 对资产安全的重视。收回资金将用于增强 CEX 与链上流动性并支持 GLV 资产组合，这对 TVL 达 $271.7m 的协议而言是高效的资本再分配，能有效提升资金利用率与市场深度，属于典型的存量优化策略。"
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "PancakeSwap",
+      "title": "Proposal to Redirect Side Product Fee Streams for Treasury Optimization",
+      "status": "active",
+      "link": "https://snapshot.org/#/cakevote.eth/proposal/0x7a55c37b49aba6035e24a27dbabb95c83388f7338520e8b78cc07f66702c9451",
+      "created": 1781764048,
+      "end": 1782024148,
+      "tev_related": true,
+      "tev_keywords": [
+        "fee",
+        "treasury"
+      ],
+      "summary_en": "The Kitchen proposes redirecting the fees from PancakeSwap's side products — defined as products other than AMM v2, v3, and Infinity — to the PancakeSwap Treasury, empowering the Kitchen to put them to work for the protocol. If passed, this enables t",
+      "summary_zh": "PancakeSwap治理提案：提议将侧产品费用流向转向PancakeSwap金库，以优化资金管理。提案由The Kitchen提出，旨在将除AMM v2、v3和Infinity之外的产品费用用于协议发展。若提案通过，将赋予The Kitchen使用这些资金的权利。"
     },
     {
       "source": "Snapshot",
@@ -2787,7 +2818,7 @@
       "source": "dYdX Cosmos",
       "protocol": "dYdX",
       "title": "Wind down TON-USD market",
-      "status": "active",
+      "status": "passed",
       "link": "https://www.mintscan.io/dydx/proposals/387",
       "created": "2026-06-16T21:12:13.791483011Z",
       "end": "2026-06-18T09:12:13.791483011Z",
