@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-06-19T01:10:52.824988+00:00",
+  "updated_at": "2026-06-19T13:13:59.755575+00:00",
   "total": 248,
-  "active_count": 39,
-  "passed_count": 209,
-  "tev_related": 59,
+  "active_count": 38,
+  "passed_count": 210,
+  "tev_related": 60,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -130,6 +130,21 @@
     }
   },
   "proposals": [
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[ARFC] Strengthening Upgrade Safety: Concord Equivalence Checker by Certora",
+      "status": "active",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0xcf9ca2d7a9b1ee819b6b76f8dae1cdc7fb507e027f044e90d7937b4b264a42c1",
+      "created": 1781778662,
+      "end": 1782124262,
+      "tev_related": true,
+      "tev_keywords": [
+        "fee"
+      ],
+      "summary_en": "We propose that the Aave DAO participate as a founding sponsor in the development of Certora Concord, an open-source equivalence-checking framework designed to formally verify that smart contract upgrades — including compiler upgrades, optimizations,",
+      "summary_zh": "[ARFC] 加强升级安全：Certora Concord等价性检查器，由Aave DAO作为创始赞助商参与开发一个开源等价性检查框架，旨在形式化验证智能合约升级（包括编译器升级、优化等）。"
+    },
     {
       "source": "Snapshot",
       "protocol": "Aave",
@@ -1022,7 +1037,7 @@
       "source": "Snapshot",
       "protocol": "PancakeSwap",
       "title": "test2",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/cakevote.eth/proposal/0xe9f608ed2d454f1199c7d31044962d4011879f6a4515e0e925b164dcdc60f5ef",
       "created": 1781598022,
       "end": 1781858122,
@@ -1036,7 +1051,7 @@
       "source": "Snapshot",
       "protocol": "PancakeSwap",
       "title": "Test",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/cakevote.eth/proposal/0xfb964fc60b36da41232f11aa62321d300206c8ffbe7d5a8ca35cb3817eddb3db",
       "created": 1781595328,
       "end": 1781855428,
@@ -1273,20 +1288,6 @@
       "tev_keywords": [],
       "summary_en": "Here’s a quick recap of veCAKE’s utility:.",
       "summary_zh": "提议在 opBNB 上线 veCAKE 功能，扩展 PancakeSwap 治理机制至 BNB 的 L2 网络。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "PancakeSwap",
-      "title": "Proposal to Launch veCAKE on Base",
-      "status": "passed",
-      "link": "https://snapshot.org/#/cakevote.eth/proposal/0x30f2e5d8b5460f6377dc4bf46dc10da5236bd04666edd0d5c4545a6d3431a101",
-      "created": 1707319762,
-      "end": 1707406200,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Here’s a quick recap of veCAKE’s utility:.",
-      "summary_zh": "提议在 Base 链上线 veCAKE 功能，扩展 PancakeSwap 跨链治理覆盖。",
       "analysis_zh": ""
     },
     {
