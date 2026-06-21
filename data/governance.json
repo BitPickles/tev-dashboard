@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-21T01:15:47.390178+00:00",
-  "total": 249,
-  "active_count": 39,
+  "updated_at": "2026-06-21T13:13:57.751069+00:00",
+  "total": 247,
+  "active_count": 37,
   "passed_count": 210,
   "tev_related": 60,
   "monitored_protocols": 19,
@@ -163,7 +163,7 @@
       "source": "Snapshot",
       "protocol": "Aave",
       "title": "[ARFC] Deploy Aave Protocol on Monad",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/aavedao.eth/proposal/0x24f105bd023c476a9b85fa87ff795bfeec769fa799ce6ada8e2724c9738049f6",
       "created": 1781696837,
       "end": 1782042437,
@@ -442,20 +442,6 @@
       "tev_keywords": [],
       "summary_en": "This proposal introduces a two-part licensing framework for the canonical Aave V4 repositories: a BUSL-based license for the core codebase, and a Contributor License Agreement (CLA) for anyone who wants to contribute to the codebase. The goal is to p",
       "summary_zh": "[ARFC] Aave V4 许可框架提案：引入基于BUSL的核心代码许可和针对贡献者的贡献者许可协议（CLA），旨在规范Aave V4代码库的许可和贡献管理。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Aave",
-      "title": "[TEMP CHECK] Onboard USSD to Aave V3 Sonic Instance",
-      "status": "passed",
-      "link": "https://snapshot.org/#/aavedao.eth/proposal/0x0bd92516f4ee59ccc1016c0660916b331651ea1a43d2474c583abd69e4d611fb",
-      "created": 1774437940,
-      "end": 1774783540,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "The current proposal is set to onboard Sonic stablecoin USSD to Aave V3 Sonic Instance.",
-      "summary_zh": "提案：Aave\n标题：[TEMP CHECK] 将USSD稳定币引入Aave V3 Sonic实例\n摘要：本提案计划于2023年X月X日将USSD稳定币加入Aave V3 Sonic实例。",
       "analysis_zh": ""
     },
     {
@@ -1035,7 +1021,7 @@
       "source": "Snapshot",
       "protocol": "PancakeSwap",
       "title": "Proposal to Redirect Side Product Fee Streams for Treasury Optimization",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/cakevote.eth/proposal/0x7a55c37b49aba6035e24a27dbabb95c83388f7338520e8b78cc07f66702c9451",
       "created": 1781764048,
       "end": 1782024148,
@@ -1288,20 +1274,6 @@
       "tev_keywords": [],
       "summary_en": "to recognize Mancake as an affiliate DEX.",
       "summary_zh": "正式承认 Mancake 为 PancakeSwap 在 Mantle Network 上的关联 DEX。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "PancakeSwap",
-      "title": "Proposal to Launch veCAKE on opBNB",
-      "status": "passed",
-      "link": "https://snapshot.org/#/cakevote.eth/proposal/0x57121617ce82be6faab483b2e83fa626593f51c4e9c71670be36bfaa6cd96bf1",
-      "created": 1712224901,
-      "end": 1712313000,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Here’s a quick recap of veCAKE’s utility:.",
-      "summary_zh": "提议在 opBNB 上线 veCAKE 功能，扩展 PancakeSwap 治理机制至 BNB 的 L2 网络。",
       "analysis_zh": ""
     },
     {
