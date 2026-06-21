@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-20T13:17:21.200405+00:00",
-  "total": 248,
-  "active_count": 38,
+  "updated_at": "2026-06-21T01:15:47.390178+00:00",
+  "total": 249,
+  "active_count": 39,
   "passed_count": 210,
   "tev_related": 60,
   "monitored_protocols": 19,
@@ -130,6 +130,20 @@
     }
   },
   "proposals": [
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[ARFC] Onboard stcUSD to Aave V3 MegaETH",
+      "status": "active",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0x84ccc14e104b18a74ef47375ccd59f7f7aeeb61716dbb2c362ea7a538da3e08f",
+      "created": 1781879406,
+      "end": 1782225006,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "This ARFC proposes onboarding stcUSD to the Aave V3 MegaETH instance.",
+      "summary_zh": "关于在Aave V3 MegaETH实例中上架stcUSD的ARFC提案",
+      "analysis_zh": ""
+    },
     {
       "source": "Snapshot",
       "protocol": "Aave",
