@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-06-22T01:19:16.211441+00:00",
-  "total": 247,
-  "active_count": 37,
+  "updated_at": "2026-06-22T13:16:44.703100+00:00",
+  "total": 246,
+  "active_count": 36,
   "passed_count": 210,
   "tev_related": 60,
   "monitored_protocols": 19,
@@ -148,7 +148,7 @@
       "source": "Snapshot",
       "protocol": "Aave",
       "title": "[ARFC] Strengthening Upgrade Safety: Concord Equivalence Checker by Certora",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/aavedao.eth/proposal/0xcf9ca2d7a9b1ee819b6b76f8dae1cdc7fb507e027f044e90d7937b4b264a42c1",
       "created": 1781778662,
       "end": 1782124262,
@@ -428,20 +428,6 @@
       "tev_keywords": [],
       "summary_en": "This publication proposes updates to the Budget SAFE signer configuration to improve transaction execution reliability, signer availability, and operational efficiency.",
       "summary_zh": "This publication proposes updates to the Budget SAFE signer configuration to improve transaction execution reliability, signer availability, and operational efficiency.",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Aave",
-      "title": "[ARFC] Aave V4 Licensing",
-      "status": "passed",
-      "link": "https://snapshot.org/#/aavedao.eth/proposal/0xce3d586a4c27dd06af881e1c93a550df1eb0dd65c0d74a2781b859f9d8fe8bbd",
-      "created": 1774466927,
-      "end": 1774812527,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "This proposal introduces a two-part licensing framework for the canonical Aave V4 repositories: a BUSL-based license for the core codebase, and a Contributor License Agreement (CLA) for anyone who wants to contribute to the codebase. The goal is to p",
-      "summary_zh": "[ARFC] Aave V4 许可框架提案：引入基于BUSL的核心代码许可和针对贡献者的贡献者许可协议（CLA），旨在规范Aave V4代码库的许可和贡献管理。",
       "analysis_zh": ""
     },
     {
