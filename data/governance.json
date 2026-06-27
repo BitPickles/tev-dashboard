@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-06-27T01:14:40.256078+00:00",
+  "updated_at": "2026-06-27T13:19:09.145874+00:00",
   "total": 240,
   "active_count": 30,
   "passed_count": 210,
-  "tev_related": 59,
+  "tev_related": 58,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -130,6 +130,20 @@
     }
   },
   "proposals": [
+    {
+      "source": "Snapshot",
+      "protocol": "Aave",
+      "title": "[ARFC] Upgrade PT Risk Oracle to Protocol-Owned Infrastructure on CRE",
+      "status": "active",
+      "link": "https://snapshot.org/#/aavedao.eth/proposal/0x8492c0fd4672e3582df0b60fb80956514f7182de915ef6dfc60541ab2182e045",
+      "created": 1782447189,
+      "end": 1782792789,
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "LlamaRisk proposes upgrading the Pendle PT risk oracle stack to an automated pipeline that enhances Aave's protocol-owned risk infrastructure: Aave Governance owns every contract, the risk manager only proposes, and every parameter and tuning decisio",
+      "summary_zh": "[ARFC] 将Pendle PT风险预言机栈升级至Aave协议所有基础设施，LlamaRisk提议将其转变为自动化流程，以增强Aave的风险基础设施：Aave治理拥有所有合约，风险管理员仅提供建议，每个参数和调整决策由治理决定。",
+      "analysis_zh": ""
+    },
     {
       "source": "Snapshot",
       "protocol": "Aave",
@@ -756,7 +770,7 @@
       "source": "Snapshot",
       "protocol": "GMX",
       "title": "GMX Team Long-Term Incentive Program",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/gmx.eth/proposal/0x5b9ddfe4f803ecc92798d434d0e17fb237d04cbb95397411040c463222ce8a41",
       "created": 1782209640,
       "end": 1782563400,
@@ -986,22 +1000,6 @@
       "summary_en": "This proposal seeks to decentralize and automate the entire fee distribution process for the GMX ecosystem. Currently, fees are manually withdrawn from contracts, followed by a script-based distribution to GLP, keepers, reward distributors, and the t",
       "summary_zh": "提议将 GMX 生态的整个费用分配流程去中心化并自动化。当前费用需手动提取再脚本分配给 GLP、keeper、奖励分发者和国库，效率低且有中心化风险。",
       "analysis_zh": "GMX 拟将费用分配全面上链自动化，消除手动干预风险并提升透明度。\n\nGMX 提议将费用分配流程从“手动提取+脚本分发”升级为智能合约自动执行的链上模式，直击当前中心化操作的低效与透明度痛点。鉴于 GMX 年收入高达 $22.0M，其中 $19.8M 用于 TEV 分配，如此庞大的资金流长期依赖人工操作实属隐患。此次升级若通过，不仅能确保 TVL $271.7M 背后的收益分配更精准高效，还能消除单点故障风险，是项目走向成熟去中心化治理的关键一步，对质押者而言是显著的安全红利。"
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "GMX",
-      "title": "Administration of Protocol Owned Liquidity",
-      "status": "passed",
-      "link": "https://snapshot.org/#/gmx.eth/proposal/0x76fb90204b9a414d3c982f86e21131d4441c9ffab5e89136ec54cb8535fbd5a3",
-      "created": 1739176517,
-      "end": 1739608080,
-      "tev_related": true,
-      "tev_keywords": [
-        "fee"
-      ],
-      "summary_en": "The GMX DAO currently holds outstanding pool fees amounting to 994.70 ETH (3.2m USD) and 69,132.83 GMX (1.6m USD) from its GMX/ETH Uniswap LP position. This proposal seeks to authorize GMX DAO to collect these outstanding position fees from Uniswap a",
-      "summary_zh": "GMX DAO 的 Uniswap LP 头寸累积了 994.70 ETH（320 万美元）和 69,132.83 GMX（160 万美元）的未提取费用，提案授权 DAO 领取这些费用。",
-      "analysis_zh": "GMX 拟收回 Uniswap 上 $480 万未领费用并迁移 POL 至 Timelock，强化资金安全与流动性部署。\n\n提案计划收取 GMX/ETH Uniswap LP 头寸中累积的 994.70 ETH（约 $3.2m）及 69,132.83 GMX（约 $1.6m），总价值近 $480 万，同时将 21 个 POL NFTs 移入 DAO Timelock Contract。此举将单一托管转为时间锁合约，显著降低了资金托管风险，展现了 DAO 对资产安全的重视。收回资金将用于增强 CEX 与链上流动性并支持 GLV 资产组合，这对 TVL 达 $271.7m 的协议而言是高效的资本再分配，能有效提升资金利用率与市场深度，属于典型的存量优化策略。"
     },
     {
       "source": "Snapshot",
