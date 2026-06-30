@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-06-29T13:16:17.996502+00:00",
-  "total": 240,
-  "active_count": 30,
-  "passed_count": 210,
-  "tev_related": 58,
+  "updated_at": "2026-06-30T01:09:20.826506+00:00",
+  "total": 241,
+  "active_count": 32,
+  "passed_count": 209,
+  "tev_related": 60,
   "monitored_protocols": 19,
   "protocols_meta": {
     "Aave": {
@@ -429,6 +429,21 @@
       "summary_en": "This ARFC proposes to onboard PT-USDG-28MAY2026 to the Aave V3 Core Instance on Ethereum.",
       "summary_zh": "关于在Aave V3核心实例中引入PT-USDG-28MAY2026的治理提案",
       "analysis_zh": ""
+    },
+    {
+      "source": "Snapshot",
+      "protocol": "Uniswap",
+      "title": "[Temp Check] - Update Crosschain Governance Parameters for Avalanche, MegaETH, Soneium, and X Layer",
+      "status": "active",
+      "link": "https://snapshot.org/#/uniswapgovernance.eth/proposal/0x5d596a4b437b2e7fe598a3c12552d8c91704f5615108d152b9facababac3a975",
+      "created": 1782746897,
+      "end": 1783178897,
+      "tev_related": true,
+      "tev_keywords": [
+        "fee"
+      ],
+      "summary_en": "Secure crosschain messaging is an integral part of Uniswap's governance model. Governance votes like protocol fee adjustments are executed by UNI holders on Ethereum Mainnet and must subsequently be relayed to destination chains.",
+      "summary_zh": "协议：Uniswap\n标题：[温度检测] - 更新Avalanche、MegaETH、Soneium和X Layer的跨链治理参数\n摘要：安全跨链信息是Uniswap治理模型的核心。如协议费用调整等治理投票由Ethereum主网上的UNI持有人执行，随后需传递至目标链。"
     },
     {
       "source": "Snapshot",
@@ -3255,6 +3270,22 @@
     {
       "source": "Sky Polling",
       "protocol": "Sky (MakerDAO)",
+      "title": "Atlas Edit Weekly Cycle Proposal - June 29, 2026",
+      "status": "active",
+      "link": "https://vote.makerdao.com/polling/Qmd3gCcD",
+      "created": "2026-06-29T16:00:00",
+      "end": "2026-07-02T16:00:00",
+      "tev_related": true,
+      "tev_keywords": [
+        "distribution",
+        "revenue"
+      ],
+      "summary_en": "This Atlas edit proposal 1) adds a 100% Capital Ratio Requirement for unauthorized exposures, 2) transitions the Galaxy Warehouse out of Interim Deployment, 3) credits Grove for owed Prime revenue, 4) adds a GROVE token reward distribution schedule, ",
+      "summary_zh": "协议：Sky（MakerDAO）\n标题：Atlas编辑每周周期提案 - 2026年6月29日\n摘要：本提案1）为未经授权的敞口增加100%资本比率要求，2）将Galaxy仓库从临时部署过渡，3）为Grove偿还欠款Prime收入，4）增加GROVE代币奖励分配计划。"
+    },
+    {
+      "source": "Sky Polling",
+      "protocol": "Sky (MakerDAO)",
       "title": "Atlas Edit Weekly Cycle Proposal - June 22, 2026",
       "status": "passed",
       "link": "https://vote.makerdao.com/polling/QmdXjfm6",
@@ -3308,20 +3339,6 @@
       "tev_keywords": [],
       "summary_en": "This Atlas edit proposal 1) unifies reward recipient and sharing across Sky Primitive reward mechanisms, 2) renames Capital Requirement Ratio to Capital Ratio Requirement, 3) removes irrelevant Facilitator Ecosystem exemptions, 4) amends Circle CCTP ",
       "summary_zh": "协议：Sky（MakerDAO）\n标题：Atlas编辑每周周期提案 - 2026年6月1日\n摘要：本提案1）统一Sky原始奖励机制中的奖励接收和分享，2）将资本要求比率更名为资本比率要求，3）移除无关的促进者生态系统豁免，4）修订Circle CCTP。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Sky Polling",
-      "protocol": "Sky (MakerDAO)",
-      "title": "Atlas Edit Weekly Cycle Proposal - May 25, 2026",
-      "status": "passed",
-      "link": "https://vote.makerdao.com/polling/QmeS7Hm2",
-      "created": "2026-05-25T16:00:00",
-      "end": "2026-05-28T16:00:00",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "This Atlas edit proposal 1) introduces Independent Governance standard for Root Edit Primitive Operation, 2) adds spell checklists and reference materials, 3) adds GROVE token transfer to Grove Foundation, 4) specifies Pre-Risk Review timing, 5) adds",
-      "summary_zh": "协议：Sky（MakerDAO）\n标题：Atlas 编辑每周周期提案 - 2026年5月25日\n摘要：本提案1）引入独立治理标准于根编辑原始操作，2）添加拼写清单和参考资料，3）将 GROVE 代币转账至 Grove 基金会，4）明确预风险评估时间，5）新增...",
       "analysis_zh": ""
     },
     {
