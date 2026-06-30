@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-06-30T01:09:20.826506+00:00",
-  "total": 241,
+  "updated_at": "2026-06-30T13:13:04.759352+00:00",
+  "total": 240,
   "active_count": 32,
-  "passed_count": 209,
+  "passed_count": 208,
   "tev_related": 60,
   "monitored_protocols": 19,
   "protocols_meta": {
@@ -134,7 +134,7 @@
       "source": "Snapshot",
       "protocol": "Aave",
       "title": "[ARFC] Upgrade PT Risk Oracle to Protocol-Owned Infrastructure on CRE",
-      "status": "active",
+      "status": "passed",
       "link": "https://snapshot.org/#/aavedao.eth/proposal/0x8492c0fd4672e3582df0b60fb80956514f7182de915ef6dfc60541ab2182e045",
       "created": 1782447189,
       "end": 1782792789,
@@ -414,20 +414,6 @@
       "tev_keywords": [],
       "summary_en": "Given the current state of the Aave V2 instance, Chaos Labs conducted a detailed evaluation of the oracle configurations and risk parameters across all listed assets. The objective of this analysis is to identify assets whose oracle setups and risk p",
       "summary_zh": "[ARFC] Aave V2 市场逐步停用方案持续进行\n鉴于 Aave V2 实例当前状态，Chaos Labs 对所有上市资产的 oracle 配置和风险参数进行了详细评估。分析目标为识别那些 oracle 设置和风险参数存在问题的资产。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "Snapshot",
-      "protocol": "Aave",
-      "title": "[ARFC] Onboard PT-USDG-28MAY2026 to Aave V3 Core Instance",
-      "status": "passed",
-      "link": "https://snapshot.org/#/aavedao.eth/proposal/0xaa29094accbcccd70088fb77dfd2800a4488319a0942b226c5699ea35d1c9e19",
-      "created": 1775077228,
-      "end": 1775422828,
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "This ARFC proposes to onboard PT-USDG-28MAY2026 to the Aave V3 Core Instance on Ethereum.",
-      "summary_zh": "关于在Aave V3核心实例中引入PT-USDG-28MAY2026的治理提案",
       "analysis_zh": ""
     },
     {
@@ -2714,6 +2700,20 @@
     {
       "source": "dYdX Cosmos",
       "protocol": "dYdX",
+      "title": "Wind down AEVO-USD, KAITO-USD, SKY-USD, S-USD and XAUT-USD markets",
+      "status": "active",
+      "link": "https://www.mintscan.io/dydx/proposals/388",
+      "created": "2026-06-30T09:33:15.044473946Z",
+      "end": "2026-07-03T09:33:15.044473946Z",
+      "tev_related": false,
+      "tev_keywords": [],
+      "summary_en": "Wind down AEVO-USD, KAITO-USD, SKY-USD, S-USD and XAUT-USD markets",
+      "summary_zh": "dYdX协议将于2023年12月31日关闭AEVO-USD、KAITO-USD、SKY-USD、S-USD和XAUT-USD市场。",
+      "analysis_zh": ""
+    },
+    {
+      "source": "dYdX Cosmos",
+      "protocol": "dYdX",
       "title": "Wind down TON-USD market",
       "status": "passed",
       "link": "https://www.mintscan.io/dydx/proposals/387",
@@ -2841,20 +2841,6 @@
       "tev_keywords": [],
       "summary_en": "Upgrade XAG-USD market from ISOLATED to CROSS and/or change liquidity tier",
       "summary_zh": "将 XAG-USD 市场从隔离模式升级至交叉模式，以及/或更改流动性层级。",
-      "analysis_zh": ""
-    },
-    {
-      "source": "dYdX Cosmos",
-      "protocol": "dYdX",
-      "title": "Upgrade WTI-USD market from ISOLATED to CROSS and/or change liquidity tier",
-      "status": "passed",
-      "link": "https://www.mintscan.io/dydx/proposals/378",
-      "created": "2026-04-09T20:34:33.884239419Z",
-      "end": "2026-04-11T08:34:33.884239419Z",
-      "tev_related": false,
-      "tev_keywords": [],
-      "summary_en": "Upgrade WTI-USD market from ISOLATED to CROSS and/or change liquidity tier",
-      "summary_zh": "将 dYdX 中的 WTI-USD 市场从隔离状态升级为交叉状态，或更改流动性层级。",
       "analysis_zh": ""
     },
     {
